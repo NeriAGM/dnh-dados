@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tirador de Dados · Dolor & Hambre</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root{
+    --bg:#0f0d0b; --panel:#1c1815; --line:#332c26; --line2:#2a241f;
+    --bone:#e8dfcf; --muted:#8a8175; --dim:#5c5346;
+    --esp:#d9a94e; --esp-text:#f3d98a; --miedo:#7b4fa6; --miedo-text:#c6a9e8;
+    --blood:#8b2e2e; --bad:#c97b7b; --live:#7ba672;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh; display:flex; justify-content:center;
+    background:radial-gradient(ellipse at top,#1a1613 0%,#0f0d0b 60%);
+    font-family:Georgia,'Times New Roman',serif; color:var(--bone); padding:24px 14px;
+  }
+  .wrap{width:100%; max-width:440px;}
+  .eyebrow{text-align:center; font:11px/1.4 ui-monospace,monospace; letter-spacing:.3em; text-transform:uppercase; color:var(--miedo); margin-bottom:6px;}
+  h1{text-align:center; font-size:22px; margin:0 0 10px;}
+  .hr{height:1px; width:64px; background:var(--line); margin:0 auto 20px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:3px; padding:16px; margin-bottom:14px;}
+  label{display:flex; align-items:center; gap:6px; font:11px ui-monospace,monospace; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:4px;}
+  input[type=text], input[type=date]{width:100%; padding:9px 10px; background:#16130f; border:1px solid var(--line); color:var(--bone); border-radius:3px; font-size:14px; outline:none; font-family:inherit;}
+  input.mono{font-family:ui-monospace,monospace;}
+  .row{display:flex; gap:8px; margin-top:10px;}
+  button{cursor:pointer; border:none; font-family:inherit;}
+  .quick{font:12px ui-monospace,monospace; padding:8px 10px; background:#211c18; border:1px solid var(--line); color:#b8ae9e; border-radius:3px;}
+  .roll-btn{flex:1; display:flex; align-items:center; justify-content:center; gap:6px; font-weight:700; font-size:14px; padding:8px 10px; border-radius:3px; background:linear-gradient(160deg,var(--blood),#6b2020); color:#f3e9dc;}
+  .roll-btn:disabled{opacity:.6; cursor:default;}
+  .error{color:var(--bad); font-size:12px; margin-top:8px;}
+  .result-row{display:flex; align-items:center; gap:8px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:10px;}
+  .chip{display:flex; align-items:center; gap:4px; flex-shrink:0;}
+  .sign{font-family:ui-monospace,monospace; color:var(--dim); font-size:14px;}
+  .hex{position:relative; width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    clip-path:polygon(50% 0%,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%);
+    background:linear-gradient(160deg,#211c18,#16130f); border:1.5px solid var(--line);}
+  .hex.esp{border-color:var(--esp);} .hex.miedo{border-color:var(--miedo);}
+  .hex span.val{font-family:ui-monospace,monospace; font-weight:700; font-size:15px; color:var(--bone);}
+  .hex span.sides{position:absolute; bottom:-15px; font-size:9px; font-family:ui-monospace,monospace; color:var(--dim); letter-spacing:.03em;}
+  .const{min-width:32px; height:32px; display:flex; align-items:center; justify-content:center; padding:0 8px; background:#1c1815; border:1px solid var(--line); color:#b8ae9e; border-radius:3px; font-family:ui-monospace,monospace; font-size:13px; flex-shrink:0;}
+  .eq{font-family:ui-monospace,monospace; color:var(--dim); font-size:14px;}
+  .total{font-family:ui-monospace,monospace; font-weight:700; font-size:22px; color:var(--bone);}
+  .subrow{display:flex; gap:16px; padding-top:8px; border-top:1px solid var(--line2); font-size:12px;}
+  .crit{display:flex; align-items:center; gap:4px; font-weight:700; color:var(--esp-text);}
+  .log-head{display:flex; align-items:center; gap:8px; font:11px ui-monospace,monospace; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:8px;}
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--live); box-shadow:0 0 6px var(--live);}
+  .dot.off{background:var(--dim); box-shadow:none;}
+  .filterrow{display:flex; gap:8px; align-items:center; margin-bottom:10px;}
+  .filterrow input{flex:1;}
+  .entry{display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border-radius:3px; background:#171310; margin-bottom:6px; font-size:12px;}
+  .entry.crit{border-left:2px solid var(--esp);} .entry:not(.crit){border-left:2px solid var(--line);}
+  .entry .name{font-weight:700; color:var(--bone);}
+  .entry .formula{font-family:ui-monospace,monospace; color:var(--muted); margin-left:4px;}
+  .entry .breakdown{margin-top:2px; font-family:ui-monospace,monospace;}
+  .entry .esp-txt{color:var(--esp);} .entry .miedo-txt{color:var(--miedo);}
+  .entry .time{color:var(--dim); font-family:ui-monospace,monospace; font-size:10px; margin-top:2px;}
+  .entry .tot{font-family:ui-monospace,monospace; font-weight:700; font-size:16px; margin-left:10px; flex-shrink:0;}
+  .empty{font-size:12px; color:var(--dim);}
+  .setup{font-size:12px; color:var(--bad); background:#241615; border:1px solid #4a2a28; padding:10px; border-radius:3px; margin-bottom:14px; line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Dolor &amp; Hambre</div>
+  <h1>Tirador de Dados</h1>
+  <div class="hr"></div>
+
+  <div id="setupWarning" class="setup" style="display:none;">
+    Falta configurar tu URL y llave de Supabase en el archivo (busca SUPABASE_URL y SUPABASE_ANON_KEY al final del HTML).
+  </div>
+
+  <div class="card">
+    <label>Jugador</label>
+    <input type="text" id="name" placeholder="Nombre" />
+    <div style="height:10px"></div>
+    <label>Fórmula</label>
+    <input type="text" id="formula" class="mono" value="2d12 + 2 - 1d6 + 1d20" />
+    <div class="row">
+      <button class="quick" id="quickDuality">Dualidad · 2d12</button>
+      <button class="roll-btn" id="rollBtn">🎲 Lanzar</button>
+    </div>
+    <div class="error" id="error" style="display:none;"></div>
+  </div>
+
+  <div class="card" id="resultCard" style="display:none;">
+    <div class="result-row" id="resultRow"></div>
+    <div class="subrow" id="subrow" style="display:none;"></div>
+  </div>
+
+  <div class="log-head">
+    <span class="dot" id="liveDot"></span>
+    <span id="liveLabel">Conectando…</span>
+  </div>
+  <div class="filterrow">
+    <input type="date" id="dateFilter" />
+    <button class="quick" id="todayBtn">Hoy</button>
+    <button class="quick" id="allBtn">Todos</button>
+  </div>
+  <div id="history"></div>
+</div>
+
+<script>
+(function(){
+  var SUPABASE_URL = "https://dktpjdljsmofqmmvcpkr.supabase.co";
+  var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRrdHBqZGxqc21vZnFtbXZjcGtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4NTU2NDUsImV4cCI6MjEwMjQzMTY0NX0.KmvSady9O9D9wcPdlEYYX9stJ4mQKf1EBVLXjgOxcRI";
+
+  var configured = SUPABASE_URL.indexOf("http") === 0 && SUPABASE_ANON_KEY.length > 10;
+  if(!configured){
+    document.getElementById('setupWarning').style.display='block';
+    document.getElementById('liveLabel').textContent = 'Sin configurar';
+  }
+
+  var client = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+  var currentFilter = null; // 'YYYY-MM-DD' or null for all
+
+  function parseFormula(formula){
+    var clean = formula.replace(/\s+/g,'');
+    if(!clean) return null;
+    var re = /([+-]?)(\d*d\d+|\d+)/gi;
+    var matches = clean.match(re);
+    if(!matches) return null;
+    var joined = matches.reduce(function(a,b){return a+b;},'');
+    if(joined.length !== clean.length) return null;
+
+    var terms = [];
+    for(var i=0;i<matches.length;i++){
+      var m = matches[i];
+      var sign = 1, raw = m;
+      if(m[0]==='+'){ raw = m.slice(1); }
+      else if(m[0]==='-'){ sign=-1; raw = m.slice(1); }
+      if(/d/i.test(raw)){
+        var parts = raw.split(/d/i);
+        var count = parts[0]==='' ? 1 : parseInt(parts[0],10);
+        var sides = parseInt(parts[1],10);
+        if(!sides || sides<2 || count<1 || count>20) return null;
+        for(var c=0;c<count;c++){
+          terms.push({type:'die', sides:sides, sign:c===0?sign:1});
+        }
+      } else {
+        var val = parseInt(raw,10);
+        if(isNaN(val)) return null;
+        terms.push({type:'const', value:val, sign:sign});
+      }
+    }
+    return terms;
+  }
+
+  function rollTerms(terms){
+    var d12Seen = 0;
+    return terms.map(function(t){
+      if(t.type==='const') return Object.assign({}, t);
+      var value = 1 + Math.floor(Math.random()*t.sides);
+      var role = null;
+      if(t.sides===12){
+        d12Seen++;
+        if(d12Seen===1) role='esperanza';
+        else if(d12Seen===2) role='miedo';
+      }
+      return Object.assign({}, t, {value:value, role:role});
+    });
+  }
+
+  function computeTotal(chips){
+    return chips.reduce(function(s,c){ return s + c.value*c.sign; }, 0);
+  }
+
+  function renderChip(chip){
+    var wrap = document.createElement('div'); wrap.className='chip';
+    var sign = document.createElement('span'); sign.className='sign'; sign.textContent = chip.sign<0 ? '−':'+';
+    wrap.appendChild(sign);
+    if(chip.type==='die'){
+      var hex = document.createElement('div');
+      hex.className='hex' + (chip.role==='esperanza'?' esp':chip.role==='miedo'?' miedo':'');
+      var val = document.createElement('span'); val.className='val'; val.textContent = chip.value;
+      var sides = document.createElement('span'); sides.className='sides'; sides.textContent='d'+chip.sides;
+      hex.appendChild(val); hex.appendChild(sides);
+      wrap.appendChild(hex);
+    } else {
+      var c = document.createElement('div'); c.className='const'; c.textContent = chip.value;
+      wrap.appendChild(c);
+    }
+    return wrap;
+  }
+
+  function renderResult(chips){
+    var row = document.getElementById('resultRow');
+    row.innerHTML='';
+    chips.forEach(function(c){ row.appendChild(renderChip(c)); });
+    var eq = document.createElement('span'); eq.className='eq'; eq.textContent='=';
+    row.appendChild(eq);
+    var tot = document.createElement('span'); tot.className='total'; tot.textContent = computeTotal(chips);
+    row.appendChild(tot);
+    document.getElementById('resultCard').style.display='block';
+
+    var esp = chips.find(function(c){return c.role==='esperanza';});
+    var miedo = chips.find(function(c){return c.role==='miedo';});
+    var sub = document.getElementById('subrow');
+    sub.innerHTML='';
+    if(esp || miedo){
+      sub.style.display='flex';
+      if(esp){ var e=document.createElement('span'); e.style.color='var(--esp)'; e.textContent='Esperanza: '+esp.value; sub.appendChild(e); }
+      if(miedo){ var mm=document.createElement('span'); mm.style.color='var(--miedo-text)'; mm.textContent='Miedo: '+miedo.value; sub.appendChild(mm); }
+      if(esp && miedo && esp.value===miedo.value){
+        var crit=document.createElement('span'); crit.className='crit'; crit.textContent='✦ Crítico'; sub.appendChild(crit);
+      }
+    } else {
+      sub.style.display='none';
+    }
+  }
+
+  function fmtTime(iso){
+    var d = new Date(iso);
+    return d.toLocaleDateString('es-MX',{day:'2-digit',month:'short'}) + ' · ' +
+           d.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  function renderEntry(h, prepend){
+    var box = document.getElementById('history');
+    var e=document.createElement('div'); e.className='entry'+(h.critico?' crit':'');
+    var left=document.createElement('div');
+    var nameLine=document.createElement('div');
+    var nm=document.createElement('span'); nm.className='name'; nm.textContent=h.jugador;
+    var fm=document.createElement('span'); fm.className='formula'; fm.textContent=h.formula;
+    nameLine.appendChild(nm); nameLine.appendChild(fm);
+    left.appendChild(nameLine);
+    if(h.esperanza!=null || h.miedo!=null){
+      var bd=document.createElement('div'); bd.className='breakdown';
+      if(h.esperanza!=null){ var s1=document.createElement('span'); s1.className='esp-txt'; s1.textContent='Esp '+h.esperanza; bd.appendChild(s1); }
+      if(h.esperanza!=null && h.miedo!=null){ bd.appendChild(document.createTextNode(' · ')); }
+      if(h.miedo!=null){ var s2=document.createElement('span'); s2.className='miedo-txt'; s2.textContent='Miedo '+h.miedo; bd.appendChild(s2); }
+      left.appendChild(bd);
+    }
+    var tm=document.createElement('div'); tm.className='time'; tm.textContent = fmtTime(h.created_at);
+    left.appendChild(tm);
+    e.appendChild(left);
+    var tot=document.createElement('div'); tot.className='tot'; tot.style.color = h.critico ? 'var(--esp-text)' : 'var(--bone)';
+    tot.textContent = h.total;
+    e.appendChild(tot);
+    if(prepend && box.firstChild) box.insertBefore(e, box.firstChild);
+    else box.appendChild(e);
+  }
+
+  async function loadHistory(){
+    var box = document.getElementById('history');
+    box.innerHTML = '<p class="empty">Cargando…</p>';
+    if(!client) { box.innerHTML = '<p class="empty">Configura Supabase para ver el historial.</p>'; return; }
+    var query = client.from('tiradas').select('*').order('created_at',{ascending:false}).limit(100);
+    if(currentFilter){
+      query = query.gte('created_at', currentFilter+'T00:00:00').lte('created_at', currentFilter+'T23:59:59');
+    }
+    var res = await query;
+    box.innerHTML='';
+    if(res.error){
+      box.innerHTML = '<p class="empty">Error al leer Supabase: '+res.error.message+'</p>';
+      return;
+    }
+    if(!res.data || res.data.length===0){
+      box.innerHTML = '<p class="empty">No hay tiradas registradas para este filtro.</p>';
+      return;
+    }
+    res.data.forEach(function(h){ renderEntry(h, false); });
+  }
+
+  function setupRealtime(){
+    if(!client) return;
+    client.channel('tiradas-live')
+      .on('postgres_changes', {event:'INSERT', schema:'public', table:'tiradas'}, function(payload){
+        var row = payload.new;
+        var matchesFilter = !currentFilter || row.created_at.slice(0,10) === currentFilter;
+        if(matchesFilter) renderEntry(row, true);
+      })
+      .subscribe(function(status){
+        var dot = document.getElementById('liveDot');
+        var label = document.getElementById('liveLabel');
+        if(status === 'SUBSCRIBED'){
+          dot.classList.remove('off');
+          label.textContent = 'En vivo para todos';
+        } else if(status === 'CHANNEL_ERROR' || status === 'TIMED_OUT'){
+          dot.classList.add('off');
+          label.textContent = 'Desconectado';
+        }
+      });
+  }
+
+  document.getElementById('quickDuality').addEventListener('click', function(){
+    document.getElementById('formula').value = '2d12';
+  });
+
+  document.getElementById('todayBtn').addEventListener('click', function(){
+    var today = new Date().toISOString().slice(0,10);
+    document.getElementById('dateFilter').value = today;
+    currentFilter = today;
+    loadHistory();
+  });
+  document.getElementById('allBtn').addEventListener('click', function(){
+    document.getElementById('dateFilter').value = '';
+    currentFilter = null;
+    loadHistory();
+  });
+  document.getElementById('dateFilter').addEventListener('change', function(e){
+    currentFilter = e.target.value || null;
+    loadHistory();
+  });
+
+  document.getElementById('rollBtn').addEventListener('click', async function(){
+    var errEl = document.getElementById('error');
+    errEl.style.display='none';
+    var formula = document.getElementById('formula').value;
+    var terms = parseFormula(formula);
+    if(!terms){
+      errEl.textContent = 'No pude leer esa fórmula. Usa algo como 2d12 + 2 - 1d6';
+      errEl.style.display='block';
+      return;
+    }
+    var chips = rollTerms(terms);
+    renderResult(chips);
+
+    var total = computeTotal(chips);
+    var esp = chips.find(function(c){return c.role==='esperanza';});
+    var miedo = chips.find(function(c){return c.role==='miedo';});
+    var critico = !!(esp && miedo && esp.value===miedo.value);
+    var name = document.getElementById('name').value.trim() || 'Anónimo';
+    var desglose = chips.map(function(c){
+      return c.type==='die' ? ('d'+c.sides+':'+c.value) : (''+c.value);
+    }).join(', ');
+
+    if(client){
+      var res = await client.from('tiradas').insert({
+        jugador:name, formula:formula, total:total,
+        esperanza: esp?esp.value:null, miedo: miedo?miedo.value:null,
+        critico:critico, desglose:desglose
+      });
+      if(res.error){
+        errEl.textContent = 'La tirada se calculó bien pero no se pudo guardar: '+res.error.message;
+        errEl.style.display='block';
+      }
+      // no need to manually prepend to history — the realtime subscription does it
+    }
+  });
+
+  loadHistory();
+  setupRealtime();
+})();
+</script>
+</body>
+</html>
