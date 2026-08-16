@@ -18,7 +18,7 @@
     background:radial-gradient(ellipse at top,#1a1613 0%,#0f0d0b 60%);
     font-family:Georgia,'Times New Roman',serif; color:var(--bone); padding:24px 14px;
   }
-  .wrap{width:100%; max-width:440px;}
+  .wrap{width:100%; max-width:520px;}
   .eyebrow{text-align:center; font:11px/1.4 ui-monospace,monospace; letter-spacing:.3em; text-transform:uppercase; color:var(--miedo); margin-bottom:6px;}
   h1{text-align:center; font-size:22px; margin:0 0 10px;}
   .hr{height:1px; width:64px; background:var(--line); margin:0 auto 20px;}
@@ -32,38 +32,109 @@
   .roll-btn{flex:1; display:flex; align-items:center; justify-content:center; gap:6px; font-weight:700; font-size:14px; padding:8px 10px; border-radius:3px; background:linear-gradient(160deg,var(--blood),#6b2020); color:#f3e9dc;}
   .roll-btn:disabled{opacity:.6; cursor:default;}
   .error{color:var(--bad); font-size:12px; margin-top:8px;}
-  .result-row{display:flex; align-items:center; gap:8px; flex-wrap:nowrap; overflow-x:auto; padding-bottom:10px;}
-  .chip{display:flex; align-items:center; gap:4px; flex-shrink:0;}
-  .sign{font-family:ui-monospace,monospace; color:var(--dim); font-size:14px;}
-  .hex{position:relative; width:44px; height:44px; display:flex; align-items:center; justify-content:center;
-    clip-path:polygon(50% 0%,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%);
+  .result-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; row-gap:18px; padding-bottom:4px;}
+  .chip{display:flex; align-items:center; gap:5px; flex-shrink:0;}
+  .sign{font-family:ui-monospace,monospace; color:var(--dim); font-size:17px;}
+  .hex{position:relative; width:56px; height:56px; display:flex; align-items:center; justify-content:center;
     background:linear-gradient(160deg,#211c18,#16130f); border:1.5px solid var(--line);}
-  .hex.esp{border-color:var(--esp);} .hex.miedo{border-color:var(--miedo);}
-  .hex span.val{font-family:ui-monospace,monospace; font-weight:700; font-size:15px; color:var(--bone);}
-  .hex span.sides{position:absolute; bottom:-15px; font-size:9px; font-family:ui-monospace,monospace; color:var(--dim); letter-spacing:.03em;}
-  .const{min-width:32px; height:32px; display:flex; align-items:center; justify-content:center; padding:0 8px; background:#1c1815; border:1px solid var(--line); color:#b8ae9e; border-radius:3px; font-family:ui-monospace,monospace; font-size:13px; flex-shrink:0;}
-  .eq{font-family:ui-monospace,monospace; color:var(--dim); font-size:14px;}
-  .total{font-family:ui-monospace,monospace; font-weight:700; font-size:22px; color:var(--bone);}
-  .subrow{display:flex; gap:16px; padding-top:8px; border-top:1px solid var(--line2); font-size:12px;}
-  .crit{display:flex; align-items:center; gap:4px; font-weight:700; color:var(--esp-text);}
+  .hex.esp{
+    border-color:var(--esp);
+    background:
+      radial-gradient(circle at 50% 42%, rgba(255,214,130,.4), transparent 65%),
+      repeating-conic-gradient(from 0deg, rgba(217,169,78,.22) 0deg 8deg, rgba(33,28,24,0) 8deg 24deg),
+      linear-gradient(160deg,#241d15,#16130f);
+  }
+  .hex.miedo{
+    border-color:var(--miedo);
+    background:
+      radial-gradient(circle at 50% 60%, rgba(123,79,166,.5), transparent 70%),
+      repeating-radial-gradient(circle at 50% 45%, rgba(90,50,120,.16) 0 3px, transparent 3px 9px),
+      linear-gradient(160deg,#1c1720,#12101a);
+  }
+  .hex.esp span.val{color:var(--esp-text); text-shadow:0 0 10px rgba(243,217,138,.7); font-weight:800;}
+  .hex.miedo span.val{color:var(--miedo-text); text-shadow:0 0 10px rgba(198,169,232,.7); font-weight:800;}
+  .hex span.val{font-family:ui-monospace,monospace; font-weight:700; font-size:20px; color:var(--bone);}
+  .hex span.sides{position:absolute; bottom:-17px; font-size:10px; font-family:ui-monospace,monospace; color:var(--dim); letter-spacing:.03em;}
+  .hex.crit-die{
+    border-width:2px; border-color:var(--esp);
+    box-shadow:0 0 0 2px rgba(123,79,166,.6), 0 0 16px rgba(243,217,138,.55);
+    animation:critpulse 1.6s ease-in-out infinite;
+  }
+  @keyframes critpulse{
+    0%,100%{ box-shadow:0 0 0 2px rgba(123,79,166,.6), 0 0 14px rgba(243,217,138,.45); }
+    50%{ box-shadow:0 0 0 2px rgba(217,169,78,.85), 0 0 22px rgba(243,217,138,.85); }
+  }
+  .const{min-width:38px; height:38px; display:flex; align-items:center; justify-content:center; padding:0 9px; background:#1c1815; border:1px solid var(--line); color:#b8ae9e; border-radius:3px; font-family:ui-monospace,monospace; font-size:16px; flex-shrink:0;}
+  .eq{font-family:ui-monospace,monospace; color:var(--dim); font-size:18px;}
+  .total{font-family:ui-monospace,monospace; font-weight:700; font-size:30px; color:var(--bone);}
+  .subrow{display:flex; gap:10px; padding-top:12px; border-top:1px solid var(--line2); flex-wrap:wrap;}
+  .badge{display:flex; align-items:center; gap:7px; padding:7px 14px; border-radius:20px; font-family:ui-monospace,monospace; font-size:13px; font-weight:800; letter-spacing:.03em;}
+  .badge.esp-badge{background:linear-gradient(135deg,rgba(255,214,130,0.22),rgba(217,169,78,0.05)); border:1px solid var(--esp); color:var(--esp-text); text-shadow:0 0 8px rgba(243,217,138,.6); box-shadow:0 0 14px rgba(217,169,78,.25);}
+  .badge.miedo-badge{background:linear-gradient(135deg,rgba(150,90,190,0.28),rgba(123,79,166,0.06)); border:1px solid var(--miedo); color:var(--miedo-text); text-shadow:0 0 8px rgba(198,169,232,.6); box-shadow:0 0 14px rgba(123,79,166,.3);}
+  .badge .num{font-size:17px;}
+  .crit{display:flex; align-items:center; gap:4px; font-weight:800; color:#16130f; padding:7px 14px; border-radius:20px; background:linear-gradient(135deg,var(--esp-text),var(--esp) 60%,var(--miedo)); box-shadow:0 0 16px rgba(243,217,138,.5);}
+  .fumble-badge{display:flex; align-items:center; gap:4px; font-weight:800; color:#f3e9dc; padding:7px 14px; border-radius:20px; background:linear-gradient(135deg,var(--blood),#4a1616); box-shadow:0 0 14px rgba(139,46,46,.5);}
+  .hex.fumble-die{
+    border-width:2px; border-color:var(--blood);
+    background:
+      radial-gradient(circle at 50% 55%, rgba(139,46,46,.5), transparent 70%),
+      linear-gradient(160deg,#1c1210,#100b0a);
+    box-shadow:0 0 14px rgba(139,46,46,.45);
+  }
+  .hex.fumble-die span.val{color:var(--bad); text-shadow:0 0 8px rgba(201,123,123,.6);}
   .log-head{display:flex; align-items:center; gap:8px; font:11px ui-monospace,monospace; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:8px;}
   .dot{width:6px; height:6px; border-radius:50%; background:var(--live); box-shadow:0 0 6px var(--live);}
   .dot.off{background:var(--dim); box-shadow:none;}
   .filterrow{display:flex; gap:8px; align-items:center; margin-bottom:10px;}
   .filterrow input{flex:1;}
-  .entry{display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border-radius:3px; background:#171310; margin-bottom:6px; font-size:12px;}
-  .entry.crit{border-left:2px solid var(--esp);} .entry:not(.crit){border-left:2px solid var(--line);}
+  .entry{padding:9px 11px; border-radius:3px; background:#171310; margin-bottom:6px; font-size:12px;}
+  .entry.crit{border-left:2px solid var(--esp);} .entry:not(.crit):not(.fumble){border-left:2px solid var(--line);}
+  .entry.crit .name, .entry.crit .formula, .entry.crit .breakdown{font-weight:700;}
+  .entry.crit .name::before{content:'✦ '; color:var(--esp-text);}
+  .entry.fumble{border-left:2px solid var(--blood);}
+  .entry.fumble .name::before{content:'☠ '; color:var(--bad);}
+  .entry-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
   .entry .name{font-weight:700; color:var(--bone);}
   .entry .formula{font-family:ui-monospace,monospace; color:var(--muted); margin-left:4px;}
-  .entry .breakdown{margin-top:2px; font-family:ui-monospace,monospace;}
-  .entry .esp-txt{color:var(--esp);} .entry .miedo-txt{color:var(--miedo);}
+  .entry-badges{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;}
+  .entry-badges .badge{padding:4px 10px; font-size:10.5px; gap:5px;}
+  .entry-badges .badge .num{font-size:12.5px;}
+  .entry-badges .crit, .entry-badges .fumble-badge{padding:4px 10px; font-size:10.5px;}
   .entry .time{color:var(--dim); font-family:ui-monospace,monospace; font-size:10px; margin-top:2px;}
-  .entry .tot{font-family:ui-monospace,monospace; font-weight:700; font-size:16px; margin-left:10px; flex-shrink:0;}
+  .entry .tot{font-family:ui-monospace,monospace; font-weight:700; font-size:16px; flex-shrink:0;}
+  .anotado-wrap{display:flex; justify-content:flex-end; margin-top:8px;}
+  .anotado-row{display:flex; align-items:center; gap:7px; cursor:pointer; user-select:none;}
+  .anotado-row input{width:15px; height:15px; cursor:pointer;}
+  .anotado-row span{font-size:11.5px; font-family:ui-monospace,monospace; font-weight:700; letter-spacing:.02em;}
+  .anotado-done{font-size:11.5px; font-family:ui-monospace,monospace; font-weight:700; letter-spacing:.02em;}
+  select#playerSelect{width:100%; padding:9px 10px; background:#16130f; border:1px solid var(--line); color:var(--bone); border-radius:3px; font-size:14px; outline:none; font-family:inherit;}
+  .dm-btn{position:fixed; top:14px; right:14px; background:linear-gradient(160deg,var(--miedo),#4a2d63); color:#f3e9dc; font:11px ui-monospace,monospace; font-weight:800; letter-spacing:.06em; padding:8px 15px; border-radius:20px; box-shadow:0 0 14px rgba(123,79,166,.4); z-index:50;}
+  .dm-btn.active{background:linear-gradient(160deg,#8f5fc4,#5c3880);}
+  .modal-overlay{position:fixed; inset:0; background:rgba(10,8,7,.78); display:flex; align-items:center; justify-content:center; z-index:100; padding:20px;}
+  .modal-card{background:var(--panel); border:1px solid var(--miedo); border-radius:4px; padding:20px; max-width:300px; width:100%; box-shadow:0 0 24px rgba(0,0,0,.5);}
+  .modal-card h3{margin:0 0 12px; font-size:15px; color:var(--miedo-text); font-family:Georgia,serif;}
+  .modal-actions{display:flex; gap:8px; margin-top:12px;}
+  .modal-actions button{flex:1; padding:8px; border-radius:3px; font:12px ui-monospace,monospace; font-weight:700;}
+  .modal-cancel{background:#211c18; border:1px solid var(--line); color:#b8ae9e;}
+  .modal-submit{background:linear-gradient(160deg,var(--miedo),#4a2d63); color:#f3e9dc;}
+  .modal-error{color:var(--bad); font-size:11px; margin-top:8px; display:none;}
+  .admin-panel{position:fixed; top:56px; right:14px; width:270px; max-width:calc(100vw - 28px); max-height:70vh; overflow-y:auto; background:var(--panel); border:1px solid var(--miedo); border-radius:4px; padding:14px; box-shadow:0 8px 24px rgba(0,0,0,.5); z-index:60;}
+  .admin-panel-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;}
+  .admin-panel h4{margin:0; font:11px ui-monospace,monospace; text-transform:uppercase; letter-spacing:.08em; color:var(--miedo-text);}
+  .admin-panel-close{background:none; color:var(--muted); font-size:16px; line-height:1; padding:0 4px;}
+  .admin-add-row{display:flex; gap:8px;}
+  .admin-add-row input{flex:1;}
+  .admin-add-row button{padding:0 14px; border-radius:3px; background:linear-gradient(160deg,var(--miedo),#4a2d63); color:#f3e9dc; font:12px ui-monospace,monospace; font-weight:700;}
+  .admin-players{display:flex; flex-direction:column; gap:6px; margin-top:12px;}
+  .admin-player-row{display:flex; align-items:center; justify-content:space-between; padding:7px 10px; background:#171310; border-radius:3px; font-size:13px;}
+  .admin-player-row button{background:none; color:var(--bad); font-size:15px; padding:2px 8px; line-height:1;}
+  .admin-close{margin-top:10px; width:100%; padding:7px; border-radius:3px; background:#211c18; border:1px solid var(--line); color:#b8ae9e; font:11px ui-monospace,monospace;}
   .empty{font-size:12px; color:var(--dim);}
   .setup{font-size:12px; color:var(--bad); background:#241615; border:1px solid #4a2a28; padding:10px; border-radius:3px; margin-bottom:14px; line-height:1.5;}
 </style>
 </head>
 <body>
+<button class="dm-btn" id="dmBtn">DM</button>
 <div class="wrap">
   <div class="eyebrow">Dolor &amp; Hambre</div>
   <h1>Tirador de Dados</h1>
@@ -73,14 +144,17 @@
     Falta configurar tu URL y llave de Supabase en el archivo (busca SUPABASE_URL y SUPABASE_ANON_KEY al final del HTML).
   </div>
 
+  <div id="adminPanel" style="display:none;"></div>
+
   <div class="card">
     <label>Jugador</label>
-    <input type="text" id="name" placeholder="Nombre" />
+    <select id="playerSelect"></select>
     <div style="height:10px"></div>
     <label>Fórmula</label>
-    <input type="text" id="formula" class="mono" value="2d12 + 2 - 1d6 + 1d20" />
+    <input type="text" id="formula" class="mono" placeholder="p.ej. 2d12 + 2 - 1d6 + 1d20" />
     <div class="row">
       <button class="quick" id="quickDuality">Dualidad · 2d12</button>
+      <button class="quick" id="quickDM">DM · 1d20</button>
       <button class="roll-btn" id="rollBtn">🎲 Lanzar</button>
     </div>
     <div class="error" id="error" style="display:none;"></div>
@@ -116,6 +190,148 @@
 
   var client = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
   var currentFilter = null; // 'YYYY-MM-DD' or null for all
+  var DM_PASSWORD = 'ppaattoo';
+  var isAdmin = false;
+  var playerNames = [];
+
+  async function loadPlayers(){
+    if(!client) return;
+    var res = await client.from('jugadores').select('*').order('nombre',{ascending:true});
+    playerNames = (res.data || []).map(function(p){ return p.nombre; });
+    renderPlayerSelect();
+    if(isAdmin && document.getElementById('adminPanel').style.display === 'block') renderAdminPanel();
+  }
+
+  function renderPlayerSelect(){
+    var sel = document.getElementById('playerSelect');
+    var prev = sel.value;
+    sel.innerHTML = '';
+    var placeholder = document.createElement('option');
+    placeholder.value = ''; placeholder.textContent = 'Elige a tu personaje'; placeholder.disabled = true;
+    sel.appendChild(placeholder);
+    var options = isAdmin ? ['DM'].concat(playerNames) : playerNames.slice();
+    options.forEach(function(n){
+      var opt = document.createElement('option'); opt.value = n; opt.textContent = n;
+      sel.appendChild(opt);
+    });
+    if(prev && [...sel.options].some(function(o){return o.value===prev;})){
+      sel.value = prev;
+    } else {
+      sel.value = '';
+    }
+  }
+
+  function setupPlayersRealtime(){
+    if(!client) return;
+    client.channel('jugadores-live')
+      .on('postgres_changes', {event:'*', schema:'public', table:'jugadores'}, function(){
+        loadPlayers();
+      })
+      .subscribe();
+  }
+
+  function showModal(){
+    var overlay = document.createElement('div'); overlay.className='modal-overlay'; overlay.id='dmModal';
+    overlay.innerHTML =
+      '<div class="modal-card">'+
+        '<h3>Acceso de DM</h3>'+
+        '<input type="password" id="dmPass" placeholder="Contraseña" />'+
+        '<div class="modal-error" id="dmModalError">Contraseña incorrecta.</div>'+
+        '<div class="modal-actions">'+
+          '<button class="modal-cancel" id="dmCancel">Cancelar</button>'+
+          '<button class="modal-submit" id="dmSubmit">Entrar</button>'+
+        '</div>'+
+      '</div>';
+    document.body.appendChild(overlay);
+    var passInput = document.getElementById('dmPass');
+    passInput.focus();
+    function submit(){
+      if(passInput.value === DM_PASSWORD){
+        isAdmin = true;
+        overlay.remove();
+        document.getElementById('dmBtn').classList.add('active');
+        document.getElementById('dmBtn').textContent = 'DM ✓';
+        renderPlayerSelect();
+        renderAdminPanel();
+      } else {
+        document.getElementById('dmModalError').style.display='block';
+        passInput.value=''; passInput.focus();
+      }
+    }
+    document.getElementById('dmSubmit').addEventListener('click', submit);
+    passInput.addEventListener('keydown', function(e){ if(e.key==='Enter') submit(); });
+    document.getElementById('dmCancel').addEventListener('click', function(){ overlay.remove(); });
+  }
+
+  function renderAdminPanel(){
+    var panel = document.getElementById('adminPanel');
+    panel.style.display = 'block';
+    panel.innerHTML =
+      '<div class="admin-panel">'+
+        '<div class="admin-panel-head">'+
+          '<h4>Administrar jugadores</h4>'+
+          '<button class="admin-panel-close" id="adminPanelClose">×</button>'+
+        '</div>'+
+        '<div class="admin-add-row">'+
+          '<input type="text" id="newPlayerName" placeholder="Nombre nuevo" />'+
+          '<button id="addPlayerBtn">Agregar</button>'+
+        '</div>'+
+        '<div class="admin-players" id="adminPlayersList"></div>'+
+        '<button class="admin-close" id="dmLogout">Cerrar sesión de DM</button>'+
+      '</div>';
+
+    document.getElementById('adminPanelClose').addEventListener('click', function(){
+      panel.style.display = 'none';
+    });
+
+    var list = document.getElementById('adminPlayersList');
+    if(playerNames.length===0){
+      list.innerHTML = '<p class="empty">Aún no hay jugadores agregados.</p>';
+    } else {
+      playerNames.forEach(function(n){
+        var row = document.createElement('div'); row.className='admin-player-row';
+        var span = document.createElement('span'); span.textContent = n;
+        var del = document.createElement('button'); del.textContent = '×';
+        del.addEventListener('click', async function(){
+          await client.from('jugadores').delete().eq('nombre', n);
+        });
+        row.appendChild(span); row.appendChild(del);
+        list.appendChild(row);
+      });
+    }
+
+    document.getElementById('addPlayerBtn').addEventListener('click', async function(){
+      var input = document.getElementById('newPlayerName');
+      var name = input.value.trim();
+      if(!name) return;
+      var res = await client.from('jugadores').insert({nombre:name});
+      if(!res.error) input.value = '';
+    });
+    document.getElementById('newPlayerName').addEventListener('keydown', function(e){
+      if(e.key==='Enter') document.getElementById('addPlayerBtn').click();
+    });
+    document.getElementById('dmLogout').addEventListener('click', function(){
+      isAdmin = false;
+      panel.style.display = 'none';
+      panel.innerHTML = '';
+      document.getElementById('dmBtn').classList.remove('active');
+      document.getElementById('dmBtn').textContent = 'DM';
+      renderPlayerSelect();
+    });
+  }
+
+  document.getElementById('dmBtn').addEventListener('click', function(){
+    if(isAdmin){
+      var panel = document.getElementById('adminPanel');
+      if(panel.style.display === 'block'){
+        panel.style.display = 'none';
+      } else {
+        renderAdminPanel();
+      }
+      return;
+    }
+    showModal();
+  });
 
   function parseFormula(formula){
     var clean = formula.replace(/\s+/g,'');
@@ -168,13 +384,26 @@
     return chips.reduce(function(s,c){ return s + c.value*c.sign; }, 0);
   }
 
+  function shapeClipPath(sides){
+    switch(sides){
+      case 4: return 'polygon(50% 2%, 96% 96%, 4% 96%)';
+      case 6: return 'inset(0 round 8px)';
+      case 8: return 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)';
+      case 10: return 'polygon(50% 0%, 100% 38%, 80% 100%, 20% 100%, 0% 38%)';
+      case 12: return 'polygon(50% 0%,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%)';
+      case 20: return 'circle(50%)';
+      default: return 'polygon(50% 0%,95% 25%,95% 75%,50% 100%,5% 75%,5% 25%)';
+    }
+  }
+
   function renderChip(chip){
     var wrap = document.createElement('div'); wrap.className='chip';
     var sign = document.createElement('span'); sign.className='sign'; sign.textContent = chip.sign<0 ? '−':'+';
     wrap.appendChild(sign);
     if(chip.type==='die'){
       var hex = document.createElement('div');
-      hex.className='hex' + (chip.role==='esperanza'?' esp':chip.role==='miedo'?' miedo':'');
+      hex.className='hex' + (chip.role==='esperanza'?' esp':chip.role==='miedo'?' miedo':'') + (chip.critical?' crit-die':'') + (chip.fumble?' fumble-die':'');
+      hex.style.clipPath = shapeClipPath(chip.sides);
       var val = document.createElement('span'); val.className='val'; val.textContent = chip.value;
       var sides = document.createElement('span'); sides.className='sides'; sides.textContent='d'+chip.sides;
       hex.appendChild(val); hex.appendChild(sides);
@@ -187,6 +416,17 @@
   }
 
   function renderResult(chips){
+    var esp = chips.find(function(c){return c.role==='esperanza';});
+    var miedo = chips.find(function(c){return c.role==='miedo';});
+    if(esp && miedo && esp.value===miedo.value){ esp.critical = true; miedo.critical = true; }
+
+    var dieChips = chips.filter(function(c){return c.type==='die';});
+    var isGmD20 = dieChips.length===1 && dieChips[0].sides===20 && !esp && !miedo;
+    var gmCrit = isGmD20 && dieChips[0].value===20;
+    var gmFumble = isGmD20 && dieChips[0].value===1;
+    if(gmCrit) dieChips[0].critical = true;
+    if(gmFumble) dieChips[0].fumble = true;
+
     var row = document.getElementById('resultRow');
     row.innerHTML='';
     chips.forEach(function(c){ row.appendChild(renderChip(c)); });
@@ -196,20 +436,34 @@
     row.appendChild(tot);
     document.getElementById('resultCard').style.display='block';
 
-    var esp = chips.find(function(c){return c.role==='esperanza';});
-    var miedo = chips.find(function(c){return c.role==='miedo';});
     var sub = document.getElementById('subrow');
     sub.innerHTML='';
     if(esp || miedo){
       sub.style.display='flex';
-      if(esp){ var e=document.createElement('span'); e.style.color='var(--esp)'; e.textContent='Esperanza: '+esp.value; sub.appendChild(e); }
-      if(miedo){ var mm=document.createElement('span'); mm.style.color='var(--miedo-text)'; mm.textContent='Miedo: '+miedo.value; sub.appendChild(mm); }
+      if(esp){
+        var e=document.createElement('span'); e.className='badge esp-badge';
+        e.innerHTML = '✦ ESPERANZA <span class="num">'+esp.value+'</span>';
+        sub.appendChild(e);
+      }
+      if(miedo){
+        var mm=document.createElement('span'); mm.className='badge miedo-badge';
+        mm.innerHTML = '☾ MIEDO <span class="num">'+miedo.value+'</span>';
+        sub.appendChild(mm);
+      }
       if(esp && miedo && esp.value===miedo.value){
         var crit=document.createElement('span'); crit.className='crit'; crit.textContent='✦ Crítico'; sub.appendChild(crit);
       }
+    } else if(gmCrit){
+      sub.style.display='flex';
+      var gc=document.createElement('span'); gc.className='crit'; gc.textContent='✦ Los dados cuentan su propia historia'; sub.appendChild(gc);
+    } else if(gmFumble){
+      sub.style.display='flex';
+      var gf=document.createElement('span'); gf.className='fumble-badge'; gf.textContent='☠ Pifia — el destino cobra su parte'; sub.appendChild(gf);
     } else {
       sub.style.display='none';
     }
+
+    return {critico: !!(esp && miedo && esp.value===miedo.value) || gmCrit, pifia: gmFumble};
   }
 
   function fmtTime(iso){
@@ -218,30 +472,130 @@
            d.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
   }
 
+  function anotadoInfo(h){
+    if(h.critico){
+      return {
+        color: 'var(--esp-text)',
+        question: (h.jugador + ', ¿TE QUITASTE UNO DE ESTRÉS Y TE APUNTASTE TU ESPERANZA?').toUpperCase(),
+        done: 'Los dados cuentan su propia historia'
+      };
+    }
+    var espWins = h.esperanza >= h.miedo;
+    if(espWins){
+      return {
+        color: 'var(--esp-text)',
+        question: h.jugador + ', ¿ya te apuntaste tu punto de esperanza?',
+        done: h.jugador + ', recupera la esperanza'
+      };
+    }
+    return {
+      color: 'var(--miedo-text)',
+      question: 'DM, ¿ya te apuntaste tu punto de miedo?',
+      done: 'El DM ahora tiene más poder'
+    };
+  }
+
+  function renderAnotadoState(container, h){
+    container.innerHTML = '';
+    var info = anotadoInfo(h);
+    if(h.anotado){
+      var done = document.createElement('span');
+      done.className = 'anotado-done';
+      done.style.color = info.color;
+      done.textContent = info.done;
+      container.appendChild(done);
+      return;
+    }
+    var chk = document.createElement('label');
+    chk.className = 'anotado-row';
+    var input = document.createElement('input');
+    input.type = 'checkbox';
+    input.style.accentColor = h.critico || h.esperanza>=h.miedo ? 'var(--esp)' : 'var(--miedo)';
+    var lbl = document.createElement('span');
+    lbl.style.color = info.color;
+    lbl.textContent = info.question;
+    chk.appendChild(input);
+    chk.appendChild(lbl);
+    input.addEventListener('change', async function(){
+      if(!input.checked) return;
+      input.disabled = true;
+      if(client){
+        var r = await client.from('tiradas').update({anotado:true}).eq('id', h.id);
+        if(r.error){ input.checked = false; input.disabled = false; return; }
+      }
+      h.anotado = true;
+      renderAnotadoState(container, h);
+    });
+    container.appendChild(chk);
+  }
+
+  function renderEntryBadges(h){
+    var row = document.createElement('div'); row.className='entry-badges';
+    if(h.esperanza!=null){
+      var e=document.createElement('span'); e.className='badge esp-badge';
+      e.innerHTML = '✦ ESPERANZA <span class="num">'+h.esperanza+'</span>';
+      row.appendChild(e);
+    }
+    if(h.miedo!=null){
+      var mm=document.createElement('span'); mm.className='badge miedo-badge';
+      mm.innerHTML = '☾ MIEDO <span class="num">'+h.miedo+'</span>';
+      row.appendChild(mm);
+    }
+    if(h.critico){
+      var crit=document.createElement('span'); crit.className='crit';
+      crit.textContent = (h.esperanza!=null && h.miedo!=null) ? '✦ Crítico' : '✦ Los dados cuentan su propia historia';
+      row.appendChild(crit);
+    }
+    if(h.pifia){
+      var fb=document.createElement('span'); fb.className='fumble-badge'; fb.textContent='☠ Pifia';
+      row.appendChild(fb);
+    }
+    return row;
+  }
+
   function renderEntry(h, prepend){
     var box = document.getElementById('history');
-    var e=document.createElement('div'); e.className='entry'+(h.critico?' crit':'');
+    var emptyMsg = box.querySelector('.empty');
+    if(emptyMsg) emptyMsg.remove();
+    var e=document.createElement('div'); e.className='entry'+(h.critico?' crit':'')+(h.pifia?' fumble':'');
+    e.dataset.entryId = h.id;
+
+    var top=document.createElement('div'); top.className='entry-top';
     var left=document.createElement('div');
     var nameLine=document.createElement('div');
     var nm=document.createElement('span'); nm.className='name'; nm.textContent=h.jugador;
     var fm=document.createElement('span'); fm.className='formula'; fm.textContent=h.formula;
     nameLine.appendChild(nm); nameLine.appendChild(fm);
     left.appendChild(nameLine);
-    if(h.esperanza!=null || h.miedo!=null){
-      var bd=document.createElement('div'); bd.className='breakdown';
-      if(h.esperanza!=null){ var s1=document.createElement('span'); s1.className='esp-txt'; s1.textContent='Esp '+h.esperanza; bd.appendChild(s1); }
-      if(h.esperanza!=null && h.miedo!=null){ bd.appendChild(document.createTextNode(' · ')); }
-      if(h.miedo!=null){ var s2=document.createElement('span'); s2.className='miedo-txt'; s2.textContent='Miedo '+h.miedo; bd.appendChild(s2); }
-      left.appendChild(bd);
-    }
     var tm=document.createElement('div'); tm.className='time'; tm.textContent = fmtTime(h.created_at);
     left.appendChild(tm);
-    e.appendChild(left);
+    top.appendChild(left);
+
     var tot=document.createElement('div'); tot.className='tot'; tot.style.color = h.critico ? 'var(--esp-text)' : 'var(--bone)';
     tot.textContent = h.total;
-    e.appendChild(tot);
+    top.appendChild(tot);
+    e.appendChild(top);
+
+    if(h.esperanza!=null || h.miedo!=null || h.critico || h.pifia){
+      e.appendChild(renderEntryBadges(h));
+    }
+
+    if(h.esperanza!=null && h.miedo!=null){
+      var anotadoWrap = document.createElement('div'); anotadoWrap.className='anotado-wrap';
+      renderAnotadoState(anotadoWrap, h);
+      e.appendChild(anotadoWrap);
+    }
+
     if(prepend && box.firstChild) box.insertBefore(e, box.firstChild);
     else box.appendChild(e);
+  }
+
+  function updateEntryCheckbox(row){
+    var entry = document.querySelector('.entry[data-entry-id="'+row.id+'"]');
+    if(!entry) return;
+    var wrap = entry.querySelector('.anotado-wrap');
+    if(!wrap) return;
+    renderAnotadoState(wrap, row);
   }
 
   async function loadHistory(){
@@ -273,6 +627,9 @@
         var matchesFilter = !currentFilter || row.created_at.slice(0,10) === currentFilter;
         if(matchesFilter) renderEntry(row, true);
       })
+      .on('postgres_changes', {event:'UPDATE', schema:'public', table:'tiradas'}, function(payload){
+        updateEntryCheckbox(payload.new);
+      })
       .subscribe(function(status){
         var dot = document.getElementById('liveDot');
         var label = document.getElementById('liveLabel');
@@ -288,6 +645,9 @@
 
   document.getElementById('quickDuality').addEventListener('click', function(){
     document.getElementById('formula').value = '2d12';
+  });
+  document.getElementById('quickDM').addEventListener('click', function(){
+    document.getElementById('formula').value = '1d20';
   });
 
   document.getElementById('todayBtn').addEventListener('click', function(){
@@ -309,7 +669,18 @@
   document.getElementById('rollBtn').addEventListener('click', async function(){
     var errEl = document.getElementById('error');
     errEl.style.display='none';
-    var formula = document.getElementById('formula').value;
+    var name = document.getElementById('playerSelect').value;
+    if(!name){
+      errEl.textContent = 'Elige a tu personaje antes de lanzar';
+      errEl.style.display='block';
+      return;
+    }
+    var formula = document.getElementById('formula').value.trim();
+    if(!formula){
+      errEl.textContent = 'Escribe una fórmula primero, ej. 2d12 + 2 - 1d6';
+      errEl.style.display='block';
+      return;
+    }
     var terms = parseFormula(formula);
     if(!terms){
       errEl.textContent = 'No pude leer esa fórmula. Usa algo como 2d12 + 2 - 1d6';
@@ -317,13 +688,11 @@
       return;
     }
     var chips = rollTerms(terms);
-    renderResult(chips);
-
     var total = computeTotal(chips);
     var esp = chips.find(function(c){return c.role==='esperanza';});
     var miedo = chips.find(function(c){return c.role==='miedo';});
-    var critico = !!(esp && miedo && esp.value===miedo.value);
-    var name = document.getElementById('name').value.trim() || 'Anónimo';
+    var flags = renderResult(chips);
+
     var desglose = chips.map(function(c){
       return c.type==='die' ? ('d'+c.sides+':'+c.value) : (''+c.value);
     }).join(', ');
@@ -332,7 +701,7 @@
       var res = await client.from('tiradas').insert({
         jugador:name, formula:formula, total:total,
         esperanza: esp?esp.value:null, miedo: miedo?miedo.value:null,
-        critico:critico, desglose:desglose
+        critico:flags.critico, pifia:flags.pifia, desglose:desglose
       });
       if(res.error){
         errEl.textContent = 'La tirada se calculó bien pero no se pudo guardar: '+res.error.message;
@@ -344,6 +713,8 @@
 
   loadHistory();
   setupRealtime();
+  loadPlayers();
+  setupPlayersRealtime();
 })();
 </script>
 </body>
