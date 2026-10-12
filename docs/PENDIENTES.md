@@ -26,6 +26,6 @@
 - [ ] Asignar cada personaje importado a su jugador (Ajustes → Personajes).
 - [ ] Verificar el contenido del SRD 2.0 contra el PDF oficial (hoy viene de una transcripción comunitaria).
 - [x] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla). Migración 003.
-- [ ] Neri: revisar nombres traducidos del bestiario (Ent, Destellífero, Sable de abordaje…).
+- [ ] Neri (sin prisa): revisar nombres traducidos del bestiario (Ent, Destellífero, Sable de abordaje, Lobo terrible, Esqueleto desenterrado…). Ya decidido: Ooze = Limo. Para cambiar uno: decirle a Claude "X cámbialo por Y".
 - [ ] Más adelante: que los jugadores vean el encuentro activo (hoy solo lo ve el DJ).
 - [ ] Fase 5: fondos personalizados por jugador.

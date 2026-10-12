@@ -149,3 +149,9 @@ que tienen palabra común en español.
 | Underborne | Cuna subterránea |
 | Wanderborne | Cuna errante |
 | Wildborne | Cuna salvaje |
+
+## Bestiario (decididos por Neri)
+
+| Inglés | Español |
+|---|---|
+| Ooze | Limo |

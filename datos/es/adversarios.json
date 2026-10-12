@@ -1322,7 +1322,7 @@
  },
  {
   "id": "green-ooze",
-  "nombre": "Cieno verde",
+  "nombre": "Limo verde",
   "nombre_en": "Green Ooze",
   "nivel": 1,
   "tipo": "acechador",
@@ -1337,7 +1337,7 @@
   "pg": 5,
   "estres": 2,
   "ataque": {
-   "nombre": "Apéndice de cieno",
+   "nombre": "Apéndice de limo",
    "mod": 1,
    "alcance": "cuerpo",
    "dano": {
@@ -1357,28 +1357,28 @@
    {
     "nombre": "Lento",
     "clase": "pasiva",
-    "texto": "Cuando le das el foco al Cieno y no tiene una ficha en su bloque de estadísticas, todavía no puede actuar. Pon una ficha en su bloque de estadísticas y describe lo que se prepara para hacer. Cuando le das el foco al Cieno y tiene una ficha en su bloque de estadísticas, quita la ficha y puede actuar."
+    "texto": "Cuando le das el foco al Limo y no tiene una ficha en su bloque de estadísticas, todavía no puede actuar. Pon una ficha en su bloque de estadísticas y describe lo que se prepara para hacer. Cuando le das el foco al Limo y tiene una ficha en su bloque de estadísticas, quita la ficha y puede actuar."
    },
    {
     "nombre": "Forma ácida",
     "clase": "pasiva",
-    "texto": "Cuando el Cieno hace un ataque exitoso, el objetivo debe marcar una casilla de Armadura sin recibir sus beneficios (aun así puede usar la armadura para reducir el daño). Si no puede marcar una casilla de Armadura, debe marcar un PG adicional."
+    "texto": "Cuando el Limo hace un ataque exitoso, el objetivo debe marcar una casilla de Armadura sin recibir sus beneficios (aun así puede usar la armadura para reducir el daño). Si no puede marcar una casilla de Armadura, debe marcar un PG adicional."
    },
    {
     "nombre": "Envolver",
     "clase": "accion",
-    "texto": "Haz un ataque estándar contra un objetivo dentro del alcance Cuerpo a cuerpo. Si tienes éxito, el Cieno lo envuelve y el objetivo debe marcar 2 de Estrés. El objetivo debe marcar un Estrés adicional cuando haga una tirada de acción. Si el Cieno recibe daño Grave, el objetivo queda libre."
+    "texto": "Haz un ataque estándar contra un objetivo dentro del alcance Cuerpo a cuerpo. Si tienes éxito, el Limo lo envuelve y el objetivo debe marcar 2 de Estrés. El objetivo debe marcar un Estrés adicional cuando haga una tirada de acción. Si el Limo recibe daño Grave, el objetivo queda libre."
    },
    {
     "nombre": "Dividirse",
     "clase": "reaccion",
-    "texto": "Cuando el Cieno tiene 3 o más PG marcados, puedes **gastar un Miedo** para dividirlo en dos Cienos verdes diminutos (sin PG ni Estrés marcados). Dales el foco a ambos de inmediato."
+    "texto": "Cuando el Limo tiene 3 o más PG marcados, puedes **gastar un Miedo** para dividirlo en dos Limos verdes diminutos (sin PG ni Estrés marcados). Dales el foco a ambos de inmediato."
    }
   ]
  },
  {
   "id": "tiny-green-ooze",
-  "nombre": "Cieno verde diminuto",
+  "nombre": "Limo verde diminuto",
   "nombre_en": "Tiny Green Ooze",
   "nivel": 1,
   "tipo": "acechador",
@@ -1393,7 +1393,7 @@
   "pg": 2,
   "estres": 1,
   "ataque": {
-   "nombre": "Apéndice de cieno",
+   "nombre": "Apéndice de limo",
    "mod": -1,
    "alcance": "cuerpo",
    "dano": {
@@ -1408,13 +1408,13 @@
    {
     "nombre": "Forma ácida",
     "clase": "pasiva",
-    "texto": "Cuando el Cieno hace un ataque exitoso, el objetivo debe marcar una casilla de Armadura sin recibir sus beneficios (aun así puede usar la armadura para reducir el daño). Si no puede marcar una casilla de Armadura, debe marcar un PG adicional."
+    "texto": "Cuando el Limo hace un ataque exitoso, el objetivo debe marcar una casilla de Armadura sin recibir sus beneficios (aun así puede usar la armadura para reducir el daño). Si no puede marcar una casilla de Armadura, debe marcar un PG adicional."
    }
   ]
  },
  {
   "id": "red-ooze",
-  "nombre": "Cieno rojo",
+  "nombre": "Limo rojo",
   "nombre_en": "Red Ooze",
   "nivel": 1,
   "tipo": "acechador",
@@ -1429,7 +1429,7 @@
   "pg": 5,
   "estres": 3,
   "ataque": {
-   "nombre": "Apéndice de cieno",
+   "nombre": "Apéndice de limo",
    "mod": 1,
    "alcance": "cuerpo",
    "dano": {
@@ -1449,7 +1449,7 @@
    {
     "nombre": "Fuego reptante",
     "clase": "pasiva",
-    "texto": "El Cieno solo puede moverse dentro del alcance Muy cercano como movimiento normal. Prende fuego a cualquier objeto inflamable que toque."
+    "texto": "El Limo solo puede moverse dentro del alcance Muy cercano como movimiento normal. Prende fuego a cualquier objeto inflamable que toque."
    },
    {
     "nombre": "Prender fuego",
@@ -1459,13 +1459,13 @@
    {
     "nombre": "Dividirse",
     "clase": "reaccion",
-    "texto": "Cuando el Cieno tiene 3 o más PG marcados, puedes **gastar un Miedo** para dividirlo en dos Cienos rojos diminutos (sin PG ni Estrés marcados). Dales el foco a ambos de inmediato."
+    "texto": "Cuando el Limo tiene 3 o más PG marcados, puedes **gastar un Miedo** para dividirlo en dos Limos rojos diminutos (sin PG ni Estrés marcados). Dales el foco a ambos de inmediato."
    }
   ]
  },
  {
   "id": "tiny-red-ooze",
-  "nombre": "Cieno rojo diminuto",
+  "nombre": "Limo rojo diminuto",
   "nombre_en": "Tiny Red Ooze",
   "nivel": 1,
   "tipo": "acechador",
@@ -1480,7 +1480,7 @@
   "pg": 2,
   "estres": 1,
   "ataque": {
-   "nombre": "Apéndice de cieno",
+   "nombre": "Apéndice de limo",
    "mod": -1,
    "alcance": "cuerpo",
    "dano": {
@@ -1495,7 +1495,7 @@
    {
     "nombre": "Ardiente",
     "clase": "reaccion",
-    "texto": "Cuando una criatura dentro del alcance Cuerpo a cuerpo le hace daño al Cieno, recibe **1d6** de daño mágico directo."
+    "texto": "Cuando una criatura dentro del alcance Cuerpo a cuerpo le hace daño al Limo, recibe **1d6** de daño mágico directo."
    }
   ]
  },
