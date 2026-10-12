@@ -32,7 +32,8 @@ función `tirar()`. Todo lo demás va en la columna `hoja` (JSON):
     "rasgos": [{ "nombre": "Flexible", "texto": "+1 a la Evasión" }]
   },
   "armadura_marcada": 0,
-  "umbrales_manuales": null,    // { "mayor": 6, "grave": 12 } si la mesa los fijó a mano
+  "umbrales_manuales": null,    // { "mayor": 6, "grave": 12 } si la mesa los fijó a mano;
+                                // puede ir solo uno ({ "mayor": 6, "grave": null }): el otro sale de armadura + nivel
 
   "experiencias": [{ "nombre": "Rastreadora", "valor": 2 }],
 
@@ -89,6 +90,13 @@ Reglas que la app **avisa pero no bloquea** (la mesa puede tener acuerdos propio
 - Más de 5 cartas en la mano.
 - Cartas de un dominio que no es de la clase, o de nivel mayor al del personaje.
 - Esperanza máxima 6, Estrés y PG máximo 12.
+
+Hojas importadas (Notion): la app lee la hoja con `normalizarHoja()` (`src/lib/reglas.js`), que
+convierte números escritos como texto ("2", "+2", "−1") en números, quita cartas repetidas y
+cambia los elementos nulos de las listas por objetos vacíos. No escribe nada en la base: la
+hoja se corrige sola la próxima vez que se edita esa parte.
+
+Oro: al escribir 10 o más en una categoría pasa a la siguiente (10 puñados → 1 bolsa).
 
 Cálculos automáticos:
 - Umbrales = umbrales base de la armadura + nivel (o `umbrales_manuales`).

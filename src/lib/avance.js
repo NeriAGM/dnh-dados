@@ -7,7 +7,7 @@
 // "rango" es la sección de la hoja de subida (Rango 2, 3 o 4) donde se marcó
 // la casilla; así se respetan los límites de cada sección.
 
-import { rangoDeNivel } from './reglas.js'
+import { rangoDeNivel, num } from './reglas.js'
 import { RASGOS } from './srd.js'
 
 export const NIVEL_MAX = 10
@@ -109,7 +109,7 @@ export function opcionesDisponibles(hoja, nivel, avancesExtra = []) {
 // cartasPorId (opcional) sirve para revisar el nivel de las cartas.
 export function validarSubida(hoja, eleccion, cartasPorId = null) {
   const errores = []
-  const nivelActual = hoja?.nivel ?? 1
+  const nivelActual = num(hoja?.nivel) ?? 1
   const nivel = nivelActual + 1
   if (nivelActual >= NIVEL_MAX) return [`Ya estás en el nivel ${NIVEL_MAX}, el máximo.`]
   const logros = logrosDeNivel(nivel)
@@ -168,10 +168,10 @@ function agregarCarta(cartas, id) {
 export function aplicarSubida(hoja, pj, eleccion) {
   // JSON y no structuredClone: la hoja puede llegar como objeto reactivo de Svelte (Proxy)
   const h = JSON.parse(JSON.stringify(hoja ?? {}))
-  const nivel = (h.nivel ?? 1) + 1
+  const nivel = (num(h.nivel) ?? 1) + 1
   const logros = logrosDeNivel(nivel)
   const resumen = [`Nivel ${nivel} (Rango ${rangoDeNivel(nivel)}).`]
-  let estresMax = pj?.estres_max ?? 6
+  let estresMax = num(pj?.estres_max) ?? 6
 
   h.nivel = nivel
   h.experiencias = [...(h.experiencias ?? [])]
@@ -185,7 +185,7 @@ export function aplicarSubida(hoja, pj, eleccion) {
     resumen.push(`Nueva Experiencia «${String(eleccion.experiencia).trim()}» +2.`)
   }
   if (logros.competencia) {
-    h.competencia = (h.competencia ?? 1) + 1
+    h.competencia = (num(h.competencia) ?? 1) + 1
     resumen.push(`Competencia ${h.competencia}.`)
   }
   if (logros.limpiarRasgos && h.rasgos_mejorados.length) {
@@ -204,7 +204,7 @@ export function aplicarSubida(hoja, pj, eleccion) {
       }
       resumen.push(`+1 a ${d.rasgos.map((r) => RASGOS.find((x) => x.id === r)?.nombre ?? r).join(' y ')}.`)
     } else if (m.tipo === 'pg') {
-      h.pg_max = Math.min(MAX_PG, (h.pg_max ?? 6) + 1)
+      h.pg_max = Math.min(MAX_PG, (num(h.pg_max) ?? 6) + 1)
       resumen.push(`PG máximos: ${h.pg_max}.`)
     } else if (m.tipo === 'estres') {
       estresMax = Math.min(MAX_ESTRES, estresMax + 1)
@@ -218,13 +218,13 @@ export function aplicarSubida(hoja, pj, eleccion) {
       agregarCarta(h.cartas, d.carta)
       resumen.push('Carta de dominio adicional.')
     } else if (m.tipo === 'evasion') {
-      h.evasion_extra = (h.evasion_extra ?? 0) + 1
+      h.evasion_extra = (num(h.evasion_extra) ?? 0) + 1
       resumen.push('+1 a la Evasión.')
     } else if (m.tipo === 'subclase') {
       h.subclase_etapa = etapaSiguiente(h) ?? 'maestria'
       resumen.push(`Subclase: ${NOMBRE_ETAPA[h.subclase_etapa]}.`)
     } else if (m.tipo === 'competencia') {
-      h.competencia = (h.competencia ?? 1) + 1
+      h.competencia = (num(h.competencia) ?? 1) + 1
       resumen.push(`Competencia ${h.competencia} (mejora).`)
     } else if (m.tipo === 'multiclase') {
       h.multiclase = { clase: d.clase, dominio: d.dominio, subclase: d.subclase ?? null }
@@ -234,8 +234,10 @@ export function aplicarSubida(hoja, pj, eleccion) {
   }
 
   // Paso 3: umbrales +1. Los automáticos ya suman el nivel; los manuales se suben aquí.
-  if (h.umbrales_manuales?.mayor != null) {
-    h.umbrales_manuales = { mayor: h.umbrales_manuales.mayor + 1, grave: h.umbrales_manuales.grave + 1 }
+  const um = h.umbrales_manuales
+  if (num(um?.mayor) != null || num(um?.grave) != null) {
+    const mas1 = (x) => (num(x) != null ? num(x) + 1 : x)
+    h.umbrales_manuales = { ...um, mayor: mas1(um.mayor), grave: mas1(um.grave) }
   }
   resumen.push('Umbrales de daño +1.')
 

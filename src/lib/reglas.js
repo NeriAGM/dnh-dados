@@ -11,16 +11,87 @@ export function rangoDeNivel(nivel = 1) {
   return 1
 }
 
+// Número de una hoja que puede venir sucia (importada de Notion): "2", "+2",
+// "−1" (menos tipográfico), "" o "abc". Devuelve undefined si no es número.
+export function num(x) {
+  if (typeof x === 'number') return Number.isFinite(x) ? x : undefined
+  if (typeof x !== 'string') return undefined
+  const s = x.trim().replace(/^[−–]/, '-').replace(/^\+/, '')
+  if (!s) return undefined
+  const n = Number(s)
+  return Number.isFinite(n) ? n : undefined
+}
+
 export function umbrales(hoja) {
-  if (hoja?.umbrales_manuales?.mayor != null) return { ...hoja.umbrales_manuales, manual: true }
+  const nivel = num(hoja?.nivel) ?? 1
   const base = hoja?.armadura?.umbrales
-  const nivel = hoja?.nivel ?? 1
-  if (!base) return { mayor: nivel, grave: nivel * 2, sinArmadura: true }
-  return { mayor: base.mayor + nivel, grave: base.grave + nivel }
+  const bMayor = num(base?.mayor), bGrave = num(base?.grave)
+  const auto = bMayor != null && bGrave != null
+    ? { mayor: bMayor + nivel, grave: bGrave + nivel }
+    : { mayor: nivel, grave: nivel * 2, sinArmadura: true }
+  // Los manuales pueden venir a medias: lo que falte sale de la armadura + nivel
+  const m = hoja?.umbrales_manuales
+  const mMayor = num(m?.mayor), mGrave = num(m?.grave)
+  if (mMayor != null || mGrave != null) return { mayor: mMayor ?? auto.mayor, grave: mGrave ?? auto.grave, manual: true }
+  return auto
 }
 
 export function evasion(hoja) {
-  return (hoja?.evasion_base ?? 0) + (hoja?.evasion_extra ?? 0)
+  return (num(hoja?.evasion_base) ?? 0) + (num(hoja?.evasion_extra) ?? 0)
+}
+
+// Copia de la hoja con los números como números y las listas sin huecos, para
+// que la pantalla y los cálculos no concatenen texto ("13" + "4" = "134") ni
+// truenen con datos importados. No cambia nada en la base: solo se lee así.
+// Los campos que no conoce (homebrew) se quedan tal cual.
+const NUMEROS_HOJA = ['nivel', 'competencia', 'evasion_base', 'evasion_extra', 'pg_max', 'pg', 'armadura_marcada', 'cicatrices', 'descansos_cortos', 'reparto_pendiente']
+
+function numeros(obj, claves) {
+  if (!obj || typeof obj !== 'object') return obj
+  const o = { ...obj }
+  for (const k of claves) {
+    if (o[k] == null) continue
+    const n = num(o[k])
+    if (n === undefined) delete o[k]
+    else o[k] = n
+  }
+  return o
+}
+const objeto = (x) => (x && typeof x === 'object' && !Array.isArray(x) ? x : {})
+const ids = (l) => (Array.isArray(l) ? l.filter((x) => typeof x === 'string' && x) : [])
+
+export function normalizarHoja(hoja) {
+  if (!hoja || typeof hoja !== 'object' || Array.isArray(hoja)) return {}
+  const h = numeros(hoja, NUMEROS_HOJA)
+  if (h.rasgos && typeof h.rasgos === 'object') {
+    h.rasgos = Object.fromEntries(Object.entries(h.rasgos).map(([k, v]) => [k, num(v) ?? 0]))
+  }
+  if (Array.isArray(h.experiencias)) h.experiencias = h.experiencias.map((x) => ({ ...objeto(x), valor: num(x?.valor) ?? 0 }))
+  if (h.armadura && typeof h.armadura === 'object') {
+    h.armadura = numeros(h.armadura, ['puntuacion'])
+    if (h.armadura.umbrales) h.armadura.umbrales = numeros(h.armadura.umbrales, ['mayor', 'grave'])
+  }
+  if (h.umbrales_manuales) h.umbrales_manuales = numeros(h.umbrales_manuales, ['mayor', 'grave'])
+  if (Array.isArray(h.armas)) {
+    h.armas = h.armas.map((a) => {
+      const o = objeto(a)
+      return o.dano ? { ...o, dano: numeros(o.dano, ['dados', 'lados', 'mod']) } : { ...o }
+    })
+  }
+  if (h.cartas && typeof h.cartas === 'object') {
+    // Sin repetidas: una carta repetida tronaba la pestaña Cartas (each con llave)
+    const mano = [...new Set(ids(h.cartas.mano))]
+    const boveda = [...new Set(ids(h.cartas.boveda))].filter((id) => !mano.includes(id))
+    h.cartas = { ...h.cartas, mano, boveda }
+  }
+  if (Array.isArray(h.inventario)) h.inventario = h.inventario.map((x) => numeros(objeto(x), ['cantidad']))
+  if (h.oro && typeof h.oro === 'object') h.oro = numeros(h.oro, ['monedas', 'punados', 'bolsas', 'cofres'])
+  if (h.companero && typeof h.companero === 'object') {
+    h.companero = numeros(h.companero, ['evasion', 'estres', 'estres_max', 'dano_lados'])
+    if (Array.isArray(h.companero.experiencias)) h.companero.experiencias = h.companero.experiencias.map((x) => ({ ...objeto(x), valor: num(x?.valor) ?? 0 }))
+  }
+  for (const k of ['rasgos_extra', 'avances']) if (Array.isArray(h[k])) h[k] = h[k].map(objeto)
+  return h
 }
 
 // Cuántos PG marca un golpe según los umbrales (con daño masivo opcional)
@@ -44,12 +115,29 @@ export function bonoAtaque(arma) {
 
 export function grupoDano(arma, competencia = 1) {
   const d = arma?.dano || {}
-  return { lados: d.lados || 6, cantidad: Math.max(1, (d.dados || 1) * Math.max(1, competencia)), mod: d.mod || 0 }
+  return { lados: num(d.lados) || 6, cantidad: Math.max(1, (num(d.dados) || 1) * Math.max(1, num(competencia) || 1)), mod: num(d.mod) || 0 }
 }
 
 export function textoDano(arma, competencia = 1) {
   const g = grupoDano(arma, competencia)
   return `${g.cantidad}d${g.lados}${g.mod ? (g.mod > 0 ? `+${g.mod}` : g.mod) : ''}`
+}
+
+// Oro (SRD): al llenar una categoría se marca 1 de la siguiente y se borra la actual.
+// 10 monedas = 1 puñado (regla opcional) · 10 puñados = 1 bolsa · 10 bolsas = 1 cofre.
+const ORDEN_ORO = ['monedas', 'punados', 'bolsas', 'cofres']
+export function ajustarOro(oro, clave, valor) {
+  const o = { ...(oro ?? {}) }
+  for (const k of ORDEN_ORO) if (o[k] != null) o[k] = Math.max(0, Math.floor(num(o[k]) ?? 0))
+  o[clave] = Math.max(0, Math.floor(num(valor) ?? 0))
+  for (let i = 0; i < ORDEN_ORO.length - 1; i++) {
+    const k = ORDEN_ORO[i], sig = ORDEN_ORO[i + 1]
+    if ((o[k] ?? 0) >= 10) {
+      o[sig] = (o[sig] ?? 0) + Math.floor(o[k] / 10)
+      o[k] = o[k] % 10
+    }
+  }
+  return o
 }
 
 // Lista de avisos [{ campo, texto }]

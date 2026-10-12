@@ -37,7 +37,22 @@
   const puedoEditar = (c) => c.creado_por === app.sesion?.user?.id || app.rol === 'dj'
 
   function nuevo(tipo) { edicion = { tipo, nombre: '', datos: VACIO[tipo]() } }
-  function abrir(c) { edicion = { id: c.id, tipo: c.tipo, nombre: c.nombre, datos: { ...VACIO[c.tipo](), ...structuredClone($state.snapshot(c.datos)) } } }
+  // Solo se editan aquí los tipos de TIPOS (la base también acepta adversarios, entornos…:
+  // abrir uno de esos tronaba con «VACIO[c.tipo] is not a function»).
+  const editableAqui = (c) => !!VACIO[c.tipo]
+  function abrir(c) {
+    if (!editableAqui(c)) return
+    const base = VACIO[c.tipo]()
+    const datos = { ...base, ...(structuredClone($state.snapshot(c.datos)) ?? {}) }
+    // Lo anidado puede venir a medias o nulo (p. ej. esperanza: null) y el formulario lo lee directo
+    for (const [k, v] of Object.entries(base)) {
+      if (Array.isArray(v)) {
+        if (!Array.isArray(datos[k])) datos[k] = v
+        else if (k !== 'dominios') datos[k] = datos[k].map((x) => ({ nombre: '', texto: '', ...(x && typeof x === 'object' ? x : {}) }))
+      } else if (v && typeof v === 'object') datos[k] = { ...v, ...(datos[k] && typeof datos[k] === 'object' ? datos[k] : {}) }
+    }
+    edicion = { id: c.id, tipo: c.tipo, nombre: c.nombre ?? '', datos }
+  }
 
   async function guardar() {
     error = ''
@@ -90,7 +105,7 @@
     <ul class="lista">
       {#each lista as c (c.id)}
         <li>
-          <button class="fila" onclick={() => abrir(c)} disabled={!puedoEditar(c)}>
+          <button class="fila" onclick={() => abrir(c)} disabled={!puedoEditar(c) || !editableAqui(c)}>
             <strong>{c.nombre}</strong><small>{nombreTipo(c.tipo)}</small>
           </button>
           {#if puedoEditar(c)}<button class="quitar" onclick={() => borrar(c)}>{confirmar === c.id ? '¿Borrar?' : '✕'}</button>{/if}

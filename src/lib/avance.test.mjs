@@ -149,3 +149,21 @@ test('subir de nivel funciona aunque la hoja llegue como objeto reactivo (Proxy)
   const reactiva = new Proxy({ nivel: 1, rasgos: { agilidad: 1 }, experiencias: [], cartas: { mano: [], boveda: [] } }, {})
   assert.doesNotThrow(() => aplicarSubida(reactiva, { estres_max: 6 }, { mejoras: [], experiencia: { nombre: 'Prueba', valor: 2 } }))
 })
+
+test('subir de nivel una hoja con números como texto (importada)', () => {
+  // Antes: nivel "2" + 1 = "21" y umbral manual "6" + 1 = "61"
+  const hoja = { nivel: '2', competencia: '2', pg_max: '6', evasion_extra: '1', umbrales_manuales: { mayor: '6', grave: '12' }, experiencias: [{ nombre: 'A', valor: '2' }, { nombre: 'B', valor: 2 }] }
+  const eleccion = { mejoras: [{ tipo: 'pg' }, { tipo: 'evasion' }] }
+  assert.deepEqual(validarSubida(hoja, eleccion), [])
+  const { hoja: h, pj } = aplicarSubida(hoja, { estres_max: '6' }, eleccion)
+  assert.equal(h.nivel, 3)
+  assert.equal(h.pg_max, 7)
+  assert.equal(h.evasion_extra, 2)
+  assert.deepEqual(h.umbrales_manuales, { mayor: 7, grave: 13 })
+  assert.equal(pj.estres_max, 6)
+})
+
+test('subir de nivel con un umbral manual a medias solo sube el que está fijado', () => {
+  const { hoja: h } = aplicarSubida({ nivel: 2, umbrales_manuales: { mayor: 6, grave: null } }, {}, { mejoras: [{ tipo: 'pg' }, { tipo: 'evasion' }] })
+  assert.deepEqual(h.umbrales_manuales, { mayor: 7, grave: null })
+})
