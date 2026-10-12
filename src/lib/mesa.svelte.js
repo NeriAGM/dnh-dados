@@ -18,6 +18,7 @@ export const app = $state({
   casero: [],           // contenido homebrew de la campaña
   encuentros: [],       // solo el DJ los recibe
   cuentas: [],          // cuentas regresivas
+  escena: null,         // lo que la mesa ve del encuentro activo (ver lib/escena.js)
   personajeActivo: null, // id
   error: null,
 })
@@ -82,12 +83,14 @@ export async function abrirCampania(id) {
     supabase.from('contenido_casero').select('*').eq('campania_id', id).order('nombre'),
   ])
   app.casero = casero || []
-  const [{ data: encuentros }, { data: cuentas }] = await Promise.all([
+  const [{ data: encuentros }, { data: cuentas }, { data: escena }] = await Promise.all([
     c.rol === 'dj' ? supabase.from('encuentros').select('*').eq('campania_id', id).order('creado', { ascending: false }) : Promise.resolve({ data: [] }),
     supabase.from('cuentas_regresivas').select('*').eq('campania_id', id).order('creado'),
+    supabase.from('escenas').select('*').eq('campania_id', id).maybeSingle(),
   ])
   app.encuentros = encuentros || []
   app.cuentas = cuentas || []
+  app.escena = escena ?? null
   app.miembros = miembros || []
   app.personajes = personajes || []
   app.lanzamientos = lanz || []
@@ -123,6 +126,16 @@ function escuchar(id) {
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'encuentros', filter: `campania_id=eq.${id}` }, ({ eventType, new: e, old }) => {
       app.encuentros = reemplazar(app.encuentros, eventType, e, old, true)
+    })
+    // La escena la arma la base de datos; aquí solo se recibe
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'escenas', filter: `campania_id=eq.${id}` }, ({ new: e }) => { app.escena = e })
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'escenas', filter: `campania_id=eq.${id}` }, ({ new: e }) => { app.escena = e })
+    // Los borrados no se pueden filtrar en el tiempo real: llega la llave y se compara
+    .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'escenas' }, async ({ old }) => {
+      if (old?.campania_id === id) { app.escena = null; return }
+      if (old?.campania_id) return
+      const { data } = await supabase.from('escenas').select('*').eq('campania_id', id).maybeSingle()
+      app.escena = data ?? null
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'cuentas_regresivas', filter: `campania_id=eq.${id}` }, ({ eventType, new: c, old }) => {
       // Si el DJ la oculta, a los jugadores les llega como borrada o sin permiso: se quita
@@ -199,11 +212,13 @@ export async function salir() {
   guardar(CAMPANIA_GUARDADA, null)
   await supabase.auth.signOut()
   app.campania = null
+  app.escena = null
 }
 
 export function cambiarCampania() {
   if (canal) supabase.removeChannel(canal)
   canal = null
+  app.escena = null
   guardar(CAMPANIA_GUARDADA, null)
   app.campania = null
 }
@@ -341,6 +356,12 @@ export async function activarEncuentro(id) {
   const { error } = await supabase.rpc('activar_encuentro', { p_encuentro: id })
   if (error) throw new Error(error.message)
   app.encuentros = app.encuentros.map((e) => ({ ...e, activo: e.id === id }))
+}
+
+// Termina el encuentro activo: deja de estar en escena (la mesa ya no lo ve)
+export async function terminarEncuentro(id) {
+  if (local()) { app.encuentros = app.encuentros.map((e) => (e.id === id ? { ...e, activo: false } : e)); return }
+  await guardarEncuentro(id, { activo: false })
 }
 
 export async function crearCuenta(cuenta) {
