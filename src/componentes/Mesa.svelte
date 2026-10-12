@@ -34,6 +34,7 @@
   const cat = $derived(conCasero(catBase, app.demo ? [] : app.casero))
   let aviso = $state('')
   let temporizador
+  onDestroy(() => clearTimeout(temporizador))
 
   // Modo prueba: todo vive aquí, nada se guarda
   let demoPJ = $state({ id: 'demo', nombre: 'Tu personaje', esperanza: 2, esperanza_max: 6, estres: 0, estres_max: 6, color: '#e9b44c' })
@@ -296,7 +297,7 @@
     <button class="aviso vidrio" role="alert" onclick={() => (aviso = '')}>{aviso}</button>
   {/if}
 
-  <div class="zona-historial" class:abierto={verHistorial} bind:this={elHistorial}>
+  <div class="zona-historial" class:abierto={verHistorial} class:con-hoja={ladoOcupado} bind:this={elHistorial}>
     <Historial
       {tiradas}
       nombreDe={(id) => (app.demo ? 'Tú' : nombreDe(id))}
@@ -446,6 +447,13 @@
     top: max(calc(4rem + env(safe-area-inset-top, 0px)), var(--fin-cuentas, 0px));
     transform: translateX(-50%);
     z-index: 4;
+  }
+  /* Con la hoja abierta el lanzador mide al menos 380 px y su orilla derecha
+     queda en 50% + 330 px: por debajo de ~1326 px de ancho se metía debajo del
+     historial (que tapaba Libre, Daño y parte de Tirar). Ahí el historial
+     termina arriba del lanzador. */
+  @media (min-width: 1100px) and (max-width: 1325px) {
+    .zona-historial.con-hoja { bottom: var(--alto-lanzador, 13rem); }
   }
   @media (min-width: 1100px) {
     .cuentas.con-hoja { left: calc(50% + 140px); }

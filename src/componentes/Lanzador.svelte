@@ -1,5 +1,5 @@
 <script>
-  import { leerFormula, conSigno } from '../lib/formula.js'
+  import { leerFormula, leerDificultad, conSigno } from '../lib/formula.js'
 
   let { esDJ = false, ocupado = false, onTirar } = $props()
 
@@ -23,6 +23,9 @@
   let error = $state('')
 
   $effect(() => { if (esDJ && modo === 'accion' && !tocado) modo = 'dj' })
+  // Si dejas de ser DJ (cambias a una campaña donde eres jugador), el modo
+  // Adversario ya no tiene pestaña: sin esto se seguía tirando como "dj"
+  $effect(() => { if (!esDJ && modo === 'dj') { modo = 'accion'; ventaja = 'ninguna' } })
   let tocado = false
 
   const dual = $derived(modo === 'accion' || modo === 'reaccion')
@@ -50,8 +53,7 @@
   })
 
   function armar() {
-    const dif = dificultad === '' ? null : Number(dificultad)
-    const base = { tipo: modo, dificultad: Number.isFinite(dif) ? dif : null, etiqueta: etiqueta.trim() || null, oculta: esDJ && oculta }
+    const base = { tipo: modo, dificultad: leerDificultad(dificultad), etiqueta: etiqueta.trim() || null, oculta: esDJ && oculta }
     if (dual) {
       const grupos = [{ lados: 12, rol: 'esperanza' }, { lados: 12, rol: 'miedo' }]
       if (ventaja === 'ventaja') grupos.push({ lados: 6, rol: 'ventaja', signo: 1 })

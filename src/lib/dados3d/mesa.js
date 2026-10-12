@@ -19,6 +19,17 @@ import { ESTILOS } from './estilos.js'
 const RADIO = 1.0
 const DT = 1 / 60
 const MAX_CUADROS = 60 * 7
+// Un dado se da por detenido si en los últimos VENTANA_QUIETO cuadros se movió
+// menos que esto (posición en unidades y cuaternión): el "sueño" de cannon
+// casi nunca llega en el d12 y el d20 (rebotan micras sobre la mesa, sin
+// avanzar) y la animación duraba siempre los 7 s completos aunque los dados
+// se vieran quietos desde los 2-3 s.
+const VENTANA_QUIETO = 20
+const QUIETO_POS = 0.02
+const QUIETO_ROT = 0.01
+const CUADROS_QUIETO = 10
+// Tiempo máximo (ms) para repetir simulaciones buscando que ningún dado quede chueco
+const PRESUPUESTO_REINTENTOS = 250
 const ARRIBA = new THREE.Vector3(0, 1, 0)
 
 // Qué cuadro de la grabación toca mostrar. Nunca negativo: la marca de tiempo
@@ -80,6 +91,15 @@ function atlas(lados, estiloNombre) {
   return res
 }
 
+// d4: dónde va la esquina k de una cara dentro de su celda de la textura
+// (ángulo en coordenadas del lienzo, con y hacia abajo). Los vértices de cada
+// cara van en sentido antihorario vistos desde afuera, así que en la imagen
+// también deben ir antihorario (arriba → abajo-izquierda → abajo-derecha);
+// al revés, los números se veían en espejo.
+export function anguloD4(k) {
+  return -Math.PI / 2 - (k * 2 * Math.PI) / 3
+}
+
 // d4: cada cara muestra los 3 números de sus vértices, cada uno junto a su
 // esquina. Por eso su textura se dibuja por dado (depende de la etiqueta).
 function texturaD4(def, verticeValores, estiloNombre) {
@@ -94,8 +114,7 @@ function texturaD4(def, verticeValores, estiloNombre) {
     const cx = (i % 2) * CELDA + CELDA / 2
     const cy = Math.floor(i / 2) * CELDA + CELDA / 2
     cara.idx.forEach((vi, k) => {
-      // Las esquinas de la cara en la textura están a 0, 120 y 240 grados
-      const ang = -Math.PI / 2 + (k * 2 * Math.PI) / 3
+      const ang = anguloD4(k)
       const r = CELDA * 0.25
       dibujarNumero(ctx, verticeValores[vi], cx + Math.cos(ang) * r, cy + Math.sin(ang) * r, 34, est.tinta, ang + Math.PI / 2)
     })
@@ -111,7 +130,7 @@ function texturaD4(def, verticeValores, estiloNombre) {
 
 function vecDe(a) { return new THREE.Vector3(a[0], a[1], a[2]) }
 
-function geometriaDado(def, etiquetas, cols, filas) {
+export function geometriaDado(def, etiquetas, cols, filas) {
   const pos = [], nor = [], uv = []
   def.caras.forEach((cara, i) => {
     const centro = vecDe(cara.centro)
@@ -154,7 +173,7 @@ function geometriaDado(def, etiquetas, cols, filas) {
     if (def.lados === 4) {
       // Reacomoda los 3 vértices en 0°,120°,240° para que cada número quede en su esquina
       uvs = pts.map((_, k) => {
-        const ang = -Math.PI / 2 + (k * 2 * Math.PI) / 3
+        const ang = anguloD4(k)
         const x = Math.cos(ang) * 0.5, y = Math.sin(ang) * 0.5
         return [(celdaX + 0.5 + x * 0.98) / w, 1 - (celdaY + 0.5 + y * 0.98) / h]
       })
@@ -188,7 +207,7 @@ function cuerpoFisico(def, material) {
 }
 
 // Qué cara (o vértice, en el d4) quedó arriba
-function quedoArriba(def, q) {
+export function quedoArriba(def, q) {
   const quat = new THREE.Quaternion(q.x, q.y, q.z, q.w)
   if (def.lados === 4) {
     let mejor = -1, alto = -Infinity
@@ -209,11 +228,174 @@ function quedoArriba(def, q) {
 }
 
 // ---------------------------------------------------------------------
+// Física (sin DOM: se puede probar en node)
+// ---------------------------------------------------------------------
+
+// Etiqueta final de un dado: la cara (o vértice, en el d4) que quedó arriba
+// recibe el valor del servidor y se intercambia con la que lo tenía.
+// Devuelve los números por cara (o por vértice, en el d4).
+export function etiquetar(def, arriba, valor) {
+  const et = (def.lados === 4 ? def.verticeValores : def.valores).slice()
+  const k = et.indexOf(valor)
+  if (k < 0 || arriba < 0 || arriba >= et.length) {
+    console.error('[dados] no se pudo etiquetar el dado', { lados: def.lados, valor, arriba })
+    return et
+  }
+  ;[et[arriba], et[k]] = [et[k], et[arriba]]
+  return et
+}
+
+// Límites del piso donde caben los dados. Si la zona libre es muy angosta
+// (p. ej. hoja abierta + historial en una pantalla de 1100 px), se fuerza un
+// mínimo centrado: con izq > der las paredes quedaban cruzadas y la física
+// lanzaba los dados fuera de la pantalla.
+export function limitesSeguros({ izq, der, atras, frente }, minimo = 4) {
+  if (!(der - izq >= minimo)) {
+    const c = Number.isFinite(izq + der) ? (izq + der) / 2 : 0
+    izq = c - minimo / 2; der = c + minimo / 2
+  }
+  if (!(frente - atras >= minimo)) {
+    const c = Number.isFinite(atras + frente) ? (atras + frente) / 2 : 0
+    atras = c - minimo / 2; frente = c + minimo / 2
+  }
+  return { izq, der, atras, frente }
+}
+
+export function crearFisica() {
+  const mundo = new CANNON.World({ gravity: new CANNON.Vec3(0, -48, 0) })
+  mundo.allowSleep = true
+  mundo.broadphase = new CANNON.SAPBroadphase(mundo)
+  const matDado = new CANNON.Material('dado')
+  const matMesa = new CANNON.Material('mesa')
+  mundo.addContactMaterial(new CANNON.ContactMaterial(matDado, matMesa, { friction: 0.28, restitution: 0.42 }))
+  mundo.addContactMaterial(new CANNON.ContactMaterial(matDado, matDado, { friction: 0.18, restitution: 0.5 }))
+
+  const paredes = []
+  let limites = { izq: -8, der: 8, atras: -6, frente: 6 }
+
+  function ponerLimites(nuevos) {
+    limites = limitesSeguros(nuevos)
+    for (const p of paredes) mundo.removeBody(p)
+    paredes.length = 0
+    const plano = (pos, eje, ang) => {
+      const b = new CANNON.Body({ mass: 0, material: matMesa })
+      b.addShape(new CANNON.Plane())
+      b.position.set(...pos)
+      b.quaternion.setFromAxisAngle(new CANNON.Vec3(...eje), ang)
+      mundo.addBody(b)
+      paredes.push(b)
+    }
+    plano([0, 0, 0], [1, 0, 0], -Math.PI / 2)
+    plano([limites.izq, 0, 0], [0, 1, 0], Math.PI / 2)
+    plano([limites.der, 0, 0], [0, 1, 0], -Math.PI / 2)
+    plano([0, 0, limites.atras], [0, 1, 0], 0)
+    plano([0, 0, limites.frente], [0, 1, 0], Math.PI)
+  }
+  ponerLimites(limites)
+
+  function simular(lista, desdeArriba) {
+    const cuerpos = lista.map((d) => {
+      const def = poliedro(d.lados, RADIO * (d.lados === 4 ? 1.15 : d.lados === 20 ? 1.05 : 1))
+      const b = cuerpoFisico(def, matDado)
+      mundo.addBody(b)
+      return { def, b }
+    })
+    const n = cuerpos.length
+    const signoZ = desdeArriba ? -1 : 1
+    const centroX = (limites.izq + limites.der) / 2
+    const ancho = limites.der - limites.izq
+    const hondo = limites.frente - limites.atras
+    // Cuántos caben por fila y cuántas filas caben antes de la pared de enfrente;
+    // si hay más dados, las filas extra se apilan más arriba (caen desde más alto)
+    // en vez de aparecer del otro lado de una pared.
+    const porFila = Math.max(1, Math.min(5, n, Math.floor((ancho - RADIO * 2) / (RADIO * 2.3)) + 1))
+    const filasQueCaben = Math.max(1, Math.floor((hondo - RADIO * 2) / (RADIO * 2.2)) + 1)
+    cuerpos.forEach(({ b }, i) => {
+      const col = i % porFila, filaTotal = Math.floor(i / porFila)
+      const fila = filaTotal % filasQueCaben, piso = Math.floor(filaTotal / filasQueCaben)
+      const sep = porFila > 1 ? Math.min(RADIO * 2.3, (ancho - RADIO * 2) / (porFila - 1)) : 0
+      const x = centroX + (col - (porFila - 1) / 2) * sep + (Math.random() - 0.5) * 0.4
+      const z = desdeArriba ? limites.atras + RADIO + fila * RADIO * 2.2 : limites.frente - RADIO - fila * RADIO * 2.2
+      b.position.set(x, 3 + Math.random() * 1.5 + fila * 0.6 + piso * RADIO * 2.6, z)
+      b.quaternion.setFromEuler(Math.random() * 6.28, Math.random() * 6.28, Math.random() * 6.28)
+      b.velocity.set((Math.random() - 0.5) * 8 - (x - centroX) * 0.6, -2 - Math.random() * 3, -signoZ * (14 + Math.random() * 9))
+      b.angularVelocity.set((Math.random() - 0.5) * 30, (Math.random() - 0.5) * 30, (Math.random() - 0.5) * 30)
+      b.wakeUp()
+    })
+
+    const cuadros = cuerpos.map(() => [])
+    try {
+      let quietos = 0
+      for (let t = 0; t < MAX_CUADROS; t++) {
+        mundo.step(DT)
+        let todosQuietos = true
+        cuerpos.forEach(({ b }, i) => {
+          const f = [b.position.x, b.position.y, b.position.z, b.quaternion.x, b.quaternion.y, b.quaternion.z, b.quaternion.w]
+          const a = cuadros[i][t - VENTANA_QUIETO]
+          if (!a || Math.hypot(f[0] - a[0], f[1] - a[1], f[2] - a[2]) > QUIETO_POS ||
+              Math.hypot(f[3] - a[3], f[4] - a[4], f[5] - a[5], f[6] - a[6]) > QUIETO_ROT) todosQuietos = false
+          cuadros[i].push(f)
+        })
+        quietos = todosQuietos ? quietos + 1 : 0
+        if (t > 30 && (quietos >= CUADROS_QUIETO || cuerpos.every(({ b }) => b.sleepState === CANNON.Body.SLEEPING))) break
+      }
+    } finally {
+      // Aunque algo truene, los cuerpos no se quedan en el mundo (si no, los
+      // dados del siguiente lanzamiento chocarían con fantasmas)
+      for (const { b } of cuerpos) mundo.removeBody(b)
+    }
+    const finales = cuerpos.map(({ def }, i) => {
+      const f = cuadros[i].at(-1)
+      return quedoArriba(def, { x: f[3], y: f[4], z: f[5], w: f[6] })
+    })
+    return { cuerpos, cuadros, finales }
+  }
+
+  // Varias simulaciones hasta que todos queden parejos (no apoyados en una
+  // orilla); si ninguna queda pareja, la más estable. Además etiqueta cada
+  // dado para que la cara de arriba muestre el valor del servidor.
+  function lanzamiento(lista, desdeArriba) {
+    // Con muchos dados casi siempre alguno queda chueco: sin un tope de tiempo
+    // se hacían las 8 simulaciones y la página se congelaba varios segundos.
+    let sim = null, mejorFirmeza = -Infinity
+    const inicio = performance.now()
+    for (let intento = 0; intento < 8; intento++) {
+      const prueba = simular(lista, desdeArriba)
+      const peor = Math.min(...prueba.finales.map((f, i) => f.firmeza - (lista[i].lados === 4 ? 0.95 : 0.93)))
+      // Con NaN (física rota) "peor > mejor" nunca era cierto y sim quedaba en null
+      if (sim === null || peor > mejorFirmeza) { mejorFirmeza = peor; sim = prueba }
+      if (peor > 0 || performance.now() - inicio > PRESUPUESTO_REINTENTOS) break
+    }
+    return sim.cuerpos.map(({ def }, i) => ({
+      def,
+      cuadros: sim.cuadros[i],
+      arriba: sim.finales[i].indice,
+      etiquetas: etiquetar(def, sim.finales[i].indice, lista[i].valor),
+    }))
+  }
+
+  return { lanzamiento, ponerLimites, get limites() { return limites } }
+}
+
+// ---------------------------------------------------------------------
 // La mesa
 // ---------------------------------------------------------------------
 
+// Si el navegador no tiene WebGL (o lo tiene apagado), la app sigue
+// funcionando sin dados 3D: el resultado se muestra igual en la tarjeta.
+function mesaSinDados(e) {
+  console.error('[dados] sin WebGL: los dados 3D se desactivan', e)
+  const nada = () => {}
+  return { lanzar: () => Promise.resolve(), limpiar: nada, ajustarZona: nada, ajustarLuz: nada, destruir: nada }
+}
+
 export function crearMesa(canvas) {
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' })
+  let renderer
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' })
+  } catch (e) {
+    return mesaSinDados(e)
+  }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   renderer.setClearColor(0x000000, 0)
   renderer.shadowMap.enabled = true
@@ -243,35 +425,9 @@ export function crearMesa(canvas) {
   piso.receiveShadow = true
   escena.add(piso)
 
-  // Física
-  const mundo = new CANNON.World({ gravity: new CANNON.Vec3(0, -48, 0) })
-  mundo.allowSleep = true
-  mundo.broadphase = new CANNON.SAPBroadphase(mundo)
-  const matDado = new CANNON.Material('dado')
-  const matMesa = new CANNON.Material('mesa')
-  mundo.addContactMaterial(new CANNON.ContactMaterial(matDado, matMesa, { friction: 0.28, restitution: 0.42 }))
-  mundo.addContactMaterial(new CANNON.ContactMaterial(matDado, matDado, { friction: 0.18, restitution: 0.5 }))
-
-  const paredes = []
-  let limites = { izq: -8, der: 8, atras: -6, frente: 6 }
-
-  function rehacerParedes() {
-    for (const p of paredes) mundo.removeBody(p)
-    paredes.length = 0
-    const plano = (pos, eje, ang) => {
-      const b = new CANNON.Body({ mass: 0, material: matMesa })
-      b.addShape(new CANNON.Plane())
-      b.position.set(...pos)
-      b.quaternion.setFromAxisAngle(new CANNON.Vec3(...eje), ang)
-      mundo.addBody(b)
-      paredes.push(b)
-    }
-    plano([0, 0, 0], [1, 0, 0], -Math.PI / 2)
-    plano([limites.izq, 0, 0], [0, 1, 0], Math.PI / 2)
-    plano([limites.der, 0, 0], [0, 1, 0], -Math.PI / 2)
-    plano([0, 0, limites.atras], [0, 1, 0], 0)
-    plano([0, 0, limites.frente], [0, 1, 0], Math.PI)
-  }
+  const fisica = crearFisica()
+  function rehacerParedes() { fisica.ponerLimites(limites) }
+  let limites = fisica.limites
 
   // Zona libre de la pantalla (en píxeles) donde pueden caer los dados:
   // la interfaz avisa cuánto ocupan la barra de arriba y el panel de abajo.
@@ -342,45 +498,11 @@ export function crearMesa(canvas) {
       d.malla.geometry.dispose()
       if (d.texPropia) d.texPropia.dispose()
       d.malla.material.dispose()
+      // Las orillas también ocupan memoria de la tarjeta de video
+      d.bordes.geometry.dispose()
+      d.bordes.material.dispose()
     }
     dados = []
-  }
-
-  function simular(lista, desdeArriba) {
-    const cuerpos = lista.map((d) => {
-      const def = poliedro(d.lados, RADIO * (d.lados === 4 ? 1.15 : d.lados === 20 ? 1.05 : 1))
-      const b = cuerpoFisico(def, matDado)
-      mundo.addBody(b)
-      return { def, b }
-    })
-    const n = cuerpos.length
-    const signoZ = desdeArriba ? -1 : 1
-    cuerpos.forEach(({ b }, i) => {
-      const col = i % 5, fila = Math.floor(i / 5)
-      const centroX = (limites.izq + limites.der) / 2
-      const ancho = limites.der - limites.izq
-      const sep = Math.min(RADIO * 2.3, (ancho - RADIO * 2) / Math.max(1, Math.min(n, 5) - 1))
-      const x = centroX + (col - (Math.min(n, 5) - 1) / 2) * sep + (Math.random() - 0.5) * 0.4
-      const z = desdeArriba ? limites.atras + RADIO + fila * RADIO * 2.2 : limites.frente - RADIO - fila * RADIO * 2.2
-      b.position.set(x, 3 + Math.random() * 1.5 + fila * 0.6, z)
-      b.quaternion.setFromEuler(Math.random() * 6.28, Math.random() * 6.28, Math.random() * 6.28)
-      b.velocity.set((Math.random() - 0.5) * 8 - (x - centroX) * 0.6, -2 - Math.random() * 3, -signoZ * (14 + Math.random() * 9))
-      b.angularVelocity.set((Math.random() - 0.5) * 30, (Math.random() - 0.5) * 30, (Math.random() - 0.5) * 30)
-      b.wakeUp()
-    })
-
-    const cuadros = cuerpos.map(() => [])
-    let t = 0
-    for (; t < MAX_CUADROS; t++) {
-      mundo.step(DT)
-      cuerpos.forEach(({ b }, i) => {
-        cuadros[i].push([b.position.x, b.position.y, b.position.z, b.quaternion.x, b.quaternion.y, b.quaternion.z, b.quaternion.w])
-      })
-      if (t > 30 && cuerpos.every(({ b }) => b.sleepState === CANNON.Body.SLEEPING)) break
-    }
-    const finales = cuerpos.map(({ def, b }) => quedoArriba(def, b.quaternion))
-    for (const { b } of cuerpos) mundo.removeBody(b)
-    return { cuerpos, cuadros, finales }
   }
 
   /**
@@ -393,37 +515,20 @@ export function crearMesa(canvas) {
     const soportados = lista.filter((d) => [4, 6, 8, 10, 12, 20].includes(d.lados))
     if (!soportados.length) return Promise.resolve()
 
-    // Si algún dado quedó "chueco" (apoyado en una orilla), se repite la simulación
-    // y si ninguno de los intentos quedó parejo, se usa el más estable
-    let sim = null, mejorFirmeza = -Infinity
-    for (let intento = 0; intento < 8; intento++) {
-      const prueba = simular(soportados, desdeArriba)
-      const peor = Math.min(...prueba.finales.map((f, i) => f.firmeza - (soportados[i].lados === 4 ? 0.95 : 0.93)))
-      if (peor > mejorFirmeza) { mejorFirmeza = peor; sim = prueba }
-      if (peor > 0) break
-    }
+    const resultado = fisica.lanzamiento(soportados, desdeArriba)
 
-    sim.cuerpos.forEach(({ def }, i) => {
+    resultado.forEach(({ def, cuadros, etiquetas }, i) => {
       const d = soportados[i]
-      const arriba = sim.finales[i].indice
       const estilo = ESTILOS[d.estilo] ? d.estilo : 'normal'
       const est = ESTILOS[estilo]
       let geo, tex, texPropia = null
       if (def.lados === 4) {
-        const vv = def.verticeValores.slice()
-        const k = vv.indexOf(d.valor)
-        if (k >= 0) [vv[arriba], vv[k]] = [vv[k], vv[arriba]]
-        else console.error('[dados] valor fuera del dado', d)
-        tex = texPropia = texturaD4(def, vv, estilo)
+        tex = texPropia = texturaD4(def, etiquetas, estilo)
         geo = geometriaDado(def, null, 2, 2)
       } else {
-        const et = def.valores.slice()
-        const k = et.indexOf(d.valor)
-        if (k >= 0) [et[arriba], et[k]] = [et[k], et[arriba]]
-        else console.error('[dados] valor fuera del dado', d)
         const at = atlas(def.lados, estilo)
         tex = at.tex
-        geo = geometriaDado(def, et, at.cols, at.filas)
+        geo = geometriaDado(def, etiquetas, at.cols, at.filas)
       }
       const mat = new THREE.MeshStandardMaterial({
         map: tex,
@@ -442,7 +547,7 @@ export function crearMesa(canvas) {
       )
       malla.add(bordes)
       escena.add(malla)
-      dados.push({ malla, def, cuadros: sim.cuadros[i], descartado: d.descartado, texPropia })
+      dados.push({ malla, bordes, def, cuadros, descartado: d.descartado, texPropia })
     })
 
     const total = Math.max(...dados.map((d) => d.cuadros.length))
