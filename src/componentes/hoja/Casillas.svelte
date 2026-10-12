@@ -1,7 +1,8 @@
 <script>
   // Fila de casillas marcables (PG, Estrés, Armadura, Esperanza).
   // Tocar la casilla N deja marcadas N; tocar la última marcada la desmarca.
-  let { nombre, marcadas = 0, maximo = 6, forma = 'cuadro', color = 'var(--sangre)', editable = true, onCambiar, ayuda = '' } = $props()
+  // "tachadas" son casillas perdidas para siempre (p. ej. cicatrices en la Esperanza).
+  let { nombre, marcadas = 0, maximo = 6, forma = 'cuadro', color = 'var(--sangre)', editable = true, onCambiar, ayuda = '', tachadas = 0 } = $props()
 
   function tocar(i) {
     if (!editable) return
@@ -20,6 +21,9 @@
         onclick={() => tocar(i)}
         aria-label="{nombre} {i + 1}"
       ></button>
+    {/each}
+    {#each Array(Math.max(0, tachadas)) as _, i}
+      <span class="caja {forma} tachada" role="img" aria-label="{nombre}: casilla tachada {i + 1}" title="Tachada para siempre"></span>
     {/each}
   </span>
   <span class="cifra">{marcadas}/{maximo}</span>
@@ -46,6 +50,8 @@
   .caja.marcada { background: var(--c); box-shadow: 0 0 8px color-mix(in srgb, var(--c) 60%, transparent); }
   .caja:not(:disabled):hover { filter: brightness(1.2); }
   .caja:disabled { cursor: default; }
+  .caja.tachada { position: relative; display: inline-block; opacity: 0.55; background: transparent; border: 1.5px dashed var(--pergamino-suave); clip-path: none; transform: none; }
+  .caja.tachada::after { content: ''; position: absolute; left: -2px; right: -2px; top: 50%; height: 2px; background: var(--sangre); transform: rotate(-45deg); }
   .cifra { font-family: var(--fuente-titulo); font-weight: 900; font-size: 0.95rem; min-width: 3ch; text-align: right; }
   @media (max-width: 480px) { .casillas { grid-template-columns: 5.2rem 1fr auto; } .caja { width: 22px; height: 22px; } }
 </style>

@@ -56,9 +56,32 @@ función `tirar()`. Todo lo demás va en la columna `hoja` (JSON):
                                 //   dano_lados, alcance, experiencias: [{nombre, valor}], rasgos: [], notas }
   "rasgos_extra": [],           // rasgos de clase/linaje caseros escritos a mano: [{ nombre, texto }]
   "notas": "",
-  "origen": "notion"            // de dónde vino (notion | app)
+  "origen": "notion",           // de dónde vino (notion | app)
+
+  // Ayudas de reglas (todas opcionales; si faltan, valen lo de la derecha)
+  "estado": null,               // null | "gloria" | "inconsciente" | "muerto" (movimientos de muerte)
+  "reparto_pendiente": null,    // Arriesgarlo todo con Esperanza: cuánto falta repartir entre PG y Estrés
+  "cicatrices": 0,              // Evitar la muerte: casillas de Esperanza tachadas (ya restadas de esperanza_max)
+  "descansos_cortos": 0,        // cortos seguidos; al 3.º el siguiente debe ser largo; el largo lo regresa a 0
+  "subclase_etapa": "base",     // base | especializacion | maestria
+  "multiclase": null,           // { clase, dominio, subclase } (el dominio también se agrega a "dominios")
+  "avances": [                  // mejoras tomadas al subir de nivel, para respetar los límites
+    { "nivel": 2, "tipo": "rasgos", "rango": 2, "detalle": { "rasgos": ["fuerza", "presencia"] } }
+  ]                             // tipo: rasgos | pg | estres | experiencias | carta | evasion |
+                                //       subclase | competencia | multiclase; rango: sección 2, 3 o 4
 }
 ```
+
+Ayudas de la hoja (botones bajo los marcadores; código puro en `src/lib/ayudas.js` y `src/lib/avance.js`):
+- **Recibir daño:** resistencia (mitad, hacia arriba) → reducciones → umbrales → una casilla de Armadura
+  baja un escalón (no contra daño directo). Daño masivo (2 × Grave = 4 PG) es opcional y se recuerda
+  en el navegador (`dnh.danoMasivo`), apagado de inicio.
+- **Descansar:** 2 movimientos (se puede repetir); los cortos tiran 1d4 + Rango con `tirar()`.
+- **Movimiento de muerte:** al marcar el último PG. El d12 de Evitar la muerte y los Dados de Dualidad de
+  Arriesgarlo todo pasan por `tirar()` (tipos `libre` y `reaccion`, así no dan Esperanza ni Miedo).
+- **Subir de nivel:** logros (2, 5, 8), dos mejoras con sus casillas por sección, umbrales +1
+  (automático: la app suma el nivel; los manuales se suben +1) y carta nueva.
+  El Estrés máximo vive en la columna `estres_max`; la Esperanza máxima, en `esperanza_max`.
 
 Reglas que la app **avisa pero no bloquea** (la mesa puede tener acuerdos propios):
 - Rasgos fuera del arreglo +2, +1, +1, 0, 0, −1 al nivel 1.

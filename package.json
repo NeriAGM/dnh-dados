@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "probar": "node --test src/lib/formula.test.mjs src/lib/reglas.test.mjs supabase/pruebas/reglas.test.mjs"
+    "probar": "node --test src/lib/formula.test.mjs src/lib/reglas.test.mjs src/lib/ayudas.test.mjs src/lib/avance.test.mjs supabase/pruebas/reglas.test.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",

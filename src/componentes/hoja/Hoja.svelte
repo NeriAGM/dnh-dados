@@ -6,10 +6,18 @@
   import Casillas from './Casillas.svelte'
   import Carta from './Carta.svelte'
   import Selector from './Selector.svelte'
+  import Dano from './Dano.svelte'
+  import Descanso from './Descanso.svelte'
+  import Muerte from './Muerte.svelte'
+  import SubirNivel from './SubirNivel.svelte'
+  import { ESTADOS, necesitaMovimientoDeMuerte } from '../../lib/ayudas.js'
+  import { NOMBRE_ETAPA, NIVEL_MAX } from '../../lib/avance.js'
+  import { tirarDesdeHoja } from '../../lib/tiradaHoja.js'
 
   let {
     pj, cat, editable = true, jugador = '',
     onHoja, onPJ, onTirar, onCerrar,
+    onTirarResultado = null, // opcional: tira, anima y devuelve la tirada (para descansos y muerte)
   } = $props()
 
   const hoja = $derived(pj.hoja ?? {})
@@ -40,6 +48,18 @@
   let ventaja = $state('ninguna')
   let dificultad = $state('')
   let error = $state('')
+  let ayuda = $state(null) // 'dano' | 'descanso' | 'muerte' | 'nivel'
+
+  const estado = $derived(hoja.estado ? ESTADOS[hoja.estado] : null)
+  const pideMuerte = $derived(editable && necesitaMovimientoDeMuerte(hoja))
+  const tirarDado = (params) => (onTirarResultado ? onTirarResultado(params) : tirarDesdeHoja(pj, params))
+  const multiclase = $derived(hoja.multiclase?.clase ? cat?.porId?.clases?.[hoja.multiclase.clase] : null)
+
+  async function aplicarDano({ pg, armadura_marcada, cae }) {
+    if (pg !== (hoja.pg ?? 0)) await onHoja(['pg'], pg)
+    if (armadura_marcada !== (hoja.armadura_marcada ?? 0)) await onHoja(['armadura_marcada'], armadura_marcada)
+    ayuda = cae ? 'muerte' : null
+  }
 
   async function cambiar(ruta, valor) {
     error = ''
@@ -170,7 +190,7 @@
       <h2 class="titulo">{pj.nombre}</h2>
       <p class="linea">
         Nivel {hoja.nivel ?? 1}
-        · {clase?.nombre ?? hoja.clase_texto ?? 'Sin clase'}{subclase ? ` (${subclase.nombre})` : hoja.subclase_texto ? ` (${hoja.subclase_texto})` : ''}
+        · {clase?.nombre ?? hoja.clase_texto ?? 'Sin clase'}{subclase ? ` (${subclase.nombre}${hoja.subclase_etapa && hoja.subclase_etapa !== 'base' ? `, ${NOMBRE_ETAPA[hoja.subclase_etapa]}` : ''})` : hoja.subclase_texto ? ` (${hoja.subclase_texto})` : ''}
         · {ancestria?.nombre ?? (hoja.ancestria_texto || 'Sin ancestría')}{comunidad ? ` · ${comunidad.nombre}` : ''}
       </p>
       <p class="linea suave">
@@ -195,6 +215,27 @@
     </ul>
   {/if}
   {#if error}<p class="error" role="alert">{error}</p>{/if}
+
+  {#if hoja.reparto_pendiente}
+    <div class="estado gloria" role="status">
+      <span><strong>Arriesgarlo todo:</strong> reparte {hoja.reparto_pendiente} entre PG y Estrés.</span>
+      {#if editable}<button class="boton chico" onclick={() => (ayuda = 'muerte')}>Repartir</button>{/if}
+    </div>
+  {:else if estado}
+    <div class="estado {hoja.estado}" role="status">
+      <span><strong>{estado.nombre}.</strong> {estado.texto}</span>
+      {#if editable}
+        {#if hoja.estado === 'gloria'}<button class="boton chico" onclick={() => cambiar(['estado'], 'muerto')}>Ya hizo su última acción</button>
+        {:else if hoja.estado === 'inconsciente'}<button class="boton chico" onclick={() => cambiar(['estado'], null)}>Despertó</button>
+        {:else}<button class="boton chico" onclick={() => cambiar(['estado'], null)} title="Por si se marcó por error">Deshacer</button>{/if}
+      {/if}
+    </div>
+  {:else if pideMuerte}
+    <div class="estado cayendo" role="alert">
+      <span><strong>Marcó su último Punto de Golpe.</strong> Elige un movimiento de muerte.</span>
+      <button class="boton chico" onclick={() => (ayuda = 'muerte')}>Elegir</button>
+    </div>
+  {/if}
 
   <div class="cuerpo">
     {#if pestana === 'personaje'}
@@ -242,7 +283,7 @@
         <Casillas nombre="Puntos de Golpe" marcadas={hoja.pg ?? 0} maximo={hoja.pg_max ?? 6} color="var(--sangre)" {editable} onCambiar={(n) => cambiar(['pg'], n)} ayuda="Daño recibido" />
         <Casillas nombre="Estrés" marcadas={pj.estres} maximo={pj.estres_max} color="#ff8a5c" {editable} onCambiar={(n) => cambiarPJ({ estres: n })} />
         <Casillas nombre="Armadura" marcadas={hoja.armadura_marcada ?? 0} maximo={hoja.armadura?.puntuacion ?? 0} forma="escudo" color="#8fb7d9" {editable} onCambiar={(n) => cambiar(['armadura_marcada'], n)} ayuda="Casillas de Armadura gastadas" />
-        <Casillas nombre="Esperanza" marcadas={pj.esperanza} maximo={pj.esperanza_max} forma="estrella" color="var(--esperanza)" {editable} onCambiar={(n) => cambiarPJ({ esperanza: n })} />
+        <Casillas nombre="Esperanza" marcadas={pj.esperanza} maximo={pj.esperanza_max} tachadas={hoja.cicatrices ?? 0} forma="estrella" color="var(--esperanza)" {editable} onCambiar={(n) => cambiarPJ({ esperanza: n })} ayuda={hoja.cicatrices ? `${hoja.cicatrices} cicatriz(es)` : ''} />
         {#if editar}
           <div class="mini-campos">
             <label>PG máx <input class="campo num" type="number" min="1" max="12" value={hoja.pg_max ?? 6} onchange={(e) => cambiar(['pg_max'], Math.max(1, Math.min(12, +e.currentTarget.value || 6)))} /></label>
@@ -250,6 +291,14 @@
           </div>
         {/if}
       </div>
+
+      {#if editable}
+        <div class="ayudas" aria-label="Ayudas de reglas">
+          <button class="boton ayuda dano" onclick={() => (ayuda = 'dano')}><span aria-hidden="true">⚔</span> Recibir daño</button>
+          <button class="boton ayuda" onclick={() => (ayuda = 'descanso')}><span aria-hidden="true">☾</span> Descansar</button>
+          <button class="boton ayuda" disabled={(hoja.nivel ?? 1) >= NIVEL_MAX} onclick={() => (ayuda = 'nivel')}><span aria-hidden="true">✦</span> Subir de nivel</button>
+        </div>
+      {/if}
 
       <h3 class="seccion">Rasgos <small>toca uno para tirar</small></h3>
       <div class="rasgos">
@@ -439,6 +488,10 @@
           {#each clase.rasgos ?? [] as r}<p><strong>{r.nombre}</strong></p>{@html md(r.texto)}{/each}
         </div>
       {/if}
+      {#if multiclase}
+        <h3 class="seccion">Multiclase: {multiclase.nombre} <small>{cat?.porId?.dominios?.[hoja.multiclase.dominio]?.nombre ?? hoja.multiclase.dominio}{hoja.multiclase.subclase ? ` · ${cat?.porId?.subclases?.[hoja.multiclase.subclase]?.nombre ?? ''}` : ''}</small></h3>
+        <div class="texto-largo">{#each multiclase.rasgos ?? [] as r}<p><strong>{r.nombre}</strong></p>{@html md(r.texto)}{/each}</div>
+      {/if}
       {#if subclase}
         <h3 class="seccion">{subclase.nombre}</h3>
         <div class="texto-largo">
@@ -512,6 +565,16 @@
       <small>Dualidad {conSigno(tirada.mod + bonoExp) || '+0'}{ventaja === 'ventaja' ? ' + d6' : ventaja === 'desventaja' ? ' − d6' : ''}{costoExp ? ` · gasta ${costoExp} de Esperanza` : ''}</small>
     </button>
   </div>
+{/if}
+
+{#if ayuda === 'dano'}
+  <Dano {hoja} {u} onAplicar={aplicarDano} onCerrar={() => (ayuda = null)} />
+{:else if ayuda === 'descanso'}
+  <Descanso {pj} {hoja} {tirarDado} {onHoja} {onPJ} onCerrar={() => (ayuda = null)} />
+{:else if ayuda === 'muerte'}
+  <Muerte {pj} {hoja} {tirarDado} {onHoja} {onPJ} onCerrar={() => (ayuda = null)} />
+{:else if ayuda === 'nivel'}
+  <SubirNivel {pj} {hoja} {cat} {onHoja} {onPJ} onCerrar={() => (ayuda = null)} />
 {/if}
 
 {#if selector}
@@ -592,6 +655,17 @@
   .u.grave { background: rgba(217, 74, 92, 0.22); }
   .corte { font-size: 1.35rem; padding: 0 0.45rem; text-shadow: none; }
 
+  .estado { margin: 0.5rem 1rem 0; display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; padding: 0.5rem 0.75rem; border-radius: 12px; font-size: 0.84rem; line-height: 1.4; border: 1px solid; }
+  .estado span { flex: 1 1 14rem; }
+  .estado.cayendo { background: rgba(217, 74, 92, 0.2); border-color: rgba(217, 74, 92, 0.6); }
+  .estado.inconsciente { background: rgba(143, 183, 217, 0.16); border-color: rgba(143, 183, 217, 0.5); }
+  .estado.gloria { background: rgba(240, 189, 85, 0.16); border-color: rgba(240, 189, 85, 0.55); }
+  .estado.muerto { background: rgba(167, 124, 232, 0.18); border-color: rgba(167, 124, 232, 0.55); }
+  .ayudas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+  .ayuda { display: flex; gap: 0.35rem; align-items: center; justify-content: center; padding: 0.55rem 0.4rem; font-size: 0.88rem; line-height: 1.15; text-align: center; }
+  .ayuda span { font-size: 1rem; }
+  .ayuda.dano { border-color: rgba(217, 74, 92, 0.55); }
+
   .marcadores { display: grid; gap: 0.55rem; padding: 0.7rem; border-radius: 14px; background: rgba(255, 245, 230, 0.04); }
 
   .rasgos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
@@ -671,5 +745,8 @@
     .pestanas { flex: none; }
     .rasgos { grid-template-columns: repeat(3, 1fr); }
     .datos { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .ayuda { flex-direction: column; gap: 0.1rem; font-size: 0.82rem; padding: 0.45rem 0.3rem; }
   }
 </style>
