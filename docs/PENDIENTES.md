@@ -30,8 +30,10 @@
 - [x] Escena: los jugadores ven nombre, tipo y estado de los enemigos del encuentro activo; ojo para ocultar. Migración 005.
 - [x] Ayudas de reglas en la hoja: recibir daño, descansos, movimientos de muerte, subir de nivel.
 - [x] Fase 5: fondos personalizados por jugador. Migración 004.
-- [ ] Neri: confirmar regla del estado (Herido < mitad, Grave ≥ mitad, Caído = todos) y si la mesa ve el nombre del entorno.
+- [ ] Neri: confirmar regla del estado (Herido < mitad, Grave ≥ mitad, Caído = todos). Si la mesa ve el entorno ya se decide en Ajustes → Reglas de la mesa.
 - [ ] Neri: confirmar casillas por mejora al subir de nivel (tomadas de la hoja oficial; los docs las marcan sin verificar).
-- [ ] Neri: ¿el daño masivo (regla opcional) es de toda la mesa? Hoy se activa en cada navegador.
+- [x] Reglas de la mesa (ajustes de campaña que decide el DJ): daño masivo, monedas y si la mesa ve el entorno. Migración 006.
+- [ ] Correr `supabase/migraciones/006_ajustes.sql` en el editor SQL de Supabase (sin ella, las reglas de la mesa no se pueden guardar).
+- [ ] Neri: decidir si se agregan las fichas de acción (regla opcional del foco) como regla de la mesa.
 - [ ] Glosario: agregar términos de descansos, muerte y subir de nivel (Limpiar Estrés, Llamarada de gloria, cicatriz, mejoras, logros de rango).
 - [ ] Personajes importados con nivel no tienen avances registrados: los límites de mejoras solo cuentan desde la app.

@@ -2,16 +2,12 @@
   // Recibir daño: umbrales → PG a marcar, con la opción de gastar una casilla de Armadura.
   import Dialogo from './Dialogo.svelte'
   import { resolverDano, armaduraLibre } from '../../lib/ayudas.js'
+  import { ajustesMesa } from '../../lib/mesa.svelte.js'
 
   let { hoja, u, onAplicar, onCerrar } = $props()
 
-  const CLAVE_MASIVO = 'dnh.danoMasivo'
-  let masivo = $state(leerMasivo())
-  function leerMasivo() { try { return localStorage.getItem(CLAVE_MASIVO) === '1' } catch { return false } }
-  function cambiarMasivo(v) {
-    masivo = v
-    try { localStorage.setItem(CLAVE_MASIVO, v ? '1' : '0') } catch {}
-  }
+  // El daño masivo es una regla de la mesa: la decide el DJ en Ajustes
+  const masivo = $derived(ajustesMesa().danoMasivo)
 
   let dano = $state('')
   let tipo = $state('fisico')
@@ -55,7 +51,6 @@
     <label><input type="checkbox" bind:checked={resistencia} /> Tengo resistencia al daño {tipo === 'fisico' ? 'físico' : 'mágico'} <small>(mitad, hacia arriba)</small></label>
     <label><input type="checkbox" bind:checked={directo} /> Daño directo <small>(la Armadura no lo reduce)</small></label>
     <label class="reduce">Reducirlo en <input class="campo num" type="number" min="0" inputmode="numeric" placeholder="0" bind:value={reduccion} /> <small>(rasgos, cartas…)</small></label>
-    <label><input type="checkbox" checked={masivo} onchange={(e) => cambiarMasivo(e.currentTarget.checked)} /> Daño masivo <small>(regla opcional: 2 × Grave marca 4 PG)</small></label>
   </div>
 
   <div class="escala" aria-label="Severidad">
@@ -65,6 +60,8 @@
       </span>
     {/each}
   </div>
+
+  {#if masivo}<p class="regla">Regla de la mesa: daño masivo. El doble del umbral Grave ({u.grave * 2}) o más marca 4 PG.</p>{/if}
 
   {#if hayDano}
     <div class="veredicto {TONO[r.severidadFinal]}" aria-live="polite">
@@ -117,6 +114,7 @@
   .armadura { display: grid; justify-items: center; gap: 0.1rem; border-color: rgba(143, 183, 217, 0.55); }
   .armadura small { font-weight: 500; font-size: 0.78rem; color: var(--pergamino-suave); }
   .armadura.on { background: rgba(143, 183, 217, 0.3); border-color: #8fb7d9; }
+  .regla { margin: 0; font-size: 0.8rem; color: var(--pergamino-suave); }
   .aviso { margin: 0; padding: 0.5rem 0.7rem; border-radius: 12px; background: rgba(217, 74, 92, 0.18); border: 1px solid rgba(217, 74, 92, 0.5); font-size: 0.86rem; }
   .error { margin: 0; color: #ffb3bd; font-size: 0.88rem; }
   .principal { background: linear-gradient(135deg, #f6cf72, #e09a35 55%, #b9641c); color: #2a1606; border: 0; }

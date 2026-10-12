@@ -50,7 +50,7 @@ función `tirar()`. Todo lo demás va en la columna `hoja` (JSON):
 
   "cartas": { "mano": ["gifted-tracker"], "boveda": [] },   // ids del SRD o "casero:<uuid>"
   "inventario": [{ "nombre": "Cuerda", "cantidad": 1, "nota": "" }],
-  "oro": { "punados": 1, "bolsas": 0, "cofres": 0 },
+  "oro": { "punados": 1, "bolsas": 0, "cofres": 0 },   // + "monedas" si la mesa usa monedas (10 = 1 puñado)
 
   "companero": null,            // Vínculo bestial: { nombre, especie, evasion, estres_max, estres,
                                 //   dano_lados, alcance, experiencias: [{nombre, valor}], rasgos: [], notas }
@@ -74,8 +74,8 @@ función `tirar()`. Todo lo demás va en la columna `hoja` (JSON):
 
 Ayudas de la hoja (botones bajo los marcadores; código puro en `src/lib/ayudas.js` y `src/lib/avance.js`):
 - **Recibir daño:** resistencia (mitad, hacia arriba) → reducciones → umbrales → una casilla de Armadura
-  baja un escalón (no contra daño directo). Daño masivo (2 × Grave = 4 PG) es opcional y se recuerda
-  en el navegador (`dnh.danoMasivo`), apagado de inicio.
+  baja un escalón (no contra daño directo). Daño masivo (2 × Grave = 4 PG) es una regla opcional de la
+  mesa: la decide el DJ en Ajustes → Reglas de la mesa (`campanias.ajustes.danoMasivo`), apagada de inicio.
 - **Descansar:** 2 movimientos (se puede repetir); los cortos tiran 1d4 + Rango con `tirar()`.
 - **Movimiento de muerte:** al marcar el último PG. El d12 de Evitar la muerte y los Dados de Dualidad de
   Arriesgarlo todo pasan por `tirar()` (tipos `libre` y `reaccion`, así no dan Esperanza ni Miedo).

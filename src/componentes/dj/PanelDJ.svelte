@@ -1,7 +1,7 @@
 <script>
   import {
     app, crearEncuentro, guardarEncuentro, borrarEncuentro, activarEncuentro, terminarEncuentro,
-    crearCuenta, guardarCuenta, borrarCuenta,
+    crearCuenta, guardarCuenta, borrarCuenta, ajustesMesa,
   } from '../../lib/mesa.svelte.js'
   import { untrack } from 'svelte'
   import { escenaDe, completarInstancia, leFalta } from '../../lib/escena.js'
@@ -59,7 +59,7 @@
   const guardarAdversarios = (id, lista) => guardarEncuentro(id, { adversarios: completar(lista) })
 
   // Lo que la mesa ve de este encuentro (la base de datos hace la misma cuenta)
-  const vistaMesa = $derived(encuentro ? escenaDe({ ...encuentro, adversarios: completar(encuentro.adversarios ?? []) }) : null)
+  const vistaMesa = $derived(encuentro ? escenaDe({ ...encuentro, adversarios: completar(encuentro.adversarios ?? []) }, ajustesMesa()) : null)
   const ocultos = $derived((encuentro?.adversarios ?? []).filter((i) => i.oculto).length)
 
   // Encuentros guardados antes de que existiera la escena: se completan una vez

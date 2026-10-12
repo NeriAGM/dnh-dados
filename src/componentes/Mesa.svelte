@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import {
-    app, alLlegarTirada, registrarPropia, elegirPersonaje, ajustarPersonaje, ajustarMiedo, nombreDe, ajustarHoja,
+    app, alLlegarTirada, registrarPropia, elegirPersonaje, ajustarPersonaje, ajustarMiedo, nombreDe, ajustarHoja, ajustesMesa,
   } from '../lib/mesa.svelte.js'
   import { cargarSRD, conCasero } from '../lib/srd.js'
   import { hojaDemo } from '../lib/demo.js'
@@ -43,7 +43,7 @@
   const tiradas = $derived(app.demo ? demoTiradas : app.lanzamientos)
   const puedoEditarPJ = $derived(app.demo || (pj && (esDJ || pj.usuario_id === uid)))
   // Encuentro activo tal como lo ve la mesa: en prueba se arma aquí mismo
-  const escena = $derived(app.demo ? escenaDe(app.encuentros.find((e) => e.activo)) : app.escena)
+  const escena = $derived(app.demo ? escenaDe(app.encuentros.find((e) => e.activo), ajustesMesa()) : app.escena)
 
   function dadosPara3D(t) {
     return t.dados.map((d) => ({ lados: d.lados, valor: d.valor, estilo: estiloDe(d.rol, t.tipo), descartado: d.descartado }))
