@@ -217,7 +217,8 @@
   {#if pj || misPJs.length}
     <section class="pj vidrio" bind:this={elPJ} style:--color-pj={pj?.color ?? '#e9b44c'}>
       {#if misPJs.length > 1}
-        <select class="selector titulo" value={app.personajeActivo} onchange={(e) => elegirPersonaje(e.currentTarget.value)} aria-label="Personaje con el que tiras">
+        <select class="selector titulo" value={app.personajeActivo ?? ''} onchange={(e) => elegirPersonaje(e.currentTarget.value || null)} aria-label="Personaje con el que tiras">
+          {#if esDJ}<option value="">Elige un personaje</option>{/if}
           {#each misPJs as p (p.id)}<option value={p.id}>{p.nombre}</option>{/each}
         </select>
       {:else}
@@ -270,7 +271,7 @@
     />
   </div>
 
-  <div class="zona-lanzador" bind:this={elLanzador}>
+  <div class="zona-lanzador" class:con-hoja={!!pjHoja} bind:this={elLanzador}>
     <Lanzador esDJ={esDJ} {ocupado} onTirar={alTirar} />
   </div>
 
@@ -283,7 +284,7 @@
       pj={pjHoja}
       {cat}
       editable={puedoEditarHoja}
-      jugador={app.demo ? '' : nombreDe(pjHoja.usuario_id)}
+      jugador={app.demo || !pjHoja.usuario_id ? '' : nombreDe(pjHoja.usuario_id)}
       onHoja={cambiarHoja}
       onPJ={cambiarPJHoja}
       onTirar={tirarDesdeHoja}
@@ -387,6 +388,7 @@
   }
   @media (min-width: 1100px) {
     .zona-resultado.con-hoja { left: calc(50% + 140px); z-index: 10; }
+    .zona-lanzador.con-hoja { left: calc(50% + 140px); width: min(520px, calc(100% - 560px - 360px - 2rem)); min-width: 380px; }
   }
   .aviso {
     position: absolute;
