@@ -37,3 +37,9 @@
 - [ ] Neri: decidir si se agregan las fichas de acción (regla opcional del foco) como regla de la mesa.
 - [ ] Glosario: agregar términos de descansos, muerte y subir de nivel (Limpiar Estrés, Llamarada de gloria, cicatriz, mejoras, logros de rango).
 - [ ] Personajes importados con nivel no tienen avances registrados: los límites de mejoras solo cuentan desde la app.
+
+## Lore de la campaña (migración 007)
+
+- [ ] Correr `supabase/migraciones/007_lore.sql` en el editor SQL de Supabase (crea la tabla `lore`, el contador `lore_revision` y el bucket privado `lore`).
+- [ ] Importar el lore exportado de Notion (entra todo **oculto**; se revela página por página con «Visible para la mesa»).
+- [ ] Neri: si se vuelve a importar de Notion, ¿se sobrescriben las páginas que ya editaste en la app? (Hoy el importador puede hacerlo por `origen`; recomendado: no reimportar lo ya editado).
