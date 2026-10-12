@@ -3,7 +3,7 @@
 
 let promesa = null
 
-const ARCHIVOS = ['clases', 'subclases', 'ancestrias', 'comunidades', 'dominios', 'cartas', 'armas', 'armaduras', 'objetos', 'consumibles', 'formas_bestia']
+const ARCHIVOS = ['clases', 'subclases', 'ancestrias', 'comunidades', 'dominios', 'cartas', 'armas', 'armaduras', 'objetos', 'consumibles', 'formas_bestia', 'adversarios', 'entornos']
 const DE_2_0 = ['clases', 'subclases', 'ancestrias', 'comunidades', 'dominios', 'cartas']
 
 export function cargarSRD() {
@@ -26,6 +26,7 @@ export function cargarSRD() {
 const TIPO_A_LISTA = {
   clase: 'clases', subclase: 'subclases', carta: 'cartas', arma: 'armas', armadura: 'armaduras',
   ancestria: 'ancestrias', comunidad: 'comunidades', dominio: 'dominios', objeto: 'objetos',
+  adversario: 'adversarios', entorno: 'entornos',
 }
 
 export function conCasero(cat, casero = []) {

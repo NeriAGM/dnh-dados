@@ -10,7 +10,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 
-const MIGRACIONES = ['001_mesa.sql', '002_hoja.sql'].map((f) => new URL(`../migraciones/${f}`, import.meta.url))
+const MIGRACIONES = ['001_mesa.sql', '002_hoja.sql', '003_dj.sql'].map((f) => new URL(`../migraciones/${f}`, import.meta.url))
 
 const U = {
   dj: '11111111-1111-1111-1111-111111111111',
@@ -203,4 +203,38 @@ test('homebrew: todos lo ven, edita quien lo creó o el DJ', async () => {
   assert.deepEqual((await como(U.intruso, `update contenido_casero set nombre = 'X' where id = $1 returning id`, [id])).filas, [])
   assert.equal((await como(U.dj, `update contenido_casero set nombre = 'Artífice' where id = $1 returning nombre`, [id])).filas[0].nombre, 'Artífice')
   assert.match((await como(U.ana, `insert into contenido_casero (campania_id, tipo, nombre, creado_por) values ($1, 'clase', 'X', $2)`, [camp.id, U.dj])).error, /row-level security/, 'no puede firmar como otro')
+})
+
+// ---------------------------------------------------------------------
+// Fase 4: panel del DJ
+// ---------------------------------------------------------------------
+
+test('los encuentros solo los ve y edita el DJ', async () => {
+  const e = await como(U.dj, `insert into encuentros (campania_id, nombre, adversarios) values ($1, 'Emboscada', '[{"uid":"a","ref":"bear","pg":0}]') returning id`, [camp.id])
+  assert.ok(e.filas?.[0]?.id, e.error)
+  assert.equal((await como(U.ana, `select count(*)::int n from encuentros`)).filas[0].n, 0)
+  assert.match((await como(U.ana, `insert into encuentros (campania_id, nombre) values ($1, 'X')`, [camp.id])).error, /row-level security/)
+  assert.deepEqual((await como(U.ana, `update encuentros set nombre = 'X' returning id`)).filas, [])
+})
+
+test('solo puede haber un encuentro activo', async () => {
+  const a = (await como(U.dj, `insert into encuentros (campania_id, nombre) values ($1, 'A') returning id`, [camp.id])).filas[0].id
+  const b = (await como(U.dj, `insert into encuentros (campania_id, nombre) values ($1, 'B') returning id`, [camp.id])).filas[0].id
+  await como(U.dj, `select activar_encuentro($1)`, [a])
+  await como(U.dj, `select activar_encuentro($1)`, [b])
+  const r = (await como(U.dj, `select nombre from encuentros where activo`)).filas
+  assert.deepEqual(r.map((x) => x.nombre), ['B'])
+  assert.match((await como(U.ana, `select activar_encuentro($1)`, [a])).error, /Solo el DJ/)
+})
+
+test('cuentas regresivas: la mesa ve solo las visibles', async () => {
+  await como(U.dj, `insert into cuentas_regresivas (campania_id, nombre, valor, inicial, visible) values ($1, 'El puente cae', 3, 3, true), ($1, 'Secreto', 5, 5, false)`, [camp.id])
+  assert.deepEqual((await como(U.ana, `select nombre from cuentas_regresivas order by nombre`)).filas.map((x) => x.nombre), ['El puente cae'])
+  assert.equal((await como(U.dj, `select count(*)::int n from cuentas_regresivas`)).filas[0].n, 2)
+  assert.deepEqual((await como(U.ana, `update cuentas_regresivas set valor = 0 returning id`)).filas, [])
+})
+
+test('homebrew acepta adversarios y entornos', async () => {
+  const r = await como(U.dj, `insert into contenido_casero (campania_id, tipo, nombre, creado_por) values ($1, 'adversario', 'Gusano de ceniza', $2) returning tipo`, [camp.id, U.dj])
+  assert.equal(r.filas?.[0]?.tipo, 'adversario', r.error)
 })

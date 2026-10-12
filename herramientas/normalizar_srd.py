@@ -71,7 +71,7 @@ for a in leer("abilities"):
     })
 guardar("cartas", cartas)
 
-guardar("dominios", [{"id": slug(d["name"]), "nombre": d["name"], "descripcion": d["description"]} for d in leer("domains")])
+guardar("dominios", [{"id": slug(d["name"]), "nombre": d["name"], "descripcion": d["description"].split("###")[0].strip()} for d in leer("domains")])
 
 # Clases y subclases
 subclases_por_nombre = {s["name"]: s for s in leer("subclasses")}
@@ -145,3 +145,83 @@ for f in DESTINO.glob("*.json"):
     dup = {i for i in ids if ids.count(i) > 1}
     if dup:
         print("¡IDS REPETIDOS!", f.name, dup)
+
+
+# ---------------------------------------------------------------------
+# Adversarios y entornos (panel del DJ)
+# ---------------------------------------------------------------------
+TIPOS_ADV = {"Solo": "solo", "Bruiser": "bruto", "Minion": "esbirro", "Leader": "lider", "Skulk": "acechador",
+             "Standard": "estandar", "Ranged": "a-distancia", "Social": "social", "Support": "apoyo", "Horde": "horda"}
+
+
+def dano_adv(texto):
+    # "1d12+2 phy", "4 phy", "2d6 mag"
+    m = re.match(r"\s*(?:(\d*)d(\d+))?\s*([+-]?\s*\d+)?\s*(phy|mag)", texto or "", re.I)
+    if not m:
+        raise ValueError(f"Daño de adversario que no entiendo: {texto!r}")
+    dados = int(m.group(1) or 1) if m.group(2) else 0
+    return {"dados": dados, "lados": int(m.group(2)) if m.group(2) else 0,
+            "mod": int((m.group(3) or "0").replace(" ", "")), "tipo": "fisico" if m.group(4).lower() == "phy" else "magico"}
+
+
+def umbrales_adv(texto):
+    if not texto or texto.strip() == "None":
+        return None
+    a, b = [x.strip() for x in texto.split("/")]
+    return {"mayor": entero(a), "grave": entero(b)}  # None si dice "None"
+
+
+def rasgos_adv(lista):
+    out = []
+    for f in lista or []:
+        nombre, _, clase = re.sub(r"\s*-\s*(Passive|Action|Reaction)", r" - \1", f["name"]).rpartition(" - ")
+        if not nombre:
+            nombre, clase = f["name"], ""
+        clase = clase.strip()
+        cuenta = None
+        m = re.match(r"(Action|Reaction|Passive):\s*(.*countdown.*)", clase, re.I)
+        if m:
+            clase, cuenta = m.group(1).capitalize(), m.group(2)
+        out.append({"nombre": nombre.strip(), "clase": {"Passive": "pasiva", "Action": "accion", "Reaction": "reaccion"}.get(clase, clase.lower()),
+                    **({"cuenta_regresiva": cuenta} if cuenta else {}),
+                    "texto": f["text"], **({"pregunta": f["question"]} if f.get("question") else {})})
+    return out
+
+
+def experiencias(texto):
+    out = []
+    for parte in (texto or "").split(","):
+        m = re.match(r"\s*(.+?)\s*([+-]\d+)\s*$", parte)
+        if m:
+            out.append({"nombre": m.group(1), "valor": int(m.group(2))})
+    return out
+
+
+adversarios = []
+for a in leer("adversaries"):
+    tipo_txt = a["type"]
+    base = tipo_txt.split(" ")[0]
+    horda = re.search(r"\((\d*)/HP\)", tipo_txt)
+    adversarios.append({
+        "id": slug(a["name"]), "nombre": a["name"], "nivel": entero(a["tier"]),
+        "tipo": TIPOS_ADV[base], "horda_por_pg": (entero(horda.group(1)) if horda and horda.group(1) else None) if horda else None,
+        "descripcion": a.get("description") or "", "motivos": a.get("motives_and_tactics") or "",
+        "dificultad": entero(a["difficulty"]), "umbrales": umbrales_adv(a.get("thresholds")),
+        "pg": entero(a["hp"]), "estres": entero(a.get("stress"), 0),
+        "ataque": {"nombre": a["attack"], "mod": entero(a["atk"], 0),
+                   "alcance": ALCANCE.get(a.get("range"), "cuerpo"), "dano": dano_adv(a["damage"])},
+        "experiencias": experiencias(a.get("experience")),
+        "rasgos": rasgos_adv(a.get("feature")),
+    })
+guardar("adversarios", adversarios)
+
+entornos = []
+for e in leer("environments"):
+    entornos.append({
+        "id": slug(e["name"]), "nombre": e["name"], "nivel": entero(e["tier"]),
+        "tipo": slug(e.get("type") or ""), "descripcion": e.get("description") or "",
+        "impulsos": e.get("impulses") or "", "dificultad": entero(e.get("difficulty")),
+        "posibles_adversarios": e.get("potential_adversaries") or "",
+        "rasgos": rasgos_adv(e.get("feature")),
+    })
+guardar("entornos", entornos)

@@ -25,5 +25,7 @@
 - [ ] Capturar la hoja de Aida (en Notion solo hay trasfondo).
 - [ ] Asignar cada personaje importado a su jugador (Ajustes → Personajes).
 - [ ] Verificar el contenido del SRD 2.0 contra el PDF oficial (hoy viene de una transcripción comunitaria).
-- [ ] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla).
+- [x] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla). Migración 003.
+- [ ] Neri: revisar nombres traducidos del bestiario (Ent, Destellífero, Sable de abordaje…).
+- [ ] Más adelante: que los jugadores vean el encuentro activo (hoy solo lo ve el DJ).
 - [ ] Fase 5: fondos personalizados por jugador.

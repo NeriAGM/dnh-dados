@@ -16,6 +16,8 @@ export const app = $state({
   personajes: [],
   lanzamientos: [],
   casero: [],           // contenido homebrew de la campaña
+  encuentros: [],       // solo el DJ los recibe
+  cuentas: [],          // cuentas regresivas
   personajeActivo: null, // id
   error: null,
 })
@@ -24,6 +26,12 @@ const ESCUCHAS = new Set()
 export function alLlegarTirada(fn) { ESCUCHAS.add(fn); return () => ESCUCHAS.delete(fn) }
 
 let canal = null
+
+function reemplazar(lista, evento, nuevo, viejo, alPrincipio = false) {
+  if (evento === 'DELETE') return lista.filter((x) => x.id !== viejo.id)
+  if (lista.some((x) => x.id === nuevo.id)) return lista.map((x) => (x.id === nuevo.id ? nuevo : x))
+  return alPrincipio ? [nuevo, ...lista] : [...lista, nuevo]
+}
 const CAMPANIA_GUARDADA = 'dnh.campania'
 const PERSONAJE_GUARDADO = 'dnh.personaje'
 
@@ -74,6 +82,12 @@ export async function abrirCampania(id) {
     supabase.from('contenido_casero').select('*').eq('campania_id', id).order('nombre'),
   ])
   app.casero = casero || []
+  const [{ data: encuentros }, { data: cuentas }] = await Promise.all([
+    c.rol === 'dj' ? supabase.from('encuentros').select('*').eq('campania_id', id).order('creado', { ascending: false }) : Promise.resolve({ data: [] }),
+    supabase.from('cuentas_regresivas').select('*').eq('campania_id', id).order('creado'),
+  ])
+  app.encuentros = encuentros || []
+  app.cuentas = cuentas || []
   app.miembros = miembros || []
   app.personajes = personajes || []
   app.lanzamientos = lanz || []
@@ -106,6 +120,14 @@ function escuchar(id) {
       if (eventType === 'DELETE') app.personajes = app.personajes.filter((x) => x.id !== old.id)
       else if (app.personajes.some((x) => x.id === p.id)) app.personajes = app.personajes.map((x) => (x.id === p.id ? p : x))
       else app.personajes = [...app.personajes, p].sort((a, b) => a.nombre.localeCompare(b.nombre))
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'encuentros', filter: `campania_id=eq.${id}` }, ({ eventType, new: e, old }) => {
+      app.encuentros = reemplazar(app.encuentros, eventType, e, old, true)
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'cuentas_regresivas', filter: `campania_id=eq.${id}` }, ({ eventType, new: c, old }) => {
+      // Si el DJ la oculta, a los jugadores les llega como borrada o sin permiso: se quita
+      if (eventType !== 'DELETE' && !c.visible && app.rol !== 'dj') app.cuentas = app.cuentas.filter((x) => x.id !== c.id)
+      else app.cuentas = reemplazar(app.cuentas, eventType, c, old)
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'contenido_casero', filter: `campania_id=eq.${id}` }, ({ eventType, new: c, old }) => {
       if (eventType === 'DELETE') app.casero = app.casero.filter((x) => x.id !== old.id)
@@ -274,4 +296,70 @@ export async function borrarCasero(id) {
   const { error } = await supabase.from('contenido_casero').delete().eq('id', id)
   if (error) throw new Error(error.message)
   app.casero = app.casero.filter((x) => x.id !== id)
+}
+
+// ---------------------------------------------------------------------
+// Panel del DJ: encuentros y cuentas regresivas
+// ---------------------------------------------------------------------
+
+const local = () => app.demo
+const idLocal = () => `local-${Math.random().toString(36).slice(2, 10)}`
+
+export async function crearEncuentro(nombre = 'Encuentro nuevo') {
+  if (local()) {
+    const e = { id: idLocal(), nombre, entorno: null, ajustes: [], pjs: null, adversarios: [], activo: !app.encuentros.length, notas: '' }
+    app.encuentros = [e, ...app.encuentros]
+    return e
+  }
+  const { data, error } = await supabase.from('encuentros').insert({ campania_id: app.campania.id, nombre }).select().single()
+  if (error) throw new Error(error.message)
+  app.encuentros = reemplazar(app.encuentros, 'INSERT', data, null, true)
+  return data
+}
+
+export async function guardarEncuentro(id, cambios) {
+  if (local()) { app.encuentros = app.encuentros.map((e) => (e.id === id ? { ...e, ...cambios } : e)); return }
+  const antes = app.encuentros.find((e) => e.id === id)
+  app.encuentros = app.encuentros.map((e) => (e.id === id ? { ...e, ...cambios } : e))
+  const { data, error } = await supabase.from('encuentros').update(cambios).eq('id', id).select().single()
+  if (error) {
+    if (antes) app.encuentros = app.encuentros.map((e) => (e.id === id ? antes : e))
+    throw new Error(error.message)
+  }
+  app.encuentros = app.encuentros.map((e) => (e.id === id ? data : e))
+}
+
+export async function borrarEncuentro(id) {
+  if (local()) { app.encuentros = app.encuentros.filter((e) => e.id !== id); return }
+  const { error } = await supabase.from('encuentros').delete().eq('id', id)
+  if (error) throw new Error(error.message)
+  app.encuentros = app.encuentros.filter((e) => e.id !== id)
+}
+
+export async function activarEncuentro(id) {
+  if (local()) { app.encuentros = app.encuentros.map((e) => ({ ...e, activo: e.id === id })); return }
+  const { error } = await supabase.rpc('activar_encuentro', { p_encuentro: id })
+  if (error) throw new Error(error.message)
+  app.encuentros = app.encuentros.map((e) => ({ ...e, activo: e.id === id }))
+}
+
+export async function crearCuenta(cuenta) {
+  if (local()) { app.cuentas = [...app.cuentas, { id: idLocal(), ...cuenta }]; return }
+  const { data, error } = await supabase.from('cuentas_regresivas').insert({ campania_id: app.campania.id, ...cuenta }).select().single()
+  if (error) throw new Error(error.message)
+  app.cuentas = reemplazar(app.cuentas, 'INSERT', data, null)
+}
+
+export async function guardarCuenta(id, cambios) {
+  app.cuentas = app.cuentas.map((c) => (c.id === id ? { ...c, ...cambios } : c))
+  if (local()) return
+  const { error } = await supabase.from('cuentas_regresivas').update(cambios).eq('id', id)
+  if (error) throw new Error(error.message)
+}
+
+export async function borrarCuenta(id) {
+  if (local()) { app.cuentas = app.cuentas.filter((c) => c.id !== id); return }
+  const { error } = await supabase.from('cuentas_regresivas').delete().eq('id', id)
+  if (error) throw new Error(error.message)
+  app.cuentas = app.cuentas.filter((c) => c.id !== id)
 }

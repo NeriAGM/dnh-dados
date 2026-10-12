@@ -6,6 +6,7 @@
   import { cargarSRD, conCasero } from '../lib/srd.js'
   import { hojaDemo } from '../lib/demo.js'
   import Hoja from './hoja/Hoja.svelte'
+  import PanelDJ from './dj/PanelDJ.svelte'
   import { supabase } from '../lib/supabase.js'
   import { tirar } from '../lib/tirador.js'
   import { estiloDe } from '../lib/dados3d/estilos.js'
@@ -21,6 +22,7 @@
   let verHistorial = $state(false)
   let verAjustes = $state(false)
   let verHoja = $state(null) // id del personaje cuya hoja está abierta
+  let verDJ = $state(false)
   let catBase = $state(null)
   const cat = $derived(conCasero(catBase, app.demo ? [] : app.casero))
   let aviso = $state('')
@@ -77,6 +79,7 @@
 
   function aplicarDemo(t) {
     t.usuario_id = 'demo'
+    t.personaje_id = t.tipo === 'dj' ? null : 'demo'
     if (t.tipo === 'accion') {
       if (t.desenlace === 'esperanza' || t.desenlace === 'critico') {
         demoPJ.esperanza = Math.min(demoPJ.esperanza + 1, demoPJ.esperanza_max)
@@ -97,12 +100,13 @@
       const resultadoAlto = ancho ? 210 : 120
       const arriba = Math.max(techo, (ancho ? 64 : 56) + resultadoAlto) + 8
       const abajo = h - elLanzador.getBoundingClientRect().top + 8
+      document.documentElement.style.setProperty('--alto-lanzador', `${Math.round(abajo)}px`)
       const derecha = ancho && elHistorial ? w - elHistorial.getBoundingClientRect().left + 8 : 0
-      const hojaAbierta = w >= 1100 ? document.querySelector('.hoja') : null
+      const hojaAbierta = w >= 1100 ? document.querySelector('.hoja, .panel') : null
       const izquierda = hojaAbierta ? hojaAbierta.getBoundingClientRect().right + 8 : 0
       mesa3d.ajustarZona({ arriba, abajo, derecha, izquierda })
     }
-    verHoja
+    verHoja; verDJ
     const obs = new ResizeObserver(medir)
     for (const el of [elBarra, elPJ, elLanzador, elHistorial]) if (el) obs.observe(el)
     window.addEventListener('resize', medir)
@@ -172,6 +176,13 @@
     if (app.demo) { demoPJ.estres = nuevo; return }
     try { await ajustarPersonaje(pj.id, { estres: nuevo }) } catch (e) { aviso = e.message }
   }
+  async function sumarMiedo(delta) {
+    if (app.demo) { demoMiedo = Math.max(0, Math.min(12, demoMiedo + delta)); return }
+    await ajustarMiedo(delta)
+  }
+  const ladoOcupado = $derived(!!pjHoja || verDJ)
+  const puedeDJ = $derived(app.demo || esDJ)
+
   async function cambiarMiedo(n) {
     if (app.demo) { demoMiedo = miedo === n ? n - 1 : n; return }
     if (!esDJ) return
@@ -205,6 +216,9 @@
     </div>
 
     <div class="botones">
+      {#if puedeDJ}
+        <button class="boton dj" aria-label="Panel del DJ" onclick={() => { verHoja = null; verDJ = !verDJ }} disabled={!catBase} aria-pressed={verDJ}><span class="largo">Panel del DJ</span><span class="corto">DJ</span></button>
+      {/if}
       <button class="boton icono solo-movil" onclick={() => (verHistorial = true)} aria-label="Ver historial">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h10"/></svg>
       </button>
@@ -251,7 +265,7 @@
   {/if}
 
   {#if resultado}
-    <div class="zona-resultado" class:con-hoja={!!pjHoja}>
+    <div class="zona-resultado" class:con-hoja={ladoOcupado}>
       <Resultado tirada={resultado.tirada} autor={resultado.autor} personaje={resultado.personaje} onCerrar={() => (resultado = null)} />
     </div>
   {/if}
@@ -264,19 +278,31 @@
     <Historial
       {tiradas}
       nombreDe={(id) => (app.demo ? 'Tú' : nombreDe(id))}
-      pjDe={(id) => (app.demo ? demoPJ : app.personajes.find((p) => p.id === id))}
+      pjDe={(id) => (app.demo ? (id ? demoPJ : null) : app.personajes.find((p) => p.id === id))}
       puedeBorrar={esDJ}
       onBorrar={borrar}
       onCerrar={verHistorial ? () => (verHistorial = false) : null}
     />
   </div>
 
-  <div class="zona-lanzador" class:con-hoja={!!pjHoja} bind:this={elLanzador}>
+  <div class="zona-lanzador" class:con-hoja={ladoOcupado} bind:this={elLanzador}>
     <Lanzador esDJ={esDJ} {ocupado} onTirar={alTirar} />
   </div>
 
   {#if verAjustes}
-    <Ajustes {momento} {onMomento} {cat} onCerrar={() => (verAjustes = false)} onAbrirHoja={(id) => { verAjustes = false; verHoja = id }} />
+    <Ajustes {momento} {onMomento} {cat} onCerrar={() => (verAjustes = false)} onAbrirHoja={(id) => { verAjustes = false; verDJ = false; verHoja = id }} />
+  {/if}
+
+  {#if app.cuentas.length}
+    <div class="cuentas" class:con-hoja={ladoOcupado} aria-label="Cuentas regresivas">
+      {#each app.cuentas as c (c.id)}
+        <span class="cuenta" class:cero={c.valor <= 0} class:oculta={!c.visible}><b class="titulo">{c.valor}</b>{c.nombre}</span>
+      {/each}
+    </div>
+  {/if}
+
+  {#if verDJ && cat}
+    <PanelDJ {cat} {miedo} onMiedo={sumarMiedo} onTirar={(p) => { if (!matchMedia('(min-width: 1100px)').matches) verDJ = false; alTirar(p) }} onCerrar={() => (verDJ = false)} />
   {/if}
 
   {#if pjHoja && cat}
@@ -387,9 +413,33 @@
     z-index: 4;
   }
   @media (min-width: 1100px) {
+    .cuentas.con-hoja { left: calc(50% + 140px); }
     .zona-resultado.con-hoja { left: calc(50% + 140px); z-index: 10; }
     .zona-lanzador.con-hoja { left: calc(50% + 140px); width: min(520px, calc(100% - 560px - 360px - 2rem)); min-width: 380px; }
   }
+  .boton.dj { background: rgba(91, 47, 145, 0.55); border-color: rgba(167, 124, 232, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 0.85rem; padding: 0.45rem 0.8rem; }
+  .boton.dj[aria-pressed='true'] { background: var(--miedo); color: var(--tinta); }
+  .cuentas {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    top: calc(3.2rem + env(safe-area-inset-top, 0px));
+    display: flex; gap: 0.35rem; flex-wrap: wrap; justify-content: center; max-width: min(92vw, 640px); z-index: 2;
+  }
+  .cuenta {
+    display: flex; gap: 0.4rem; align-items: center; padding: 0.25rem 0.7rem 0.25rem 0.35rem; border-radius: 999px;
+    background: rgba(24, 17, 42, 0.75); border: 1px solid rgba(240, 189, 85, 0.45); font-size: 0.8rem; font-weight: 700;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  .corto { display: none; }
+  @media (max-width: 759px) {
+    .largo { display: none; }
+    .corto { display: inline; }
+    .cuentas { top: auto; bottom: var(--alto-lanzador, 13rem); }
+  }
+  .cuenta b { display: grid; place-items: center; min-width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--esperanza); color: var(--tinta); text-shadow: none; font-size: 0.95rem; }
+  .cuenta.cero { border-color: var(--sangre); animation: latido 1.2s ease-in-out infinite; }
+  .cuenta.cero b { background: var(--sangre); color: white; }
+  .cuenta.oculta { opacity: 0.6; border-style: dashed; }
+  @keyframes latido { 50% { box-shadow: 0 0 18px rgba(217, 74, 92, 0.8); } }
   .aviso {
     position: absolute;
     left: 50%;

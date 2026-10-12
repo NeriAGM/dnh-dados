@@ -52,3 +52,25 @@ test('avisos: arreglo de rasgos, Evasión, cartas', () => {
   assert.match(t, /«Carta C» es de nivel 4/)
   assert.doesNotMatch(t, /«Carta A»/)
 })
+
+import { puntosDeBatalla } from './reglas.js'
+
+test('puntos de batalla: ejemplo del SRD con 4 PJ', () => {
+  const adv = { oso: { tipo: 'bruto' }, jefe: { tipo: 'lider' }, sold: { tipo: 'estandar' }, cura: { tipo: 'apoyo' }, rata: { tipo: 'esbirro' } }
+  const enc = [
+    { ref: 'oso' }, { ref: 'jefe' }, { ref: 'sold' }, { ref: 'sold' }, { ref: 'cura' },
+    ...Array(8).fill({ ref: 'rata' }),
+  ]
+  const r = puntosDeBatalla(enc, adv, 4)
+  assert.equal(r.base, 14)
+  assert.equal(r.gastado, 14, '4 + 3 + 2 + 2 + 1 + 2 grupos de 4 esbirros')
+  assert.equal(r.restante, 0)
+})
+
+test('puntos de batalla: ajustes automáticos y manuales', () => {
+  const adv = { a: { tipo: 'solo' }, b: { tipo: 'estandar' } }
+  assert.equal(puntosDeBatalla([{ ref: 'a' }, { ref: 'a' }], adv, 3).presupuesto, 11 - 2)
+  assert.equal(puntosDeBatalla([{ ref: 'b' }], adv, 3).presupuesto, 11 + 1)
+  assert.equal(puntosDeBatalla([{ ref: 'b' }], adv, 3, ['dificil']).presupuesto, 11 + 1 + 2)
+  assert.equal(puntosDeBatalla([{ ref: 'b' }, ...Array(5).fill({ ref: 'x' })], { ...adv, x: { tipo: 'esbirro' } }, 3).gastado, 2 + 2)
+})

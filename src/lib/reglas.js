@@ -115,3 +115,41 @@ export function hojaNueva(clase, extra = {}) {
     ...extra,
   }
 }
+
+// ---------------------------------------------------------------------
+// Puntos de batalla (construir encuentros, SRD)
+// Presupuesto = 3 × PJ + 2, con ajustes. Cada adversario cuesta según su tipo;
+// los Esbirros cuestan 1 por grupo del mismo tamaño que el grupo de PJ.
+// ---------------------------------------------------------------------
+export const COSTO_TIPO = { social: 1, apoyo: 1, horda: 2, 'a-distancia': 2, acechador: 2, estandar: 2, lider: 3, bruto: 4, solo: 5 }
+export const NOMBRE_TIPO = {
+  solo: 'Solo', bruto: 'Bruto', esbirro: 'Esbirro', lider: 'Líder', acechador: 'Acechador',
+  estandar: 'Estándar', 'a-distancia': 'A distancia', social: 'Social', apoyo: 'Apoyo', horda: 'Horda',
+}
+export const AJUSTES_BATALLA = [
+  { id: 'facil', texto: 'Pelea más fácil o corta', puntos: -1 },
+  { id: 'dano', texto: '+1d4 de daño a todos los adversarios', puntos: -2 },
+  { id: 'rango-menor', texto: 'Un adversario de rango menor', puntos: 1 },
+  { id: 'dificil', texto: 'Pelea más difícil o larga', puntos: 2 },
+]
+
+export function puntosDeBatalla(instancias, adversariosPorId, pjs, ajustesElegidos = []) {
+  const n = Math.max(1, pjs || 1)
+  const tipos = instancias.map((i) => adversariosPorId[i.ref]?.tipo ?? 'estandar')
+  const esbirrosPorRef = {}
+  let gastado = 0
+  instancias.forEach((i, k) => {
+    if (tipos[k] === 'esbirro') esbirrosPorRef[i.ref] = (esbirrosPorRef[i.ref] ?? 0) + 1
+    else gastado += COSTO_TIPO[tipos[k]] ?? 2
+  })
+  for (const cantidad of Object.values(esbirrosPorRef)) gastado += Math.ceil(cantidad / n)
+
+  const automaticos = []
+  if (tipos.filter((t) => t === 'solo').length >= 2) automaticos.push({ texto: '2 o más Solos', puntos: -2 })
+  if (instancias.length && !tipos.some((t) => ['bruto', 'horda', 'lider', 'solo'].includes(t))) {
+    automaticos.push({ texto: 'Sin Brutos, Hordas, Líderes ni Solos', puntos: 1 })
+  }
+  const manuales = AJUSTES_BATALLA.filter((a) => ajustesElegidos.includes(a.id))
+  const presupuesto = 3 * n + 2 + [...automaticos, ...manuales].reduce((s, a) => s + a.puntos, 0)
+  return { presupuesto, gastado, restante: presupuesto - gastado, automaticos, manuales, base: 3 * n + 2 }
+}
