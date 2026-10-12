@@ -3,6 +3,7 @@
 // pantalla que lo muestra se actualiza sola.
 
 import { supabase } from './supabase.js'
+import { fusionarFila } from './filas.js'
 import { ajustesDe } from './ajustes.js'
 
 export const app = $state({
@@ -30,9 +31,10 @@ export function alLlegarTirada(fn) { ESCUCHAS.add(fn); return () => ESCUCHAS.del
 
 let canal = null
 
+
 function reemplazar(lista, evento, nuevo, viejo, alPrincipio = false) {
   if (evento === 'DELETE') return lista.filter((x) => x.id !== viejo.id)
-  if (lista.some((x) => x.id === nuevo.id)) return lista.map((x) => (x.id === nuevo.id ? nuevo : x))
+  if (lista.some((x) => x.id === nuevo.id)) return lista.map((x) => (x.id === nuevo.id ? fusionarFila(x, nuevo) : x))
   return alPrincipio ? [nuevo, ...lista] : [...lista, nuevo]
 }
 const CAMPANIA_GUARDADA = 'dnh.campania'
@@ -125,7 +127,7 @@ function escuchar(id) {
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'personajes', filter: `campania_id=eq.${id}` }, ({ eventType, new: p, old }) => {
       if (eventType === 'DELETE') app.personajes = app.personajes.filter((x) => x.id !== old.id)
-      else if (app.personajes.some((x) => x.id === p.id)) app.personajes = app.personajes.map((x) => (x.id === p.id ? p : x))
+      else if (app.personajes.some((x) => x.id === p.id)) app.personajes = app.personajes.map((x) => (x.id === p.id ? fusionarFila(x, p) : x))
       else app.personajes = [...app.personajes, p].sort((a, b) => a.nombre.localeCompare(b.nombre))
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'encuentros', filter: `campania_id=eq.${id}` }, ({ eventType, new: e, old }) => {
@@ -133,7 +135,7 @@ function escuchar(id) {
     })
     // La escena la arma la base de datos; aquí solo se recibe
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'escenas', filter: `campania_id=eq.${id}` }, ({ new: e }) => { app.escena = e })
-    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'escenas', filter: `campania_id=eq.${id}` }, ({ new: e }) => { app.escena = e })
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'escenas', filter: `campania_id=eq.${id}` }, ({ new: e }) => { app.escena = fusionarFila(app.escena, e) })
     // Los borrados no se pueden filtrar en el tiempo real: llega la llave y se compara
     .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'escenas' }, async ({ old }) => {
       if (old?.campania_id === id) { app.escena = null; return }
@@ -148,7 +150,7 @@ function escuchar(id) {
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'contenido_casero', filter: `campania_id=eq.${id}` }, ({ eventType, new: c, old }) => {
       if (eventType === 'DELETE') app.casero = app.casero.filter((x) => x.id !== old.id)
-      else if (app.casero.some((x) => x.id === c.id)) app.casero = app.casero.map((x) => (x.id === c.id ? c : x))
+      else if (app.casero.some((x) => x.id === c.id)) app.casero = app.casero.map((x) => (x.id === c.id ? fusionarFila(x, c) : x))
       else app.casero = [...app.casero, c]
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'miembros', filter: `campania_id=eq.${id}` }, async () => {
