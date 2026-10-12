@@ -422,6 +422,11 @@ export function crearPaisaje(canvas, { momento = momentoActual(), reducido = fal
       cuadro(0)
     },
     get momento() { return momento },
+    // Pausa la animación cuando hay una imagen encima (ahorra batería)
+    pausar(si = true) {
+      if (si) { cancelAnimationFrame(raf); raf = 0 }
+      else if (!reducido && !raf) { ultimo = 0; raf = requestAnimationFrame(bucle) }
+    },
     destruir() {
       cancelAnimationFrame(raf)
       obs.disconnect()
