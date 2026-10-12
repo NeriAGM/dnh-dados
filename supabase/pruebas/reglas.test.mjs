@@ -1,58 +1,10 @@
-// Pruebas de la base de datos sin tocar Supabase de verdad:
-// levanta un Postgres en memoria (PGlite), aplica la migración y revisa
-// que las reglas y la seguridad hagan lo que deben.
+// Pruebas de la base de datos (tiradas, hojas, DJ) sin tocar Supabase de verdad.
 //
 // Correr:  npm run probar
 
-import { PGlite } from '@electric-sql/pglite'
-import { pgcrypto } from '@electric-sql/pglite/contrib/pgcrypto'
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import fs from 'node:fs'
-
-const MIGRACIONES = ['001_mesa.sql', '002_hoja.sql', '003_dj.sql'].map((f) => new URL(`../migraciones/${f}`, import.meta.url))
-
-const U = {
-  dj: '11111111-1111-1111-1111-111111111111',
-  ana: '22222222-2222-2222-2222-222222222222',
-  intruso: '33333333-3333-3333-3333-333333333333',
-}
-
-async function preparar() {
-  const db = new PGlite({ extensions: { pgcrypto } })
-  // Imitación mínima de lo que Supabase ya trae
-  await db.exec(`
-    create schema extensions;
-    create schema auth;
-    create role anon nologin; create role authenticated nologin;
-    grant usage on schema public, extensions to anon, authenticated;
-    create table auth.users (id uuid primary key, email text, raw_user_meta_data jsonb default '{}');
-    create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('test.uid', true), '')::uuid $$;
-    grant usage on schema auth to authenticated; grant execute on function auth.uid() to authenticated;
-    create publication supabase_realtime;
-    alter default privileges in schema public grant all on tables to anon, authenticated;
-    alter default privileges in schema public grant all on sequences to anon, authenticated;
-    alter default privileges in schema public grant execute on functions to anon, authenticated;
-  `)
-  for (const m of MIGRACIONES) await db.exec(fs.readFileSync(m, 'utf8'))
-  await db.exec(`
-    insert into auth.users values ('${U.dj}', 'neri@x.com', '{"full_name":"Neri"}'),
-      ('${U.ana}', 'ana@x.com', '{"custom_claims":{"global_name":"Ana"}}'),
-      ('${U.intruso}', 'malo@x.com', '{}');
-  `)
-  const como = async (uid, q, params) => {
-    await db.exec(`set role authenticated; select set_config('test.uid', '${uid}', false);`)
-    try { return { filas: (await db.query(q, params)).rows } }
-    catch (e) { return { error: e.message } }
-    finally { await db.exec('reset role') }
-  }
-  const camp = (await como(U.dj, `select * from crear_campania('Dolor & Hambre')`)).filas[0]
-  await como(U.ana, `select * from unirse_campania($1)`, [camp.codigo_invitacion.toLowerCase()])
-  const pj = (await como(U.ana, `insert into personajes (campania_id, usuario_id, nombre) values ($1, $2, 'Mira') returning *`, [camp.id, U.ana])).filas[0]
-  return { db, como, camp, pj }
-}
-
-const DUAL = JSON.stringify([{ lados: 12, rol: 'esperanza' }, { lados: 12, rol: 'miedo' }])
+import { preparar, U, DUAL } from './base.mjs'
 const ctx = await preparar()
 const { db, como, camp, pj } = ctx
 
