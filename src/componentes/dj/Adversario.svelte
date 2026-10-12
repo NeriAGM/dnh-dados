@@ -6,6 +6,7 @@
   import { ALCANCES } from '../../lib/srd.js'
   import { conSigno } from '../../lib/formula.js'
   import Casillas from '../hoja/Casillas.svelte'
+  import { danoActual } from '../../lib/escena.js'
 
   let { adv, instancia = null, abierto = false, onCambiar, onTirarAtaque, onTirarDano, onQuitar, onDuplicar, acciones } = $props()
 
@@ -15,7 +16,8 @@
   let tAviso = 0
   const CLASE = { accion: 'Acción', reaccion: 'Reacción', pasiva: 'Pasiva' }
 
-  const d = $derived(adv?.ataque?.dano ?? {})
+  // Una Horda a la mitad de sus PG o más pega con el daño de su rasgo «Horda (…)»
+  const d = $derived(danoActual(adv, instancia))
   const textoDano = $derived(d.lados ? `${d.dados || 1}d${d.lados}${d.mod ? (d.mod > 0 ? `+${d.mod}` : d.mod) : ''}` : `${d.mod ?? 0}`)
   const caido = $derived(instancia && adv && (instancia.pg ?? 0) >= (adv.pg ?? 1))
   const oculto = $derived(!!instancia?.oculto)
@@ -67,7 +69,7 @@
       <span><b>{adv.pg}</b>PG</span>
       <span><b>{adv.estres ?? 0}</b>Estrés</span>
       <span title="{adv.ataque?.nombre} · {ALCANCES[adv.ataque?.alcance] ?? ''}"><b>{conSigno(adv.ataque?.mod ?? 0) || '+0'}</b>{adv.ataque?.nombre}</span>
-      <span><b>{textoDano}</b>{d.tipo === 'magico' ? 'mág.' : 'fís.'}</span>
+      <span title={d.horda ? 'Daño de Horda: ya marcó la mitad de sus PG' : undefined}><b>{textoDano}</b>{d.tipo === 'magico' ? 'mág.' : 'fís.'}{d.horda ? ' · horda' : ''}</span>
     </div>
 
     {#if instancia}
@@ -80,8 +82,8 @@
       <div class="botones">
         <button class="boton chico" onclick={() => onTirarAtaque?.()}>Atacar {conSigno(adv.ataque?.mod ?? 0) || '+0'}</button>
         {#if d.lados}
-          <button class="boton chico" onclick={() => onTirarDano?.(false)}>Daño {textoDano}</button>
-          <button class="boton chico critico" onclick={() => onTirarDano?.(true)}>Crítico</button>
+          <button class="boton chico" onclick={() => onTirarDano?.(false, d)}>Daño {textoDano}</button>
+          <button class="boton chico critico" onclick={() => onTirarDano?.(true, d)}>Crítico</button>
         {/if}
         <form class="recibir" onsubmit={(e) => { e.preventDefault(); recibir() }}>
           <input class="campo" type="number" min="1" inputmode="numeric" placeholder="Daño" bind:value={dano} aria-label="Daño recibido" />

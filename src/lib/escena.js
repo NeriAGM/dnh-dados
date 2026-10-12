@@ -42,3 +42,19 @@ export function escenaDe(encuentro, { mostrarEntorno = true } = {}) {
   if (!adversarios.length) return null
   return { encuentro_id: encuentro.id, nombre: encuentro.nombre, entorno: (mostrarEntorno && String(encuentro.entorno_nombre ?? '').trim()) || null, adversarios }
 }
+
+// Daño del ataque estándar de un adversario según cómo va. Una Horda que ya
+// marcó la mitad o más de sus PG pega con el daño de su rasgo «Horda (XdY+Z)»
+// (regla del SRD: con menos criaturas, menos daño).
+export function danoActual(adv, inst) {
+  const normal = adv?.ataque?.dano ?? {}
+  if (adv?.tipo !== 'horda' || !inst) return normal
+  const pg = num(inst.pg) ?? 0
+  const max = num(adv.pg)
+  if (!max || pg * 2 < max) return normal
+  for (const r of adv.rasgos ?? []) {
+    const m = /^\s*(?:horda|horde)\s*\(\s*(\d*)\s*d\s*(\d+)\s*(?:([+-])\s*(\d+))?\s*\)/i.exec(r?.nombre ?? '')
+    if (m) return { ...normal, dados: +m[1] || 1, lados: +m[2], mod: m[4] ? (m[3] === '-' ? -m[4] : +m[4]) : 0, horda: true }
+  }
+  return normal
+}

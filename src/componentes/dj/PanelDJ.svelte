@@ -79,7 +79,7 @@
   $effect(() => {
     const e = app.encuentros.find((x) => x.activo)
     if (!e || !cat || rellenados.has(e.id)) return
-    const lista = $state.snapshot(e.adversarios ?? [])
+    const lista = $state.snapshot(colaE.local(e.id)?.adversarios ?? e.adversarios ?? [])
     const faltaEntorno = e.entorno && !e.entorno_nombre && cat.porId?.entornos?.[e.entorno]
     if (!faltaEntorno && !lista.some((i) => leFalta(i, advPorId[i.ref]))) return
     rellenados.add(e.id)
@@ -139,9 +139,9 @@
     const grupos = ventaja === 'ninguna' ? [{ lados: 20 }] : [{ lados: 20, cantidad: 2, conservar: ventaja === 'ventaja' ? 'alto' : 'bajo' }]
     onTirar({ tipo: 'dj', grupos, modificador: adv.ataque?.mod ?? 0, oculta, etiqueta: `${inst.nombre || adv.nombre} · ${adv.ataque?.nombre ?? 'Ataque'}` })
   }
-  function tirarDano(adv, inst, critico) {
-    const d = adv.ataque.dano
-    onTirar({ tipo: 'dano', grupos: [{ lados: d.lados, cantidad: d.dados || 1 }], modificador: d.mod ?? 0, oculta, danoCritico: critico, etiqueta: `Daño · ${inst.nombre || adv.nombre}` })
+  function tirarDano(adv, inst, critico, dano) {
+    const d = dano ?? adv.ataque.dano
+    onTirar({ tipo: 'dano', grupos: [{ lados: d.lados, cantidad: d.dados || 1 }], modificador: d.mod ?? 0, oculta, danoCritico: critico, etiqueta: `Daño · ${inst.nombre || adv.nombre}${d.horda ? ' (horda)' : ''}` })
   }
 
   const GASTOS = [
@@ -254,7 +254,7 @@
               <Adversario {adv} instancia={inst}
                 onCambiar={(c) => cambiarInstancia(i, c)}
                 onTirarAtaque={() => tirarAtaque(adv, inst)}
-                onTirarDano={(crit) => tirarDano(adv, inst, crit)}
+                onTirarDano={(crit, dano) => tirarDano(adv, inst, crit, dano)}
                 onQuitar={() => quitarInstancia(i)}
                 onDuplicar={() => duplicarInstancia(i)} />
             {:else}
