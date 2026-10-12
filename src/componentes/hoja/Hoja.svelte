@@ -64,7 +64,8 @@
   async function aplicarDano({ pg, armadura_marcada, cae }) {
     if (pg !== (hoja.pg ?? 0)) await onHoja(['pg'], pg)
     if (armadura_marcada !== (hoja.armadura_marcada ?? 0)) await onHoja(['armadura_marcada'], armadura_marcada)
-    ayuda = cae ? 'muerte' : null
+    // Si ya eligió movimiento de muerte (inconsciente, gloria, muerto) no se pide otro
+    ayuda = cae && !hoja.estado ? 'muerte' : null
   }
 
   async function cambiar(ruta, valor) {
