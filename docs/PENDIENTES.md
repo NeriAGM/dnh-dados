@@ -11,9 +11,10 @@
 
 ## Revisar en tus hojas de Notion (antes de migrarlas)
 
-- [ ] **Mira:** sus rasgos tienen dos −1; el arreglo oficial es +2, +1, +1, 0, 0, −1.
-- [ ] **Mira:** Evasión base 13; la del Explorador es 12.
-- [ ] **Mira:** el linaje oficial se escribe *Katari*.
+- [x] **Mira:** cuadrada con las reglas el 12/10 (Instinto 0, Evasión 14, Gambesón 3, umbrales 7/13, arco Lejano, cartas en mano). La nota para su jugador está en sus Notas.
+- [ ] **Mira:** falta saber su segunda mejora de nivel 2 (solo se registró +1 PG). Si fue +1 Evasión, queda en 15.
+- [ ] **Mira / Soladius:** el ataque del compañero dice alcance Cercano; el del compañero base es Cuerpo a cuerpo. Tiene 3 Experiencias. Sin verificar contra la hoja del compañero (era una imagen).
+- [ ] Vocabulario: la carta física de Mira dice «Maniobras ágiles»; la app dice «Maniobras hábiles». ¿Cuál dejamos?
 - [ ] **Valerius:** tiene tres +1 en rasgos.
 - [ ] **Valerius:** el Artificiero es homebrew; decidir sus números finales para capturarlo.
 
@@ -33,13 +34,19 @@
 - [ ] Neri: confirmar regla del estado (Herido < mitad, Grave ≥ mitad, Caído = todos). Si la mesa ve el entorno ya se decide en Ajustes → Reglas de la mesa.
 - [ ] Neri: confirmar casillas por mejora al subir de nivel (tomadas de la hoja oficial; los docs las marcan sin verificar).
 - [x] Reglas de la mesa (ajustes de campaña que decide el DJ): daño masivo, monedas y si la mesa ve el entorno. Migración 006.
-- [ ] Correr `supabase/migraciones/006_ajustes.sql` en el editor SQL de Supabase (sin ella, las reglas de la mesa no se pueden guardar).
+- [x] Migración 006 aplicada en Supabase (12/10).
 - [ ] Neri: decidir si se agregan las fichas de acción (regla opcional del foco) como regla de la mesa.
 - [ ] Glosario: agregar términos de descansos, muerte y subir de nivel (Limpiar Estrés, Llamarada de gloria, cicatriz, mejoras, logros de rango).
 - [ ] Personajes importados con nivel no tienen avances registrados: los límites de mejoras solo cuentan desde la app.
 
 ## Lore de la campaña (migración 007)
 
-- [ ] Correr `supabase/migraciones/007_lore.sql` en el editor SQL de Supabase (crea la tabla `lore`, el contador `lore_revision` y el bucket privado `lore`).
-- [ ] Importar el lore exportado de Notion (entra todo **oculto**; se revela página por página con «Visible para la mesa»).
-- [ ] Neri: si se vuelve a importar de Notion, ¿se sobrescriben las páginas que ya editaste en la app? (Hoy el importador puede hacerlo por `origen`; recomendado: no reimportar lo ya editado).
+- [x] Migración 007 aplicada en Supabase (12/10).
+- [x] Lore importado de Notion el 12/10: 17 páginas, todas ocultas. Las 5 hojas de personaje de Notion quedaron en «Personajes › Hojas de Notion (archivo)».
+- [ ] Lore: 73 imágenes de Notion quedaron como «imagen pendiente» (no se pueden bajar desde el servidor). Se pueden subir desde el editor del lore.
+- [ ] Lore: los 6 comentarios de «Historia de su nacimiento» no se trajeron.
+- [x] Decidido: el lore se edita en la app; Notion queda de archivo (no se reimporta).
+
+## Seguridad
+
+- [ ] Borrar la rama `importar-temporal` en GitHub (Branches → papelera): contiene el SQL con los datos de los personajes y el repositorio es público.
