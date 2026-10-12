@@ -124,3 +124,16 @@ test('Arriesgarlo todo: Esperanza, Miedo y crítico', () => {
   assert.match(repartoValido({ pg: 4, estres: 2 }, 5, 6, 3), /5 en total/)
   assert.match(repartoValido({ pg: 1, estres: 4 }, 9, 6, 3), /3 de Estrés/)
 })
+
+test('recibir daño con PG escritos como texto no mata al personaje', () => {
+  // Antes: "2" + 1 = "21" → Math.min(6, "21") = 6 → caía con un golpe menor
+  const r = resolverDano(3, { pg: '2', pg_max: '6', armadura: { puntuacion: '3' }, armadura_marcada: '1' }, { mayor: 7, grave: 13 })
+  assert.equal(r.pg, 1)
+  assert.equal(r.pgDespues, 3)
+  assert.equal(r.cae, false)
+  assert.equal(r.puedeArmadura, true)
+  const a = resolverDano(3, { pg: '2', pg_max: '6', armadura: { puntuacion: '3' }, armadura_marcada: '1' }, { mayor: 7, grave: 13 }, { usarArmadura: true })
+  assert.equal(a.armaduraDespues, 2)
+  assert.equal(necesitaMovimientoDeMuerte({ pg: '6', pg_max: '6' }), true)
+  assert.equal(avisoDescansosSeguidos({ descansos_cortos: '3' }) !== null, true)
+})

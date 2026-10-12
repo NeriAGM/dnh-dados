@@ -2,7 +2,7 @@
 // Todo aquí es cálculo puro (sin pantalla ni base de datos) para poder probarlo.
 // Fuente: SRD 1.0 (docs/reglas/reglas-3-combate.md).
 
-import { pgPorDano, rangoDeNivel } from './reglas.js'
+import { pgPorDano, rangoDeNivel, num } from './reglas.js'
 
 // ---------------------------------------------------------------------
 // Recibir daño
@@ -11,7 +11,7 @@ export const SEVERIDADES = ['Ninguno', 'Menor', 'Mayor', 'Grave', 'Masivo']
 
 // Casillas de Armadura que quedan libres
 export function armaduraLibre(hoja) {
-  return Math.max(0, (hoja?.armadura?.puntuacion ?? 0) - (hoja?.armadura_marcada ?? 0))
+  return Math.max(0, (num(hoja?.armadura?.puntuacion) ?? 0) - (num(hoja?.armadura_marcada) ?? 0))
 }
 
 // Orden del SRD: resistencia (mitad, redondeando hacia arriba) → reducciones
@@ -27,8 +27,8 @@ export function resolverDano(dano, hoja, u, opciones = {}) {
   const conArmadura = puedeArmadura && usarArmadura
   const pg = conArmadura ? pgSinArmadura - 1 : pgSinArmadura
 
-  const pgMax = hoja?.pg_max ?? 6
-  const pgAntes = hoja?.pg ?? 0
+  const pgMax = num(hoja?.pg_max) ?? 6
+  const pgAntes = num(hoja?.pg) ?? 0
   const pgDespues = Math.min(pgMax, pgAntes + pg)
   return {
     final,
@@ -39,7 +39,7 @@ export function resolverDano(dano, hoja, u, opciones = {}) {
     puedeArmadura,
     conArmadura,
     pgDespues,
-    armaduraDespues: (hoja?.armadura_marcada ?? 0) + (conArmadura ? 1 : 0),
+    armaduraDespues: (num(hoja?.armadura_marcada) ?? 0) + (conArmadura ? 1 : 0),
     // Marcó su último PG: toca elegir un movimiento de muerte
     cae: pg > 0 && pgDespues >= pgMax,
   }
@@ -114,7 +114,7 @@ export function aplicarDescanso(tipo, estado, elegidos) {
 
 // Cambios en la hoja que trae el descanso además de los recursos
 export function efectosDeDescanso(tipo, hoja) {
-  const cortos = hoja?.descansos_cortos ?? 0
+  const cortos = num(hoja?.descansos_cortos) ?? 0
   const out = { descansos_cortos: tipo === 'largo' ? 0 : cortos + 1 }
   // Evitar la muerte: un PJ inconsciente despierta al terminar un descanso largo
   if (tipo === 'largo' && hoja?.estado === 'inconsciente') out.estado = null
@@ -122,7 +122,7 @@ export function efectosDeDescanso(tipo, hoja) {
 }
 
 export function avisoDescansosSeguidos(hoja) {
-  return (hoja?.descansos_cortos ?? 0) >= MAX_CORTOS_SEGUIDOS
+  return (num(hoja?.descansos_cortos) ?? 0) >= MAX_CORTOS_SEGUIDOS
     ? `Ya llevan ${MAX_CORTOS_SEGUIDOS} descansos cortos seguidos: el siguiente debe ser largo.`
     : null
 }
@@ -137,8 +137,8 @@ export const ESTADOS = {
 }
 
 export function necesitaMovimientoDeMuerte(hoja) {
-  const max = hoja?.pg_max ?? 6
-  return max > 0 && (hoja?.pg ?? 0) >= max && !hoja?.estado && !hoja?.reparto_pendiente
+  const max = num(hoja?.pg_max) ?? 6
+  return max > 0 && (num(hoja?.pg) ?? 0) >= max && !hoja?.estado && !hoja?.reparto_pendiente
 }
 
 // Evitar la muerte: si el Dado de Esperanza sale ≤ nivel, gana una cicatriz

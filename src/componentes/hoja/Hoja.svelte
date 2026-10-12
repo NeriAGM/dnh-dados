@@ -1,7 +1,7 @@
 <script>
   import { RASGOS, NOMBRE_RASGO, ALCANCES } from '../../lib/srd.js'
-  import { umbrales, evasion, avisos, bonoAtaque, grupoDano, textoDano, rangoDeNivel, MAX_MANO } from '../../lib/reglas.js'
-  import { md } from '../../lib/md.js'
+  import { umbrales, evasion, avisos, bonoAtaque, grupoDano, textoDano, rangoDeNivel, MAX_MANO, normalizarHoja, ajustarOro } from '../../lib/reglas.js'
+  import { md as mdBase } from '../../lib/md.js'
   import { conSigno } from '../../lib/formula.js'
   import Casillas from './Casillas.svelte'
   import Carta from './Carta.svelte'
@@ -21,7 +21,10 @@
     onTirarResultado = null, // opcional: tira, anima y devuelve la tirada (para descansos y muerte)
   } = $props()
 
-  const hoja = $derived(pj.hoja ?? {})
+  // Las hojas importadas traen números como texto, nulos y cartas repetidas: se leen normalizadas
+  const hoja = $derived(normalizarHoja(pj.hoja))
+  // md(null) escribía «null» (rasgos caseros importados sin texto)
+  const md = (t) => mdBase(t ?? '')
   const clase = $derived(cat?.porId?.clases?.[hoja.clase])
   const subclase = $derived(cat?.porId?.subclases?.[hoja.subclase])
   const ancestria = $derived(cat?.porId?.ancestrias?.[hoja.ancestria])
@@ -66,8 +69,43 @@
 
   async function cambiar(ruta, valor) {
     error = ''
-    try { await onHoja(ruta, valor) } catch (e) { error = e.message }
+    try { await onHoja(ruta, valor); return true } catch (e) { error = e.message; return false }
   }
+  // Inconsciente: despierta cuando un aliado le limpia 1 PG o más. Con todos los PG
+  // marcados, quitar el estado volvía a pedir un movimiento de muerte al instante.
+  async function despertar() {
+    const max = hoja.pg_max ?? 6
+    if ((hoja.pg ?? 0) >= max && !(await cambiar(['pg'], Math.max(0, max - 1)))) return
+    await cambiar(['estado'], null)
+  }
+  async function cambiarPG(n) {
+    const despierta = hoja.estado === 'inconsciente' && n < (hoja.pg ?? 0)
+    if ((await cambiar(['pg'], n)) && despierta) await cambiar(['estado'], null)
+  }
+  // Lee un número de un campo, lo acota y lo deja escrito así en el campo. Si el valor
+  // acotado era el mismo de antes, Svelte no repinta y el campo seguía mostrando lo
+  // tecleado (p. ej. «15» en Nivel cuando la hoja quedó en 10).
+  function leerNum(e, { min = -Infinity, max = Infinity, def = 0 } = {}) {
+    const el = e.currentTarget
+    const n = el.value === '' ? def : Number(el.value)
+    const v = Math.max(min, Math.min(max, Number.isFinite(n) ? Math.trunc(n) : def))
+    el.value = String(v)
+    return v
+  }
+  function cambiarOro(e, k) {
+    const nuevo = ajustarOro(hoja.oro, k, leerNum(e, { min: 0 }))
+    e.currentTarget.value = String(nuevo[k])
+    cambiar(['oro'], nuevo)
+  }
+
+  // Umbrales a mano: cada uno por su lado. Vaciar uno lo regresa a armadura + nivel
+  // sin borrar el otro (antes vaciar uno borraba los dos).
+  function cambiarUmbral(e, cual) {
+    const v = e.currentTarget.value === '' ? null : leerNum(e, { min: 1 })
+    const m = { mayor: hoja.umbrales_manuales?.mayor ?? null, grave: hoja.umbrales_manuales?.grave ?? null, [cual]: v }
+    cambiar(['umbrales_manuales'], m.mayor == null && m.grave == null ? null : m)
+  }
+
   async function cambiarPJ(c) {
     error = ''
     try { await onPJ(c) } catch (e) { error = e.message }
@@ -84,21 +122,33 @@
   const costoExp = $derived(expUsadas.length)
 
   async function confirmarTirada() {
-    if (costoExp > pj.esperanza) { error = `Te falta Esperanza: usar ${costoExp} Experiencia(s) cuesta ${costoExp}.`; return }
-    if (costoExp) await cambiarPJ({ esperanza: pj.esperanza - costoExp })
+    const t = tirada
+    if (!t) return
+    const costo = costoExp
+    if (costo > pj.esperanza) { error = `Te falta Esperanza: usar ${costo} Experiencia(s) cuesta ${costo}.`; return }
     const grupos = [{ lados: 12, rol: 'esperanza' }, { lados: 12, rol: 'miedo' }]
     if (ventaja === 'ventaja') grupos.push({ lados: 6, rol: 'ventaja', signo: 1 })
     if (ventaja === 'desventaja') grupos.push({ lados: 6, rol: 'desventaja', signo: -1 })
     const exps = expUsadas.map((i) => hoja.experiencias[i]?.nombre).filter(Boolean)
-    const dif = dificultad === '' ? null : Number(dificultad)
-    onTirar({
-      tipo: tirada.reaccion ? 'reaccion' : 'accion',
+    const dif = dificultad === '' || dificultad == null ? null : Number(dificultad)
+    const params = {
+      tipo: t.reaccion ? 'reaccion' : 'accion',
       grupos,
-      modificador: tirada.mod + bonoExp,
+      modificador: t.mod + bonoExp,
       dificultad: Number.isFinite(dif) ? dif : null,
-      etiqueta: [tirada.etiqueta, ...exps].join(' + ').slice(0, 60),
-    })
+      etiqueta: [t.etiqueta, ...exps].join(' + ').slice(0, 60),
+    }
+    // Se cierra antes de esperar: un doble toque pagaba dos veces y tronaba (tirada ya era null)
     tirada = null
+    if (costo) {
+      error = ''
+      try { await onPJ({ esperanza: pj.esperanza - costo }) } catch (e) {
+        // Sin pagar la Esperanza no se suma la Experiencia
+        error = `No se pudo gastar la Esperanza: ${e.message}`
+        return
+      }
+    }
+    onTirar(params)
   }
 
   function tirarDano(arma, critico = false) {
@@ -129,7 +179,7 @@
     cambiar(['cartas'], c)
   }
 
-  function elegir(x) {
+  async function elegir(x) {
     const t = selector.tipo
     selector = null
     if (t === 'carta') {
@@ -143,8 +193,9 @@
     } else if (t === 'armadura') {
       cambiar(['armadura'], { id: x.id, nombre: x.nombre, puntuacion: x.puntuacion, umbrales: x.umbrales, rasgos: x.rasgos ?? [] })
     } else if (t === 'clase') {
-      cambiar(['clase'], x.id)
-      if (!hoja.dominios?.length) cambiar(['dominios'], x.dominios ?? [])
+      // Una tras otra: dos escrituras a la vez podían pisarse al volver del servidor
+      const sinDominios = !hoja.dominios?.length
+      if ((await cambiar(['clase'], x.id)) && sinDominios) await cambiar(['dominios'], x.dominios ?? [])
     } else if (t === 'subclase') cambiar(['subclase'], x.id)
     else if (t === 'ancestria') cambiar(['ancestria'], x.id)
     else if (t === 'comunidad') cambiar(['comunidad'], x.id)
@@ -229,7 +280,7 @@
       <span><strong>{estado.nombre}.</strong> {estado.texto}</span>
       {#if editable}
         {#if hoja.estado === 'gloria'}<button class="boton chico" onclick={() => cambiar(['estado'], 'muerto')}>Ya hizo su última acción</button>
-        {:else if hoja.estado === 'inconsciente'}<button class="boton chico" onclick={() => cambiar(['estado'], null)}>Despertó</button>
+        {:else if hoja.estado === 'inconsciente'}<button class="boton chico" onclick={despertar}>Despertó</button>
         {:else}<button class="boton chico" onclick={() => cambiar(['estado'], null)} title="Por si se marcó por error">Deshacer</button>{/if}
       {/if}
     </div>
@@ -244,14 +295,14 @@
     {#if pestana === 'personaje'}
       {#if editar}
         <div class="datos">
-          <label>Nivel <input class="campo num" type="number" min="1" max="10" value={hoja.nivel ?? 1} onchange={(e) => cambiar(['nivel'], Math.max(1, Math.min(10, +e.currentTarget.value || 1)))} /></label>
+          <label>Nivel <input class="campo num" type="number" min="1" max="10" value={hoja.nivel ?? 1} onchange={(e) => cambiar(['nivel'], leerNum(e, { min: 1, max: 10, def: 1 }))} /></label>
           <label>Pronombres <input class="campo" value={hoja.pronombres ?? ''} onchange={(e) => cambiar(['pronombres'], e.currentTarget.value)} /></label>
           <div class="eleccion"><span>Clase</span><button class="boton chico" onclick={() => (selector = { tipo: 'clase' })}>{clase?.nombre ?? 'Elegir'}</button></div>
           <div class="eleccion"><span>Subclase</span><button class="boton chico" onclick={() => (selector = { tipo: 'subclase' })}>{subclase?.nombre ?? 'Elegir'}</button></div>
           <div class="eleccion"><span>Ancestría</span><button class="boton chico" onclick={() => (selector = { tipo: 'ancestria' })}>{ancestria?.nombre ?? 'Elegir'}</button></div>
           <label>Ancestría (texto libre) <input class="campo" value={hoja.ancestria_texto ?? ''} placeholder="p. ej. Híbrido Infernis-Humano" onchange={(e) => cambiar(['ancestria_texto'], e.currentTarget.value)} /></label>
           <div class="eleccion"><span>Comunidad</span><button class="boton chico" onclick={() => (selector = { tipo: 'comunidad' })}>{comunidad?.nombre ?? 'Elegir'}</button></div>
-          <label>Competencia <input class="campo num" type="number" min="1" max="6" value={competencia} onchange={(e) => cambiar(['competencia'], Math.max(1, Math.min(6, +e.currentTarget.value || 1)))} /></label>
+          <label>Competencia <input class="campo num" type="number" min="1" max="6" value={competencia} onchange={(e) => cambiar(['competencia'], leerNum(e, { min: 1, max: 6, def: 1 }))} /></label>
         </div>
       {/if}
 
@@ -261,8 +312,8 @@
           <span class="etq">Evasión</span>
           {#if editar}
             <span class="mini-campos">
-              <label>base <input class="campo num" type="number" value={hoja.evasion_base ?? 10} onchange={(e) => cambiar(['evasion_base'], +e.currentTarget.value || 0)} /></label>
-              <label>extra <input class="campo num" type="number" value={hoja.evasion_extra ?? 0} onchange={(e) => cambiar(['evasion_extra'], +e.currentTarget.value || 0)} /></label>
+              <label>base <input class="campo num" type="number" value={hoja.evasion_base ?? 10} onchange={(e) => cambiar(['evasion_base'], leerNum(e))} /></label>
+              <label>extra <input class="campo num" type="number" value={hoja.evasion_extra ?? 0} onchange={(e) => cambiar(['evasion_extra'], leerNum(e))} /></label>
             </span>
           {/if}
         </div>
@@ -275,22 +326,22 @@
         </div>
         {#if editar}
           <div class="mini-campos">
-            <label>Mayor <input class="campo num" type="number" value={hoja.umbrales_manuales?.mayor ?? ''} placeholder={String(u.mayor)} onchange={(e) => cambiar(['umbrales_manuales'], e.currentTarget.value === '' ? null : { mayor: +e.currentTarget.value, grave: hoja.umbrales_manuales?.grave ?? u.grave })} /></label>
-            <label>Grave <input class="campo num" type="number" value={hoja.umbrales_manuales?.grave ?? ''} placeholder={String(u.grave)} onchange={(e) => cambiar(['umbrales_manuales'], e.currentTarget.value === '' ? null : { mayor: hoja.umbrales_manuales?.mayor ?? u.mayor, grave: +e.currentTarget.value })} /></label>
+            <label>Mayor <input class="campo num" type="number" value={hoja.umbrales_manuales?.mayor ?? ''} placeholder={String(u.mayor)} onchange={(e) => cambiarUmbral(e, 'mayor')} /></label>
+            <label>Grave <input class="campo num" type="number" value={hoja.umbrales_manuales?.grave ?? ''} placeholder={String(u.grave)} onchange={(e) => cambiarUmbral(e, 'grave')} /></label>
             <small>Vacíos = armadura + nivel</small>
           </div>
         {/if}
       </div>
 
       <div class="marcadores">
-        <Casillas nombre="Puntos de Golpe" marcadas={hoja.pg ?? 0} maximo={hoja.pg_max ?? 6} color="var(--sangre)" {editable} onCambiar={(n) => cambiar(['pg'], n)} ayuda="Daño recibido" />
+        <Casillas nombre="Puntos de Golpe" marcadas={hoja.pg ?? 0} maximo={hoja.pg_max ?? 6} color="var(--sangre)" {editable} onCambiar={cambiarPG} ayuda="Daño recibido" />
         <Casillas nombre="Estrés" marcadas={pj.estres} maximo={pj.estres_max} color="#ff8a5c" {editable} onCambiar={(n) => cambiarPJ({ estres: n })} />
         <Casillas nombre="Armadura" marcadas={hoja.armadura_marcada ?? 0} maximo={hoja.armadura?.puntuacion ?? 0} forma="escudo" color="#8fb7d9" {editable} onCambiar={(n) => cambiar(['armadura_marcada'], n)} ayuda="Casillas de Armadura gastadas" />
         <Casillas nombre="Esperanza" marcadas={pj.esperanza} maximo={pj.esperanza_max} tachadas={hoja.cicatrices ?? 0} forma="estrella" color="var(--esperanza)" {editable} onCambiar={(n) => cambiarPJ({ esperanza: n })} ayuda={hoja.cicatrices ? `${hoja.cicatrices} cicatriz(es)` : ''} />
         {#if editar}
           <div class="mini-campos">
-            <label>PG máx <input class="campo num" type="number" min="1" max="12" value={hoja.pg_max ?? 6} onchange={(e) => cambiar(['pg_max'], Math.max(1, Math.min(12, +e.currentTarget.value || 6)))} /></label>
-            <label>Estrés máx <input class="campo num" type="number" min="1" max="12" value={pj.estres_max} onchange={(e) => cambiarPJ({ estres_max: Math.max(1, Math.min(12, +e.currentTarget.value || 6)), estres: Math.min(pj.estres, Math.max(1, Math.min(12, +e.currentTarget.value || 6))) })} /></label>
+            <label>PG máx <input class="campo num" type="number" min="1" max="12" value={hoja.pg_max ?? 6} onchange={(e) => cambiar(['pg_max'], leerNum(e, { min: 1, max: 12, def: 6 }))} /></label>
+            <label>Estrés máx <input class="campo num" type="number" min="1" max="12" value={pj.estres_max} onchange={(e) => { const v = leerNum(e, { min: 1, max: 12, def: 6 }); cambiarPJ({ estres_max: v, estres: Math.min(pj.estres, v) }) }} /></label>
           </div>
         {/if}
       </div>
@@ -335,7 +386,7 @@
           <li>
             {#if editar}
               <input class="campo" value={x.nombre} placeholder="Experiencia" onchange={(e) => cambiar(['experiencias', i, 'nombre'], e.currentTarget.value)} />
-              <input class="campo num" type="number" value={x.valor} onchange={(e) => cambiar(['experiencias', i, 'valor'], +e.currentTarget.value || 0)} />
+              <input class="campo num" type="number" value={x.valor} onchange={(e) => cambiar(['experiencias', i, 'valor'], leerNum(e))} />
               <button class="quitar" onclick={() => quitarDe('experiencias', i)} aria-label="Quitar experiencia">✕</button>
             {:else}
               <span>{x.nombre || 'Sin nombre'}</span><b>{conSigno(Number(x.valor)) || '+0'}</b>
@@ -353,7 +404,7 @@
         <article class="arma">
           <header>
             <strong class="titulo">{a.nombre}</strong>
-            <small>{a.tipo === 'secundaria' ? 'Secundaria' : 'Primaria'} · {ALCANCES[a.alcance] ?? a.alcance} · {NOMBRE_RASGO[a.rasgo] ?? a.rasgo} · {a.manos === 2 ? 'Dos manos' : 'Una mano'} · {a.dano?.tipo === 'magico' ? 'mágico' : 'físico'}</small>
+            <small>{[a.tipo === 'secundaria' ? 'Secundaria' : 'Primaria', ALCANCES[a.alcance] ?? a.alcance, NOMBRE_RASGO[a.rasgo] ?? a.rasgo, a.manos === 2 ? 'Dos manos' : 'Una mano', a.dano?.tipo === 'magico' ? 'mágico' : 'físico'].filter(Boolean).join(' · ')}</small>
           </header>
           {#each a.rasgos ?? [] as r}<p class="rasgo-arma"><b>{r.nombre}:</b> {r.texto}</p>{/each}
           <div class="acciones">
@@ -412,7 +463,7 @@
           {#each hoja.armadura.rasgos ?? [] as r}<p class="rasgo-arma"><b>{r.nombre}:</b> {r.texto}</p>{/each}
           {#if editar}
             <div class="mini-campos">
-              <label>Puntuación <input class="campo num" type="number" min="0" max="12" value={hoja.armadura.puntuacion} onchange={(e) => cambiar(['armadura', 'puntuacion'], +e.currentTarget.value || 0)} /></label>
+              <label>Puntuación <input class="campo num" type="number" min="0" max="12" value={hoja.armadura.puntuacion} onchange={(e) => cambiar(['armadura', 'puntuacion'], leerNum(e, { min: 0, max: 12 }))} /></label>
             </div>
           {/if}
         </article>
@@ -426,7 +477,7 @@
         {#each [...(conMonedas ? [['monedas', 'Monedas']] : []), ['punados', 'Puñados'], ['bolsas', 'Bolsas'], ['cofres', 'Cofres']] as [k, n]}
           <label class="moneda">
             <span>{n}</span>
-            <input class="campo num" type="number" min="0" max={k === 'monedas' ? 9 : 10} disabled={!editable} value={hoja.oro?.[k] ?? 0} onchange={(e) => cambiar(['oro', k], Math.max(0, +e.currentTarget.value || 0))} />
+            <input class="campo num" type="number" min="0" disabled={!editable} value={hoja.oro?.[k] ?? 0} onchange={(e) => cambiarOro(e, k)} />
           </label>
         {/each}
       </div>
@@ -437,7 +488,7 @@
         {#each hoja.inventario ?? [] as x, i}
           <li>
             {#if editar}
-              <input class="campo num" type="number" min="0" value={x.cantidad ?? 1} onchange={(e) => cambiar(['inventario', i, 'cantidad'], +e.currentTarget.value || 0)} />
+              <input class="campo num" type="number" min="0" value={x.cantidad ?? 1} onchange={(e) => cambiar(['inventario', i, 'cantidad'], leerNum(e, { min: 0 }))} />
               <input class="campo" value={x.nombre} onchange={(e) => cambiar(['inventario', i, 'nombre'], e.currentTarget.value)} />
               <input class="campo" value={x.nota ?? ''} placeholder="Nota" onchange={(e) => cambiar(['inventario', i, 'nota'], e.currentTarget.value)} />
               <button class="quitar" onclick={() => quitarDe('inventario', i)} aria-label="Quitar">✕</button>
@@ -472,9 +523,9 @@
           {#if editar}
             <div class="datos">
               <label>Nombre <input class="campo" value={c.nombre ?? ''} onchange={(e) => cambiar(['companero', 'nombre'], e.currentTarget.value)} /></label>
-              <label>Evasión <input class="campo num" type="number" value={c.evasion ?? 10} onchange={(e) => cambiar(['companero', 'evasion'], +e.currentTarget.value || 0)} /></label>
-              <label>Dado de daño <input class="campo num" type="number" value={c.dano_lados ?? 6} onchange={(e) => cambiar(['companero', 'dano_lados'], +e.currentTarget.value || 6)} /></label>
-              <label>Estrés máx <input class="campo num" type="number" value={c.estres_max ?? 3} onchange={(e) => cambiar(['companero', 'estres_max'], +e.currentTarget.value || 3)} /></label>
+              <label>Evasión <input class="campo num" type="number" value={c.evasion ?? 10} onchange={(e) => cambiar(['companero', 'evasion'], leerNum(e))} /></label>
+              <label>Dado de daño <input class="campo num" type="number" value={c.dano_lados ?? 6} onchange={(e) => cambiar(['companero', 'dano_lados'], leerNum(e, { min: 2, max: 100, def: 6 }))} /></label>
+              <label>Estrés máx <input class="campo num" type="number" value={c.estres_max ?? 3} onchange={(e) => cambiar(['companero', 'estres_max'], leerNum(e, { min: 1, max: 12, def: 3 }))} /></label>
             </div>
           {/if}
           {#if c.notas}<div class="texto-largo">{@html md(c.notas)}</div>{/if}

@@ -74,3 +74,73 @@ test('puntos de batalla: ajustes automáticos y manuales', () => {
   assert.equal(puntosDeBatalla([{ ref: 'b' }], adv, 3, ['dificil']).presupuesto, 11 + 1 + 2)
   assert.equal(puntosDeBatalla([{ ref: 'b' }, ...Array(5).fill({ ref: 'x' })], { ...adv, x: { tipo: 'esbirro' } }, 3).gastado, 2 + 2)
 })
+
+// ---------------------------------------------------------------------
+// Hojas sucias (importadas de Notion): números como texto, nulos, repetidos
+// ---------------------------------------------------------------------
+import { num, normalizarHoja, ajustarOro, grupoDano } from './reglas.js'
+
+test('num lee números escritos como texto (y el menos tipográfico)', () => {
+  assert.equal(num('2'), 2)
+  assert.equal(num('+2'), 2)
+  assert.equal(num('−1'), -1)
+  assert.equal(num(' 3 '), 3)
+  assert.equal(num(''), undefined)
+  assert.equal(num('abc'), undefined)
+  assert.equal(num(null), undefined)
+  assert.equal(num(NaN), undefined)
+})
+
+test('umbrales y Evasión con números como texto no se concatenan', () => {
+  // Antes: "5" + 2 = "52" y "13" + "1" = "131"
+  assert.deepEqual(umbrales({ nivel: '2', armadura: { umbrales: { mayor: '5', grave: '11' } } }), { mayor: 7, grave: 13 })
+  assert.equal(evasion({ evasion_base: '12', evasion_extra: '1' }), 13)
+  assert.deepEqual(umbrales({ nivel: 2, armadura: { umbrales: { mayor: 5 } } }), { mayor: 2, grave: 4, sinArmadura: true })
+})
+
+test('umbrales manuales a medias: lo que falta sale de armadura + nivel', () => {
+  const h = { nivel: 2, armadura: { umbrales: { mayor: 5, grave: 11 } } }
+  assert.deepEqual(umbrales({ ...h, umbrales_manuales: { mayor: 6, grave: null } }), { mayor: 6, grave: 13, manual: true })
+  assert.deepEqual(umbrales({ ...h, umbrales_manuales: { grave: '12' } }), { mayor: 7, grave: 12, manual: true })
+  // Antes un manual con solo "grave" se ignoraba por completo
+  assert.deepEqual(umbrales({ ...h, umbrales_manuales: { mayor: null, grave: null } }), { mayor: 7, grave: 13 })
+})
+
+test('normalizarHoja: números, cartas repetidas y campos caseros', () => {
+  const h = normalizarHoja({
+    nivel: '2', pg: '2', pg_max: '6', competencia: 'dos', campo_raro: { x: 1 },
+    rasgos: { agilidad: '+2', instinto: '−1', conocimiento: '' },
+    experiencias: [{ nombre: 'A', valor: '2' }, null],
+    armadura: { puntuacion: '3', umbrales: { mayor: '5', grave: '11' } },
+    armas: [{ nombre: 'Arco', dano: { dados: '1', lados: '6', mod: '3' } }, null],
+    cartas: { mano: ['a', 'a', null, 'b'], boveda: ['b', 'c', 'c'] },
+    oro: { punados: '9' },
+    companero: { estres_max: '3', experiencias: [{ nombre: 'X', valor: '2' }] },
+  })
+  assert.equal(h.nivel, 2)
+  assert.equal(h.pg, 2)
+  assert.equal('competencia' in h, false) // ilegible: que valga el de por defecto
+  assert.deepEqual(h.campo_raro, { x: 1 })
+  assert.deepEqual(h.rasgos, { agilidad: 2, instinto: -1, conocimiento: 0 })
+  assert.deepEqual(h.experiencias, [{ nombre: 'A', valor: 2 }, { valor: 0 }])
+  assert.equal(h.armadura.puntuacion, 3)
+  assert.deepEqual(h.armadura.umbrales, { mayor: 5, grave: 11 })
+  assert.deepEqual(h.armas[0].dano, { dados: 1, lados: 6, mod: 3 })
+  assert.deepEqual(h.armas[1], {})
+  // Una carta repetida tronaba la pestaña Cartas (each con llave duplicada)
+  assert.deepEqual(h.cartas, { mano: ['a', 'b'], boveda: ['c'] })
+  assert.equal(h.oro.punados, 9)
+  assert.equal(h.companero.estres_max, 3)
+  assert.equal(h.companero.experiencias[0].valor, 2)
+  assert.deepEqual(normalizarHoja(null), {})
+  assert.equal(textoDano(h.armas[0], 2), '2d6+3')
+  assert.deepEqual(grupoDano({ dano: { dados: '1', lados: '8', mod: '2' } }, '2'), { lados: 8, cantidad: 2, mod: 2 })
+})
+
+test('oro: al llenar una categoría pasa a la siguiente', () => {
+  assert.deepEqual(ajustarOro({ punados: 9, bolsas: 1, cofres: 0 }, 'punados', 12), { punados: 2, bolsas: 2, cofres: 0 })
+  assert.deepEqual(ajustarOro({ punados: 0, bolsas: 9 }, 'punados', 10), { punados: 0, bolsas: 0, cofres: 1 })
+  assert.deepEqual(ajustarOro({ monedas: 5, punados: 1 }, 'monedas', 23), { monedas: 3, punados: 3 })
+  assert.deepEqual(ajustarOro(null, 'bolsas', -2), { bolsas: 0 })
+  assert.deepEqual(ajustarOro({ punados: '4' }, 'cofres', 1), { punados: 4, cofres: 1 })
+})

@@ -4,29 +4,34 @@
   // "tachadas" son casillas perdidas para siempre (p. ej. cicatrices en la Esperanza).
   let { nombre, marcadas = 0, maximo = 6, forma = 'cuadro', color = 'var(--sangre)', editable = true, onCambiar, ayuda = '', tachadas = 0 } = $props()
 
+  // Un máximo que no es número (o con decimales) tronaba Array(): "Invalid array length"
+  const total = $derived(Math.max(0, Math.floor(Number(maximo) || 0)))
+  const perdidas = $derived(Math.max(0, Math.floor(Number(tachadas) || 0)))
+  const llenas = $derived(Number(marcadas) || 0)
+
   function tocar(i) {
     if (!editable) return
-    onCambiar?.(marcadas === i + 1 ? i : i + 1)
+    onCambiar?.(llenas === i + 1 ? i : i + 1)
   }
 </script>
 
 <div class="casillas" style:--c={color}>
   <span class="nombre" title={ayuda}>{nombre}</span>
-  <span class="fila" role="group" aria-label="{nombre}: {marcadas} de {maximo}">
-    {#each Array(Math.max(0, maximo)) as _, i}
+  <span class="fila" role="group" aria-label="{nombre}: {llenas} de {total}">
+    {#each Array(total) as _, i}
       <button
         class="caja {forma}"
-        class:marcada={i < marcadas}
+        class:marcada={i < llenas}
         disabled={!editable}
         onclick={() => tocar(i)}
         aria-label="{nombre} {i + 1}"
       ></button>
     {/each}
-    {#each Array(Math.max(0, tachadas)) as _, i}
+    {#each Array(perdidas) as _, i}
       <span class="caja {forma} tachada" role="img" aria-label="{nombre}: casilla tachada {i + 1}" title="Tachada para siempre"></span>
     {/each}
   </span>
-  <span class="cifra">{marcadas}/{maximo}</span>
+  <span class="cifra">{llenas}/{total}</span>
 </div>
 
 <style>
