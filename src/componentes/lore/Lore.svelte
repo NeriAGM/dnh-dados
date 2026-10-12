@@ -34,6 +34,7 @@
   let editandoId = null
   let version = 0
   let tGuardar = 0
+  let enVuelo = null // el guardado que va en camino (solo uno a la vez)
 
   // Arrastrar en el índice
   let arrastrando = $state(null)
@@ -81,6 +82,9 @@
 
   async function ir(id, { abrir = true } = {}) {
     if (editando) await terminarEdicion()
+    // Si no se pudo guardar, se queda en la página que editas: si no, el
+    // borrador de esta se vería (y guardaría) encima de la otra
+    if (editando) return false
     if (id && !porId.has(id)) { error = 'Esa página no existe o todavía no está a la vista.'; return }
     elegida = id
     verMover = false
@@ -94,6 +98,7 @@
     }
     guardarElegida(id)
     document.querySelector('.lore .lector')?.scrollTo?.({ top: 0 })
+    return true
   }
 
   function plegar(id) {
@@ -158,7 +163,8 @@
     const p = await hacer(() => crearPagina({ padre_id: padre }))
     if (!p) return
     if (padre) desplegadas = new Set([...desplegadas, padre])
-    await ir(p.id)
+    // Si el borrador anterior no se guardó, no se tira: se queda ahí
+    if (!(await ir(p.id))) return
     empezarEdicion()
     await tick()
     document.querySelector('.lore .editor-titulo')?.select?.()
@@ -269,8 +275,12 @@
     tGuardar = setTimeout(guardarYa, 900)
   }
 
+  // Un guardado a la vez: con la red lenta, dos guardados al mismo tiempo
+  // podían llegar en desorden y dejar en la base de datos el texto VIEJO
+  // (se perdían las últimas teclas aunque decía «Guardado»).
   async function guardarYa() {
     clearTimeout(tGuardar)
+    while (enVuelo) await enVuelo
     if (estado !== 'pendiente' || !editandoId) return
     const v = version
     const id = editandoId
@@ -280,14 +290,18 @@
       contenido: borrador.contenido,
     }
     estado = 'guardando'
-    try {
-      await guardarPagina(id, c)
-      if (version === v) estado = 'guardado'
-      else estado = 'pendiente'
-    } catch (e) {
-      estado = 'error'
-      error = e.message
-    }
+    const vuelo = (async () => {
+      try {
+        await guardarPagina(id, c)
+        if (version === v) estado = 'guardado'
+        else estado = 'pendiente'
+      } catch (e) {
+        estado = 'error'
+        error = e.message
+      }
+    })()
+    enVuelo = vuelo
+    try { await vuelo } finally { if (enVuelo === vuelo) enVuelo = null }
   }
 
   async function terminarEdicion() {

@@ -17,8 +17,9 @@ export function md(texto = '') {
   const cerrar = () => {
     if (lista) { out.push('</ul>'); lista = false }
     if (tabla) {
-      const [cab, ...filas] = tabla.filter((f) => !/^\s*\|?\s*:?-{2,}/.test(f.join('')))
-      out.push('<table><thead><tr>' + cab.map((c) => `<th>${enLinea(c)}</th>`).join('') + '</tr></thead><tbody>' +
+      // Una "tabla" que solo trae la línea de guiones no tiene encabezado: no se pinta
+      const [cab = [], ...filas] = tabla.filter((f) => !/^\s*\|?\s*:?-{2,}/.test(f.join('')))
+      if (cab.length) out.push('<table><thead><tr>' + cab.map((c) => `<th>${enLinea(c)}</th>`).join('') + '</tr></thead><tbody>' +
         filas.map((f) => '<tr>' + f.map((c) => `<td>${enLinea(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table>')
       tabla = null
     }
@@ -109,7 +110,11 @@ function enLineaLore(crudo) {
   return s.replace(/\u0000(\d+)\u0000/g, (_, i) => `<code>${codigos[+i]}</code>`)
 }
 
-export function mdLore(texto = '') {
+// Citas dentro de citas: más allá de este nivel los ">" se quedan como texto
+// (sin tope, una línea con miles de ">" agotaba la pila y tumbaba el lore).
+const MAX_CITAS = 12
+
+export function mdLore(texto = '', nivel = 0) {
   const lineas = String(texto ?? '').replace(/\r/g, '').split('\n')
   const out = []
   let parrafo = []
@@ -117,7 +122,7 @@ export function mdLore(texto = '') {
   let lista = null // { tipo: 'ul' | 'ol', items: [] }
   let tabla = null
   const cerrarParrafo = () => { if (parrafo.length) out.push(`<p>${parrafo.map(enLineaLore).join('<br>')}</p>`); parrafo = [] }
-  const cerrarCita = () => { if (cita.length) out.push(`<blockquote>${mdLore(cita.join('\n'))}</blockquote>`); cita = [] }
+  const cerrarCita = () => { if (cita.length) out.push(`<blockquote>${mdLore(cita.join('\n'), nivel + 1)}</blockquote>`); cita = [] }
   const cerrarLista = () => {
     if (!lista) return
     out.push(`<${lista.tipo}>` + lista.items.map((i) =>
@@ -144,7 +149,7 @@ export function mdLore(texto = '') {
       out.push(`<pre><code>${esc(codigo.join('\n'))}</code></pre>`)
       continue
     }
-    if (/^>/.test(t)) { cerrarParrafo(); cerrarLista(); cerrarTabla(); cita.push(t.replace(/^>\s?/, '')); continue }
+    if (/^>/.test(t) && nivel < MAX_CITAS) { cerrarParrafo(); cerrarLista(); cerrarTabla(); cita.push(t.replace(/^>\s?/, '')); continue }
     cerrarCita()
     if (/^\|.*\|$/.test(t)) {
       cerrarParrafo(); cerrarLista()

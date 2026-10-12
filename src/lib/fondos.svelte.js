@@ -62,12 +62,26 @@ export function cambiar(parcial) {
   temporizador = setTimeout(guardarRemoto, 700)
 }
 
+// Si la app se cierra o se va a segundo plano antes de los 700 ms, se
+// guarda ya: si no, al volver a entrar el perfil (viejo) pisaba el último
+// cambio que sí se había quedado en este navegador.
+function guardarPendiente() {
+  if (!temporizador) return
+  clearTimeout(temporizador)
+  guardarRemoto()
+}
+if (typeof document !== 'undefined') {
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') guardarPendiente() })
+  addEventListener('pagehide', guardarPendiente)
+}
+
 export function asignar(momento, id) { cambiar({ tablero: { ...fondos.config.tablero, [momento]: id } }) }
 export function cambiarModo(id, modo) { cambiar({ modos: { ...fondos.config.modos, [id]: modo } }) }
 export function restablecerBarras() { cambiar(Object.fromEntries(Object.entries(BARRAS).map(([k, b]) => [k, b.defecto]))) }
 export function restablecerTablero() { cambiar({ tablero: fondoInicial().tablero }) }
 
 async function guardarRemoto() {
+  temporizador = 0
   if (esLocal()) return
   const p = $state.snapshot(fondos.config)
   const { error } = await supabase.rpc('guardar_fondo', { p })
@@ -94,14 +108,24 @@ export async function sincronizar() {
   }
   if (nuevo === dueno) return
   dueno = nuevo
+  soltarUrls(fondos.imagenes)
   fondos.imagenes = []
   fondos.rotas = []
   fondos.error = ''
   try {
-    fondos.imagenes = nuevo === 'local' ? await listarLocal() : await listarRemoto(nuevo)
+    const lista = nuevo === 'local' ? await listarLocal() : await listarRemoto(nuevo)
+    // Si mientras cargaba cambió quién usa la mesa (entró o salió), esta lista ya no va
+    if (dueno !== nuevo) { soltarUrls(lista); return }
+    fondos.imagenes = lista
   } catch (e) {
-    fondos.error = `No se pudieron cargar tus imágenes: ${e.message}`
+    if (dueno === nuevo) fondos.error = `No se pudieron cargar tus imágenes: ${e.message}`
   }
+}
+
+// Las imágenes del modo prueba se muestran con URLs de objeto: hay que
+// soltarlas al dejar de usarlas o se quedan ocupando memoria
+function soltarUrls(lista) {
+  for (const i of lista || []) if (i?.url?.startsWith('blob:')) URL.revokeObjectURL(i.url)
 }
 
 async function listarRemoto(u) {

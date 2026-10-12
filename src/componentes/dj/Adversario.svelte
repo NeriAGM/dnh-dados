@@ -12,6 +12,7 @@
   let ver = $state(abierto)
   let dano = $state('')
   let aviso = $state('')
+  let tAviso = 0
   const CLASE = { accion: 'Acción', reaccion: 'Reacción', pasiva: 'Pasiva' }
 
   const d = $derived(adv?.ataque?.dano ?? {})
@@ -29,7 +30,9 @@
     onCambiar?.({ pg: nuevo })
     aviso = `${n} de daño → marca ${marcas} PG${nuevo >= adv.pg ? ' · ¡Cae!' : ''}`
     dano = ''
-    setTimeout(() => (aviso = ''), 4000)
+    // Un golpe nuevo reinicia la espera (si no, el aviso viejo borraba el nuevo antes de tiempo)
+    clearTimeout(tAviso)
+    tAviso = setTimeout(() => (aviso = ''), 4000)
   }
 </script>
 
