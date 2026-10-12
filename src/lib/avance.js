@@ -166,7 +166,8 @@ function agregarCarta(cartas, id) {
 // Arma la hoja del nuevo nivel. No valida: llama antes a validarSubida().
 // Devuelve { hoja, pj: { estres_max }, resumen: [texto] }
 export function aplicarSubida(hoja, pj, eleccion) {
-  const h = structuredClone(hoja ?? {})
+  // JSON y no structuredClone: la hoja puede llegar como objeto reactivo de Svelte (Proxy)
+  const h = JSON.parse(JSON.stringify(hoja ?? {}))
   const nivel = (h.nivel ?? 1) + 1
   const logros = logrosDeNivel(nivel)
   const resumen = [`Nivel ${nivel} (Rango ${rangoDeNivel(nivel)}).`]

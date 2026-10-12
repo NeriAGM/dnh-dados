@@ -260,7 +260,7 @@ export function nombreDe(usuarioId) {
 // ---------------------------------------------------------------------
 
 function ponerEnRuta(obj, ruta, valor) {
-  const copia = structuredClone(obj ?? {})
+  const copia = structuredClone($state.snapshot(obj) ?? {})
   let o = copia
   for (let i = 0; i < ruta.length - 1; i++) {
     const k = ruta[i]

@@ -143,3 +143,9 @@ test('aplicar: multiclase agrega el dominio y Competencia por mejora', () => {
   assert.equal(c.hoja.competencia, 4)
   assert.deepEqual(clavesCambiadas(h, c.hoja).sort(), ['avances', 'competencia', 'nivel'])
 })
+
+test('subir de nivel funciona aunque la hoja llegue como objeto reactivo (Proxy)', async () => {
+  const { aplicarSubida } = await import('./avance.js')
+  const reactiva = new Proxy({ nivel: 1, rasgos: { agilidad: 1 }, experiencias: [], cartas: { mano: [], boveda: [] } }, {})
+  assert.doesNotThrow(() => aplicarSubida(reactiva, { estres_max: 6 }, { mejoras: [], experiencia: { nombre: 'Prueba', valor: 2 } }))
+})

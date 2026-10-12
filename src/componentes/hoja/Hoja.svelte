@@ -118,12 +118,12 @@
   }
 
   // ---------- Listas editables ----------
-  const lista = (clave) => structuredClone(hoja[clave] ?? [])
+  const lista = (clave) => structuredClone($state.snapshot(hoja[clave]) ?? [])
   function agregarEn(clave, item) { cambiar([clave], [...lista(clave), item]) }
   function quitarDe(clave, i) { const l = lista(clave); l.splice(i, 1); cambiar([clave], l) }
 
   function moverCarta(id, de, a) {
-    const c = structuredClone(hoja.cartas ?? { mano: [], boveda: [] })
+    const c = structuredClone($state.snapshot(hoja.cartas) ?? { mano: [], boveda: [] })
     c[de] = (c[de] ?? []).filter((x) => x !== id)
     if (a) c[a] = [...(c[a] ?? []), id]
     cambiar(['cartas'], c)
@@ -133,7 +133,7 @@
     const t = selector.tipo
     selector = null
     if (t === 'carta') {
-      const c = structuredClone(hoja.cartas ?? { mano: [], boveda: [] })
+      const c = structuredClone($state.snapshot(hoja.cartas) ?? { mano: [], boveda: [] })
       if ([...c.mano, ...c.boveda].includes(x.id)) return
       if (c.mano.length < MAX_MANO) c.mano.push(x.id)
       else c.boveda.push(x.id)
