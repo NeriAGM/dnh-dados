@@ -56,8 +56,10 @@
     temporizador = setTimeout(() => (resultado = null), 9000)
   }
 
-  async function alTirar(params) {
-    if (ocupado) return
+  // Devuelve la tirada. Con propagar=true lanza el error en vez de solo
+  // mostrarlo (lo usan los descansos y movimientos de muerte de la hoja).
+  async function alTirar(params, { propagar = false } = {}) {
+    if (ocupado) { if (propagar) throw new Error('Espera a que terminen de caer los dados'); return }
     ocupado = true
     resultado = null
     aviso = ''
@@ -73,8 +75,10 @@
       await mesa3d?.lanzar(dadosPara3D(t), { instantaneo: matchMedia('(prefers-reduced-motion: reduce)').matches })
       animando = false
       mostrar(t, app.perfil?.nombre ?? 'Tú', params.tipo === 'dj' ? 'DJ' : nombrePJ)
+      return t
     } catch (e) {
       aviso = e.message
+      if (propagar) throw e
     } finally {
       ocupado = false
       animando = false
@@ -336,6 +340,7 @@
       onHoja={cambiarHoja}
       onPJ={cambiarPJHoja}
       onTirar={tirarDesdeHoja}
+      onTirarResultado={(p) => alTirar({ ...p, personajeId: app.demo ? 'demo' : pjHoja.id }, { propagar: true })}
       onCerrar={() => (verHoja = null)}
     />
   {/if}

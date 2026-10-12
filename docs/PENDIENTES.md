@@ -27,5 +27,11 @@
 - [ ] Verificar el contenido del SRD 2.0 contra el PDF oficial (hoy viene de una transcripción comunitaria).
 - [x] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla). Migración 003.
 - [ ] Neri (sin prisa): revisar nombres traducidos del bestiario (Ent, Destellífero, Sable de abordaje, Lobo terrible, Esqueleto desenterrado…). Ya decidido: Ooze = Limo. Para cambiar uno: decirle a Claude "X cámbialo por Y".
-- [ ] Más adelante: que los jugadores vean el encuentro activo (hoy solo lo ve el DJ).
-- [ ] Fase 5: fondos personalizados por jugador.
+- [x] Escena: los jugadores ven nombre, tipo y estado de los enemigos del encuentro activo; ojo para ocultar. Migración 005.
+- [x] Ayudas de reglas en la hoja: recibir daño, descansos, movimientos de muerte, subir de nivel.
+- [x] Fase 5: fondos personalizados por jugador. Migración 004.
+- [ ] Neri: confirmar regla del estado (Herido < mitad, Grave ≥ mitad, Caído = todos) y si la mesa ve el nombre del entorno.
+- [ ] Neri: confirmar casillas por mejora al subir de nivel (tomadas de la hoja oficial; los docs las marcan sin verificar).
+- [ ] Neri: ¿el daño masivo (regla opcional) es de toda la mesa? Hoy se activa en cada navegador.
+- [ ] Glosario: agregar términos de descansos, muerte y subir de nivel (Limpiar Estrés, Llamarada de gloria, cicatriz, mejoras, logros de rango).
+- [ ] Personajes importados con nivel no tienen avances registrados: los límites de mejoras solo cuentan desde la app.
