@@ -72,3 +72,9 @@ test('muchas citas anidadas no agotan la pila', () => {
   assert.match(h, /hondo/)
   assert.equal(mdLore('> > dentro'), '<blockquote><blockquote><p>dentro</p></blockquote></blockquote>')
 })
+
+test('md: null o undefined no se ven como «null»', async () => {
+  const { md } = await import('./md.js')
+  assert.doesNotMatch(md(null), /null/)
+  assert.doesNotMatch(md(undefined), /undefined/)
+})

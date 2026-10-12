@@ -303,6 +303,10 @@ export function registrarPropia(fila) {
   if (fila.efectos?.esperanza != null && fila.personaje_id) {
     app.personajes = cambiarEn(app.personajes, fila.personaje_id, (p) => ({ ...p, esperanza: fila.efectos.esperanza }))
   }
+  // Un crítico limpia 1 Estrés en el servidor: se refleja de inmediato sin esperar al tiempo real
+  if (fila.efectos?.estres_limpiado && fila.personaje_id) {
+    app.personajes = cambiarEn(app.personajes, fila.personaje_id, (p) => ({ ...p, estres: Math.max(0, (p.estres ?? 0) - 1) }))
+  }
   if (fila.efectos?.miedo != null) app.campania = { ...app.campania, miedo: fila.efectos.miedo }
 }
 

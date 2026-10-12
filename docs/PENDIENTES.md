@@ -53,3 +53,19 @@
 - [ ] Aplicar `supabase/migraciones/008_auditoria.sql` (auditoría de la base: hojas sin dueño editables sin sesión, dados de Dualidad trucables, fondos listables por cualquiera, DJ que se quita a sí mismo, topes de tamaño y permisos de funciones). Va en una transacción; pruebas en `supabase/pruebas/auditoria.test.mjs`.
 - [ ] Código de invitación: 6 hex (16.7 millones) sin límite de intentos; cualquiera con cuenta de Discord lo puede adivinar por fuerza bruta. Requiere cambio en la app (código más largo y botón «cambiar código» para el DJ). Quien fue sacado de la campaña puede volver a entrar con el mismo código.
 - [ ] Revisar en producción las tablas viejas (`tiradas`, `jugadores`, de antes de la 001): que tengan RLS activado o borrarlas con permiso de Neri.
+
+## Auditoría del 12/10/2026 (5 agentes, 71 pruebas nuevas, 200 en total)
+
+Corregidos y publicados: d4 con números al revés, tiradas de 2d12 que duraban 7 s, muchos dados congelaban la página, fuga de memoria de video, la app ya no se cae si no hay WebGL, Dificultad borrada contaba como 0, fórmulas ambiguas («2d6 3»), Lanzador en modo Adversario para jugadores, historial desordenado a medianoche, historial tapando el lanzador a 1100 px, toques rápidos que se perdían (Estrés, Esperanza, Miedo, casillas de la hoja, daño de adversarios, cuentas), datos de otra campaña que se colaban al cambiar o salir, borrados que no llegaban a los demás, cambios perdidos tras reconectar, demo que no empezaba limpio, código de invitación pegado con espacios, números guardados como texto en hojas importadas (Evasión 121), cartas repetidas que tronaban la hoja, oro que no pasaba a bolsa, Despertar / daño estando inconsciente, Casero que tronaba, Horda que no bajaba su daño, lore que perdía teclas o mostraba borradores en otra página, markdown que tronaba, fondos que aceptaban cualquier texto, y los hoyos de seguridad de la 008.
+
+Quedan (para decidir o revisar):
+- [ ] Cuando el DJ oculta una cuenta regresiva, a los jugadores no les llega el cambio hasta recargar (no se filtra nada oculto; solo se queda la vieja en pantalla). Arreglo: contador como `lore_revision`.
+- [ ] Gastar Esperanza en una Experiencia se calcula en el navegador; si llega al mismo tiempo una ganancia de Esperanza, una pisa a la otra. Arreglo: RPC que reste en el servidor.
+- [ ] Neri: ¿las cuentas «en bucle» se reinician solas al llegar a 0? Hoy el DJ usa ↺. Tampoco se automatiza «Esbirro (X)».
+- [ ] Neri: Esperanza y Miedo cambian al empezar la animación (se ve el resultado antes de que caigan los dados). ¿Esperar a que caigan?
+- [ ] Neri: cerrar sesión en un dispositivo cierra todas (scope global). ¿Solo el dispositivo actual?
+- [ ] Celular horizontal (844×390): la tarjeta del PJ, el resultado y el lanzador se enciman.
+- [ ] Rasgos de armadura (Fortificada, Física/Mágica) no se aplican en Recibir daño. Cambiar de armadura conserva las casillas marcadas aunque sobren.
+- [ ] Daño del compañero siempre tira 1 dado (¿escala con Competencia?).
+- [ ] La lista de cartas al agregar muestra las que ya tienes (elegirlas no hace nada).
+- [ ] Hoja a 1440 con compañero: la pestaña «Notas» queda cortada.

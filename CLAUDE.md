@@ -58,6 +58,12 @@ grep que no borre datos y confirma). Verifica con una consulta de solo lectura.
   Nunca reemplaces la fila entera: mézclala con `fusionarFila(vieja, nueva)`.
 - **`requestAnimationFrame` puede dar una hora anterior al inicio**: el cuadro de animación nunca debe
   ser negativo, y toda animación debe terminar siempre (errores, pestaña oculta, tiempo máximo).
+- Escrituras a la misma fila: van en cola (`crearColas` en `src/lib/filas.js`; en el panel del DJ, `dj/cola.js`;
+  en la tarjeta de la mesa, `lib/cola.js`). Aplica la respuesta solo si es la última y regresa solo lo que falló.
+- Todo DELETE del tiempo real necesita un oyente SIN filtro (Supabase no manda DELETE a canales filtrados).
+- Las hojas importadas pueden traer números como texto, nulos y repetidos: lee siempre con `normalizarHoja()` / `num()`.
+- `tirar()` en el servidor (008) solo acepta Dualidad = un d12 Esperanza + un d12 Miedo (+ un d6 de ventaja/desventaja)
+  y solo el DJ tira tipo `dj`. Si agregas tiradas nuevas, respeta esa forma o ajusta la función con prueba.
 - En Svelte, un espacio al inicio de un `<span>` se pierde: usa `&nbsp;`.
 - En Playwright no uses `pkill -f` con un patrón que coincida con tu propio comando (mata el shell).
 - Chromium para capturas: `/opt/pw-browsers/chromium-1194/chrome-linux/chrome` con

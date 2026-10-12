@@ -10,7 +10,8 @@ function enLinea(s) {
 }
 
 export function md(texto = '') {
-  const lineas = String(texto).replace(/\r/g, '').split('\n')
+  // null/undefined no deben verse como «null» en pantalla
+  const lineas = String(texto ?? '').replace(/\r/g, '').split('\n')
   const out = []
   let lista = false
   let tabla = null
