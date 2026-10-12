@@ -1,5 +1,5 @@
 <script>
-  import { app, crearPersonajeCompleto, asignarPersonaje, borrarPersonaje, cambiarCampania, salir, ajustesMesa, guardarAjustes } from '../lib/mesa.svelte.js'
+  import { app, crearPersonajeCompleto, asignarPersonaje, borrarPersonaje, cambiarCampania, salir, salirDemo, ajustesMesa, guardarAjustes } from '../lib/mesa.svelte.js'
   import { AJUSTES } from '../lib/ajustes.js'
   import { hojaNueva } from '../lib/reglas.js'
   import Casero from './Casero.svelte'
@@ -98,7 +98,12 @@
           </button>
           {#if esDJ}
             <select class="campo asignar" value={p.usuario_id ?? ''} aria-label="Jugador de {p.nombre}"
-              onchange={async (e) => { error = ''; try { await asignarPersonaje(p.id, e.currentTarget.value || null) } catch (err) { error = err.message } }}>
+              onchange={async (e) => {
+                const sel = e.currentTarget
+                error = ''
+                // Si el servidor no acepta, la lista vuelve a mostrar al jugador que sí tiene
+                try { await asignarPersonaje(p.id, sel.value || null) } catch (err) { error = err.message; sel.value = p.usuario_id ?? '' }
+              }}>
               <option value="">Sin jugador</option>
               {#each app.miembros as m (m.usuario_id)}<option value={m.usuario_id}>{m.perfiles?.nombre ?? 'Jugador'}</option>{/each}
             </select>
@@ -149,7 +154,7 @@
   {:else}
     {#if app.demo}{@render reglasDeLaMesa()}{/if}
     <div class="pie">
-      <button class="boton" onclick={() => { app.demo = false; onCerrar() }}>Salir del modo prueba</button>
+      <button class="boton" onclick={() => { onCerrar(); salirDemo() }}>Salir del modo prueba</button>
     </div>
   {/if}
   <p class="ayuda"><a href="./legado/">Abrir el tirador anterior</a></p>
