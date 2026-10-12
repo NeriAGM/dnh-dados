@@ -19,6 +19,11 @@
 
 ## Fases siguientes
 
-- [ ] Fase 3: hojas de personaje con reglas, cartas de dominio, homebrew, migración desde Notion, contenido del SRD 2.0.
+- [x] Fase 3: hojas de personaje con reglas, cartas de dominio, homebrew, migración desde Notion, contenido del SRD 2.0.
+- [ ] Elegir las cartas de dominio de cada personaje (en Notion eran imágenes y no se pudieron leer).
+- [ ] Revisar las armas e inventario de Milo: en Notion son iguales a los de Soren (parece plantilla copiada).
+- [ ] Capturar la hoja de Aida (en Notion solo hay trasfondo).
+- [ ] Asignar cada personaje importado a su jugador (Ajustes → Personajes).
+- [ ] Verificar el contenido del SRD 2.0 contra el PDF oficial (hoy viene de una transcripción comunitaria).
 - [ ] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla).
 - [ ] Fase 5: fondos personalizados por jugador.
