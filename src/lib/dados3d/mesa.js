@@ -21,6 +21,15 @@ const DT = 1 / 60
 const MAX_CUADROS = 60 * 7
 const ARRIBA = new THREE.Vector3(0, 1, 0)
 
+// Qué cuadro de la grabación toca mostrar. Nunca negativo: la marca de tiempo
+// de requestAnimationFrame puede ser anterior al inicio (eso atoraba los dados).
+export function cuadroEn(ahora, inicio) {
+  return Math.max(0, Math.floor(((ahora - inicio) / 1000) * 60))
+}
+export function indiceCuadro(cuadro, largo) {
+  return Math.max(0, Math.min(Math.floor(cuadro) || 0, largo - 1))
+}
+
 // ---------------------------------------------------------------------
 // Texturas: una cuadrícula ("atlas") con todos los números de un estilo
 // ---------------------------------------------------------------------
@@ -379,16 +388,19 @@ export function crearMesa(canvas) {
    * Devuelve una promesa que se cumple cuando todos se detienen.
    */
   function lanzar(lista, { desdeArriba = false, instantaneo = false } = {}) {
-    if (animando) { cancelAnimationFrame(animando.raf); animando.resolver(); animando = null }
+    if (animando) animando.terminar()
     quitarDados()
     const soportados = lista.filter((d) => [4, 6, 8, 10, 12, 20].includes(d.lados))
     if (!soportados.length) return Promise.resolve()
 
     // Si algún dado quedó "chueco" (apoyado en una orilla), se repite la simulación
-    let sim
-    for (let intento = 0; intento < 6; intento++) {
-      sim = simular(soportados, desdeArriba)
-      if (sim.finales.every((f, i) => f.firmeza > (soportados[i].lados === 4 ? 0.95 : 0.93))) break
+    // y si ninguno de los intentos quedó parejo, se usa el más estable
+    let sim = null, mejorFirmeza = -Infinity
+    for (let intento = 0; intento < 8; intento++) {
+      const prueba = simular(soportados, desdeArriba)
+      const peor = Math.min(...prueba.finales.map((f, i) => f.firmeza - (soportados[i].lados === 4 ? 0.95 : 0.93)))
+      if (peor > mejorFirmeza) { mejorFirmeza = peor; sim = prueba }
+      if (peor > 0) break
     }
 
     sim.cuerpos.forEach(({ def }, i) => {
@@ -400,13 +412,15 @@ export function crearMesa(canvas) {
       if (def.lados === 4) {
         const vv = def.verticeValores.slice()
         const k = vv.indexOf(d.valor)
-        ;[vv[arriba], vv[k]] = [vv[k], vv[arriba]]
+        if (k >= 0) [vv[arriba], vv[k]] = [vv[k], vv[arriba]]
+        else console.error('[dados] valor fuera del dado', d)
         tex = texPropia = texturaD4(def, vv, estilo)
         geo = geometriaDado(def, null, 2, 2)
       } else {
         const et = def.valores.slice()
         const k = et.indexOf(d.valor)
-        ;[et[arriba], et[k]] = [et[k], et[arriba]]
+        if (k >= 0) [et[arriba], et[k]] = [et[k], et[arriba]]
+        else console.error('[dados] valor fuera del dado', d)
         const at = atlas(def.lados, estilo)
         tex = at.tex
         geo = geometriaDado(def, et, at.cols, at.filas)
@@ -434,7 +448,7 @@ export function crearMesa(canvas) {
     const total = Math.max(...dados.map((d) => d.cuadros.length))
     const poner = (cuadro) => {
       for (const d of dados) {
-        const f = d.cuadros[Math.min(cuadro, d.cuadros.length - 1)]
+        const f = d.cuadros[indiceCuadro(cuadro, d.cuadros.length)]
         d.malla.position.set(f[0], f[1], f[2])
         d.malla.quaternion.set(f[3], f[4], f[5], f[6])
       }
@@ -442,30 +456,54 @@ export function crearMesa(canvas) {
     const atenuarDescartados = () => {
       for (const d of dados) if (d.descartado) d.malla.material.opacity = 0.35
     }
+    const final = () => {
+      try { poner(total - 1); atenuarDescartados(); dibujar() } catch (e) { console.error('[dados] al dibujar el final', e) }
+    }
 
     if (instantaneo) {
-      poner(total - 1)
-      atenuarDescartados()
-      dibujar()
+      final()
       return Promise.resolve()
     }
 
+    // La promesa SIEMPRE se cumple: al terminar la animación, si algo truena
+    // al dibujar, si la pestaña se oculta (el navegador pausa la animación)
+    // o, como último recurso, cuando pasa el tiempo máximo de la grabación.
     return new Promise((resolver) => {
-      const inicio = performance.now()
+      let inicio = null
+      let raf = 0
+      let listo = false
+      const terminar = () => {
+        if (listo) return
+        listo = true
+        cancelAnimationFrame(raf)
+        clearTimeout(guardia)
+        document.removeEventListener('visibilitychange', alOcultar)
+        if (animando === propio) animando = null
+        final()
+        resolver()
+      }
+      const alOcultar = () => { if (document.hidden) terminar() }
+      const guardia = setTimeout(terminar, (total / 60) * 1000 + 3000)
       const paso = (ahora) => {
-        const cuadro = Math.floor(((ahora - inicio) / 1000) * 60)
-        poner(cuadro)
-        dibujar()
-        if (cuadro < total - 1) {
-          animando.raf = requestAnimationFrame(paso)
-        } else {
-          animando = null
-          atenuarDescartados()
+        try {
+          // Se cuenta desde el primer cuadro dibujado: la marca de tiempo del
+          // navegador puede ser un poco ANTERIOR a cuando se pidió la animación.
+          if (inicio === null) inicio = ahora
+          const cuadro = cuadroEn(ahora, inicio)
+          poner(cuadro)
           dibujar()
-          resolver()
+          if (cuadro < total - 1) raf = requestAnimationFrame(paso)
+          else terminar()
+        } catch (e) {
+          console.error('[dados] la animación falló; se muestra el final', e)
+          terminar()
         }
       }
-      animando = { raf: requestAnimationFrame(paso), resolver }
+      const propio = { terminar }
+      animando = propio
+      document.addEventListener('visibilitychange', alOcultar)
+      if (document.hidden) terminar()
+      else raf = requestAnimationFrame(paso)
     })
   }
 
@@ -507,7 +545,7 @@ export function crearMesa(canvas) {
     ajustarLuz,
     destruir() {
       obs.disconnect()
-      if (animando) cancelAnimationFrame(animando.raf)
+      if (animando) animando.terminar()
       quitarDados()
       renderer.dispose()
     },

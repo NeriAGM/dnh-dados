@@ -65,6 +65,9 @@ export function tirarLocal({ tipo, grupos, modificador = 0, dificultad = null, e
   }
 }
 
+// Si el servidor no contesta en este tiempo, se avisa en vez de quedarse esperando
+export const ESPERA_MAXIMA = 15000
+
 export async function tirar({ campania, personaje = null, tipo, grupos, modificador = 0, dificultad = null, oculta = false, etiqueta = null, danoCritico = false }) {
   if (!campania) return tirarLocal({ tipo, grupos, modificador, dificultad, etiqueta, danoCritico })
   const { data, error } = await supabase.rpc('tirar', {
@@ -77,7 +80,12 @@ export async function tirar({ campania, personaje = null, tipo, grupos, modifica
     p_oculta: oculta,
     p_etiqueta: etiqueta,
     p_dano_critico: danoCritico,
-  })
-  if (error) throw new Error(error.message)
+  }).abortSignal(AbortSignal.timeout(ESPERA_MAXIMA))
+  if (error) {
+    if (/abort|timeout/i.test(`${error.name} ${error.message} ${error.details ?? ''}`)) {
+      throw new Error('El servidor tardó demasiado en contestar. Si la tirada sí llegó, aparecerá en el historial; si no, vuelve a tirar.')
+    }
+    throw new Error(error.message)
+  }
   return data
 }

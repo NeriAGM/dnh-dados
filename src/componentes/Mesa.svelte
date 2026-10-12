@@ -28,7 +28,6 @@
   let catBase = $state(null)
   const cat = $derived(conCasero(catBase, app.demo ? [] : app.casero))
   let aviso = $state('')
-  let animando = false
   let temporizador
 
   // Modo prueba: todo vive aquí, nada se guarda
@@ -71,9 +70,7 @@
       const t = await tirar({ ...params, campania: app.demo ? null : app.campania.id, personaje })
       if (app.demo) aplicarDemo(t)
       else registrarPropia(t)
-      animando = true
       await mesa3d?.lanzar(dadosPara3D(t), { instantaneo: matchMedia('(prefers-reduced-motion: reduce)').matches })
-      animando = false
       mostrar(t, app.perfil?.nombre ?? 'Tú', params.tipo === 'dj' ? 'DJ' : nombrePJ)
       return t
     } catch (e) {
@@ -81,7 +78,6 @@
       if (propagar) throw e
     } finally {
       ocupado = false
-      animando = false
     }
   }
 
@@ -173,10 +169,9 @@
       if (t.usuario_id === uid) return
       const p = app.personajes.find((x) => x.id === t.personaje_id)
       const autor = nombreDe(t.usuario_id)
-      if (!animando && !ocupado) {
-        animando = true
-        await mesa3d?.lanzar(dadosPara3D(t), { desdeArriba: true })
-        animando = false
+      // Si tú estás tirando, no se interrumpe tu animación; si no, la última tirada manda
+      if (!ocupado) {
+        try { await mesa3d?.lanzar(dadosPara3D(t), { desdeArriba: true }) } catch (e) { console.error('[dados]', e) }
       }
       mostrar(t, autor, t.tipo === 'dj' ? 'DJ' : p?.nombre ?? autor)
     })
