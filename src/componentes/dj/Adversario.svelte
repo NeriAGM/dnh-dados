@@ -17,6 +17,7 @@
   const d = $derived(adv?.ataque?.dano ?? {})
   const textoDano = $derived(d.lados ? `${d.dados || 1}d${d.lados}${d.mod ? (d.mod > 0 ? `+${d.mod}` : d.mod) : ''}` : `${d.mod ?? 0}`)
   const caido = $derived(instancia && adv && (instancia.pg ?? 0) >= (adv.pg ?? 1))
+  const oculto = $derived(!!instancia?.oculto)
 
   function recibir() {
     const n = parseInt(dano, 10)
@@ -33,7 +34,7 @@
 </script>
 
 {#if adv}
-  <article class="adv" class:caido class:en-escena={!!instancia}>
+  <article class="adv" class:caido class:oculto class:en-escena={!!instancia}>
     <header>
       <button class="titulo-adv" onclick={() => (ver = !ver)} aria-expanded={ver}>
         <span class="nombre titulo">{instancia?.nombre || adv.nombre}</span>
@@ -41,8 +42,19 @@
           <span class="tipo t-{adv.tipo}">{NOMBRE_TIPO[adv.tipo] ?? adv.tipo}{adv.horda_por_pg ? ` (${adv.horda_por_pg}/PG)` : ''}</span>
           <span>Rango {adv.nivel}</span>
           {#if adv.fuente === 'Casero'}<span>Casero</span>{/if}
+          {#if oculto}<span class="marca-oculto">Oculto</span>{/if}
         </span>
       </button>
+      {#if instancia}
+        <button class="ojo" class:tapado={oculto} onclick={() => onCambiar?.({ oculto: !oculto })}
+          aria-label={oculto ? 'Mostrar a la mesa' : 'Ocultar a la mesa'} title={oculto ? 'La mesa no lo ve · tócalo para mostrarlo' : 'La mesa lo ve · tócalo para ocultarlo'}>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/>
+            <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            {#if oculto}<path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M4 4l16 16"/>{/if}
+          </svg>
+        </button>
+      {/if}
       {#if acciones}<div class="acc-cab">{@render acciones()}</div>{/if}
     </header>
 
@@ -103,6 +115,13 @@
   .adv { border-radius: 14px; border: 1px solid var(--linea); background: rgba(255, 245, 230, 0.04); padding: 0.55rem 0.7rem; display: grid; gap: 0.45rem; }
   .adv.en-escena { border-left: 3px solid var(--sangre); }
   .adv.caido { opacity: 0.5; filter: grayscale(0.6); }
+  .adv.oculto { border-style: dashed; background: rgba(10, 6, 22, 0.35); }
+  .adv.oculto > :not(header) { opacity: 0.55; }
+  .adv.oculto .nombre { opacity: 0.7; }
+  .marca-oculto { background: rgba(10, 6, 22, 0.7) !important; color: var(--pergamino) !important; border: 1px dashed var(--pergamino-suave); }
+  .ojo { flex: none; display: grid; place-items: center; width: 2.1rem; height: 2.1rem; padding: 0; border-radius: 50%; border: 1px solid rgba(240, 189, 85, 0.55); background: rgba(240, 189, 85, 0.14); color: var(--esperanza); }
+  .ojo:hover { background: rgba(240, 189, 85, 0.28); }
+  .ojo.tapado { border-style: dashed; border-color: var(--pergamino-suave); background: rgba(10, 6, 22, 0.5); color: var(--pergamino-suave); }
   header { display: flex; gap: 0.5rem; align-items: flex-start; }
   .titulo-adv { flex: 1; min-width: 0; display: grid; text-align: left; background: none; border: 0; padding: 0; gap: 0.15rem; }
   .nombre { font-size: 1.08rem; text-shadow: none; line-height: 1.2; }

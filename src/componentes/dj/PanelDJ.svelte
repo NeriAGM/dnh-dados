@@ -1,8 +1,11 @@
 <script>
   import {
-    app, crearEncuentro, guardarEncuentro, borrarEncuentro, activarEncuentro,
+    app, crearEncuentro, guardarEncuentro, borrarEncuentro, activarEncuentro, terminarEncuentro,
     crearCuenta, guardarCuenta, borrarCuenta,
   } from '../../lib/mesa.svelte.js'
+  import { untrack } from 'svelte'
+  import { escenaDe, completarInstancia, leFalta } from '../../lib/escena.js'
+  import Escena from '../Escena.svelte'
   import { puntosDeBatalla, AJUSTES_BATALLA, NOMBRE_TIPO } from '../../lib/reglas.js'
   import { md } from '../../lib/md.js'
   import Adversario from './Adversario.svelte'
@@ -51,6 +54,27 @@
 
   const uid = () => Math.random().toString(36).slice(2, 10)
   const instancias = () => structuredClone($state.snapshot(encuentro?.adversarios ?? []))
+  // Cada instancia lleva lo que la mesa necesita (nombre del catálogo, tipo, PG máximos)
+  const completar = (lista) => lista.map((i) => completarInstancia(i, advPorId[i.ref]))
+  const guardarAdversarios = (id, lista) => guardarEncuentro(id, { adversarios: completar(lista) })
+
+  // Lo que la mesa ve de este encuentro (la base de datos hace la misma cuenta)
+  const vistaMesa = $derived(encuentro ? escenaDe({ ...encuentro, adversarios: completar(encuentro.adversarios ?? []) }) : null)
+  const ocultos = $derived((encuentro?.adversarios ?? []).filter((i) => i.oculto).length)
+
+  // Encuentros guardados antes de que existiera la escena: se completan una vez
+  const rellenados = new Set()
+  $effect(() => {
+    const e = app.encuentros.find((x) => x.activo)
+    if (!e || !cat || rellenados.has(e.id)) return
+    const lista = $state.snapshot(e.adversarios ?? [])
+    const faltaEntorno = e.entorno && !e.entorno_nombre && cat.porId?.entornos?.[e.entorno]
+    if (!faltaEntorno && !lista.some((i) => leFalta(i, advPorId[i.ref]))) return
+    rellenados.add(e.id)
+    const cambios = { adversarios: completar(lista) }
+    if (faltaEntorno) cambios.entorno_nombre = cat.porId.entornos[e.entorno].nombre
+    untrack(() => hacer(() => guardarEncuentro(e.id, cambios)))
+  })
 
   async function nuevoEncuentro() {
     await hacer(async () => {
@@ -73,26 +97,26 @@
       const lista = structuredClone($state.snapshot(e.adversarios ?? []))
       const iguales = lista.filter((x) => x.ref === adv.id).length
       for (let i = 0; i < cantidad; i++) {
-        lista.push({ uid: uid(), ref: adv.id, nombre: iguales + i > 0 || cantidad > 1 ? `${adv.nombre} ${iguales + i + 1}` : '', pg: 0, estres: 0 })
+        lista.push({ uid: uid(), ref: adv.id, nombre: iguales + i > 0 || cantidad > 1 ? `${adv.nombre} ${iguales + i + 1}` : '', pg: 0, estres: 0, oculto: false })
       }
-      await guardarEncuentro(e.id, { adversarios: lista })
+      await guardarAdversarios(e.id, lista)
     })
   }
 
   function cambiarInstancia(i, cambios) {
     const lista = instancias()
     lista[i] = { ...lista[i], ...cambios }
-    hacer(() => guardarEncuentro(encuentro.id, { adversarios: lista }))
+    hacer(() => guardarAdversarios(encuentro.id, lista))
   }
   function quitarInstancia(i) {
     const lista = instancias()
     lista.splice(i, 1)
-    hacer(() => guardarEncuentro(encuentro.id, { adversarios: lista }))
+    hacer(() => guardarAdversarios(encuentro.id, lista))
   }
   function duplicarInstancia(i) {
     const lista = instancias()
     lista.splice(i + 1, 0, { ...lista[i], uid: uid(), pg: 0, estres: 0, nombre: lista[i].nombre ? `${lista[i].nombre} (copia)` : '' })
-    hacer(() => guardarEncuentro(encuentro.id, { adversarios: lista }))
+    hacer(() => guardarAdversarios(encuentro.id, lista))
   }
   function alternarAjuste(id) {
     const a = encuentro.ajustes ?? []
@@ -167,7 +191,11 @@
       {#if encuentro}
         <div class="fila">
           <input class="campo" value={encuentro.nombre} onchange={(e) => hacer(() => guardarEncuentro(encuentro.id, { nombre: e.currentTarget.value || 'Encuentro' }))} aria-label="Nombre del encuentro" />
-          {#if !encuentro.activo}<button class="boton chico" onclick={() => hacer(() => activarEncuentro(encuentro.id))}>Activar</button>{/if}
+          {#if encuentro.activo}
+            <button class="boton chico" onclick={() => hacer(() => terminarEncuentro(encuentro.id))} title="La mesa deja de verlo">Terminar encuentro</button>
+          {:else}
+            <button class="boton chico" onclick={() => hacer(async () => { await guardarAdversarios(encuentro.id, instancias()); await activarEncuentro(encuentro.id) })}>Activar</button>
+          {/if}
           <button class="boton chico" onclick={() => { if (confirmar === encuentro.id) { hacer(() => borrarEncuentro(encuentro.id)); confirmar = null; elegido = null } else confirmar = encuentro.id }}>{confirmar === encuentro.id ? '¿Borrar?' : 'Borrar'}</button>
         </div>
 
@@ -203,7 +231,7 @@
             {#each entorno.rasgos ?? [] as r}
               <div class="r"><p><b>{r.nombre}</b> <small>{r.clase}</small></p>{@html md(r.texto)}</div>
             {/each}
-            <button class="boton chico" onclick={() => hacer(() => guardarEncuentro(encuentro.id, { entorno: null }))}>Quitar entorno</button>
+            <button class="boton chico" onclick={() => hacer(() => guardarEncuentro(encuentro.id, { entorno: null, entorno_nombre: null }))}>Quitar entorno</button>
           </details>
         {/if}
 
@@ -225,6 +253,19 @@
           {/each}
         </div>
         <button class="boton" onclick={() => (pestana = 'bestiario')}>Agregar adversarios</button>
+
+        <section class="vista-mesa" aria-label="Así lo ve la mesa">
+          <p class="vm-titulo">
+            <b>Así lo ve la mesa</b>
+            <small>{encuentro.activo ? 'en escena ahora' : 'cuando lo actives'}{ocultos ? ` · ${ocultos} oculto${ocultos > 1 ? 's' : ''}` : ''}</small>
+          </p>
+          {#if vistaMesa}
+            <Escena escena={vistaMesa} incrustada />
+          {:else}
+            <p class="ayuda">{encuentro.adversarios?.length ? 'Todo está oculto: la mesa no ve nada, ni el nombre del encuentro.' : 'Sin adversarios, la mesa no ve nada.'}</p>
+          {/if}
+          <p class="ayuda">Sin números: solo nombre, tipo y estado (Ileso · Herido · Grave · Caído).</p>
+        </section>
       {:else}
         <p class="vacio">Crea tu primer encuentro para empezar a armar la pelea.</p>
       {/if}
@@ -266,7 +307,7 @@
             {#each e.rasgos ?? [] as r}
               <div class="r"><p><b>{r.nombre}</b> <small>{r.clase}{r.cuenta_regresiva ? ` · ${r.cuenta_regresiva}` : ''}</small></p>{@html md(r.texto)}</div>
             {/each}
-            <button class="boton chico" onclick={() => hacer(async () => { const enc = await asegurarEncuentro(); await guardarEncuentro(enc.id, { entorno: e.id }); pestana = 'encuentro' })}>Usar en el encuentro</button>
+            <button class="boton chico" onclick={() => hacer(async () => { const enc = await asegurarEncuentro(); await guardarEncuentro(enc.id, { entorno: e.id, entorno_nombre: e.nombre }); pestana = 'encuentro' })}>Usar en el encuentro</button>
           </details>
         {/each}
       </div>
@@ -356,6 +397,9 @@
   .entorno .r p { margin: 0.4rem 0 0.1rem; }
   .entorno :global(p) { margin: 0.2rem 0; }
   .desc { font-style: italic; color: var(--pergamino-suave); margin: 0.3rem 0; }
+  .vista-mesa { border-radius: 14px; border: 1px dashed rgba(240, 189, 85, 0.45); padding: 0.55rem 0.7rem; display: grid; gap: 0.4rem; background: rgba(240, 189, 85, 0.05); }
+  .vm-titulo { margin: 0; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; font-size: 0.88rem; }
+  .vm-titulo small { color: var(--pergamino-suave); font-size: 0.76rem; }
   .nueva-cuenta { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
   .nueva-cuenta .campo:first-child { flex: 1 1 100%; }
   .cuenta { display: flex; gap: 0.6rem; align-items: center; padding: 0.5rem 0.65rem; border-radius: 12px; background: rgba(255, 245, 230, 0.05); border: 1px solid var(--linea); flex-wrap: wrap; }

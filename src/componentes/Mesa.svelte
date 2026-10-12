@@ -13,6 +13,8 @@
   import Lanzador from './Lanzador.svelte'
   import Resultado from './Resultado.svelte'
   import Historial from './Historial.svelte'
+  import Escena from './Escena.svelte'
+  import { escenaDe } from '../lib/escena.js'
   import Ajustes from './Ajustes.svelte'
 
   let { mesa3d, momento, onMomento } = $props()
@@ -41,6 +43,8 @@
   const miedo = $derived(app.demo ? demoMiedo : app.campania?.miedo ?? 0)
   const tiradas = $derived(app.demo ? demoTiradas : app.lanzamientos)
   const puedoEditarPJ = $derived(app.demo || (pj && (esDJ || pj.usuario_id === uid)))
+  // Encuentro activo tal como lo ve la mesa: en prueba se arma aquí mismo
+  const escena = $derived(app.demo ? escenaDe(app.encuentros.find((e) => e.activo)) : app.escena)
 
   function dadosPara3D(t) {
     return t.dados.map((d) => ({ lados: d.lados, valor: d.valor, estilo: estiloDe(d.rol, t.tipo), descartado: d.descartado }))
@@ -90,7 +94,7 @@
   }
 
   // Avisa a la mesa 3D qué parte de la pantalla está libre para los dados
-  let elBarra = $state(), elPJ = $state(), elLanzador = $state(), elHistorial = $state()
+  let elBarra = $state(), elPJ = $state(), elLanzador = $state(), elHistorial = $state(), elEscena = $state(), elCuentas = $state()
   $effect(() => {
     if (!mesa3d || !elLanzador) return
     const medir = () => {
@@ -98,9 +102,19 @@
       const ancho = w >= 760
       const techo = Math.max(elBarra?.getBoundingClientRect().bottom ?? 0, elPJ?.getBoundingClientRect().bottom ?? 0)
       const resultadoAlto = ancho ? 210 : 120
-      const arriba = Math.max(techo, (ancho ? 64 : 56) + resultadoAlto) + 8
-      const abajo = h - elLanzador.getBoundingClientRect().top + 8
-      document.documentElement.style.setProperty('--alto-lanzador', `${Math.round(abajo)}px`)
+      // En pantalla ancha las cuentas van arriba: el resultado se acomoda debajo de ellas
+      const finCuentas = ancho && elCuentas ? Math.round(elCuentas.getBoundingClientRect().bottom + 6) : 0
+      document.documentElement.style.setProperty('--fin-cuentas', `${finCuentas}px`)
+      const arriba = Math.max(techo, Math.max(ancho ? 64 : 56, finCuentas) + resultadoAlto) + 8
+      const topeLanzador = elLanzador.getBoundingClientRect().top
+      document.documentElement.style.setProperty('--alto-lanzador', `${Math.round(h - topeLanzador + 8)}px`)
+      // La escena y (en celular) las cuentas se apilan sobre el lanzador: los dados no caen ahí
+      let tope = topeLanzador
+      for (const el of [elEscena, elCuentas]) {
+        const r = el?.getBoundingClientRect()
+        if (r && r.height > 0 && r.top > h / 2) tope = Math.min(tope, r.top)
+      }
+      const abajo = h - tope + 8
       const derecha = ancho && elHistorial ? w - elHistorial.getBoundingClientRect().left + 8 : 0
       const hojaAbierta = w >= 1100 ? document.querySelector('.hoja, .panel') : null
       const izquierda = hojaAbierta ? hojaAbierta.getBoundingClientRect().right + 8 : 0
@@ -108,7 +122,7 @@
     }
     verHoja; verDJ
     const obs = new ResizeObserver(medir)
-    for (const el of [elBarra, elPJ, elLanzador, elHistorial]) if (el) obs.observe(el)
+    for (const el of [elBarra, elPJ, elLanzador, elHistorial, elEscena, elCuentas]) if (el) obs.observe(el)
     window.addEventListener('resize', medir)
     medir()
     const t = setTimeout(medir, 350)
@@ -293,13 +307,21 @@
     <Ajustes {momento} {onMomento} {cat} onCerrar={() => (verAjustes = false)} onAbrirHoja={(id) => { verAjustes = false; verDJ = false; verHoja = id }} />
   {/if}
 
-  {#if app.cuentas.length}
-    <div class="cuentas" class:con-hoja={ladoOcupado} aria-label="Cuentas regresivas">
-      {#each app.cuentas as c (c.id)}
-        <span class="cuenta" class:cero={c.valor <= 0} class:oculta={!c.visible}><b class="titulo">{c.valor}</b>{c.nombre}</span>
-      {/each}
-    </div>
-  {/if}
+  <!-- En celular, la escena y las cuentas se apilan justo arriba del lanzador -->
+  <div class="pila">
+    {#if escena}
+      <div class="zona-escena" class:con-hoja={ladoOcupado} bind:this={elEscena}>
+        <Escena {escena} />
+      </div>
+    {/if}
+    {#if app.cuentas.length}
+      <div class="cuentas" class:con-hoja={ladoOcupado} aria-label="Cuentas regresivas" bind:this={elCuentas}>
+        {#each app.cuentas as c (c.id)}
+          <span class="cuenta" class:cero={c.valor <= 0} class:oculta={!c.visible}><b class="titulo">{c.valor}</b>{c.nombre}</span>
+        {/each}
+      </div>
+    {/if}
+  </div>
 
   {#if verDJ && cat}
     <PanelDJ {cat} {miedo} onMiedo={sumarMiedo} onTirar={(p) => { if (!matchMedia('(min-width: 1100px)').matches) verDJ = false; alTirar(p) }} onCerrar={() => (verDJ = false)} />
@@ -408,7 +430,7 @@
   .zona-resultado {
     position: absolute;
     left: 50%;
-    top: calc(4rem + env(safe-area-inset-top, 0px));
+    top: max(calc(4rem + env(safe-area-inset-top, 0px)), var(--fin-cuentas, 0px));
     transform: translateX(-50%);
     z-index: 4;
   }
@@ -430,10 +452,28 @@
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   }
   .corto { display: none; }
+  .pila { display: contents; }
+  .zona-escena { position: absolute; z-index: 2; bottom: var(--alto-lanzador, 13rem); left: 0.6rem; right: 0.6rem; }
+  @media (min-width: 760px) {
+    .zona-escena { left: 50%; right: auto; transform: translateX(-50%); width: min(560px, calc(100% - 360px - 2rem)); }
+  }
+  @media (min-width: 760px) and (max-width: 1100px) {
+    .zona-escena { left: 0.8rem; transform: none; }
+  }
+  @media (min-width: 1100px) {
+    .zona-escena.con-hoja { left: calc(50% + 140px); width: min(520px, calc(100% - 560px - 360px - 2rem)); min-width: 380px; }
+  }
   @media (max-width: 759px) {
     .largo { display: none; }
     .corto { display: inline; }
-    .cuentas { top: auto; bottom: var(--alto-lanzador, 13rem); }
+    .pila {
+      display: flex; flex-direction: column; gap: 0.35rem; align-items: stretch;
+      position: absolute; left: 0.6rem; right: 0.6rem; bottom: var(--alto-lanzador, 13rem); z-index: 2;
+      pointer-events: none;
+    }
+    .pila > * { pointer-events: auto; }
+    .zona-escena { position: static; }
+    .cuentas { position: static; transform: none; max-width: none; align-self: center; }
   }
   .cuenta b { display: grid; place-items: center; min-width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--esperanza); color: var(--tinta); text-shadow: none; font-size: 0.95rem; }
   .cuenta.cero { border-color: var(--sangre); animation: latido 1.2s ease-in-out infinite; }
