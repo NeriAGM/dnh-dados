@@ -18,6 +18,7 @@
   import Ajustes from './Ajustes.svelte'
   import Lore from './lore/Lore.svelte'
   import { soltarLore } from '../lib/lore.svelte.js'
+  import { crearCola } from '../lib/cola.js'
 
   let { mesa3d, momento, onMomento } = $props()
 
@@ -45,9 +46,18 @@
   const esDJ = $derived(!app.demo && app.rol === 'dj')
   const pj = $derived(app.demo ? demoPJ : app.personajes.find((p) => p.id === app.personajeActivo) ?? null)
   const misPJs = $derived(app.demo ? [demoPJ] : esDJ ? app.personajes : app.personajes.filter((p) => p.usuario_id === uid))
-  const miedo = $derived(app.demo ? demoMiedo : app.campania?.miedo ?? 0)
+  // Escrituras de la tarjeta (Esperanza, Estrés, Miedo) en orden y calculadas
+  // desde lo último que pediste: antes, dos toques rápidos en "+" de Estrés
+  // partían del mismo valor viejo y solo se marcaba 1; en el Miedo (que se
+  // guarda como diferencia) tocar 4 y luego 5 rápido terminaba en 6.
+  const cola = crearCola()
+  let pendiente = $state({}) // `${id}:${campo}` → valor que se está guardando
+  let miedoObjetivo = $state(null)
+  const miedo = $derived(app.demo ? demoMiedo : miedoObjetivo ?? app.campania?.miedo ?? 0)
   const tiradas = $derived(app.demo ? demoTiradas : app.lanzamientos)
   const puedoEditarPJ = $derived(app.demo || (pj && (esDJ || pj.usuario_id === uid)))
+  const esperanzaVista = $derived(pj ? pendiente[`${pj.id}:esperanza`] ?? pj.esperanza : 0)
+  const estresVista = $derived(pj ? pendiente[`${pj.id}:estres`] ?? pj.estres : 0)
   // Encuentro activo tal como lo ve la mesa: en prueba se arma aquí mismo
   const escena = $derived(app.demo ? escenaDe(app.encuentros.find((e) => e.activo), ajustesMesa()) : app.escena)
 
@@ -172,7 +182,11 @@
 
   onMount(() =>
     alLlegarTirada(async (t) => {
-      if (t.usuario_id === uid) return
+      // Una tirada tuya que llega por tiempo real mientras esta pestaña está
+      // tirando es la misma que ya se anima aquí. Si no estás tirando, viene de
+      // otro aparato con tu cuenta (p. ej. el DJ en el celular y la mesa en la
+      // tele) o llegó tarde tras un corte: antes no se veía ni la tarjeta.
+      if (t.usuario_id === uid && ocupado) return
       const p = app.personajes.find((x) => x.id === t.personaje_id)
       const autor = nombreDe(t.usuario_id)
       // Si tú estás tirando, no se interrumpe tu animación; si no, la última tirada manda
@@ -183,29 +197,44 @@
     })
   )
 
-  async function cambiarEsperanza(n) {
+  function guardarPJ(id, campo, valor) {
+    const clave = `${id}:${campo}`
+    pendiente[clave] = valor
+    return cola.agregar(() => ajustarPersonaje(id, { [campo]: valor }))
+      .catch((e) => (aviso = e.message))
+      .finally(() => { if (cola.vacia) pendiente = {} })
+  }
+  function cambiarEsperanza(n) {
     if (!puedoEditarPJ || !pj) return
-    const nuevo = pj.esperanza === n ? n - 1 : n
+    const nuevo = esperanzaVista === n ? n - 1 : n
     if (app.demo) { demoPJ.esperanza = nuevo; return }
-    try { await ajustarPersonaje(pj.id, { esperanza: nuevo }) } catch (e) { aviso = e.message }
+    return guardarPJ(pj.id, 'esperanza', nuevo)
   }
-  async function cambiarEstres(delta) {
+  function cambiarEstres(delta) {
     if (!puedoEditarPJ || !pj) return
-    const nuevo = Math.max(0, Math.min(pj.estres_max, pj.estres + delta))
+    const nuevo = Math.max(0, Math.min(pj.estres_max, estresVista + delta))
     if (app.demo) { demoPJ.estres = nuevo; return }
-    try { await ajustarPersonaje(pj.id, { estres: nuevo }) } catch (e) { aviso = e.message }
+    return guardarPJ(pj.id, 'estres', nuevo)
   }
-  async function sumarMiedo(delta) {
+  function sumarMiedo(delta) {
     if (app.demo) { demoMiedo = Math.max(0, Math.min(12, demoMiedo + delta)); return }
-    await ajustarMiedo(delta)
+    return cola.agregar(() => ajustarMiedo(delta))
   }
   const ladoOcupado = $derived(!!pjHoja || verDJ)
   const puedeDJ = $derived(app.demo || esDJ)
 
-  async function cambiarMiedo(n) {
+  function cambiarMiedo(n) {
     if (app.demo) { demoMiedo = miedo === n ? n - 1 : n; return }
     if (!esDJ) return
-    try { await ajustarMiedo((miedo === n ? n - 1 : n) - miedo) } catch (e) { aviso = e.message }
+    const objetivo = miedo === n ? n - 1 : n
+    miedoObjetivo = objetivo
+    // La diferencia se calcula al momento de enviar, con el Miedo ya confirmado
+    return cola.agregar(async () => {
+      const actual = app.campania?.miedo ?? 0
+      if (objetivo !== actual) await ajustarMiedo(objetivo - actual)
+    })
+      .catch((e) => (aviso = e.message))
+      .finally(() => { if (cola.vacia) miedoObjetivo = null })
   }
   async function borrar(t) {
     const { error } = await supabase.from('lanzamientos').delete().eq('id', t.id)
@@ -265,17 +294,17 @@
         <button class="ver-hoja" onclick={() => (verHoja = pj.id)} disabled={!catBase}>Ver hoja</button>
       {/if}
       {#if pj}
-        <div class="esperanza" aria-label="Esperanza: {pj.esperanza} de {pj.esperanza_max}">
+        <div class="esperanza" aria-label="Esperanza: {esperanzaVista} de {pj.esperanza_max}">
           {#each Array(pj.esperanza_max) as _, i}
-            <button class="pip-esp" class:lleno={i < pj.esperanza} disabled={!puedoEditarPJ} onclick={() => cambiarEsperanza(i + 1)} aria-label="Poner Esperanza en {i + 1}"></button>
+            <button class="pip-esp" class:lleno={i < esperanzaVista} disabled={!puedoEditarPJ} onclick={() => cambiarEsperanza(i + 1)} aria-label="Poner Esperanza en {i + 1}"></button>
           {/each}
           <span class="rotulo">Esperanza</span>
         </div>
         <div class="estres">
           <span class="rotulo">Estrés</span>
           <button class="mini" disabled={!puedoEditarPJ} onclick={() => cambiarEstres(-1)} aria-label="Limpiar 1 Estrés">−</button>
-          <span class="barra-estres" aria-label="Estrés: {pj.estres} de {pj.estres_max}">
-            {#each Array(pj.estres_max) as _, i}<span class:marcado={i < pj.estres}></span>{/each}
+          <span class="barra-estres" aria-label="Estrés: {estresVista} de {pj.estres_max}">
+            {#each Array(pj.estres_max) as _, i}<span class:marcado={i < estresVista}></span>{/each}
           </span>
           <button class="mini" disabled={!puedoEditarPJ} onclick={() => cambiarEstres(1)} aria-label="Marcar 1 Estrés">+</button>
         </div>
