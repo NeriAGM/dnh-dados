@@ -68,6 +68,15 @@ export function tirarLocal({ tipo, grupos, modificador = 0, dificultad = null, e
 // Si el servidor no contesta en este tiempo, se avisa en vez de quedarse esperando
 export const ESPERA_MAXIMA = 15000
 
+// AbortSignal.timeout no existe en Safari 15 (iPhone 7 y anteriores se quedan
+// ahí): sin esto, TODA tirada real tronaba antes de llegar al servidor.
+export function senalConLimite(ms) {
+  if (typeof AbortSignal.timeout === 'function') return AbortSignal.timeout(ms)
+  const control = new AbortController()
+  setTimeout(() => control.abort(new DOMException('Se acabó el tiempo', 'TimeoutError')), ms)
+  return control.signal
+}
+
 export async function tirar({ campania, personaje = null, tipo, grupos, modificador = 0, dificultad = null, oculta = false, etiqueta = null, danoCritico = false }) {
   if (!campania) return tirarLocal({ tipo, grupos, modificador, dificultad, etiqueta, danoCritico })
   const { data, error } = await supabase.rpc('tirar', {
@@ -80,7 +89,7 @@ export async function tirar({ campania, personaje = null, tipo, grupos, modifica
     p_oculta: oculta,
     p_etiqueta: etiqueta,
     p_dano_critico: danoCritico,
-  }).abortSignal(AbortSignal.timeout(ESPERA_MAXIMA))
+  }).abortSignal(senalConLimite(ESPERA_MAXIMA))
   if (error) {
     if (/abort|timeout/i.test(`${error.name} ${error.message} ${error.details ?? ''}`)) {
       throw new Error('El servidor tardó demasiado en contestar. Si la tirada sí llegó, aparecerá en el historial; si no, vuelve a tirar.')
