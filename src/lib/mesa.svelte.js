@@ -3,6 +3,7 @@
 // pantalla que lo muestra se actualiza sola.
 
 import { supabase } from './supabase.js'
+import { ajustesDe } from './ajustes.js'
 
 export const app = $state({
   cargando: true,
@@ -10,7 +11,7 @@ export const app = $state({
   perfil: null,
   demo: false,
   campanias: [],
-  campania: null,       // { id, nombre, miedo, codigo_invitacion, dj_id }
+  campania: null,       // { id, nombre, miedo, codigo_invitacion, dj_id, ajustes }
   rol: null,            // 'dj' | 'jugador'
   miembros: [],         // [{ usuario_id, rol, perfiles: { nombre, avatar_url } }]
   personajes: [],
@@ -20,6 +21,7 @@ export const app = $state({
   cuentas: [],          // cuentas regresivas
   escena: null,         // lo que la mesa ve del encuentro activo (ver lib/escena.js)
   personajeActivo: null, // id
+  ajustesDemo: {},      // reglas de la mesa en el modo prueba (no se guardan)
   error: null,
 })
 
@@ -118,6 +120,8 @@ function escuchar(id) {
     })
     .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'campanias', filter: `id=eq.${id}` }, ({ new: c }) => {
       app.campania = { ...app.campania, ...c }
+      // Que la lista también los tenga, por si se vuelve a abrir la campaña
+      app.campanias = app.campanias.map((x) => (x.id === c.id ? { ...x, ...c } : x))
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'personajes', filter: `campania_id=eq.${id}` }, ({ eventType, new: p, old }) => {
       if (eventType === 'DELETE') app.personajes = app.personajes.filter((x) => x.id !== old.id)
@@ -204,6 +208,30 @@ export async function ajustarMiedo(delta) {
   const { data, error } = await supabase.rpc('ajustar_miedo', { p_campania: app.campania.id, p_delta: delta })
   if (error) throw new Error(error.message)
   app.campania = { ...app.campania, miedo: data }
+}
+
+// ---------------------------------------------------------------------
+// Reglas de la mesa (ajustes de campaña, ver lib/ajustes.js)
+// ---------------------------------------------------------------------
+
+// Los ajustes que aplican ahora, con sus valores por defecto ya puestos
+export function ajustesMesa() {
+  return ajustesDe(app.demo ? { ajustes: app.ajustesDemo } : app.campania)
+}
+
+// Solo el DJ. Se ve al instante y luego se guarda; si falla, se regresa.
+export async function guardarAjustes(cambios) {
+  if (app.demo) { app.ajustesDemo = { ...app.ajustesDemo, ...cambios }; return }
+  const id = app.campania.id
+  const antes = app.campania.ajustes ?? {}
+  app.campania = { ...app.campania, ajustes: { ...antes, ...cambios } }
+  const { data, error } = await supabase.rpc('guardar_ajustes', { p_campania: id, p: cambios })
+  if (error) {
+    if (app.campania?.id === id) app.campania = { ...app.campania, ajustes: antes }
+    throw new Error(error.message)
+  }
+  if (app.campania?.id === id) app.campania = { ...app.campania, ajustes: data }
+  app.campanias = app.campanias.map((x) => (x.id === id ? { ...x, ajustes: data } : x))
 }
 
 export async function salir() {

@@ -1,5 +1,6 @@
 <script>
-  import { app, crearPersonajeCompleto, asignarPersonaje, borrarPersonaje, cambiarCampania, salir } from '../lib/mesa.svelte.js'
+  import { app, crearPersonajeCompleto, asignarPersonaje, borrarPersonaje, cambiarCampania, salir, ajustesMesa, guardarAjustes } from '../lib/mesa.svelte.js'
+  import { AJUSTES } from '../lib/ajustes.js'
   import { hojaNueva } from '../lib/reglas.js'
   import Casero from './Casero.svelte'
   import Fondos from './Fondos.svelte'
@@ -30,6 +31,15 @@
 
   const uid = $derived(app.sesion?.user?.id)
   const esDJ = $derived(app.rol === 'dj')
+
+  // Reglas de la mesa: en el modo prueba tú eres el DJ
+  const reglas = $derived(ajustesMesa())
+  const decidoReglas = $derived(app.demo || esDJ)
+  let errorReglas = $state('')
+  async function cambiarRegla(id, valor) {
+    errorReglas = ''
+    try { await guardarAjustes({ [id]: valor }) } catch (err) { errorReglas = err.message }
+  }
 
   async function nuevo(e) {
     e.preventDefault()
@@ -75,6 +85,8 @@
       <p class="ayuda">Compárteles este código; lo escriben en "Unirme con código".</p>
       <button class="codigo titulo" onclick={copiar}>{app.campania.codigo_invitacion}<small>{copiado ? 'Copiado' : 'Toca para copiar'}</small></button>
     {/if}
+
+    {@render reglasDeLaMesa()}
 
     <h3>Personajes</h3>
     <ul class="pjs">
@@ -135,6 +147,7 @@
       <button class="boton" onclick={salir}>Cerrar sesión</button>
     </div>
   {:else}
+    {#if app.demo}{@render reglasDeLaMesa()}{/if}
     <div class="pie">
       <button class="boton" onclick={() => { app.demo = false; onCerrar() }}>Salir del modo prueba</button>
     </div>
@@ -142,6 +155,31 @@
   <p class="ayuda"><a href="./legado/">Abrir el tirador anterior</a></p>
 </section>
 {/if}
+
+{#snippet reglasDeLaMesa()}
+  <h3>Reglas de la mesa</h3>
+  <p class="ayuda">{decidoReglas ? 'Las decides tú y aplican a todos en la campaña.' : 'Las decide el DJ; así se juega en esta mesa.'}{app.demo ? ' En el modo prueba no se guardan.' : ''}</p>
+  <ul class="reglas">
+    {#each AJUSTES as a (a.id)}
+      {@const on = reglas[a.id]}
+      <li>
+        <button class="regla" class:on role="switch" aria-checked={on} disabled={!decidoReglas}
+          aria-describedby="regla-{a.id}" onclick={() => cambiarRegla(a.id, !on)}>
+          <span class="regla-txt">
+            <b>{a.nombre}</b>
+            <small id="regla-{a.id}">{a.descripcion}</small>
+          </span>
+          {#if decidoReglas}
+            <span class="interruptor" aria-hidden="true"><span></span></span>
+          {:else}
+            <span class="estado">{on ? 'Sí' : 'No'}</span>
+          {/if}
+        </button>
+      </li>
+    {/each}
+  </ul>
+  {#if errorReglas}<p class="error" role="alert">{errorReglas}</p>{/if}
+{/snippet}
 
 {#if verCasero}
   <Casero {cat} onCerrar={() => (verCasero = false)} />
@@ -215,5 +253,30 @@
   .ayuda { color: var(--pergamino-suave); font-size: 0.85rem; margin: 0.3rem 0; }
   .ayuda a { color: var(--esperanza); }
   .error { color: #ffb3bd; font-size: 0.88rem; }
+  .reglas { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+  .regla {
+    width: 100%; display: flex; align-items: center; gap: 0.7rem; text-align: left;
+    border: 1px solid var(--linea); border-radius: 14px; padding: 0.55rem 0.7rem;
+    background: rgba(255, 245, 230, 0.04); transition: background 0.2s, border-color 0.2s;
+  }
+  .regla:not(:disabled):hover { background: rgba(255, 245, 230, 0.09); }
+  .regla.on { border-color: rgba(240, 189, 85, 0.55); background: rgba(240, 189, 85, 0.1); }
+  .regla:disabled { opacity: 1; cursor: default; }
+  .regla-txt { flex: 1; min-width: 0; display: grid; gap: 0.1rem; }
+  .regla-txt b { font-size: 0.92rem; }
+  .regla-txt small { color: var(--pergamino-suave); font-size: 0.78rem; font-weight: 500; line-height: 1.3; }
+  .interruptor {
+    flex: none; width: 2.5rem; height: 1.45rem; border-radius: 999px; position: relative;
+    background: rgba(255, 245, 230, 0.16); border: 1px solid var(--linea); transition: background 0.2s;
+  }
+  .interruptor span {
+    position: absolute; top: 50%; left: 0.15rem; width: 1.05rem; height: 1.05rem; border-radius: 50%;
+    background: var(--pergamino); transform: translateY(-50%); transition: left 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  .regla.on .interruptor { background: var(--esperanza); border-color: transparent; }
+  .regla.on .interruptor span { left: calc(100% - 1.2rem); background: #2a1606; }
+  .estado { flex: none; font-size: 0.8rem; font-weight: 800; padding: 0.15rem 0.55rem; border-radius: 999px; border: 1px solid var(--linea); color: var(--pergamino-suave); }
+  .regla.on .estado { color: var(--esperanza); border-color: rgba(240, 189, 85, 0.55); }
   .pie { display: grid; gap: 0.5rem; margin-top: 1.4rem; }
 </style>

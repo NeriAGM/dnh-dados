@@ -21,6 +21,12 @@ test('la escena quita ocultos y nunca lleva números', () => {
   assert.equal(escenaDe(null), null)
 })
 
+test('con mostrarEntorno apagado la escena no lleva el entorno', () => {
+  const enc = { id: 'e1', nombre: 'Puente', entorno_nombre: 'Río', adversarios: [{ uid: 'a', nombre: 'Oso', pg: 0, pg_max: 7 }] }
+  assert.equal(escenaDe(enc, { mostrarEntorno: false }).entorno, null)
+  assert.equal(escenaDe(enc, { mostrarEntorno: true }).entorno, 'Río')
+})
+
 test('completar una instancia con el catálogo', () => {
   const adv = { id: 'bear', nombre: 'Oso', tipo: 'bruto', pg: 7 }
   const viejo = { uid: 'a', ref: 'bear', nombre: '', pg: 2, estres: 0 }

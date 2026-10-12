@@ -13,6 +13,7 @@
   import { ESTADOS, necesitaMovimientoDeMuerte } from '../../lib/ayudas.js'
   import { NOMBRE_ETAPA, NIVEL_MAX } from '../../lib/avance.js'
   import { tirarDesdeHoja } from '../../lib/tiradaHoja.js'
+  import { ajustesMesa } from '../../lib/mesa.svelte.js'
 
   let {
     pj, cat, editable = true, jugador = '',
@@ -30,6 +31,8 @@
   const listaAvisos = $derived(avisos(hoja, cat))
   const competencia = $derived(hoja.competencia ?? 1)
   const rasgoLanz = $derived(subclase?.rasgo_lanzamiento)
+  // Monedas: regla opcional de la mesa. Si ya había monedas anotadas, se siguen viendo
+  const conMonedas = $derived(ajustesMesa().monedas || (hoja.oro?.monedas ?? 0) > 0)
 
   const PESTANAS = $derived([
     { id: 'personaje', nombre: 'Personaje' },
@@ -420,14 +423,14 @@
 
       <h3 class="seccion">Oro</h3>
       <div class="oro">
-        {#each [['punados', 'Puñados'], ['bolsas', 'Bolsas'], ['cofres', 'Cofres']] as [k, n]}
+        {#each [...(conMonedas ? [['monedas', 'Monedas']] : []), ['punados', 'Puñados'], ['bolsas', 'Bolsas'], ['cofres', 'Cofres']] as [k, n]}
           <label class="moneda">
             <span>{n}</span>
-            <input class="campo num" type="number" min="0" max="10" disabled={!editable} value={hoja.oro?.[k] ?? 0} onchange={(e) => cambiar(['oro', k], Math.max(0, +e.currentTarget.value || 0))} />
+            <input class="campo num" type="number" min="0" max={k === 'monedas' ? 9 : 10} disabled={!editable} value={hoja.oro?.[k] ?? 0} onchange={(e) => cambiar(['oro', k], Math.max(0, +e.currentTarget.value || 0))} />
           </label>
         {/each}
       </div>
-      <p class="ayuda">10 puñados = 1 bolsa · 10 bolsas = 1 cofre.</p>
+      <p class="ayuda">{conMonedas ? '10 monedas = 1 puñado · ' : ''}10 puñados = 1 bolsa · 10 bolsas = 1 cofre.</p>
 
       <h3 class="seccion">Inventario</h3>
       <ul class="inventario">

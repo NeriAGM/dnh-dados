@@ -27,8 +27,9 @@ export function leFalta(inst, adv) {
   return !!adv && (inst.nombre_base !== adv.nombre || inst.tipo !== (adv.tipo ?? null) || inst.pg_max !== (adv.pg ?? null) || inst.oculto == null)
 }
 
-// Si no hay nada a la vista, la mesa no ve ni el nombre del encuentro
-export function escenaDe(encuentro) {
+// Si no hay nada a la vista, la mesa no ve ni el nombre del encuentro.
+// Con mostrarEntorno = false (ajuste de campaña) tampoco ve el entorno.
+export function escenaDe(encuentro, { mostrarEntorno = true } = {}) {
   if (!encuentro) return null
   const adversarios = (Array.isArray(encuentro.adversarios) ? encuentro.adversarios : [])
     .filter((a) => a && typeof a === 'object' && a.oculto !== true)
@@ -39,5 +40,5 @@ export function escenaDe(encuentro) {
       estado: estadoDe(a.pg, a.pg_max),
     }))
   if (!adversarios.length) return null
-  return { encuentro_id: encuentro.id, nombre: encuentro.nombre, entorno: String(encuentro.entorno_nombre ?? '').trim() || null, adversarios }
+  return { encuentro_id: encuentro.id, nombre: encuentro.nombre, entorno: (mostrarEntorno && String(encuentro.entorno_nombre ?? '').trim()) || null, adversarios }
 }
