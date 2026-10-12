@@ -34,8 +34,12 @@
     fondos.vista = id
   }
 
+  // Solo se aceptan fondos que existen: al soltar cualquier texto arrastrado
+  // (un enlace, una palabra) se guardaba tal cual en el tablero
+  const existe = (id) => MOMENTOS.some((x) => pueblo(x.id) === id) || fondos.imagenes.some((i) => i.id === id)
+
   function ponerEn(m, id = seleccion) {
-    if (!id) return
+    if (!id || !existe(id)) return
     asignar(m, id)
     destello = m
     setTimeout(() => { if (destello === m) destello = null }, 800)

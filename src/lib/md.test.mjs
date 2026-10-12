@@ -59,3 +59,16 @@ test('el markdown del SRD no cambió', () => {
   assert.equal(md('# Título'), '<p><strong>Título</strong></p>')
   assert.equal(md('- a'), '<ul><li>a</li></ul>')
 })
+
+test('una tabla que solo trae la línea de guiones no truena', () => {
+  // Antes: md('|---|') tronaba (encabezado undefined) y tumbaba el panel
+  assert.equal(md('|---|---|'), '')
+  assert.equal(md('texto\n| :-- |\nmás'), '<p>texto</p><p>más</p>')
+  assert.equal(md('| a | b |\n|---|---|\n| 1 | 2 |'), '<table><thead><tr><th>a</th><th>b</th></tr></thead><tbody><tr><td>1</td><td>2</td></tr></tbody></table>')
+})
+
+test('muchas citas anidadas no agotan la pila', () => {
+  const h = mdLore('>'.repeat(20000) + ' hondo')
+  assert.match(h, /hondo/)
+  assert.equal(mdLore('> > dentro'), '<blockquote><blockquote><p>dentro</p></blockquote></blockquote>')
+})

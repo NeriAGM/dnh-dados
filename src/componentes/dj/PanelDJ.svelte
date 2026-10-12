@@ -9,6 +9,7 @@
   import { puntosDeBatalla, AJUSTES_BATALLA, NOMBRE_TIPO } from '../../lib/reglas.js'
   import { md } from '../../lib/md.js'
   import Adversario from './Adversario.svelte'
+  import { crearCola } from './cola.js'
 
   let { cat, miedo = 0, onMiedo, onTirar, onCerrar } = $props()
 
@@ -30,7 +31,18 @@
   let cTipo = $state('estandar')
   let cVisible = $state(true)
 
-  const encuentro = $derived(app.encuentros.find((e) => e.id === elegido) ?? app.encuentros.find((e) => e.activo) ?? app.encuentros[0] ?? null)
+  // Guardados en fila (ver cola.js): mientras el servidor no confirma, se ve
+  // la copia local, para que una respuesta o un eco viejo no borre clics nuevos
+  let localesE = $state({})
+  let localesC = $state({})
+  const colaE = crearCola((id, c) => guardarEncuentro(id, c), { alCambiar: (v) => { localesE = v } })
+  const colaC = crearCola((id, c) => guardarCuenta(id, c), { alCambiar: (v) => { localesC = v } })
+  const conLocal = (fila, locales) => (fila && locales[fila.id] ? { ...fila, ...locales[fila.id] } : fila)
+  const guardarE = (id, cambios) => colaE.poner(id, cambios)
+
+  const encuentroBase = $derived(app.encuentros.find((e) => e.id === elegido) ?? app.encuentros.find((e) => e.activo) ?? app.encuentros[0] ?? null)
+  const encuentro = $derived(conLocal(encuentroBase, localesE))
+  const cuentas = $derived(app.cuentas.map((c) => conLocal(c, localesC)))
   const advPorId = $derived(cat?.porId?.adversarios ?? {})
   const pjsCampania = $derived(app.personajes.filter((p) => p.usuario_id).length || app.personajes.length || 4)
   const pjs = $derived(encuentro?.pjs ?? pjsCampania)
@@ -56,7 +68,7 @@
   const instancias = () => structuredClone($state.snapshot(encuentro?.adversarios ?? []))
   // Cada instancia lleva lo que la mesa necesita (nombre del catálogo, tipo, PG máximos)
   const completar = (lista) => lista.map((i) => completarInstancia(i, advPorId[i.ref]))
-  const guardarAdversarios = (id, lista) => guardarEncuentro(id, { adversarios: completar(lista) })
+  const guardarAdversarios = (id, lista) => guardarE(id, { adversarios: completar(lista) })
 
   // Lo que la mesa ve de este encuentro (la base de datos hace la misma cuenta)
   const vistaMesa = $derived(encuentro ? escenaDe({ ...encuentro, adversarios: completar(encuentro.adversarios ?? []) }, ajustesMesa()) : null)
@@ -67,13 +79,13 @@
   $effect(() => {
     const e = app.encuentros.find((x) => x.activo)
     if (!e || !cat || rellenados.has(e.id)) return
-    const lista = $state.snapshot(e.adversarios ?? [])
+    const lista = $state.snapshot(colaE.local(e.id)?.adversarios ?? e.adversarios ?? [])
     const faltaEntorno = e.entorno && !e.entorno_nombre && cat.porId?.entornos?.[e.entorno]
     if (!faltaEntorno && !lista.some((i) => leFalta(i, advPorId[i.ref]))) return
     rellenados.add(e.id)
     const cambios = { adversarios: completar(lista) }
     if (faltaEntorno) cambios.entorno_nombre = cat.porId.entornos[e.entorno].nombre
-    untrack(() => hacer(() => guardarEncuentro(e.id, cambios)))
+    untrack(() => hacer(() => guardarE(e.id, cambios)))
   })
 
   async function nuevoEncuentro() {
@@ -120,16 +132,16 @@
   }
   function alternarAjuste(id) {
     const a = encuentro.ajustes ?? []
-    hacer(() => guardarEncuentro(encuentro.id, { ajustes: a.includes(id) ? a.filter((x) => x !== id) : [...a, id] }))
+    hacer(() => guardarE(encuentro.id, { ajustes: a.includes(id) ? a.filter((x) => x !== id) : [...a, id] }))
   }
 
   function tirarAtaque(adv, inst) {
     const grupos = ventaja === 'ninguna' ? [{ lados: 20 }] : [{ lados: 20, cantidad: 2, conservar: ventaja === 'ventaja' ? 'alto' : 'bajo' }]
     onTirar({ tipo: 'dj', grupos, modificador: adv.ataque?.mod ?? 0, oculta, etiqueta: `${inst.nombre || adv.nombre} · ${adv.ataque?.nombre ?? 'Ataque'}` })
   }
-  function tirarDano(adv, inst, critico) {
-    const d = adv.ataque.dano
-    onTirar({ tipo: 'dano', grupos: [{ lados: d.lados, cantidad: d.dados || 1 }], modificador: d.mod ?? 0, oculta, danoCritico: critico, etiqueta: `Daño · ${inst.nombre || adv.nombre}` })
+  function tirarDano(adv, inst, critico, dano) {
+    const d = dano ?? adv.ataque.dano
+    onTirar({ tipo: 'dano', grupos: [{ lados: d.lados, cantidad: d.dados || 1 }], modificador: d.mod ?? 0, oculta, danoCritico: critico, etiqueta: `Daño · ${inst.nombre || adv.nombre}${d.horda ? ' (horda)' : ''}` })
   }
 
   const GASTOS = [
@@ -142,7 +154,7 @@
   function nuevaCuenta(e) {
     e.preventDefault()
     if (!cNombre.trim()) return
-    const v = Math.max(0, Math.min(99, +cValor || 0))
+    const v = Math.max(1, Math.min(99, Math.round(+cValor) || 1))
     hacer(async () => {
       await crearCuenta({ nombre: cNombre.trim(), valor: v, inicial: v, tipo: cTipo, visible: cVisible })
       cNombre = ''
@@ -190,13 +202,13 @@
 
       {#if encuentro}
         <div class="fila">
-          <input class="campo" value={encuentro.nombre} onchange={(e) => hacer(() => guardarEncuentro(encuentro.id, { nombre: e.currentTarget.value || 'Encuentro' }))} aria-label="Nombre del encuentro" />
+          <input class="campo" value={encuentro.nombre} onchange={(e) => { const nombre = e.currentTarget.value.trim().slice(0, 80) || 'Encuentro'; hacer(() => guardarE(encuentro.id, { nombre })) }} aria-label="Nombre del encuentro" />
           {#if encuentro.activo}
-            <button class="boton chico" onclick={() => hacer(() => terminarEncuentro(encuentro.id))} title="La mesa deja de verlo">Terminar encuentro</button>
+            <button class="boton chico" onclick={() => hacer(async () => { await colaE.esperar(); await terminarEncuentro(encuentro.id) })} title="La mesa deja de verlo">Terminar encuentro</button>
           {:else}
-            <button class="boton chico" onclick={() => hacer(async () => { await guardarAdversarios(encuentro.id, instancias()); await activarEncuentro(encuentro.id) })}>Activar</button>
+            <button class="boton chico" onclick={() => hacer(async () => { await guardarAdversarios(encuentro.id, instancias()); await colaE.esperar(); await activarEncuentro(encuentro.id) })}>Activar</button>
           {/if}
-          <button class="boton chico" onclick={() => { if (confirmar === encuentro.id) { hacer(() => borrarEncuentro(encuentro.id)); confirmar = null; elegido = null } else confirmar = encuentro.id }}>{confirmar === encuentro.id ? '¿Borrar?' : 'Borrar'}</button>
+          <button class="boton chico" onclick={() => { if (confirmar === encuentro.id) { const id = encuentro.id; hacer(async () => { await colaE.esperar(); colaE.olvidar(id); await borrarEncuentro(id) }); confirmar = null; elegido = null } else confirmar = encuentro.id }}>{confirmar === encuentro.id ? '¿Borrar?' : 'Borrar'}</button>
         </div>
 
         <div class="presupuesto" class:pasado={puntos.restante < 0}>
@@ -206,7 +218,7 @@
             {#if puntos.restante > 0}· te quedan {puntos.restante}{:else if puntos.restante < 0}· te pasaste por {-puntos.restante}{:else}· justo{/if}
           </p>
           <p class="ayuda">
-            Base 3 × <input class="campo mini" type="number" min="1" max="12" value={pjs} onchange={(e) => hacer(() => guardarEncuentro(encuentro.id, { pjs: Math.max(1, +e.currentTarget.value || 1) }))} aria-label="PJ en el combate" /> PJ + 2 = {puntos.base}
+            Base 3 × <input class="campo mini" type="number" min="1" max="12" value={pjs} onchange={(e) => { const pjs = Math.max(1, Math.min(12, Math.round(+e.currentTarget.value) || 1)); hacer(() => guardarE(encuentro.id, { pjs })) }} aria-label="PJ en el combate" /> PJ + 2 = {puntos.base}
             {#each puntos.automaticos as a} · {a.texto} {a.puntos > 0 ? '+' : ''}{a.puntos}{/each}
           </p>
           <div class="ajustes">
@@ -231,7 +243,7 @@
             {#each entorno.rasgos ?? [] as r}
               <div class="r"><p><b>{r.nombre}</b> <small>{r.clase}</small></p>{@html md(r.texto)}</div>
             {/each}
-            <button class="boton chico" onclick={() => hacer(() => guardarEncuentro(encuentro.id, { entorno: null, entorno_nombre: null }))}>Quitar entorno</button>
+            <button class="boton chico" onclick={() => hacer(() => guardarE(encuentro.id, { entorno: null, entorno_nombre: null }))}>Quitar entorno</button>
           </details>
         {/if}
 
@@ -242,7 +254,7 @@
               <Adversario {adv} instancia={inst}
                 onCambiar={(c) => cambiarInstancia(i, c)}
                 onTirarAtaque={() => tirarAtaque(adv, inst)}
-                onTirarDano={(crit) => tirarDano(adv, inst, crit)}
+                onTirarDano={(crit, dano) => tirarDano(adv, inst, crit, dano)}
                 onQuitar={() => quitarInstancia(i)}
                 onDuplicar={() => duplicarInstancia(i)} />
             {:else}
@@ -307,7 +319,7 @@
             {#each e.rasgos ?? [] as r}
               <div class="r"><p><b>{r.nombre}</b> <small>{r.clase}{r.cuenta_regresiva ? ` · ${r.cuenta_regresiva}` : ''}</small></p>{@html md(r.texto)}</div>
             {/each}
-            <button class="boton chico" onclick={() => hacer(async () => { const enc = await asegurarEncuentro(); await guardarEncuentro(enc.id, { entorno: e.id, entorno_nombre: e.nombre }); pestana = 'encuentro' })}>Usar en el encuentro</button>
+            <button class="boton chico" onclick={() => hacer(async () => { const enc = await asegurarEncuentro(); await guardarE(enc.id, { entorno: e.id, entorno_nombre: e.nombre }); pestana = 'encuentro' })}>Usar en el encuentro</button>
           </details>
         {/each}
       </div>
@@ -324,16 +336,16 @@
       </form>
       <p class="ayuda">Estándar: baja 1 en cada tirada. Dinámica: baja 0–3 según el resultado. En bucle: al llegar a 0 vuelve a empezar.</p>
       <div class="lista">
-        {#each app.cuentas as c (c.id)}
+        {#each cuentas as c (c.id)}
           <div class="cuenta" class:cero={c.valor <= 0}>
             <span class="c-num titulo">{c.valor}</span>
             <span class="c-info"><b>{c.nombre}</b><small>{TIPOS_CUENTA[c.tipo]} · empezó en {c.inicial}{c.visible ? '' : ' · oculta'}</small></span>
             <span class="c-btn">
-              <button class="boton chico" disabled={c.valor <= 0} onclick={() => hacer(() => guardarCuenta(c.id, { valor: c.valor - 1 }))} aria-label="Bajar">−1</button>
-              <button class="boton chico" onclick={() => hacer(() => guardarCuenta(c.id, { valor: c.valor + 1 }))} aria-label="Subir">+1</button>
-              <button class="boton chico" onclick={() => hacer(() => guardarCuenta(c.id, { valor: c.inicial }))} title="Reiniciar">↺</button>
-              <button class="boton chico" onclick={() => hacer(() => guardarCuenta(c.id, { visible: !c.visible }))}>{c.visible ? 'Ocultar' : 'Mostrar'}</button>
-              <button class="boton chico" onclick={() => hacer(() => borrarCuenta(c.id))} aria-label="Borrar">✕</button>
+              <button class="boton chico" disabled={c.valor <= 0} onclick={() => hacer(() => colaC.poner(c.id, { valor: Math.max(0, c.valor - 1) }))} aria-label="Bajar">−1</button>
+              <button class="boton chico" disabled={c.valor >= 99} onclick={() => hacer(() => colaC.poner(c.id, { valor: Math.min(99, c.valor + 1) }))} aria-label="Subir">+1</button>
+              <button class="boton chico" onclick={() => hacer(() => colaC.poner(c.id, { valor: c.inicial }))} title="Reiniciar">↺</button>
+              <button class="boton chico" onclick={() => hacer(() => colaC.poner(c.id, { visible: !c.visible }))}>{c.visible ? 'Ocultar' : 'Mostrar'}</button>
+              <button class="boton chico" onclick={() => hacer(async () => { await colaC.esperar(); colaC.olvidar(c.id); await borrarCuenta(c.id) })} aria-label="Borrar">✕</button>
             </span>
           </div>
         {:else}

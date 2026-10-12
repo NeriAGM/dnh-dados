@@ -14,6 +14,7 @@ import { app } from './mesa.svelte.js'
 import { nombreSeguro } from './fondo/ajustes.js'
 import { imagenesDe } from './md.js'
 import { paginasDemo, imagenesDemo } from './loreDemo.js'
+import { ordenar, hijasDe, descendencia, ruta, ocultaPor, ponerFila } from './loreFilas.js'
 
 export const lore = $state({
   clave: null,     // id de la campaña cargada ('demo' en modo prueba)
@@ -39,39 +40,9 @@ const esLocal = () => lore.clave === 'demo'
 const idLocal = () => `local-${Math.random().toString(36).slice(2, 10)}`
 
 // ---------------------------------------------------------------------
-// Árbol
+// Árbol (las reglas puras viven en loreFilas.js, con pruebas)
 // ---------------------------------------------------------------------
-export const ordenar = (a, b) => a.orden - b.orden || a.titulo.localeCompare(b.titulo, 'es')
-export const hijasDe = (paginas, padre) => paginas.filter((p) => (p.padre_id ?? null) === (padre ?? null)).sort(ordenar)
-
-// La página y todas las que cuelgan de ella
-export function descendencia(paginas, id) {
-  const fuera = new Set([id])
-  let otra = true
-  while (otra) {
-    otra = false
-    for (const p of paginas) if (p.padre_id && fuera.has(p.padre_id) && !fuera.has(p.id)) { fuera.add(p.id); otra = true }
-  }
-  return fuera
-}
-
-// Las madres de una página, de la raíz hacia abajo
-export function ruta(paginas, id) {
-  const porId = new Map(paginas.map((p) => [p.id, p]))
-  const r = []
-  let p = porId.get(id)
-  const vistas = new Set()
-  while (p?.padre_id && !vistas.has(p.padre_id)) { vistas.add(p.padre_id); p = porId.get(p.padre_id); if (p) r.unshift(p) }
-  return r
-}
-
-// La primera madre oculta (o la página misma) que la esconde de la mesa
-export function ocultaPor(paginas, id) {
-  const p = paginas.find((x) => x.id === id)
-  if (!p) return null
-  if (!p.visible) return p
-  return ruta(paginas, id).find((m) => !m.visible) ?? null
-}
+export { ordenar, hijasDe, descendencia, ruta, ocultaPor }
 
 // ---------------------------------------------------------------------
 // Cargar y escuchar
@@ -105,6 +76,7 @@ export function soltarLore() {
   if (canal) supabase.removeChannel(canal)
   canal = null
   clearTimeout(esperaRefresco)
+  refrescos++
   lore.clave = null
   lore.paginas = []
   firmadas.clear()
@@ -113,9 +85,14 @@ export function soltarLore() {
 function quitar(ids) { lore.paginas = lore.paginas.filter((p) => !ids.has(p.id)) }
 
 function poner(fila) {
-  lore.paginas = lore.paginas.some((p) => p.id === fila.id)
-    ? lore.paginas.map((p) => (p.id === fila.id ? { ...p, ...fila } : p))
-    : [...lore.paginas, fila]
+  const antes = lore.paginas
+  const despues = ponerFila(antes, fila)
+  if (despues !== antes) lore.paginas = despues
+}
+
+function programarRefresco() {
+  clearTimeout(esperaRefresco)
+  esperaRefresco = setTimeout(refrescar, 250)
 }
 
 function escuchar(id) {
@@ -125,7 +102,11 @@ function escuchar(id) {
       if (eventType === 'DELETE') { quitar(descendencia(lore.paginas, old.id)); return }
       // Si al jugador le llega algo que ya no puede ver, se quita con sus hijas
       if (!esDJLore() && !fila.visible) { quitar(descendencia(lore.paginas, fila.id)); return }
+      // Una página que se acaba de revelar llega SIN contenido (el tiempo real
+      // no manda las columnas grandes que no cambiaron): se pide completa.
+      const nueva = !lore.paginas.some((p) => p.id === fila.id)
       poner(fila)
+      if (nueva && fila.contenido == null) programarRefresco()
     })
     // Los borrados no se pueden filtrar por campaña: llega la llave y se compara
     .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'lore' }, ({ old }) => {
@@ -133,29 +114,41 @@ function escuchar(id) {
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'lore_revision', filter: `campania_id=eq.${id}` }, () => {
       if (esDJLore()) return
-      clearTimeout(esperaRefresco)
-      esperaRefresco = setTimeout(refrescar, 250)
+      programarRefresco()
     })
     .subscribe()
 }
 
-// Vuelve a pedir el índice (ligero) y solo baja completo lo nuevo o cambiado
+// Vuelve a pedir el índice (ligero) y solo baja completo lo nuevo o cambiado.
+// Si mientras tanto empezó otro refresco, este se descarta: si no, una
+// respuesta lenta y vieja pisaría la nueva (p. ej. el DJ oculta dos páginas
+// seguidas y la segunda se le seguía viendo al jugador).
+let refrescos = 0
 async function refrescar() {
   const clave = lore.clave
   if (!clave || esLocal()) return
+  const turno = ++refrescos
+  const vigente = () => turno === refrescos && lore.clave === clave
   const { data, error } = await supabase.from('lore').select(COLUMNAS_INDICE).eq('campania_id', clave)
-  if (error || lore.clave !== clave) return
+  if (error || !vigente()) return
   const antes = new Map(lore.paginas.map((p) => [p.id, p]))
   const ids = new Set(data.map((p) => p.id))
   const faltan = data.filter((p) => antes.get(p.id)?.actualizado !== p.actualizado || antes.get(p.id)?.contenido == null).map((p) => p.id)
   let nuevas = []
   for (let i = 0; i < faltan.length; i += 80) {
     const { data: filas } = await supabase.from('lore').select('*').in('id', faltan.slice(i, i + 80))
+    if (!vigente()) return
     nuevas = nuevas.concat(filas || [])
   }
-  if (lore.clave !== clave) return
+  if (!vigente()) return
+  // Se mezcla con lo que hay AHORA (pudo llegar algo más nuevo por el tiempo real)
   const completas = new Map(nuevas.map((p) => [p.id, p]))
-  lore.paginas = data.map((p) => completas.get(p.id) ?? { ...antes.get(p.id), ...p }).filter((p) => ids.has(p.id))
+  const ahora = new Map(lore.paginas.map((p) => [p.id, p]))
+  lore.paginas = data.map((p) => {
+    const fila = completas.get(p.id) ?? p
+    const hay = ahora.get(p.id)
+    return hay ? ponerFila([hay], fila)[0] : fila
+  }).filter((p) => ids.has(p.id))
 }
 
 // ---------------------------------------------------------------------

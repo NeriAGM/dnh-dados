@@ -36,3 +36,16 @@ test('completar una instancia con el catálogo', () => {
   assert.ok(!leFalta(nuevo, adv))
   assert.equal(completarInstancia(viejo, null), viejo)
 })
+
+test('una Horda a la mitad de sus PG pega con el daño reducido', async () => {
+  const { danoActual } = await import('./escena.js')
+  const zombis = { tipo: 'horda', pg: 6, ataque: { dano: { dados: 1, lados: 10, mod: 2, tipo: 'fisico' } },
+    rasgos: [{ nombre: 'Horda (1d4+2)', clase: 'pasiva' }] }
+  assert.deepEqual(danoActual(zombis, { pg: 2 }), zombis.ataque.dano)
+  assert.deepEqual(danoActual(zombis, { pg: 3 }), { dados: 1, lados: 4, mod: 2, tipo: 'fisico', horda: true })
+  assert.equal(danoActual({ ...zombis, rasgos: [{ nombre: 'Horde (2d6-1)' }] }, { pg: 6 }).mod, -1)
+  // Sin instancia (bestiario) o sin el rasgo: el daño normal
+  assert.deepEqual(danoActual(zombis, null), zombis.ataque.dano)
+  assert.deepEqual(danoActual({ ...zombis, rasgos: [] }, { pg: 6 }), zombis.ataque.dano)
+  assert.deepEqual(danoActual({ ...zombis, tipo: 'bruto' }, { pg: 6 }), zombis.ataque.dano)
+})
