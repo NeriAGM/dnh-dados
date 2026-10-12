@@ -2,10 +2,15 @@
   import { app, crearPersonajeCompleto, asignarPersonaje, borrarPersonaje, cambiarCampania, salir } from '../lib/mesa.svelte.js'
   import { hojaNueva } from '../lib/reglas.js'
   import Casero from './Casero.svelte'
+  import Fondos from './Fondos.svelte'
+  import { fondos } from '../lib/fondos.svelte.js'
+  import { esPueblo } from '../lib/fondo/ajustes.js'
 
   let { momento, onMomento, onCerrar, onAbrirHoja, cat = null } = $props()
   let claseNueva = $state('')
   let verCasero = $state(false)
+  let verFondos = $state(false)
+  const imagenesEnTablero = $derived(Object.values(fondos.config.tablero).filter((id) => !esPueblo(id)).length)
 
   const MOMENTOS = [
     { id: 'auto', nombre: 'Según la hora' },
@@ -42,6 +47,9 @@
   }
 </script>
 
+{#if verFondos}
+  <Fondos {momento} onVolver={() => (verFondos = false)} {onCerrar} />
+{:else}
 <div class="velo" onclick={onCerrar} role="presentation"></div>
 <section class="ajustes vidrio" aria-label="Ajustes de la mesa">
   <header>
@@ -49,12 +57,17 @@
     <button class="cerrar" onclick={onCerrar} aria-label="Cerrar ajustes">✕</button>
   </header>
 
-  <h3>Paisaje</h3>
+  <h3>Momento del día</h3>
   <div class="opciones">
     {#each MOMENTOS as m (m.id)}
       <button class="opcion" class:activo={momento === m.id} onclick={() => onMomento(m.id)}>{m.nombre}</button>
     {/each}
   </div>
+  <button class="personalizar" onclick={() => (verFondos = true)}>
+    <span class="brillo-anim" aria-hidden="true"></span>
+    <span class="txt"><b>Personalizar fondo</b><small>{imagenesEnTablero ? `${imagenesEnTablero} momento${imagenesEnTablero > 1 ? 's' : ''} con imagen tuya` : 'Pueblo animado, tus imágenes, tono y vidrio'}</small></span>
+    <span aria-hidden="true">›</span>
+  </button>
 
   {#if !app.demo && app.campania}
     {#if esDJ}
@@ -128,6 +141,7 @@
   {/if}
   <p class="ayuda"><a href="./legado/">Abrir el tirador anterior</a></p>
 </section>
+{/if}
 
 {#if verCasero}
   <Casero {cat} onCerrar={() => (verCasero = false)} />
@@ -155,7 +169,23 @@
   .cerrar { border: 0; background: none; font-size: 1.1rem; padding: 0.3rem 0.5rem; }
   .opciones { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .opcion { border: 1px solid var(--linea); background: none; border-radius: 999px; padding: 0.4rem 0.8rem; font-weight: 700; font-size: 0.88rem; }
-  .opcion.activo { background: var(--pergamino); color: var(--tinta); }
+  .opcion.activo { background: var(--pergamino); color: var(--tinta); text-shadow: none; }
+  .personalizar {
+    position: relative; overflow: hidden; width: 100%; margin-top: 0.6rem;
+    display: flex; align-items: center; gap: 0.6rem; text-align: left;
+    border: 1px solid rgba(240, 189, 85, 0.5); border-radius: 14px; padding: 0.65rem 0.85rem;
+    background: linear-gradient(120deg, rgba(217, 100, 106, 0.35), rgba(122, 58, 106, 0.35), rgba(255, 176, 106, 0.3));
+    background-size: 200% 200%; animation: atardecer 8s ease-in-out infinite alternate;
+  }
+  @keyframes atardecer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+  .personalizar .txt { flex: 1; display: grid; }
+  .personalizar small { color: var(--pergamino-suave); font-size: 0.78rem; }
+  .brillo-anim {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 245, 230, 0.18) 50%, transparent 70%);
+    transform: translateX(-100%); animation: barrido 4.5s ease-in-out infinite;
+  }
+  @keyframes barrido { 60%, 100% { transform: translateX(100%); } }
   .codigo {
     display: grid;
     width: 100%;
