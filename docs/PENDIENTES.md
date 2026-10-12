@@ -50,3 +50,6 @@
 ## Seguridad
 
 - [ ] Borrar la rama `importar-temporal` en GitHub (Branches → papelera): contiene el SQL con los datos de los personajes y el repositorio es público.
+- [ ] Aplicar `supabase/migraciones/008_auditoria.sql` (auditoría de la base: hojas sin dueño editables sin sesión, dados de Dualidad trucables, fondos listables por cualquiera, DJ que se quita a sí mismo, topes de tamaño y permisos de funciones). Va en una transacción; pruebas en `supabase/pruebas/auditoria.test.mjs`.
+- [ ] Código de invitación: 6 hex (16.7 millones) sin límite de intentos; cualquiera con cuenta de Discord lo puede adivinar por fuerza bruta. Requiere cambio en la app (código más largo y botón «cambiar código» para el DJ). Quien fue sacado de la campaña puede volver a entrar con el mismo código.
+- [ ] Revisar en producción las tablas viejas (`tiradas`, `jugadores`, de antes de la 001): que tengan RLS activado o borrarlas con permiso de Neri.

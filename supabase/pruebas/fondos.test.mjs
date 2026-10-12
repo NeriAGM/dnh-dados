@@ -58,9 +58,13 @@ test('nadie puede borrar ni renombrar las imágenes de otro; las tuyas sí', asy
   assert.equal(rows.length, 0)
 })
 
-test('todos pueden ver los fondos (bucket público)', async () => {
-  const r = await como(U.ana, `select name from storage.objects where bucket_id = 'fondos' and name like $1`, [`${U.dj}/%`])
-  assert.ok(r.filas.length >= 10)
+// Desde la 008 cada quien solo LISTA su carpeta; las imágenes se siguen
+// mostrando por su enlace público (eso no pasa por RLS).
+test('cada quien lista solo sus fondos (bucket público, pero no se puede enumerar)', async () => {
+  const ajenos = await como(U.ana, `select name from storage.objects where bucket_id = 'fondos' and name like $1`, [`${U.dj}/%`])
+  assert.equal(ajenos.filas.length, 0)
+  const propios = await como(U.dj, `select name from storage.objects where bucket_id = 'fondos' and name like $1`, [`${U.dj}/%`])
+  assert.ok(propios.filas.length >= 10)
 })
 
 test('guardar_fondo solo cambia el perfil de quien llama', async () => {
