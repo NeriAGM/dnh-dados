@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte'
+  import { onMount, onDestroy } from 'svelte'
   import {
     app, alLlegarTirada, registrarPropia, elegirPersonaje, ajustarPersonaje, ajustarMiedo, nombreDe, ajustarHoja,
   } from '../lib/mesa.svelte.js'
@@ -16,6 +16,8 @@
   import Escena from './Escena.svelte'
   import { escenaDe } from '../lib/escena.js'
   import Ajustes from './Ajustes.svelte'
+  import Lore from './lore/Lore.svelte'
+  import { soltarLore } from '../lib/lore.svelte.js'
 
   let { mesa3d, momento, onMomento } = $props()
 
@@ -25,6 +27,9 @@
   let verAjustes = $state(false)
   let verHoja = $state(null) // id del personaje cuya hoja está abierta
   let verDJ = $state(false)
+  let verLore = $state(false)
+  // El lore escucha su propio canal: se suelta al salir de la mesa
+  onDestroy(soltarLore)
   let catBase = $state(null)
   const cat = $derived(conCasero(catBase, app.demo ? [] : app.casero))
   let aviso = $state('')
@@ -230,8 +235,12 @@
 
     <div class="botones">
       {#if puedeDJ}
-        <button class="boton dj" aria-label="Panel del DJ" onclick={() => { verHoja = null; verDJ = !verDJ }} disabled={!catBase} aria-pressed={verDJ}><span class="largo">Panel del DJ</span><span class="corto">DJ</span></button>
+        <button class="boton dj" aria-label="Panel del DJ" onclick={() => { verHoja = null; verLore = false; verDJ = !verDJ }} disabled={!catBase} aria-pressed={verDJ}><span class="largo">Panel del DJ</span><span class="corto">DJ</span></button>
       {/if}
+      <button class="boton lore-boton" aria-label="Lore de la campaña" aria-pressed={verLore} onclick={() => { verDJ = false; verHoja = null; verLore = !verLore }}>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v15.5H5.5c-.8 0-1.5.7-1.5 1.5zM20 5.5c0-.8-.7-1.5-1.5-1.5H13v15.5h5.5c.8 0 1.5.7 1.5 1.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 4v16" stroke="currentColor" stroke-width="1.2"/></svg>
+        <span class="largo">Lore</span>
+      </button>
       <button class="boton icono solo-movil" onclick={() => (verHistorial = true)} aria-label="Ver historial">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h10"/></svg>
       </button>
@@ -324,6 +333,10 @@
 
   {#if verDJ && cat}
     <PanelDJ {cat} {miedo} onMiedo={sumarMiedo} onTirar={(p) => { if (!matchMedia('(min-width: 1100px)').matches) verDJ = false; alTirar(p) }} onCerrar={() => (verDJ = false)} />
+  {/if}
+
+  {#if verLore}
+    <Lore onCerrar={() => (verLore = false)} />
   {/if}
 
   {#if pjHoja && cat}
@@ -441,6 +454,13 @@
   }
   .boton.dj { background: rgba(91, 47, 145, 0.55); border-color: rgba(167, 124, 232, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 0.85rem; padding: 0.45rem 0.8rem; }
   .boton.dj[aria-pressed='true'] { background: var(--miedo); color: var(--tinta); }
+  .lore-boton {
+    display: flex; align-items: center; gap: 0.35rem; font-size: 0.85rem; padding: 0.45rem 0.75rem;
+    background: rgba(120, 90, 30, 0.5); border-color: rgba(217, 181, 107, 0.6); color: #f3dfb0;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  }
+  .lore-boton[aria-pressed='true'] { background: #d9b56b; color: var(--tinta); }
+  @media (max-width: 759px) { .lore-boton { padding: 0.5rem; } }
   .cuentas {
     position: absolute; left: 50%; transform: translateX(-50%);
     top: calc(3.2rem + env(safe-area-inset-top, 0px));
