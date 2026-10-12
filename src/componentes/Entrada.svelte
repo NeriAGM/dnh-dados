@@ -1,6 +1,6 @@
 <script>
   import { supabase } from '../lib/supabase.js'
-  import { app } from '../lib/mesa.svelte.js'
+  import { entrarDemo } from '../lib/mesa.svelte.js'
 
   let correo = $state('')
   let enviando = $state(false)
@@ -50,7 +50,7 @@
     {#if aviso}<p class="aviso" role="status">{aviso}</p>{/if}
     {#if error}<p class="error" role="alert">{error}</p>{/if}
 
-    <button class="probar" onclick={() => (app.demo = true)}>Probar los dados sin cuenta</button>
+    <button class="probar" onclick={entrarDemo}>Probar los dados sin cuenta</button>
   </div>
 </section>
 

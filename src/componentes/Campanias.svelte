@@ -1,13 +1,17 @@
 <script>
-  import { app, abrirCampania, crearCampania, unirseCampania, salir } from '../lib/mesa.svelte.js'
+  import { app, abrirCampania, crearCampania, unirseCampania, salir, limpiarCodigo } from '../lib/mesa.svelte.js'
 
   let codigo = $state('')
   let nombre = $state('')
   let error = $state('')
   let ocupado = $state(false)
+  let abriendo = $state(null) // id de la campaña que se está abriendo
+  // Al pegar " 2da8ea " (con espacios) el tope de 6 letras cortaba el código
+  const codigoLimpio = $derived(limpiarCodigo(codigo))
 
   async function hacer(fn) {
     error = ''
+    app.error = null
     ocupado = true
     try { await fn() } catch (e) { error = e.message } finally { ocupado = false }
   }
@@ -22,9 +26,9 @@
       <ul>
         {#each app.campanias as c (c.id)}
           <li>
-            <button class="boton fila" onclick={() => hacer(() => abrirCampania(c.id))}>
+            <button class="boton fila" disabled={ocupado} onclick={() => { abriendo = c.id; hacer(() => abrirCampania(c.id)).finally(() => (abriendo = null)) }}>
               <span>{c.nombre}</span>
-              <small>{c.rol === 'dj' ? 'Eres DJ' : 'Juegas'}</small>
+              <small>{abriendo === c.id ? 'Abriendo…' : c.rol === 'dj' ? 'Eres DJ' : 'Juegas'}</small>
             </button>
           </li>
         {/each}
@@ -32,10 +36,10 @@
     {/if}
 
     <h2>Unirme con código</h2>
-    <form class="en-linea" onsubmit={(e) => { e.preventDefault(); hacer(() => unirseCampania(codigo)) }}>
+    <form class="en-linea" onsubmit={(e) => { e.preventDefault(); hacer(() => unirseCampania(codigoLimpio)) }}>
       <label class="sr-only" for="codigo">Código de invitación</label>
-      <input id="codigo" class="campo codigo" maxlength="6" placeholder="Ej. 2DA8EA" bind:value={codigo} />
-      <button class="boton" disabled={ocupado || codigo.trim().length < 6}>Unirme</button>
+      <input id="codigo" class="campo codigo" maxlength="12" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="Ej. 2DA8EA" bind:value={codigo} />
+      <button class="boton" disabled={ocupado || codigoLimpio.length < 6}>Unirme</button>
     </form>
 
     <h2>Dirigir una campaña nueva</h2>
@@ -45,7 +49,7 @@
       <button class="boton" disabled={ocupado || !nombre.trim()}>Crear</button>
     </form>
 
-    {#if error}<p class="error" role="alert">{error}</p>{/if}
+    {#if error || app.error}<p class="error" role="alert">{error || app.error}</p>{/if}
   </div>
 
   <button class="salir" onclick={salir}>Cerrar sesión</button>
