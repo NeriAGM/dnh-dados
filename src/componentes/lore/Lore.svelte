@@ -397,7 +397,7 @@
     {/if}
     <h2 class="titulo"><span class="sello" aria-hidden="true">✦</span> Códice del Abismo</h2>
     {#if esDJ}
-      <button class="boton chico nueva" onclick={() => nueva(null)} aria-label="Nueva página">+ Nueva<span class="largo-lore"> página</span></button>
+      <button class="boton chico nueva" onclick={() => nueva(null)} aria-label="Nueva página">+ Nueva<span class="largo-lore">&nbsp;página</span></button>
     {/if}
     <button class="cerrar" onclick={cerrar} aria-label="Cerrar el lore">✕</button>
   </header>
