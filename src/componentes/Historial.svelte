@@ -12,9 +12,13 @@
     return d.toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' })
   }
 
+  // Se ordena por hora del servidor: la tirada propia se agrega cuando contesta
+  // el servidor y puede llegar DESPUÉS de una ajena más nueva. Sin ordenar, a
+  // la medianoche quedaban dos grupos "Ayer" (llave repetida en el #each).
+  const fecha = (t) => Date.parse(t.creado) || 0
   const grupos = $derived.by(() => {
     const salida = []
-    for (const t of tiradas) {
+    for (const t of [...tiradas].sort((a, b) => fecha(b) - fecha(a))) {
       const d = dia(t.creado)
       if (!salida.length || salida.at(-1).dia !== d) salida.push({ dia: d, items: [] })
       salida.at(-1).items.push(t)
@@ -50,7 +54,7 @@
                 {#if des.texto}<span class="des">{des.texto}</span>{/if}
                 {#if t.etiqueta}<span class="nota">{t.etiqueta}</span>{/if}
                 <span class="formula">
-                  {#each t.dados as d, i}{i ? ' · ' : ''}<span class:tachado={d.descartado}>{nombreDado(d)} {d.valor}</span>{/each}{t.modificador ? ` · ${t.modificador > 0 ? '+' : ''}${t.modificador}` : ''}
+                  {#each t.dados as d, i}{i ? ' · ' : ''}<span class:tachado={d.descartado}>{nombreDado(d)} {d.signo < 0 ? '−' : ''}{d.valor}</span>{/each}{t.modificador ? ` · ${t.modificador > 0 ? '+' : ''}${t.modificador}` : ''}
                 </span>
               </span>
               {#if puedeBorrar && !t.local}
