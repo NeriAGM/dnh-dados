@@ -10,7 +10,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 
-const MIGRACION = new URL('../migraciones/001_mesa.sql', import.meta.url)
+const MIGRACIONES = ['001_mesa.sql', '002_hoja.sql'].map((f) => new URL(`../migraciones/${f}`, import.meta.url))
 
 const U = {
   dj: '11111111-1111-1111-1111-111111111111',
@@ -34,7 +34,7 @@ async function preparar() {
     alter default privileges in schema public grant all on sequences to anon, authenticated;
     alter default privileges in schema public grant execute on functions to anon, authenticated;
   `)
-  await db.exec(fs.readFileSync(MIGRACION, 'utf8'))
+  for (const m of MIGRACIONES) await db.exec(fs.readFileSync(m, 'utf8'))
   await db.exec(`
     insert into auth.users values ('${U.dj}', 'neri@x.com', '{"full_name":"Neri"}'),
       ('${U.ana}', 'ana@x.com', '{"custom_claims":{"global_name":"Ana"}}'),
@@ -159,4 +159,48 @@ test('el azar no tiene sesgo (20,000 dualidades)', async () => {
   assert.ok(Math.abs(r.esp - 9167) < 280, `Esperanza ganó ${r.esp}`)
   assert.ok(Math.abs(r.mie - 9167) < 280, `Miedo ganó ${r.mie}`)
   assert.ok(Math.abs(r.cri - 1667) < 160, `Críticos ${r.cri}`)
+})
+
+// ---------------------------------------------------------------------
+// Fase 3: hoja de personaje y homebrew
+// ---------------------------------------------------------------------
+
+test('ajustar_hoja cambia una parte sin pisar las demás', async () => {
+  await como(U.ana, `select ajustar_hoja($1, '{oro}', '{"punados":1,"bolsas":0}'::jsonb)`, [pj.id])
+  await como(U.dj, `select ajustar_hoja($1, '{pg}', '3'::jsonb)`, [pj.id])
+  await como(U.ana, `select ajustar_hoja($1, '{oro,bolsas}', '2'::jsonb)`, [pj.id])
+  const { rows: [p] } = await db.query(`select hoja from personajes where id = '${pj.id}'`)
+  assert.deepEqual(p.hoja, { oro: { punados: 1, bolsas: 2 }, pg: 3 })
+})
+
+test('nadie más puede editar la hoja ajena', async () => {
+  assert.match((await como(U.intruso, `select ajustar_hoja($1, '{pg}', '0'::jsonb)`, [pj.id])).error, /dueño del personaje o el DJ/)
+})
+
+test('un jugador no se puede robar ni regalar un personaje', async () => {
+  const r = await como(U.ana, `update personajes set usuario_id = $2 where id = $1`, [pj.id, U.intruso])
+  assert.match(r.error, /Solo el DJ/)
+  const ok = await como(U.dj, `select (asignar_personaje($1, $2)).usuario_id`, [pj.id, U.ana])
+  assert.equal(ok.filas[0].usuario_id, U.ana)
+})
+
+test('el DJ importa personajes sin dueño; un jugador no puede', async () => {
+  const lista = JSON.stringify([{ nombre: 'Soren', esperanza: 9, esperanza_max: 6, estres: 0, estres_max: 6, hoja: { nivel: 2 } }])
+  assert.match((await como(U.ana, `select importar_personajes($1, $2::jsonb)`, [camp.id, lista])).error, /Solo el DJ/)
+  const r = await como(U.dj, `select importar_personajes($1, $2::jsonb) n`, [camp.id, lista])
+  assert.equal(r.filas[0].n, 1)
+  const { rows: [s] } = await db.query(`select usuario_id, esperanza, hoja from personajes where nombre = 'Soren'`)
+  assert.equal(s.usuario_id, null)
+  assert.equal(s.esperanza, 6, 'la Esperanza se recorta al máximo')
+  assert.deepEqual(s.hoja, { nivel: 2 })
+})
+
+test('homebrew: todos lo ven, edita quien lo creó o el DJ', async () => {
+  const c = await como(U.ana, `insert into contenido_casero (campania_id, tipo, nombre, datos, creado_por) values ($1, 'clase', 'Artificiero', '{"evasion":10}', $2) returning id`, [camp.id, U.ana])
+  const id = c.filas[0].id
+  assert.equal((await como(U.dj, `select count(*)::int n from contenido_casero`)).filas[0].n, 1)
+  assert.equal((await como(U.intruso, `select count(*)::int n from contenido_casero`)).filas[0].n, 1, 'el intruso ya se unió a la campaña en otra prueba')
+  assert.deepEqual((await como(U.intruso, `update contenido_casero set nombre = 'X' where id = $1 returning id`, [id])).filas, [])
+  assert.equal((await como(U.dj, `update contenido_casero set nombre = 'Artífice' where id = $1 returning nombre`, [id])).filas[0].nombre, 'Artífice')
+  assert.match((await como(U.ana, `insert into contenido_casero (campania_id, tipo, nombre, creado_por) values ($1, 'clase', 'X', $2)`, [camp.id, U.dj])).error, /row-level security/, 'no puede firmar como otro')
 })

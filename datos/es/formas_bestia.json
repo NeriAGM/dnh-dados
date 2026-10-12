@@ -1,0 +1,494 @@
+[
+ {
+  "id": "agile-scout",
+  "nombre": "Batidor ágil",
+  "nombre_en": "Agile Scout",
+  "nivel": 1,
+  "ejemplos": "(Zorro, ratón, comadreja, etc.)",
+  "rasgo": "Agilidad +1",
+  "evasion": "Evasión +2",
+  "ataque": "Cuerpo a cuerpo · Agilidad · d4 físico",
+  "ventajas": "engañar, localizar, escabullirse",
+  "rasgos": [
+   {
+    "nombre": "Ágil",
+    "texto": "Tu movimiento es silencioso y puedes **gastar una Esperanza** para moverte hasta alcance Lejano sin tirar."
+   },
+   {
+    "nombre": "Frágil",
+    "texto": "Cuando recibes daño Mayor o superior, sales de tu Forma de Bestia."
+   }
+  ]
+ },
+ {
+  "id": "household-friend",
+  "nombre": "Amigo del hogar",
+  "nombre_en": "Household Friend",
+  "nivel": 1,
+  "ejemplos": "(Gato, perro, conejo, etc.)",
+  "rasgo": "Instinto +1",
+  "evasion": "Evasión +2",
+  "ataque": "Cuerpo a cuerpo · Instinto · d6 físico",
+  "ventajas": "trepar, localizar, proteger",
+  "rasgos": [
+   {
+    "nombre": "Compañero",
+    "texto": "Cuando usas Ayudar a un Aliado, puedes tirar un **d8** como tu dado de ventaja."
+   },
+   {
+    "nombre": "Frágil",
+    "texto": "Cuando recibes daño Mayor o superior, sales de tu Forma de Bestia."
+   }
+  ]
+ },
+ {
+  "id": "nimble-grazer",
+  "nombre": "Pastador ligero",
+  "nombre_en": "Nimble Grazer",
+  "nivel": 1,
+  "ejemplos": "(Venado, gacela, cabra, etc.)",
+  "rasgo": "Agilidad +1",
+  "evasion": "Evasión +3",
+  "ataque": "Cuerpo a cuerpo · Agilidad · d6 físico",
+  "ventajas": "saltar, escabullirse, esprintar",
+  "rasgos": [
+   {
+    "nombre": "Presa escurridiza",
+    "texto": "Cuando una tirada de ataque contra ti fuera a tener éxito, puedes **marcar un Estrés** y tirar un **d4.** Suma el resultado a tu Evasión contra ese ataque."
+   },
+   {
+    "nombre": "Frágil",
+    "texto": "Cuando recibes daño Mayor o superior, sales de tu Forma de Bestia."
+   }
+  ]
+ },
+ {
+  "id": "pack-predator",
+  "nombre": "Depredador de manada",
+  "nombre_en": "Pack Predator",
+  "nivel": 1,
+  "ejemplos": "(Coyote, hiena, lobo, etc.)",
+  "rasgo": "Fuerza +2",
+  "evasion": "Evasión +1",
+  "ataque": "Cuerpo a cuerpo · Fuerza · d8+2 físico",
+  "ventajas": "atacar, esprintar, rastrear",
+  "rasgos": [
+   {
+    "nombre": "Golpe lisiador",
+    "texto": "Cuando aciertas un ataque contra un objetivo a alcance Cuerpo a cuerpo, puedes **marcar un Estrés** para dejar al objetivo _Vulnerable_ de forma temporal."
+   },
+   {
+    "nombre": "Caza en manada",
+    "texto": "Cuando aciertas un ataque contra el mismo objetivo que un aliado que actuó justo antes que tú, suma un **d8** a tu tirada de daño."
+   }
+  ]
+ },
+ {
+  "id": "aquatic-scout",
+  "nombre": "Batidor acuático",
+  "nombre_en": "Aquatic Scout",
+  "nivel": 1,
+  "ejemplos": "(Anguila, pez, pulpo, etc.)",
+  "rasgo": "Agilidad +1",
+  "evasion": "Evasión +2",
+  "ataque": "Cuerpo a cuerpo · Agilidad · d4 físico",
+  "ventajas": "orientarse, escabullirse, nadar",
+  "rasgos": [
+   {
+    "nombre": "Acuático",
+    "texto": "Puedes respirar y moverte con naturalidad bajo el agua."
+   },
+   {
+    "nombre": "Frágil",
+    "texto": "Cuando recibes daño Mayor o superior, sales de tu Forma de Bestia."
+   }
+  ]
+ },
+ {
+  "id": "stalking-arachnid",
+  "nombre": "Arácnido acechador",
+  "nombre_en": "Stalking Arachnid",
+  "nivel": 1,
+  "ejemplos": "(Tarántula, araña lobo, etc.)",
+  "rasgo": "Sutileza +1",
+  "evasion": "Evasión +2",
+  "ataque": "Cuerpo a cuerpo · Sutileza · d6+1 físico",
+  "ventajas": "atacar, trepar, escabullirse",
+  "rasgos": [
+   {
+    "nombre": "Mordida venenosa",
+    "texto": "Cuando aciertas un ataque contra un objetivo a alcance Cuerpo a cuerpo, el objetivo queda _Envenenado_ de forma temporal. Una criatura _Envenenada_ recibe **1d10** de daño físico directo cada vez que actúa."
+   },
+   {
+    "nombre": "Lanzatelarañas",
+    "texto": "Puedes crear un material de telaraña resistente, útil tanto para la aventura como para la batalla. La telaraña es lo bastante resistente para sostener a una criatura. Puedes _Apresar_ de forma temporal a un objetivo a alcance Cercano si tienes éxito en una tirada de Sutileza contra él."
+   }
+  ]
+ },
+ {
+  "id": "armored-sentry",
+  "nombre": "Centinela acorazado",
+  "nombre_en": "Armored Sentry",
+  "nivel": 2,
+  "ejemplos": "(Armadillo, pangolín, tortuga, etc.)",
+  "rasgo": "Fuerza +1",
+  "evasion": "Evasión +1",
+  "ataque": "Cuerpo a cuerpo · Fuerza · d8+2 físico",
+  "ventajas": "excavar, localizar, proteger",
+  "rasgos": [
+   {
+    "nombre": "Caparazón acorazado",
+    "texto": "Tu exterior endurecido te da resistencia al daño físico. Además, **marca una casilla de Armadura** para retraerte en tu caparazón. Mientras estás en tu caparazón, el daño físico se reduce en una cantidad igual a tu Puntuación de Armadura (después de aplicar la resistencia), pero no puedes hacer otras acciones sin salir de esta forma."
+   },
+   {
+    "nombre": "Bala de cañón",
+    "texto": "**Marca un Estrés** para permitir que un aliado te arroje o te lance contra un adversario. Para hacerlo, el aliado hace una tirada de ataque con Agilidad o Fuerza (a su elección) contra un objetivo a alcance Cercano. Con un éxito, el adversario recibe **d12+2** de daño físico usando la Competencia de quien lanza. Puedes **gastar una Esperanza** para elegir como objetivo a un adversario adicional a alcance Muy cercano del primero. El segundo objetivo recibe la mitad del daño que recibió el primero."
+   }
+  ]
+ },
+ {
+  "id": "powerful-beast",
+  "nombre": "Bestia poderosa",
+  "nombre_en": "Powerful Beast",
+  "nivel": 2,
+  "ejemplos": "(Oso, toro, alce, etc.)",
+  "rasgo": "Fuerza +3",
+  "evasion": "Evasión +1",
+  "ataque": "Cuerpo a cuerpo · Fuerza · d10+4 físico",
+  "ventajas": "orientarse, proteger, asustar",
+  "rasgos": [
+   {
+    "nombre": "Furia desatada",
+    "texto": "Cuando sacas un 1 en un dado de daño, puedes tirar un **d10** y sumar el resultado a la tirada de daño. Además, antes de hacer una tirada de ataque, puedes **marcar un Estrés** para obtener un bonificador de +1 a tu Competencia en ese ataque."
+   },
+   {
+    "nombre": "Piel gruesa",
+    "texto": "Obtienes un bonificador de +2 a tus umbrales de daño."
+   }
+  ]
+ },
+ {
+  "id": "mighty-strider",
+  "nombre": "Corredor imponente",
+  "nombre_en": "Mighty Strider",
+  "nivel": 2,
+  "ejemplos": "(Camello, caballo, cebra, etc.)",
+  "rasgo": "Agilidad +1",
+  "evasion": "Evasión +2",
+  "ataque": "Cuerpo a cuerpo · Agilidad · d8+1 físico",
+  "ventajas": "saltar, orientarse, esprintar",
+  "rasgos": [
+   {
+    "nombre": "Portador",
+    "texto": "Puedes llevar contigo hasta dos aliados dispuestos cuando te mueves."
+   },
+   {
+    "nombre": "Arrollar",
+    "texto": "**Marca un Estrés** para moverte hasta alcance Cercano en línea recta y hacer un ataque contra todos los objetivos a alcance Cuerpo a cuerpo de esa línea. Los objetivos contra los que tengas éxito reciben **d8+1** de daño físico usando tu Competencia y quedan _Vulnerables_ de forma temporal."
+   }
+  ]
+ },
+ {
+  "id": "striking-serpent",
+  "nombre": "Serpiente fulminante",
+  "nombre_en": "Striking Serpent",
+  "nivel": 2,
+  "ejemplos": "(Cobra, serpiente de cascabel, víbora, etc.)",
+  "rasgo": "Sutileza +1",
+  "evasion": "Evasión +2",
+  "ataque": "Muy cercano · Sutileza · d8+4 físico",
+  "ventajas": "trepar, engañar, esprintar",
+  "rasgos": [
+   {
+    "nombre": "Golpe venenoso",
+    "texto": "Haz un ataque contra cualquier cantidad de objetivos a alcance Muy cercano. Con un éxito, un objetivo queda _Envenenado_ de forma temporal. Una criatura _Envenenada_ recibe **1d10** de daño físico directo cada vez que actúa."
+   },
+   {
+    "nombre": "Siseo de advertencia",
+    "texto": "**Marca un Estrés** para obligar a cualquier cantidad de objetivos a alcance Cuerpo a cuerpo a retroceder hasta alcance Muy cercano."
+   }
+  ]
+ },
+ {
+  "id": "pouncing-predator",
+  "nombre": "Depredador de emboscada",
+  "nombre_en": "Pouncing Predator",
+  "nivel": 2,
+  "ejemplos": "(Guepardo, león, pantera, etc.)",
+  "rasgo": "Instinto +1",
+  "evasion": "Evasión +3",
+  "ataque": "Cuerpo a cuerpo · Instinto · d8+6 físico",
+  "ventajas": "atacar, trepar, escabullirse",
+  "rasgos": [
+   {
+    "nombre": "Veloz",
+    "texto": "**Gasta una Esperanza** para moverte hasta alcance Lejano sin tirar."
+   },
+   {
+    "nombre": "Derribo",
+    "texto": "**Marca un Estrés** para moverte a alcance Cuerpo a cuerpo de un objetivo y hacer una tirada de ataque contra él. Con un éxito, obtienes un bonificador de +2 a tu Competencia en este ataque y el objetivo debe marcar un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "winged-beast",
+  "nombre": "Bestia alada",
+  "nombre_en": "Winged Beast",
+  "nivel": 2,
+  "ejemplos": "(Halcón, búho, cuervo, etc.)",
+  "rasgo": "Sutileza +1",
+  "evasion": "Evasión +3",
+  "ataque": "Cuerpo a cuerpo · Sutileza · d4+2 físico",
+  "ventajas": "engañar, localizar, asustar",
+  "rasgos": [
+   {
+    "nombre": "Vista de pájaro",
+    "texto": "Puedes volar a voluntad. Una vez por descanso, mientras estás en el aire, puedes hacerle al DJ una pregunta sobre la escena que está debajo de ti sin necesidad de tirar. La primera vez que un personaje haga una tirada para actuar con base en esa información, obtiene ventaja en la tirada."
+   },
+   {
+    "nombre": "Huesos huecos",
+    "texto": "Recibes un penalizador de -2 a tus umbrales de daño."
+   }
+  ]
+ },
+ {
+  "id": "great-predator",
+  "nombre": "Gran depredador",
+  "nombre_en": "Great Predator",
+  "nivel": 3,
+  "ejemplos": "(Lobo terrible, velocirraptor, tigre dientes de sable, etc.)",
+  "rasgo": "Fuerza +2",
+  "evasion": "Evasión +2",
+  "ataque": "Cuerpo a cuerpo · Fuerza · d12+8 físico",
+  "ventajas": "atacar, escabullirse, esprintar",
+  "rasgos": [
+   {
+    "nombre": "Portador",
+    "texto": "Puedes llevar contigo hasta dos aliados dispuestos cuando te mueves."
+   },
+   {
+    "nombre": "Zarpazo feroz",
+    "texto": "Cuando aciertas un ataque contra un objetivo, puedes **gastar una Esperanza** para dejarlo _Vulnerable_ de forma temporal y obtener un bonificador de +1 a tu Competencia en este ataque."
+   }
+  ]
+ },
+ {
+  "id": "mighty-lizard",
+  "nombre": "Lagarto poderoso",
+  "nombre_en": "Mighty Lizard",
+  "nivel": 3,
+  "ejemplos": "(Caimán, cocodrilo, monstruo de Gila, etc.)",
+  "rasgo": "Instinto +2",
+  "evasion": "Evasión +1",
+  "ataque": "Cuerpo a cuerpo · Instinto · d10+7 físico",
+  "ventajas": "atacar, escabullirse, rastrear",
+  "rasgos": [
+   {
+    "nombre": "Defensa física",
+    "texto": "Obtienes un bonificador de +3 a tus umbrales de daño."
+   },
+   {
+    "nombre": "Dentellada",
+    "texto": "Cuando aciertas un ataque contra un objetivo a alcance Cuerpo a cuerpo, puedes **gastar una Esperanza** para atrapar a ese oponente entre tus fauces, dejándolo _Apresado_ y _Vulnerable_ de forma temporal."
+   }
+  ]
+ },
+ {
+  "id": "great-winged-beast",
+  "nombre": "Gran bestia alada",
+  "nombre_en": "Great Winged Beast",
+  "nivel": 3,
+  "ejemplos": "(Águila gigante, halcón, etc.)",
+  "rasgo": "Sutileza +2",
+  "evasion": "Evasión +3",
+  "ataque": "Cuerpo a cuerpo · Sutileza · d8+6 físico",
+  "ventajas": "engañar, distraer, localizar",
+  "rasgos": [
+   {
+    "nombre": "Vista de pájaro",
+    "texto": "Puedes volar a voluntad. Una vez por descanso, mientras estás en el aire, puedes hacerle al DJ una pregunta sobre la escena que está debajo de ti sin necesidad de tirar. La primera vez que un personaje haga una tirada para actuar con base en esa información, obtiene ventaja en la tirada."
+   },
+   {
+    "nombre": "Portador",
+    "texto": "Puedes llevar contigo hasta dos aliados dispuestos cuando te mueves."
+   }
+  ]
+ },
+ {
+  "id": "aquatic-predator",
+  "nombre": "Depredador acuático",
+  "nombre_en": "Aquatic Predator",
+  "nivel": 3,
+  "ejemplos": "(Delfín, orca, tiburón, etc.)",
+  "rasgo": "Agilidad +2",
+  "evasion": "Evasión +4",
+  "ataque": "Cuerpo a cuerpo · Agilidad · d10+6 físico",
+  "ventajas": "atacar, nadar, rastrear",
+  "rasgos": [
+   {
+    "nombre": "Acuático",
+    "texto": "Puedes respirar y moverte con naturalidad bajo el agua."
+   },
+   {
+    "nombre": "Zarpazo feroz",
+    "texto": "Cuando aciertas un ataque contra un objetivo, puedes **gastar una Esperanza** para dejarlo _Vulnerable_ y obtener un bonificador de +1 a tu Competencia en este ataque."
+   }
+  ]
+ },
+ {
+  "id": "legendary-beast",
+  "nombre": "Bestia legendaria",
+  "nombre_en": "Legendary Beast",
+  "nivel": 3,
+  "ejemplos": "(Opciones de Rango 1 mejoradas)",
+  "rasgo": "",
+  "evasion": "",
+  "ataque": "",
+  "ventajas": "",
+  "rasgos": [
+   {
+    "nombre": "Evolucionado",
+    "texto": "Elige una opción de Forma de Bestia de Rango 1 y conviértete en una versión más grande y poderosa de esa criatura. Mientras estás en esta forma, conservas todos los rasgos de personaje y rasgos de la forma original y obtienes los siguientes bonificadores:\n\n- Un bonificador de +6 a las tiradas de daño\n- Un bonificador de +1 al rasgo que usa esta forma\n- Un bonificador de +2 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "legendary-hybrid",
+  "nombre": "Híbrido legendario",
+  "nombre_en": "Legendary Hybrid",
+  "nivel": 3,
+  "ejemplos": "(Grifo, esfinge, etc.)",
+  "rasgo": "Fuerza +2",
+  "evasion": "Evasión +3",
+  "ataque": "Cuerpo a cuerpo · Fuerza · d10+8 físico",
+  "ventajas": "",
+  "rasgos": [
+   {
+    "nombre": "Rasgos híbridos",
+    "texto": "Para transformarte en esta criatura, **marca un Estrés adicional.** Elige dos opciones cualesquiera de Forma de Bestia de los Rangos 1-2. Elige un total de cuatro ventajas y dos rasgos de esas opciones."
+   }
+  ]
+ },
+ {
+  "id": "massive-behemoth",
+  "nombre": "Behemot colosal",
+  "nombre_en": "Massive Behemoth",
+  "nivel": 4,
+  "ejemplos": "(Elefante, mamut, rinoceronte, etc.)",
+  "rasgo": "Fuerza +3",
+  "evasion": "Evasión +1",
+  "ataque": "Cuerpo a cuerpo · Fuerza · d12+12 físico",
+  "ventajas": "localizar, proteger, asustar, esprintar",
+  "rasgos": [
+   {
+    "nombre": "Portador",
+    "texto": "Puedes llevar contigo hasta cuatro aliados dispuestos cuando te mueves."
+   },
+   {
+    "nombre": "Demoler",
+    "texto": "**Gasta una Esperanza** para moverte hasta alcance Lejano en línea recta y hacer un ataque contra todos los objetivos a alcance Cuerpo a cuerpo de esa línea. Los objetivos contra los que tengas éxito reciben **d8+10** de daño físico usando tu Competencia y quedan _Vulnerables_ de forma temporal."
+   },
+   {
+    "nombre": "Impertérrito",
+    "texto": "Obtienes un bonificador de +2 a todos tus umbrales de daño."
+   }
+  ]
+ },
+ {
+  "id": "terrible-lizard",
+  "nombre": "Lagarto terrible",
+  "nombre_en": "Terrible Lizard",
+  "nivel": 4,
+  "ejemplos": "(Braquiosaurio, tiranosaurio, etc.)",
+  "rasgo": "Fuerza +3",
+  "evasion": "Evasión +2",
+  "ataque": "Cuerpo a cuerpo · Fuerza · d12+10 físico",
+  "ventajas": "atacar, engañar, asustar, rastrear",
+  "rasgos": [
+   {
+    "nombre": "Golpes devastadores",
+    "texto": "Cuando haces daño Grave a un objetivo a alcance Cuerpo a cuerpo, puedes **marcar un Estrés** para obligarlo a marcar un Punto de Golpe adicional."
+   },
+   {
+    "nombre": "Zancada colosal",
+    "texto": "Puedes moverte hasta alcance Lejano sin tirar. Por tu tamaño, ignoras el terreno difícil (a criterio del DJ)."
+   }
+  ]
+ },
+ {
+  "id": "mythic-aerial-hunter",
+  "nombre": "Cazador aéreo mítico",
+  "nombre_en": "Mythic Aerial Hunter",
+  "nivel": 4,
+  "ejemplos": "(Dragón, pterodáctilo, roc, guiverno, etc.)",
+  "rasgo": "Sutileza +3",
+  "evasion": "Evasión +4",
+  "ataque": "Cuerpo a cuerpo · Sutileza · d10+11 físico",
+  "ventajas": "atacar, engañar, localizar, orientarse",
+  "rasgos": [
+   {
+    "nombre": "Portador",
+    "texto": "Puedes llevar contigo hasta tres aliados dispuestos cuando te mueves."
+   },
+   {
+    "nombre": "Rapaz letal",
+    "texto": "Puedes volar a voluntad y moverte hasta alcance Lejano como parte de tu acción. Cuando te mueves en línea recta hasta alcance Cuerpo a cuerpo de un objetivo desde al menos alcance Cercano y haces un ataque contra ese objetivo en la misma acción, puedes volver a tirar todos los dados de daño que hayan sacado un resultado menor que tu Competencia."
+   }
+  ]
+ },
+ {
+  "id": "epic-aquatic-beast",
+  "nombre": "Bestia acuática épica",
+  "nombre_en": "Epic Aquatic Beast",
+  "nivel": 4,
+  "ejemplos": "(Calamar gigante, ballena, etc.)",
+  "rasgo": "Agilidad +3",
+  "evasion": "Evasión +3",
+  "ataque": "Cuerpo a cuerpo · Agilidad · d10+10 físico",
+  "ventajas": "localizar, proteger, asustar, rastrear",
+  "rasgos": [
+   {
+    "nombre": "Amo del océano",
+    "texto": "Puedes respirar y moverte con naturalidad bajo el agua. Cuando aciertas un ataque contra un objetivo a alcance Cuerpo a cuerpo, puedes _Apresarlo_ de forma temporal."
+   },
+   {
+    "nombre": "Inquebrantable",
+    "texto": "Cuando fueras a marcar una casilla de Armadura, tira un **d6.** Con un resultado de 5 o más, reduce la gravedad en un umbral sin marcar una casilla de Armadura."
+   }
+  ]
+ },
+ {
+  "id": "mythic-beast",
+  "nombre": "Bestia mítica",
+  "nombre_en": "Mythic Beast",
+  "nivel": 4,
+  "ejemplos": "(Opciones de Rango 1 o Rango 2 mejoradas)",
+  "rasgo": "",
+  "evasion": "",
+  "ataque": "",
+  "ventajas": "",
+  "rasgos": [
+   {
+    "nombre": "Evolucionado",
+    "texto": "Elige una opción de Forma de Bestia de Rango 1 o Rango 2 y conviértete en una versión más grande y poderosa de esa criatura. Mientras estás en esta forma, conservas todos los rasgos de personaje y rasgos de la forma original y obtienes los siguientes bonificadores:\n\n- Un bonificador de +9 a las tiradas de daño\n- Un bonificador de +2 al rasgo que usa esta forma\n- Un bonificador de +3 a la Evasión\n- Tu dado de daño aumenta un tamaño (d6 se vuelve d8, d8 se vuelve d10, etc.)"
+   }
+  ]
+ },
+ {
+  "id": "mythic-hybrid",
+  "nombre": "Híbrido mítico",
+  "nombre_en": "Mythic Hybrid",
+  "nivel": 4,
+  "ejemplos": "(Quimera, cocatriz, mantícora, etc.)",
+  "rasgo": "Fuerza +3",
+  "evasion": "Evasión +2",
+  "ataque": "Cuerpo a cuerpo · Fuerza · d12+10 físico",
+  "ventajas": "",
+  "rasgos": [
+   {
+    "nombre": "Rasgos híbridos",
+    "texto": "Para transformarte en esta criatura, **marca 2 de Estrés adicionales.** Elige tres opciones cualesquiera de Forma de Bestia de los Rangos 1-3. Elige un total de cinco ventajas y tres rasgos de esas opciones."
+   }
+  ]
+ }
+]

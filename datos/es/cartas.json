@@ -1,0 +1,1892 @@
+[
+ {
+  "id": "rune-ward",
+  "nombre": "Guarda rúnica",
+  "nombre_en": "Rune Ward",
+  "dominio": "arcana",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Tienes una baratija muy personal que puede imbuirse con magia protectora y que tú o un aliado pueden portar como guarda. Describe qué es y por qué es importante para ti. Quien porte la guarda puede gastar una Esperanza para reducir el daño entrante en **1d8**.\n\nSi el resultado del Dado de Guarda es 8, el poder de la guarda se acaba después de reducir el daño en este turno. Puede recargarse gratis en tu siguiente descanso."
+ },
+ {
+  "id": "unleash-chaos",
+  "nombre": "Desatar el caos",
+  "nombre_en": "Unleash Chaos",
+  "dominio": "arcana",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Al inicio de una sesión, coloca en esta carta un número de fichas igual a tu rasgo de Lanzamiento.\n\nHaz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Lejano y gasta cualquier número de fichas para canalizar energía pura desde tu interior y desatarla contra él. Si tienes éxito, tira tantos **d10** como fichas gastaste e inflige esa cantidad de daño mágico al objetivo. **Marca un Estrés** para reabastecer esta carta de fichas (hasta tu rasgo de Lanzamiento).\n\nAl final de cada sesión, limpia todas las fichas que no hayas gastado."
+ },
+ {
+  "id": "wall-walk",
+  "nombre": "Caminar por muros",
+  "nombre_en": "Wall Walk",
+  "dominio": "arcana",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "**Gasta una Esperanza** para permitir que una criatura que puedas tocar trepe por paredes y techos tan fácilmente como si caminara por el suelo. Esto dura hasta el final de la escena o hasta que vuelvas a lanzar Caminar por muros"
+ },
+ {
+  "id": "cinder-grasp",
+  "nombre": "Garra de ceniza",
+  "nombre_en": "Cinder Grasp",
+  "dominio": "arcana",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Cuerpo a cuerpo. Si tienes éxito, el objetivo estalla en llamas al instante, recibe **1d20+3** de daño mágico y queda temporalmente _En llamas_.\n\nCuando una criatura actúa mientras está _En llamas_, debe recibir **2d6** de daño mágico adicional si sigue _En llamas_ al final de su acción."
+ },
+ {
+  "id": "floating-eye",
+  "nombre": "Ojo flotante",
+  "nombre_en": "Floating Eye",
+  "dominio": "arcana",
+  "nivel": 2,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "**Gasta una Esperanza** para crear un pequeño orbe flotante que puedes mover a cualquier punto dentro del alcance Muy lejano. Mientras el hechizo esté activo, puedes ver a través del orbe como si miraras desde su posición. Puedes alternar libremente entre usar tus propios sentidos y ver a través del orbe. Si el orbe recibe daño o sale del alcance, el hechizo termina."
+ },
+ {
+  "id": "counterspell",
+  "nombre": "Contrahechizo",
+  "nombre_en": "Counterspell",
+  "dominio": "arcana",
+  "nivel": 3,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Puedes interrumpir un efecto mágico que esté ocurriendo haciendo una tirada de reacción con tu rasgo de Lanzamiento. Si tienes éxito, el efecto se detiene, se evitan sus consecuencias y esta carta pasa a tu bóveda."
+ },
+ {
+  "id": "flight",
+  "nombre": "Vuelo",
+  "nombre_en": "Flight",
+  "dominio": "arcana",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (15)**. Si tienes éxito, coloca en esta carta un número de fichas igual a tu Agilidad (mínimo 1). Cuando hagas una tirada de acción mientras vuelas, gasta una ficha de esta carta. Después de resolver la acción que gasta la última ficha, desciendes al suelo justo debajo de ti."
+ },
+ {
+  "id": "blink-out",
+  "nombre": "Parpadeo",
+  "nombre_en": "Blink Out",
+  "dominio": "arcana",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (12)**. Si tienes éxito, **gasta una Esperanza** para teletransportarte a otro punto que puedas ver dentro del alcance Lejano. Si hay criaturas dispuestas dentro del alcance Muy cercano, **gasta una Esperanza adicional** por cada criatura para llevarla contigo."
+ },
+ {
+  "id": "preservation-blast",
+  "nombre": "Estallido protector",
+  "nombre_en": "Preservation Blast",
+  "dominio": "arcana",
+  "nivel": 4,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra todos los objetivos dentro del alcance Cuerpo a cuerpo. Los objetivos contra los que tengas éxito son empujados hasta el alcance Lejano y reciben **d8+3** de daño mágico usando tu rasgo de Lanzamiento."
+ },
+ {
+  "id": "chain-lightning",
+  "nombre": "Relámpago en cadena",
+  "nombre_en": "Chain Lightning",
+  "dominio": "arcana",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "**Marca 2 de Estrés** para hacer una **tirada de Lanzamiento** y desatar relámpagos sobre todos los objetivos dentro del alcance Cercano. Los objetivos contra los que tengas éxito deben hacer una tirada de reacción con una Dificultad igual al resultado de tu tirada de Lanzamiento. Los que fallen reciben **2d8+4** de daño mágico. Los demás adversarios que aún no hayan sido objetivo de Relámpago en cadena y estén dentro del alcance Cercano de objetivos anteriores que recibieron daño también deben hacer la tirada de reacción. Los que fallen reciben **2d8+4** de daño mágico. La cadena continúa hasta que no queden adversarios dentro del alcance."
+ },
+ {
+  "id": "premonition",
+  "nombre": "Premonición",
+  "nombre_en": "Premonition",
+  "dominio": "arcana",
+  "nivel": 5,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Puedes canalizar energía arcana para tener visiones del futuro. Una vez por descanso largo, justo después de que el DJ describa las consecuencias de una tirada que hiciste, puedes anular la acción y sus consecuencias como si nunca hubieran pasado y hacer otra acción en su lugar."
+ },
+ {
+  "id": "rift-walker",
+  "nombre": "Caminante de grietas",
+  "nombre_en": "Rift Walker",
+  "dominio": "arcana",
+  "nivel": 6,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (15)**. Si tienes éxito, colocas una marca arcana en el suelo donde estás parado. La próxima vez que lances con éxito Caminante de grietas, se abre una grieta en el espacio que ofrece paso seguro de regreso al punto exacto donde colocaste la marca. La grieta permanece abierta hasta que decidas cerrarla o lances otro hechizo.\n\nPuedes soltar el hechizo en cualquier momento para lanzar Caminante de grietas de nuevo y colocar la marca en otro lugar."
+ },
+ {
+  "id": "telekinesis",
+  "nombre": "Telequinesis",
+  "nombre_en": "Telekinesis",
+  "dominio": "arcana",
+  "nivel": 6,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Lejano. Si tienes éxito, puedes usar tu mente para moverlo a cualquier punto dentro del alcance Lejano de su posición original. Puedes arrojar al objetivo levantado como ataque haciendo una tirada de Lanzamiento adicional contra el segundo objetivo al que intentas atacar. Si tienes éxito, inflige **d12+4** de daño físico al segundo objetivo usando tu Competencia. Luego el hechizo termina."
+ },
+ {
+  "id": "arcana-touched",
+  "nombre": "Tocado por lo Arcano",
+  "nombre_en": "Arcana-Touched",
+  "dominio": "arcana",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano sean del dominio Arcano, obtienes estos beneficios:\n\n- +1 de bonificación a tus tiradas de Lanzamiento\n- Una vez por descanso, puedes intercambiar los resultados de tus Dados de Esperanza y de Miedo."
+ },
+ {
+  "id": "cloaking-blast",
+  "nombre": "Estallido velado",
+  "nombre_en": "Cloaking Blast",
+  "dominio": "arcana",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Cuando hagas con éxito una **tirada de Lanzamiento** para lanzar otro hechizo, puedes **gastar una Esperanza** para quedar _Encapuchado_. Mientras estés _Encapuchado_, sigues sin ser visto si permaneces inmóvil cuando un adversario se mueve a donde normalmente te vería. Cuando te mueves hacia o dentro de la línea de visión de un adversario, o cuando atacas, dejas de estar _Encapuchado_."
+ },
+ {
+  "id": "arcane-reflection",
+  "nombre": "Reflejo arcano",
+  "nombre_en": "Arcane Reflection",
+  "dominio": "arcana",
+  "nivel": 8,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Cuando vayas a recibir daño mágico, puedes **gastar cualquier cantidad de Esperanza** para tirar esa misma cantidad de **d6**. Si alguno saca 6, el ataque se refleja de vuelta a quien lo lanzó y el daño se le inflige a él en tu lugar."
+ },
+ {
+  "id": "confusing-aura",
+  "nombre": "Aura confusa",
+  "nombre_en": "Confusing Aura",
+  "dominio": "arcana",
+  "nivel": 8,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (14)**. Una vez por descanso largo, si tienes éxito, creas una capa de ilusión sobre tu cuerpo que hace difícil saber exactamente dónde estás. **Marca cualquier cantidad de Estrés** para crear esa misma cantidad de capas adicionales. Cuando un adversario te ataque, tira tantos **d6** como capas tengas activas. Si alguno saca 5 o más, una capa del aura se destruye y el ataque falla. Si todos los resultados son 4 o menos, recibes el daño y el hechizo termina"
+ },
+ {
+  "id": "earthquake",
+  "nombre": "Terremoto",
+  "nombre_en": "Earthquake",
+  "dominio": "arcana",
+  "nivel": 9,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (16)**. Una vez por descanso, si tienes éxito, todos los objetivos dentro del alcance Muy lejano que no estén volando deben hacer una tirada de reacción (18). Los que fallen reciben **3d10+8** de daño físico y quedan temporalmente _Vulnerables_. Los que tengan éxito reciben la mitad del daño.\n\nAdemás, cuando tienes éxito en la tirada de Lanzamiento, todo el terreno dentro del alcance Muy lejano se vuelve difícil de atravesar, y las estructuras dentro de ese alcance podrían dañarse o derrumbarse."
+ },
+ {
+  "id": "sensory-projection",
+  "nombre": "Proyección sensorial",
+  "nombre_en": "Sensory Projection",
+  "dominio": "arcana",
+  "nivel": 9,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso, haz una **tirada de Lanzamiento (15)**. Si tienes éxito, entras en una visión que te permite ver y oír con claridad cualquier lugar en el que hayas estado antes, como si estuvieras ahí en este momento. Puedes moverte libremente en esta visión y no te limitan las leyes físicas ni los impedimentos de un cuerpo físico. Este hechizo no puede detectarse por medios mundanos ni mágicos. Sales de la visión al recibir daño o al lanzar otro hechizo."
+ },
+ {
+  "id": "adjust-reality",
+  "nombre": "Ajustar la realidad",
+  "nombre_en": "Adjust Reality",
+  "dominio": "arcana",
+  "nivel": 10,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Después de que tú o un aliado dispuesto hagan cualquier tirada, puedes **gastar 5 de Esperanza** para cambiar el resultado numérico de esa tirada por el que tú elijas. El resultado debe ser posible dentro del rango de los dados."
+ },
+ {
+  "id": "falling-sky",
+  "nombre": "Cielo que cae",
+  "nombre_en": "Falling Sky",
+  "dominio": "arcana",
+  "nivel": 10,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra todos los adversarios dentro del alcance Lejano. **Marca cualquier cantidad de Estrés** para hacer que lluevan esquirlas arcanas desde lo alto. Los objetivos contra los que tengas éxito reciben **1d20+2** de daño mágico por cada Estrés que marcaste."
+ },
+ {
+  "id": "get-back-up",
+  "nombre": "Levántate",
+  "nombre_en": "Get Back Up",
+  "dominio": "blade",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando recibas daño Grave, puedes **marcar un Estrés** para reducir la gravedad en un umbral."
+ },
+ {
+  "id": "not-good-enough",
+  "nombre": "No es suficiente",
+  "nombre_en": "Not Good Enough",
+  "dominio": "blade",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando tires tus dados de daño, puedes volver a tirar cualquier 1 o 2."
+ },
+ {
+  "id": "whirlwind",
+  "nombre": "Torbellino",
+  "nombre_en": "Whirlwind",
+  "dominio": "blade",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Cuando hagas un ataque exitoso contra un objetivo dentro del alcance Muy cercano, puedes **gastar una Esperanza** para usar ese ataque contra todos los demás objetivos dentro del alcance Muy cercano. Todos los adversarios adicionales contra los que tengas éxito con esta habilidad reciben la mitad del daño."
+ },
+ {
+  "id": "a-soldier-s-bond",
+  "nombre": "Lazo de soldado",
+  "nombre_en": "A Soldier's Bond",
+  "dominio": "blade",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso largo, cuando halagues a alguien o le preguntes sobre algo en lo que es bueno, ambos pueden ganar 3 de Esperanza."
+ },
+ {
+  "id": "reckless",
+  "nombre": "Temerario",
+  "nombre_en": "Reckless",
+  "dominio": "blade",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "**Marca un Estrés** para obtener ventaja en un ataque."
+ },
+ {
+  "id": "scramble",
+  "nombre": "Escabullirse",
+  "nombre_en": "Scramble",
+  "dominio": "blade",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso, cuando una criatura dentro del alcance Cuerpo a cuerpo vaya a hacerte daño, puedes evitar el ataque y salir con seguridad del alcance Cuerpo a cuerpo de ese enemigo."
+ },
+ {
+  "id": "versatile-fighter",
+  "nombre": "Combatiente versátil",
+  "nombre_en": "Versatile Fighter",
+  "dominio": "blade",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Puedes usar un rasgo de personaje distinto para un arma equipada, en lugar del rasgo que pide el arma.\n\nCuando hagas daño, puedes **marcar un Estrés** para usar el resultado máximo de uno de tus dados de daño en lugar de tirarlo."
+ },
+ {
+  "id": "deadly-focus",
+  "nombre": "Concentración letal",
+  "nombre_en": "Deadly Focus",
+  "dominio": "blade",
+  "nivel": 4,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso, puedes concentrar toda tu atención en un objetivo de tu elección. Hasta que ataques a otra criatura, derrotes al objetivo o termine el combate, obtienes +1 de bonificación a tu Competencia."
+ },
+ {
+  "id": "fortified-armor",
+  "nombre": "Armadura reforzada",
+  "nombre_en": "Fortified Armor",
+  "dominio": "blade",
+  "nivel": 4,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Mientras lleves armadura puesta, obtienes +2 de bonificación a tus umbrales de daño."
+ },
+ {
+  "id": "champion-s-edge",
+  "nombre": "Filo del campeón",
+  "nombre_en": "Champion's Edge",
+  "dominio": "blade",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando obtengas un éxito crítico en un ataque, puedes **gastar hasta 3 de Esperanza** y elegir una de las siguientes opciones por cada Esperanza gastada:\n\n- Limpias un Punto de Golpe.\n- Limpias una casilla de Armadura.\n- El objetivo debe marcar un Punto de Golpe adicional.\n\nNo puedes elegir la misma opción más de una vez."
+ },
+ {
+  "id": "vitality",
+  "nombre": "Vitalidad",
+  "nombre_en": "Vitality",
+  "dominio": "blade",
+  "nivel": 5,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Cuando elijas esta carta, obtienes de forma permanente dos de los siguientes beneficios:\n\n- Una casilla de Estrés\n- Una casilla de Punto de Golpe\n- +2 de bonificación a tus umbrales de daño\n\nDespués, coloca esta carta en tu bóveda de forma permanente."
+ },
+ {
+  "id": "battle-hardened",
+  "nombre": "Curtido en batalla",
+  "nombre_en": "Battle-Hardened",
+  "dominio": "blade",
+  "nivel": 6,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso largo, cuando vayas a hacer un Movimiento de Muerte, puedes **gastar una Esperanza** para limpiar un Punto de Golpe en su lugar."
+ },
+ {
+  "id": "rage-up",
+  "nombre": "Furia creciente",
+  "nombre_en": "Rage Up",
+  "dominio": "blade",
+  "nivel": 6,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Antes de hacer un ataque, puedes **marcar un Estrés** para obtener una bonificación a tu tirada de daño igual al doble de tu Fuerza.\n\nPuedes usar Furia creciente dos veces por ataque."
+ },
+ {
+  "id": "blade-touched",
+  "nombre": "Tocado por la Hoja",
+  "nombre_en": "Blade-Touched",
+  "dominio": "blade",
+  "nivel": 7,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano sean del dominio Hoja, obtienes estos beneficios:\n\n- +2 de bonificación a tus tiradas de ataque\n- +4 de bonificación a tu umbral de daño Grave"
+ },
+ {
+  "id": "glancing-blow",
+  "nombre": "Golpe de refilón",
+  "nombre_en": "Glancing Blow",
+  "dominio": "blade",
+  "nivel": 7,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando falles un ataque, puedes **marcar un Estrés** para infligir el daño de tu arma usando la mitad de tu Competencia."
+ },
+ {
+  "id": "battle-cry",
+  "nombre": "Grito de guerra",
+  "nombre_en": "Battle Cry",
+  "dominio": "blade",
+  "nivel": 8,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso largo, mientras te lanzas al peligro, puedes soltar un grito enardecedor que inspira a tus aliados. Todos los aliados que puedan oírte limpian un Estrés y ganan una Esperanza cada uno. Además, tus aliados obtienen ventaja en sus tiradas de ataque hasta que tú o un aliado saquen un fallo con Miedo."
+ },
+ {
+  "id": "frenzy",
+  "nombre": "Frenesí",
+  "nombre_en": "Frenzy",
+  "dominio": "blade",
+  "nivel": 8,
+  "recuerdo": 3,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso largo, puedes entrar en _Frenesí_ hasta que no quede ningún adversario a la vista.\n\nMientras estés en _Frenesí_, no puedes usar casillas de Armadura, y obtienes +10 de bonificación a tus tiradas de daño y +8 de bonificación a tu umbral de daño Grave."
+ },
+ {
+  "id": "gore-and-glory",
+  "nombre": "Sangre y gloria",
+  "nombre_en": "Gore and Glory",
+  "dominio": "blade",
+  "nivel": 9,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando obtengas un éxito crítico en un ataque con arma, gana una Esperanza adicional o limpia un Estrés adicional.\n\nAdemás, cuando hagas suficiente daño para derrotar a un enemigo, gana una Esperanza o limpia un Estrés."
+ },
+ {
+  "id": "reaper-s-strike",
+  "nombre": "Golpe del segador",
+  "nombre_en": "Reaper's Strike",
+  "dominio": "blade",
+  "nivel": 9,
+  "recuerdo": 3,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso largo, **gasta una Esperanza** para hacer una tirada de ataque. El DJ te dice contra qué objetivos dentro del alcance tendría éxito. Elige uno de ellos y oblígalo a marcar 5 Puntos de Golpe."
+ },
+ {
+  "id": "battle-monster",
+  "nombre": "Monstruo de batalla",
+  "nombre_en": "Battle Monster",
+  "dominio": "blade",
+  "nivel": 10,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Cuando hagas un ataque exitoso contra un adversario, puedes **marcar 4 de Estrés** para obligar al objetivo a marcar tantos Puntos de Golpe como Puntos de Golpe tengas marcados en ese momento, en lugar de tirar daño."
+ },
+ {
+  "id": "onslaught",
+  "nombre": "Embestida",
+  "nombre_en": "Onslaught",
+  "dominio": "blade",
+  "nivel": 10,
+  "recuerdo": 3,
+  "tipo": "habilidad",
+  "texto": "Cuando aciertes un ataque con tu arma, nunca haces daño por debajo del umbral de daño Mayor del objetivo (el objetivo siempre marca un mínimo de 2 Puntos de Golpe).\n\nAdemás, cuando una criatura dentro del alcance de tu arma le haga daño a un aliado con un ataque que no te incluya a ti, puedes **marcar un Estrés** para obligarla a hacer una tirada de reacción (15).\n\nSi falla, el objetivo debe marcar un Punto de Golpe."
+ },
+ {
+  "id": "deft-maneuvers",
+  "nombre": "Maniobras hábiles",
+  "nombre_en": "Deft Maneuvers",
+  "dominio": "bone",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso, **marca un Estrés** para correr a cualquier punto dentro del alcance Lejano sin tener que hacer una tirada de Agilidad para llegar.\n\nSi terminas este movimiento dentro del alcance Cuerpo a cuerpo de un adversario y lo atacas de inmediato, obtienes +1 de bonificación a la tirada de ataque."
+ },
+ {
+  "id": "i-see-it-coming",
+  "nombre": "Lo veo venir",
+  "nombre_en": "I See It Coming",
+  "dominio": "bone",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando seas objetivo de un ataque hecho desde más allá del alcance Cuerpo a cuerpo, puedes **marcar un Estrés** para tirar un **d4** y obtener contra ese ataque una bonificación a tu Evasión igual al resultado."
+ },
+ {
+  "id": "untouchable",
+  "nombre": "Intocable",
+  "nombre_en": "Untouchable",
+  "dominio": "bone",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Obtienes una bonificación a tu Evasión igual a la mitad de tu Agilidad."
+ },
+ {
+  "id": "ferocity",
+  "nombre": "Ferocidad",
+  "nombre_en": "Ferocity",
+  "dominio": "bone",
+  "nivel": 2,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando hagas que un adversario marque 1 o más Puntos de Golpe, puedes **gastar 2 de Esperanza** para aumentar tu Evasión en tantos puntos como Puntos de Golpe marcó. Esta bonificación dura hasta después del siguiente ataque que se haga contra ti."
+ },
+ {
+  "id": "strategic-approach",
+  "nombre": "Enfoque estratégico",
+  "nombre_en": "Strategic Approach",
+  "dominio": "bone",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Después de un descanso largo, coloca en esta carta un número de fichas igual a tu Conocimiento (mínimo 1). La primera vez que te muevas dentro del alcance Cercano de un adversario y lo ataques, puedes gastar una ficha para elegir una de las siguientes opciones:\n\n- Haces el ataque con ventaja.\n- Limpias un Estrés de un aliado que esté dentro del alcance Cuerpo a cuerpo del adversario.\n- Sumas un **d8** a tu tirada de daño.\n\nCuando tomes un descanso largo, limpia todas las fichas que no hayas gastado."
+ },
+ {
+  "id": "brace",
+  "nombre": "Afianzarse",
+  "nombre_en": "Brace",
+  "dominio": "bone",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando marques una casilla de Armadura para reducir el daño entrante, puedes **marcar un Estrés** para marcar una casilla de Armadura adicional."
+ },
+ {
+  "id": "tactician",
+  "nombre": "Táctico",
+  "nombre_en": "Tactician",
+  "dominio": "bone",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando uses Ayudar a un Aliado, este puede gastar una Esperanza para sumar una de tus Experiencias a su tirada, junto con tu dado de ventaja.\n\nAl hacer una Tirada en Equipo, puedes tirar un **d20** como tu Dado de Esperanza."
+ },
+ {
+  "id": "boost",
+  "nombre": "Impulso",
+  "nombre_en": "Boost",
+  "dominio": "bone",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "**Marca un Estrés** para impulsarte en un aliado dispuesto dentro del alcance Cercano, lanzarte por los aires y hacer un ataque aéreo contra un objetivo dentro del alcance Lejano. Tienes ventaja en el ataque, sumas un **d10** a la tirada de daño y terminas tu movimiento dentro del alcance Cuerpo a cuerpo del objetivo."
+ },
+ {
+  "id": "redirect",
+  "nombre": "Redirigir",
+  "nombre_en": "Redirect",
+  "dominio": "bone",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando falle un ataque hecho contra ti desde más allá del alcance Cuerpo a cuerpo, tira tantos **d6** como tu Competencia. Si alguno saca 6, puedes **marcar un Estrés** para redirigir el ataque y que dañe en su lugar a un adversario dentro del alcance Muy cercano."
+ },
+ {
+  "id": "know-thy-enemy",
+  "nombre": "Conoce a tu enemigo",
+  "nombre_en": "Know Thy Enemy",
+  "dominio": "bone",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Al observar a una criatura, puedes hacer una **tirada de Instinto** contra ella. Si tienes éxito, **gasta una Esperanza** y pídele al DJ un conjunto de información sobre el objetivo, a elegir entre:\n\n- Sus Puntos de Golpe y Estrés sin marcar.\n- Su Dificultad y sus umbrales de daño.\n- Sus tácticas y los dados de daño de su ataque estándar.\n- Sus rasgos y Experiencias.\n\nAdemás, si tienes éxito, puedes **marcar un Estrés** para quitar un Miedo de la reserva de Miedo del DJ."
+ },
+ {
+  "id": "signature-move",
+  "nombre": "Movimiento característico",
+  "nombre_en": "Signature Move",
+  "dominio": "bone",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Ponle nombre y describe tu movimiento de combate característico. Una vez por descanso, cuando ejecutes este movimiento como parte de una acción que estés realizando, puedes tirar un **d20** como tu Dado de Esperanza. Si tienes éxito, limpia un Estrés."
+ },
+ {
+  "id": "rapid-riposte",
+  "nombre": "Réplica veloz",
+  "nombre_en": "Rapid Riposte",
+  "dominio": "bone",
+  "nivel": 6,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Cuando falle un ataque hecho contra ti desde dentro del alcance Cuerpo a cuerpo, puedes **marcar un Estrés** y aprovechar la oportunidad para infligirle al atacante el daño de una de tus armas activas."
+ },
+ {
+  "id": "recovery",
+  "nombre": "Recuperación",
+  "nombre_en": "Recovery",
+  "dominio": "bone",
+  "nivel": 6,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Durante un descanso corto, puedes elegir en su lugar una acción de tiempo de descanso de descanso largo. Puedes **gastar una Esperanza** para permitir que un aliado haga lo mismo."
+ },
+ {
+  "id": "bone-touched",
+  "nombre": "Tocado por el Hueso",
+  "nombre_en": "Bone-Touched",
+  "dominio": "bone",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano sean del dominio Hueso, obtienes estos beneficios:\n\n- +1 de bonificación a Agilidad\n- Una vez por descanso, puedes **gastar 3 de Esperanza** para hacer que un ataque que tuvo éxito contra ti falle en su lugar."
+ },
+ {
+  "id": "cruel-precision",
+  "nombre": "Precisión cruel",
+  "nombre_en": "Cruel Precision",
+  "dominio": "bone",
+  "nivel": 7,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando hagas un ataque exitoso con un arma, obtienes una bonificación a tu tirada de daño igual a tu Sutileza o a tu Agilidad."
+ },
+ {
+  "id": "breaking-blow",
+  "nombre": "Golpe quebrantador",
+  "nombre_en": "Breaking Blow",
+  "dominio": "bone",
+  "nivel": 8,
+  "recuerdo": 3,
+  "tipo": "habilidad",
+  "texto": "Cuando hagas un ataque exitoso, puedes **marcar un Estrés** para que el siguiente ataque exitoso contra ese mismo objetivo inflija **2d12** de daño adicional."
+ },
+ {
+  "id": "wrangle",
+  "nombre": "Arrear",
+  "nombre_en": "Wrangle",
+  "dominio": "bone",
+  "nivel": 8,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Haz una tirada de Agilidad contra todos los objetivos dentro del alcance Cercano. **Gasta una Esperanza** para mover a los objetivos contra los que tengas éxito, y a cualquier aliado dispuesto dentro del alcance Cercano, a otro punto dentro del alcance Cercano."
+ },
+ {
+  "id": "on-the-brink",
+  "nombre": "Al borde",
+  "nombre_en": "On the Brink",
+  "dominio": "bone",
+  "nivel": 9,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando tengas 2 o menos Puntos de Golpe sin marcar, no recibes daño Menor."
+ },
+ {
+  "id": "splintering-strike",
+  "nombre": "Golpe astillador",
+  "nombre_en": "Splintering Strike",
+  "dominio": "bone",
+  "nivel": 9,
+  "recuerdo": 3,
+  "tipo": "habilidad",
+  "texto": "**Gasta una Esperanza** y haz un ataque contra todos los adversarios dentro del alcance de tu arma. Una vez por descanso largo, si tienes éxito contra cualquiera de los objetivos, tira el daño de tu arma y repártelo como quieras entre los objetivos contra los que tuviste éxito. Antes de hacerle daño a cada objetivo, tira un dado de daño adicional y suma su resultado al daño que le haces."
+ },
+ {
+  "id": "deathrun",
+  "nombre": "Carrera mortal",
+  "nombre_en": "Deathrun",
+  "dominio": "bone",
+  "nivel": 10,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "**Gasta 3 de Esperanza** para correr en línea recta a través del campo de batalla hasta un punto dentro del alcance Lejano, atacando a todos los adversarios que estén dentro del alcance de tu arma a lo largo de ese camino. Elige el orden en que haces daño a los objetivos contra los que tuviste éxito. Para el primero, tira el daño de tu arma con +1 de bonificación a tu Competencia. Luego quita un dado de tu tirada de daño e inflige el daño restante al siguiente objetivo. Sigue quitando un dado por cada objetivo siguiente hasta que no te queden dados de daño o adversarios.\n\nNo puedes elegir como objetivo al mismo adversario más de una vez por ataque."
+ },
+ {
+  "id": "swift-step",
+  "nombre": "Paso veloz",
+  "nombre_en": "Swift Step",
+  "dominio": "bone",
+  "nivel": 10,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando falle un ataque hecho contra ti, limpia un Estrés. Si no puedes limpiar un Estrés, gana una Esperanza."
+ },
+ {
+  "id": "book-of-ava",
+  "nombre": "Libro de Ava",
+  "nombre_en": "Book of Ava",
+  "dominio": "codex",
+  "nivel": 1,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Empujón de poder:_ Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Cuerpo a cuerpo. Si tienes éxito, sale despedido hasta el alcance Lejano y recibe **d10+2** de daño mágico usando tu Competencia.\n\n_Armadura de Tava:_ **Gasta una Esperanza** para darle a un objetivo que puedas tocar +1 de bonificación a su Puntuación de Armadura hasta su siguiente descanso o hasta que vuelvas a lanzar Armadura de Tava.\n\n_Púa de hielo:_ Haz una **tirada de Lanzamiento (12)** para invocar una gran púa de hielo dentro del alcance Lejano. Si la usas como arma, haz la tirada de Lanzamiento contra la Dificultad del objetivo en su lugar. Si tienes éxito, inflige **d6** de daño físico usando tu Competencia."
+ },
+ {
+  "id": "book-of-illiat",
+  "nombre": "Libro de Illiat",
+  "nombre_en": "Book of Illiat",
+  "dominio": "codex",
+  "nivel": 1,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Sopor:_ Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Muy cercano. Si tienes éxito, queda _Dormido_ hasta que reciba daño o hasta que el DJ gaste un Miedo en su turno para limpiar esta condición.\n\n_Andanada arcana:_ Una vez por descanso, **gasta cualquier cantidad de Esperanza** y dispara proyectiles mágicos que impactan a un objetivo de tu elección dentro del alcance Cercano. Tira tantos **d6** como Esperanza gastaste e inflige esa cantidad de daño mágico al objetivo.\n\n_Telepatía:_ **Gasta una Esperanza** para abrir una línea de comunicación mental con un objetivo que puedas ver. La conexión dura hasta tu siguiente descanso o hasta que vuelvas a lanzar Telepatía."
+ },
+ {
+  "id": "book-of-tyfar",
+  "nombre": "Libro de Tyfar",
+  "nombre_en": "Book of Tyfar",
+  "dominio": "codex",
+  "nivel": 1,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Llama salvaje:_ Haz una **tirada de Lanzamiento** contra hasta tres adversarios dentro del alcance Cuerpo a cuerpo. Los objetivos contra los que tengas éxito reciben **2d6** de daño mágico y deben marcar un Estrés cuando las llamas brotan de tu mano.\n\n_Mano mágica:_ Conjuras una mano mágica del mismo tamaño y fuerza que la tuya dentro del alcance Lejano.\n\n_Bruma misteriosa:_ Haz una **tirada de Lanzamiento (13)** para conjurar una niebla espesa temporal que se acumula en un área fija dentro del alcance Muy cercano. La niebla oculta casi por completo esa área y todo lo que hay en ella."
+ },
+ {
+  "id": "book-of-sitil",
+  "nombre": "Libro de Sitil",
+  "nombre_en": "Book of Sitil",
+  "dominio": "codex",
+  "nivel": 2,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Alterar apariencia:_ Cambias mágicamente tu apariencia y tu ropa para evitar que te reconozcan.\n\n_Parallela:_ **Gasta 2 de Esperanza** para lanzar este hechizo sobre ti o sobre un aliado dentro del alcance Cercano. La próxima vez que el objetivo ataque, puede golpear a un objetivo adicional dentro del alcance contra el que su tirada de ataque tendría éxito. Solo puedes mantener este hechizo sobre una criatura a la vez.\n\n_Ilusión:_ Haz una **tirada de Lanzamiento (14)**. Si tienes éxito, crea una ilusión visual temporal no más grande que tú dentro del alcance Cercano, que dura mientras la sigas mirando. Resiste el escrutinio hasta que un observador esté dentro del alcance Cuerpo a cuerpo."
+ },
+ {
+  "id": "book-of-vagras",
+  "nombre": "Libro de Vagras",
+  "nombre_en": "Book of Vagras",
+  "dominio": "codex",
+  "nivel": 2,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Cerradura rúnica:_ Haz una **tirada de Lanzamiento (15)** sobre un objeto que estés tocando y que pueda cerrarse (como una cerradura, un cofre o una caja). Una vez por descanso, si tienes éxito, puedes cerrar el objeto para que solo puedan abrirlo las criaturas que tú elijas. Alguien con acceso a la magia y una hora para estudiar el hechizo puede romperlo.\n\n_Puerta arcana:_ Cuando no tengas adversarios dentro del alcance Cuerpo a cuerpo, haz una **tirada de Lanzamiento (13)**. Si tienes éxito, **gasta una Esperanza** para crear un portal desde donde estás hasta un punto que puedas ver dentro del alcance Lejano. Se cierra en cuanto una criatura lo atraviesa.\n\n_Revelar:_ Haz una **tirada de Lanzamiento**. Si hay algo oculto mágicamente dentro del alcance Cercano, queda revelado."
+ },
+ {
+  "id": "book-of-korvax",
+  "nombre": "Libro de Korvax",
+  "nombre_en": "Book of Korvax",
+  "dominio": "codex",
+  "nivel": 3,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Levitación:_ Haz una **tirada de Lanzamiento** para elevar temporalmente por los aires a un objetivo que puedas ver y moverlo dentro del alcance Cercano de su posición original.\n\n_Retractar:_ **Gasta una Esperanza** para obligar a un objetivo dentro del alcance Cuerpo a cuerpo a hacer una tirada de reacción (15). Si falla, olvida el último minuto de su conversación contigo.\n\n_Círculo rúnico:_ **Marca un Estrés** para crear un círculo mágico temporal en el suelo donde estás parado. Todos los adversarios dentro del alcance Cuerpo a cuerpo, o que entren en él, reciben **2d12+4** de daño mágico y son empujados hasta el alcance Muy cercano."
+ },
+ {
+  "id": "book-of-norai",
+  "nombre": "Libro de Norai",
+  "nombre_en": "Book of Norai",
+  "dominio": "codex",
+  "nivel": 3,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Atadura mística:_ Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Lejano. Si tienes éxito, queda temporalmente _Apresado_ y debe marcar un Estrés. Si el objetivo es una criatura voladora, este hechizo la derriba al suelo y la deja temporalmente _Apresada_.\n\n_Bola de fuego:_ Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Muy lejano. Si tienes éxito, le arrojas una esfera de fuego que explota al impactar. El objetivo y todas las criaturas dentro del alcance Muy cercano de él deben hacer una tirada de reacción (13). Los que fallen reciben **d20+5** de daño mágico usando tu Competencia. Los que tengan éxito reciben la mitad del daño."
+ },
+ {
+  "id": "book-of-exota",
+  "nombre": "Libro de Exota",
+  "nombre_en": "Book of Exota",
+  "dominio": "codex",
+  "nivel": 4,
+  "recuerdo": 3,
+  "tipo": "grimorio",
+  "texto": "_Repudiar:_ Puedes interrumpir un efecto mágico que esté ocurriendo. Haz una tirada de reacción con tu rasgo de Lanzamiento. Una vez por descanso, si tienes éxito, el efecto se detiene y se evitan sus consecuencias.\n\n_Crear constructo:_ **Gasta una Esperanza** para elegir un grupo de objetos a tu alrededor y crear con ellos un constructo animado que obedece órdenes básicas. Haz una **tirada de Lanzamiento** para ordenarle que actúe. Cuando haga falta, comparte tu Evasión y tus rasgos, y sus ataques infligen **2d10+3** de daño físico. Solo puedes mantener un constructo a la vez, y se desmorona en cuanto recibe cualquier cantidad de daño."
+ },
+ {
+  "id": "book-of-grynn",
+  "nombre": "Libro de Grynn",
+  "nombre_en": "Book of Grynn",
+  "dominio": "codex",
+  "nivel": 4,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Desvío arcano:_ Una vez por descanso largo, **gasta una Esperanza** para anular el daño de un ataque dirigido contra ti o contra un aliado dentro del alcance Muy cercano.\n\n_Cerrojo temporal:_ Elige como objetivo un objeto dentro del alcance Lejano. Ese objeto se detiene en el tiempo y el espacio exactamente donde está hasta tu siguiente descanso. Si una criatura intenta moverlo, haz una **tirada de Lanzamiento** contra ella para mantener el hechizo.\n\n_Muro de llamas:_ Haz una **tirada de Lanzamiento (15)**. Si tienes éxito, crea un muro temporal de llamas mágicas entre dos puntos dentro del alcance Lejano. Todas las criaturas en su trayectoria deben elegir de qué lado quedarse, y todo lo que después atraviese el muro recibe **4d10+3** de daño mágico."
+ },
+ {
+  "id": "manifest-wall",
+  "nombre": "Manifestar muro",
+  "nombre_en": "Manifest Wall",
+  "dominio": "codex",
+  "nivel": 5,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (15)**. Una vez por descanso, si tienes éxito, **gasta una Esperanza** para crear un muro mágico temporal entre dos puntos dentro del alcance Lejano. Puede medir hasta 50 pies de alto y formarse en cualquier ángulo. Las criaturas u objetos en su trayectoria son desplazados hacia el lado que tú elijas. El muro se mantiene hasta tu siguiente descanso o hasta que vuelvas a lanzar Manifestar muro."
+ },
+ {
+  "id": "teleport",
+  "nombre": "Teletransporte",
+  "nombre_en": "Teleport",
+  "dominio": "codex",
+  "nivel": 5,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso largo, puedes teletransportarte al instante, junto con cualquier cantidad de objetivos dispuestos dentro del alcance Cercano, a un lugar en el que hayas estado antes. Elige una de las siguientes opciones y luego haz una **tirada de Lanzamiento (16)**:\n\n- Si conoces el lugar muy bien, obtienes +3 de bonificación.\n- Si has visitado el lugar con frecuencia, obtienes +1 de bonificación.\n- Si has visitado el lugar pocas veces, no obtienes modificador.\n- Si solo has estado ahí una vez, sufres -2 de penalización.\n\nSi tienes éxito, apareces donde querías ir. Si fallas, apareces desviado de tu destino; qué tanto falles determina qué tan lejos te desvías."
+ },
+ {
+  "id": "banish",
+  "nombre": "Destierro",
+  "nombre_en": "Banish",
+  "dominio": "codex",
+  "nivel": 6,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Cercano. Si tienes éxito, tira tantos **d20** como tu rasgo de Lanzamiento. El objetivo debe hacer una tirada de reacción con una Dificultad igual a tu resultado más alto. Si el objetivo tiene éxito, debe marcar un Estrés pero no es desterrado. Una vez por descanso, si falla, queda desterrado de este plano.\n\nCuando los PJ tiren con Miedo, la Dificultad sufre -1 de penalización y el objetivo hace otra tirada de reacción. Si tiene éxito, regresa del destierro."
+ },
+ {
+  "id": "sigil-of-retribution",
+  "nombre": "Sello de represalia",
+  "nombre_en": "Sigil of Retribution",
+  "dominio": "codex",
+  "nivel": 6,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Marca a un adversario dentro del alcance Cercano con un sello de represalia. El DJ gana un Miedo. Cuando el adversario marcado te haga daño a ti o a tus aliados, coloca un **d8** en esta carta. Puedes acumular tantos **d8** como tu nivel. Cuando ataques con éxito al adversario marcado, tira los dados de esta carta, suma el total a tu tirada de daño y luego retira los dados. El efecto termina cuando el adversario marcado es derrotado o cuando vuelves a lanzar Sello de represalia."
+ },
+ {
+  "id": "book-of-homet",
+  "nombre": "Libro de Homet",
+  "nombre_en": "Book of Homet",
+  "dominio": "codex",
+  "nivel": 7,
+  "recuerdo": 0,
+  "tipo": "grimorio",
+  "texto": "_Atravesar:_ Haz una **tirada de Lanzamiento (13)**. Una vez por descanso, si tienes éxito, tú y todas las criaturas que te estén tocando pueden atravesar una pared o puerta dentro del alcance Cercano. El efecto termina en cuanto todos están del otro lado.\n\n_Portal planar:_ Haz una **tirada de Lanzamiento (14)**. Una vez por descanso largo, si tienes éxito, abre un portal hacia un lugar de otra dimensión o plano de existencia en el que hayas estado antes. El portal dura hasta tu siguiente descanso."
+ },
+ {
+  "id": "codex-touched",
+  "nombre": "Tocado por el Códice",
+  "nombre_en": "Codex-Touched",
+  "dominio": "codex",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano sean del dominio Códice, obtienes estos beneficios:\n\n- Puedes **marcar un Estrés** para sumar tu Competencia a una tirada de Lanzamiento.\n- Una vez por descanso, puedes reemplazar esta carta por cualquier carta de tu bóveda sin pagar su costo de recuperación."
+ },
+ {
+  "id": "book-of-vyola",
+  "nombre": "Libro de Vyola",
+  "nombre_en": "Book of Vyola",
+  "dominio": "codex",
+  "nivel": 8,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Sondeo de memoria:_ Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Lejano. Si tienes éxito, te asomas a la mente del objetivo y le haces una pregunta al DJ. El DJ describe los recuerdos que el objetivo tenga relacionados con la respuesta.\n\n_Claridad compartida:_ Una vez por descanso largo, **gasta una Esperanza** para elegir a dos criaturas dispuestas. Cuando una de ellas vaya a marcar Estrés, pueden elegir cuál de las dos lo marca. El hechizo dura hasta su siguiente descanso."
+ },
+ {
+  "id": "safe-haven",
+  "nombre": "Refugio seguro",
+  "nombre_en": "Safe Haven",
+  "dominio": "codex",
+  "nivel": 8,
+  "recuerdo": 3,
+  "tipo": "hechizo",
+  "texto": "Cuando tengas unos minutos de calma para concentrarte, puedes **gastar 2 de Esperanza** para invocar tu Refugio seguro, un gran hogar interdimensional donde tú y tus aliados pueden resguardarse. Al hacerlo, aparece una puerta mágica en algún punto dentro del alcance Cercano. Solo pueden entrar las criaturas que tú elijas. Una vez dentro, puedes hacer invisible la entrada. Tú y cualquiera que esté dentro siempre pueden salir. En cuanto sales, hay que volver a invocar la puerta.\n\nCuando descanses dentro de tu propio Refugio seguro, puedes elegir una acción de tiempo de descanso adicional."
+ },
+ {
+  "id": "book-of-ronin",
+  "nombre": "Libro de Ronin",
+  "nombre_en": "Book of Ronin",
+  "dominio": "codex",
+  "nivel": 9,
+  "recuerdo": 4,
+  "tipo": "grimorio",
+  "texto": "_Transformar:_ Haz una **tirada de Lanzamiento (15)**. Si tienes éxito, te transformas en un objeto inanimado no más grande que el doble de tu tamaño normal. Puedes permanecer en esa forma hasta que recibas daño.\n\n_Enervación eterna:_ Una vez por descanso largo, haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Cercano. Si tienes éxito, queda _Vulnerable_ de forma permanente. No puede limpiar esta condición por ningún medio."
+ },
+ {
+  "id": "disintegration-wave",
+  "nombre": "Onda desintegradora",
+  "nombre_en": "Disintegration Wave",
+  "dominio": "codex",
+  "nivel": 9,
+  "recuerdo": 4,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (18)**. Una vez por descanso largo, si tienes éxito, el DJ te dice qué adversarios dentro del alcance Lejano tienen una Dificultad de 18 o menos. **Marca un Estrés** por cada uno al que quieras alcanzar con este hechizo. Mueren y no pueden volver a la vida por ningún medio."
+ },
+ {
+  "id": "book-of-yarrow",
+  "nombre": "Libro de Yarrow",
+  "nombre_en": "Book of Yarrow",
+  "dominio": "codex",
+  "nivel": 10,
+  "recuerdo": 2,
+  "tipo": "grimorio",
+  "texto": "_Detentiempo:_ Haz una **tirada de Lanzamiento (18)**. Si tienes éxito, el tiempo se ralentiza temporalmente hasta detenerse para todos dentro del alcance Lejano, excepto para ti. Se reanuda la próxima vez que hagas una tirada de acción dirigida a otra criatura.\n\n_Inmunidad mágica:_ **Gasta 5 de Esperanza** para obtener inmunidad al daño mágico hasta tu siguiente descanso."
+ },
+ {
+  "id": "transcendent-union",
+  "nombre": "Unión trascendente",
+  "nombre_en": "Transcendent Union",
+  "dominio": "codex",
+  "nivel": 10,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso largo, **gasta 5 de Esperanza** para lanzar este hechizo sobre dos o más criaturas dispuestas. Hasta tu siguiente descanso, cuando una criatura conectada por esta unión vaya a marcar Estrés o Puntos de Golpe, las criaturas conectadas pueden elegir quién lo marca."
+ },
+ {
+  "id": "deft-deceiver",
+  "nombre": "Embaucador hábil",
+  "nombre_en": "Deft Deceiver",
+  "dominio": "grace",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "**Gasta una Esperanza** para obtener ventaja en una tirada para engañar o embaucar a alguien y hacer que crea una mentira que le dices."
+ },
+ {
+  "id": "enrapture",
+  "nombre": "Embelesar",
+  "nombre_en": "Enrapture",
+  "dominio": "grace",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Cercano. Si tienes éxito, queda temporalmente _Embelesado_. Mientras esté _Embelesado_, su atención se fija en ti: su campo de visión se estrecha y deja de oír cualquier sonido que no sea tu voz. Una vez por descanso, si tienes éxito, puedes **marcar un Estrés** para obligar al objetivo _Embelesado_ a marcar también un Estrés."
+ },
+ {
+  "id": "inspirational-words",
+  "nombre": "Palabras inspiradoras",
+  "nombre_en": "Inspirational Words",
+  "dominio": "grace",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Tus palabras están imbuidas de poder. Después de un descanso largo, coloca en esta carta un número de fichas igual a tu Presencia. Cuando hables con un aliado, puedes gastar una ficha de esta carta para darle uno de los siguientes beneficios:\n\n- Tu aliado limpia un Estrés.\n- Tu aliado limpia un Punto de Golpe.\n- Tu aliado gana una Esperanza.\n\nCuando tomes un descanso largo, limpia todas las fichas que no hayas gastado."
+ },
+ {
+  "id": "tell-no-lies",
+  "nombre": "Sin mentiras",
+  "nombre_en": "Tell No Lies",
+  "dominio": "grace",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Muy cercano. Si tienes éxito, no puede mentirte mientras permanezca dentro del alcance Cercano, pero no está obligado a hablar. Si le haces una pregunta y se niega a responder, debe marcar un Estrés y el efecto termina. Por lo general, el objetivo no sabe que le lanzaron este hechizo hasta que lo hace decir la verdad."
+ },
+ {
+  "id": "troublemaker",
+  "nombre": "Buscapleitos",
+  "nombre_en": "Troublemaker",
+  "dominio": "grace",
+  "nivel": 2,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando provoques o te burles de un objetivo dentro del alcance Lejano, haz una **tirada de Presencia** contra él. Una vez por descanso, si tienes éxito, tira tantos **d4** como tu Competencia. El objetivo debe marcar tanto Estrés como el resultado más alto obtenido."
+ },
+ {
+  "id": "hypnotic-shimmer",
+  "nombre": "Destello hipnótico",
+  "nombre_en": "Hypnotic Shimmer",
+  "dominio": "grace",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra todos los adversarios frente a ti dentro del alcance Cercano. Una vez por descanso, si tienes éxito, creas una ilusión de colores y luces centelleantes que deja temporalmente _Aturdidos_ a los objetivos contra los que tengas éxito y los obliga a marcar un Estrés. Mientras estén _Aturdidos_, no pueden usar reacciones ni realizar ninguna otra acción hasta que limpien esta condición."
+ },
+ {
+  "id": "invisibility",
+  "nombre": "Invisibilidad",
+  "nombre_en": "Invisibility",
+  "dominio": "grace",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (10)**. Si tienes éxito, **marca un Estrés** y elige volverte _Invisible_ tú o un aliado dentro del alcance Cuerpo a cuerpo. Una criatura _Invisible_ no puede ser vista salvo por medios mágicos, y las tiradas de ataque contra ella se hacen con desventaja. Coloca en esta carta un número de fichas igual a tu rasgo de Lanzamiento. Cuando la criatura _Invisible_ realice una acción, gasta una ficha de esta carta. Después de resolver la acción que gasta la última ficha, el efecto termina.\n\nSolo puedes mantener Invisibilidad sobre una criatura a la vez."
+ },
+ {
+  "id": "soothing-speech",
+  "nombre": "Palabras de consuelo",
+  "nombre_en": "Soothing Speech",
+  "dominio": "grace",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Durante un descanso corto, cuando te tomes el tiempo de consolar a otro personaje mientras usas en él la acción de tiempo de descanso Atender heridas, limpia un Punto de Golpe adicional a ese personaje. Cuando lo hagas, tú también limpias 2 Puntos de Golpe."
+ },
+ {
+  "id": "through-your-eyes",
+  "nombre": "A través de tus ojos",
+  "nombre_en": "Through Your Eyes",
+  "dominio": "grace",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Elige un objetivo dentro del alcance Muy lejano. Puedes ver a través de sus ojos y oír a través de sus oídos. Puedes alternar libremente entre usar tus propios sentidos o los del objetivo hasta que lances otro hechizo o hasta tu siguiente descanso."
+ },
+ {
+  "id": "thought-delver",
+  "nombre": "Escrutamentes",
+  "nombre_en": "Thought Delver",
+  "dominio": "grace",
+  "nivel": 5,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Puedes asomarte a la mente de otros. **Gasta una Esperanza** para leer los pensamientos vagos y superficiales de un objetivo dentro del alcance Lejano. Haz una **tirada de Lanzamiento** contra el objetivo para indagar en pensamientos más profundos y ocultos.\n\nSi la tirada sale con Miedo, el objetivo podría darse cuenta, a criterio del DJ, de que estás leyendo sus pensamientos."
+ },
+ {
+  "id": "words-of-discord",
+  "nombre": "Palabras de discordia",
+  "nombre_en": "Words of Discord",
+  "dominio": "grace",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Susúrrale palabras de discordia a un adversario dentro del alcance Cuerpo a cuerpo y haz una **tirada de Lanzamiento (13)**. Si tienes éxito, el objetivo debe marcar un Estrés y atacar a otro adversario en lugar de a ti o a tus aliados.\n\nEn cuanto termina ese ataque, el objetivo se da cuenta de lo que pasó. La próxima vez que le lances Palabras de discordia, sufres -5 de penalización a la tirada de Lanzamiento."
+ },
+ {
+  "id": "never-upstaged",
+  "nombre": "Nunca opacado",
+  "nombre_en": "Never Upstaged",
+  "dominio": "grace",
+  "nivel": 6,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando marcas 1 o más Puntos de Golpe por un ataque, puedes **marcar un Estrés** para poner en esta carta tantas fichas como Puntos de Golpe hayas marcado. En tu siguiente ataque exitoso, obtienes un bono de +5 a tu tirada de daño por cada ficha en esta carta; después, retira todas las fichas."
+ },
+ {
+  "id": "share-the-burden",
+  "nombre": "Compartir la carga",
+  "nombre_en": "Share the Burden",
+  "dominio": "grace",
+  "nivel": 6,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso, toma el Estrés de una criatura dispuesta dentro del alcance Cuerpo a cuerpo. El objetivo describe qué conocimientos íntimos o emociones se filtran telepáticamente de su mente en este momento entre ustedes. Transfiérete cualquier cantidad de su Estrés marcado y luego obtén una Esperanza por cada Estrés transferido."
+ },
+ {
+  "id": "endless-charisma",
+  "nombre": "Carisma infinito",
+  "nombre_en": "Endless Charisma",
+  "dominio": "grace",
+  "nivel": 7,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Después de hacer una tirada de acción para persuadir, mentir o ganarte el favor de alguien, puedes **gastar una Esperanza** para volver a tirar el Dado de Esperanza o el Dado de Miedo."
+ },
+ {
+  "id": "grace-touched",
+  "nombre": "Tocado por la Gracia",
+  "nombre_en": "Grace-Touched",
+  "dominio": "grace",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano son del dominio de Gracia, obtienes los siguientes beneficios:\n\n- Puedes **marcar una casilla de Armadura** en lugar de marcar un Estrés.\n- Cuando fueras a obligar a un objetivo a marcar cierta cantidad de Puntos de Golpe, puedes elegir obligarlo en su lugar a marcar esa misma cantidad de Estrés."
+ },
+ {
+  "id": "astral-projection",
+  "nombre": "Proyección astral",
+  "nombre_en": "Astral Projection",
+  "dominio": "grace",
+  "nivel": 8,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso largo, **marca un Estrés** para crear una copia proyectada de ti que puede aparecer en cualquier lugar donde hayas estado antes.\n\nPuedes ver y oír a través de la proyección como si fueras tú y afectar el mundo como si estuvieras ahí. Una criatura que investigue la proyección puede darse cuenta de que es de origen mágico. Este efecto dura hasta tu siguiente descanso o hasta que tu proyección reciba cualquier daño."
+ },
+ {
+  "id": "mass-enrapture",
+  "nombre": "Embeleso masivo",
+  "nombre_en": "Mass Enrapture",
+  "dominio": "grace",
+  "nivel": 8,
+  "recuerdo": 3,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra todos los objetivos dentro del alcance Lejano. Los objetivos contra los que tengas éxito quedan temporalmente _Embelesados_. Mientras está _Embelesado_, la atención del objetivo está fija en ti, lo que reduce su campo de visión y ahoga cualquier sonido que no sea tu voz. **Marca un Estrés** para obligar a todos los objetivos _Embelesados_ a marcar un Estrés, lo que termina este hechizo."
+ },
+ {
+  "id": "copycat",
+  "nombre": "Imitador",
+  "nombre_en": "Copycat",
+  "dominio": "grace",
+  "nivel": 9,
+  "recuerdo": 3,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso largo, esta carta puede imitar los rasgos de otra carta de dominio de nivel 8 o menor que esté en la mano de otro jugador. **Gasta Esperanza igual a la mitad del nivel de la carta** para obtener acceso al rasgo. Dura hasta tu siguiente descanso o hasta que esa persona ponga la carta en su bóveda."
+ },
+ {
+  "id": "master-of-the-craft",
+  "nombre": "Maestro del oficio",
+  "nombre_en": "Master of the Craft",
+  "dominio": "grace",
+  "nivel": 9,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Obtienes un bono permanente de +2 a dos de tus Experiencias o un bono permanente de +3 a una de tus Experiencias. Luego pon esta carta en tu bóveda de forma permanente."
+ },
+ {
+  "id": "encore",
+  "nombre": "Bis",
+  "nombre_en": "Encore",
+  "dominio": "grace",
+  "nivel": 10,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Cuando un aliado dentro del alcance Cercano le hace daño a un adversario, puedes hacer una **tirada de Lanzamiento** contra ese mismo objetivo. Si tienes éxito, le haces al objetivo el mismo daño que hizo tu aliado. Si tu tirada de Lanzamiento tiene éxito con Miedo, pon esta carta en tu bóveda."
+ },
+ {
+  "id": "notorious",
+  "nombre": "Notorio",
+  "nombre_en": "Notorious",
+  "dominio": "grace",
+  "nivel": 10,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "La gente sabe quién eres y lo que has hecho, y por eso te trata diferente. Cuando aprovechas tu fama para conseguir lo que quieres, puedes **marcar un Estrés** antes de tirar para obtener un bono de +10 al resultado. Tu comida y bebida siempre son gratis adondequiera que vayas, y todo lo demás que compres baja de precio una bolsa de oro (hasta un mínimo de un puñado).\n\nEsta carta no cuenta para el máximo de 5 cartas de dominio de tu mano y no puede ponerse en tu bóveda."
+ },
+ {
+  "id": "pick-and-pull",
+  "nombre": "Ganzúa y tirón",
+  "nombre_en": "Pick and Pull",
+  "dominio": "midnight",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Tienes ventaja en las tiradas de acción para forzar cerraduras no mágicas, desactivar trampas no mágicas o robarle objetos a un objetivo (ya sea con sigilo o por la fuerza)."
+ },
+ {
+  "id": "rain-of-blades",
+  "nombre": "Lluvia de cuchillas",
+  "nombre_en": "Rain of Blades",
+  "dominio": "midnight",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "**Gasta una Esperanza** para hacer una **tirada de Lanzamiento** y conjurar cuchillas arrojadizas que golpean a todos los objetivos dentro del alcance Muy cercano. Los objetivos contra los que tengas éxito reciben **d8+2** de daño mágico usando tu Competencia.\n\nSi un objetivo al que impactas está _Vulnerable_, recibe **1d8** de daño adicional."
+ },
+ {
+  "id": "uncanny-disguise",
+  "nombre": "Disfraz asombroso",
+  "nombre_en": "Uncanny Disguise",
+  "dominio": "midnight",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Cuando tienes unos minutos para prepararte, puedes **marcar un Estrés** para adoptar la apariencia de cualquier humanoide que puedas imaginar con claridad. Mientras estás disfrazado, tienes ventaja en las tiradas de Presencia para evitar que te examinen de cerca.\n\nPon en esta carta tantas fichas como tu rasgo de Lanzamiento. Cuando realizas una acción mientras estás disfrazado, gasta una ficha de esta carta. Después de que se resuelva la acción que gasta la última ficha, el disfraz se desvanece."
+ },
+ {
+  "id": "midnight-spirit",
+  "nombre": "Espíritu de medianoche",
+  "nombre_en": "Midnight Spirit",
+  "dominio": "midnight",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "**Gasta una Esperanza** para invocar un espíritu de tamaño humanoide que puede moverse o cargar cosas por ti hasta tu siguiente descanso.\n\nTambién puedes mandarlo a atacar a un adversario. Cuando lo hagas, haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Muy lejano. Si tienes éxito, el espíritu se mueve al alcance Cuerpo a cuerpo de ese objetivo. Tira tantos **d6** como tu rasgo de Lanzamiento y hazle esa cantidad de daño mágico al objetivo. Luego el espíritu se disipa. Solo puedes tener un espíritu a la vez."
+ },
+ {
+  "id": "shadowbind",
+  "nombre": "Atadura de sombras",
+  "nombre_en": "Shadowbind",
+  "dominio": "midnight",
+  "nivel": 2,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra todos los adversarios dentro del alcance Muy cercano. Los objetivos contra los que tengas éxito quedan temporalmente _Apresados_, pues su propia sombra los ata en su lugar."
+ },
+ {
+  "id": "chokehold",
+  "nombre": "Llave estranguladora",
+  "nombre_en": "Chokehold",
+  "dominio": "midnight",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando te colocas detrás de una criatura de más o menos tu tamaño, puedes **marcar un Estrés** para aplicarle una llave estranguladora, lo que la deja temporalmente _Vulnerable_.\n\nCuando una criatura ataca a un objetivo que está _Vulnerable_ de esta forma, le hace **2d6** de daño adicional."
+ },
+ {
+  "id": "veil-of-night",
+  "nombre": "Velo de la noche",
+  "nombre_en": "Veil of Night",
+  "dominio": "midnight",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (13)**. Si tienes éxito, puedes crear una cortina temporal de oscuridad entre dos puntos dentro del alcance Lejano. Solo tú puedes ver a través de esta oscuridad. Se te considera _Oculto_ para los adversarios que están del otro lado del velo, y tienes ventaja en los ataques que hagas a través de la oscuridad. El velo permanece hasta que lances otro hechizo."
+ },
+ {
+  "id": "stealth-expertise",
+  "nombre": "Experto en sigilo",
+  "nombre_en": "Stealth Expertise",
+  "dominio": "midnight",
+  "nivel": 4,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Cuando sacas una tirada con Miedo mientras intentas moverte sin ser notado por una zona peligrosa, puedes **marcar un Estrés** para que la tirada sea con Esperanza.\n\nSi un aliado dentro del alcance Cercano también intenta moverse sin ser notado y saca una tirada con Miedo, puedes **marcar un Estrés** para cambiar su resultado a una tirada con Esperanza."
+ },
+ {
+  "id": "glyph-of-nightfall",
+  "nombre": "Glifo del anochecer",
+  "nombre_en": "Glyph of Nightfall",
+  "dominio": "midnight",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Muy cercano. Si tienes éxito, **gasta una Esperanza** para conjurar sobre su cuerpo un glifo oscuro que expone sus puntos débiles y reduce temporalmente la Dificultad del objetivo en un valor igual a tu Conocimiento (mínimo 1)."
+ },
+ {
+  "id": "hush",
+  "nombre": "Silencio",
+  "nombre_en": "Hush",
+  "dominio": "midnight",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Cercano. Si tienes éxito, **gasta una Esperanza** para conjurar alrededor del objetivo una magia supresora que abarca todo lo que esté dentro del alcance Muy cercano de él y lo sigue cuando se mueve.\n\nEl objetivo y todo lo que esté dentro del área quedan _Silenciados_ hasta que el DJ gaste un Miedo en su turno para quitar esta condición, vuelvas a lanzar Silencio o recibas daño Mayor. Mientras están _Silenciados_, no pueden hacer ruido ni lanzar hechizos."
+ },
+ {
+  "id": "phantom-retreat",
+  "nombre": "Retirada fantasmal",
+  "nombre_en": "Phantom Retreat",
+  "dominio": "midnight",
+  "nivel": 5,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "**Gasta una Esperanza** para activar Retirada fantasmal en el lugar donde estás parado. **Gasta otra Esperanza** en cualquier momento antes de tu siguiente descanso para desaparecer de donde estés y reaparecer donde estabas parado cuando activaste Retirada fantasmal. Este hechizo termina después de que reapareces."
+ },
+ {
+  "id": "dark-whispers",
+  "nombre": "Susurros oscuros",
+  "nombre_en": "Dark Whispers",
+  "dominio": "midnight",
+  "nivel": 6,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Puedes hablar en la mente de cualquier persona con la que hayas tenido contacto físico. Una vez que abres un canal con ella, puede responderte en tu mente. Además, puedes **marcar un Estrés** para hacer una **tirada de Lanzamiento** contra ella. Si tienes éxito, puedes hacerle al DJ una de las siguientes preguntas y recibir una respuesta:\n\n- ¿Dónde está?\n- ¿Qué está haciendo?\n- ¿A qué le tiene miedo?\n- ¿Qué es lo que más aprecia en el mundo?"
+ },
+ {
+  "id": "mass-disguise",
+  "nombre": "Disfraz masivo",
+  "nombre_en": "Mass Disguise",
+  "dominio": "midnight",
+  "nivel": 6,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "Cuando tienes unos minutos de silencio para concentrarte, puedes **marcar un Estrés** para cambiar la apariencia de todas las criaturas dispuestas dentro del alcance Cercano. Sus nuevas formas deben conservar una estructura corporal y un tamaño generales, y pueden ser alguien o algo que hayas visto antes o algo totalmente inventado. Una criatura disfrazada tiene ventaja en las tiradas de Presencia para evitar que la examinen de cerca.\n\nActiva una cuenta regresiva (8). Avanza como consecuencia que elige el DJ. Cuando se cumple, el disfraz se desvanece."
+ },
+ {
+  "id": "midnight-touched",
+  "nombre": "Tocado por la Medianoche",
+  "nombre_en": "Midnight-Touched",
+  "dominio": "midnight",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano son del dominio de Medianoche, obtienes los siguientes beneficios:\n\n- Una vez por descanso, cuando tienes 0 de Esperanza y el DJ fuera a obtener un Miedo, puedes obtener tú una Esperanza en su lugar.\n- Cuando haces un ataque exitoso, puedes **marcar un Estrés** para sumar el resultado de tu Dado de Miedo a tu tirada de daño."
+ },
+ {
+  "id": "vanishing-dodge",
+  "nombre": "Esquiva evanescente",
+  "nombre_en": "Vanishing Dodge",
+  "dominio": "midnight",
+  "nivel": 7,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Cuando falla un ataque contra ti que te haría daño físico, puedes **gastar una Esperanza** para envolverte en sombras, quedar _Oculto_ y teletransportarte a un punto dentro del alcance Cercano del atacante. Permaneces _Oculto_ hasta la siguiente vez que hagas una tirada de acción."
+ },
+ {
+  "id": "shadowhunter",
+  "nombre": "Cazador de sombras",
+  "nombre_en": "Shadowhunter",
+  "dominio": "midnight",
+  "nivel": 8,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Tu destreza aumenta al amparo de las sombras. Mientras estás envuelto en poca luz u oscuridad, obtienes un bono de +1 a tu Evasión y haces las tiradas de ataque con ventaja."
+ },
+ {
+  "id": "spellcharge",
+  "nombre": "Carga arcana",
+  "nombre_en": "Spellcharge",
+  "dominio": "midnight",
+  "nivel": 8,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Cuando recibes daño mágico, pon en esta carta tantas fichas como Puntos de Golpe hayas marcado. Puedes guardar tantas fichas como tu rasgo de Lanzamiento.\n\nCuando haces un ataque exitoso contra un objetivo, puedes gastar cualquier cantidad de fichas para sumar un **d6** por cada ficha gastada a tu tirada de daño."
+ },
+ {
+  "id": "night-terror",
+  "nombre": "Terror nocturno",
+  "nombre_en": "Night Terror",
+  "dominio": "midnight",
+  "nivel": 9,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso largo, elige cualquier cantidad de objetivos dentro del alcance Muy cercano para que te perciban como un horror de pesadilla. Los objetivos deben tener éxito en una tirada de reacción (16) o quedan temporalmente _Aterrados_. Mientras están _Aterrados_, están _Vulnerables_. Róbale al DJ tantos Miedos como objetivos estén _Aterrados_ (hasta la cantidad de Miedo que tenga en su reserva). Tira tantos **d6** como Miedos robados y hazle el daño total a cada objetivo _Aterrado_. Descarta el Miedo robado."
+ },
+ {
+  "id": "twilight-toll",
+  "nombre": "Tributo del ocaso",
+  "nombre_en": "Twilight Toll",
+  "dominio": "midnight",
+  "nivel": 9,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Elige un objetivo dentro del alcance Lejano. Cuando tengas éxito en una tirada de acción contra él que no implique hacer una tirada de daño, pon una ficha en esta carta. Cuando le hagas daño a ese objetivo, gasta cualquier cantidad de fichas para sumar un **d12** por cada ficha gastada a tu tirada de daño. Solo puedes mantener Tributo del ocaso sobre una criatura a la vez.\n\nCuando eliges un nuevo objetivo o tomas un descanso, retira todas las fichas sin gastar."
+ },
+ {
+  "id": "eclipse",
+  "nombre": "Eclipse",
+  "nombre_en": "Eclipse",
+  "dominio": "midnight",
+  "nivel": 10,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (16)**. Una vez por descanso largo, si tienes éxito, sumerge toda el área dentro del alcance Lejano en una oscuridad total a través de la cual solo tú y tus aliados pueden ver. Las tiradas de ataque tienen desventaja cuando apuntan a ti o a un aliado dentro de esta sombra.\n\nAdemás, cuando tú o un aliado tienen éxito con Esperanza contra un adversario dentro de esta sombra, el objetivo debe marcar un Estrés.\n\nEste hechizo dura hasta que el DJ gaste un Miedo en su turno para quitar este efecto o recibas daño Grave."
+ },
+ {
+  "id": "specter-of-the-dark",
+  "nombre": "Espectro de la oscuridad",
+  "nombre_en": "Specter of the Dark",
+  "dominio": "midnight",
+  "nivel": 10,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "**Marca un Estrés** para volverte _Espectral_ hasta que hagas una tirada de acción que apunte a otra criatura. Mientras eres _Espectral_, eres inmune al daño físico y puedes flotar y atravesar objetos sólidos. Las demás criaturas aún pueden verte mientras estás en esta forma."
+ },
+ {
+  "id": "gifted-tracker",
+  "nombre": "Rastreador nato",
+  "nombre_en": "Gifted Tracker",
+  "dominio": "sage",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Cuando estás rastreando a una criatura o grupo de criaturas específico a partir de las señales de su paso, puedes **gastar cualquier cantidad de Esperanza** y hacerle al DJ esa misma cantidad de preguntas de la siguiente lista.\n\n- ¿En qué dirección se fueron?\n- ¿Hace cuánto pasaron por aquí?\n- ¿Qué estaban haciendo en este lugar?\n- ¿Cuántos de ellos estuvieron aquí?\n\nCuando te encuentres con criaturas que hayas rastreado de esta forma, obtienes un bono de +1 a tu Evasión contra ellas."
+ },
+ {
+  "id": "nature-s-tongue",
+  "nombre": "Lengua de la naturaleza",
+  "nombre_en": "Nature's Tongue",
+  "dominio": "sage",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Puedes hablar el idioma del mundo natural. Cuando quieras hablar con las plantas y los animales a tu alrededor, haz una **tirada de Instinto (12)**. Si tienes éxito, te darán la información que conocen. Si la tirada es con Miedo, su conocimiento podría ser limitado o tener un costo.\n\nAdemás, antes de hacer una tirada de Lanzamiento mientras estás en un entorno natural, puedes **gastar una Esperanza** para obtener un bono de +2 a la tirada."
+ },
+ {
+  "id": "vicious-entangle",
+  "nombre": "Enredo feroz",
+  "nombre_en": "Vicious Entangle",
+  "dominio": "sage",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Lejano. Si tienes éxito, raíces y enredaderas brotan del suelo, le hacen **1d8+1** de daño físico y dejan temporalmente _Apresado_ al objetivo.\n\nAdemás, si tienes éxito, puedes **gastar una Esperanza** para dejar temporalmente _Apresado_ a otro adversario dentro del alcance Muy cercano de tu objetivo."
+ },
+ {
+  "id": "conjure-swarm",
+  "nombre": "Conjurar enjambre",
+  "nombre_en": "Conjure Swarm",
+  "dominio": "sage",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "_Escarabajos acorazados de Tekaira:_ **Marca un Estrés** para conjurar escarabajos acorazados que te rodean. La siguiente vez que recibas daño, reduce su gravedad en un umbral. Puedes **gastar una Esperanza** para mantener conjurados a los escarabajos después de recibir el daño.\n\n_Luciérnagas de fuego:_ Haz una **tirada de Lanzamiento** contra todos los adversarios dentro del alcance Cercano. **Gasta una Esperanza** para hacerles **2d8+3** de daño mágico a los objetivos contra los que tuviste éxito."
+ },
+ {
+  "id": "natural-familiar",
+  "nombre": "Familiar natural",
+  "nombre_en": "Natural Familiar",
+  "dominio": "sage",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "**Gasta una Esperanza** para invocar a tu lado un pequeño espíritu de la naturaleza o un animalito del bosque hasta tu siguiente descanso, hasta que vuelvas a lanzar Familiar natural o hasta que el familiar sea objetivo de un ataque. Si **gastas una Esperanza adicional**, puedes invocar un familiar que vuela. Puedes comunicarte con él, hacer una **tirada de Lanzamiento** para ordenarle que realice tareas sencillas y **marcar un Estrés** para ver a través de sus ojos.\n\nCuando le haces daño a un adversario que está dentro del alcance Cuerpo a cuerpo de tu familiar, sumas un **d6** a tu tirada de daño."
+ },
+ {
+  "id": "corrosive-projectile",
+  "nombre": "Proyectil corrosivo",
+  "nombre_en": "Corrosive Projectile",
+  "dominio": "sage",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Lejano. Si tienes éxito, haz **d6+4** de daño mágico usando tu Competencia. Además, **marca 2 o más de Estrés** para dejarlo _Corroído_ de forma permanente. Mientras un objetivo está _Corroído_, sufre un penalizador de -1 a su Dificultad por cada 2 de Estrés que gastaste. Esta condición es acumulable."
+ },
+ {
+  "id": "towering-stalk",
+  "nombre": "Tallo imponente",
+  "nombre_en": "Towering Stalk",
+  "dominio": "sage",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso, puedes conjurar dentro del alcance Cercano un tallo grueso y retorcido que se puede escalar con facilidad. Su altura puede crecer hasta el alcance Lejano.\n\n**Marca un Estrés** para usar este hechizo como ataque. Haz una **tirada de Lanzamiento** contra un adversario o grupo de adversarios dentro del alcance Cercano. El tallo brota con violencia, levanta por los aires a los objetivos contra los que tengas éxito y los deja caer, haciéndoles **d8** de daño físico usando tu Competencia."
+ },
+ {
+  "id": "death-grip",
+  "nombre": "Agarre mortal",
+  "nombre_en": "Death Grip",
+  "dominio": "sage",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Cercano y elige una de las siguientes opciones:\n\n- Jalas al objetivo hasta el alcance Cuerpo a cuerpo o te jalas tú hasta el alcance Cuerpo a cuerpo de él.\n- Estrujas al objetivo y lo obligas a marcar 2 de Estrés.\n- Todos los adversarios entre tú y el objetivo deben tener éxito en una tirada de reacción (13) o los golpean las enredaderas y reciben **3d6+2** de daño físico.\n\nSi tienes éxito, brotan enredaderas de tus manos, lo que provoca el efecto elegido y deja temporalmente _Apresado_ al objetivo."
+ },
+ {
+  "id": "healing-field",
+  "nombre": "Campo sanador",
+  "nombre_en": "Healing Field",
+  "dominio": "sage",
+  "nivel": 4,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso largo, puedes conjurar a tu alrededor un campo de plantas curativas. Todo lo que esté dentro del alcance Cercano de ti cobra vida con naturaleza vibrante, lo que les permite a ti y a todos los aliados en el área limpiar un Punto de Golpe.\n\n**Gasta 2 de Esperanza** para que tú y todos los aliados limpien 2 Puntos de Golpe en su lugar."
+ },
+ {
+  "id": "thorn-skin",
+  "nombre": "Piel de espinas",
+  "nombre_en": "Thorn Skin",
+  "dominio": "sage",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso, **gasta una Esperanza** para que te broten espinas por todo el cuerpo. Cuando lo hagas, pon en esta carta tantas fichas como tu rasgo de Lanzamiento. Cuando recibas daño, puedes gastar cualquier cantidad de fichas para tirar esa misma cantidad de **d6**. Suma los resultados y reduce el daño entrante en esa cantidad. Si estás dentro del alcance Cuerpo a cuerpo del atacante, devuélvele esa misma cantidad de daño.\n\nCuando tomas un descanso, retira todas las fichas sin gastar."
+ },
+ {
+  "id": "wild-fortress",
+  "nombre": "Fortaleza salvaje",
+  "nombre_en": "Wild Fortress",
+  "dominio": "sage",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (13)**. Si tienes éxito, **gasta 2 de Esperanza** para hacer crecer una barricada natural en forma de domo en la que tú y un aliado pueden ponerse a cubierto. Mientras está dentro del domo, una criatura no puede ser objetivo de ataques ni puede hacer ataques. Los ataques contra el domo tienen éxito automáticamente. El domo tiene los siguientes umbrales de daño y dura hasta que marque 3 Puntos de Golpe. Pon fichas en esta carta para representar los Puntos de Golpe marcados.\n\nUmbrales: 15/30"
+ },
+ {
+  "id": "conjured-steeds",
+  "nombre": "Corceles conjurados",
+  "nombre_en": "Conjured Steeds",
+  "dominio": "sage",
+  "nivel": 6,
+  "recuerdo": 0,
+  "tipo": "hechizo",
+  "texto": "**Gasta cualquier cantidad de Esperanza** para conjurar esa misma cantidad de corceles mágicos (como caballos, camellos o elefantes) que tú y tus aliados pueden montar hasta tu siguiente descanso largo o hasta que los corceles reciban cualquier daño. Los corceles duplican tu velocidad por tierra al viajar y, en situaciones de peligro, te permiten moverte dentro del alcance Lejano sin tener que tirar. Las criaturas que montan un corcel sufren un penalizador de -2 a las tiradas de ataque y obtienen un bono de +2 a las tiradas de daño."
+ },
+ {
+  "id": "forager",
+  "nombre": "Recolector",
+  "nombre_en": "Forager",
+  "dominio": "sage",
+  "nivel": 6,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Como acción adicional de tiempo de descanso que puedes elegir, tira un d6 para ver qué recolectas. Descríbelo junto con el DJ y agrégalo a tu inventario como consumible. Tu grupo puede cargar hasta cinco consumibles recolectados a la vez.\n\n1. Un alimento único (limpia 2 de Estrés)\n2. Una reliquia hermosa (obtén 2 de Esperanza)\n3. Una runa arcana (+2 a una tirada de Lanzamiento)\n4. Un frasco curativo (limpia 2 Puntos de Golpe)\n5. Un amuleto de la suerte (vuelve a tirar cualquier dado)\n6. Elige una de las opciones anteriores."
+ },
+ {
+  "id": "sage-touched",
+  "nombre": "Tocado por la Sabiduría",
+  "nombre_en": "Sage-Touched",
+  "dominio": "sage",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano son del dominio de Sabiduría, obtienes los siguientes beneficios:\n\n- Mientras estás en un entorno natural, obtienes un bono de +2 a tus tiradas de Lanzamiento.\n- Una vez por descanso, puedes duplicar tu Agilidad o tu Instinto al hacer una tirada que use ese rasgo. Debes decidir hacerlo antes de tirar."
+ },
+ {
+  "id": "wild-surge",
+  "nombre": "Oleada salvaje",
+  "nombre_en": "Wild Surge",
+  "dominio": "sage",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso largo, **marca un Estrés** para canalizar el mundo natural a tu alrededor y potenciarte. Describe cómo cambia tu apariencia y luego pon un **d6** en esta carta con el 1 hacia arriba.\n\nMientras el dado de Oleada salvaje está activo, sumas su valor a cada tirada de acción que hagas. Después de sumar su valor a una tirada, aumenta en uno el valor del dado de Oleada salvaje. Cuando el valor del dado fuera a pasar de 6 o tomes un descanso, esta forma se desvanece y debes **marcar un Estrés adicional**."
+ },
+ {
+  "id": "forest-sprites",
+  "nombre": "Duendes del bosque",
+  "nombre_en": "Forest Sprites",
+  "dominio": "sage",
+  "nivel": 8,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (13)**. Si tienes éxito, **gasta cualquier cantidad de Esperanza** para crear esa misma cantidad de pequeños duendes del bosque que aparecen en los puntos que elijas dentro del alcance Lejano y otorgan los siguientes beneficios:\n\n- Tus aliados obtienen un bono de +3 a las tiradas de ataque contra adversarios que estén dentro del alcance Cuerpo a cuerpo de un duende.\n- Un aliado que marca una casilla de Armadura mientras está dentro del alcance Cuerpo a cuerpo de un duende puede marcar una casilla de Armadura adicional.\n\nUn duende se desvanece después de otorgar un beneficio o de recibir cualquier daño."
+ },
+ {
+  "id": "rejuvenation-barrier",
+  "nombre": "Barrera rejuvenecedora",
+  "nombre_en": "Rejuvenation Barrier",
+  "dominio": "sage",
+  "nivel": 8,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (15)**. Una vez por descanso, si tienes éxito, crea a tu alrededor una barrera temporal de energía protectora en el alcance Muy cercano. Tú y todos los aliados que estén dentro de la barrera cuando se lanza este hechizo limpian **1d4** Puntos de Golpe. Mientras la barrera esté activa, tú y todos los aliados dentro de ella tienen resistencia al daño físico que venga de fuera de la barrera.\n\nCuando te mueves, la barrera te sigue."
+ },
+ {
+  "id": "fane-of-the-wilds",
+  "nombre": "Santuario de lo salvaje",
+  "nombre_en": "Fane of the Wilds",
+  "dominio": "sage",
+  "nivel": 9,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Después de un descanso largo, pon en esta carta tantas fichas como cartas del dominio de Sabiduría tengas en tu mano y en tu bóveda.\n\nCuando fueras a hacer una tirada de Lanzamiento, puedes gastar cualquier cantidad de fichas después de la tirada para obtener un bono de +1 por cada ficha gastada.\n\nCuando sacas un Éxito crítico en una tirada de Lanzamiento para un hechizo del dominio de Sabiduría, obtienes una ficha.\n\nCuando tomas un descanso largo, retira todas las fichas sin gastar."
+ },
+ {
+  "id": "plant-dominion",
+  "nombre": "Dominio vegetal",
+  "nombre_en": "Plant Dominion",
+  "dominio": "sage",
+  "nivel": 9,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (18)**. Una vez por descanso largo, si tienes éxito, remodelas el mundo natural y cambias la vegetación circundante en cualquier lugar dentro del alcance Lejano de ti. Por ejemplo, puedes hacer crecer árboles al instante, abrir un camino entre enredaderas densas o crear un muro de raíces."
+ },
+ {
+  "id": "force-of-nature",
+  "nombre": "Fuerza de la naturaleza",
+  "nombre_en": "Force of Nature",
+  "dominio": "sage",
+  "nivel": 10,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "**Marca un Estrés** para transformarte en un enorme espíritu de la naturaleza y obtener los siguientes beneficios:\n\n- Cuando tienes éxito en un ataque o en una tirada de Lanzamiento, obtienes un bono de +10 a la tirada de daño.\n- Cuando haces suficiente daño para derrotar a una criatura dentro del alcance Cercano, la absorbes y limpias una casilla de Armadura.\n- No puedes quedar _Apresado_.\n\nAntes de hacer una tirada de acción, debes **gastar una Esperanza**. Si no puedes, vuelves a tu forma normal."
+ },
+ {
+  "id": "tempest",
+  "nombre": "Tempestad",
+  "nombre_en": "Tempest",
+  "dominio": "sage",
+  "nivel": 10,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Elige una de las siguientes tempestades y haz una **tirada de Lanzamiento** contra todos los objetivos dentro del alcance Lejano. Los objetivos contra los que tengas éxito sufren sus efectos hasta que el DJ gaste un Miedo en su turno para terminar este hechizo.\n\n- _Ventisca_: Haz **2d20+8** de daño mágico y los objetivos quedan temporalmente _Vulnerables._\n- _Huracán_: Haz **3d10+10** de daño mágico y elige la dirección en la que sopla el viento. Los objetivos no pueden moverse contra el viento.\n- _Tormenta de arena_: Haz **5d6+9** de daño mágico. Los ataques hechos desde más allá del alcance Cuerpo a cuerpo tienen desventaja."
+ },
+ {
+  "id": "bolt-beacon",
+  "nombre": "Faro centelleante",
+  "nombre_en": "Bolt Beacon",
+  "dominio": "splendor",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** contra un objetivo dentro del alcance Lejano. Si tienes éxito, **gasta una Esperanza** para lanzarle un rayo de luz resplandeciente que le hace **d8+2** de daño mágico usando tu Competencia. El objetivo queda temporalmente _Vulnerable_ y brilla intensamente hasta que se quite esta condición."
+ },
+ {
+  "id": "mending-touch",
+  "nombre": "Toque reparador",
+  "nombre_en": "Mending Touch",
+  "dominio": "splendor",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Pones tus manos sobre una criatura y canalizas magia curativa para cerrar sus heridas. Cuando puedes dedicar unos minutos a concentrarte en el objetivo al que ayudas, puedes **gastar 2 de Esperanza** para limpiarle un Punto de Golpe o un Estrés.\n\nUna vez por descanso largo, cuando dedicas este tiempo de curación a descubrir algo nuevo sobre él o a revelarle algo sobre ti, puedes limpiarle 2 Puntos de Golpe o 2 de Estrés en su lugar."
+ },
+ {
+  "id": "reassurance",
+  "nombre": "Palabras de aliento",
+  "nombre_en": "Reassurance",
+  "dominio": "splendor",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso, después de que un aliado intente una tirada de acción pero antes de que ocurran las consecuencias, puedes ofrecerle ayuda o palabras de apoyo. Cuando lo hagas, tu aliado puede volver a tirar sus dados."
+ },
+ {
+  "id": "final-words",
+  "nombre": "Últimas palabras",
+  "nombre_en": "Final Words",
+  "dominio": "splendor",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Puedes infundirle a un cadáver un instante de vida para hablar con él. Haz una **tirada de Lanzamiento (13)**. Si tienes éxito con Esperanza, el cadáver responde hasta tres preguntas. Si tienes éxito con Miedo, el cadáver responde una pregunta. El cadáver responde con la verdad, pero no puede compartir información que no conocía en vida. Si fallas, o una vez que el cadáver termina de responder tus preguntas, el cuerpo se convierte en polvo."
+ },
+ {
+  "id": "healing-hands",
+  "nombre": "Manos sanadoras",
+  "nombre_en": "Healing Hands",
+  "dominio": "splendor",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (13)** y elige como objetivo a una criatura que no seas tú dentro del alcance Cuerpo a cuerpo. Si tienes éxito, **marca un Estrés** para limpiarle al objetivo 2 Puntos de Golpe o 2 de Estrés. Si fallas, **marca un Estrés** para limpiarle al objetivo un Punto de Golpe o un Estrés. No puedes volver a curar al mismo objetivo hasta tu siguiente descanso largo."
+ },
+ {
+  "id": "second-wind",
+  "nombre": "Segundo aliento",
+  "nombre_en": "Second Wind",
+  "dominio": "splendor",
+  "nivel": 3,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso, cuando tienes éxito en un ataque contra un adversario, puedes limpiar 3 de Estrés o un Punto de Golpe. Si tienes éxito con Esperanza, también le limpias 3 de Estrés o un Punto de Golpe a un aliado dentro del alcance Cercano de ti."
+ },
+ {
+  "id": "voice-of-reason",
+  "nombre": "Voz de la razón",
+  "nombre_en": "Voice of Reason",
+  "dominio": "splendor",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Hablas con un poder y una autoridad sin igual. Tienes ventaja en las tiradas de acción para calmar situaciones violentas o convencer a alguien de que siga tu ejemplo.\n\nAdemás, te creces en los momentos de presión. Cuando todas tus casillas de Estrés están marcadas, obtienes un bono de +1 a tu Competencia para las tiradas de daño."
+ },
+ {
+  "id": "divination",
+  "nombre": "Adivinación",
+  "nombre_en": "Divination",
+  "dominio": "splendor",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso largo, **gasta 3 de Esperanza** para contactar a las fuerzas del más allá y hacer una pregunta de \"sí o no\" sobre un suceso, persona, lugar o situación del futuro cercano. Por un momento, el presente se desvanece y ves la respuesta frente a ti."
+ },
+ {
+  "id": "life-ward",
+  "nombre": "Guarda vital",
+  "nombre_en": "Life Ward",
+  "dominio": "splendor",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "**Gasta 3 de Esperanza** y elige a un aliado dentro del alcance Cercano. Queda marcado con un sello brillante de protección. Cuando este aliado fuera a hacer un movimiento de muerte, en su lugar limpia un Punto de Golpe.\n\nEste efecto termina cuando salva al objetivo de un movimiento de muerte, cuando lanzas Guarda vital sobre otro objetivo o cuando tomas un descanso largo."
+ },
+ {
+  "id": "shape-material",
+  "nombre": "Moldear material",
+  "nombre_en": "Shape Material",
+  "dominio": "splendor",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "**Gasta una Esperanza** para moldear a tu conveniencia una sección del material natural que estés tocando (como piedra, hielo o madera). El área del material no puede ser más grande que tú. Por ejemplo, puedes formar una herramienta rudimentaria o crear una puerta.\n\nSolo puedes afectar el material dentro del alcance Cercano del punto que estás tocando."
+ },
+ {
+  "id": "smite",
+  "nombre": "Castigo",
+  "nombre_en": "Smite",
+  "dominio": "splendor",
+  "nivel": 5,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Una vez por descanso, **gasta 3 de Esperanza** para cargar tu poderoso castigo. La siguiente vez que ataques con éxito con un arma, duplica el resultado de tu tirada de daño. Este ataque hace daño mágico sin importar el tipo de daño del arma."
+ },
+ {
+  "id": "restoration",
+  "nombre": "Restauración",
+  "nombre_en": "Restoration",
+  "dominio": "splendor",
+  "nivel": 6,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Después de un descanso largo, pon en esta carta tantas fichas como tu rasgo de Lanzamiento. Toca a una criatura y gasta cualquier cantidad de fichas para limpiarle 2 Puntos de Golpe o 2 de Estrés por cada ficha gastada.\n\nTambién puedes gastar una ficha de esta carta al tocar a una criatura para quitarle la condición _Vulnerable_ o curarle un padecimiento físico o mágico (el DJ podría pedir fichas adicionales según la fuerza del padecimiento).\n\nCuando tomas un descanso largo, retira todas las fichas sin gastar."
+ },
+ {
+  "id": "zone-of-protection",
+  "nombre": "Zona de protección",
+  "nombre_en": "Zone of Protection",
+  "dominio": "splendor",
+  "nivel": 6,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (16)**. Una vez por descanso largo, si tienes éxito, elige un punto dentro del alcance Lejano y crea ahí una zona visible de protección para todos los aliados dentro del alcance Muy cercano de ese punto. Cuando lo hagas, pon un **d6** en esta carta con el 1 hacia arriba. Cuando un aliado en esta zona recibe daño, lo reduce en el valor del dado. Luego aumentas en uno el valor del dado. Cuando el valor del dado fuera a pasar de 6, este efecto termina."
+ },
+ {
+  "id": "healing-strike",
+  "nombre": "Golpe sanador",
+  "nombre_en": "Healing Strike",
+  "dominio": "splendor",
+  "nivel": 7,
+  "recuerdo": 1,
+  "tipo": "hechizo",
+  "texto": "Cuando le haces daño a un adversario, puedes **gastar 2 de Esperanza** para limpiarle un Punto de Golpe a un aliado dentro del alcance Cercano."
+ },
+ {
+  "id": "splendor-touched",
+  "nombre": "Tocado por el Esplendor",
+  "nombre_en": "Splendor-Touched",
+  "dominio": "splendor",
+  "nivel": 7,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano son del dominio de Esplendor, obtienes los siguientes beneficios:\n\n- Bono de +3 a tu umbral de daño Grave\n- Una vez por descanso largo, cuando el daño entrante te obligaría a marcar cierta cantidad de Puntos de Golpe, puedes elegir marcar esa misma cantidad de Estrés o gastar esa misma cantidad de Esperanza en su lugar."
+ },
+ {
+  "id": "shield-aura",
+  "nombre": "Aura escudo",
+  "nombre_en": "Shield Aura",
+  "dominio": "splendor",
+  "nivel": 8,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "**Marca un Estrés** para lanzar un aura protectora sobre un objetivo dentro del alcance Muy cercano. Cuando el objetivo marca una casilla de Armadura, reduce la gravedad del ataque en un umbral adicional. Si este hechizo hace que una criatura que iba a recibir daño no marque ningún Punto de Golpe, el efecto termina.\n\nSolo puedes mantener Aura escudo sobre una criatura a la vez."
+ },
+ {
+  "id": "stunning-sunlight",
+  "nombre": "Luz solar aturdidora",
+  "nombre_en": "Stunning Sunlight",
+  "dominio": "splendor",
+  "nivel": 8,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento** para desatar poderosos rayos de luz solar abrasadora contra todos los adversarios frente a ti dentro del alcance Lejano. Si tienes éxito, **gasta cualquier cantidad de Esperanza** y obliga a esa misma cantidad de objetivos contra los que tuviste éxito a hacer una tirada de reacción (14).\n\nLos objetivos que tienen éxito reciben **3d20+3** de daño mágico. Los objetivos que fallan reciben **4d20+5** de daño mágico y quedan temporalmente _Aturdidos_. Mientras están _Aturdidos_, no pueden usar reacciones ni realizar ninguna otra acción hasta que se quiten esta condición."
+ },
+ {
+  "id": "overwhelming-aura",
+  "nombre": "Aura abrumadora",
+  "nombre_en": "Overwhelming Aura",
+  "dominio": "splendor",
+  "nivel": 9,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (15)** para potenciar tu aura con magia. Si tienes éxito, **gasta 2 de Esperanza** para que tu Presencia sea igual a tu rasgo de Lanzamiento hasta tu siguiente descanso largo.\n\nMientras este hechizo está activo, un adversario debe marcar un Estrés cuando te elige como objetivo de un ataque."
+ },
+ {
+  "id": "salvation-beam",
+  "nombre": "Rayo de salvación",
+  "nombre_en": "Salvation Beam",
+  "dominio": "splendor",
+  "nivel": 9,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (16)**. Si tienes éxito, **marca cualquier cantidad de Estrés** para elegir como objetivo una línea de aliados dentro del alcance Lejano. Puedes limpiarles a los objetivos tantos Puntos de Golpe como Estrés hayas marcado, repartidos entre ellos como quieras."
+ },
+ {
+  "id": "invigoration",
+  "nombre": "Revigorizar",
+  "nombre_en": "Invigoration",
+  "dominio": "splendor",
+  "nivel": 10,
+  "recuerdo": 3,
+  "tipo": "hechizo",
+  "texto": "Cuando tú o un aliado dentro del alcance Cercano hayan usado un rasgo con límite de usos (como una vez por descanso o una vez por sesión), puedes **gastar cualquier cantidad de Esperanza** y tirar esa misma cantidad de **d6**. Si alguno saca 6, el rasgo puede volver a usarse."
+ },
+ {
+  "id": "resurrection",
+  "nombre": "Resurrección",
+  "nombre_en": "Resurrection",
+  "dominio": "splendor",
+  "nivel": 10,
+  "recuerdo": 2,
+  "tipo": "hechizo",
+  "texto": "Haz una **tirada de Lanzamiento (20)**. Si tienes éxito, devuélvele toda su fuerza a una criatura que lleve muerta no más de 100 años. Luego tira un **d6**. Si sacas 5 o menos, pon esta carta en tu bóveda de forma permanente.\n\nSi fallas, no puedes volver a lanzar Resurrección durante una semana."
+ },
+ {
+  "id": "bare-bones",
+  "nombre": "A pecho descubierto",
+  "nombre_en": "Bare Bones",
+  "dominio": "valor",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Cuando eliges no equiparte armadura, tienes una Puntuación de Armadura base de 3 + tu Fuerza y usas los siguientes umbrales de daño base:\n\n- _Rango 1_: 9/19\n- _Rango 2_: 11/24\n- _Rango 3_: 13/31\n- _Rango 4_: 15/38"
+ },
+ {
+  "id": "forceful-push",
+  "nombre": "Empujón contundente",
+  "nombre_en": "Forceful Push",
+  "dominio": "valor",
+  "nivel": 1,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Haz un ataque con tu arma primaria contra un objetivo dentro del alcance Cuerpo a cuerpo. Si tienes éxito, le haces daño y lo empujas hasta el alcance Cercano. Si tienes éxito con Esperanza, suma un **d6** a tu tirada de daño.\n\nAdemás, puedes **gastar una Esperanza** para dejarlo temporalmente _Vulnerable_."
+ },
+ {
+  "id": "i-am-your-shield",
+  "nombre": "Yo soy tu escudo",
+  "nombre_en": "I Am Your Shield",
+  "dominio": "valor",
+  "nivel": 1,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando un aliado dentro del alcance Muy cercano fuera a recibir daño, puedes **marcar un Estrés** para interponerte y convertirte tú en el objetivo del ataque. Cuando recibas daño de este ataque, puedes marcar cualquier cantidad de casillas de Armadura."
+ },
+ {
+  "id": "body-basher",
+  "nombre": "Embestida corporal",
+  "nombre_en": "Body Basher",
+  "dominio": "valor",
+  "nivel": 2,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Usas toda la fuerza de tu cuerpo en una pelea. En un ataque exitoso con un arma de alcance Cuerpo a cuerpo, obtienes un bono a tu tirada de daño igual a tu Fuerza."
+ },
+ {
+  "id": "bold-presence",
+  "nombre": "Presencia audaz",
+  "nombre_en": "Bold Presence",
+  "dominio": "valor",
+  "nivel": 2,
+  "recuerdo": 0,
+  "tipo": "habilidad",
+  "texto": "Cuando haces una tirada de Presencia, puedes **gastar una Esperanza** para sumar tu Fuerza a la tirada.\n\nAdemás, una vez por descanso, cuando fueras a recibir una condición, puedes describir cómo tu presencia audaz te ayuda en la situación y evitar recibir la condición."
+ },
+ {
+  "id": "critical-inspiration",
+  "nombre": "Inspiración crítica",
+  "nombre_en": "Critical Inspiration",
+  "dominio": "valor",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso, cuando sacas un Éxito crítico en un ataque, todos los aliados dentro del alcance Muy cercano pueden limpiar un Estrés u obtener una Esperanza."
+ },
+ {
+  "id": "lean-on-me",
+  "nombre": "Apóyate en mí",
+  "nombre_en": "Lean on Me",
+  "dominio": "valor",
+  "nivel": 3,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso largo, cuando consuelas o inspiras a un aliado que falló una tirada de acción, ambos pueden limpiar 2 de Estrés."
+ },
+ {
+  "id": "goad-them-on",
+  "nombre": "Provocación",
+  "nombre_en": "Goad Them on",
+  "dominio": "valor",
+  "nivel": 4,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Describe cómo provocas a un objetivo dentro del alcance Cercano y luego haz una **tirada de Presencia** contra él. Si tienes éxito, el objetivo debe marcar un Estrés y, la siguiente vez que el DJ le dé el foco, debe elegirte como objetivo de un ataque, que hace con desventaja."
+ },
+ {
+  "id": "support-tank",
+  "nombre": "Muralla de apoyo",
+  "nombre_en": "Support Tank",
+  "dominio": "valor",
+  "nivel": 4,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Cuando un aliado dentro del alcance Cercano falla una tirada, puedes **gastar 2 de Esperanza** para permitirle volver a tirar su Dado de Esperanza o su Dado de Miedo."
+ },
+ {
+  "id": "armorer",
+  "nombre": "Armero",
+  "nombre_en": "Armorer",
+  "dominio": "valor",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Mientras llevas armadura, obtienes un bono de +1 a tu Puntuación de Armadura.\n\nDurante un descanso, cuando eliges reparar tu armadura como acción de tiempo de descanso, tus aliados también limpian una casilla de Armadura."
+ },
+ {
+  "id": "rousing-strike",
+  "nombre": "Golpe enardecedor",
+  "nombre_en": "Rousing Strike",
+  "dominio": "valor",
+  "nivel": 5,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso, cuando sacas un Éxito crítico en un ataque, tú y todos los aliados que puedan verte u oírte pueden limpiar un Punto de Golpe o **1d4** de Estrés."
+ },
+ {
+  "id": "inevitable",
+  "nombre": "Inevitable",
+  "nombre_en": "Inevitable",
+  "dominio": "valor",
+  "nivel": 6,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando fallas una tirada de acción, tu siguiente tirada de acción tiene ventaja."
+ },
+ {
+  "id": "rise-up",
+  "nombre": "Levántate",
+  "nombre_en": "Rise Up",
+  "dominio": "valor",
+  "nivel": 6,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "Obtienes un bono a tu umbral Grave igual a tu Competencia.\n\nCuando marcas 1 o más Puntos de Golpe por un ataque, limpia un Estrés."
+ },
+ {
+  "id": "shrug-it-off",
+  "nombre": "Sacúdetelo",
+  "nombre_en": "Shrug It Off",
+  "dominio": "valor",
+  "nivel": 7,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando fueras a recibir daño, puedes **marcar un Estrés** para reducir la gravedad del daño en un umbral. Cuando lo hagas, tira un **d6**. Si sacas 3 o menos, pon esta carta en tu bóveda."
+ },
+ {
+  "id": "valor-touched",
+  "nombre": "Tocado por el Valor",
+  "nombre_en": "Valor-Touched",
+  "dominio": "valor",
+  "nivel": 7,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando 4 o más de las cartas de dominio de tu mano son del dominio de Valor, obtienes los siguientes beneficios:\n\n- Bono de +1 a tu Puntuación de Armadura\n- Cuando marcas 1 o más Puntos de Golpe sin marcar una casilla de Armadura, limpia una casilla de Armadura."
+ },
+ {
+  "id": "full-surge",
+  "nombre": "Al máximo",
+  "nombre_en": "Full Surge",
+  "dominio": "valor",
+  "nivel": 8,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Una vez por descanso largo, **marca 3 de Estrés** para llevar tu cuerpo al límite. Obtienes un bono de +2 a todos tus rasgos de personaje hasta tu siguiente descanso."
+ },
+ {
+  "id": "ground-pound",
+  "nombre": "Golpe sísmico",
+  "nombre_en": "Ground Pound",
+  "dominio": "valor",
+  "nivel": 8,
+  "recuerdo": 2,
+  "tipo": "habilidad",
+  "texto": "**Gasta 2 de Esperanza** para golpear el suelo donde estás parado y haz una **tirada de Fuerza** contra todos los objetivos dentro del alcance Muy cercano. Los objetivos contra los que tengas éxito salen despedidos hasta el alcance Lejano y deben hacer una tirada de reacción (17). Los objetivos que fallan reciben **4d10+8** de daño. Los objetivos que tienen éxito reciben la mitad del daño."
+ },
+ {
+  "id": "hold-the-line",
+  "nombre": "Mantener la línea",
+  "nombre_en": "Hold the Line",
+  "dominio": "valor",
+  "nivel": 9,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Describe la postura defensiva que adoptas y **gasta una Esperanza**. Si un adversario se mueve dentro del alcance Muy cercano, es jalado hasta el alcance Cuerpo a cuerpo y queda _Apresado_.\n\nEsta condición dura hasta que te muevas o falles una tirada con Miedo, o hasta que el DJ gaste 2 de Miedo en su turno para quitarla."
+ },
+ {
+  "id": "lead-by-example",
+  "nombre": "Predicar con el ejemplo",
+  "nombre_en": "Lead by Example",
+  "dominio": "valor",
+  "nivel": 9,
+  "recuerdo": 3,
+  "tipo": "habilidad",
+  "texto": "Cuando le haces daño a un adversario, puedes **marcar un Estrés** y describir cómo animas a tus aliados. El siguiente PJ que haga un ataque contra ese adversario puede limpiar un Estrés u obtener una Esperanza."
+ },
+ {
+  "id": "unbreakable",
+  "nombre": "Inquebrantable",
+  "nombre_en": "Unbreakable",
+  "dominio": "valor",
+  "nivel": 10,
+  "recuerdo": 4,
+  "tipo": "habilidad",
+  "texto": "Cuando marcas tu último Punto de Golpe, en lugar de hacer un movimiento de muerte, puedes tirar un **d6** y limpiar tantos Puntos de Golpe como el resultado. Luego pon esta carta en tu bóveda."
+ },
+ {
+  "id": "unyielding-armor",
+  "nombre": "Armadura implacable",
+  "nombre_en": "Unyielding Armor",
+  "dominio": "valor",
+  "nivel": 10,
+  "recuerdo": 1,
+  "tipo": "habilidad",
+  "texto": "Cuando fueras a marcar una casilla de Armadura, tira tantos **d6** como tu Competencia. Si alguno saca 6, reduce la gravedad en un umbral sin marcar una casilla de Armadura."
+ }
+]

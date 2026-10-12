@@ -1,0 +1,92 @@
+[
+ {
+  "id": "duneborne",
+  "nombre": "Cuna de las dunas",
+  "nombre_en": "Duneborne",
+  "descripcion": "Ser parte de una comunidad de la cuna de las dunas significa que hiciste tu hogar entre las arenas movedizas y el clima árido del desierto. Cada enclave de la cuna de las dunas desarrolla métodos específicos para protegerse del sol abrasador, moverse por las arenas ardientes y conseguir y almacenar recursos valiosos. Algunos viajan por su hogar desértico, maniobrando entre las dunas mientras pastorean ganado, mientras que otros se agrupan alrededor de los oasis y colaboran entre sí para mantener y compartir una rara zona de recursos abundantes. Los asentamientos de la cuna de las dunas son conocidos por una arquitectura que atrapa el viento para refrescar sus casas y por sistemas de riego que aprovechan depósitos subterráneos y mantienen los cultivos incluso en las condiciones más duras. Muchos le dan especial importancia a los lazos familiares y a la necesidad de que todos contribuyan al bienestar colectivo.",
+  "nota": "Los de la cuna de las dunas suelen ser adaptables, centrados, colaborativos, devotos, alegres y observadores.",
+  "rasgos": [
+   {
+    "nombre": "Oasis",
+    "texto": "Durante un descanso corto, tú o un aliado pueden volver a tirar un dado usado en una acción de tiempo de descanso y quedarse con el resultado más alto."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/communities/Duneborne.md",
+  "verificado": false
+ },
+ {
+  "id": "freeborne",
+  "nombre": "Cuna libre",
+  "nombre_en": "Freeborne",
+  "descripcion": "Ser parte de una comunidad de la cuna libre significa que vienes de una colectividad que alguna vez vivió bajo un régimen tiránico, pero que ahora es libre. Aunque no hay dos enclaves de la cuna libre iguales, a todos los une la experiencia de luchar por preservar su cultura mientras otros intentaban erradicarla. Ya sea por su religión, sus recursos, su ubicación o su cultura, los grupos de la cuna libre fueron sometidos alguna vez por otra comunidad. Para algunos, este sometimiento pudo haber terminado hace poco; para otros, aunque hayan ganado su libertad hace mucho, las cicatrices de la tiranía pueden perdurar, uniendo a familias y vecinos durante décadas o incluso generaciones. Muchas colectividades de la cuna libre se unen y reconstruyen las tierras recuperadas de sus opresores o una patria de la que fueron arrancadas. Otras ven el \"hogar\" como un conjunto de personas que se cuidan entre sí, sin importar dónde vivan.\n\nMuchos de la cuna libre celebran con pasión sus festividades, su arte, su comida, su decoración y otras costumbres únicas, ya sea que disfruten de tradiciones de mucho tiempo o de nuevas prácticas nacidas de la liberación. Sus experiencias pasadas a menudo forjan en ellos un feroz instinto de protección hacia su comunidad y un fervor igual de fuerte por celebrar su cultura.",
+  "nota": "Los de la cuna libre suelen ser optimistas, reservados, valientes, alegres, subversivos y traumatizados.",
+  "rasgos": [
+   {
+    "nombre": "Sin cadenas",
+    "texto": "Una vez por sesión, cuando haces una tirada con Miedo, puedes convertirla en una tirada con Esperanza."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/communities/Freeborne.md",
+  "verificado": false
+ },
+ {
+  "id": "frostborne",
+  "nombre": "Cuna de la escarcha",
+  "nombre_en": "Frostborne",
+  "descripcion": "Ser parte de una comunidad de la cuna de la escarcha significa que vienes de un lugar de nieve y hielo. Forjadas en un frío cruel e implacable, las comunidades de la cuna de la escarcha están acostumbradas a sobrevivir en las condiciones más duras. Los glaciares y tundras que llaman hogar suelen carecer de madera, así que estas colectividades usan materiales más disponibles, como hielo, piedra, hueso y pieles de animales, para construir refugios y conservar el calor. Son hábiles para hacer que sus provisiones rindan y para asegurarse de que toda su gente tenga acceso a lo esencial para sobrevivir. Como parte de sus sistemas de supervivencia, muchos de la cuna de la escarcha siguen de cerca los patrones del clima, la salida y la puesta del sol y las necesidades de la flora y fauna locales. Por el viento aullante y la nieve que cala, algunas comunidades de la cuna de la escarcha desarrollan formas de comunicación no verbal para poder cubrirse la cara por seguridad durante el mal tiempo.",
+  "nota": "Los de la cuna de la escarcha suelen ser astutos, sociables, intrépidos, decididos, callados y cálidos.",
+  "rasgos": [
+   {
+    "nombre": "Resistente",
+    "texto": "Cuando tomas un descanso, limpias un Punto de Golpe."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/communities/Frostborne.md",
+  "verificado": false
+ },
+ {
+  "id": "hearthborne",
+  "nombre": "Cuna del hogar",
+  "nombre_en": "Hearthborne",
+  "descripcion": "Ser parte de una comunidad de la cuna del hogar significa que tienes orígenes humildes y que viviste en un pueblo modesto o en un campo pintoresco. Estas comunidades suelen ser grupos pequeños que viven en zonas pacíficas y ricas en recursos, lo que les da a las familias y a los vecinos tiempo para desarrollar relaciones muy cercanas en lugar de competir por provisiones escasas. Las comunidades de la cuna del hogar son en gran parte agrícolas y ganaderas, y organizan sus pueblos alrededor de sus plantas y animales. Los centros de los pueblos suelen tener un conjunto de tiendas locales con artesanos hábiles, como herreros, zapateros, alquimistas y demás. A veces, las comunidades de la cuna del hogar tienen gobernantes lejanos pero poderosos que son dueños de la tierra donde los aldeanos trabajan y viven; en esos casos, los ricos controlan los recursos aunque el trabajo lo hagan los locales, y a los trabajadores puede costarles pagar lo básico que necesitan para sobrevivir. Aunque algunos de la cuna del hogar pueden desconfiar de los forasteros, la mayoría son conocidos por ser acogedores, pacíficos y hospitalarios.",
+  "nota": "Los de la cuna del hogar suelen ser cuidadosos, generosos, cerrados, parlanchines, sonrientes y tradicionales.",
+  "rasgos": [
+   {
+    "nombre": "Muy unidos",
+    "texto": "Una vez por descanso largo, puedes **gastar cualquier cantidad de Esperanza** para darle esa misma cantidad de Esperanza a un aliado dentro de alcance Lejano."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/communities/Hearthborne.md",
+  "verificado": false
+ },
+ {
+  "id": "reborne",
+  "nombre": "Renacidos",
+  "nombre_en": "Reborne",
+  "descripcion": "Alguna vez fuiste miembro de otra comunidad de la que ya no formas parte. A diferencia de los miembros de las colectividades, unidos por la familiaridad, un lugar, una historia y una cultura en común, los renacidos son individuos que quizá nunca se conozcan y a quienes solo los une su experiencia compartida de soledad. Ya sea que se hayan ido por decisión propia o que los hayan arrancado de su comunidad, todos los renacidos están desconectados del lugar al que alguna vez pertenecieron, y cargan con esa herida.\n\nAlgunos renacidos están aislados de su comunidad porque decidieron rechazarla o renunciar a ella, o porque otros miembros pudieron haberlos expulsado a la fuerza. Estos casos suelen deberse a un conflicto, como diferencias ideológicas irreconciliables, una ruptura con su gente o un incidente que los obligó a irse. Otros renacidos no conocen su cultura, ya sea por su crianza o tal vez porque perdieron la memoria por una herida o por magia. Algunos incluso han vuelto del más allá después de la muerte sin ningún recuerdo de su vida anterior, ni de la cultura que la formó.\n\nA menudo, los renacidos buscan su pasado sin descanso o sienten que nunca pertenecerán a una colectividad, pero todos tienen la oportunidad de mirar hacia el futuro y redefinirse mientras crean nuevos lazos con quienes llegan a conocer y querer.",
+  "nota": "Los renacidos suelen ser curiosos, esperanzados, inocentes, aislados, melancólicos e inquietantes.",
+  "rasgos": [
+   {
+    "nombre": "Familia elegida",
+    "texto": "Una vez por descanso, puedes **gastar 1 de Esperanza** para usar la Experiencia de un aliado como si fuera tuya. Cuando lo hagas, describe cómo el tiempo que pasaste con ese aliado te preparó para este momento.\n\nCuando te unas a una comunidad nueva o vuelvas a encontrar la tuya, puedes cambiar de forma permanente esta carta por la de esa comunidad."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/communities/Reborne.md",
+  "verificado": false
+ },
+ {
+  "id": "warborne",
+  "nombre": "Cuna de la guerra",
+  "nombre_en": "Warborne",
+  "descripcion": "Ser parte de una comunidad de la cuna de la guerra significa que vienes de un lugar que está, o estuvo, devastado por la guerra. Estos grupos pueden estar formados por civiles que viven en una zona de guerra activa, soldados que sirvieron juntos en las fuerzas armadas o ciudadanos de naciones que llevan décadas en conflicto. Ya sean civiles o militares, los de la cuna de la guerra suelen ser hábiles en la defensa personal, aunque sus tácticas se centren en evitar el combate más que en la ofensiva.\n\nLos de la cuna de la guerra que defienden su patria son conocidos por usar su entorno a su favor, mientras que los invasores pueden depender por completo de su poderío militar. Sin importar su origen, la vida de alguien de la cuna de la guerra se define, al menos en parte, por su ingenio para arreglárselas. Quienes viven en un territorio ocupado pueden tener que emprender enormes esfuerzos de reconstrucción para reparar y preservar casas, granjas, lugares de trabajo o monumentos culturales; los restos de un edificio a menudo se vuelven los materiales para reparar otro. Mientras tanto, los de la cuna de la guerra que forman parte de un ejército invasor suelen cargar con pocas pertenencias personales y deben depender de lo que rescatan en las zonas de guerra que ocupan. Ya sea que terminen del lado ganador o perdedor de un conflicto, quienes vienen de comunidades de la cuna de la guerra probablemente cargarán con un trauma el resto de su vida, con su sensación de seguridad y su conciencia de la mortalidad marcadas para siempre por las bajas masivas y la destrucción de la guerra.",
+  "nota": "Los de la cuna de la guerra suelen ser estratégicos, devastados, decididos, calculadores, inquebrantables y devotos.",
+  "rasgos": [
+   {
+    "nombre": "Cara de valiente",
+    "texto": "Una vez por sesión, cuando te fueran a obligar a marcar un Estrés, puedes **gastar 1 de Esperanza** en su lugar."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/communities/Warborne.md",
+  "verificado": false
+ }
+]

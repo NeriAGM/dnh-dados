@@ -1,0 +1,110 @@
+[
+ {
+  "id": "aetheris",
+  "nombre": "Aetheris",
+  "nombre_en": "Aetheris",
+  "descripcion": "Los aetheris son humanoides que se reconocen fácilmente por sus alas y sus marcas sagradas. Descienden de los ángeles de los Santuarios Superiores. Los aetheris suelen medir de 5 a 7 pies de altura, y algunos pueden tener extremidades alargadas. A menudo tienen ojos, cabello y piel de colores vibrantes, aunque su coloración también puede incluir tonos tierra y pastel. Muchos miembros de esta ancestría nacen con marcas sagradas —como sigilos brillantes o intrincados patrones de líneas y símbolos—, pero todos los aetheris las desarrollan al madurar. Estos símbolos cambian conforme envejecen, a menudo por profecías, revelaciones y guía divina de los Santuarios Superiores.\n\nTodos los aetheris tienen un \"aura santificada\" que puede manifestarse de forma voluntaria, como cuando invocan su poder, o involuntaria, como cuando sienten euforia u otras emociones fuertes. Cuando hacen brotar este resplandor, sus ojos y su cuerpo pueden brillar, sus marcas pueden volverse más notorias o desplazarse por su piel, o puede aparecer un halo sobre su cabeza o a su alrededor. Estos halos son tan únicos como una huella digital y pueden parecerse a los de otros miembros de la familia. Tal vez por su linaje angelical, los aetheris suelen vivir 350 años y conservan un brillo juvenil aun al envejecer.",
+  "rasgos": [
+   {
+    "nombre": "Aura santificada",
+    "texto": "Una vez por descanso largo, cuando un aliado dentro de alcance Cercano haga una tirada con Miedo, puedes convertirla en una tirada con Esperanza."
+   },
+   {
+    "nombre": "Alas celestiales",
+    "texto": "Tienes alas que te permiten volar. Una vez por escena, mientras vuelas, puedes **gastar 1 de Esperanza** en lugar de marcar una casilla de Armadura."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Aetheris.md",
+  "verificado": false
+ },
+ {
+  "id": "earthkin",
+  "nombre": "Earthkin",
+  "nombre_en": "Earthkin",
+  "descripcion": "Los earthkin son humanoides cuyo cuerpo está hecho de carne y tierra. Descendientes de elementales de tierra, los miembros de esta ancestría están formados por carne y roca, cristal, arcilla, tierra, arena o una mezcla de estos materiales. Algunos son principalmente de carne y hueso, con un solo rasgo terroso, como piel del color o la textura de la piedra, o formaciones de cristal que adornan su cabeza como si fueran cabello. Otros son una combinación, a menudo una unión asimétrica de músculo y minerales naturales. Y otros más son casi por completo tierra y piedra. Los earthkin pueden decidir moldear y decorar las partes minerales de su forma tallando diseños, incrustando gemas o metales, o incluso plantando semillas que florecen en follaje decorativo. Su coloración viene de su linaje elemental: incluso quienes son más carne que tierra tienen tonos que recuerdan al mármol, las piedras preciosas, la arena, la tierra y más.\n\nEstos seres comienzan su vida como pequeños montones de tierra, como una roca, una bola de arcilla o un racimo de cristales. Aunque desarrollan sus rasgos más humanoides con bastante rapidez, los earthkin envejecen despacio durante la mayor parte de sus aproximadamente 300 años de vida. Su estatura promedio en la adultez va de 5 a 6½ pies, y la forma de su cuerpo depende mucho del material principal del que está compuesto. Muchas heridas de los earthkin parecen fisuras en la piedra; incluso mucho después de que el daño inicial haya sanado, estas grietas siguen reparándose lentamente. Cuando mueren, los earthkin terminan desmoronándose en montones de tierra.",
+  "rasgos": [
+   {
+    "nombre": "Piel de piedra",
+    "texto": "Al crear a tu personaje, obtén un bonificador permanente de +1 a tu Puntuación de Armadura y a tus umbrales de daño."
+   },
+   {
+    "nombre": "Inamovible",
+    "texto": "Mientras estés tocando el suelo, no se te puede levantar ni mover en contra de tu voluntad."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Earthkin.md",
+  "verificado": false
+ },
+ {
+  "id": "emberkin",
+  "nombre": "Emberkin",
+  "nombre_en": "Emberkin",
+  "descripcion": "Los emberkin son humanoides cuyo cuerpo está hecho de carne y fuego. Descendientes de elementales de fuego, los emberkin pueden manifestar su herencia ígnea con cabello en llamas, ojos como brasas, corrientes luminosas que danzan sobre su piel, un exterior humeante o un resplandor que parpadea a través de sus músculos, venas, órganos o la punta de sus dedos. Se sabe que todos estos rasgos cambian o se avivan con sus emociones, y en algunos individuos pueden ser más cambiantes que en otros. El color de su piel y su cabello se parece a los tonos del fuego: rojo brillante, naranja, amarillo, carbón o incluso toques de azul. Sus orejas se curvan y terminan en punta como una lengua de fuego, y suelen tener una temperatura más cálida, ya sea a propósito o de forma innata; algunos incluso queman al tacto.\n\nLos emberkin recién nacidos parecen pequeñas bolas de fuego o cenizas encendidas y, como no tienen la habilidad de controlar su temperatura, a menudo hay que colocarlos en recipientes a prueba de fuego, como huevos de dragón, chimeneas y utensilios de cocina. Sus rasgos humanoides se desarrollan durante la adolescencia hasta que se consolidan en su forma adulta. Los emberkin miden de 5 a 7 pies de altura y viven unos 250 años; su luz y su calor se van apagando conforme envejecen. Cuando mueren, arden con intensidad por un momento y luego se consumen hasta volverse ceniza.",
+  "rasgos": [
+   {
+    "nombre": "A prueba de fuego",
+    "texto": "Eres inmune al daño del fuego mágico o común."
+   },
+   {
+    "nombre": "Ignición",
+    "texto": "**Marca un Estrés** para envolver tu arma primaria en llamas hasta el final de la escena. Mientras el arma está en llamas, despide una luz brillante y obtienes un bonificador de **1d6** a las tiradas de daño con esa arma."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Emberkin.md",
+  "verificado": false
+ },
+ {
+  "id": "skykin",
+  "nombre": "Skykin",
+  "nombre_en": "Skykin",
+  "descripcion": "Los skykin son humanoides cuyo cuerpo está hecho de carne y aire. Descendientes de elementales de aire, los skykin tienen una piel que cambia de color y refleja los grises y azules pálidos de un cielo matutino despejado, los naranjas y fucsias ardientes del sol poniente o los negros y morados profundos de una noche salpicada de estrellas. Estos seres suelen tener piel semitranslúcida, cabello flotante de humo tenue o nubes, o pequeñas brisas que agitan su ropa todo el tiempo. La intensidad de estos rasgos aumenta o disminuye según la fuerza de sus emociones. Los skykin llegan a medir en promedio de 5½ a 7 pies, y algunos tienen rasgos alargados, como las orejas puntiagudas, el cuello, las manos, los pies o las extremidades.\n\nLos skykin nacen como volutas de aire o pequeñas nubes, a menudo difíciles de ver y de sostener. Hasta que maduran y se vuelven más sólidos, se les guarda en frascos y otros recipientes similares. Aunque los skykin se vuelven más humanoides durante la adolescencia, su cuerpo sigue siendo flexible, y algunos adultos pueden ajustar su forma a lo largo de su vida, aunque requiere tiempo y esfuerzo. Los skykin viven aproximadamente 300 años y, cuando exhalan su último aliento, desaparecen en el aire.",
+  "rasgos": [
+   {
+    "nombre": "Fuerza del vendaval",
+    "texto": "**Marca un Estrés** para conjurar una ráfaga de viento que te lleve a ti o a un aliado Muy cercano hasta alcance Muy lejano. Además, siempre puedes controlar la velocidad a la que caes."
+   },
+   {
+    "nombre": "Ojo de la tormenta",
+    "texto": "**Gasta 2 de Esperanza** para darte a ti o a un aliado dentro de alcance Cuerpo a cuerpo un bonificador de +1 a la Evasión hasta que recibas daño Grave o vuelvas a usar este rasgo."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Skykin.md",
+  "verificado": false
+ },
+ {
+  "id": "tidekin",
+  "nombre": "Tidekin",
+  "nombre_en": "Tidekin",
+  "descripcion": "Los tidekin son humanoides cuyo cuerpo está hecho de carne y agua. Descendientes de elementales de agua, los tidekin tienen orejas parecidas a aletas y membranas entre los dedos. El color de su piel, su cabello y sus ojos refleja las muchas formas del agua: algunos muestran tonos brillantes de aguamarina, verde y verde espuma, como ríos poco profundos u océanos tropicales, mientras que otros lucen azules y morados oscuros de los océanos más profundos. En algunos, estos colores se mueven bajo su piel semitranslúcida como olas. Los tidekin pueden tener formaciones de agua que adornan su cabeza como cabello u olas que se desplazan y se mueven por su cuerpo. En lugar de expresar sus emociones con lágrimas, sus formaciones de agua cambian con su estado de ánimo, y pueden usar sus colores cambiantes o sus formaciones de agua, a propósito o sin querer, como una forma de comunicación no verbal.\n\nLos tidekin nacen como una pequeña cantidad de agua, como un charco o un orbe líquido. De niños, a menudo se les guarda en recipientes herméticos como tazones y botellas, y suelen tener una apariencia fluida durante toda su infancia, hasta que adquieren una forma humanoide más sólida alrededor de la adolescencia. Los tidekin adultos miden de 5 a 6½ pies de altura, aunque la forma general de su cuerpo depende de la fluidez del agua y puede cambiar, con algo de esfuerzo, a lo largo de sus aproximadamente 300 años de vida. Cuando los miembros de esta ancestría mueren, se disuelven en agua y se alejan fluyendo.",
+  "rasgos": [
+   {
+    "nombre": "Anfibio",
+    "texto": "Puedes respirar y moverte con naturalidad bajo el agua."
+   },
+   {
+    "nombre": "Manantial de vida",
+    "texto": "Una vez por descanso, cuando tengas acceso a una pequeña cantidad de agua, puedes **marcar un Estrés** para limpiar un Punto de Golpe tuyo o de un aliado dentro de alcance Muy cercano."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Tidekin.md",
+  "verificado": false
+ },
+ {
+  "id": "gnome",
+  "nombre": "Gnomo",
+  "nombre_en": "Gnome",
+  "descripcion": "Los gnomos suelen ser humanoides pequeños con cabeza cónica y la habilidad de teletransportarse distancias cortas. Aunque el gnomo promedio mide unos 3 pies de altura, sus brazos proporcionalmente largos y sus manos grandes les dan un alcance amplio para su tamaño. En cambio, su complexión cuadrada tiene el torso y las piernas más cortos. Además de estas características, a los gnomos se les identifica fácilmente por sus orejas ligeramente puntiagudas y sus ojos grandes. Su cabeza es grande y la forma cónica varía según la familia. Los gnomos también heredan de sus padres su pequeña habilidad de teletransporte, y cada familia tiene su propia manifestación al desaparecer y reaparecer. Estos efectos pueden incluir pequeñas nubes de humo, motas de luz o simplemente parecer que se evaporan en el aire. Se sabe que los gnomos empiezan a agarrar y sostener objetos desde muy pequeños, y sus manos siguen siendo hábiles a lo largo de sus 200 años de vida, aun cuando la edad ya volvió más lento su cuerpo.",
+  "rasgos": [
+   {
+    "nombre": "Dedos ágiles",
+    "texto": "Cuando haces una tirada de Sutileza, puedes **gastar 2 de Esperanza** para volver a tirar tu Dado de Esperanza."
+   },
+   {
+    "nombre": "Paso parpadeante",
+    "texto": "Una vez por escena, puedes teletransportarte a otro punto que puedas ver dentro de alcance Lejano."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Gnome.md",
+  "verificado": false
+ }
+]

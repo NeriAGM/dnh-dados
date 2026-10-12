@@ -1,8 +1,11 @@
 <script>
   import { onMount } from 'svelte'
   import {
-    app, alLlegarTirada, registrarPropia, elegirPersonaje, ajustarPersonaje, ajustarMiedo, nombreDe,
+    app, alLlegarTirada, registrarPropia, elegirPersonaje, ajustarPersonaje, ajustarMiedo, nombreDe, ajustarHoja,
   } from '../lib/mesa.svelte.js'
+  import { cargarSRD, conCasero } from '../lib/srd.js'
+  import { hojaDemo } from '../lib/demo.js'
+  import Hoja from './hoja/Hoja.svelte'
   import { supabase } from '../lib/supabase.js'
   import { tirar } from '../lib/tirador.js'
   import { estiloDe } from '../lib/dados3d/estilos.js'
@@ -17,6 +20,9 @@
   let resultado = $state(null) // { tirada, autor, personaje }
   let verHistorial = $state(false)
   let verAjustes = $state(false)
+  let verHoja = $state(null) // id del personaje cuya hoja está abierta
+  let catBase = $state(null)
+  const cat = $derived(conCasero(catBase, app.demo ? [] : app.casero))
   let aviso = $state('')
   let animando = false
   let temporizador
@@ -50,14 +56,17 @@
     resultado = null
     aviso = ''
     try {
-      const personaje = params.tipo === 'dj' ? null : pj && !app.demo ? pj.id : null
+      const deHoja = params.personajeId !== undefined
+      const personaje = params.tipo === 'dj' ? null : app.demo ? null : deHoja ? params.personajeId : pj?.id ?? null
+      const nombrePJ = deHoja ? (app.demo ? demoPJ : app.personajes.find((p) => p.id === params.personajeId))?.nombre : pj?.nombre
+      delete params.personajeId
       const t = await tirar({ ...params, campania: app.demo ? null : app.campania.id, personaje })
       if (app.demo) aplicarDemo(t)
       else registrarPropia(t)
       animando = true
       await mesa3d?.lanzar(dadosPara3D(t), { instantaneo: matchMedia('(prefers-reduced-motion: reduce)').matches })
       animando = false
-      mostrar(t, app.perfil?.nombre ?? 'Tú', params.tipo === 'dj' ? 'DJ' : pj?.nombre)
+      mostrar(t, app.perfil?.nombre ?? 'Tú', params.tipo === 'dj' ? 'DJ' : nombrePJ)
     } catch (e) {
       aviso = e.message
     } finally {
@@ -89,14 +98,53 @@
       const arriba = Math.max(techo, (ancho ? 64 : 56) + resultadoAlto) + 8
       const abajo = h - elLanzador.getBoundingClientRect().top + 8
       const derecha = ancho && elHistorial ? w - elHistorial.getBoundingClientRect().left + 8 : 0
-      mesa3d.ajustarZona({ arriba, abajo, derecha, izquierda: 0 })
+      const hojaAbierta = w >= 1100 ? document.querySelector('.hoja') : null
+      const izquierda = hojaAbierta ? hojaAbierta.getBoundingClientRect().right + 8 : 0
+      mesa3d.ajustarZona({ arriba, abajo, derecha, izquierda })
     }
+    verHoja
     const obs = new ResizeObserver(medir)
     for (const el of [elBarra, elPJ, elLanzador, elHistorial]) if (el) obs.observe(el)
     window.addEventListener('resize', medir)
     medir()
-    return () => { obs.disconnect(); window.removeEventListener('resize', medir) }
+    const t = setTimeout(medir, 350)
+    return () => { clearTimeout(t); obs.disconnect(); window.removeEventListener('resize', medir) }
   })
+
+  onMount(() => {
+    cargarSRD().then((c) => {
+      catBase = c
+      if (!demoPJ.hoja) demoPJ.hoja = hojaDemo(c)
+    }).catch((e) => (aviso = `No se pudo cargar el catálogo de reglas: ${e.message}`))
+  })
+
+  // Hoja: abrir, editar y tirar
+  const pjHoja = $derived(verHoja == null ? null : app.demo ? demoPJ : app.personajes.find((p) => p.id === verHoja))
+  const puedoEditarHoja = $derived(app.demo || (pjHoja && (esDJ || pjHoja.usuario_id === uid)))
+
+  function ponerEnRuta(obj, ruta, valor) {
+    const copia = structuredClone($state.snapshot(obj) ?? {})
+    let o = copia
+    for (let i = 0; i < ruta.length - 1; i++) {
+      if (o[ruta[i]] == null || typeof o[ruta[i]] !== 'object') o[ruta[i]] = typeof ruta[i + 1] === 'number' ? [] : {}
+      o = o[ruta[i]]
+    }
+    o[ruta.at(-1)] = valor
+    return copia
+  }
+  async function cambiarHoja(ruta, valor) {
+    if (app.demo) { demoPJ.hoja = ponerEnRuta(demoPJ.hoja, ruta, valor); return }
+    await ajustarHoja(pjHoja.id, ruta, valor)
+  }
+  async function cambiarPJHoja(cambios) {
+    if (app.demo) { Object.assign(demoPJ, cambios); return }
+    await ajustarPersonaje(pjHoja.id, cambios)
+  }
+  function tirarDesdeHoja(params) {
+    const id = pjHoja?.id
+    if (!matchMedia('(min-width: 1100px)').matches) verHoja = null
+    alTirar({ ...params, personajeId: app.demo ? 'demo' : id })
+  }
 
   onMount(() =>
     alLlegarTirada(async (t) => {
@@ -176,6 +224,9 @@
         <h2 class="titulo pj-nombre">{pj?.nombre}</h2>
       {/if}
       {#if pj}
+        <button class="ver-hoja" onclick={() => (verHoja = pj.id)} disabled={!catBase}>Ver hoja</button>
+      {/if}
+      {#if pj}
         <div class="esperanza" aria-label="Esperanza: {pj.esperanza} de {pj.esperanza_max}">
           {#each Array(pj.esperanza_max) as _, i}
             <button class="pip-esp" class:lleno={i < pj.esperanza} disabled={!puedoEditarPJ} onclick={() => cambiarEsperanza(i + 1)} aria-label="Poner Esperanza en {i + 1}"></button>
@@ -199,7 +250,7 @@
   {/if}
 
   {#if resultado}
-    <div class="zona-resultado">
+    <div class="zona-resultado" class:con-hoja={!!pjHoja}>
       <Resultado tirada={resultado.tirada} autor={resultado.autor} personaje={resultado.personaje} onCerrar={() => (resultado = null)} />
     </div>
   {/if}
@@ -224,7 +275,20 @@
   </div>
 
   {#if verAjustes}
-    <Ajustes {momento} {onMomento} onCerrar={() => (verAjustes = false)} />
+    <Ajustes {momento} {onMomento} {cat} onCerrar={() => (verAjustes = false)} onAbrirHoja={(id) => { verAjustes = false; verHoja = id }} />
+  {/if}
+
+  {#if pjHoja && cat}
+    <Hoja
+      pj={pjHoja}
+      {cat}
+      editable={puedoEditarHoja}
+      jugador={app.demo ? '' : nombreDe(pjHoja.usuario_id)}
+      onHoja={cambiarHoja}
+      onPJ={cambiarPJHoja}
+      onTirar={tirarDesdeHoja}
+      onCerrar={() => (verHoja = null)}
+    />
   {/if}
 </div>
 
@@ -286,6 +350,11 @@
   .pj.vacio p { margin: 0; font-size: 0.9rem; }
   .enlace { border: 0; background: none; padding: 0; color: var(--esperanza); text-decoration: underline; font-weight: 700; }
   .pj-nombre, .selector { margin: 0; font-size: 1.15rem; }
+  .ver-hoja {
+    justify-self: start; border: 1px solid var(--linea); background: rgba(255, 245, 230, 0.08);
+    border-radius: 999px; padding: 0.2rem 0.7rem; font-size: 0.78rem; font-weight: 700;
+  }
+  .ver-hoja:hover { background: color-mix(in srgb, var(--color-pj) 30%, transparent); }
   .selector { background: transparent; border: 0; padding: 0; outline: none; }
   .selector option { background: #241a3a; font-family: var(--fuente); }
   .esperanza { display: flex; align-items: center; gap: 0.35rem; }
@@ -315,6 +384,9 @@
     top: calc(4rem + env(safe-area-inset-top, 0px));
     transform: translateX(-50%);
     z-index: 4;
+  }
+  @media (min-width: 1100px) {
+    .zona-resultado.con-hoja { left: calc(50% + 140px); z-index: 10; }
   }
   .aviso {
     position: absolute;

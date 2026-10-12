@@ -1,0 +1,56 @@
+[
+ {
+  "id": "arcana",
+  "nombre": "Arcano",
+  "nombre_en": "Arcana",
+  "descripcion": "Arcano es el dominio de la magia **innata e instintiva**. Quienes eligen este camino aprovechan las fuerzas puras y enigmáticas de los reinos para manipular tanto su propia energía como los elementos. Arcano les ofrece a sus portadores un poder volátil, pero increíblemente potente cuando se canaliza bien. Al dominio Arcano pueden acceder las clases **Druida** y **Hechicero**."
+ },
+ {
+  "id": "blade",
+  "nombre": "Hoja",
+  "nombre_en": "Blade",
+  "descripcion": "Hoja es el dominio del **dominio de las armas.** Ya sea con acero, con arco o quizá con un arma más especializada, quienes siguen este camino tienen la habilidad de segar la vida de otros. Los portadores de Hoja se dedican a alcanzar un poder inexorable sobre la muerte. Al dominio de Hoja pueden acceder las clases **Guardián** y **Guerrero**."
+ },
+ {
+  "id": "bone",
+  "nombre": "Hueso",
+  "nombre_en": "Bone",
+  "descripcion": "Hueso es el dominio de **la táctica y el cuerpo.** Quienes practican este dominio tienen un control asombroso de sus propias capacidades físicas y buen ojo para predecir cómo se comportarán los demás en combate. Los seguidores de Hueso adquieren una comprensión sin igual de los cuerpos y sus movimientos. Al dominio de Hueso pueden acceder las clases **Explorador** y **Guerrero**."
+ },
+ {
+  "id": "codex",
+  "nombre": "Códice",
+  "nombre_en": "Codex",
+  "descripcion": "Códice es el dominio del **estudio mágico intensivo.** Quienes buscan el conocimiento mágico recurren a las ecuaciones de poder registradas en libros, escritas en pergaminos, grabadas en muros o tatuadas en cuerpos. Códice ofrece una comprensión imponente y versátil de la magia a los devotos que buscan conocimiento más allá de los límites de la sabiduría común. Al dominio de Códice pueden acceder las clases **Bardo** y **Mago**."
+ },
+ {
+  "id": "grace",
+  "nombre": "Gracia",
+  "nombre_en": "Grace",
+  "descripcion": "Gracia es el dominio del **carisma.** Con relatos cautivadores, hechizos encantadores o un velo de mentiras, quienes canalizan este poder definen la realidad de sus adversarios y doblegan su percepción a voluntad. Gracia les da a sus portadores un magnetismo puro y dominio del lenguaje. Al dominio de Gracia pueden acceder las clases **Bardo** y **Pícaro**."
+ },
+ {
+  "id": "midnight",
+  "nombre": "Medianoche",
+  "nombre_en": "Midnight",
+  "descripcion": "Medianoche es el dominio de **las sombras y el secreto.** Ya sea con trucos ingeniosos, magia hábil o el manto de la noche, quienes canalizan estas fuerzas practican el arte de lo oculto y pueden descubrir tesoros escondidos. Medianoche les da a sus practicantes el poder de controlar y crear enigmas. Al dominio de Medianoche pueden acceder las clases **Pícaro** y **Hechicero**."
+ },
+ {
+  "id": "sage",
+  "nombre": "Sabiduría",
+  "nombre_en": "Sage",
+  "descripcion": "Sabiduría es el dominio **del mundo natural.** Quienes recorren este camino aprovechan el poder desatado de la tierra y sus criaturas para liberar magia pura. Sabiduría les concede a sus seguidores la vitalidad de una flor que se abre y la ferocidad de un depredador hambriento. Al dominio de Sabiduría pueden acceder las clases **Druida** y **Explorador**."
+ },
+ {
+  "id": "splendor",
+  "nombre": "Esplendor",
+  "nombre_en": "Splendor",
+  "descripcion": "Esplendor es el dominio de **la vida.** A través de esta magia, sus seguidores obtienen la capacidad de sanar y, hasta cierto punto, de controlar la muerte. Esplendor les ofrece a sus discípulos la magnífica capacidad de dar vida y de quitarla. Al dominio de Esplendor pueden acceder las clases **Serafín** y **Mago**."
+ },
+ {
+  "id": "valor",
+  "nombre": "Valor",
+  "nombre_en": "Valor",
+  "descripcion": "Valor es el dominio de la **protección**. Ya sea atacando o defendiendo, quienes eligen esta disciplina canalizan una fuerza formidable para proteger a sus aliados en batalla. Valor ofrece un gran poder a quienes alzan su escudo para defender a otros. Al dominio de Valor pueden acceder las clases **Guardián** y **Serafín**."
+ }
+]

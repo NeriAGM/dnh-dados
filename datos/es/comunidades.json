@@ -1,0 +1,128 @@
+[
+ {
+  "id": "highborne",
+  "nombre": "Alta cuna",
+  "nombre_en": "Highborne",
+  "descripcion": "Ser parte de una comunidad de alta cuna significa que estás acostumbrado a una vida de elegancia, opulencia y prestigio en las altas esferas de la sociedad. Tradicionalmente, los miembros de una comunidad de alta cuna poseen una riqueza material increíble. Aunque esta puede tomar muchas formas según la comunidad —oro y otros minerales, tierras o el control de los medios de producción—, ese estatus siempre viene acompañado de poder e influencia. Los de alta cuna valoran muchísimo los títulos y las posesiones, y dentro de sus filas hay poca movilidad social. Los miembros de una comunidad de alta cuna suelen controlar la situación política y económica de las zonas donde viven, gracias a su capacidad de influir en la gente y en la economía con su enorme riqueza. La salud y la seguridad de la gente menos acomodada que vive en esos lugares muchas veces depende de que esta clase gobernante de alta cuna sea capaz de anteponer el bienestar de sus súbditos a las ganancias.",
+  "nota": "Los de alta cuna suelen ser afables, francos, intrigantes, emprendedores, ostentosos e imperturbables.",
+  "rasgos": [
+   {
+    "nombre": "Privilegio",
+    "nombre_en": "Privilege",
+    "texto": "Tienes ventaja en las tiradas para codearte con la nobleza, negociar precios o aprovechar tu reputación para conseguir lo que quieres."
+   }
+  ]
+ },
+ {
+  "id": "loreborne",
+  "nombre": "Cuna del saber",
+  "nombre_en": "Loreborne",
+  "descripcion": "Ser parte de una comunidad de la cuna del saber significa que vienes de una sociedad que favorece una gran destreza académica o política. Las comunidades de la cuna del saber valoran muchísimo el conocimiento, a menudo en forma de preservación histórica, avance político, estudio científico, desarrollo de habilidades o recopilación de saberes y mitología. La mayoría de sus miembros investiga en instituciones levantadas en los bastiones de la civilización, aunque unos cuantos más excéntricos prosperan recopilando información del mundo natural. Algunos pueden ser aislacionistas que operan en enclaves, escuelas o gremios más pequeños y siguen su propio código. Otros, en cambio, ejercen su conocimiento a mayor escala y hacen hábiles maniobras políticas en todo el panorama gubernamental.",
+  "nota": "Los de la cuna del saber suelen ser directos, elocuentes, inquisitivos, pacientes, apasionados e ingeniosos.",
+  "rasgos": [
+   {
+    "nombre": "Erudito",
+    "nombre_en": "Well-Read",
+    "texto": "Tienes ventaja en las tiradas relacionadas con la historia, la cultura o la política de una persona o un lugar destacado."
+   }
+  ]
+ },
+ {
+  "id": "orderborne",
+  "nombre": "Cuna del orden",
+  "nombre_en": "Orderborne",
+  "descripcion": "Ser parte de una comunidad de la cuna del orden significa que vienes de una colectividad centrada en la disciplina o la fe, y que defiendes una serie de principios que reflejan lo que viviste ahí. Los de la cuna del orden suelen estar entre los más poderosos de las comunidades a su alrededor. Al alinear a los miembros de su sociedad en torno a un valor o una meta en común —como un dios, una doctrina, un código o incluso un negocio u oficio compartido—, los órganos de gobierno de estos enclaves pueden movilizar a poblaciones más grandes con menos esfuerzo. Aunque las comunidades de la cuna del orden toman muchas formas —algunas incluso profundamente pacifistas—, quizá las más temidas sean las que se organizan en torno a la destreza militar. En esos casos, no es raro que los de la cuna del orden ofrezcan soldados a sueldo a otras ciudades o países.",
+  "nota": "Los de la cuna del orden suelen ser ambiciosos, benévolos, reflexivos, prudentes, sarcásticos y estoicos.",
+  "rasgos": [
+   {
+    "nombre": "Devoto",
+    "nombre_en": "Dedicated",
+    "texto": "Anota tres dichos o valores que te inculcó tu crianza. Una vez por descanso, cuando describas cómo encarnas uno de estos principios con tu acción actual, puedes tirar un **d20** como tu Dado de Esperanza."
+   }
+  ]
+ },
+ {
+  "id": "ridgeborne",
+  "nombre": "Cuna de la montaña",
+  "nombre_en": "Ridgeborne",
+  "descripcion": "Ser parte de una comunidad de la cuna de la montaña significa que tu hogar han sido los picos rocosos y los riscos afilados de las laderas. Quienes han vivido en las montañas suelen considerarse más resistentes que la mayoría, porque han prosperado en algunos de los terrenos más peligrosos que ofrecen muchos continentes. Estos grupos son expertos en adaptarse y desarrollan tecnologías y equipo únicos para trasladar tanto a personas como mercancías por terrenos difíciles. Por eso, los de la cuna de la montaña crecen escalando y trepando, lo que los vuelve fuertes y de voluntad firme. Sus asentamientos toman muchas formas: algunas ciudades están talladas en paredes de roca completas, otras levantan castillos de piedra, y hay quienes viven en casitas sobre cumbres azotadas por el viento. A las fuerzas externas suele costarles mucho atacar a estos grupos, porque tanto las pequeñas milicias como los grandes ejércitos de las montañas saben aprovechar muy bien la ventaja de la altura.",
+  "nota": "Los de la cuna de la montaña suelen ser audaces, curtidos, indomables, leales, reservados y tercos.",
+  "rasgos": [
+   {
+    "nombre": "Pisada segura",
+    "nombre_en": "Steady",
+    "texto": "Tienes ventaja en las tiradas para atravesar riscos y cornisas peligrosos, orientarte en entornos hostiles y usar tus conocimientos de supervivencia."
+   }
+  ]
+ },
+ {
+  "id": "seaborne",
+  "nombre": "Cuna del mar",
+  "nombre_en": "Seaborne",
+  "descripcion": "Ser parte de una comunidad de la cuna del mar significa que viviste sobre una gran masa de agua o cerca de ella. Las comunidades de la cuna del mar se construyen, física y culturalmente, alrededor de las aguas específicas que consideran su hogar. Algunos de estos grupos viven en la costa y construyen puertos tanto para la gente local como para los viajeros. Estos puertos funcionan como centros de comercio, atracciones turísticas o simplemente como un lugar seguro para descansar después de semanas de viaje. Otros viven sobre el agua, en barcas pequeñas o grandes navíos, y para ellos la idea de \"hogar\" es un barco y su tripulación, no un pedazo de tierra en particular. Sin importar dónde estén exactamente, las comunidades de la cuna del mar están muy ligadas a las mareas y a las criaturas que las habitan. Aprenden a pescar desde pequeños y entrenan desde que nacen para aguantar la respiración y nadar hasta en las aguas más turbulentas. Las personas de estos grupos son muy buscadas por sus habilidades de navegación, y muchas llegan a ser capitanes de embarcaciones, ya sea en su propia comunidad, trabajando para otra o incluso al mando de una poderosa operación naval.",
+  "nota": "Los de la cuna del mar suelen ser francos, cooperativos, exuberantes, fieros, decididos y curtidos.",
+  "rasgos": [
+   {
+    "nombre": "Conocer la marea",
+    "nombre_en": "Know the Tide",
+    "texto": "Puedes sentir el flujo y reflujo de la vida. Cuando haces una tirada con Miedo, pon una ficha en tu carta de comunidad. Puedes tener un número de fichas igual a tu nivel. Antes de hacer una tirada de acción, puedes gastar cualquier cantidad de estas fichas para obtener un bono de +1 a la tirada por cada ficha gastada. Al final de cada sesión, retira todas las fichas que no hayas gastado."
+   }
+  ]
+ },
+ {
+  "id": "slyborne",
+  "nombre": "Cuna astuta",
+  "nombre_en": "Slyborne",
+  "descripcion": "Ser parte de una comunidad de la cuna astuta significa que vienes de un grupo que opera al margen de la ley, lo que incluye todo tipo de criminales, timadores y estafadores. A los miembros de estas comunidades los une la mala reputación de sus metas y lo ingenioso de los medios con que las alcanzan. Mucha gente en estas comunidades domina una variedad de habilidades poco escrupulosas: falsificación, robo, contrabando y violencia. Gente de cualquier clase social puede ser de la cuna astuta, desde quienes han acumulado enormes riquezas e influencia hasta quienes no tienen ni una moneda. Vistos desde fuera, pueden parecer rufianes sin lealtad, pero estas comunidades tienen algunos de los códigos de honor más estrictos que existen, y romperlos puede significar un final terrible para quien los transgrede.",
+  "nota": "Los de la cuna astuta suelen ser calculadores, listos, formidables, perspicaces, sagaces y tenaces.",
+  "rasgos": [
+   {
+    "nombre": "Truhán",
+    "nombre_en": "Scoundrel",
+    "texto": "Tienes ventaja en las tiradas para negociar con criminales, detectar mentiras o encontrar un lugar seguro donde esconderte."
+   }
+  ]
+ },
+ {
+  "id": "underborne",
+  "nombre": "Cuna subterránea",
+  "nombre_en": "Underborne",
+  "descripcion": "Ser parte de una comunidad de la cuna subterránea significa que vienes de una sociedad que vive bajo tierra. Muchos de la cuna subterránea viven justo debajo de las ciudades y los pueblos de otras colectividades, mientras que otros viven a mucha más profundidad. Estas comunidades van desde pequeños grupos familiares en madrigueras hasta enormes metrópolis en cavernas de piedra. En muchos lugares se les reconoce por su increíble audacia y su habilidad, que hacen posibles grandes proezas de arquitectura e ingeniería. Es común que los contraten por su valentía, ya que hasta el menos osado de ellos probablemente se ha topado con temibles bestias subterráneas, y aprender a acabar con esas criaturas es práctica común en estas sociedades. Por los peligros de su entorno, muchas comunidades de la cuna subterránea desarrollan lenguajes no verbales únicos que resultan igual de útiles en la superficie.",
+  "nota": "Los de la cuna subterránea suelen ser serenos, escurridizos, indomables, innovadores, ingeniosos y sencillos.",
+  "rasgos": [
+   {
+    "nombre": "Vida en penumbra",
+    "nombre_en": "Low-Light Living",
+    "texto": "Cuando estás en una zona con poca luz o sombras densas, tienes ventaja en las tiradas para esconderte, investigar o percibir detalles dentro de esa zona."
+   }
+  ]
+ },
+ {
+  "id": "wanderborne",
+  "nombre": "Cuna errante",
+  "nombre_en": "Wanderborne",
+  "descripcion": "Ser parte de una comunidad de la cuna errante significa que has vivido como nómada, sin un hogar fijo y conociendo una gran variedad de culturas. A diferencia de muchas comunidades que se definen por el lugar donde viven, a los de la cuna errante los define su estilo de vida viajero. Como migran con frecuencia, le dan menos valor a acumular posesiones materiales y prefieren adquirir información, habilidades y contactos. Mientras que algunos se unen por un código en común, como una religión o una serie de valores políticos o económicos, otros se juntan después de una tragedia compartida, como perder su hogar o su tierra. Sea cual sea el motivo, los peligros de la vida en el camino y la decisión de seguir recorriéndolo juntos hacen que los de la cuna errante sean conocidos por su lealtad inquebrantable.",
+  "nota": "Los de la cuna errante suelen ser inescrutables, magnánimos, alegres, confiables, astutos y poco convencionales.",
+  "rasgos": [
+   {
+    "nombre": "Morral nómada",
+    "nombre_en": "Nomadic Pack",
+    "texto": "Agrega un Morral nómada a tu inventario. Una vez por sesión, puedes **gastar una Esperanza** para meter la mano en este morral y sacar un objeto común y corriente que te sirva en tu situación. Pónganse de acuerdo tú y el DJ para decidir qué objeto sacas."
+   }
+  ]
+ },
+ {
+  "id": "wildborne",
+  "nombre": "Cuna salvaje",
+  "nombre_en": "Wildborne",
+  "descripcion": "Ser parte de una comunidad de la cuna salvaje significa que viviste en lo profundo del bosque. Estas comunidades se definen por su dedicación a conservar sus tierras natales, y muchas tienen fuertes lazos religiosos o culturales con la fauna entre la que viven. Esto da lugar a avances arquitectónicos y tecnológicos únicos que favorecen la sostenibilidad por encima de los resultados rápidos y de alto rendimiento. Un sello distintivo de las sociedades de la cuna salvaje es integrar sus aldeas y ciudades con el entorno natural y evitar perturbar la vida de las plantas y los animales. Mientras que algunos construyen sus moradas en lo alto de las ramas, otros establecen sus hogares en el suelo, bajo el dosel del bosque. No es raro que los de la cuna salvaje se mantengan apartados y ocultos en sus hogares del bosque.",
+  "nota": "Los de la cuna salvaje suelen ser curtidos, leales, protectores, retraídos, sabios y llenos de vida.",
+  "rasgos": [
+   {
+    "nombre": "Paso ligero",
+    "nombre_en": "Lightfoot",
+    "texto": "Te mueves en silencio por naturaleza. Tienes ventaja en las tiradas para moverte sin que te oigan."
+   }
+  ]
+ }
+]

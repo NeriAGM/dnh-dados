@@ -1,0 +1,422 @@
+[
+ {
+  "id": "stride-potion",
+  "nombre": "Poción de zancada",
+  "nombre_en": "Stride Potion",
+  "texto": "Obtienes un bonificador de +1 a tu siguiente tirada de Agilidad.",
+  "tirada": 1
+ },
+ {
+  "id": "bolster-potion",
+  "nombre": "Poción de refuerzo",
+  "nombre_en": "Bolster Potion",
+  "texto": "Obtienes un bonificador de +1 a tu siguiente tirada de Fuerza.",
+  "tirada": 2
+ },
+ {
+  "id": "control-potion",
+  "nombre": "Poción de control",
+  "nombre_en": "Control Potion",
+  "texto": "Obtienes un bonificador de +1 a tu siguiente tirada de Sutileza.",
+  "tirada": 3
+ },
+ {
+  "id": "attune-potion",
+  "nombre": "Poción de sintonía",
+  "nombre_en": "Attune Potion",
+  "texto": "Obtienes un bonificador de +1 a tu siguiente tirada de Instinto.",
+  "tirada": 4
+ },
+ {
+  "id": "charm-potion",
+  "nombre": "Poción de encanto",
+  "nombre_en": "Charm Potion",
+  "texto": "Obtienes un bonificador de +1 a tu siguiente tirada de Presencia.",
+  "tirada": 5
+ },
+ {
+  "id": "enlighten-potion",
+  "nombre": "Poción de iluminación",
+  "nombre_en": "Enlighten Potion",
+  "texto": "Obtienes un bonificador de +1 a tu siguiente tirada de Conocimiento.",
+  "tirada": 6
+ },
+ {
+  "id": "minor-health-potion",
+  "nombre": "Poción de salud menor",
+  "nombre_en": "Minor Health Potion",
+  "texto": "Limpia 1d4 PG.",
+  "tirada": 7
+ },
+ {
+  "id": "minor-stamina-potion",
+  "nombre": "Poción de aguante menor",
+  "nombre_en": "Minor Stamina Potion",
+  "texto": "Limpia 1d4 de Estrés.",
+  "tirada": 8
+ },
+ {
+  "id": "grindletooth-venom",
+  "nombre": "Veneno de Rechinadiente",
+  "nombre_en": "Grindletooth Venom",
+  "texto": "Puedes aplicar este veneno a un arma que haga daño físico para sumar un d6 a tu siguiente tirada de daño con esa arma.",
+  "tirada": 9
+ },
+ {
+  "id": "varik-leaves",
+  "nombre": "Hojas de varik",
+  "nombre_en": "Varik Leaves",
+  "texto": "Puedes comer estas hojas pareadas para obtener 2 de Esperanza de inmediato.",
+  "tirada": 10
+ },
+ {
+  "id": "vial-of-moondrip",
+  "nombre": "Vial de gota de luna",
+  "nombre_en": "Vial of Moondrip",
+  "texto": "Cuando bebes el contenido de este vial, puedes ver en la oscuridad total hasta tu siguiente descanso.",
+  "tirada": 11
+ },
+ {
+  "id": "unstable-arcane-shard",
+  "nombre": "Fragmento arcano inestable",
+  "nombre_en": "Unstable Arcane Shard",
+  "texto": "Puedes hacer una tirada de Sutileza para lanzar este fragmento contra un grupo de adversarios a alcance Lejano. Los objetivos contra los que tengas éxito reciben 1d20 de daño mágico.",
+  "tirada": 12
+ },
+ {
+  "id": "potion-of-stability",
+  "nombre": "Poción de estabilidad",
+  "nombre_en": "Potion of Stability",
+  "texto": "Puedes beber esta poción para elegir una acción de tiempo de descanso adicional.",
+  "tirada": 13
+ },
+ {
+  "id": "improved-grindletooth-venom",
+  "nombre": "Veneno de Rechinadiente mejorado",
+  "nombre_en": "Improved Grindletooth Venom",
+  "texto": "Puedes aplicar este veneno a un arma que haga daño físico para sumar un d8 a tu siguiente tirada de daño con esa arma.",
+  "tirada": 14
+ },
+ {
+  "id": "morphing-clay",
+  "nombre": "Arcilla moldeable",
+  "nombre_en": "Morphing Clay",
+  "texto": "Puedes gastar una Esperanza para usar esta arcilla y alterar tu rostro lo suficiente para que nadie te reconozca hasta tu siguiente descanso.",
+  "tirada": 15
+ },
+ {
+  "id": "vial-of-darksmoke",
+  "nombre": "Vial de humo oscuro",
+  "nombre_en": "Vial of Darksmoke",
+  "texto": "Cuando un adversario te ataca, usa este vial y tira una cantidad de d6 igual a tu Agilidad. Suma el resultado más alto a tu Evasión contra ese ataque.",
+  "tirada": 16
+ },
+ {
+  "id": "jumping-root",
+  "nombre": "Raíz saltarina",
+  "nombre_en": "Jumping Root",
+  "texto": "Come esta raíz para saltar hasta alcance Lejano una vez sin necesidad de tirar.",
+  "tirada": 17
+ },
+ {
+  "id": "snap-powder",
+  "nombre": "Polvo chasqueante",
+  "nombre_en": "Snap Powder",
+  "texto": "Marca un Estrés y limpia un PG.",
+  "tirada": 18
+ },
+ {
+  "id": "health-potion",
+  "nombre": "Poción de salud",
+  "nombre_en": "Health Potion",
+  "texto": "Limpia 1d4+1 PG.",
+  "tirada": 19
+ },
+ {
+  "id": "stamina-potion",
+  "nombre": "Poción de aguante",
+  "nombre_en": "Stamina Potion",
+  "texto": "Limpia 1d4+1 de Estrés.",
+  "tirada": 20
+ },
+ {
+  "id": "armor-stitcher",
+  "nombre": "Zurcidor de armaduras",
+  "nombre_en": "Armor Stitcher",
+  "texto": "Puedes usar este zurcidor para gastar cualquier cantidad de Esperanza y limpiar esa misma cantidad de casillas de Armadura.",
+  "tirada": 21
+ },
+ {
+  "id": "gill-salve",
+  "nombre": "Ungüento de branquias",
+  "nombre_en": "Gill Salve",
+  "texto": "Puedes aplicarte este ungüento en el cuello para respirar bajo el agua durante una cantidad de minutos igual a tu nivel.",
+  "tirada": 22
+ },
+ {
+  "id": "replication-parchment",
+  "nombre": "Pergamino replicador",
+  "nombre_en": "Replication Parchment",
+  "texto": "Al tocar otro pergamino con este, puedes copiar a la perfección el contenido del segundo pergamino. Una vez usado, este pergamino se vuelve papel común.",
+  "tirada": 23
+ },
+ {
+  "id": "improved-arcane-shard",
+  "nombre": "Fragmento arcano mejorado",
+  "nombre_en": "Improved Arcane Shard",
+  "texto": "Puedes hacer una tirada de Sutileza para lanzar este fragmento contra un grupo de adversarios a alcance Lejano. Los objetivos contra los que tengas éxito reciben 2d20 de daño mágico.",
+  "tirada": 24
+ },
+ {
+  "id": "major-stride-potion",
+  "nombre": "Poción de zancada mayor",
+  "nombre_en": "Major Stride Potion",
+  "texto": "Obtienes un bonificador de +1 a tu Agilidad hasta tu siguiente descanso.",
+  "tirada": 25
+ },
+ {
+  "id": "major-bolster-potion",
+  "nombre": "Poción de refuerzo mayor",
+  "nombre_en": "Major Bolster Potion",
+  "texto": "Obtienes un bonificador de +1 a tu Fuerza hasta tu siguiente descanso.",
+  "tirada": 26
+ },
+ {
+  "id": "major-control-potion",
+  "nombre": "Poción de control mayor",
+  "nombre_en": "Major Control Potion",
+  "texto": "Obtienes un bonificador de +1 a tu Sutileza hasta tu siguiente descanso.",
+  "tirada": 27
+ },
+ {
+  "id": "major-attune-potion",
+  "nombre": "Poción de sintonía mayor",
+  "nombre_en": "Major Attune Potion",
+  "texto": "Obtienes un bonificador de +1 a tu Instinto hasta tu siguiente descanso.",
+  "tirada": 28
+ },
+ {
+  "id": "major-charm-potion",
+  "nombre": "Poción de encanto mayor",
+  "nombre_en": "Major Charm Potion",
+  "texto": "Obtienes un bonificador de +1 a tu Presencia hasta tu siguiente descanso.",
+  "tirada": 29
+ },
+ {
+  "id": "major-enlighten-potion",
+  "nombre": "Poción de iluminación mayor",
+  "nombre_en": "Major Enlighten Potion",
+  "texto": "Obtienes un bonificador de +1 a tu Conocimiento hasta tu siguiente descanso.",
+  "tirada": 30
+ },
+ {
+  "id": "blood-of-the-yorgi",
+  "nombre": "Sangre del yorgi",
+  "nombre_en": "Blood of the Yorgi",
+  "texto": "Puedes beber esta sangre para desaparecer de donde estás y reaparecer de inmediato en un punto que puedas ver a alcance Muy lejano.",
+  "tirada": 31
+ },
+ {
+  "id": "homet-s-secret-potion",
+  "nombre": "Poción secreta de Homet",
+  "nombre_en": "Homet's Secret Potion",
+  "texto": "Después de beber esta poción, el siguiente ataque exitoso que hagas es un Éxito crítico.",
+  "tirada": 32
+ },
+ {
+  "id": "redthorn-saliva",
+  "nombre": "Saliva de Espinarroja",
+  "nombre_en": "Redthorn Saliva",
+  "texto": "Puedes aplicar esta saliva a un arma que haga daño físico para sumar un d12 a tu siguiente tirada de daño con esa arma.",
+  "tirada": 33
+ },
+ {
+  "id": "channelstone",
+  "nombre": "Piedra de canalización",
+  "nombre_en": "Channelstone",
+  "texto": "Puedes usar esta piedra para tomar un hechizo o grimorio de tu bóveda, usarlo una vez y regresarlo a tu bóveda.",
+  "tirada": 34
+ },
+ {
+  "id": "mythic-dust",
+  "nombre": "Polvo mítico",
+  "nombre_en": "Mythic Dust",
+  "texto": "Puedes aplicar este polvo a un arma que haga daño mágico para sumar un d12 a tu siguiente tirada de daño con esa arma.",
+  "tirada": 35
+ },
+ {
+  "id": "acidpaste",
+  "nombre": "Pasta ácida",
+  "nombre_en": "Acidpaste",
+  "texto": "Esta pasta corroe muros y otras superficies entre destellos brillantes.",
+  "tirada": 36
+ },
+ {
+  "id": "hopehold-flare",
+  "nombre": "Bengala guardaesperanza",
+  "nombre_en": "Hopehold Flare",
+  "texto": "Cuando usas esta bengala, los aliados a alcance Cercano tiran un d6 cuando gastan una Esperanza. Con un resultado de 6, obtienen el efecto de esa Esperanza sin gastarla. La bengala dura hasta el final de la escena.",
+  "tirada": 37
+ },
+ {
+  "id": "major-arcane-shard",
+  "nombre": "Fragmento arcano mayor",
+  "nombre_en": "Major Arcane Shard",
+  "texto": "Puedes hacer una tirada de Sutileza para lanzar este fragmento contra un grupo de adversarios a alcance Lejano. Los objetivos contra los que tengas éxito reciben 4d20 de daño mágico.",
+  "tirada": 38
+ },
+ {
+  "id": "featherbone",
+  "nombre": "Hueso de pluma",
+  "nombre_en": "Featherbone",
+  "texto": "Puedes usar este hueso para controlar tu velocidad de caída durante una cantidad de minutos igual a tu nivel.",
+  "tirada": 39
+ },
+ {
+  "id": "circle-of-the-void",
+  "nombre": "Círculo del vacío",
+  "nombre_en": "Circle of the Void",
+  "texto": "Marca un Estrés para crear un vacío que se extiende hasta alcance Lejano. Dentro del vacío no se puede lanzar magia, y las criaturas dentro de él son inmunes al daño mágico.",
+  "tirada": 40
+ },
+ {
+  "id": "sun-tree-sap",
+  "nombre": "Savia del árbol solar",
+  "nombre_en": "Sun Tree Sap",
+  "texto": "Consume esta savia para tirar un d6. Con un resultado de 5-6, limpia 2 PG. Con un resultado de 2-4, limpia 3 de Estrés. Con un resultado de 1, ves a través del velo de la muerte y regresas cambiado, obteniendo una cicatriz.",
+  "tirada": 41
+ },
+ {
+  "id": "dripfang-poison",
+  "nombre": "Veneno de Colmillo goteante",
+  "nombre_en": "Dripfang Poison",
+  "texto": "Una criatura que consume este veneno recibe 8d10 de daño mágico directo.",
+  "tirada": 42
+ },
+ {
+  "id": "major-health-potion",
+  "nombre": "Poción de salud mayor",
+  "nombre_en": "Major Health Potion",
+  "texto": "Limpia 1d4+2 PG.",
+  "tirada": 43
+ },
+ {
+  "id": "major-stamina-potion",
+  "nombre": "Poción de aguante mayor",
+  "nombre_en": "Major Stamina Potion",
+  "texto": "Limpia 1d4+2 de Estrés.",
+  "tirada": 44
+ },
+ {
+  "id": "ogre-musk",
+  "nombre": "Almizcle de ogro",
+  "nombre_en": "Ogre Musk",
+  "texto": "Puedes usar este almizcle para impedir que alguien te rastree por medios comunes o mágicos hasta tu siguiente descanso.",
+  "tirada": 45
+ },
+ {
+  "id": "wingsprout",
+  "nombre": "Brote de alas",
+  "nombre_en": "Wingsprout",
+  "texto": "Obtienes alas mágicas que te permiten volar durante una cantidad de minutos igual a tu nivel.",
+  "tirada": 46
+ },
+ {
+  "id": "jar-of-lost-voices",
+  "nombre": "Tarro de voces perdidas",
+  "nombre_en": "Jar of Lost Voices",
+  "texto": "Puedes abrir este tarro para liberar un eco ensordecedor de voces durante una cantidad de minutos igual a tu Instinto. Las criaturas a alcance Lejano que no estén preparadas para el sonido reciben 6d8 de daño mágico.",
+  "tirada": 47
+ },
+ {
+  "id": "dragonbloom-tea",
+  "nombre": "Té de flor de dragón",
+  "nombre_en": "Dragonbloom Tea",
+  "texto": "Puedes beber este té para liberar un ataque de aliento ardiente. Haz una tirada de Instinto contra todos los adversarios frente a ti a alcance Cercano. Los objetivos contra los que tengas éxito reciben 2d20 de daño físico usando tu Competencia.",
+  "tirada": 48
+ },
+ {
+  "id": "bridge-seed",
+  "nombre": "Semilla puente",
+  "nombre_en": "Bridge Seed",
+  "texto": "Crecen enredaderas gruesas desde tu ubicación hasta un punto de tu elección a alcance Lejano, lo que te permite trepar por ellas o cruzar sobre ellas. Las enredaderas se disipan en tu siguiente descanso.",
+  "tirada": 49
+ },
+ {
+  "id": "sleeping-sap",
+  "nombre": "Savia del sueño",
+  "nombre_en": "Sleeping Sap",
+  "texto": "Puedes beber esta poción para dormir toda una noche de descanso. Limpias todo tu Estrés al despertar.",
+  "tirada": 50
+ },
+ {
+  "id": "feast-of-xuria",
+  "nombre": "Festín de Xuria",
+  "nombre_en": "Feast of Xuria",
+  "texto": "Puedes comer este platillo para limpiar todos tus PG y tu Estrés y obtener 1d4 de Esperanza.",
+  "tirada": 51
+ },
+ {
+  "id": "bonding-honey",
+  "nombre": "Miel adherente",
+  "nombre_en": "Bonding Honey",
+  "texto": "Esta miel sirve para pegar dos objetos de forma permanente.",
+  "tirada": 52
+ },
+ {
+  "id": "shrinking-potion",
+  "nombre": "Poción reductora",
+  "nombre_en": "Shrinking Potion",
+  "texto": "Puedes beber esta poción para reducir tu tamaño a la mitad hasta que decidas dejar esta forma o hasta tu siguiente descanso. Mientras estás en esta forma, tienes un bonificador de +2 a la Agilidad y un penalizador de -1 a tu Competencia.",
+  "tirada": 53
+ },
+ {
+  "id": "growing-potion",
+  "nombre": "Poción de crecimiento",
+  "nombre_en": "Growing Potion",
+  "texto": "Puedes beber esta poción para duplicar tu tamaño hasta que decidas dejar esta forma o hasta tu siguiente descanso. Mientras estás en esta forma, tienes un bonificador de +2 a la Fuerza y un bonificador de +1 a tu Competencia.",
+  "tirada": 54
+ },
+ {
+  "id": "knowledge-stone",
+  "nombre": "Piedra del conocimiento",
+  "nombre_en": "Knowledge Stone",
+  "texto": "Si mueres mientras sostienes esta piedra, un aliado puede tomar una carta de tu mano para ponerla en su mano o en su bóveda. Después de que toma este conocimiento, la piedra se desmorona.",
+  "tirada": 55
+ },
+ {
+  "id": "sweet-moss",
+  "nombre": "Musgo dulce",
+  "nombre_en": "Sweet Moss",
+  "texto": "Puedes consumir este musgo durante un descanso para limpiar 1d10 PG o 1d10 de Estrés.",
+  "tirada": 56
+ },
+ {
+  "id": "blinding-orb",
+  "nombre": "Orbe cegador",
+  "nombre_en": "Blinding Orb",
+  "texto": "Puedes activar este orbe para crear un destello de luz brillante. Todos los objetivos a alcance Cercano quedan Vulnerables hasta que marquen PG.",
+  "tirada": 57
+ },
+ {
+  "id": "death-tea",
+  "nombre": "Té de la muerte",
+  "nombre_en": "Death Tea",
+  "texto": "Después de beber este té, matas al instante a tu objetivo cuando consigues un Éxito crítico en un ataque. Si no consigues un Éxito crítico en un ataque antes de tu siguiente descanso largo, mueres.",
+  "tirada": 58
+ },
+ {
+  "id": "mirror-of-marigold",
+  "nombre": "Espejo de Marigold",
+  "nombre_en": "Mirror of Marigold",
+  "texto": "Cuando recibes daño, puedes gastar una Esperanza para anular ese daño; después, el espejo se hace añicos.",
+  "tirada": 59
+ },
+ {
+  "id": "stardrop",
+  "nombre": "Gota estelar",
+  "nombre_en": "Stardrop",
+  "texto": "Puedes usar esta gota estelar para invocar una lluvia de cometas que hace 8d20 de daño físico a todos los objetivos a alcance Muy lejano.",
+  "tirada": 60
+ }
+]

@@ -1,0 +1,3886 @@
+[
+ {
+  "id": "broadsword",
+  "nombre": "Espada ancha",
+  "nombre_en": "Broadsword",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "longsword",
+  "nombre": "Espada larga",
+  "nombre_en": "Longsword",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "battleaxe",
+  "nombre": "Hacha de batalla",
+  "nombre_en": "Battleaxe",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "greatsword",
+  "nombre": "Mandoble",
+  "nombre_en": "Greatsword",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Masiva",
+    "texto": "-1 a la Evasión; si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "mace",
+  "nombre": "Maza",
+  "nombre_en": "Mace",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "warhammer",
+  "nombre": "Martillo de guerra",
+  "nombre_en": "Warhammer",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Pesada",
+    "texto": "-1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "dagger",
+  "nombre": "Daga",
+  "nombre_en": "Dagger",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "quarterstaff",
+  "nombre": "Bastón de combate",
+  "nombre_en": "Quarterstaff",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "cutlass",
+  "nombre": "Sable de abordaje",
+  "nombre_en": "Cutlass",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "rapier",
+  "nombre": "Estoque",
+  "nombre_en": "Rapier",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Rápida",
+    "texto": "Cuando hagas un ataque, puedes marcar un Estrés para elegir como objetivo a otra criatura dentro del alcance."
+   }
+  ]
+ },
+ {
+  "id": "halberd",
+  "nombre": "Alabarda",
+  "nombre_en": "Halberd",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aparatosa",
+    "texto": "-1 a la Sutileza"
+   }
+  ]
+ },
+ {
+  "id": "spear",
+  "nombre": "Lanza",
+  "nombre_en": "Spear",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "shortbow",
+  "nombre": "Arco corto",
+  "nombre_en": "Shortbow",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "crossbow",
+  "nombre": "Ballesta",
+  "nombre_en": "Crossbow",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "longbow",
+  "nombre": "Arco largo",
+  "nombre_en": "Longbow",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aparatosa",
+    "texto": "-1 a la Sutileza"
+   }
+  ]
+ },
+ {
+  "id": "arcane-gauntlets",
+  "nombre": "Guanteletes arcanos",
+  "nombre_en": "Arcane Gauntlets",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "hallowed-axe",
+  "nombre": "Hacha consagrada",
+  "nombre_en": "Hallowed Axe",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "glowing-rings",
+  "nombre": "Anillos resplandecientes",
+  "nombre_en": "Glowing Rings",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 2,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "hand-runes",
+  "nombre": "Runas de mano",
+  "nombre_en": "Hand Runes",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 0,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "returning-blade",
+  "nombre": "Hoja retornable",
+  "nombre_en": "Returning Blade",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Retornable",
+    "texto": "Cuando lanzas esta arma dentro de su alcance, aparece en tu mano justo después del ataque."
+   }
+  ]
+ },
+ {
+  "id": "shortstaff",
+  "nombre": "Bastón corto",
+  "nombre_en": "Shortstaff",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "dualstaff",
+  "nombre": "Bastón doble",
+  "nombre_en": "Dualstaff",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "scepter",
+  "nombre": "Cetro",
+  "nombre_en": "Scepter",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versátil",
+    "texto": "Esta arma también se puede usar con estas estadísticas: Presencia, Cuerpo a cuerpo, d8."
+   }
+  ]
+ },
+ {
+  "id": "wand",
+  "nombre": "Varita",
+  "nombre_en": "Wand",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 1,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "greatstaff",
+  "nombre": "Bastón mayor",
+  "nombre_en": "Greatstaff",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "improved-broadsword",
+  "nombre": "Espada ancha mejorada",
+  "nombre_en": "Improved Broadsword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "improved-longsword",
+  "nombre": "Espada larga mejorada",
+  "nombre_en": "Improved Longsword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-battleaxe",
+  "nombre": "Hacha de batalla mejorada",
+  "nombre_en": "Improved Battleaxe",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-greatsword",
+  "nombre": "Mandoble mejorado",
+  "nombre_en": "Improved Greatsword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Masiva",
+    "texto": "-1 a la Evasión; si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "improved-mace",
+  "nombre": "Maza mejorada",
+  "nombre_en": "Improved Mace",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-warhammer",
+  "nombre": "Martillo de guerra mejorado",
+  "nombre_en": "Improved Warhammer",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Pesada",
+    "texto": "-1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "improved-dagger",
+  "nombre": "Daga mejorada",
+  "nombre_en": "Improved Dagger",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-quarterstaff",
+  "nombre": "Bastón de combate mejorado",
+  "nombre_en": "Improved Quarterstaff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-cutlass",
+  "nombre": "Sable de abordaje mejorado",
+  "nombre_en": "Improved Cutlass",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-rapier",
+  "nombre": "Estoque mejorado",
+  "nombre_en": "Improved Rapier",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Rápida",
+    "texto": "Cuando hagas un ataque, puedes marcar un Estrés para elegir como objetivo a otra criatura dentro del alcance."
+   }
+  ]
+ },
+ {
+  "id": "improved-halberd",
+  "nombre": "Alabarda mejorada",
+  "nombre_en": "Improved Halberd",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aparatosa",
+    "texto": "-1 a la Sutileza"
+   }
+  ]
+ },
+ {
+  "id": "improved-spear",
+  "nombre": "Lanza mejorada",
+  "nombre_en": "Improved Spear",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-shortbow",
+  "nombre": "Arco corto mejorado",
+  "nombre_en": "Improved Shortbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-crossbow",
+  "nombre": "Ballesta mejorada",
+  "nombre_en": "Improved Crossbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-longbow",
+  "nombre": "Arco largo mejorado",
+  "nombre_en": "Improved Longbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aparatosa",
+    "texto": "-1 a la Sutileza"
+   }
+  ]
+ },
+ {
+  "id": "gilded-falchion",
+  "nombre": "Alfanje dorado",
+  "nombre_en": "Gilded Falchion",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "knuckle-blades",
+  "nombre": "Cuchillas de nudillo",
+  "nombre_en": "Knuckle Blades",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Brutal",
+    "texto": "Cuando saques el valor máximo en un dado de daño, tira un dado de daño adicional."
+   }
+  ]
+ },
+ {
+  "id": "urok-broadsword",
+  "nombre": "Espada ancha de Urok",
+  "nombre_en": "Urok Broadsword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Letal",
+    "texto": "Cuando hagas daño Grave, el objetivo debe marcar un PG adicional."
+   }
+  ]
+ },
+ {
+  "id": "bladed-whip",
+  "nombre": "Látigo de cuchillas",
+  "nombre_en": "Bladed Whip",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Rápida",
+    "texto": "Cuando hagas un ataque, puedes marcar un Estrés para elegir como objetivo a otra criatura dentro del alcance."
+   }
+  ]
+ },
+ {
+  "id": "steelforged-halberd",
+  "nombre": "Alabarda forjada en acero",
+  "nombre_en": "Steelforged Halberd",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aterradora",
+    "texto": "Si el ataque tiene éxito, el objetivo debe marcar un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "war-scythe",
+  "nombre": "Guadaña de guerra",
+  "nombre_en": "War Scythe",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "blunderbuss",
+  "nombre": "Trabuco",
+  "nombre_en": "Blunderbuss",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Recarga",
+    "texto": "Después de hacer un ataque, tira un d6. Con un resultado de 1, debes marcar un Estrés para recargar esta arma antes de poder disparar otra vez."
+   }
+  ]
+ },
+ {
+  "id": "greatbow",
+  "nombre": "Gran arco",
+  "nombre_en": "Greatbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "finehair-bow",
+  "nombre": "Arco de crin fina",
+  "nombre_en": "Finehair Bow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "improved-arcane-gauntlets",
+  "nombre": "Guanteletes arcanos mejorados",
+  "nombre_en": "Improved Arcane Gauntlets",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-hallowed-axe",
+  "nombre": "Hacha consagrada mejorada",
+  "nombre_en": "Improved Hallowed Axe",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-glowing-rings",
+  "nombre": "Anillos resplandecientes mejorados",
+  "nombre_en": "Improved Glowing Rings",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 5,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-hand-runes",
+  "nombre": "Runas de mano mejoradas",
+  "nombre_en": "Improved Hand Runes",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-returning-blade",
+  "nombre": "Hoja retornable mejorada",
+  "nombre_en": "Improved Returning Blade",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Retornable",
+    "texto": "Cuando lanzas esta arma dentro de su alcance, aparece en tu mano justo después del ataque."
+   }
+  ]
+ },
+ {
+  "id": "improved-shortstaff",
+  "nombre": "Bastón corto mejorado",
+  "nombre_en": "Improved Shortstaff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-dualstaff",
+  "nombre": "Bastón doble mejorado",
+  "nombre_en": "Improved Dualstaff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-scepter",
+  "nombre": "Cetro mejorado",
+  "nombre_en": "Improved Scepter",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versátil",
+    "texto": "Esta arma también se puede usar con estas estadísticas: Presencia, Cuerpo a cuerpo, d8+3."
+   }
+  ]
+ },
+ {
+  "id": "improved-wand",
+  "nombre": "Varita mejorada",
+  "nombre_en": "Improved Wand",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-greatstaff",
+  "nombre": "Bastón mayor mejorado",
+  "nombre_en": "Improved Greatstaff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "ego-blade",
+  "nombre": "Hoja con ego",
+  "nombre_en": "Ego Blade",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Pomposa",
+    "texto": "Debes tener Presencia de 0 o menos para usar esta arma."
+   }
+  ]
+ },
+ {
+  "id": "casting-sword",
+  "nombre": "Espada de conjuros",
+  "nombre_en": "Casting Sword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versátil",
+    "texto": "Esta arma también se puede usar con estas estadísticas: Conocimiento, Lejano, d6+3."
+   }
+  ]
+ },
+ {
+  "id": "devouring-dagger",
+  "nombre": "Daga devoradora",
+  "nombre_en": "Devouring Dagger",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Aterradora",
+    "texto": "Si el ataque tiene éxito, el objetivo debe marcar un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "hammer-of-exota",
+  "nombre": "Martillo de Exota",
+  "nombre_en": "Hammer of Exota",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Eruptiva",
+    "texto": "Si el ataque contra un objetivo a alcance Cuerpo a cuerpo tiene éxito, todos los demás adversarios a alcance Muy cercano deben superar una tirada de reacción (14) o recibir la mitad del daño."
+   }
+  ]
+ },
+ {
+  "id": "yutari-bloodbow",
+  "nombre": "Arco de sangre yutari",
+  "nombre_en": "Yutari Bloodbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Brutal",
+    "texto": "Cuando saques el valor máximo en un dado de daño, tira un dado de daño adicional."
+   }
+  ]
+ },
+ {
+  "id": "elder-bow",
+  "nombre": "Arco ancestral",
+  "nombre_en": "Elder Bow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "scepter-of-elias",
+  "nombre": "Cetro de Elias",
+  "nombre_en": "Scepter of Elias",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Vigorizante",
+    "texto": "Si el ataque tiene éxito, tira un d4. Con un resultado de 4, limpia un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "wand-of-enthrallment",
+  "nombre": "Varita de embelesamiento",
+  "nombre_en": "Wand of Enthrallment",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Persuasiva",
+    "texto": "Antes de hacer una tirada de Presencia, puedes marcar un Estrés para obtener un bono de +2 al resultado."
+   }
+  ]
+ },
+ {
+  "id": "keeper-s-staff",
+  "nombre": "Bastón del Custodio",
+  "nombre_en": "Keeper's Staff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "advanced-broadsword",
+  "nombre": "Espada ancha avanzada",
+  "nombre_en": "Advanced Broadsword",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "advanced-longsword",
+  "nombre": "Espada larga avanzada",
+  "nombre_en": "Advanced Longsword",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-battleaxe",
+  "nombre": "Hacha de batalla avanzada",
+  "nombre_en": "Advanced Battleaxe",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-greatsword",
+  "nombre": "Mandoble avanzado",
+  "nombre_en": "Advanced Greatsword",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Masiva",
+    "texto": "-1 a la Evasión; si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "advanced-mace",
+  "nombre": "Maza avanzada",
+  "nombre_en": "Advanced Mace",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-warhammer",
+  "nombre": "Martillo de guerra avanzado",
+  "nombre_en": "Advanced Warhammer",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Pesada",
+    "texto": "-1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "advanced-dagger",
+  "nombre": "Daga avanzada",
+  "nombre_en": "Advanced Dagger",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-quarterstaff",
+  "nombre": "Bastón de combate avanzado",
+  "nombre_en": "Advanced Quarterstaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-cutlass",
+  "nombre": "Sable de abordaje avanzado",
+  "nombre_en": "Advanced Cutlass",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-rapier",
+  "nombre": "Estoque avanzado",
+  "nombre_en": "Advanced Rapier",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Rápida",
+    "texto": "Cuando hagas un ataque, puedes marcar un Estrés para elegir como objetivo a otra criatura dentro del alcance."
+   }
+  ]
+ },
+ {
+  "id": "advanced-halberd",
+  "nombre": "Alabarda avanzada",
+  "nombre_en": "Advanced Halberd",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 8,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aparatosa",
+    "texto": "-1 a la Sutileza"
+   }
+  ]
+ },
+ {
+  "id": "advanced-spear",
+  "nombre": "Lanza avanzada",
+  "nombre_en": "Advanced Spear",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-shortbow",
+  "nombre": "Arco corto avanzado",
+  "nombre_en": "Advanced Shortbow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-crossbow",
+  "nombre": "Ballesta avanzada",
+  "nombre_en": "Advanced Crossbow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-longbow",
+  "nombre": "Arco largo avanzado",
+  "nombre_en": "Advanced Longbow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aparatosa",
+    "texto": "-1 a la Sutileza"
+   }
+  ]
+ },
+ {
+  "id": "flickerfly-blade",
+  "nombre": "Hoja de Flickerfly",
+  "nombre_en": "Flickerfly Blade",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Ala afilada",
+    "texto": "Obtienes un bono a tus tiradas de daño igual a tu Agilidad."
+   }
+  ]
+ },
+ {
+  "id": "bravesword",
+  "nombre": "Espada valiente",
+  "nombre_en": "Bravesword",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Valiente",
+    "texto": "-1 a la Evasión; +3 al umbral de daño Grave"
+   }
+  ]
+ },
+ {
+  "id": "hammer-of-wrath",
+  "nombre": "Martillo de la ira",
+  "nombre_en": "Hammer of Wrath",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Devastadora",
+    "texto": "Antes de hacer una tirada de ataque, puedes marcar un Estrés para usar un d20 como tu dado de daño."
+   }
+  ]
+ },
+ {
+  "id": "labrys-axe",
+  "nombre": "Hacha labrys",
+  "nombre_en": "Labrys Axe",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Protectora",
+    "texto": "+1 a la Puntuación de Armadura"
+   }
+  ]
+ },
+ {
+  "id": "meridian-cutlass",
+  "nombre": "Sable de abordaje meridiano",
+  "nombre_en": "Meridian Cutlass",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "De duelo",
+    "texto": "Cuando no haya otras criaturas a alcance Cercano del objetivo, obtienes ventaja en tu tirada de ataque contra él."
+   }
+  ]
+ },
+ {
+  "id": "retractable-saber",
+  "nombre": "Sable retráctil",
+  "nombre_en": "Retractable Saber",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Retráctil",
+    "texto": "La hoja se puede ocultar en la empuñadura para que no la detecten."
+   }
+  ]
+ },
+ {
+  "id": "double-flail",
+  "nombre": "Mangual doble",
+  "nombre_en": "Double Flail",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 8,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "talon-blades",
+  "nombre": "Cuchillas de garra",
+  "nombre_en": "Talon Blades",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Brutal",
+    "texto": "Cuando saques el valor máximo en un dado de daño, tira un dado de daño adicional."
+   }
+  ]
+ },
+ {
+  "id": "black-powder-revolver",
+  "nombre": "Revólver de pólvora negra",
+  "nombre_en": "Black Powder Revolver",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 8,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Recarga",
+    "texto": "Después de hacer un ataque, tira un d6. Con un resultado de 1, debes marcar un Estrés para recargar esta arma antes de poder disparar otra vez."
+   }
+  ]
+ },
+ {
+  "id": "spiked-bow",
+  "nombre": "Arco con púas",
+  "nombre_en": "Spiked Bow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versátil",
+    "texto": "Esta arma también se puede usar con estas estadísticas: Agilidad, Cuerpo a cuerpo, d10+5."
+   }
+  ]
+ },
+ {
+  "id": "advanced-arcane-gauntlets",
+  "nombre": "Guanteletes arcanos avanzados",
+  "nombre_en": "Advanced Arcane Gauntlets",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-hallowed-axe",
+  "nombre": "Hacha consagrada avanzada",
+  "nombre_en": "Advanced Hallowed Axe",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-glowing-rings",
+  "nombre": "Anillos resplandecientes avanzados",
+  "nombre_en": "Advanced Glowing Rings",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 8,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-hand-runes",
+  "nombre": "Runas de mano avanzadas",
+  "nombre_en": "Advanced Hand Runes",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-returning-blade",
+  "nombre": "Hoja retornable avanzada",
+  "nombre_en": "Advanced Returning Blade",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Retornable",
+    "texto": "Cuando lanzas esta arma dentro de su alcance, aparece en tu mano justo después del ataque."
+   }
+  ]
+ },
+ {
+  "id": "advanced-shortstaff",
+  "nombre": "Bastón corto avanzado",
+  "nombre_en": "Advanced Shortstaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-dualstaff",
+  "nombre": "Bastón doble avanzado",
+  "nombre_en": "Advanced Dualstaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-scepter",
+  "nombre": "Cetro avanzado",
+  "nombre_en": "Advanced Scepter",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versátil",
+    "texto": "Esta arma también se puede usar con estas estadísticas: Presencia, Cuerpo a cuerpo, d8+4."
+   }
+  ]
+ },
+ {
+  "id": "advanced-wand",
+  "nombre": "Varita avanzada",
+  "nombre_en": "Advanced Wand",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-greatstaff",
+  "nombre": "Bastón mayor avanzado",
+  "nombre_en": "Advanced Greatstaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "axe-of-fortunis",
+  "nombre": "Hacha de Fortunis",
+  "nombre_en": "Axe of Fortunis",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 8,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Afortunada",
+    "texto": "Si fallas un ataque, puedes marcar un Estrés para repetir la tirada de ataque."
+   }
+  ]
+ },
+ {
+  "id": "blessed-anlace",
+  "nombre": "Anelace bendito",
+  "nombre_en": "Blessed Anlace",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Sanadora",
+    "texto": "Durante el tiempo de descanso, limpias automáticamente un Punto de Golpe."
+   }
+  ]
+ },
+ {
+  "id": "ghostblade",
+  "nombre": "Hoja fantasma",
+  "nombre_en": "Ghostblade",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "De otro mundo",
+    "texto": "Si el ataque tiene éxito, puedes hacer daño físico o mágico."
+   }
+  ]
+ },
+ {
+  "id": "runes-of-ruination",
+  "nombre": "Runas de la ruina",
+  "nombre_en": "Runes of Ruination",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 20,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Dolorosa",
+    "texto": "Cada vez que hagas un ataque con éxito, debes marcar un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "widogast-pendant",
+  "nombre": "Colgante de Widogast",
+  "nombre_en": "Widogast Pendant",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 5,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Distorsión temporal",
+    "texto": "Eliges el objetivo de tu ataque después de hacer tu tirada de ataque."
+   }
+  ]
+ },
+ {
+  "id": "gilded-bow",
+  "nombre": "Arco dorado",
+  "nombre_en": "Gilded Bow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Autocorrectora",
+    "texto": "Cuando saques un 1 en un dado de daño, en su lugar hace 6 de daño."
+   }
+  ]
+ },
+ {
+  "id": "firestaff",
+  "nombre": "Bastón de fuego",
+  "nombre_en": "Firestaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Ardiente",
+    "texto": "Cuando saques un 6 en un dado de daño, el objetivo debe marcar un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "mage-orb",
+  "nombre": "Orbe de mago",
+  "nombre_en": "Mage Orb",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "ilmari-s-rifle",
+  "nombre": "Rifle de Ilmari",
+  "nombre_en": "Ilmari's Rifle",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Recarga",
+    "texto": "Después de hacer un ataque, tira un d6. Con un resultado de 1, debes marcar un Estrés para recargar esta arma antes de poder disparar otra vez."
+   }
+  ]
+ },
+ {
+  "id": "legendary-broadsword",
+  "nombre": "Espada ancha legendaria",
+  "nombre_en": "Legendary Broadsword",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "legendary-longsword",
+  "nombre": "Espada larga legendaria",
+  "nombre_en": "Legendary Longsword",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-battleaxe",
+  "nombre": "Hacha de batalla legendaria",
+  "nombre_en": "Legendary Battleaxe",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-greatsword",
+  "nombre": "Mandoble legendario",
+  "nombre_en": "Legendary Greatsword",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Masiva",
+    "texto": "-1 a la Evasión; si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "legendary-mace",
+  "nombre": "Maza legendaria",
+  "nombre_en": "Legendary Mace",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-warhammer",
+  "nombre": "Martillo de guerra legendario",
+  "nombre_en": "Legendary Warhammer",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Pesada",
+    "texto": "-1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "legendary-dagger",
+  "nombre": "Daga legendaria",
+  "nombre_en": "Legendary Dagger",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-quarterstaff",
+  "nombre": "Bastón de combate legendario",
+  "nombre_en": "Legendary Quarterstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-cutlass",
+  "nombre": "Sable de abordaje legendario",
+  "nombre_en": "Legendary Cutlass",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-rapier",
+  "nombre": "Estoque legendario",
+  "nombre_en": "Legendary Rapier",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Rápida",
+    "texto": "Cuando hagas un ataque, puedes marcar un Estrés para elegir como objetivo a otra criatura dentro del alcance."
+   }
+  ]
+ },
+ {
+  "id": "legendary-halberd",
+  "nombre": "Alabarda legendaria",
+  "nombre_en": "Legendary Halberd",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 11,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aparatosa",
+    "texto": "-1 a la Sutileza"
+   }
+  ]
+ },
+ {
+  "id": "legendary-spear",
+  "nombre": "Lanza legendaria",
+  "nombre_en": "Legendary Spear",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-shortbow",
+  "nombre": "Arco corto legendario",
+  "nombre_en": "Legendary Shortbow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-crossbow",
+  "nombre": "Ballesta legendaria",
+  "nombre_en": "Legendary Crossbow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 10,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-longbow",
+  "nombre": "Arco largo legendario",
+  "nombre_en": "Legendary Longbow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aparatosa",
+    "texto": "-1 a la Sutileza"
+   }
+  ]
+ },
+ {
+  "id": "dual-ended-sword",
+  "nombre": "Espada de doble hoja",
+  "nombre_en": "Dual-Ended Sword",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Rápida",
+    "texto": "Cuando hagas un ataque, puedes marcar un Estrés para elegir como objetivo a otra criatura dentro del alcance."
+   }
+  ]
+ },
+ {
+  "id": "impact-gauntlet",
+  "nombre": "Guantelete de impacto",
+  "nombre_en": "Impact Gauntlet",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 11,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Conmocionante",
+    "texto": "Si el ataque tiene éxito, puedes gastar una Esperanza para empujar al objetivo hasta alcance Lejano."
+   }
+  ]
+ },
+ {
+  "id": "sledge-axe",
+  "nombre": "Hacha mazo",
+  "nombre_en": "Sledge Axe",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 13,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Destructiva",
+    "texto": "-1 a la Agilidad; si el ataque tiene éxito, todos los adversarios a alcance Muy cercano deben marcar un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "curved-dagger",
+  "nombre": "Daga curva",
+  "nombre_en": "Curved Dagger",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Aserrada",
+    "texto": "Cuando saques un 1 en un dado de daño, en su lugar hace 8 de daño."
+   }
+  ]
+ },
+ {
+  "id": "extended-polearm",
+  "nombre": "Arma de asta extendida",
+  "nombre_en": "Extended Polearm",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Larga",
+    "texto": "El ataque de esta arma afecta a todos los adversarios en línea dentro del alcance."
+   }
+  ]
+ },
+ {
+  "id": "swinging-ropeblade",
+  "nombre": "Hoja de cuerda oscilante",
+  "nombre_en": "Swinging Ropeblade",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Aferradora",
+    "texto": "Si el ataque tiene éxito, puedes gastar una Esperanza para dejar Apresado al objetivo o jalarlo hasta alcance Cuerpo a cuerpo contigo."
+   }
+  ]
+ },
+ {
+  "id": "ricochet-axes",
+  "nombre": "Hachas de rebote",
+  "nombre_en": "Ricochet Axes",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 11,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "De rebote",
+    "texto": "Marca 1 o más Estrés para golpear a esa misma cantidad de objetivos dentro del alcance del ataque."
+   }
+  ]
+ },
+ {
+  "id": "aantari-bow",
+  "nombre": "Arco aantari",
+  "nombre_en": "Aantari Bow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 11,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "hand-cannon",
+  "nombre": "Cañón de mano",
+  "nombre_en": "Hand Cannon",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Recarga",
+    "texto": "Después de hacer un ataque, tira un d6. Con un 1, debes marcar un Estrés para recargar esta arma antes de poder disparar otra vez."
+   }
+  ]
+ },
+ {
+  "id": "legendary-arcane-gauntlets",
+  "nombre": "Guanteletes arcanos legendarios",
+  "nombre_en": "Legendary Arcane Gauntlets",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-hallowed-axe",
+  "nombre": "Hacha consagrada legendaria",
+  "nombre_en": "Legendary Hallowed Axe",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-glowing-rings",
+  "nombre": "Anillos resplandecientes legendarios",
+  "nombre_en": "Legendary Glowing Rings",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 11,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-hand-runes",
+  "nombre": "Runas de mano legendarias",
+  "nombre_en": "Legendary Hand Runes",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-returning-blade",
+  "nombre": "Hoja retornable legendaria",
+  "nombre_en": "Legendary Returning Blade",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Retornable",
+    "texto": "Cuando lanzas esta arma dentro de su alcance, aparece en tu mano justo después del ataque."
+   }
+  ]
+ },
+ {
+  "id": "legendary-shortstaff",
+  "nombre": "Bastón corto legendario",
+  "nombre_en": "Legendary Shortstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-dualstaff",
+  "nombre": "Bastón doble legendario",
+  "nombre_en": "Legendary Dualstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 12,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-scepter",
+  "nombre": "Cetro legendario",
+  "nombre_en": "Legendary Scepter",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versátil",
+    "texto": "Esta arma también se puede usar con estas estadísticas: Presencia, Cuerpo a cuerpo, d8+6."
+   }
+  ]
+ },
+ {
+  "id": "legendary-wand",
+  "nombre": "Varita legendaria",
+  "nombre_en": "Legendary Wand",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 10,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-greatstaff",
+  "nombre": "Bastón mayor legendario",
+  "nombre_en": "Legendary Greatstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "sword-of-light-flame",
+  "nombre": "Espada de Luz y Llama",
+  "nombre_en": "Sword of Light & Flame",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 11,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Candente",
+    "texto": "Esta arma corta a través de material sólido."
+   }
+  ]
+ },
+ {
+  "id": "siphoning-gauntlets",
+  "nombre": "Guanteletes absorbentes",
+  "nombre_en": "Siphoning Gauntlets",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Robavidas",
+    "texto": "Si el ataque tiene éxito, tira un d6. Con un resultado de 6, limpia un Punto de Golpe o un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "midas-scythe",
+  "nombre": "Guadaña de Midas",
+  "nombre_en": "Midas Scythe",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Codiciosa",
+    "texto": "Gasta un puñado de oro para obtener un bono de +1 a tu Competencia en una tirada de daño."
+   }
+  ]
+ },
+ {
+  "id": "floating-bladeshards",
+  "nombre": "Esquirlas de hoja flotantes",
+  "nombre_en": "Floating Bladeshards",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Poderosa",
+    "texto": "Si el ataque tiene éxito, tira un dado de daño adicional y descarta el resultado más bajo."
+   }
+  ]
+ },
+ {
+  "id": "bloodstaff",
+  "nombre": "Bastón de sangre",
+  "nombre_en": "Bloodstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 20,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Dolorosa",
+    "texto": "Cada vez que hagas un ataque con éxito, debes marcar un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "thistlebow",
+  "nombre": "Arco de cardo",
+  "nombre_en": "Thistlebow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 13,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Fiable",
+    "texto": "+1 a las tiradas de ataque"
+   }
+  ]
+ },
+ {
+  "id": "wand-of-essek",
+  "nombre": "Varita de Essek",
+  "nombre_en": "Wand of Essek",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 13,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Distorsión temporal",
+    "texto": "Puedes elegir el objetivo de tu ataque después de hacer tu tirada de ataque."
+   }
+  ]
+ },
+ {
+  "id": "magus-revolver",
+  "nombre": "Revólver de mago",
+  "nombre_en": "Magus Revolver",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 13,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Recarga",
+    "texto": "Después de hacer un ataque, tira un d6. Con un resultado de 1, debes marcar un Estrés para recargar esta arma antes de poder disparar otra vez."
+   }
+  ]
+ },
+ {
+  "id": "fusion-gloves",
+  "nombre": "Guantes de fusión",
+  "nombre_en": "Fusion Gloves",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Vinculada",
+    "texto": "Obtienes un bono a tus tiradas de daño igual a tu nivel."
+   }
+  ]
+ },
+ {
+  "id": "shortsword",
+  "nombre": "Espada corta",
+  "nombre_en": "Shortsword",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Emparejada",
+    "texto": "+2 al daño del arma primaria contra objetivos a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "round-shield",
+  "nombre": "Escudo redondo",
+  "nombre_en": "Round Shield",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Protectora",
+    "texto": "+1 a la Puntuación de Armadura"
+   }
+  ]
+ },
+ {
+  "id": "tower-shield",
+  "nombre": "Escudo de torre",
+  "nombre_en": "Tower Shield",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Barrera",
+    "texto": "+2 a la Puntuación de Armadura; -1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "small-dagger",
+  "nombre": "Daga pequeña",
+  "nombre_en": "Small Dagger",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Emparejada",
+    "texto": "+2 al daño del arma primaria contra objetivos a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "whip",
+  "nombre": "Látigo",
+  "nombre_en": "Whip",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "presencia",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Estremecedora",
+    "texto": "Marca un Estrés para chasquear el látigo y obligar a todos los adversarios a alcance Cuerpo a cuerpo a retroceder hasta alcance Cercano."
+   }
+  ]
+ },
+ {
+  "id": "grappler",
+  "nombre": "Garfio",
+  "nombre_en": "Grappler",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Ganchuda",
+    "texto": "Si el ataque tiene éxito, puedes jalar al objetivo hasta alcance Cuerpo a cuerpo."
+   }
+  ]
+ },
+ {
+  "id": "hand-crossbow",
+  "nombre": "Ballesta de mano",
+  "nombre_en": "Hand Crossbow",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-shortsword",
+  "nombre": "Espada corta mejorada",
+  "nombre_en": "Improved Shortsword",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Emparejada",
+    "texto": "+3 al daño del arma primaria contra objetivos a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "improved-round-shield",
+  "nombre": "Escudo redondo mejorado",
+  "nombre_en": "Improved Round Shield",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Protectora",
+    "texto": "+2 a la Puntuación de Armadura"
+   }
+  ]
+ },
+ {
+  "id": "improved-tower-shield",
+  "nombre": "Escudo de torre mejorado",
+  "nombre_en": "Improved Tower Shield",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Barrera",
+    "texto": "+3 a la Puntuación de Armadura; -1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "improved-small-dagger",
+  "nombre": "Daga pequeña mejorada",
+  "nombre_en": "Improved Small Dagger",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Emparejada",
+    "texto": "+3 al daño del arma primaria contra objetivos a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "improved-whip",
+  "nombre": "Látigo mejorado",
+  "nombre_en": "Improved Whip",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "presencia",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Estremecedora",
+    "texto": "Marca un Estrés para chasquear el látigo y obligar a todos los adversarios a alcance Cuerpo a cuerpo a retroceder hasta alcance Cercano."
+   }
+  ]
+ },
+ {
+  "id": "improved-grappler",
+  "nombre": "Garfio mejorado",
+  "nombre_en": "Improved Grappler",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Ganchuda",
+    "texto": "Si el ataque tiene éxito, puedes jalar al objetivo hasta alcance Cuerpo a cuerpo."
+   }
+  ]
+ },
+ {
+  "id": "improved-hand-crossbow",
+  "nombre": "Ballesta de mano mejorada",
+  "nombre_en": "Improved Hand Crossbow",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "spiked-shield",
+  "nombre": "Escudo con púas",
+  "nombre_en": "Spiked Shield",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Doble función",
+    "texto": "+1 a la Puntuación de Armadura; +1 al daño del arma primaria a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "parrying-dagger",
+  "nombre": "Daga de parada",
+  "nombre_en": "Parrying Dagger",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Parada",
+    "texto": "Cuando te ataquen, tira los dados de daño de esta arma. Si alguno de los dados de daño del atacante sacó el mismo valor que tus dados, esos resultados coincidentes se descartan de los dados de daño del atacante antes de sumar el daño que recibes."
+   }
+  ]
+ },
+ {
+  "id": "returning-axe",
+  "nombre": "Hacha retornable",
+  "nombre_en": "Returning Axe",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Retornable",
+    "texto": "Cuando lanzas esta arma dentro de su alcance, aparece en tu mano justo después del ataque."
+   }
+  ]
+ },
+ {
+  "id": "advanced-shortsword",
+  "nombre": "Espada corta avanzada",
+  "nombre_en": "Advanced Shortsword",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Emparejada",
+    "texto": "+4 al daño del arma primaria contra objetivos a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "advanced-round-shield",
+  "nombre": "Escudo redondo avanzado",
+  "nombre_en": "Advanced Round Shield",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Protectora",
+    "texto": "+3 a la Puntuación de Armadura"
+   }
+  ]
+ },
+ {
+  "id": "advanced-tower-shield",
+  "nombre": "Escudo de torre avanzado",
+  "nombre_en": "Advanced Tower Shield",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Barrera",
+    "texto": "+4 a la Puntuación de Armadura; -1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "advanced-small-dagger",
+  "nombre": "Daga pequeña avanzada",
+  "nombre_en": "Advanced Small Dagger",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Emparejada",
+    "texto": "+4 al daño del arma primaria contra objetivos a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "advanced-whip",
+  "nombre": "Látigo avanzado",
+  "nombre_en": "Advanced Whip",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "presencia",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Estremecedora",
+    "texto": "Marca un Estrés para chasquear el látigo y obligar a todos los adversarios a alcance Cuerpo a cuerpo a retroceder hasta alcance Cercano."
+   }
+  ]
+ },
+ {
+  "id": "advanced-grappler",
+  "nombre": "Garfio avanzado",
+  "nombre_en": "Advanced Grappler",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Ganchuda",
+    "texto": "Si el ataque tiene éxito, puedes jalar al objetivo hasta alcance Cuerpo a cuerpo."
+   }
+  ]
+ },
+ {
+  "id": "advanced-hand-crossbow",
+  "nombre": "Ballesta de mano avanzada",
+  "nombre_en": "Advanced Hand Crossbow",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "buckler",
+  "nombre": "Rodela",
+  "nombre_en": "Buckler",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Desviadora",
+    "texto": "Cuando te ataquen, puedes marcar una casilla de Armadura para obtener contra ese ataque un bono a tu Evasión igual a tu Puntuación de Armadura disponible."
+   }
+  ]
+ },
+ {
+  "id": "powered-gauntlet",
+  "nombre": "Guantelete potenciado",
+  "nombre_en": "Powered Gauntlet",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "conocimiento",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Cargada",
+    "texto": "Marca un Estrés para obtener un bono de +1 a tu Competencia en un ataque con el arma primaria."
+   }
+  ]
+ },
+ {
+  "id": "hand-sling",
+  "nombre": "Honda de mano",
+  "nombre_en": "Hand Sling",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Versátil",
+    "texto": "Esta arma también se puede usar con estas estadísticas: Sutileza, Cercano, d8+4."
+   }
+  ]
+ },
+ {
+  "id": "legendary-shortsword",
+  "nombre": "Espada corta legendaria",
+  "nombre_en": "Legendary Shortsword",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Emparejada",
+    "texto": "+5 al daño del arma primaria contra objetivos a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "legendary-round-shield",
+  "nombre": "Escudo redondo legendario",
+  "nombre_en": "Legendary Round Shield",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Protectora",
+    "texto": "+4 a la Puntuación de Armadura"
+   }
+  ]
+ },
+ {
+  "id": "legendary-tower-shield",
+  "nombre": "Escudo de torre legendario",
+  "nombre_en": "Legendary Tower Shield",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Barrera",
+    "texto": "+5 a la Puntuación de Armadura; -1 a la Evasión."
+   }
+  ]
+ },
+ {
+  "id": "legendary-small-dagger",
+  "nombre": "Daga pequeña legendaria",
+  "nombre_en": "Legendary Small Dagger",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Emparejada",
+    "texto": "+5 al daño del arma primaria contra objetivos a alcance Cuerpo a cuerpo"
+   }
+  ]
+ },
+ {
+  "id": "legendary-whip",
+  "nombre": "Látigo legendario",
+  "nombre_en": "Legendary Whip",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "presencia",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Estremecedora",
+    "texto": "Marca un Estrés para chasquear el látigo y obligar a todos los adversarios a alcance Cuerpo a cuerpo a retroceder hasta alcance Cercano."
+   }
+  ]
+ },
+ {
+  "id": "legendary-grappler",
+  "nombre": "Garfio legendario",
+  "nombre_en": "Legendary Grappler",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Ganchuda",
+    "texto": "Si el ataque tiene éxito, puedes jalar al objetivo hasta alcance Cuerpo a cuerpo."
+   }
+  ]
+ },
+ {
+  "id": "legendary-hand-crossbow",
+  "nombre": "Ballesta de mano legendaria",
+  "nombre_en": "Legendary Hand Crossbow",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "braveshield",
+  "nombre": "Escudo valiente",
+  "nombre_en": "Braveshield",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Amparadora",
+    "texto": "Cuando marcas una casilla de Armadura, reduce el daño para ti y para todos los aliados a alcance Cuerpo a cuerpo de ti que hayan recibido el mismo daño."
+   }
+  ]
+ },
+ {
+  "id": "knuckle-claws",
+  "nombre": "Garras de nudillo",
+  "nombre_en": "Knuckle Claws",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 8,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Por partida doble",
+    "texto": "Cuando hagas un ataque con tu arma primaria, puedes hacer daño a otro objetivo a alcance Cuerpo a cuerpo."
+   }
+  ]
+ },
+ {
+  "id": "primer-shard",
+  "nombre": "Esquirla detonante",
+  "nombre_en": "Primer Shard",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Blanco fijado",
+    "texto": "Si el ataque tiene éxito, tu siguiente ataque contra el mismo objetivo con tu arma primaria tiene éxito automáticamente."
+   }
+  ]
+ }
+]

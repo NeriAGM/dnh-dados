@@ -1,0 +1,470 @@
+[
+ {
+  "id": "agile-scout",
+  "nombre": "Agile Scout",
+  "nivel": 1,
+  "ejemplos": "(Fox, Mouse, Weasel, etc.)",
+  "rasgo": "Agility +1",
+  "evasion": "Evasion +2",
+  "ataque": "Melee Agility d4 phy",
+  "ventajas": "deceive, locate, sneak",
+  "rasgos": [
+   {
+    "nombre": "Agile",
+    "texto": "Your movement is silent, and you can **spend a Hope** to move up to Far range without rolling."
+   },
+   {
+    "nombre": "Fragile",
+    "texto": "When you take Major or greater damage, you drop out of Beastform."
+   }
+  ]
+ },
+ {
+  "id": "household-friend",
+  "nombre": "Household Friend",
+  "nivel": 1,
+  "ejemplos": "(Cat, Dog, Rabbit, etc.)",
+  "rasgo": "Instinct +1",
+  "evasion": "Evasion +2",
+  "ataque": "Melee Instinct d6 phy",
+  "ventajas": "climb, locate, protect",
+  "rasgos": [
+   {
+    "nombre": "Companion",
+    "texto": "When you Help an Ally, you can roll a **d8** as your advantage die."
+   },
+   {
+    "nombre": "Fragile",
+    "texto": "When you take Major or greater damage, you drop out of Beastform."
+   }
+  ]
+ },
+ {
+  "id": "nimble-grazer",
+  "nombre": "Nimble Grazer",
+  "nivel": 1,
+  "ejemplos": "(Deer, Gazelle, Goat, etc.)",
+  "rasgo": "Agility +1",
+  "evasion": "Evasion +3",
+  "ataque": "Melee Agility d6 phy",
+  "ventajas": "leap, sneak, sprint",
+  "rasgos": [
+   {
+    "nombre": "Elusive Prey",
+    "texto": "When an attack roll against you would succeed, you can **mark a Stress** and roll a **d4.** Add the result to your Evasion against this attack."
+   },
+   {
+    "nombre": "Fragile",
+    "texto": "When you take Major or greater damage, you drop out of Beastform."
+   }
+  ]
+ },
+ {
+  "id": "pack-predator",
+  "nombre": "Pack Predator",
+  "nivel": 1,
+  "ejemplos": "(Coyote, Hyena, Wolf, etc.)",
+  "rasgo": "Strength +2",
+  "evasion": "Evasion +1",
+  "ataque": "Melee Strength d8+2 phy",
+  "ventajas": "attack, sprint, track",
+  "rasgos": [
+   {
+    "nombre": "Hobbling Strike",
+    "texto": "When you succeed on an attack against a target within Melee range, you can **mark a Stress** to make the target temporarily _Vulnerable_."
+   },
+   {
+    "nombre": "Pack Hunting",
+    "texto": "When you succeed on an attack against the same target as an ally who acts immediately before you, add a **d8** to your damage roll."
+   }
+  ]
+ },
+ {
+  "id": "aquatic-scout",
+  "nombre": "Aquatic Scout",
+  "nivel": 1,
+  "ejemplos": "(Eel, Fish, Octopus, etc.)",
+  "rasgo": "Agility +1",
+  "evasion": "Evasion +2",
+  "ataque": "Melee Agility d4 phy",
+  "ventajas": "navigate, sneak, swim",
+  "rasgos": [
+   {
+    "nombre": "Aquatic",
+    "texto": "You can breathe and move naturally underwater."
+   },
+   {
+    "nombre": "Fragile",
+    "texto": "When you take Major or greater damage, you drop out of Beastform."
+   }
+  ]
+ },
+ {
+  "id": "stalking-arachnid",
+  "nombre": "Stalking Arachnid",
+  "nivel": 1,
+  "ejemplos": "(Tarantula, Wolf Spider, etc.)",
+  "rasgo": "Finesse +1",
+  "evasion": "Evasion +2",
+  "ataque": "Melee Finesse d6+1 phy",
+  "ventajas": "attack, climb, sneak",
+  "rasgos": [
+   {
+    "nombre": "Venomous Bite",
+    "texto": "When you succeed on an attack against a target within Melee range, the target becomes temporarily _Poisoned_. A _Poisoned_ creature takes **1d10** direct physical damage each time they act."
+   },
+   {
+    "nombre": "Webslinger",
+    "texto": "You can create a strong web material useful for both adventuring and battle. The web is resilient enough to support one creature. You can temporarily _Restrain_ a target within Close range by succeeding on a Finesse Roll against them."
+   }
+  ]
+ },
+ {
+  "id": "armored-sentry",
+  "nombre": "Armored Sentry",
+  "nivel": 2,
+  "ejemplos": "(Armadillo, Pangolin, Turtle, etc.)",
+  "rasgo": "Strength +1",
+  "evasion": "Evasion +1",
+  "ataque": "Melee Strength d8+2 phy",
+  "ventajas": "dig, locate, protect",
+  "rasgos": [
+   {
+    "nombre": "Armored Shell",
+    "texto": "Your hardened exterior gives you resistance to physical damage. Additionally, **mark an Armor Slot** to retract into your shell. While in your shell, physical damage is reduced by a number equal to your Armor Score (after applying resistance), but you can't perform other actions without leaving this form."
+   },
+   {
+    "nombre": "Cannonball",
+    "texto": "**Mark a Stress** to allow an ally to throw or launch you at an adversary. To do so, the ally makes an attack roll using Agility or Strength (their choice) against a target within Close range. On a success, the adversary takes **d12+2** physical damage using the thrower's Proficiency. You can **spend a Hope** to target an additional adversary within Very Close range of the first. The second target takes half the damage dealt to the first target."
+   }
+  ]
+ },
+ {
+  "id": "powerful-beast",
+  "nombre": "Powerful Beast",
+  "nivel": 2,
+  "ejemplos": "(Bear, Bull, Moose, etc.)",
+  "rasgo": "Strength +3",
+  "evasion": "Evasion +1",
+  "ataque": "Melee Strength d10+4 phy",
+  "ventajas": "navigate, protect, scare",
+  "rasgos": [
+   {
+    "nombre": "Rampage",
+    "texto": "When you roll a 1 on a damage die, you can roll a **d10** and add the result to the damage roll. Additionally, before you make an attack roll, you can **mark a Stress** to gain a +1 bonus to your Proficiency for that attack."
+   },
+   {
+    "nombre": "Thick Hide",
+    "texto": "You gain a +2 bonus to your damage thresholds."
+   }
+  ]
+ },
+ {
+  "id": "mighty-strider",
+  "nombre": "Mighty Strider",
+  "nivel": 2,
+  "ejemplos": "(Camel, Horse, Zebra, etc.)",
+  "rasgo": "Agility +1",
+  "evasion": "Evasion +2",
+  "ataque": "Melee Agility d8+1 phy",
+  "ventajas": "leap, navigate, sprint",
+  "rasgos": [
+   {
+    "nombre": "Carrier",
+    "texto": "You can carry up to two willing allies with you when you move."
+   },
+   {
+    "nombre": "Trample",
+    "texto": "**Mark a Stress** to move up to Close range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take **d8+1** physical damage using your Proficiency and are temporarily _Vulnerable_."
+   }
+  ]
+ },
+ {
+  "id": "striking-serpent",
+  "nombre": "Striking Serpent",
+  "nivel": 2,
+  "ejemplos": "(Cobra, Rattlesnake, Viper, etc.)",
+  "rasgo": "Finesse +1",
+  "evasion": "Evasion +2",
+  "ataque": "Very Close Finesse d8+4 phy",
+  "ventajas": "climb, deceive, sprint",
+  "rasgos": [
+   {
+    "nombre": "Venomous Strike",
+    "texto": "Make an attack against any number of targets within Very Close range. On a success, a target is temporarily _Poisoned_. A _Poisoned_ creature takes **1d10** direct physical damage each time they act."
+   },
+   {
+    "nombre": "Warning Hiss",
+    "texto": "**Mark a Stress** to force any number of targets within Melee range to move back to Very Close range."
+   }
+  ]
+ },
+ {
+  "id": "pouncing-predator",
+  "nombre": "Pouncing Predator",
+  "nivel": 2,
+  "ejemplos": "(Cheetah, Lion, Panther, etc.)",
+  "rasgo": "Instinct +1",
+  "evasion": "Evasion +3",
+  "ataque": "Melee Instinct d8+6 phy",
+  "ventajas": "attack, climb, sneak",
+  "rasgos": [
+   {
+    "nombre": "Fleet",
+    "texto": "**Spend a Hope** to move up to Far range without rolling."
+   },
+   {
+    "nombre": "Takedown",
+    "texto": "**Mark a Stress** to move into Melee range of a target and make an attack roll against them. On a success, you gain a +2 bonus to your Proficiency for this attack and the target must mark a Stress."
+   }
+  ]
+ },
+ {
+  "id": "winged-beast",
+  "nombre": "Winged Beast",
+  "nivel": 2,
+  "ejemplos": "(Hawk, Owl, Raven, etc.)",
+  "rasgo": "Finesse +1",
+  "evasion": "Evasion +3",
+  "ataque": "Melee Finesse d4+2 phy",
+  "ventajas": "deceive, locate, scare",
+  "rasgos": [
+   {
+    "nombre": "Bird's-Eye View",
+    "texto": "You can fly at will. Once per rest while you are airborne, you can ask the GM a question about the scene below you without needing to roll. The first time a character makes a roll to act on this information, they gain advantage on the roll."
+   },
+   {
+    "nombre": "Hollow Bones",
+    "texto": "You gain a -2 penalty to your damage thresholds."
+   }
+  ]
+ },
+ {
+  "id": "great-predator",
+  "nombre": "Great Predator",
+  "nivel": 3,
+  "ejemplos": "(Dire Wolf, Velociraptor, Sabertooth Tiger, etc.)",
+  "rasgo": "Strength +2",
+  "evasion": "Evasion +2",
+  "ataque": "Melee Strength d12+8 phy",
+  "ventajas": "attack, sneak, sprint",
+  "rasgos": [
+   {
+    "nombre": "Carrier",
+    "texto": "You can carry up to two willing allies with you when you move."
+   },
+   {
+    "nombre": "Vicious Maul",
+    "texto": "When you succeed on an attack against a target, you can **spend a Hope** to make them temporarily _Vulnerable_ and gain a +1 bonus to your Proficiency for this attack."
+   }
+  ]
+ },
+ {
+  "id": "mighty-lizard",
+  "nombre": "Mighty Lizard",
+  "nivel": 3,
+  "ejemplos": "(Alligator, Crocodile, Gila Monster, etc.)",
+  "rasgo": "Instinct +2",
+  "evasion": "Evasion +1",
+  "ataque": "Melee Instinct d10+7 phy",
+  "ventajas": "attack, sneak, track",
+  "rasgos": [
+   {
+    "nombre": "Physical Defense",
+    "texto": "You gain a +3 bonus to your damage thresholds."
+   },
+   {
+    "nombre": "Snapping Strike",
+    "texto": "When you succeed on an attack against a target within Melee range, you can **spend a Hope** to clamp that opponent in your jaws, making them temporarily _Restrained_ and _Vulnerable._"
+   }
+  ]
+ },
+ {
+  "id": "great-winged-beast",
+  "nombre": "Great Winged Beast",
+  "nivel": 3,
+  "ejemplos": "(Giant Eagle, Falcon, etc.)",
+  "rasgo": "Finesse +2",
+  "evasion": "Evasion +3",
+  "ataque": "Melee Finesse d8+6 phy",
+  "ventajas": "deceive, distract, locate",
+  "rasgos": [
+   {
+    "nombre": "Bird's-Eye View",
+    "texto": "You can fly at will. Once per rest while you are airborne, you can ask the GM a question about the scene below you without needing to roll. The first time a character makes a roll to act on this information, they gain advantage on the roll."
+   },
+   {
+    "nombre": "Carrier",
+    "texto": "You can carry up to two willing allies with you when you move."
+   }
+  ]
+ },
+ {
+  "id": "aquatic-predator",
+  "nombre": "Aquatic Predator",
+  "nivel": 3,
+  "ejemplos": "(Dolphin, Orca, Shark, etc.)",
+  "rasgo": "Agility +2",
+  "evasion": "Evasion +4",
+  "ataque": "Melee Agility d10+6 phy",
+  "ventajas": "attack, swim, track",
+  "rasgos": [
+   {
+    "nombre": "Aquatic",
+    "texto": "You can breathe and move naturally underwater."
+   },
+   {
+    "nombre": "Vicious Maul",
+    "texto": "When you succeed on an attack against a target, you can **spend a Hope** to make them _Vulnerable_ and gain a +1 bonus to your Proficiency for this attack."
+   }
+  ]
+ },
+ {
+  "id": "legendary-beast",
+  "nombre": "Legendary Beast",
+  "nivel": 3,
+  "ejemplos": "(Upgraded Tier 1 Options)",
+  "rasgo": "",
+  "evasion": "",
+  "ataque": "",
+  "ventajas": "",
+  "rasgos": [
+   {
+    "nombre": "Evolved",
+    "texto": "Pick a Tier 1 Beastform option and become a larger, more powerful version of that creature. While you're in this form, you retain all traits and features from the original form and gain the following bonuses:\n\n- A +6 bonus to damage rolls\n- A +1 bonus to the trait used by this form\n- A +2 bonus to Evasion"
+   }
+  ]
+ },
+ {
+  "id": "legendary-hybrid",
+  "nombre": "Legendary Hybrid",
+  "nivel": 3,
+  "ejemplos": "(Griffon, Sphinx, etc.)",
+  "rasgo": "Strength +2",
+  "evasion": "Evasion +3",
+  "ataque": "Melee Strength d10+8 phy",
+  "ventajas": "",
+  "rasgos": [
+   {
+    "nombre": "Hybrid Features",
+    "texto": "To transform into this creature, **mark an additional Stress.** Choose any two Beastform options from Tiers 1-2. Choose a total of four advantages and two features from those options."
+   }
+  ]
+ },
+ {
+  "id": "massive-behemoth",
+  "nombre": "Massive Behemoth",
+  "nivel": 4,
+  "ejemplos": "(Elephant, Mammoth, Rhinoceros, etc.)",
+  "rasgo": "Strength +3",
+  "evasion": "Evasion +1",
+  "ataque": "Melee Strength d12+12 phy",
+  "ventajas": "locate, protect, scare, sprint",
+  "rasgos": [
+   {
+    "nombre": "Carrier",
+    "texto": "You can carry up to four willing allies with you when you move."
+   },
+   {
+    "nombre": "Demolish",
+    "texto": "**Spend a Hope** to move up to Far range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take **d8+10** physical damage using your Proficiency and are temporarily _Vulnerable._"
+   },
+   {
+    "nombre": "Undaunted",
+    "texto": "You gain a +2 bonus to all your damage thresholds."
+   }
+  ]
+ },
+ {
+  "id": "terrible-lizard",
+  "nombre": "Terrible Lizard",
+  "nivel": 4,
+  "ejemplos": "(Brachiosaurus, Tyrannosaurus, etc.)",
+  "rasgo": "Strength +3",
+  "evasion": "Evasion +2",
+  "ataque": "Melee Strength d12+10 phy",
+  "ventajas": "attack, deceive, scare, track",
+  "rasgos": [
+   {
+    "nombre": "Devastating Strikes",
+    "texto": "When you deal Severe damage to a target within Melee range, you can **mark a Stress** to force them to mark an additional Hit Point."
+   },
+   {
+    "nombre": "Massive Stride",
+    "texto": "You can move up to Far range without rolling. You ignore rough terain (at the GM's discretion) due to your size."
+   }
+  ]
+ },
+ {
+  "id": "mythic-aerial-hunter",
+  "nombre": "Mythic Aerial Hunter",
+  "nivel": 4,
+  "ejemplos": "(Dragon, Pterodactyl, Roc, Wyvern, etc.)",
+  "rasgo": "Finesse +3",
+  "evasion": "Evasion +4",
+  "ataque": "Melee Finesse d10+11 phy",
+  "ventajas": "attack, deceive, locate, navigate",
+  "rasgos": [
+   {
+    "nombre": "Carrier",
+    "texto": "You can carry up to three willing allies with you when you move."
+   },
+   {
+    "nombre": "Deadly Raptor",
+    "texto": "You can fly at will and move up to Far range as part of your action. When you move in a straight line into Melee range of a target from at least Close range and make an attack against that target in the same action, you can reroll all damage dice that rolled a result lower than your Proficiency."
+   }
+  ]
+ },
+ {
+  "id": "epic-aquatic-beast",
+  "nombre": "Epic Aquatic Beast",
+  "nivel": 4,
+  "ejemplos": "(Giant Squid, Whale, etc.)",
+  "rasgo": "Agility +3",
+  "evasion": "Evasion +3",
+  "ataque": "Melee Agility d10+10 phy",
+  "ventajas": "locate, protect, scare, track",
+  "rasgos": [
+   {
+    "nombre": "Ocean Master",
+    "texto": "You can breathe and move naturally underwater. When you succeed on an attack against a target within Melee range, you can temporarily _Restrain_ them."
+   },
+   {
+    "nombre": "Unyielding",
+    "texto": "When you would mark an Armor Slot, roll a **d6.** On a result of 5 or higher, reduce the severity by one threshold without marking an Armor Slot."
+   }
+  ]
+ },
+ {
+  "id": "mythic-beast",
+  "nombre": "Mythic Beast",
+  "nivel": 4,
+  "ejemplos": "(Upgraded Tier 1 or Tier 2 Options)",
+  "rasgo": "",
+  "evasion": "",
+  "ataque": "",
+  "ventajas": "",
+  "rasgos": [
+   {
+    "nombre": "Evolved",
+    "texto": "Pick a Tier 1 or Tier 2 Beastform option and become a larger, more powerful version of that creature. While you're in this form, you retain all traits and features from the original form and gain the following bonuses:\n\n- A +9 bonus to damage rolls\n- A +2 bonus to the trait used by this form\n- A +3 bonus to Evasion\n- Your damage die increases by one size (d6 becomes d8, d8 becomes d10, etc.)"
+   }
+  ]
+ },
+ {
+  "id": "mythic-hybrid",
+  "nombre": "Mythic Hybrid",
+  "nivel": 4,
+  "ejemplos": "(Chimera, Cockatrice, Manticore, etc.)",
+  "rasgo": "Strength +3",
+  "evasion": "Evasion +2",
+  "ataque": "Strength Melee d12+10 phy",
+  "ventajas": "",
+  "rasgos": [
+   {
+    "nombre": "Hybrid Features",
+    "texto": "To transform into this creature, **mark 2 additional Stress.** Choose any three Beastform options from Tiers 1-3. Choose a total of five advantages and three features from those options."
+   }
+  ]
+ }
+]

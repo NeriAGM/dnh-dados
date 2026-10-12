@@ -1,0 +1,178 @@
+[
+ {
+  "id": "assassin",
+  "nombre": "Asesino",
+  "nombre_en": "Assassin",
+  "descripcion": "Los asesinos son maestros en causar heridas mortales con golpes precisos. A diferencia de quienes usan la violencia solo como un medio para un fin, los asesinos ven la muerte como una profesión. Muchos miembros de esta clase creen que su oficio es digno, si no es que sagrado, y algunos se unen a gremios para perfeccionar su arte, definir sus creencias y ganar dinero. Gente de todos los ámbitos contrata asesinos por sus habilidades: gobernantes poderosos que buscan evitar una guerra abierta, líderes de negocios que quieren eliminar a la competencia e incluso gente común que espera saldar un rencor. A menudo, un asesino es el último recurso para matar a quienes se creía imposibles de matar. Mientras que algunos de estos profesionales letales destruyen a cualquiera que se cruce en su camino por las razones correctas o el precio correcto, otros tienen códigos morales estrictos o reglas personales que dictan quiénes pueden ser sus objetivos. Quienes terminan siendo el objetivo de un asesino ya pueden contarse entre los muertos",
+  "dominios": [
+   "blade",
+   "midnight"
+  ],
+  "evasion": 12,
+  "pg": 5,
+  "esperanza": {
+   "nombre": "Determinación letal",
+   "texto": "**Gasta 3 de Esperanza** para limpiar 2 de Estrés."
+  },
+  "rasgos": [
+   {
+    "nombre": "Marcado para morir",
+    "texto": "Cuando aciertas un ataque con arma, puedes **marcar un Estrés** para dejar al objetivo _Marcado para morir_. Cuando le haces daño a un objetivo que tienes _Marcado para morir_, suma a la tirada de daño una cantidad de **d4** igual a tu rango.\n\nSolo puedes tener a un adversario _Marcado para morir_ a la vez. Esta condición dura hasta que tomes un descanso, hasta que el adversario _Marcado para morir_ actual sea derrotado o hasta que el DJ gaste una cantidad de Miedo igual a tu rango para limpiarla."
+   },
+   {
+    "nombre": "Entrar y salir",
+    "texto": "**Gasta 1 de Esperanza** para pedirle al DJ una forma rápida o discreta de entrar o salir de un lugar que puedas ver. La siguiente tirada que hagas actuando con base en esta información tiene ventaja."
+   }
+  ],
+  "objetos": "Una lista de nombres con varios tachados o una hoja oxidada grabada con una insignia",
+  "sugerido": null,
+  "preguntas_trasfondo": [
+   "Una vez mataste a alguien cercano a ti. ¿Qué pasó y cómo te cambió?",
+   "¿Qué organización te entrenó en el arte de matar y cómo llegaste a ser miembro?",
+   "A lo largo de tu carrera, un objetivo se te ha escapado. ¿Quién es y cómo se te ha ido de las manos?"
+  ],
+  "preguntas_conexion": [
+   "Maté a alguien por ti. ¿Quién era?",
+   "¿Cómo me salvaste cuando estaba al borde de la muerte? ¿Qué te prometí como pago?",
+   "¿Qué secreto sobre mí te conté y cómo cambió tu forma de verme?"
+  ],
+  "subclases": [
+   "executioners-guild",
+   "poisoners-guild"
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/classes/Assassin.md",
+  "verificado": false
+ },
+ {
+  "id": "brawler",
+  "nombre": "Peleador",
+  "nombre_en": "Brawler",
+  "descripcion": "Expertos en el combate sin armas, los peleadores convierten su cuerpo en un arma letal. Ya sea que hayan aprendido con entrenamiento formal, estudiado con un mentor o adquirido sus habilidades pelea tras pelea, el proceso siempre es riguroso, pues los peleadores desarrollan su cuerpo y su mente para que trabajen como uno solo. Se les valora por su poder y su versatilidad, y suelen unirse a un grupo o a una causa cuando surge la necesidad o el deseo. Como el cuerpo de un peleador es su arma más fuerte, suelen buscar nuevos retos o compañeros de entrenamiento constantes para mantener sus habilidades y sumar nuevas técnicas a su repertorio. Aunque parezcan poca cosa para quienes están acostumbrados a enemigos armados hasta los dientes, los peleadores a menudo logran más a puño limpio que un soldado promedio con una espada.",
+  "dominios": [
+   "valor",
+   "bone"
+  ],
+  "evasion": 10,
+  "pg": 6,
+  "esperanza": {
+   "nombre": "Plantar cara",
+   "texto": "**Gasta 3 de Esperanza** para intimidar a un objetivo dentro de alcance Cercano y volverlo temporalmente _Vulnerable_."
+  },
+  "rasgos": [
+   {
+    "nombre": "Yo soy el arma",
+    "texto": "Tus ataques a mano limpia son tan fuertes como cualquier hoja. Tienes equipada un arma primaria llamada Golpe de Peleador mientras no tengas ninguna otra arma activa. Usa un rasgo de tu elección, tiene alcance Cuerpo a cuerpo e inflige **d8+d6** de daño físico usando tu Competencia (tanto el d8 como el d6 escalan con tu Competencia). Mientras esta arma está activa, obtienes un bonificador de +1 a tu Evasión."
+   },
+   {
+    "nombre": "Golpe combo",
+    "texto": "Después de tirar el daño de un ataque exitoso con un arma Cuerpo a cuerpo, puedes **marcar un Estrés** para iniciar un golpe combo. Cuando lo hagas, tira tu Dado de Combo y anota el resultado; luego sigue tirando tu Dado de Combo hasta que el resultado de tu última tirada sea menor que el de la tirada anterior. Infliges daño adicional igual al total de todos los resultados del Dado de Combo que tiraste en este ataque. Los resultados no se pueden modificar por ningún medio.\n\nTu Dado de Combo empieza siendo un **d4**. Una vez por rango, puedes aumentar tu Dado de Combo un paso como opción de avance de nivel."
+   }
+  ],
+  "objetos": "Vendas para las manos de un mentor o un libro sobre tu pasatiempo secreto",
+  "sugerido": null,
+  "preguntas_trasfondo": [
+   "¿Dónde pasaste tus años de formación que te enseñó, directa o indirectamente, a pelear con el estilo que usas?",
+   "¿Qué organización juró matarte en cuanto te vea y qué hiciste para provocar su ira?",
+   "¿Contra quién perdiste una pelea hace poco y te mueres por la revancha?"
+  ],
+  "preguntas_conexion": [
+   "¿Qué es algo a lo que los dos le tenemos miedo?",
+   "¿Para qué dependo de ti durante nuestros viajes? ¿Cómo te sientes al respecto?",
+   "Todavía no te perdono algo que me dijiste. ¿Qué fue y por qué lo dijiste?"
+  ],
+  "subclases": [
+   "juggernaut",
+   "martial-artist"
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/classes/Brawler.md",
+  "verificado": false
+ },
+ {
+  "id": "warlock",
+  "nombre": "Brujo",
+  "nombre_en": "Warlock",
+  "descripcion": "A quienes han entregado su vida —o tal vez incluso su alma— a un patrón de otro mundo a cambio de un poder increíble se les conoce como brujos. A menudo, estos mortales han llegado a un punto de desesperación que los lleva a hacer este sacrificio: esperan protegerse a sí mismos o a un ser querido, ayudar a su comunidad, buscar venganza, mejorar su posición o, de alguna otra forma, impulsar sus ambiciones. Las poderosas entidades a las que suplican son tan variadas como los propios brujos: dioses, espíritus, demonios u otros seres desconocidos incluso para el mortal que hace el pacto. Cada entidad tiene su propia esfera de influencia que define su poder de otro mundo, y las que coleccionan almas rara vez son conocidas por su benevolencia. Así, el poder de un brujo depende de la relación que mantiene con su benefactor. A pesar de su magia aterradora, los brujos podrían descubrir que alguien o algo más es quien mueve los hilos.",
+  "dominios": [
+   "dread",
+   "grace"
+  ],
+  "evasion": 11,
+  "pg": 5,
+  "esperanza": {
+   "nombre": "Bendición del Patrón",
+   "texto": "Cuando fallas una tirada, puedes **gastar 3 de Esperanza** para repetirla con ventaja."
+  },
+  "rasgos": [
+   {
+    "nombre": "Pacto del Patrón",
+    "texto": "Te has comprometido con una entidad sobrenatural —como un dios, un ser feérico o un demonio— a cambio de poder. Escribe su nombre en tu hoja de personaje y luego, junto con tu DJ, determina su esfera de influencia (como la Naturaleza, el Caos, la Sabiduría, la Travesura, el Amor, la Guerra, la Justicia o la Muerte). Antes de hacer una tirada de acción relacionada con la esfera de influencia de tu patrón, puedes **gastar 1 de Favor** para pedir su ayuda: tira tu Dado de Patrón y suma su resultado al total. Tu Dado de Patrón empieza siendo un **d6** y aumenta a un **d8** en el nivel 5."
+   },
+   {
+    "nombre": "Favor",
+    "texto": "Empiezas con 3 de Favor. Puedes usar una acción de tiempo de descanso para rendirle tributo a tu patrón. Describe cómo lo haces y obtén Favor igual a tu rasgo de Lanzamiento. Además, cuando tienes éxito en una tirada de acción con Esperanza, puedes elegir obtener 1 de Favor en lugar de 1 de Esperanza.\n\n_El máximo de Favor que puedes tener a la vez es 6._\n\n**EJEMPLOS DE ESFERAS DE INFLUENCIA**\n\nAl crear un brujo, elige la esfera de influencia de su patrón de la lista de abajo o crea una propia junto con el DJ.\n\n|  |  |  |\n| --- | --- | --- |\n| _Ambición_ | _Líderes_ | _Secretos_ |\n| _Artistas_ | _Amor_ | _Soldados_ |\n| _Caos_ | _Misericordia_ | _Fuerza_ |\n| _Oscuridad_ | _Travesura_ | _Viajeros_ |\n| _Muerte_ | _Naturaleza_ | _Embaucadores_ |\n| _Apostadores_ | _Protectores_ | _Verdad_ |\n| _Honor_ | _Venganza_ | _Guerra_ |\n| _Justicia_ | _Eruditos_ | _Sabiduría_ |"
+   }
+  ],
+  "objetos": "Una talla que simboliza a tu patrón o un anillo que no te puedes quitar",
+  "sugerido": null,
+  "preguntas_trasfondo": [
+   "¿Quién de tu comunidad te rechazó después de que hiciste un pacto con tu patrón?",
+   "¿Qué situación desesperada te llevó a entregarle tu vida a tu patrón?",
+   "Tu patrón te dio una tarea que debes cumplir por encima de todo. ¿Cuál es y por qué te preocupa?"
+  ],
+  "preguntas_conexion": [
+   "¿Por qué crees que te confío lo que mi patrón dice y hace?",
+   "Nuestra relación cambió desde que me viste rendirle tributo a mi patrón. ¿Qué viste y cómo te afectó?",
+   "Una vez hice algo muy tonto y nunca me has dejado olvidarlo. ¿Qué fue?"
+  ],
+  "subclases": [
+   "pact-of-the-endless",
+   "pact-of-the-wrathful"
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/classes/Warlock.md",
+  "verificado": false
+ },
+ {
+  "id": "witch",
+  "nombre": "Bruja",
+  "nombre_en": "Witch",
+  "descripcion": "Las brujas son practicantes de la magia que se comunican con las fuerzas de la naturaleza y con entidades de reinos lejanos. Estas lanzadoras de hechizos invocan su poder mediante su oficio, combinando lo tangible y lo efímero al lanzar hechizos, murmurar conjuros, crear talismanes, tejer ilusiones y mantener otras prácticas personales. Pueden proteger a sus aliados y dañar a sus enemigos invocando poderosas fuerzas más allá de sí mismas: seres sobrenaturales como ancestros, deidades o aspectos de la naturaleza. A menudo, su conocimiento mágico lo transmiten estas entidades o muchas generaciones de practicantes que se reúnen en pequeños grupos conocidos como aquelarres. A las brujas se les suele temer y malinterpretar, pues sus métodos pueden parecer misteriosos, extraños e incluso macabros para los no iniciados. Sea cual sea el camino que recorra, una bruja transita sin miedo la frontera entre la luz y la sombra.",
+  "dominios": [
+   "sage",
+   "dread"
+  ],
+  "evasion": 10,
+  "pg": 6,
+  "esperanza": {
+   "nombre": "Encanto de la Bruja",
+   "texto": "Cuando tú o un aliado dentro de alcance Lejano fallan una tirada de acción, puedes **gastar 3 de Esperanza** para convertirla en un éxito con Miedo."
+  },
+  "rasgos": [
+   {
+    "nombre": "Maleficio",
+    "texto": "**Marca un Estrés** para _Embrujar_ temporalmente a un objetivo dentro de alcance Lejano. Mientras está _Embrujado_, el objetivo sufre un penalizador a sus tiradas de daño y a su Dificultad igual a tu rango. La cantidad máxima de criaturas que puedes tener _Embrujadas_ a la vez es igual a tu rasgo de Lanzamiento."
+   },
+   {
+    "nombre": "Comunión",
+    "texto": "Una vez por descanso largo, durante un momento de calma, puedes entrar en comunión con un ancestro, una deidad, un espíritu o un ser de otro mundo. Hazle una pregunta y luego tira una cantidad de **d6** igual a tu rasgo de Lanzamiento. Elige uno de los resultados y consulta la tabla de abajo para ver el efecto.\n\n| Tirada | Efecto |\n| --- | --- |\n| 1-3 | Percibes un sabor, un olor o una sensación relacionados con la respuesta. |\n| 4-5 | Oyes sonidos o ves una visión relacionados con la respuesta. |\n| 6 | Vives psíquicamente una escena relacionada con la respuesta como si estuvieras ahí. |"
+   }
+  ],
+  "objetos": "Una mascota pequeña e inofensiva o una piedra de adivinación",
+  "sugerido": null,
+  "preguntas_trasfondo": [
+   "¿Quién de tu comunidad le temía a tu oficio mágico? ¿Qué rumor difundió sobre ti y qué verdad había en él?",
+   "Una vez usaste tu poder para ayudar a alguien en una situación desesperada. ¿Quién era y por qué acudió a ti?",
+   "Una vez tu magia abrió una puerta que era mejor dejar cerrada. ¿Quién o qué estaba del otro lado?"
+  ],
+  "preguntas_conexion": [
+   "¿Qué ritual o práctica única te enseñé que ahora hacemos juntos?",
+   "Una vez me aparecí en tu sueño y te compartí una visión del futuro. ¿Qué te dije?",
+   "¿Sobre qué sueles venir a pedirme consejo?"
+  ],
+  "subclases": [
+   "hedge-witch",
+   "moon-witch"
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/classes/Witch.md",
+  "verificado": false
+ }
+]

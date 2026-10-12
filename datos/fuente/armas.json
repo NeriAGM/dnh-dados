@@ -1,0 +1,3694 @@
+[
+ {
+  "id": "broadsword",
+  "nombre": "Broadsword",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "longsword",
+  "nombre": "Longsword",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "battleaxe",
+  "nombre": "Battleaxe",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "greatsword",
+  "nombre": "Greatsword",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Massive",
+    "texto": "-1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "mace",
+  "nombre": "Mace",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "warhammer",
+  "nombre": "Warhammer",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Heavy",
+    "texto": "-1 to Evasion"
+   }
+  ]
+ },
+ {
+  "id": "dagger",
+  "nombre": "Dagger",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "quarterstaff",
+  "nombre": "Quarterstaff",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "cutlass",
+  "nombre": "Cutlass",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "rapier",
+  "nombre": "Rapier",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Quick",
+    "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+   }
+  ]
+ },
+ {
+  "id": "halberd",
+  "nombre": "Halberd",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Cumbersome",
+    "texto": "-1 to Finesse"
+   }
+  ]
+ },
+ {
+  "id": "spear",
+  "nombre": "Spear",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "shortbow",
+  "nombre": "Shortbow",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "crossbow",
+  "nombre": "Crossbow",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "longbow",
+  "nombre": "Longbow",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Cumbersome",
+    "texto": "-1 to Finesse"
+   }
+  ]
+ },
+ {
+  "id": "arcane-gauntlets",
+  "nombre": "Arcane Gauntlets",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "hallowed-axe",
+  "nombre": "Hallowed Axe",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "glowing-rings",
+  "nombre": "Glowing Rings",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 2,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "hand-runes",
+  "nombre": "Hand Runes",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 0,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "returning-blade",
+  "nombre": "Returning Blade",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Returning",
+    "texto": "When this weapon is thrown within its range, it appears in your hand immediately after the attack."
+   }
+  ]
+ },
+ {
+  "id": "shortstaff",
+  "nombre": "Shortstaff",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 1,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "dualstaff",
+  "nombre": "Dualstaff",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "scepter",
+  "nombre": "Scepter",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versatile",
+    "texto": "This weapon can also be used with these statistics—Presence, Melee, d8."
+   }
+  ]
+ },
+ {
+  "id": "wand",
+  "nombre": "Wand",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 1,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "greatstaff",
+  "nombre": "Greatstaff",
+  "nivel": 1,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "improved-broadsword",
+  "nombre": "Improved Broadsword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "improved-longsword",
+  "nombre": "Improved Longsword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-battleaxe",
+  "nombre": "Improved Battleaxe",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-greatsword",
+  "nombre": "Improved Greatsword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Massive",
+    "texto": "-1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "improved-mace",
+  "nombre": "Improved Mace",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-warhammer",
+  "nombre": "Improved Warhammer",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Heavy",
+    "texto": "-1 to Evasion"
+   }
+  ]
+ },
+ {
+  "id": "improved-dagger",
+  "nombre": "Improved Dagger",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-quarterstaff",
+  "nombre": "Improved Quarterstaff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-cutlass",
+  "nombre": "Improved Cutlass",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-rapier",
+  "nombre": "Improved Rapier",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Quick",
+    "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+   }
+  ]
+ },
+ {
+  "id": "improved-halberd",
+  "nombre": "Improved Halberd",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Cumbersome",
+    "texto": "-1 to Finesse"
+   }
+  ]
+ },
+ {
+  "id": "improved-spear",
+  "nombre": "Improved Spear",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-shortbow",
+  "nombre": "Improved Shortbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-crossbow",
+  "nombre": "Improved Crossbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-longbow",
+  "nombre": "Improved Longbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Cumbersome",
+    "texto": "-1 to Finesse"
+   }
+  ]
+ },
+ {
+  "id": "gilded-falchion",
+  "nombre": "Gilded Falchion",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "knuckle-blades",
+  "nombre": "Knuckle Blades",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Brutal",
+    "texto": "When you roll the maximum value on a damage die, roll an additional damage die."
+   }
+  ]
+ },
+ {
+  "id": "urok-broadsword",
+  "nombre": "Urok Broadsword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Deadly",
+    "texto": "When you deal Severe damage, the target must mark an additional HP."
+   }
+  ]
+ },
+ {
+  "id": "bladed-whip",
+  "nombre": "Bladed Whip",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Quick",
+    "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+   }
+  ]
+ },
+ {
+  "id": "steelforged-halberd",
+  "nombre": "Steelforged Halberd",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Scary",
+    "texto": "On a successful attack, the target must mark a Stress."
+   }
+  ]
+ },
+ {
+  "id": "war-scythe",
+  "nombre": "War Scythe",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "blunderbuss",
+  "nombre": "Blunderbuss",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Reloading",
+    "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+   }
+  ]
+ },
+ {
+  "id": "greatbow",
+  "nombre": "Greatbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "finehair-bow",
+  "nombre": "Finehair Bow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "improved-arcane-gauntlets",
+  "nombre": "Improved Arcane Gauntlets",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-hallowed-axe",
+  "nombre": "Improved Hallowed Axe",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-glowing-rings",
+  "nombre": "Improved Glowing Rings",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 5,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-hand-runes",
+  "nombre": "Improved Hand Runes",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-returning-blade",
+  "nombre": "Improved Returning Blade",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Returning",
+    "texto": "When this weapon is thrown within its range, it appears in your hand immediately after the attack."
+   }
+  ]
+ },
+ {
+  "id": "improved-shortstaff",
+  "nombre": "Improved Shortstaff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-dualstaff",
+  "nombre": "Improved Dualstaff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "improved-scepter",
+  "nombre": "Improved Scepter",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versatile",
+    "texto": "This weapon can also be used with these statistics—Presence, Melee, d8+3."
+   }
+  ]
+ },
+ {
+  "id": "improved-wand",
+  "nombre": "Improved Wand",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-greatstaff",
+  "nombre": "Improved Greatstaff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "ego-blade",
+  "nombre": "Ego Blade",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Pompous",
+    "texto": "You must have a Presence of 0 or lower to use this weapon."
+   }
+  ]
+ },
+ {
+  "id": "casting-sword",
+  "nombre": "Casting Sword",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versatile",
+    "texto": "This weapon can also be used with these statistics—Knowledge, Far, d6+3."
+   }
+  ]
+ },
+ {
+  "id": "devouring-dagger",
+  "nombre": "Devouring Dagger",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Scary",
+    "texto": "On a successful attack, the target must mark a Stress."
+   }
+  ]
+ },
+ {
+  "id": "hammer-of-exota",
+  "nombre": "Hammer of Exota",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Eruptive",
+    "texto": "On a successful attack against a target within Melee range, all other adversaries within Very Close range must succeed on a reaction roll (14) or take half damage."
+   }
+  ]
+ },
+ {
+  "id": "yutari-bloodbow",
+  "nombre": "Yutari Bloodbow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Brutal",
+    "texto": "When you roll the maximum value on a damage die, roll an additional damage die."
+   }
+  ]
+ },
+ {
+  "id": "elder-bow",
+  "nombre": "Elder Bow",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "scepter-of-elias",
+  "nombre": "Scepter of Elias",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Invigorating",
+    "texto": "On a successful attack, roll a d4. On a result of 4, clear a Stress."
+   }
+  ]
+ },
+ {
+  "id": "wand-of-enthrallment",
+  "nombre": "Wand of Enthrallment",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Persuasive",
+    "texto": "Before you make a Presence Roll, you can mark a Stress to gain a +2 bonus to the result."
+   }
+  ]
+ },
+ {
+  "id": "keeper-s-staff",
+  "nombre": "Keeper's Staff",
+  "nivel": 2,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "advanced-broadsword",
+  "nombre": "Advanced Broadsword",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "advanced-longsword",
+  "nombre": "Advanced Longsword",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-battleaxe",
+  "nombre": "Advanced Battleaxe",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-greatsword",
+  "nombre": "Advanced Greatsword",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Massive",
+    "texto": "-1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "advanced-mace",
+  "nombre": "Advanced Mace",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-warhammer",
+  "nombre": "Advanced Warhammer",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Heavy",
+    "texto": "-1 to Evasion"
+   }
+  ]
+ },
+ {
+  "id": "advanced-dagger",
+  "nombre": "Advanced Dagger",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-quarterstaff",
+  "nombre": "Advanced Quarterstaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-cutlass",
+  "nombre": "Advanced Cutlass",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-rapier",
+  "nombre": "Advanced Rapier",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Quick",
+    "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+   }
+  ]
+ },
+ {
+  "id": "advanced-halberd",
+  "nombre": "Advanced Halberd",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 8,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Cumbersome",
+    "texto": "-1 to Finesse"
+   }
+  ]
+ },
+ {
+  "id": "advanced-spear",
+  "nombre": "Advanced Spear",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-shortbow",
+  "nombre": "Advanced Shortbow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-crossbow",
+  "nombre": "Advanced Crossbow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-longbow",
+  "nombre": "Advanced Longbow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Cumbersome",
+    "texto": "-1 to Finesse"
+   }
+  ]
+ },
+ {
+  "id": "flickerfly-blade",
+  "nombre": "Flickerfly Blade",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Sharpwing",
+    "texto": "Gain a bonus to your damage rolls equal to your Agility."
+   }
+  ]
+ },
+ {
+  "id": "bravesword",
+  "nombre": "Bravesword",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Brave",
+    "texto": "-1 to Evasion; +3 to Severe damage threshold"
+   }
+  ]
+ },
+ {
+  "id": "hammer-of-wrath",
+  "nombre": "Hammer of Wrath",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Devastating",
+    "texto": "Before you make an attack roll, you can mark a Stress to use a d20 as your damage die."
+   }
+  ]
+ },
+ {
+  "id": "labrys-axe",
+  "nombre": "Labrys Axe",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Protective",
+    "texto": "+1 to Armor Score"
+   }
+  ]
+ },
+ {
+  "id": "meridian-cutlass",
+  "nombre": "Meridian Cutlass",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Dueling",
+    "texto": "When there are no other creatures within Close range of the target, gain advantage on your attack roll against them."
+   }
+  ]
+ },
+ {
+  "id": "retractable-saber",
+  "nombre": "Retractable Saber",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Retractable",
+    "texto": "The blade can be hidden in the hilt to avoid detection."
+   }
+  ]
+ },
+ {
+  "id": "double-flail",
+  "nombre": "Double Flail",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 8,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "talon-blades",
+  "nombre": "Talon Blades",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Brutal",
+    "texto": "When you roll the maximum value on a damage die, roll an additional damage die."
+   }
+  ]
+ },
+ {
+  "id": "black-powder-revolver",
+  "nombre": "Black Powder Revolver",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 8,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Reloading",
+    "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+   }
+  ]
+ },
+ {
+  "id": "spiked-bow",
+  "nombre": "Spiked Bow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versatile",
+    "texto": "This weapon can also be used with these statistics—Agility, Melee, d10+5."
+   }
+  ]
+ },
+ {
+  "id": "advanced-arcane-gauntlets",
+  "nombre": "Advanced Arcane Gauntlets",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-hallowed-axe",
+  "nombre": "Advanced Hallowed Axe",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-glowing-rings",
+  "nombre": "Advanced Glowing Rings",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 8,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-hand-runes",
+  "nombre": "Advanced Hand Runes",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-returning-blade",
+  "nombre": "Advanced Returning Blade",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Returning",
+    "texto": "When this weapon is thrown within its range, it appears in your hand immediately after the attack."
+   }
+  ]
+ },
+ {
+  "id": "advanced-shortstaff",
+  "nombre": "Advanced Shortstaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-dualstaff",
+  "nombre": "Advanced Dualstaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-scepter",
+  "nombre": "Advanced Scepter",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versatile",
+    "texto": "This weapon can also be used with these statistics—Presence, Melee, d8+4."
+   }
+  ]
+ },
+ {
+  "id": "advanced-wand",
+  "nombre": "Advanced Wand",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "advanced-greatstaff",
+  "nombre": "Advanced Greatstaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "axe-of-fortunis",
+  "nombre": "Axe of Fortunis",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 8,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Lucky",
+    "texto": "On a failed attack, you can mark a Stress to reroll your attack."
+   }
+  ]
+ },
+ {
+  "id": "blessed-anlace",
+  "nombre": "Blessed Anlace",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Healing",
+    "texto": "During downtime, automatically clear a Hit Point."
+   }
+  ]
+ },
+ {
+  "id": "ghostblade",
+  "nombre": "Ghostblade",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Otherworldly",
+    "texto": "On a successful attack, you can deal physical or magic damage."
+   }
+  ]
+ },
+ {
+  "id": "runes-of-ruination",
+  "nombre": "Runes of Ruination",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 20,
+   "mod": 4,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Painful",
+    "texto": "Each time you make a successful attack, you must mark a Stress."
+   }
+  ]
+ },
+ {
+  "id": "widogast-pendant",
+  "nombre": "Widogast Pendant",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 5,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Timebending",
+    "texto": "You choose the target of your attack after making your attack roll."
+   }
+  ]
+ },
+ {
+  "id": "gilded-bow",
+  "nombre": "Gilded Bow",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Self-Correcting",
+    "texto": "When you roll a 1 on a damage die, it deals 6 damage instead."
+   }
+  ]
+ },
+ {
+  "id": "firestaff",
+  "nombre": "Firestaff",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Burning",
+    "texto": "When you roll a 6 on a damage die, the target must mark a Stress."
+   }
+  ]
+ },
+ {
+  "id": "mage-orb",
+  "nombre": "Mage Orb",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "ilmari-s-rifle",
+  "nombre": "Ilmari's Rifle",
+  "nivel": 3,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Reloading",
+    "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+   }
+  ]
+ },
+ {
+  "id": "legendary-broadsword",
+  "nombre": "Legendary Broadsword",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "legendary-longsword",
+  "nombre": "Legendary Longsword",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-battleaxe",
+  "nombre": "Legendary Battleaxe",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-greatsword",
+  "nombre": "Legendary Greatsword",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Massive",
+    "texto": "-1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "legendary-mace",
+  "nombre": "Legendary Mace",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-warhammer",
+  "nombre": "Legendary Warhammer",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Heavy",
+    "texto": "-1 to Evasion"
+   }
+  ]
+ },
+ {
+  "id": "legendary-dagger",
+  "nombre": "Legendary Dagger",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-quarterstaff",
+  "nombre": "Legendary Quarterstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-cutlass",
+  "nombre": "Legendary Cutlass",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-rapier",
+  "nombre": "Legendary Rapier",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Quick",
+    "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+   }
+  ]
+ },
+ {
+  "id": "legendary-halberd",
+  "nombre": "Legendary Halberd",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 11,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Cumbersome",
+    "texto": "-1 to Finesse"
+   }
+  ]
+ },
+ {
+  "id": "legendary-spear",
+  "nombre": "Legendary Spear",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-shortbow",
+  "nombre": "Legendary Shortbow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-crossbow",
+  "nombre": "Legendary Crossbow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 10,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-longbow",
+  "nombre": "Legendary Longbow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Cumbersome",
+    "texto": "-1 to Finesse"
+   }
+  ]
+ },
+ {
+  "id": "dual-ended-sword",
+  "nombre": "Dual-Ended Sword",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Quick",
+    "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+   }
+  ]
+ },
+ {
+  "id": "impact-gauntlet",
+  "nombre": "Impact Gauntlet",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 11,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Concussive",
+    "texto": "On a successful attack, you can spend a Hope to knock the target back to Far range."
+   }
+  ]
+ },
+ {
+  "id": "sledge-axe",
+  "nombre": "Sledge Axe",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 12,
+   "mod": 13,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Destructive",
+    "texto": "-1 to Agility; on a successful attack, all adversaries within Very Close range must mark a Stress."
+   }
+  ]
+ },
+ {
+  "id": "curved-dagger",
+  "nombre": "Curved Dagger",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Serrated",
+    "texto": "When you roll a 1 on a damage die, it deals 8 damage instead."
+   }
+  ]
+ },
+ {
+  "id": "extended-polearm",
+  "nombre": "Extended Polearm",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Long",
+    "texto": "This weapon's attack targets all adversaries in a line within range."
+   }
+  ]
+ },
+ {
+  "id": "swinging-ropeblade",
+  "nombre": "Swinging Ropeblade",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Grappling",
+    "texto": "On a successful attack, you can spend a Hope to Restrain the target or pull them into Melee range with you."
+   }
+  ]
+ },
+ {
+  "id": "ricochet-axes",
+  "nombre": "Ricochet Axes",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 11,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Bouncing",
+    "texto": "Mark 1 or more Stress to hit that many targets in range of the attack."
+   }
+  ]
+ },
+ {
+  "id": "aantari-bow",
+  "nombre": "Aantari Bow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 11,
+   "tipo": "fisico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "hand-cannon",
+  "nombre": "Hand Cannon",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 12,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Reloading",
+    "texto": "After you make an attack, roll a d6. On a 1, you must mark a Stress to reload this weapon before you can fire it again."
+   }
+  ]
+ },
+ {
+  "id": "legendary-arcane-gauntlets",
+  "nombre": "Legendary Arcane Gauntlets",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 12,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-hallowed-axe",
+  "nombre": "Legendary Hallowed Axe",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-glowing-rings",
+  "nombre": "Legendary Glowing Rings",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "agilidad",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 11,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-hand-runes",
+  "nombre": "Legendary Hand Runes",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-returning-blade",
+  "nombre": "Legendary Returning Blade",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Returning",
+    "texto": "When this weapon is thrown within its range, it appears in your hand immediately after the attack."
+   }
+  ]
+ },
+ {
+  "id": "legendary-shortstaff",
+  "nombre": "Legendary Shortstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 10,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-dualstaff",
+  "nombre": "Legendary Dualstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 12,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-scepter",
+  "nombre": "Legendary Scepter",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Versatile",
+    "texto": "This weapon can also be used with these statistics—Presence, Melee, d8+6."
+   }
+  ]
+ },
+ {
+  "id": "legendary-wand",
+  "nombre": "Legendary Wand",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 10,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "legendary-greatstaff",
+  "nombre": "Legendary Greatstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "sword-of-light-flame",
+  "nombre": "Sword of Light & Flame",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 11,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Hot",
+    "texto": "This weapon cuts through solid material."
+   }
+  ]
+ },
+ {
+  "id": "siphoning-gauntlets",
+  "nombre": "Siphoning Gauntlets",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "presencia",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Lifestealing",
+    "texto": "On a successful attack, roll a d6. On a result of 6, clear a Hit Point or clear a Stress."
+   }
+  ]
+ },
+ {
+  "id": "midas-scythe",
+  "nombre": "Midas Scythe",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 10,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Greedy",
+    "texto": "Spend a handful of gold to gain a +1 bonus to your Proficiency on a damage roll."
+   }
+  ]
+ },
+ {
+  "id": "floating-bladeshards",
+  "nombre": "Floating Bladeshards",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Powerful",
+    "texto": "On a successful attack, roll an additional damage die and discard the lowest result."
+   }
+  ]
+ },
+ {
+  "id": "bloodstaff",
+  "nombre": "Bloodstaff",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 20,
+   "mod": 7,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Painful",
+    "texto": "Each time you make a successful attack, you must mark a Stress."
+   }
+  ]
+ },
+ {
+  "id": "thistlebow",
+  "nombre": "Thistlebow",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "instinto",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 13,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Reliable",
+    "texto": "+1 to attack rolls"
+   }
+  ]
+ },
+ {
+  "id": "wand-of-essek",
+  "nombre": "Wand of Essek",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 13,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Timebending",
+    "texto": "You can choose the target of your attack after making your attack roll."
+   }
+  ]
+ },
+ {
+  "id": "magus-revolver",
+  "nombre": "Magus Revolver",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 13,
+   "tipo": "magico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Reloading",
+    "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+   }
+  ]
+ },
+ {
+  "id": "fusion-gloves",
+  "nombre": "Fusion Gloves",
+  "nivel": 4,
+  "tipo": "primaria",
+  "rasgo": "conocimiento",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 9,
+   "tipo": "magico"
+  },
+  "manos": 2,
+  "rasgos": [
+   {
+    "nombre": "Bonded",
+    "texto": "Gain a bonus to your damage rolls equal to your level."
+   }
+  ]
+ },
+ {
+  "id": "shortsword",
+  "nombre": "Shortsword",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Paired",
+    "texto": "+2 to primary weapon damage to targets within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "round-shield",
+  "nombre": "Round Shield",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Protective",
+    "texto": "+1 to Armor Score"
+   }
+  ]
+ },
+ {
+  "id": "tower-shield",
+  "nombre": "Tower Shield",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Barrier",
+    "texto": "+2 to Armor Score; -1 to Evasion"
+   }
+  ]
+ },
+ {
+  "id": "small-dagger",
+  "nombre": "Small Dagger",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Paired",
+    "texto": "+2 to primary weapon damage to targets within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "whip",
+  "nombre": "Whip",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "presencia",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Startling",
+    "texto": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."
+   }
+  ]
+ },
+ {
+  "id": "grappler",
+  "nombre": "Grappler",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Hooked",
+    "texto": "On a successful attack, you can pull the target into Melee range."
+   }
+  ]
+ },
+ {
+  "id": "hand-crossbow",
+  "nombre": "Hand Crossbow",
+  "nivel": 1,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 1,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "improved-shortsword",
+  "nombre": "Improved Shortsword",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Paired",
+    "texto": "+3 to primary weapon damage to targets within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "improved-round-shield",
+  "nombre": "Improved Round Shield",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Protective",
+    "texto": "+2 to Armor Score"
+   }
+  ]
+ },
+ {
+  "id": "improved-tower-shield",
+  "nombre": "Improved Tower Shield",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Barrier",
+    "texto": "+3 to Armor Score; -1 to Evasion"
+   }
+  ]
+ },
+ {
+  "id": "improved-small-dagger",
+  "nombre": "Improved Small Dagger",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Paired",
+    "texto": "+3 to primary weapon damage to targets within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "improved-whip",
+  "nombre": "Improved Whip",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "presencia",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Startling",
+    "texto": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."
+   }
+  ]
+ },
+ {
+  "id": "improved-grappler",
+  "nombre": "Improved Grappler",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Hooked",
+    "texto": "On a successful attack, you can pull the target into Melee range."
+   }
+  ]
+ },
+ {
+  "id": "improved-hand-crossbow",
+  "nombre": "Improved Hand Crossbow",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 3,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "spiked-shield",
+  "nombre": "Spiked Shield",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Double Duty",
+    "texto": "+1 to Armor Score; +1 to primary weapon damage within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "parrying-dagger",
+  "nombre": "Parrying Dagger",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 2,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Parry",
+    "texto": "When you are attacked, roll this weapon's damage dice. If any of the attacker's damage dice rolled the same value as your dice, the matching results are discarded from the attacker's damage dice before the damage you take is totaled."
+   }
+  ]
+ },
+ {
+  "id": "returning-axe",
+  "nombre": "Returning Axe",
+  "nivel": 2,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Returning",
+    "texto": "When this weapon is thrown within its range, it appears in your hand immediately after the attack."
+   }
+  ]
+ },
+ {
+  "id": "advanced-shortsword",
+  "nombre": "Advanced Shortsword",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Paired",
+    "texto": "+4 to primary weapon damage to targets within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "advanced-round-shield",
+  "nombre": "Advanced Round Shield",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Protective",
+    "texto": "+3 to Armor Score"
+   }
+  ]
+ },
+ {
+  "id": "advanced-tower-shield",
+  "nombre": "Advanced Tower Shield",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Barrier",
+    "texto": "+4 to Armor Score; -1 to Evasion"
+   }
+  ]
+ },
+ {
+  "id": "advanced-small-dagger",
+  "nombre": "Advanced Small Dagger",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Paired",
+    "texto": "+4 to primary weapon damage to targets within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "advanced-whip",
+  "nombre": "Advanced Whip",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "presencia",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Startling",
+    "texto": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."
+   }
+  ]
+ },
+ {
+  "id": "advanced-grappler",
+  "nombre": "Advanced Grappler",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Hooked",
+    "texto": "On a successful attack, you can pull the target into Melee range."
+   }
+  ]
+ },
+ {
+  "id": "advanced-hand-crossbow",
+  "nombre": "Advanced Hand Crossbow",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 5,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "buckler",
+  "nombre": "Buckler",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Deflecting",
+    "texto": "When you are attacked, you can mark an Armor Slot to gain a bonus to your Evasion equal to your available Armor Score against the attack."
+   }
+  ]
+ },
+ {
+  "id": "powered-gauntlet",
+  "nombre": "Powered Gauntlet",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "conocimiento",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Charged",
+    "texto": "Mark a Stress to gain a +1 bonus to your Proficiency on a primary weapon attack."
+   }
+  ]
+ },
+ {
+  "id": "hand-sling",
+  "nombre": "Hand Sling",
+  "nivel": 3,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "muy-lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 4,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Versatile",
+    "texto": "This weapon can also be used with these statistics—Finesse, Close, d8+4."
+   }
+  ]
+ },
+ {
+  "id": "legendary-shortsword",
+  "nombre": "Legendary Shortsword",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Paired",
+    "texto": "+5 to primary weapon damage to targets within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "legendary-round-shield",
+  "nombre": "Legendary Round Shield",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Protective",
+    "texto": "+4 to Armor Score"
+   }
+  ]
+ },
+ {
+  "id": "legendary-tower-shield",
+  "nombre": "Legendary Tower Shield",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Barrier",
+    "texto": "+5 to Armor Score; -1 to Evasion."
+   }
+  ]
+ },
+ {
+  "id": "legendary-small-dagger",
+  "nombre": "Legendary Small Dagger",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 8,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Paired",
+    "texto": "+5 to primary weapon damage to targets within Melee range"
+   }
+  ]
+ },
+ {
+  "id": "legendary-whip",
+  "nombre": "Legendary Whip",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "presencia",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Startling",
+    "texto": "Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range."
+   }
+  ]
+ },
+ {
+  "id": "legendary-grappler",
+  "nombre": "Legendary Grappler",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Hooked",
+    "texto": "On a successful attack, you can pull the target into Melee range."
+   }
+  ]
+ },
+ {
+  "id": "legendary-hand-crossbow",
+  "nombre": "Legendary Hand Crossbow",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "sutileza",
+  "alcance": "lejano",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 7,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": []
+ },
+ {
+  "id": "braveshield",
+  "nombre": "Braveshield",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "agilidad",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 6,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Sheltering",
+    "texto": "When you mark an Armor Slot, it reduces damage for you and all allies within Melee range of you who took the same damage."
+   }
+  ]
+ },
+ {
+  "id": "knuckle-claws",
+  "nombre": "Knuckle Claws",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "fuerza",
+  "alcance": "cuerpo",
+  "dano": {
+   "dados": 1,
+   "lados": 6,
+   "mod": 8,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Doubled Up",
+    "texto": "When you make an attack with your primary weapon, you can deal damage to another target within Melee range."
+   }
+  ]
+ },
+ {
+  "id": "primer-shard",
+  "nombre": "Primer Shard",
+  "nivel": 4,
+  "tipo": "secundaria",
+  "rasgo": "instinto",
+  "alcance": "muy-cercano",
+  "dano": {
+   "dados": 1,
+   "lados": 4,
+   "mod": 0,
+   "tipo": "fisico"
+  },
+  "manos": 1,
+  "rasgos": [
+   {
+    "nombre": "Locked On",
+    "texto": "On a successful attack, your next attack against the same target with your primary weapon automatically succeeds."
+   }
+  ]
+ }
+]

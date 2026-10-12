@@ -1,0 +1,294 @@
+[
+  {
+    "id": "executioners-guild",
+    "clase": "assassin",
+    "nombre": "Executioners Guild",
+    "descripcion": "Play the Executioners Guild if you want to strike down your targets with lethal precision.",
+    "rasgo_lanzamiento": "agilidad",
+    "base": [
+      {
+        "nombre": "First Strike",
+        "texto": "The first time in a scene you succeed on an attack, you deal double damage."
+      },
+      {
+        "nombre": "Ambush",
+        "texto": "Your \"Marked for Death\" feature uses **d6s** instead of d4s."
+      }
+    ],
+    "especializacion": [
+      {
+        "nombre": "Death Strike",
+        "texto": "When you deal Severe damage to a creature, you can **mark a Stress** to force them to mark an additional Hit Point."
+      },
+      {
+        "nombre": "Scorpion's Poise",
+        "texto": "You gain a +2 bonus to your Evasion against attacks made by a creature you've _Marked for Death_."
+      }
+    ],
+    "maestria": [
+      {
+        "nombre": "True Strike",
+        "texto": "Once per long rest when you fail an attack, you can **spend a Hope** to make it a success instead."
+      },
+      {
+        "nombre": "Backstab",
+        "texto": "Your \"Marked for Death\" feature uses **d8s** instead of d6s."
+      }
+    ],
+    "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Executioners%20Guild.md",
+    "verificado": false
+  },
+  {
+    "id": "poisoners-guild",
+    "clase": "assassin",
+    "nombre": "Poisoners Guild",
+    "descripcion": "Play the Poisoners Guild if you want to debilitate your targets with punishing afflictions.",
+    "rasgo_lanzamiento": "conocimiento",
+    "base": [
+      {
+        "nombre": "Toxic Concoctions",
+        "texto": "**Mark a Stress** to place **1d4+1** tokens on this card. When you make a successful weapon attack, you can spend a token to afflict the target with a poison. You know these poisons:\n\n- _Ghost Petal:_ The target becomes temporarily _Vulnerable_.\n- _Grave Spore:_ The target must also mark a Stress.\n- _Leech Weed:_ You deal an extra **1d6** damage on this attack.\n\nWhen you take a long rest, clear all unspent tokens."
+      }
+    ],
+    "especializacion": [
+      {
+        "nombre": "Poison Compendium",
+        "texto": "You also know these poisons:\n\n- _Midnight Vine:_ The target has disadvantage on attack rolls until it marks a Stress to clear this condition.\n- _Gorgon Root:_ The target becomes temporarily _Restrained_."
+      },
+      {
+        "nombre": "Twin Fang",
+        "texto": "When you afflict a target _Marked for Death_ with a poison you know, you can spend an additional token to also inflict the effect of a second poison you know."
+      }
+    ],
+    "maestria": [
+      {
+        "nombre": "Venomancer",
+        "texto": "You also know these poisons:\n\n- _Blight Seed:_ The target gains a -3 penalty to their damage thresholds until the end of the scene. This effect can't stack.\n- _Fear Leaf:_ You deal extra damage equal to the result of your Fear Die on this attack.\n- _Corpse Thorn:_ The target gains disadvantage on reaction rolls until the end of the scene."
+      },
+      {
+        "nombre": "Adder's Blessing",
+        "texto": "You are immune to poisons and other toxins."
+      }
+    ],
+    "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Poisoners%20Guild.md",
+    "verificado": false
+  },
+  {
+    "id": "juggernaut",
+    "clase": "brawler",
+    "nombre": "Juggernaut",
+    "descripcion": "Play the Juggernaut if you want to pulverize your opponents with crushing blows.",
+    "rasgo_lanzamiento": null,
+    "base": [
+      {
+        "nombre": "Rugged",
+        "texto": "Gain a permanent +3 bonus to your Severe damage threshold."
+      },
+      {
+        "nombre": "Overwhelm",
+        "texto": "When you succeed on an attack against a target, you can **spend a Hope** to throw the target within Close range or to force them to mark a Stress."
+      }
+    ],
+    "especializacion": [
+      {
+        "nombre": "Surrounded",
+        "texto": "When you make an attack with a Melee weapon, you can **spend any number of Hope** to target an equal number of additional creatures within Melee range."
+      },
+      {
+        "nombre": "Eye for an Eye",
+        "texto": "Once per rest when an adversary within Melee range forces you to mark any number of Hit Points, you can **mark a Stress** to force them to mark the same number of Hit Points."
+      }
+    ],
+    "maestria": [
+      {
+        "nombre": "Pummeljoy",
+        "texto": "When you critically succeed on a Melee weapon attack, you gain an additional Hope, clear an additional Stress, and gain a +1 bonus to your Proficiency for that attack."
+      },
+      {
+        "nombre": "Not Done Yet",
+        "texto": "When you take Severe damage, you can gain a Hope or clear a Stress."
+      }
+    ],
+    "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Juggernaut.md",
+    "verificado": false
+  },
+  {
+    "id": "martial-artist",
+    "clase": "brawler",
+    "nombre": "Martial Artist",
+    "descripcion": "Play the Martial Artist if you want to use a variety of fighting styles to eliminate your foes.",
+    "rasgo_lanzamiento": null,
+    "base": [
+      {
+        "nombre": "Stance Fighter",
+        "texto": "You can channel your inner resolve to shift into martial stances that grant you special benefits in combat.\n\nTake the Martial Stances sheet and choose two martial stances from Tier 1. Each time you level up your character, choose an additional stance from your tier or lower.\n\n**MARTIAL STANCES**\n\nWhen you choose the Martial Artist subclass, take the Martial Stances sheet to track which stances your character knows. You can also track which stance you have active and your current Focus.\n\n**STANCES**\n\nStances are special body positionings that enable Martial Artists to attack, react, or defend in combat. Each stance grants your character a different ability, bonus, or feature while active.\n\nYou choose two stances from Tier 1 when you first take the Martial Artist's subclass foundation card. Mark the circle next to each to indicate that your character knows and has access to them. Mark a new stance from your tier or below each time you gain a level.\n\n**FOCUS**\n\nFocus represents your character's poise, clarity, and control. Once per rest during a moment of calm, you can clear your mind and refocus your martial instincts. Clear your Focus track, then roll a number of **d6s** equal to your Instinct and gain Focus equal to the highest result rolled. You can hold a maximum of 6 Focus.\n\n**SHIFTING INTO STANCES**\n\nYou can **spend a Focus** to shift into a martial stance and gain its effects. You can shift only into stances you've marked as known. When you shift into a stance, it's considered your active stance until you drop out of it.\n\nYou can't shift into or have more than one active stance at a time. Until you shift into a stance, you are not considered to be in a stance or to have an active stance.\n\n**DROPPING OUT OF STANCES**\n\nIf you are already in a stance when you shift into a different stance, you automatically drop out of the previously active stance. You also drop out of your active stance when you take Severe damage or mark your last Hit Point. Otherwise, you drop out of your active stance at the end of the scene. When you drop out of a stance, you lose any ongoing benefits it provides.\n\n**STANCE FEATURES**\n\nThe following section lists all martial stances by tier.\n\n**TIER 1**\n\n_**Favored:**_ Gain a bonus to damage rolls equal to a trait of your choice.\n\n_**Invigorating:**_ On a successful attack, roll a **d4**. On a result of 4, gain a Focus.\n\n_**Quick:**_ When you make an attack, you can **spend a Focus** or **mark a Stress** to target another creature within range with that attack.\n\n_**Reliable:**_ Gain a +1 bonus to your attack rolls.\n\n**TIER 2**\n\n_**Aggressive:**_ Gain a -1 penalty to your Evasion. On a successful attack, roll an additional damage die and discard the lowest result.\n\n_**Anchored:**_ Gain a +2 bonus to your damage thresholds. While in this stance, you can't be moved against your will.\n\n_**Defensive:**_ Attack rolls targeting you from within Melee range have disadvantage unless the attacker marks a Stress to negate the disadvantage.\n\n_**Otherworldly:**_ On a successful attack, you can deal physical or magic damage.\n\n**TIER 3**\n\n_**Grappling:**_ On a successful attack within Melee range, you can **spend a Focus** or **mark a Stress** to temporarily _Restrain_ the target or throw the target up to Close range.\n\n_**Scary:**_ On a successful attack, the target must mark a Stress.\n\n_**Stable:**_ You can **spend a Focus** instead of an Armor Slot to reduce damage.\n\n_**Vigilant:**_ When you are targeted by an attack, you can **mark a Stress** to gain a **d6** bonus to your Evasion against the attack.\n\n**TIER 4**\n\n_**Crushing:**_ When you deal Severe damage, you can **spend a Hope** to force the target to mark an additional Hit Point.\n\n_**Exacting:**_ When you roll a 1 on a damage die, you can treat it as the highest value on the die instead.\n\n_**Honed:**_ **Spend a Focus** before you make an attack roll to gain a +1 bonus to your Proficiency for that attack.\n\n_**Isolating:**_ Gain advantage on attack rolls when there are no other creatures within Very Close range of you or your target."
+      }
+    ],
+    "especializacion": [
+      {
+        "nombre": "Keen Defenses",
+        "texto": "When you're targeted by an attack, you can **spend a Focus** to gain a bonus to your Evasion equal to your tier against the attack."
+      },
+      {
+        "nombre": "Focus Cannon",
+        "texto": "**Spend a Focus** to make an Instinct Roll against an adversary within Far range. On a success, deal **d20+3** magic damage using your Proficiency."
+      }
+    ],
+    "maestria": [
+      {
+        "nombre": "Limit Breaker",
+        "texto": "Once per rest, you can perform an unbelievable feat of athletic prowess, such as running across water, leaping between distant rooftops, or scaling a building without needing to roll. When you do, gain a Hope and clear a Stress."
+      },
+      {
+        "nombre": "Flow State",
+        "texto": "You can **mark a Stress** instead of spending a Focus to shift into a different stance. Additionally, you can **spend a Focus** instead of marking a Stress to start a combo strike."
+      }
+    ],
+    "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Martial%20Artist.md",
+    "verificado": false
+  },
+  {
+    "id": "pact-of-the-endless",
+    "clase": "warlock",
+    "nombre": "Pact of the Endless",
+    "descripcion": "Play the Pact of the Endless if you want to stand strong against enemies and avoid death.",
+    "rasgo_lanzamiento": "presencia",
+    "base": [
+      {
+        "nombre": "Patron's Mantle",
+        "texto": "**Spend a Favor** to cloak yourself in a terrifying aspect of your Patron that lasts until you take Severe damage or the scene ends. While this effect is active, you gain a bonus to your damage thresholds equal to your tier and have advantage on action rolls to intimidate a target."
+      },
+      {
+        "nombre": "Deathless Embrace",
+        "texto": "Once per rest, **spend any number of Favor** to roll an equal number of Patron Dice. For each result of 4 or higher, clear a Hit Point."
+      }
+    ],
+    "especializacion": [
+      {
+        "nombre": "Harrowing Invocation",
+        "texto": "When an adversary targets you or an ally within Very Close range with an attack, you can **spend a Favor** to give them disadvantage on the roll. If the adversary fails the roll, they must also mark a Stress."
+      },
+      {
+        "nombre": "Damage Sink",
+        "texto": "Once per rest, you can **spend a Favor** to halve incoming damage."
+      }
+    ],
+    "maestria": [
+      {
+        "nombre": "Dark Aegis",
+        "texto": "Once per long rest when you would take damage, you can **spend a Favor** instead of marking Hit Points."
+      },
+      {
+        "nombre": "Draining Bane",
+        "texto": "When an adversary targets you or an ally within Very Close range with an attack, you can **spend a Favor** to _Drain_ them. When you do, they must mark a Stress, and you can clear a Stress. While _Drained_, the target uses a **d12** instead of a d20 for attack rolls (including for advantage or disadvantage) until they fail a roll."
+      }
+    ],
+    "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Pact%20of%20the%20Endless.md",
+    "verificado": false
+  },
+  {
+    "id": "pact-of-the-wrathful",
+    "clase": "warlock",
+    "nombre": "Pact of the Wrathful",
+    "descripcion": "Play the Pact of the Wrathful if you want to destroy those who act against you.",
+    "rasgo_lanzamiento": "presencia",
+    "base": [
+      {
+        "nombre": "Patron's Fury",
+        "texto": "**Spend a Favor** to imbue your attacks with your Patron's power until you deal Severe damage or the scene ends. When you roll damage while this effect is active, you also roll a number of Patron Dice equal to your tier and add their total to the damage dealt."
+      },
+      {
+        "nombre": "Deadly Vengeance",
+        "texto": "When you mark any number of Hit Points from an attack, you can **spend a Favor** to roll an equal number of Patron Dice. For each result of 4 or higher, the attacker marks a Hit Point."
+      }
+    ],
+    "especializacion": [
+      {
+        "nombre": "Menacing Reach",
+        "texto": "**Spend a Favor** to increase the range of your primary weapon by one step (such as Melee to Very Close or Very Close to Close) to a maximum of Very Far range. This effect ends when you make a successful attack with that weapon."
+      },
+      {
+        "nombre": "Diminish My Foes",
+        "texto": "When you succeed with Hope on an action roll against a target, you can **spend any number of Favor** to force the target to mark an equal number of Stress."
+      }
+    ],
+    "maestria": [
+      {
+        "nombre": "Fearsome Attack",
+        "texto": "**Spend a Favor** to reroll any number of your damage dice. You can continue spending Favor to use this feature on the same damage roll."
+      },
+      {
+        "nombre": "Otherworldly Ire",
+        "texto": "Once per rest when you take damage, you can **spend any number of Favor** to roll that many Patron Dice and target a number of creatures within Close range equal to the highest result. Each target must mark a Hit Point."
+      }
+    ],
+    "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Pact%20of%20the%20Wrathful.md",
+    "verificado": false
+  },
+  {
+    "id": "hedge-witch",
+    "clase": "witch",
+    "nombre": "Hedge Witch",
+    "descripcion": "Play the Hedge Witch if you want to use your craft to empower yourself and your party.",
+    "rasgo_lanzamiento": "conocimiento",
+    "base": [
+      {
+        "nombre": "Herbal Remedies",
+        "texto": "When you or an ally in the scene clears 1 or more Hit Points or Stress as the result of using a consumable, increase the number cleared by 1."
+      },
+      {
+        "nombre": "Enchanted Talisman",
+        "texto": "Once per rest, you can imbue a small item with your protective essence. **Spend any number of Hope** to place an equal number of tokens on this card. When the person holding the talisman takes damage, spend a token to reduce the number of Hit Points they mark by one. Clear all tokens from this card when you take a rest."
+      }
+    ],
+    "especializacion": [
+      {
+        "nombre": "Walk Between Worlds",
+        "texto": "During a moment of calm, make a **Spellcast Roll (13)**. Once per rest on a success, you can **mark a Stress** to step beyond the veil of death and converse with any nearby spirits. Place a number of tokens equal to your Spellcast trait on this card and remove one each time a spirit answers a question. When the last token is removed or at the end of the scene, you return to the Mortal Realm in the same spot you left it."
+      },
+      {
+        "nombre": "Vexing Malison",
+        "texto": "You have advantage on attacks against _Hexed_ creatures."
+      }
+    ],
+    "maestria": [
+      {
+        "nombre": "Circle of Power",
+        "texto": "Once per rest, mark a circle on the ground outlining a Very Close area around you, and place a number of tokens equal to your Spellcast trait on this card. While within this circle, you and your allies gain a +2 bonus to damage thresholds, attack rolls, and Evasion. Remove a token each time you or an ally within the circle makes an action roll or evades an attack. This spell lasts until the last token is removed or you exit the circle."
+      }
+    ],
+    "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Hedge%20Witch.md",
+    "verificado": false
+  },
+  {
+    "id": "moon-witch",
+    "clase": "witch",
+    "nombre": "Moon Witch",
+    "descripcion": "Play the Moon Witch if you want to embody celestial power to amplify your magic.",
+    "rasgo_lanzamiento": "instinto",
+    "base": [
+      {
+        "nombre": "Night's Glamour",
+        "texto": "Make a **Spellcast Roll (13)** to _Glamour_ yourself in a bewitching facade. While _Glamoured_, you have advantage on rolls that leverage your illusory appearance. Additionally, adversaries within Close range must mark a Stress to attack you.\n\nUnless you **mark a Stress** to maintain your _Glamour_, it drops when you mark a Hit Point or deal damage."
+      }
+    ],
+    "especializacion": [
+      {
+        "nombre": "Moonbeam",
+        "texto": "Once per session, you can conjure a column of moonlight that illuminates the area within Close range until the end of the scene. While bathed in this moonlight, you and your allies gain a +1 bonus to Spellcast Rolls and can see through illusions."
+      },
+      {
+        "nombre": "Ire of Pale Light",
+        "texto": "When a _Hexed_ creature within Very Far range fails an attack, they must mark a Stress."
+      }
+    ],
+    "maestria": [
+      {
+        "nombre": "Lunar Phases",
+        "texto": "At the beginning of each session, roll a **d6** and place it on this card. You gain the matching effect until the end of session.\n\n| Roll | Phase | Effect |\n| --- | --- | --- |\n| **1** | New | **Spend a Hope** to negate Minor damage. |\n| **2-3** | Waxing | +2 to damage rolls |\n| **4** | Full | +3 to damage thresholds |\n| **5-6** | Waning | +1 to Evasion |\n\nOnce per rest, you can **spend a Hope** to increase the value of this die by one. If you increase the value of a 6, it becomes a 1."
+      }
+    ],
+    "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Moon%20Witch.md",
+    "verificado": false
+  }
+]

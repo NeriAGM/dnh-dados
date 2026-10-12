@@ -1,0 +1,326 @@
+[
+ {
+  "id": "clank",
+  "nombre": "Clank",
+  "nombre_en": "Clank",
+  "descripcion": "Los clank son seres mecánicos conscientes, construidos con materiales muy variados, como metal, madera y piedra. Pueden parecerse a humanoides, a animales o incluso a objetos inanimados. Igual que los seres orgánicos, sus cuerpos vienen en una enorme variedad de tamaños. Como cada uno se construye a la medida, muchos clank tienen configuraciones físicas muy especializadas: por ejemplo, manos con garras para sujetar, ruedas para desplazarse o armas integradas.\n\nMuchos clank adoptan modificaciones corporales tanto por estilo como por función, y es común que miembros de otras ancestrías recurran a artesanos clank para que les fabriquen ayudas de movilidad y adornos corporales a la medida. Otras ancestrías pueden crear clank, incluso inspirándose en sus propias características físicas, pero también es común que los clank se construyan entre sí. La vida de un clank dura mientras pueda conseguir o fabricar piezas nuevas, así que su forma física es prácticamente inmortal. Aun así, su mente sí resiente el paso del tiempo y se deteriora conforme la magia que los mueve pierde potencia.",
+  "rasgos": [
+   {
+    "nombre": "Diseño con propósito",
+    "nombre_en": "Purposeful Design",
+    "texto": "Decide quién te creó y con qué propósito. Al crear a tu personaje, elige la Experiencia que mejor se alinee con ese propósito y obtén un bono permanente de +1 en ella."
+   },
+   {
+    "nombre": "Eficiente",
+    "nombre_en": "Efficient",
+    "texto": "Cuando tomas un descanso corto, puedes elegir una acción de descanso largo en lugar de una acción de descanso corto."
+   }
+  ]
+ },
+ {
+  "id": "drakona",
+  "nombre": "Drakona",
+  "nombre_en": "Drakona",
+  "descripcion": "Los drakona parecen dragones sin alas en forma humanoide y tienen un poderoso aliento elemental. Todos los drakona tienen escamas gruesas que les dan una excelente armadura natural, tanto contra ataques como contra las fuerzas de la naturaleza. Son de gran tamaño, de entre 5 y 7 pies en promedio, y tienen dientes largos y afilados. A un drakona le salen dientes nuevos durante toda su vida, de unos 350 años, así que nunca corre el riesgo de perder un incisivo para siempre. A diferencia de sus ancestros dragones, los drakona no tienen alas y no pueden volar sin ayuda mágica. Los miembros de esta ancestría heredan el elemento de su aliento de generación en generación, aunque en casos raros el poder elemental de un drakona es distinto al del resto de su familia.",
+  "rasgos": [
+   {
+    "nombre": "Escamas",
+    "nombre_en": "Scales",
+    "texto": "Tus escamas te sirven de protección natural. Cuando fueras a recibir daño Grave, puedes **marcar un Estrés** para marcar 1 Punto de Golpe menos."
+   },
+   {
+    "nombre": "Aliento elemental",
+    "nombre_en": "Elemental Breath",
+    "texto": "Elige un elemento para tu aliento (por ejemplo, electricidad, fuego o hielo). Puedes usar este aliento contra un objetivo o un grupo de objetivos a alcance Muy cercano; trátalo como un arma de Instinto que inflige **d8** de daño mágico usando tu Competencia."
+   }
+  ]
+ },
+ {
+  "id": "dwarf",
+  "nombre": "Enano",
+  "nombre_en": "Dwarf",
+  "descripcion": "A los enanos se les reconoce fácilmente como humanoides bajitos de complexión cuadrada, musculatura densa y pelo abundante. Su estatura promedio va de 4 a 5 ½ pies, y suelen ser anchos en proporción a su altura. Su piel y sus uñas tienen mucha queratina, lo que los hace resistentes por naturaleza. Esto les permite incrustarse gemas en el cuerpo y decorarse con tatuajes o perforaciones. Su pelo crece tupido, sobre todo en la cabeza, aunque algunos enanos también tienen el cuerpo cubierto de pelo grueso. Los enanos de todos los géneros pueden dejarse crecer vello facial, que a menudo arreglan en peinados elaborados. Por lo general, los enanos viven hasta 250 años y conservan su masa muscular hasta bien entrada la vejez.",
+  "rasgos": [
+   {
+    "nombre": "Piel gruesa",
+    "nombre_en": "Thick Skin",
+    "texto": "Cuando recibes daño Menor, puedes **marcar 2 de Estrés** en lugar de marcar un Punto de Golpe."
+   },
+   {
+    "nombre": "Fortaleza aumentada",
+    "nombre_en": "Increased Fortitude",
+    "texto": "**Gasta 3 de Esperanza** para reducir a la mitad el daño físico que te van a hacer."
+   }
+  ]
+ },
+ {
+  "id": "elf",
+  "nombre": "Elfo",
+  "nombre_en": "Elf",
+  "descripcion": "Los elfos suelen ser humanoides altos, de orejas puntiagudas y sentidos muy agudos. Sus orejas varían en tamaño y en forma de la punta, y con la edad las puntas empiezan a caerse. Aunque hay elfos de complexiones muy distintas, todos son bastante altos: miden más o menos entre 6 y 6 ½ pies. Todos los elfos pueden entrar en un trance celestial en lugar de dormir, lo que les permite descansar bien en poco tiempo.\n\nAlgunos elfos tienen lo que se conoce como una \"forma mística\", que aparece cuando un elfo se ha dedicado tan a fondo al estudio o a la protección del mundo natural que su forma física cambia. Estos rasgos pueden incluir pecas celestiales, hojas, enredaderas o flores en el cabello, ojos que titilan como fuego, y más. A veces estos rasgos se heredan de los padres, pero si un elfo cambia de entorno o de enfoque mágico, su apariencia va cambiando con el tiempo. Como los elfos viven unos 350 años, estos rasgos pueden transformarse más de una vez a lo largo de su vida.",
+  "rasgos": [
+   {
+    "nombre": "Reflejos rápidos",
+    "nombre_en": "Quick Reactions",
+    "texto": "**Marca un Estrés** para obtener ventaja en una tirada de reacción."
+   },
+   {
+    "nombre": "Trance celestial",
+    "nombre_en": "Celestial Trance",
+    "texto": "Durante un descanso, puedes entrar en trance para elegir una acción de tiempo de descanso adicional."
+   }
+  ]
+ },
+ {
+  "id": "faerie",
+  "nombre": "Hada",
+  "nombre_en": "Faerie",
+  "descripcion": "Las hadas son criaturas humanoides aladas con rasgos de insecto. Estas características abarcan todo un espectro, de lo humanoide a lo insectoide: algunas tienen brazos adicionales, ojos compuestos, órganos luminosos como linternas, exoesqueletos quitinosos o aguijones. Por su estrecho vínculo con el mundo natural, también es común que tengan atributos que les permiten camuflarse entre distintas plantas. La estatura promedio de un hada va de unos 2 a 5 pies, pero algunas llegan a medir hasta 7 pies. Todas las hadas tienen alas membranosas y pasan por un proceso de metamorfosis. El proceso y los cambios varían de un hada a otra, pero durante esta transformación cada individuo adquiere la apariencia única que conservará el resto de su vida, de aproximadamente 50 años.",
+  "rasgos": [
+   {
+    "nombre": "Doblasuerte",
+    "nombre_en": "Luckbender",
+    "texto": "Una vez por sesión, después de que tú o un aliado dispuesto a alcance Cercano haga una tirada de acción, puedes **gastar 3 de Esperanza** para volver a tirar los Dados de Dualidad."
+   },
+   {
+    "nombre": "Alas",
+    "nombre_en": "Wings",
+    "texto": "Puedes volar. Mientras vuelas, después de que un adversario haga un ataque contra ti, puedes **marcar un Estrés** para obtener un bono de +2 a tu Evasión contra ese ataque."
+   }
+  ]
+ },
+ {
+  "id": "faun",
+  "nombre": "Fauno",
+  "nombre_en": "Faun",
+  "descripcion": "Los faunos parecen cabras humanoides, con cuernos curvos, pupilas cuadradas y pezuñas hendidas. Aunque su apariencia varía, la mayoría tiene torso humanoide y la parte inferior del cuerpo de cabra, cubierta de pelaje tupido. Su cara puede ser más caprina o más humana, y la forma de sus orejas y cuernos es muy variada: hay cuernos cortos y apenas curvos, y otros mucho más grandes con un rizo marcado. El fauno promedio mide entre 4 y 6 ½ pies, pero su altura puede cambiar muchísimo de un momento a otro según su postura. La mayoría de los faunos tienen extremidades proporcionalmente largas, sin importar su tamaño o complexión, y son famosos por dar golpes poderosos con sus pezuñas hendidas. Los faunos viven unos 225 años y, conforme envejecen, su apariencia puede volverse cada vez más parecida a la de una cabra.",
+  "rasgos": [
+   {
+    "nombre": "Salto caprino",
+    "nombre_en": "Caprine Leap",
+    "texto": "Puedes saltar a cualquier punto dentro de alcance Cercano como si usaras tu movimiento normal, lo que te permite brincar obstáculos, saltar huecos o trepar barreras con facilidad."
+   },
+   {
+    "nombre": "Patada",
+    "nombre_en": "Kick",
+    "texto": "Cuando tienes éxito en un ataque contra un objetivo a alcance Cuerpo a cuerpo, puedes **marcar un Estrés** para impulsarte pateándolo; infliges **2d6** de daño adicional y empujas, a ti o al objetivo, hasta alcance Muy cercano."
+   }
+  ]
+ },
+ {
+  "id": "firbolg",
+  "nombre": "Firbolg",
+  "nombre_en": "Firbolg",
+  "descripcion": "Los firbolg son humanoides bovinos que se reconocen por su nariz ancha y sus orejas largas y caídas. Algunos tienen una cara que mezcla rasgos humanoides con los de un bisonte, un buey, una vaca u otra criatura bovina. Otros, a los que muchas veces se les llama minotauros, tienen la cabeza idéntica a la de una res. Son criaturas altas y musculosas, de entre 5 y 7 pies aproximadamente, y tienen una fuerza notable sin importar su edad. Se sabe que algunos firbolg usan esa fuerza para embestir a sus adversarios, algo especialmente eficaz para quienes tienen alguno de los muchos tipos de cuernos comunes en esta ancestría. Aunque sus rasgos particulares varían, todos los firbolg están cubiertos de pelaje, que puede ser de tonos apagados y terrosos o de distintos colores pastel, como rosas y azules suaves. En promedio, los firbolg viven unos 150 años.",
+  "rasgos": [
+   {
+    "nombre": "Embestida",
+    "nombre_en": "Charge",
+    "texto": "Cuando tienes éxito en una tirada de Agilidad para moverte desde alcance Lejano o Muy lejano hasta alcance Cuerpo a cuerpo de uno o más objetivos, puedes **marcar un Estrés** para infligir **1d12** de daño físico a todos los objetivos a alcance Cuerpo a cuerpo."
+   },
+   {
+    "nombre": "Inquebrantable",
+    "nombre_en": "Unshakable",
+    "texto": "Cuando fueras a marcar un Estrés, tira un **d6.** Si sale 6, no lo marques."
+   }
+  ]
+ },
+ {
+  "id": "fungril",
+  "nombre": "Fungril",
+  "nombre_en": "Fungril",
+  "descripcion": "Los fungril parecen hongos humanoides. Su aspecto puede ser más humanoide o más fúngico, y vienen en una gran variedad de colores, desde tonos terrosos hasta rojos, amarillos, morados y azules brillantes. Los fungril tienen una variedad increíble de cuerpos, caras y extremidades, porque no hay una sola forma común entre ellos. Incluso su estatura va desde unos diminutos 2 pies hasta unos impresionantes 7 pies. Aunque un fungril suele vivir unos 300 años, se sabe de algunos que han vivido mucho más. Pueden comunicarse sin palabras, y muchos miembros de esta ancestría usan una red micelial para intercambiar información química con otros fungril a grandes distancias.",
+  "rasgos": [
+   {
+    "nombre": "Red fungril",
+    "nombre_en": "Fungril Network",
+    "texto": "Haz una **tirada de Instinto (12)** para usar tu red micelial y hablar con otros de tu ancestría. Si tienes éxito, puedes comunicarte a cualquier distancia."
+   },
+   {
+    "nombre": "Conexión con la muerte",
+    "nombre_en": "Death Connection",
+    "texto": "Mientras tocas un cadáver que murió hace poco, puedes **marcar un Estrés** para extraerle un recuerdo relacionado con una emoción o sensación específica que tú elijas."
+   }
+  ]
+ },
+ {
+  "id": "galapa",
+  "nombre": "Galapa",
+  "nombre_en": "Galapa",
+  "descripcion": "Los galapa parecen tortugas antropomorfas con grandes caparazones abombados dentro de los cuales pueden meterse. En promedio miden entre 4 y 6 pies, y la forma de su cabeza y su cuerpo puede parecerse a la de cualquier tipo de tortuga. Los galapa tienen una variedad de tonos terrosos, casi siempre verdes y cafés, y patrones únicos en el caparazón. Los miembros de esta ancestría pueden meter la cabeza, los brazos y las piernas en su caparazón para protegerse y usarlo como escudo natural cuando necesitan defenderse. Algunos refuerzan su caparazón o cambian su apariencia agregándole armadura o tallándole diseños únicos, aunque el proceso es dolorosísimo. La mayoría de los galapa se mueven despacio sin importar su edad, y pueden vivir aproximadamente 150 años.",
+  "rasgos": [
+   {
+    "nombre": "Caparazón",
+    "nombre_en": "Shell",
+    "texto": "Obtienes un bono a tus umbrales de daño igual a tu Competencia."
+   },
+   {
+    "nombre": "Retraerse",
+    "nombre_en": "Retract",
+    "texto": "**Marca un Estrés** para meterte en tu caparazón. Mientras estás dentro, tienes resistencia al daño físico, tienes desventaja en las tiradas de acción y no puedes moverte."
+   }
+  ]
+ },
+ {
+  "id": "giant",
+  "nombre": "Gigante",
+  "nombre_en": "Giant",
+  "descripcion": "Los gigantes son humanoides imponentes de hombros anchos, brazos largos y de uno a tres ojos. Un gigante adulto mide entre 6 ½ y 8 ½ pies, y es musculoso por naturaleza sin importar su complexión. Se les reconoce fácilmente por su estructura ancha y sus brazos y cuellos alargados. Aunque pueden tener hasta tres ojos, todos los gigantes nacen sin ninguno y pasan ciegos su primer año de vida. Hasta que un gigante cumple 10 años y sus rasgos terminan de desarrollarse, la formación de sus ojos puede ir cambiando. A los que tienen un solo ojo se les conoce comúnmente como cíclopes. Un gigante vive en promedio unos 75 años.",
+  "rasgos": [
+   {
+    "nombre": "Aguante",
+    "nombre_en": "Endurance",
+    "texto": "Obtienes una casilla de Punto de Golpe adicional al crear a tu personaje."
+   },
+   {
+    "nombre": "Gran alcance",
+    "nombre_en": "Reach",
+    "texto": "Trata cualquier arma, habilidad, hechizo u otro rasgo que tenga alcance Cuerpo a cuerpo como si tuviera alcance Muy cercano."
+   }
+  ]
+ },
+ {
+  "id": "goblin",
+  "nombre": "Goblin",
+  "nombre_en": "Goblin",
+  "descripcion": "Los goblins son humanoides pequeños que se reconocen fácilmente por sus ojos grandes y sus enormes orejas membranosas. Con su oído fino y su vista aguda, perciben detalles tanto a grandes distancias como en la oscuridad, lo que les permite moverse con soltura por entornos poco favorables. El color de su piel y de sus ojos es increíblemente variado, sin que ningún tono, vivo o apagado, predomine sobre otro. Un goblin típico mide entre 3 y 4 pies, y cada una de sus orejas es más o menos del tamaño de su cabeza. Se sabe que los goblins usan la posición de las orejas con significados muy precisos cuando se comunican sin palabras. Un goblin vive unos 100 años, y muchos conservan su oído fino y su vista aguda hasta edades muy avanzadas.",
+  "rasgos": [
+   {
+    "nombre": "Paso firme",
+    "nombre_en": "Surefooted",
+    "texto": "Ignoras la desventaja en las tiradas de Agilidad."
+   },
+   {
+    "nombre": "Sentido del peligro",
+    "nombre_en": "Danger Sense",
+    "texto": "Una vez por descanso, **marca un Estrés** para obligar a un adversario a repetir un ataque contra ti o contra un aliado a alcance Muy cercano."
+   }
+  ]
+ },
+ {
+  "id": "halfling",
+  "nombre": "Mediano",
+  "nombre_en": "Halfling",
+  "descripcion": "Los medianos son humanoides pequeños, de pies grandes y peludos y orejas redondeadas y prominentes. En promedio miden de 3 a 4 pies, y sus orejas, nariz y pies son más grandes en proporción con el resto del cuerpo. Los miembros de esta ancestría viven unos 150 años, y es probable que un mediano conserve un aspecto juvenil incluso al pasar de la adultez a la vejez. Los medianos están sintonizados por naturaleza con los campos magnéticos del Reino Mortal, lo que les da una brújula interna muy precisa. También tienen el oído y el olfato muy agudos, y muchas veces pueden reconocer a las personas que conocen por el sonido de sus pasos.",
+  "rasgos": [
+   {
+    "nombre": "Traesuerte",
+    "nombre_en": "Luckbringer",
+    "texto": "Al inicio de cada sesión, todos en tu grupo ganan una Esperanza."
+   },
+   {
+    "nombre": "Brújula interna",
+    "nombre_en": "Internal Compass",
+    "texto": "Cuando sacas un 1 en tu Dado de Esperanza, puedes volver a tirarlo."
+   }
+  ]
+ },
+ {
+  "id": "human",
+  "nombre": "Humano",
+  "nombre_en": "Human",
+  "descripcion": "A los humanos se les reconoce más fácilmente por sus manos diestras, sus orejas redondeadas y sus cuerpos hechos para aguantar. Su estatura promedio va de poco menos de 5 pies a unos 6 ½ pies. Tienen complexiones muy variadas: algunos son bastante anchos, otros esbeltos, y muchos quedan en algún punto intermedio. Los humanos son físicamente adaptables y se acostumbran a climas extremos con relativa facilidad. En general, los humanos viven hasta unos 100 años, y su cuerpo cambia muchísimo entre sus años más jóvenes y su vejez.",
+  "rasgos": [
+   {
+    "nombre": "Gran vigor",
+    "nombre_en": "High Stamina",
+    "texto": "Obtienes una casilla de Estrés adicional al crear a tu personaje."
+   },
+   {
+    "nombre": "Adaptabilidad",
+    "nombre_en": "Adaptability",
+    "texto": "Cuando fallas una tirada en la que usaste una de tus Experiencias, puedes **marcar un Estrés** para volver a tirar."
+   }
+  ]
+ },
+ {
+  "id": "infernis",
+  "nombre": "Infernis",
+  "nombre_en": "Infernis",
+  "descripcion": "Los infernis son humanoides con colmillos afilados, orejas puntiagudas y cuernos. Descienden de los demonios de los Círculos Inferiores. En promedio miden entre 5 y 7 pies, y se les conoce por sus dedos largos y uñas puntiagudas. Algunos tienen colas largas, delgadas y lisas que terminan en punta, en horquilla o en forma de flecha. Es común que los infernis tengan dos o cuatro cuernos, aunque algunos tienen coronas de muchos cuernos, o solo uno. Estos cuernos también pueden crecer de forma asimétrica y formar figuras únicas, a menudo curvas, que los infernis realzan con tallados y adornos. Su piel, su cabello y sus cuernos vienen en una variedad de colores que van de pasteles suaves a tonos austeros o colores vivos, como escarlata rosado, morado intenso y negro azabache.\n\nLos infernis tienen un \"semblante temible\" que se manifiesta tanto de forma involuntaria, por ejemplo cuando sienten miedo u otras emociones fuertes, como a propósito, por ejemplo cuando quieren intimidar a un adversario. Este semblante puede modificar su apariencia por un momento de muchas formas: alargando sus dientes y uñas, cambiando el color de sus ojos, retorciendo sus cuernos o aumentando su estatura. En promedio, los infernis viven hasta 350 años, y hay quienes atribuyen esta longevidad a su linaje demoníaco.",
+  "rasgos": [
+   {
+    "nombre": "Intrépido",
+    "nombre_en": "Fearless",
+    "texto": "Cuando haces una tirada con Miedo, puedes **marcar 2 de Estrés** para convertirla en una tirada con Esperanza."
+   },
+   {
+    "nombre": "Semblante temible",
+    "nombre_en": "Dread Visage",
+    "texto": "Tienes ventaja en las tiradas para intimidar a criaturas hostiles."
+   }
+  ]
+ },
+ {
+  "id": "katari",
+  "nombre": "Katari",
+  "nombre_en": "Katari",
+  "descripcion": "Los katari son humanoides felinos con garras retráctiles, pupilas rasgadas en vertical y orejas altas y triangulares. También pueden tener pequeños colmillos puntiagudos, pelaje suave y bigotes largos que les ayudan a percibir su entorno y orientarse. Sus orejas pueden girar casi 180 grados para captar sonidos, lo que suma a sus sentidos agudizados. Los katari pueden verse más o menos felinos o humanoides, con atributos gatunos en forma de pelo, bigotes y hocico. Más o menos la mitad de la población katari tiene cola. Su piel y su pelaje vienen en una gran variedad de tonos y patrones: colores lisos, tonos calicó, rayas atigradas y todo tipo de manchas, parches, jaspeados o franjas. Su estatura va de unos 3 a 6 ½ pies, y viven alrededor de 150 años.",
+  "rasgos": [
+   {
+    "nombre": "Instintos felinos",
+    "nombre_en": "Feline Instincts",
+    "texto": "Cuando haces una tirada de Agilidad, puedes **gastar 2 de Esperanza** para volver a tirar tu Dado de Esperanza."
+   },
+   {
+    "nombre": "Garras retráctiles",
+    "nombre_en": "Retracting Claws",
+    "texto": "Haz una **tirada de Agilidad** para arañar a un objetivo a alcance Cuerpo a cuerpo. Si tienes éxito, queda _Vulnerable_ de forma temporal."
+   }
+  ]
+ },
+ {
+  "id": "orc",
+  "nombre": "Orco",
+  "nombre_en": "Orc",
+  "descripcion": "Los orcos son humanoides que se reconocen más fácilmente por sus facciones cuadradas y sus colmillos, parecidos a los de un jabalí, que sobresalen de la mandíbula inferior. Los colmillos son de distintos tamaños y, aunque salen de la boca, no los usan para comer. En cambio, muchos orcos deciden decorarlos con abundantes adornos. Los orcos suelen vivir 125 años y, salvo que se los modifiquen, sus colmillos siguen creciendo toda su vida. Tienen orejas puntiagudas, y su cabello y su piel suelen tener tonos verdes, azules, rosados o grises. Los orcos tienden a ser musculosos, y su estatura promedio va de 5 a 6 ½ pies.",
+  "rasgos": [
+   {
+    "nombre": "Robusto",
+    "nombre_en": "Sturdy",
+    "texto": "Cuando te queda 1 Punto de Golpe, los ataques contra ti tienen desventaja."
+   },
+   {
+    "nombre": "Colmillos",
+    "nombre_en": "Tusks",
+    "texto": "Cuando tienes éxito en un ataque contra un objetivo a alcance Cuerpo a cuerpo, puedes **gastar una Esperanza** para cornearlo con tus colmillos e infligir **1d6** de daño adicional."
+   }
+  ]
+ },
+ {
+  "id": "ribbet",
+  "nombre": "Ribbet",
+  "nombre_en": "Ribbet",
+  "descripcion": "Los ribbet parecen ranas antropomorfas de ojos saltones y manos y pies palmeados. Tienen la piel lisa (aunque a veces verrugosa) y húmeda, y los ojos a cada lado de la cabeza. Algunos ribbet tienen patas traseras de más del doble de largo que su torso, mientras que otros tienen extremidades cortas. Sin importar su tamaño (que va de unos 3 a 4 ½ pies), los ribbet se desplazan principalmente a saltos. Todos los ribbet tienen extremidades palmeadas que les permiten nadar con facilidad. Algunos tienen un camuflaje natural verde y café, mientras que otros tienen colores vivos con patrones llamativos. Sea cual sea su apariencia, todos los ribbet nacen de huevos puestos en el agua, salen como renacuajos y, después de unos 6 o 7 años, se convierten en anfibios que pueden moverse en tierra firme. Los ribbet viven aproximadamente 100 años.",
+  "rasgos": [
+   {
+    "nombre": "Anfibio",
+    "nombre_en": "Amphibious",
+    "texto": "Puedes respirar y moverte con naturalidad bajo el agua."
+   },
+   {
+    "nombre": "Lengua larga",
+    "nombre_en": "Long Tongue",
+    "texto": "Puedes usar tu lengua larga para agarrarte de cosas a alcance Cercano. **Marca un Estrés** para usar tu lengua como un arma de Sutileza de alcance Cercano que inflige **d12** de daño físico usando tu Competencia."
+   }
+  ]
+ },
+ {
+  "id": "simiah",
+  "nombre": "Simiah",
+  "nombre_en": "Simiah",
+  "descripcion": "Los simiah parecen monos y simios antropomorfos de extremidades largas y pies prensiles. Aunque su apariencia abarca a todos los simios, desde el gorila más grande hasta el tití más pequeño, su tamaño no coincide con el de sus equivalentes animales, y pueden medir desde 2 hasta 6 pies. Todos los simiah pueden usar sus pies diestros para comunicarse sin palabras, trabajar y combatir. Además, algunos tienen colas prensiles con las que pueden sujetar objetos o mantener el equilibrio en maniobras difíciles. Estos rasgos les dan a los miembros de esta ancestría una agilidad única que les ayuda en todo tipo de tareas físicas. En particular, los simiah son hábiles escaladores y pueden pasar con facilidad de caminar en dos patas a andar sobre los nudillos y a trepar, y de vuelta. En promedio, los simiah viven unos 100 años.",
+  "rasgos": [
+   {
+    "nombre": "Trepador nato",
+    "nombre_en": "Natural Climber",
+    "texto": "Tienes ventaja en las tiradas de Agilidad que impliquen mantener el equilibrio o trepar."
+   },
+   {
+    "nombre": "Ágil",
+    "nombre_en": "Nimble",
+    "texto": "Obtienes un bono permanente de +1 a tu Evasión al crear a tu personaje."
+   }
+  ]
+ }
+]

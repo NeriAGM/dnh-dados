@@ -15,6 +15,7 @@ export const app = $state({
   miembros: [],         // [{ usuario_id, rol, perfiles: { nombre, avatar_url } }]
   personajes: [],
   lanzamientos: [],
+  casero: [],           // contenido homebrew de la campaña
   personajeActivo: null, // id
   error: null,
 })
@@ -66,11 +67,13 @@ export async function abrirCampania(id) {
   app.rol = c.rol
   guardar(CAMPANIA_GUARDADA, id)
 
-  const [{ data: miembros }, { data: personajes }, { data: lanz }] = await Promise.all([
+  const [{ data: miembros }, { data: personajes }, { data: lanz }, { data: casero }] = await Promise.all([
     supabase.from('miembros').select('usuario_id, rol, perfiles(nombre, avatar_url)').eq('campania_id', id),
     supabase.from('personajes').select('*').eq('campania_id', id).order('nombre'),
     supabase.from('lanzamientos').select('*').eq('campania_id', id).order('creado', { ascending: false }).limit(60),
+    supabase.from('contenido_casero').select('*').eq('campania_id', id).order('nombre'),
   ])
+  app.casero = casero || []
   app.miembros = miembros || []
   app.personajes = personajes || []
   app.lanzamientos = lanz || []
@@ -103,6 +106,11 @@ function escuchar(id) {
       if (eventType === 'DELETE') app.personajes = app.personajes.filter((x) => x.id !== old.id)
       else if (app.personajes.some((x) => x.id === p.id)) app.personajes = app.personajes.map((x) => (x.id === p.id ? p : x))
       else app.personajes = [...app.personajes, p].sort((a, b) => a.nombre.localeCompare(b.nombre))
+    })
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'contenido_casero', filter: `campania_id=eq.${id}` }, ({ eventType, new: c, old }) => {
+      if (eventType === 'DELETE') app.casero = app.casero.filter((x) => x.id !== old.id)
+      else if (app.casero.some((x) => x.id === c.id)) app.casero = app.casero.map((x) => (x.id === c.id ? c : x))
+      else app.casero = [...app.casero, c]
     })
     .on('postgres_changes', { event: '*', schema: 'public', table: 'miembros', filter: `campania_id=eq.${id}` }, async () => {
       const { data } = await supabase.from('miembros').select('usuario_id, rol, perfiles(nombre, avatar_url)').eq('campania_id', id)
@@ -180,4 +188,90 @@ export function cambiarCampania() {
 
 export function nombreDe(usuarioId) {
   return app.miembros.find((m) => m.usuario_id === usuarioId)?.perfiles?.nombre ?? 'Alguien'
+}
+
+// ---------------------------------------------------------------------
+// Hoja de personaje
+// ---------------------------------------------------------------------
+
+function ponerEnRuta(obj, ruta, valor) {
+  const copia = structuredClone(obj ?? {})
+  let o = copia
+  for (let i = 0; i < ruta.length - 1; i++) {
+    const k = ruta[i]
+    if (o[k] == null || typeof o[k] !== 'object') o[k] = /^\d+$/.test(ruta[i + 1]) ? [] : {}
+    o = o[k]
+  }
+  o[ruta.at(-1)] = valor
+  return copia
+}
+
+// Cambia una parte de la hoja. Se ve al instante y luego se guarda;
+// si falla, regresa al valor anterior.
+export async function ajustarHoja(id, ruta, valor) {
+  const ruta_s = ruta.map(String)
+  const antes = app.personajes.find((p) => p.id === id)
+  if (!antes) return
+  const optimista = { ...antes, hoja: ponerEnRuta(antes.hoja, ruta_s, valor) }
+  app.personajes = app.personajes.map((p) => (p.id === id ? optimista : p))
+  const { data, error } = await supabase.rpc('ajustar_hoja', { p_personaje: id, p_ruta: ruta_s, p_valor: valor })
+  if (error) {
+    app.personajes = app.personajes.map((p) => (p.id === id ? antes : p))
+    throw new Error(error.message)
+  }
+  app.personajes = app.personajes.map((p) => (p.id === id ? data : p))
+}
+
+export async function crearPersonajeCompleto({ nombre, usuarioId, color, hoja, esperanza_max = 6, estres_max = 6 }) {
+  const { data, error } = await supabase
+    .from('personajes')
+    .insert({ campania_id: app.campania.id, nombre, usuario_id: usuarioId, color, hoja, esperanza: 2, esperanza_max, estres: 0, estres_max })
+    .select()
+    .single()
+  if (error) throw new Error(error.message)
+  if (!app.personajes.some((p) => p.id === data.id)) app.personajes = [...app.personajes, data]
+  if (!app.personajeActivo && usuarioId === app.sesion.user.id) elegirPersonaje(data.id)
+  return data
+}
+
+export async function importarPersonajes(lista) {
+  const { data, error } = await supabase.rpc('importar_personajes', { p_campania: app.campania.id, p_personajes: lista })
+  if (error) throw new Error(error.message)
+  const { data: personajes } = await supabase.from('personajes').select('*').eq('campania_id', app.campania.id).order('nombre')
+  app.personajes = personajes || []
+  return data
+}
+
+export async function asignarPersonaje(id, usuarioId) {
+  const { data, error } = await supabase.rpc('asignar_personaje', { p_personaje: id, p_usuario: usuarioId })
+  if (error) throw new Error(error.message)
+  app.personajes = app.personajes.map((p) => (p.id === id ? data : p))
+}
+
+export async function borrarPersonaje(id) {
+  const { error } = await supabase.from('personajes').delete().eq('id', id)
+  if (error) throw new Error(error.message)
+  app.personajes = app.personajes.filter((p) => p.id !== id)
+  if (app.personajeActivo === id) app.personajeActivo = null
+}
+
+// ---------------------------------------------------------------------
+// Homebrew
+// ---------------------------------------------------------------------
+
+export async function guardarCasero({ id, tipo, nombre, datos }) {
+  const fila = { campania_id: app.campania.id, tipo, nombre, datos, actualizado: new Date().toISOString() }
+  const q = id
+    ? supabase.from('contenido_casero').update(fila).eq('id', id)
+    : supabase.from('contenido_casero').insert({ ...fila, creado_por: app.sesion.user.id })
+  const { data, error } = await q.select().single()
+  if (error) throw new Error(error.message)
+  app.casero = app.casero.some((x) => x.id === data.id) ? app.casero.map((x) => (x.id === data.id ? data : x)) : [...app.casero, data]
+  return data
+}
+
+export async function borrarCasero(id) {
+  const { error } = await supabase.from('contenido_casero').delete().eq('id', id)
+  if (error) throw new Error(error.message)
+  app.casero = app.casero.filter((x) => x.id !== id)
 }

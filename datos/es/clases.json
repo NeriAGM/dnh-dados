@@ -1,0 +1,476 @@
+[
+ {
+  "id": "bard",
+  "nombre": "Bardo",
+  "nombre_en": "Bard",
+  "descripcion": "Los bardos son las personas más carismáticas de todos los reinos. Los miembros de esta clase son maestros de la cautivación y se especializan en distintos tipos de espectáculo: cantar, tocar instrumentos musicales, tejer historias o contar chistes. Ya sea actuando para un público o hablando con una sola persona, los bardos brillan en las situaciones sociales. Los miembros de esta profesión se forman y crean lazos en escuelas o gremios, pero entre quienes tienen inclinación bárdica corre una vena de egolatría. Aunque quizá sean la clase con más probabilidades de unir a la gente, un bardo de mal carácter puede deshacer un grupo con la misma facilidad.",
+  "dominios": [
+   "grace",
+   "codex"
+  ],
+  "evasion": 10,
+  "pg": 5,
+  "esperanza": {
+   "nombre": "Montar una escena",
+   "texto": "**Gasta 3 de Esperanza** para _Distraer_ temporalmente a un objetivo dentro de alcance Cercano, lo que le da un penalizador de -2 a su Dificultad."
+  },
+  "rasgos": [
+   {
+    "nombre": "Arenga",
+    "texto": "Una vez por sesión, describe cómo arengas al grupo y dales a ti y a cada uno de tus aliados un Dado de Arenga. En el nivel 1, tu Dado de Arenga es un **d6**. Un PJ puede gastar su Dado de Arenga para tirarlo y sumar el resultado a su tirada de acción, tirada de reacción o tirada de daño, o para limpiar una cantidad de Estrés igual al resultado. Al final de cada sesión, limpia todos los Dados de Arenga que no se hayan gastado. En el nivel 5, tu Dado de Arenga aumenta a un **d8**."
+   }
+  ],
+  "objetos": "Una novela romántica o una carta que nunca se abrió",
+  "sugerido": {
+   "rasgos": [
+    0,
+    -1,
+    1,
+    0,
+    2,
+    1
+   ],
+   "armadura": "Gambeson Armor",
+   "primaria": "Rapier",
+   "secundaria": "Small Dagger"
+  },
+  "preguntas_trasfondo": [
+   "¿Quién de tu comunidad te enseñó a tener tanta confianza en ti?",
+   "Una vez estuviste enamorado. ¿A quién adorabas y cómo te lastimó?",
+   "Siempre has admirado a otro bardo. ¿Quién es y por qué lo idolatras?"
+  ],
+  "preguntas_conexion": [
+   "¿Qué te hizo darte cuenta de que íbamos a ser tan buenos amigos?",
+   "¿Qué hago que te molesta?",
+   "¿Por qué me tomas de la mano en las noches?"
+  ],
+  "subclases": [
+   "troubadour",
+   "wordsmith"
+  ]
+ },
+ {
+  "id": "druid",
+  "nombre": "Druida",
+  "nombre_en": "Druid",
+  "descripcion": "Convertirse en druida es más que un oficio; es un llamado para quienes desean aprender de la magia de lo salvaje y protegerla. Aunque uno podría subestimar a un druida apacible que practica la labor, a menudo silenciosa, de cultivar la flora, los druidas que canalizan las fuerzas indómitas de la naturaleza son aterradores de contemplar. Los druidas cultivan sus habilidades en grupos pequeños, a menudo unidos por una filosofía o un lugar específico, aunque algunos eligen trabajar solos. Tras años de estudio y dedicación, los druidas pueden aprender a transformarse en bestias y a moldear la naturaleza misma.",
+  "dominios": [
+   "sage",
+   "arcana"
+  ],
+  "evasion": 10,
+  "pg": 6,
+  "esperanza": {
+   "nombre": "Evolución",
+   "texto": "**Gasta 3 de Esperanza** para transformarte en una Forma de Bestia sin marcar un Estrés. Cuando lo hagas, elige un rasgo para aumentarlo en +1 hasta que salgas de esa Forma de Bestia."
+  },
+  "rasgos": [
+   {
+    "nombre": "Forma de Bestia",
+    "texto": "Marca un Estrés para transformarte mágicamente en una criatura de tu rango o menor de la lista de Formas de Bestia. Puedes salir de esta forma en cualquier momento. Mientras estás transformado, no puedes usar armas ni lanzar hechizos de cartas de dominio, pero sí puedes usar otros rasgos o habilidades a los que tengas acceso. Los hechizos que lanzaste antes de transformarte siguen activos y duran lo normal, y puedes hablar y comunicarte con normalidad. Además, obtienes los rasgos de la Forma de Bestia, sumas su bonificador de Evasión a tu Evasión y usas el rasgo indicado en sus estadísticas para tu ataque. Mientras estás en una Forma de Bestia, tu armadura se vuelve parte de tu cuerpo y marcas casillas de Armadura como siempre; cuando sales de una Forma de Bestia, esas casillas de Armadura marcadas siguen marcadas. Si marcas tu último Punto de Golpe, sales automáticamente de esta forma."
+   },
+   {
+    "nombre": "Toque salvaje",
+    "texto": "Puedes producir efectos sutiles e inofensivos relacionados con la naturaleza, como hacer que una flor crezca rápidamente, invocar una ligera ráfaga de viento o encender una fogata a voluntad."
+   }
+  ],
+  "objetos": "Una bolsita de piedras y huesos o un colgante extraño que encontraste en la tierra",
+  "sugerido": {
+   "rasgos": [
+    1,
+    0,
+    1,
+    2,
+    -1,
+    0
+   ],
+   "armadura": "Leather Armor",
+   "primaria": "Shortstaff",
+   "secundaria": "Round Shield"
+  },
+  "preguntas_trasfondo": [
+   "¿Por qué la comunidad en la que creciste dependía tanto de la naturaleza y sus criaturas?",
+   "¿Quién fue el primer animal salvaje con el que creaste un vínculo? ¿Por qué terminó ese vínculo?",
+   "¿Quién ha estado tratando de darte caza? ¿Qué quiere de ti?"
+  ],
+  "preguntas_conexion": [
+   "¿Qué me confiaste que hace que me lance al peligro por ti cada vez?",
+   "¿A qué animal digo que te pareces?",
+   "¿Qué apodo cariñoso me pusiste?"
+  ],
+  "subclases": [
+   "warden-of-the-elements",
+   "warden-of-renewal"
+  ]
+ },
+ {
+  "id": "guardian",
+  "nombre": "Guardián",
+  "nombre_en": "Guardian",
+  "descripcion": "El título de guardián abarca una variedad de profesiones marciales y habla más de su brújula moral y su fortaleza inquebrantable que de la forma en que pelean. Aunque muchos guardianes se unen a grupos militares por un país o una causa, es más probable que sigan a los pocos que de verdad les importan, aunque a la mayoría no le guste. Los guardianes son conocidos por pelear con una ferocidad notable incluso contra probabilidades abrumadoras, defendiendo a los suyos por encima de todo. Pobre de quien lastime a un aliado de un guardián, porque el guardián responderá a esa herida con la misma moneda.",
+  "dominios": [
+   "valor",
+   "blade"
+  ],
+  "evasion": 9,
+  "pg": 7,
+  "esperanza": {
+   "nombre": "Muralla de primera línea",
+   "texto": "**Gasta 3 de Esperanza** para limpiar 2 casillas de Armadura."
+  },
+  "rasgos": [
+   {
+    "nombre": "Imparable",
+    "texto": "Una vez por descanso largo, puedes volverte _Imparable._ Obtienes un Dado de Imparable. En el nivel 1, tu Dado de Imparable es un **d4.** Colócalo en tu hoja de personaje en el espacio indicado, empezando con la cara del 1 hacia arriba. Después de hacer una tirada de daño que le cause 1 o más Puntos de Golpe a un objetivo, aumenta en uno el valor del Dado de Imparable. Cuando el valor del dado fuera a superar su valor máximo o cuando termine la escena, retira el dado y deja de estar _Imparable_. En el nivel 5, tu Dado de Imparable aumenta a un **d6.**\n\nMientras estás _Imparable_, obtienes los siguientes beneficios:\n\n- Reduces la gravedad del daño físico en un umbral (de Grave a Mayor, de Mayor a Menor, de Menor a Ninguno).\n- Sumas el valor actual del Dado de Imparable a tu tirada de daño.\n- No puedes quedar _Apresado_ ni _Vulnerable_.\n\n> _**Consejo:** Si tu Dado de Imparable es un d4 y tiene el 4 hacia arriba, retiras el dado la próxima vez que lo fueras a aumentar. Sin embargo, si tu Dado de Imparable ya aumentó a un d6 y tiene el 4 hacia arriba, lo girarás al 5 la próxima vez que lo fueras a aumentar. En ese caso, retirarás el dado cuando tuvieras que aumentarlo por encima de 6._"
+   }
+  ],
+  "objetos": "Un tótem de tu mentor o una llave secreta",
+  "sugerido": {
+   "rasgos": [
+    1,
+    2,
+    -1,
+    0,
+    1,
+    0
+   ],
+   "armadura": "Chainmail Armor",
+   "primaria": "Battleaxe",
+   "secundaria": null
+  },
+  "preguntas_trasfondo": [
+   "¿A quién de tu comunidad no pudiste proteger y por qué sigues pensando en esa persona?",
+   "Te encargaron proteger algo importante y entregarlo en un lugar peligroso. ¿Qué es y a dónde tiene que llegar?",
+   "Consideras que un aspecto de ti es una debilidad. ¿Cuál es y cómo te ha afectado?"
+  ],
+  "preguntas_conexion": [
+   "¿Cómo te salvé la vida la primera vez que nos vimos?",
+   "¿Qué pequeño regalo me diste que notas que siempre traigo conmigo?",
+   "¿Qué mentira me has dicho sobre ti que me creo por completo?"
+  ],
+  "subclases": [
+   "stalwart",
+   "vengeance"
+  ]
+ },
+ {
+  "id": "ranger",
+  "nombre": "Explorador",
+  "nombre_en": "Ranger",
+  "descripcion": "Los exploradores son cazadores muy hábiles que, a pesar de sus capacidades marciales, rara vez ponen sus habilidades al servicio de un ejército. Gracias al dominio de su cuerpo y a un profundo conocimiento de lo salvaje, los exploradores se vuelven estrategas astutos que persiguen a su presa con ingenio y paciencia. Muchos exploradores rastrean y pelean junto a un compañero animal con el que han forjado un poderoso vínculo espiritual. Al perfeccionar sus habilidades en la naturaleza, los exploradores se vuelven rastreadores expertos, igual de capaces de atrapar a sus enemigos en una trampa que de atacarlos de frente.",
+  "dominios": [
+   "bone",
+   "sage"
+  ],
+  "evasion": 12,
+  "pg": 6,
+  "esperanza": {
+   "nombre": "Contenerlos",
+   "texto": "**Gasta 3 de Esperanza** cuando aciertes un ataque con un arma para usar esa misma tirada contra dos adversarios adicionales dentro del alcance del ataque."
+  },
+  "rasgos": [
+   {
+    "nombre": "Foco del Explorador",
+    "texto": "**Gasta 1 de Esperanza** y haz un ataque contra un objetivo. Si aciertas, causa el daño normal de tu ataque y convierte temporalmente al objetivo del ataque en tu _Foco_. Hasta que este rasgo termine o conviertas a otra criatura en tu _Foco_, obtienes los siguientes beneficios contra tu _Foco:_\n\n- Sabes con precisión en qué dirección está.\n- Cuando le causas daño, debe marcar un Estrés.\n- Cuando fallas un ataque contra él, puedes terminar tu rasgo Foco del Explorador para volver a tirar tus Dados de Dualidad."
+   }
+  ],
+  "objetos": "Un trofeo de tu primera presa o una brújula que parece rota",
+  "sugerido": {
+   "rasgos": [
+    2,
+    0,
+    1,
+    1,
+    -1,
+    0
+   ],
+   "armadura": "Leather Armor",
+   "primaria": "Shortbow",
+   "secundaria": null
+  },
+  "preguntas_trasfondo": [
+   "Una criatura terrible lastimó a tu comunidad y juraste darle caza. ¿Qué es y qué rastro o señal única deja a su paso?",
+   "Tu primera presa casi te mata a ti también. ¿Qué era y qué parte de ti nunca volvió a ser la misma después de eso?",
+   "Has recorrido muchas tierras peligrosas, pero ¿cuál es el único lugar al que te niegas a ir?"
+  ],
+  "preguntas_conexion": [
+   "¿Qué competencia amistosa tenemos tú y yo?",
+   "¿Por qué te comportas diferente cuando estamos solos que cuando hay otros cerca?",
+   "¿Qué amenaza me pediste que vigilara y por qué te preocupa?"
+  ],
+  "subclases": [
+   "beastbound",
+   "wayfinder"
+  ]
+ },
+ {
+  "id": "rogue",
+  "nombre": "Pícaro",
+  "nombre_en": "Rogue",
+  "descripcion": "Los pícaros son unos sinvergüenzas, a menudo tanto en actitud como en la práctica. Conocidos en general como mentirosos y ladrones, los mejores de esta clase se mueven por el mundo en el anonimato. Valiéndose de su ingenio afilado y sus hojas, los pícaros engañan a sus enemigos con manipulación social con la misma facilidad con la que fuerzan cerraduras, se cuelan por ventanas o dan golpes a traición. Estos maestros del oficio mágico manipulan las sombras y el movimiento, lo que suma a su repertorio una variedad de herramientas útiles y mortales. Los pícaros suelen fundar gremios para conocer a futuros cómplices, ofrecer trabajos y perfeccionar habilidades secretas, demostrando que hay honor entre ladrones para quien sabe dónde buscar.",
+  "dominios": [
+   "midnight",
+   "grace"
+  ],
+  "evasion": 12,
+  "pg": 6,
+  "esperanza": {
+   "nombre": "Esquiva del Pícaro",
+   "texto": "**Gasta 3 de Esperanza** para obtener un bonificador de +2 a tu Evasión hasta la próxima vez que un ataque te acierte. Si no, este bonificador dura hasta tu siguiente descanso."
+  },
+  "rasgos": [
+   {
+    "nombre": "Encapuchado",
+    "texto": "Cada vez que fueras a quedar _Oculto,_ en su lugar quedas _Encapuchado._ Además de los beneficios de la condición _Oculto_, mientras estás _Encapuchado_ sigues sin ser visto si estás inmóvil cuando un adversario se mueve a donde normalmente te vería. Después de hacer un ataque o de terminar un movimiento dentro de la línea de visión de un adversario, dejas de estar _Encapuchado_."
+   },
+   {
+    "nombre": "Ataque furtivo",
+    "texto": "Cuando aciertes un ataque mientras estás _Encapuchado_ o mientras un aliado está dentro de alcance Cuerpo a cuerpo de tu objetivo, suma a tu tirada de daño una cantidad de **d6** igual a tu rango.\n\n- Nivel 1 → Rango 1\n- Niveles 2-4 → Rango 2\n- Niveles 5-7 → Rango 3\n- Niveles 8-10 → Rango 4"
+   }
+  ],
+  "objetos": "Un juego de herramientas de falsificación o un garfio",
+  "sugerido": {
+   "rasgos": [
+    1,
+    -1,
+    2,
+    0,
+    1,
+    0
+   ],
+   "armadura": "Gambeson Armor",
+   "primaria": "Dagger",
+   "secundaria": "Small Dagger"
+  },
+  "preguntas_trasfondo": [
+   "¿En qué te cacharon que hizo que te desterraran de tu comunidad?",
+   "Antes tenías otra vida, pero has intentado dejarla atrás. ¿Quién de tu pasado te sigue persiguiendo?",
+   "¿De quién de tu pasado te dolió más despedirte?"
+  ],
+  "preguntas_conexion": [
+   "¿Qué te convencí de hacer hace poco que nos metió a los dos en problemas?",
+   "¿Qué descubrí de tu pasado que les guardo en secreto a los demás?",
+   "¿A quién conoces de mi pasado y cómo ha influido en lo que sientes por mí?"
+  ],
+  "subclases": [
+   "nightwalker",
+   "syndicate"
+  ]
+ },
+ {
+  "id": "seraph",
+  "nombre": "Serafín",
+  "nombre_en": "Seraph",
+  "descripcion": "Los serafines son guerreros y sanadores divinos imbuidos de un propósito sagrado. En los reinos existe una gran variedad de deidades, así que estos dioses designan muchos tipos de serafines. Su filosofía suele alinearse con el dominio o las metas de su dios, como defender a los débiles, cobrar venganza, proteger una tierra o un artefacto, o sostener una fe en particular. Algunos serafines se alían con un ejército o un lugar, para gran satisfacción de sus gobernantes, pero otros cruzados pelean contra las locuras del Reino Mortal. Es mejor ser aliado de un serafín que su enemigo, pues son adversarios aterradores para quienes desafían su propósito.",
+  "dominios": [
+   "splendor",
+   "valor"
+  ],
+  "evasion": 9,
+  "pg": 7,
+  "esperanza": {
+   "nombre": "Soporte vital",
+   "texto": "**Gasta 3 de Esperanza** para limpiar un Punto de Golpe a un aliado dentro de alcance Cercano."
+  },
+  "rasgos": [
+   {
+    "nombre": "Dados de Oración",
+    "texto": "Al inicio de cada sesión, tira una cantidad de **d4** igual al rasgo de Lanzamiento de tu subclase y colócalos en tu hoja de personaje en el espacio indicado. Estos son tus Dados de Oración. Puedes gastar cualquier cantidad de Dados de Oración para ayudarte a ti o a un aliado dentro de alcance Lejano. Puedes usar el valor de un dado gastado para reducir el daño que recibes, sumarlo al resultado de una tirada después de hacerla, u obtener Esperanza igual al resultado. Al final de cada sesión, limpia todos los Dados de Oración que no se hayan gastado."
+   }
+  ],
+  "objetos": "Un paquete de ofrendas o un sello de tu dios",
+  "sugerido": {
+   "rasgos": [
+    0,
+    2,
+    0,
+    1,
+    1,
+    -1
+   ],
+   "armadura": "Chainmail Armor",
+   "primaria": "Hallowed Axe",
+   "secundaria": "Round Shield"
+  },
+  "preguntas_trasfondo": [
+   "¿A qué dios te consagraste? ¿Qué hazaña increíble hizo por ti en un momento de desesperación?",
+   "¿Cómo cambió tu apariencia después de hacer tu juramento?",
+   "¿De qué forma extraña o única te comunicas con tu dios?"
+  ],
+  "preguntas_conexion": [
+   "¿Qué promesa me hiciste aceptar por si llegas a morir en el campo de batalla?",
+   "¿Por qué me haces tantas preguntas sobre mi dios?",
+   "Me pediste que protegiera a un miembro del grupo por encima de todos los demás, incluso de ti. ¿Quién es y por qué?"
+  ],
+  "subclases": [
+   "divine-wielder",
+   "winged-sentinel"
+  ]
+ },
+ {
+  "id": "sorcerer",
+  "nombre": "Hechicero",
+  "nombre_en": "Sorcerer",
+  "descripcion": "No todos los que nacen con magia eligen perfeccionar su arte, pero quienes lo hacen pueden convertirse en hechiceros poderosos. Los dones de estos portadores se heredan de generación en generación dentro de las familias, aunque la familia no lo sepa o se resista a practicarlos. Las habilidades de un hechicero pueden ir de lo elemental a lo ilusorio y más allá, y muchos de ellos se agrupan en colectivos según sus talentos. Convertirse en un hechicero formidable no consiste en adquirir poder, sino en aprender a cultivar y controlar el poder que uno ya tiene. La magia de un hechicero descarriado o indisciplinado es, sin duda, una fuerza peligrosa.",
+  "dominios": [
+   "arcana",
+   "midnight"
+  ],
+  "evasion": 10,
+  "pg": 6,
+  "esperanza": {
+   "nombre": "Magia volátil",
+   "texto": "**Gasta 3 de Esperanza** para volver a tirar cualquier cantidad de tus dados de daño en un ataque que cause daño mágico."
+  },
+  "rasgos": [
+   {
+    "nombre": "Sentido arcano",
+    "texto": "Puedes percibir la presencia de personas y objetos mágicos dentro de alcance Cercano."
+   },
+   {
+    "nombre": "Ilusión menor",
+    "texto": "Haz una **tirada de Lanzamiento (10).** Si tienes éxito, creas una ilusión visual menor, no más grande que tú, dentro de alcance Cercano. Esta ilusión resulta convincente para cualquiera que esté a alcance Cercano o más lejos."
+   },
+   {
+    "nombre": "Canalizar poder puro",
+    "texto": "Una vez por descanso largo, puedes pasar una carta de dominio de tu mano a tu bóveda y elegir una de estas opciones:\n\n- Obtener Esperanza igual al nivel de la carta.\n- Potenciar un hechizo que cause daño y obtener un bonificador a tu tirada de daño igual al doble del nivel de la carta."
+   }
+  ],
+  "objetos": "Un orbe que susurra o una reliquia familiar",
+  "sugerido": {
+   "rasgos": [
+    0,
+    -1,
+    1,
+    2,
+    1,
+    0
+   ],
+   "armadura": "Gambeson Armor",
+   "primaria": "Dualstaff",
+   "secundaria": null
+  },
+  "preguntas_trasfondo": [
+   "¿Qué hiciste que provocó que la gente de tu comunidad desconfiara de ti?",
+   "¿Qué mentor te enseñó a controlar tu magia indómita y por qué ya no puede guiarte?",
+   "Tienes un miedo profundo que le ocultas a todos. ¿Cuál es y por qué te asusta?"
+  ],
+  "preguntas_conexion": [
+   "¿Por qué confías tanto en mí?",
+   "¿Qué hice que te hace ser precavido conmigo?",
+   "¿Por qué mantenemos en secreto el pasado que compartimos?"
+  ],
+  "subclases": [
+   "elemental-origin",
+   "primal-origin"
+  ]
+ },
+ {
+  "id": "warrior",
+  "nombre": "Guerrero",
+  "nombre_en": "Warrior",
+  "descripcion": "Convertirse en guerrero requiere años, a menudo toda una vida, de entrenamiento y dedicación al dominio de las armas y la violencia. Aunque muchos de los que buscan pelear solo pulen su fuerza, los guerreros entienden la importancia de un cuerpo y una mente ágiles, lo que los vuelve de los combatientes más buscados en todos los reinos. Con frecuencia, los guerreros encuentran trabajo en un ejército, en una banda de mercenarios o incluso en una guardia real, pero su potencial se desperdicia en cualquier puesto donde no puedan seguir mejorando y ampliando sus habilidades. Se sabe que los guerreros tienen un arma favorita; interponerse entre ellos y su hoja sería un error gravísimo.",
+  "dominios": [
+   "blade",
+   "bone"
+  ],
+  "evasion": 11,
+  "pg": 6,
+  "esperanza": {
+   "nombre": "Sin piedad",
+   "texto": "**Gasta 3 de Esperanza** para obtener un bonificador de +1 a tus tiradas de ataque hasta tu siguiente descanso."
+  },
+  "rasgos": [
+   {
+    "nombre": "Ataque de oportunidad",
+    "texto": "Si un adversario dentro de alcance Cuerpo a cuerpo intenta salir de ese alcance, haz una tirada de reacción con el rasgo que elijas contra su Dificultad. Si tienes éxito, elige un efecto, o dos si obtienes un éxito crítico:\n\n- No puede moverse de donde está.\n- Le causas daño igual al daño de tu arma primaria.\n- Te mueves junto con él."
+   },
+   {
+    "nombre": "Entrenamiento de combate",
+    "texto": "Ignoras la carga al equiparte armas. Cuando causas daño físico, obtienes un bonificador a tu tirada de daño igual a tu nivel."
+   }
+  ],
+  "objetos": "El dibujo de un ser amado o una piedra de afilar",
+  "sugerido": {
+   "rasgos": [
+    2,
+    1,
+    0,
+    1,
+    -1,
+    0
+   ],
+   "armadura": "Chainmail Armor",
+   "primaria": "Longsword",
+   "secundaria": null
+  },
+  "preguntas_trasfondo": [
+   "¿Quién te enseñó a pelear y por qué se quedó cuando te fuiste de casa?",
+   "Hace años alguien te derrotó en batalla y te dejó por muerto. ¿Quién fue y cómo te traicionó?",
+   "¿Qué lugar legendario siempre has querido visitar y por qué es tan especial?"
+  ],
+  "preguntas_conexion": [
+   "Nos conocíamos desde mucho antes de que se formara este grupo. ¿De dónde?",
+   "¿Con qué tarea cotidiana sueles ayudarme fuera del campo de batalla?",
+   "¿Qué miedo te estoy ayudando a superar?"
+  ],
+  "subclases": [
+   "call-of-the-brave",
+   "call-of-the-slayer"
+  ]
+ },
+ {
+  "id": "wizard",
+  "nombre": "Mago",
+  "nombre_en": "Wizard",
+  "descripcion": "Ya sea en una institución o por estudio propio, quienes son conocidos como magos adquieren y perfeccionan un inmenso poder mágico a lo largo de años de aprendizaje, usando una variedad de herramientas como libros, piedras, pociones y hierbas. Algunos magos dedican su vida a dominar una escuela de magia en particular, mientras que otros aprenden de una gran variedad de disciplinas. Muchos magos se vuelven figuras sabias y poderosas en sus comunidades: aconsejan a gobernantes, proveen medicinas y curación, e incluso dirigen consejos de guerra. Aunque todos estos magos trabajan hacia la meta común de reunir conocimiento mágico, suelen tener más conflictos dentro de sus propias filas, pues adquirir, guardar y compartir secretos poderosos es un tema de intenso debate que ha causado innumerables muertes.",
+  "dominios": [
+   "codex",
+   "splendor"
+  ],
+  "evasion": 11,
+  "pg": 5,
+  "esperanza": {
+   "nombre": "Esta vez no",
+   "texto": "**Gasta 3 de Esperanza** para obligar a un adversario dentro de alcance Lejano a volver a hacer una tirada de ataque o de daño."
+  },
+  "rasgos": [
+   {
+    "nombre": "Prestidigitación",
+    "texto": "Puedes producir efectos mágicos sutiles e inofensivos a voluntad. Por ejemplo, puedes cambiar el color de un objeto, crear un olor, encender una vela, hacer que flote un objeto diminuto, iluminar una habitación o reparar un objeto pequeño."
+   },
+   {
+    "nombre": "Patrones extraños",
+    "texto": "Elige un número entre 1 y 12. Cuando saques ese número en un Dado de Dualidad, obtén 1 de Esperanza o limpia un Estrés.\n\nPuedes cambiar este número cuando tomas un descanso largo."
+   }
+  ],
+  "objetos": "Un libro que intentas traducir o una mascota elemental diminuta e inofensiva",
+  "sugerido": {
+   "rasgos": [
+    -1,
+    0,
+    0,
+    1,
+    1,
+    2
+   ],
+   "armadura": "Leather Armor",
+   "primaria": "Greatstaff",
+   "secundaria": null
+  },
+  "preguntas_trasfondo": [
+   "¿Qué responsabilidades dejaba tu comunidad en tus manos? ¿Cómo le fallaste?",
+   "Te has pasado la vida buscando un libro u objeto de gran importancia. ¿Qué es y por qué es tan importante para ti?",
+   "Tienes un rival poderoso. ¿Quién es y por qué estás tan decidido a vencerlo?"
+  ],
+  "preguntas_conexion": [
+   "¿Qué favor te pedí que no estás seguro de poder cumplir?",
+   "¿Qué pasatiempo raro o fascinación extraña compartimos?",
+   "¿Qué secreto tuyo me has confiado solo a mí?"
+  ],
+  "subclases": [
+   "school-of-knowledge",
+   "school-of-war"
+  ]
+ }
+]

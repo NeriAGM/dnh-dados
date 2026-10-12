@@ -1,0 +1,302 @@
+[
+ {
+  "id": "executioners-guild",
+  "clase": "assassin",
+  "nombre": "Gremio de Verdugos",
+  "nombre_en": "Executioners Guild",
+  "descripcion": "Juega como Gremio de Verdugos si quieres abatir a tus objetivos con una precisión letal.",
+  "rasgo_lanzamiento": "agilidad",
+  "base": [
+   {
+    "nombre": "Primer golpe",
+    "texto": "La primera vez en una escena que aciertas un ataque, infliges el doble de daño."
+   },
+   {
+    "nombre": "Emboscada",
+    "texto": "Tu rasgo \"Marcado para morir\" usa **d6** en lugar de d4."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Golpe mortal",
+    "texto": "Cuando le infliges daño Grave a una criatura, puedes **marcar un Estrés** para obligarla a marcar un Punto de Golpe adicional."
+   },
+   {
+    "nombre": "Temple del escorpión",
+    "texto": "Obtienes un bonificador de +2 a tu Evasión contra los ataques de una criatura que tengas _Marcada para morir_."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Golpe certero",
+    "texto": "Una vez por descanso largo, cuando fallas un ataque, puedes **gastar 1 de Esperanza** para convertirlo en un éxito."
+   },
+   {
+    "nombre": "Puñalada trapera",
+    "texto": "Tu rasgo \"Marcado para morir\" usa **d8** en lugar de d6."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Executioners%20Guild.md",
+  "verificado": false
+ },
+ {
+  "id": "poisoners-guild",
+  "clase": "assassin",
+  "nombre": "Gremio de Envenenadores",
+  "nombre_en": "Poisoners Guild",
+  "descripcion": "Juega como Gremio de Envenenadores si quieres debilitar a tus objetivos con aflicciones implacables.",
+  "rasgo_lanzamiento": "conocimiento",
+  "base": [
+   {
+    "nombre": "Brebajes tóxicos",
+    "texto": "**Marca un Estrés** para colocar **1d4+1** fichas en esta carta. Cuando aciertas un ataque con arma, puedes gastar una ficha para afligir al objetivo con un veneno. Conoces estos venenos:\n\n- _Pétalo fantasma:_ El objetivo queda temporalmente _Vulnerable_.\n- _Espora de tumba:_ El objetivo también debe marcar un Estrés.\n- _Hierba sanguijuela:_ Infliges **1d6** de daño adicional en este ataque.\n\nCuando tomas un descanso largo, limpia todas las fichas que no hayas gastado."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Compendio de venenos",
+    "texto": "También conoces estos venenos:\n\n- _Enredadera de medianoche:_ El objetivo tiene desventaja en las tiradas de ataque hasta que marque un Estrés para limpiar esta condición.\n- _Raíz de gorgona:_ El objetivo queda temporalmente _Apresado_."
+   },
+   {
+    "nombre": "Colmillo gemelo",
+    "texto": "Cuando afliges con un veneno que conoces a un objetivo _Marcado para morir_, puedes gastar una ficha adicional para infligirle también el efecto de un segundo veneno que conozcas."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Venenomante",
+    "texto": "También conoces estos venenos:\n\n- _Semilla de plaga:_ El objetivo sufre un penalizador de -3 a sus umbrales de daño hasta el final de la escena. Este efecto no se acumula.\n- _Hoja del miedo:_ Infliges daño adicional igual al resultado de tu Dado de Miedo en este ataque.\n- _Espina de cadáver:_ El objetivo tiene desventaja en las tiradas de reacción hasta el final de la escena."
+   },
+   {
+    "nombre": "Bendición de la víbora",
+    "texto": "Eres inmune a los venenos y a otras toxinas."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Poisoners%20Guild.md",
+  "verificado": false
+ },
+ {
+  "id": "juggernaut",
+  "clase": "brawler",
+  "nombre": "Coloso",
+  "nombre_en": "Juggernaut",
+  "descripcion": "Juega como Coloso si quieres pulverizar a tus oponentes con golpes demoledores.",
+  "rasgo_lanzamiento": null,
+  "base": [
+   {
+    "nombre": "Robusto",
+    "texto": "Obtienes un bonificador permanente de +3 a tu umbral de daño Grave."
+   },
+   {
+    "nombre": "Abrumar",
+    "texto": "Cuando aciertas un ataque contra un objetivo, puedes **gastar 1 de Esperanza** para arrojar al objetivo dentro de alcance Cercano u obligarlo a marcar un Estrés."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Rodeado",
+    "texto": "Cuando haces un ataque con un arma Cuerpo a cuerpo, puedes **gastar cualquier cantidad de Esperanza** para apuntar a esa misma cantidad de criaturas adicionales dentro de alcance Cuerpo a cuerpo."
+   },
+   {
+    "nombre": "Ojo por ojo",
+    "texto": "Una vez por descanso, cuando un adversario dentro de alcance Cuerpo a cuerpo te obligue a marcar cualquier cantidad de Puntos de Golpe, puedes **marcar un Estrés** para obligarlo a marcar la misma cantidad de Puntos de Golpe."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Gozo del golpe",
+    "texto": "Cuando obtienes un éxito crítico en un ataque con un arma Cuerpo a cuerpo, obtienes 1 de Esperanza adicional, limpias un Estrés adicional y obtienes un bonificador de +1 a tu Competencia en ese ataque."
+   },
+   {
+    "nombre": "Todavía no termino",
+    "texto": "Cuando recibes daño Grave, puedes obtener 1 de Esperanza o limpiar un Estrés."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Juggernaut.md",
+  "verificado": false
+ },
+ {
+  "id": "martial-artist",
+  "clase": "brawler",
+  "nombre": "Artista Marcial",
+  "nombre_en": "Martial Artist",
+  "descripcion": "Juega como Artista Marcial si quieres usar una variedad de estilos de pelea para eliminar a tus enemigos.",
+  "rasgo_lanzamiento": null,
+  "base": [
+   {
+    "nombre": "Luchador de posturas",
+    "texto": "Puedes canalizar tu determinación interior para cambiar a posturas marciales que te dan beneficios especiales en combate.\n\nToma la hoja de Posturas marciales y elige dos posturas marciales del Rango 1. Cada vez que tu personaje suba de nivel, elige una postura adicional de tu rango o inferior.\n\n**POSTURAS MARCIALES**\n\nCuando eliges la subclase Artista Marcial, toma la hoja de Posturas marciales para llevar el registro de las posturas que conoce tu personaje. También puedes registrar qué postura tienes activa y tu Concentración actual.\n\n**POSTURAS**\n\nLas posturas son posiciones corporales especiales que les permiten a los Artistas Marciales atacar, reaccionar o defenderse en combate. Cada postura le da a tu personaje una habilidad, un bonificador o un rasgo diferente mientras está activa.\n\nEliges dos posturas del Rango 1 cuando tomas por primera vez la carta base de la subclase Artista Marcial. Marca el círculo junto a cada una para indicar que tu personaje las conoce y tiene acceso a ellas. Marca una postura nueva de tu rango o inferior cada vez que subas de nivel.\n\n**CONCENTRACIÓN**\n\nLa Concentración representa el aplomo, la claridad y el control de tu personaje. Una vez por descanso, durante un momento de calma, puedes despejar tu mente y volver a enfocar tus instintos marciales. Limpia tu registro de Concentración y luego tira una cantidad de **d6** igual a tu Instinto y obtén Concentración igual al resultado más alto. Puedes tener un máximo de 6 de Concentración.\n\n**CAMBIAR DE POSTURA**\n\nPuedes **gastar 1 de Concentración** para cambiar a una postura marcial y obtener sus efectos. Solo puedes cambiar a posturas que hayas marcado como conocidas. Cuando cambias a una postura, se considera tu postura activa hasta que la abandones.\n\nNo puedes cambiar a más de una postura ni tener más de una postura activa a la vez. Hasta que cambies a una postura, no se considera que estés en una postura ni que tengas una postura activa.\n\n**ABANDONAR UNA POSTURA**\n\nSi ya estás en una postura cuando cambias a otra distinta, abandonas automáticamente la postura que tenías activa. También abandonas tu postura activa cuando recibes daño Grave o marcas tu último Punto de Golpe. Si no, abandonas tu postura activa al final de la escena. Cuando abandonas una postura, pierdes cualquier beneficio continuo que te dé.\n\n**RASGOS DE LAS POSTURAS**\n\nLa siguiente sección enumera todas las posturas marciales por rango.\n\n**RANGO 1**\n\n_**Predilecta:**_ Obtienes un bonificador a las tiradas de daño igual a un rasgo de tu elección.\n\n_**Vigorizante:**_ Cuando aciertas un ataque, tira un **d4**. Si sale 4, obtienes 1 de Concentración.\n\n_**Rápida:**_ Cuando haces un ataque, puedes **gastar 1 de Concentración** o **marcar un Estrés** para apuntar con ese ataque a otra criatura dentro del alcance.\n\n_**Confiable:**_ Obtienes un bonificador de +1 a tus tiradas de ataque.\n\n**RANGO 2**\n\n_**Agresiva:**_ Sufres un penalizador de -1 a tu Evasión. Cuando aciertas un ataque, tira un dado de daño adicional y descarta el resultado más bajo.\n\n_**Anclada:**_ Obtienes un bonificador de +2 a tus umbrales de daño. Mientras estás en esta postura, no se te puede mover en contra de tu voluntad.\n\n_**Defensiva:**_ Las tiradas de ataque contra ti desde alcance Cuerpo a cuerpo tienen desventaja, a menos que el atacante marque un Estrés para anular la desventaja.\n\n_**De otro mundo:**_ Cuando aciertas un ataque, puedes infligir daño físico o mágico.\n\n**RANGO 3**\n\n_**De agarre:**_ Cuando aciertas un ataque dentro de alcance Cuerpo a cuerpo, puedes **gastar 1 de Concentración** o **marcar un Estrés** para dejar temporalmente _Apresado_ al objetivo o arrojarlo hasta alcance Cercano.\n\n_**Intimidante:**_ Cuando aciertas un ataque, el objetivo debe marcar un Estrés.\n\n_**Estable:**_ Puedes **gastar 1 de Concentración** en lugar de una casilla de Armadura para reducir el daño.\n\n_**Vigilante:**_ Cuando eres objetivo de un ataque, puedes **marcar un Estrés** para obtener un bonificador de **d6** a tu Evasión contra ese ataque.\n\n**RANGO 4**\n\n_**Aplastante:**_ Cuando infliges daño Grave, puedes **gastar 1 de Esperanza** para obligar al objetivo a marcar un Punto de Golpe adicional.\n\n_**Implacable:**_ Cuando sacas un 1 en un dado de daño, puedes tratarlo como el valor más alto del dado.\n\n_**Afinada:**_ **Gasta 1 de Concentración** antes de hacer una tirada de ataque para obtener un bonificador de +1 a tu Competencia en ese ataque.\n\n_**Aislante:**_ Obtienes ventaja en las tiradas de ataque cuando no hay otras criaturas dentro de alcance Muy cercano de ti o de tu objetivo."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Defensas agudas",
+    "texto": "Cuando eres objetivo de un ataque, puedes **gastar 1 de Concentración** para obtener un bonificador a tu Evasión igual a tu rango contra ese ataque."
+   },
+   {
+    "nombre": "Cañón de concentración",
+    "texto": "**Gasta 1 de Concentración** para hacer una tirada de Instinto contra un adversario dentro de alcance Lejano. Si tienes éxito, inflige **d20+3** de daño mágico usando tu Competencia."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Rompelímites",
+    "texto": "Una vez por descanso, puedes realizar una hazaña increíble de destreza atlética, como correr sobre el agua, saltar entre azoteas lejanas o escalar un edificio, sin necesidad de tirar. Cuando lo hagas, obtén 1 de Esperanza y limpia un Estrés."
+   },
+   {
+    "nombre": "Estado de flujo",
+    "texto": "Puedes **marcar un Estrés** en lugar de gastar Concentración para cambiar a una postura distinta. Además, puedes **gastar 1 de Concentración** en lugar de marcar un Estrés para iniciar un golpe combo."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Martial%20Artist.md",
+  "verificado": false
+ },
+ {
+  "id": "pact-of-the-endless",
+  "clase": "warlock",
+  "nombre": "Pacto de lo Eterno",
+  "nombre_en": "Pact of the Endless",
+  "descripcion": "Juega como Pacto de lo Eterno si quieres mantenerte firme ante tus enemigos y evitar la muerte.",
+  "rasgo_lanzamiento": "presencia",
+  "base": [
+   {
+    "nombre": "Manto del Patrón",
+    "texto": "**Gasta 1 de Favor** para envolverte en un aspecto aterrador de tu Patrón que dura hasta que recibas daño Grave o termine la escena. Mientras este efecto está activo, obtienes un bonificador a tus umbrales de daño igual a tu rango y tienes ventaja en las tiradas de acción para intimidar a un objetivo."
+   },
+   {
+    "nombre": "Abrazo inmortal",
+    "texto": "Una vez por descanso, **gasta cualquier cantidad de Favor** para tirar esa misma cantidad de Dados de Patrón. Por cada resultado de 4 o más, limpia un Punto de Golpe."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Invocación desgarradora",
+    "texto": "Cuando un adversario te ataca a ti o a un aliado dentro de alcance Muy cercano, puedes **gastar 1 de Favor** para darle desventaja en la tirada. Si el adversario falla la tirada, también debe marcar un Estrés."
+   },
+   {
+    "nombre": "Absorbedor de daño",
+    "texto": "Una vez por descanso, puedes **gastar 1 de Favor** para reducir a la mitad el daño entrante."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Égida oscura",
+    "texto": "Una vez por descanso largo, cuando fueras a recibir daño, puedes **gastar 1 de Favor** en lugar de marcar Puntos de Golpe."
+   },
+   {
+    "nombre": "Perdición drenante",
+    "texto": "Cuando un adversario te ataca a ti o a un aliado dentro de alcance Muy cercano, puedes **gastar 1 de Favor** para _Drenarlo_. Cuando lo hagas, debe marcar un Estrés y tú puedes limpiar un Estrés. Mientras está _Drenado_, el objetivo usa un **d12** en lugar de un d20 en sus tiradas de ataque (incluso con ventaja o desventaja) hasta que falle una tirada."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Pact%20of%20the%20Endless.md",
+  "verificado": false
+ },
+ {
+  "id": "pact-of-the-wrathful",
+  "clase": "warlock",
+  "nombre": "Pacto de lo Iracundo",
+  "nombre_en": "Pact of the Wrathful",
+  "descripcion": "Juega como Pacto de lo Iracundo si quieres destruir a quienes actúan en tu contra.",
+  "rasgo_lanzamiento": "presencia",
+  "base": [
+   {
+    "nombre": "Furia del Patrón",
+    "texto": "**Gasta 1 de Favor** para imbuir tus ataques con el poder de tu Patrón hasta que infligas daño Grave o termine la escena. Cuando tiras daño mientras este efecto está activo, también tiras una cantidad de Dados de Patrón igual a tu rango y sumas su total al daño infligido."
+   },
+   {
+    "nombre": "Venganza letal",
+    "texto": "Cuando marcas cualquier cantidad de Puntos de Golpe por un ataque, puedes **gastar 1 de Favor** para tirar esa misma cantidad de Dados de Patrón. Por cada resultado de 4 o más, el atacante marca un Punto de Golpe."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Alcance amenazante",
+    "texto": "**Gasta 1 de Favor** para aumentar un paso el alcance de tu arma primaria (por ejemplo, de Cuerpo a cuerpo a Muy cercano o de Muy cercano a Cercano), hasta un máximo de alcance Muy lejano. Este efecto termina cuando aciertas un ataque con esa arma."
+   },
+   {
+    "nombre": "Doblegar a mis enemigos",
+    "texto": "Cuando tienes éxito con Esperanza en una tirada de acción contra un objetivo, puedes **gastar cualquier cantidad de Favor** para obligar al objetivo a marcar esa misma cantidad de Estrés."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Ataque temible",
+    "texto": "**Gasta 1 de Favor** para volver a tirar cualquier cantidad de tus dados de daño. Puedes seguir gastando Favor para usar este rasgo en la misma tirada de daño."
+   },
+   {
+    "nombre": "Ira de otro mundo",
+    "texto": "Una vez por descanso, cuando recibes daño, puedes **gastar cualquier cantidad de Favor** para tirar esa cantidad de Dados de Patrón y apuntar a una cantidad de criaturas dentro de alcance Cercano igual al resultado más alto. Cada objetivo debe marcar un Punto de Golpe."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Pact%20of%20the%20Wrathful.md",
+  "verificado": false
+ },
+ {
+  "id": "hedge-witch",
+  "clase": "witch",
+  "nombre": "Bruja de Seto",
+  "nombre_en": "Hedge Witch",
+  "descripcion": "Juega como Bruja de Seto si quieres usar tu oficio para fortalecerte a ti y a tu grupo.",
+  "rasgo_lanzamiento": "conocimiento",
+  "base": [
+   {
+    "nombre": "Remedios herbales",
+    "texto": "Cuando tú o un aliado en la escena limpian 1 o más Puntos de Golpe o de Estrés como resultado de usar un consumible, aumenta en 1 la cantidad que se limpia."
+   },
+   {
+    "nombre": "Talismán encantado",
+    "texto": "Una vez por descanso, puedes imbuir un objeto pequeño con tu esencia protectora. **Gasta cualquier cantidad de Esperanza** para colocar esa misma cantidad de fichas en esta carta. Cuando la persona que porta el talismán recibe daño, gasta una ficha para reducir en uno la cantidad de Puntos de Golpe que marca. Limpia todas las fichas de esta carta cuando tomes un descanso."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Caminar entre mundos",
+    "texto": "Durante un momento de calma, haz una **tirada de Lanzamiento (13)**. Una vez por descanso, si tienes éxito, puedes **marcar un Estrés** para cruzar más allá del velo de la muerte y conversar con cualquier espíritu cercano. Coloca en esta carta una cantidad de fichas igual a tu rasgo de Lanzamiento y quita una cada vez que un espíritu responda una pregunta. Cuando quites la última ficha o al final de la escena, regresas al Reino Mortal en el mismo lugar donde lo dejaste."
+   },
+   {
+    "nombre": "Maldición irritante",
+    "texto": "Tienes ventaja en los ataques contra criaturas _Embrujadas_."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Círculo de poder",
+    "texto": "Una vez por descanso, traza en el suelo un círculo que delimite un área Muy cercana a tu alrededor y coloca en esta carta una cantidad de fichas igual a tu rasgo de Lanzamiento. Mientras estén dentro de este círculo, tú y tus aliados obtienen un bonificador de +2 a los umbrales de daño, las tiradas de ataque y la Evasión. Quita una ficha cada vez que tú o un aliado dentro del círculo hagan una tirada de acción o eviten un ataque. Este hechizo dura hasta que se quite la última ficha o salgas del círculo."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Hedge%20Witch.md",
+  "verificado": false
+ },
+ {
+  "id": "moon-witch",
+  "clase": "witch",
+  "nombre": "Bruja de la Luna",
+  "nombre_en": "Moon Witch",
+  "descripcion": "Juega como Bruja de la Luna si quieres encarnar el poder celestial para amplificar tu magia.",
+  "rasgo_lanzamiento": "instinto",
+  "base": [
+   {
+    "nombre": "Glamur nocturno",
+    "texto": "Haz una **tirada de Lanzamiento (13)** para envolverte en el _Glamur_ de una fachada hechizante. Mientras tengas el _Glamur_, tienes ventaja en las tiradas en las que aproveches tu apariencia ilusoria. Además, los adversarios dentro de alcance Cercano deben marcar un Estrés para atacarte.\n\nA menos que **marques un Estrés** para mantener tu _Glamur_, este se desvanece cuando marcas un Punto de Golpe o infliges daño."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Rayo de luna",
+    "texto": "Una vez por sesión, puedes conjurar una columna de luz de luna que ilumina el área dentro de alcance Cercano hasta el final de la escena. Mientras estén bañados por esta luz de luna, tú y tus aliados obtienen un bonificador de +1 a las tiradas de Lanzamiento y pueden ver a través de las ilusiones."
+   },
+   {
+    "nombre": "Ira de la luz pálida",
+    "texto": "Cuando una criatura _Embrujada_ dentro de alcance Muy lejano falla un ataque, debe marcar un Estrés."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Fases lunares",
+    "texto": "Al inicio de cada sesión, tira un **d6** y colócalo en esta carta. Obtienes el efecto correspondiente hasta el final de la sesión.\n\n| Tirada | Fase | Efecto |\n| --- | --- | --- |\n| **1** | Nueva | **Gasta 1 de Esperanza** para anular el daño Menor. |\n| **2-3** | Creciente | +2 a las tiradas de daño |\n| **4** | Llena | +3 a los umbrales de daño |\n| **5-6** | Menguante | +1 a la Evasión |\n\nUna vez por descanso, puedes **gastar 1 de Esperanza** para aumentar en uno el valor de este dado. Si aumentas el valor de un 6, se vuelve un 1."
+   }
+  ],
+  "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Moon%20Witch.md",
+  "verificado": false
+ }
+]

@@ -1,0 +1,422 @@
+[
+ {
+  "id": "premium-bedroll",
+  "nombre": "Petate de primera",
+  "nombre_en": "Premium Bedroll",
+  "texto": "Durante el tiempo de descanso, limpias un Estrés automáticamente.",
+  "tirada": 1
+ },
+ {
+  "id": "piper-whistle",
+  "nombre": "Silbato de flautista",
+  "nombre_en": "Piper Whistle",
+  "texto": "Este silbato hecho a mano tiene un sonido distintivo. Cuando lo soplas, su tono penetrante se oye en un radio de 1 milla.",
+  "tirada": 2
+ },
+ {
+  "id": "charging-quiver",
+  "nombre": "Carcaj cargado",
+  "nombre_en": "Charging Quiver",
+  "texto": "Cuando aciertas un ataque con una flecha guardada en este carcaj, obtienes un bonificador a la tirada de daño igual a tu rango actual.",
+  "tirada": 3
+ },
+ {
+  "id": "alistair-s-torch",
+  "nombre": "Antorcha de Alistair",
+  "nombre_en": "Alistair's Torch",
+  "texto": "Puedes encender esta antorcha mágica a voluntad. La luz de su llama llena un espacio mucho más grande de lo que debería, suficiente para iluminar una cueva como si fuera de día.",
+  "tirada": 4
+ },
+ {
+  "id": "speaking-orbs",
+  "nombre": "Orbes parlantes",
+  "nombre_en": "Speaking Orbs",
+  "texto": "Este par de orbes permite que las criaturas que los sostengan se comuniquen entre sí a cualquier distancia.",
+  "tirada": 5
+ },
+ {
+  "id": "manacles",
+  "nombre": "Grilletes",
+  "nombre_en": "Manacles",
+  "texto": "Este par de esposas con cerradura viene con una llave.",
+  "tirada": 6
+ },
+ {
+  "id": "arcane-cloak",
+  "nombre": "Capa arcana",
+  "nombre_en": "Arcane Cloak",
+  "texto": "Una criatura con rasgo de Lanzamiento que lleve puesta esta capa puede ajustar su color, textura y tamaño a voluntad.",
+  "tirada": 7
+ },
+ {
+  "id": "woven-net",
+  "nombre": "Red tejida",
+  "nombre_en": "Woven Net",
+  "texto": "Puedes hacer una tirada de Sutileza con esta red para atrapar a una criatura pequeña. Un objetivo atrapado puede liberarse con una tirada de ataque exitosa (16).",
+  "tirada": 8
+ },
+ {
+  "id": "fire-jar",
+  "nombre": "Tarro de fuego",
+  "nombre_en": "Fire Jar",
+  "texto": "Puedes verter el extraño líquido de este tarro para producir fuego al instante. El contenido se regenera cuando tomas un descanso largo.",
+  "tirada": 9
+ },
+ {
+  "id": "suspended-rod",
+  "nombre": "Vara suspendida",
+  "nombre_en": "Suspended Rod",
+  "texto": "Esta vara plana tiene runas grabadas. Cuando activas la vara, queda suspendida en su lugar de inmediato. Hasta que la desactives, no se puede mover, no obedece las reglas de la gravedad y permanece en su sitio.",
+  "tirada": 10
+ },
+ {
+  "id": "glamour-stone",
+  "nombre": "Piedra de encantamiento",
+  "nombre_en": "Glamour Stone",
+  "texto": "Activa esta piedra del tamaño de un guijarro para memorizar la apariencia de alguien que puedas ver. Gasta una Esperanza para recrear mágicamente ese aspecto sobre ti como una ilusión.",
+  "tirada": 11
+ },
+ {
+  "id": "empty-chest",
+  "nombre": "Cofre vacío",
+  "nombre_en": "Empty Chest",
+  "texto": "Este cofre mágico parece vacío. Cuando dices una palabra clave específica o haces una acción específica y abres el cofre, puedes ver los objetos guardados en él.",
+  "tirada": 12
+ },
+ {
+  "id": "companion-case",
+  "nombre": "Estuche de compañero",
+  "nombre_en": "Companion Case",
+  "texto": "En este estuche cabe un compañero animal pequeño. Mientras el compañero está dentro, el animal y el estuche son inmunes a todo daño y efecto dañino.",
+  "tirada": 13
+ },
+ {
+  "id": "piercing-arrows",
+  "nombre": "Flechas perforantes",
+  "nombre_en": "Piercing Arrows",
+  "texto": "Tres veces por descanso, cuando aciertas un ataque con una de estas flechas, puedes sumar tu Competencia a la tirada de daño.",
+  "tirada": 14
+ },
+ {
+  "id": "valorstone",
+  "nombre": "Piedra del valor",
+  "nombre_en": "Valorstone",
+  "texto": "Puedes engarzar esta piedra en una armadura que todavía no tenga un rasgo. La armadura obtiene el siguiente rasgo. Resiliente: antes de marcar tu última casilla de Armadura, tira un d6. Con un resultado de 6, reduce la gravedad en un umbral sin marcar una casilla de Armadura.",
+  "tirada": 15
+ },
+ {
+  "id": "skeleton-key",
+  "nombre": "Llave maestra",
+  "nombre_en": "Skeleton Key",
+  "texto": "Cuando usas esta llave para abrir una puerta cerrada con llave, obtienes ventaja en la tirada de Sutileza.",
+  "tirada": 16
+ },
+ {
+  "id": "arcane-prism",
+  "nombre": "Prisma arcano",
+  "nombre_en": "Arcane Prism",
+  "texto": "Coloca este prisma en el lugar que elijas y actívalo. Todos los aliados a alcance Cercano de él obtienen un bonificador de +1 a sus tiradas de Lanzamiento. Mientras está activado, el prisma no se puede mover. Una vez que se desactiva, no puede volver a activarse hasta tu siguiente descanso largo.",
+  "tirada": 17
+ },
+ {
+  "id": "minor-stamina-potion-recipe",
+  "nombre": "Receta de poción de aguante menor",
+  "nombre_en": "Minor Stamina Potion Recipe",
+  "texto": "Como acción de tiempo de descanso, puedes usar el hueso de una criatura para elaborar una Poción de aguante menor.",
+  "tirada": 18
+ },
+ {
+  "id": "minor-health-potion-recipe",
+  "nombre": "Receta de poción de salud menor",
+  "nombre_en": "Minor Health Potion Recipe",
+  "texto": "Como acción de tiempo de descanso, puedes usar un vial de sangre para elaborar una Poción de salud menor.",
+  "tirada": 19
+ },
+ {
+  "id": "homing-compasses",
+  "nombre": "Brújulas gemelas",
+  "nombre_en": "Homing Compasses",
+  "texto": "Estas dos brújulas se apuntan una a la otra sin importar qué tan lejos estén.",
+  "tirada": 20
+ },
+ {
+  "id": "corrector-sprite",
+  "nombre": "Duendecillo corrector",
+  "nombre_en": "Corrector Sprite",
+  "texto": "Este diminuto duendecillo se acomoda en la curva de tu oído y te susurra consejos útiles durante el combate. Una vez por descanso corto, puedes obtener ventaja en una tirada de ataque.",
+  "tirada": 21
+ },
+ {
+  "id": "gecko-gloves",
+  "nombre": "Guantes de geco",
+  "nombre_en": "Gecko Gloves",
+  "texto": "Puedes trepar por superficies verticales y desplazarte por los techos.",
+  "tirada": 22
+ },
+ {
+  "id": "lorekeeper",
+  "nombre": "Guardasaberes",
+  "nombre_en": "Lorekeeper",
+  "texto": "Puedes guardar en este libro el nombre y los detalles de hasta tres criaturas hostiles. Obtienes un bonificador de +1 a las tiradas de acción contra esas criaturas.",
+  "tirada": 23
+ },
+ {
+  "id": "vial-of-darksmoke-recipe",
+  "nombre": "Receta de vial de humo oscuro",
+  "nombre_en": "Vial of Darksmoke Recipe",
+  "texto": "Como acción de tiempo de descanso, puedes marcar un Estrés para elaborar un Vial de humo oscuro.",
+  "tirada": 24
+ },
+ {
+  "id": "bloodstone",
+  "nombre": "Piedra de sangre",
+  "nombre_en": "Bloodstone",
+  "texto": "Puedes engarzar esta piedra en un arma que todavía no tenga un rasgo. El arma obtiene el siguiente rasgo. Brutal: cuando sacas el valor máximo en un dado de daño, tira un dado de daño adicional.",
+  "tirada": 25
+ },
+ {
+  "id": "greatstone",
+  "nombre": "Gran piedra",
+  "nombre_en": "Greatstone",
+  "texto": "Puedes engarzar esta piedra en un arma que todavía no tenga un rasgo. El arma obtiene el siguiente rasgo. Poderosa: cuando aciertas un ataque, tira un dado de daño adicional y descarta el resultado más bajo.",
+  "tirada": 26
+ },
+ {
+  "id": "glider",
+  "nombre": "Planeador",
+  "nombre_en": "Glider",
+  "texto": "Mientras caes, puedes marcar un Estrés para desplegar este pequeño paracaídas y planear a salvo hasta el suelo.",
+  "tirada": 27
+ },
+ {
+  "id": "ring-of-silence",
+  "nombre": "Anillo del silencio",
+  "nombre_en": "Ring of Silence",
+  "texto": "Gasta una Esperanza para activar este anillo. Tus pasos son silenciosos hasta tu siguiente descanso.",
+  "tirada": 28
+ },
+ {
+  "id": "calming-pendant",
+  "nombre": "Colgante calmante",
+  "nombre_en": "Calming Pendant",
+  "texto": "Cuando fueras a marcar tu último Estrés, tira un d6. Con un resultado de 5 o más, no lo marques.",
+  "tirada": 29
+ },
+ {
+  "id": "dual-flask",
+  "nombre": "Frasco doble",
+  "nombre_en": "Dual Flask",
+  "texto": "Este frasco puede contener dos líquidos distintos. Puedes alternar entre ellos moviendo un pequeño interruptor en el costado del frasco.",
+  "tirada": 30
+ },
+ {
+  "id": "bag-of-ficklesand",
+  "nombre": "Bolsa de arena caprichosa",
+  "nombre_en": "Bag of Ficklesand",
+  "texto": "Puedes convencer a esta bolsita de arena de volverse mucho más pesada o más ligera con una tirada de Presencia exitosa (10). Además, con una tirada de Sutileza exitosa (10), puedes soplar un poco de arena a la cara de un objetivo para dejarlo Vulnerable de forma temporal.",
+  "tirada": 31
+ },
+ {
+  "id": "ring-of-resistance",
+  "nombre": "Anillo de resistencia",
+  "nombre_en": "Ring of Resistance",
+  "texto": "Una vez por descanso largo, puedes activar este anillo después de que un ataque contra ti tenga éxito para reducir el daño a la mitad.",
+  "tirada": 32
+ },
+ {
+  "id": "phoenix-feather",
+  "nombre": "Pluma de fénix",
+  "nombre_en": "Phoenix Feather",
+  "texto": "Si llevas al menos una Pluma de fénix contigo cuando quedas inconsciente, obtienes un bonificador de +1 a la tirada que haces para determinar si obtienes una cicatriz.",
+  "tirada": 33
+ },
+ {
+  "id": "box-of-many-goods",
+  "nombre": "Caja de muchos bienes",
+  "nombre_en": "Box of Many Goods",
+  "texto": "Una vez por descanso largo, puedes abrir esta cajita y tirar un d12. Con un resultado de 1-6, está vacía. Con un resultado de 7-10, contiene un consumible común al azar. Con un resultado de 11-12, contiene dos consumibles comunes al azar.",
+  "tirada": 34
+ },
+ {
+  "id": "airblade-charm",
+  "nombre": "Amuleto de hoja de viento",
+  "nombre_en": "Airblade Charm",
+  "texto": "Puedes engarzar este amuleto en un arma con alcance Cuerpo a cuerpo. Tres veces por descanso, puedes activar el amuleto y atacar a un objetivo a alcance Cercano.",
+  "tirada": 35
+ },
+ {
+  "id": "portal-seed",
+  "nombre": "Semilla de portal",
+  "nombre_en": "Portal Seed",
+  "texto": "Puedes plantar esta semilla en el suelo para que crezca un portal en ese lugar. El portal está listo para usarse en 24 horas. Puedes usar este portal para viajar a cualquier otro lugar donde hayas plantado una semilla de portal. Un portal se destruye si recibe cualquier cantidad de daño mágico.",
+  "tirada": 36
+ },
+ {
+  "id": "paragons-chain",
+  "nombre": "Cadena del Paragón",
+  "nombre_en": "Paragon’s Chain",
+  "texto": "Como acción de tiempo de descanso, puedes meditar sobre un ideal o principio que valores mucho y concentrar tu voluntad en esta cadena. Una vez por descanso largo, puedes gastar una Esperanza para tirar un d20 como tu Dado de Esperanza en las tiradas que estén directamente alineadas con ese principio.",
+  "tirada": 37
+ },
+ {
+  "id": "elusive-amulet",
+  "nombre": "Amuleto escurridizo",
+  "nombre_en": "Elusive Amulet",
+  "texto": "Una vez por descanso largo, puedes activar este amuleto para quedar Oculto hasta que te muevas. Mientras estás Oculto de esta forma, sigues sin ser visto aunque un adversario se mueva a donde normalmente te vería.",
+  "tirada": 38
+ },
+ {
+  "id": "hopekeeper-locket",
+  "nombre": "Relicario guardaesperanza",
+  "nombre_en": "Hopekeeper Locket",
+  "texto": "Durante un descanso largo, si tienes 6 de Esperanza, puedes gastar una Esperanza para imbuir este relicario con tu abundante determinación. Cuando tengas 0 de Esperanza, puedes usar el relicario para obtener una Esperanza de inmediato. El relicario debe volver a imbuirse antes de poder usarse así otra vez.",
+  "tirada": 39
+ },
+ {
+  "id": "infinite-bag",
+  "nombre": "Bolsa infinita",
+  "nombre_en": "Infinite Bag",
+  "texto": "Cuando guardas objetos en esta bolsa, se mantienen en una dimensión de bolsillo a la que nunca se le acaba el espacio. Puedes sacar un objeto en cualquier momento.",
+  "tirada": 40
+ },
+ {
+  "id": "stride-relic",
+  "nombre": "Reliquia de zancada",
+  "nombre_en": "Stride Relic",
+  "texto": "Obtienes un bonificador de +1 a tu Agilidad. Solo puedes llevar una reliquia.",
+  "tirada": 41
+ },
+ {
+  "id": "bolster-relic",
+  "nombre": "Reliquia de refuerzo",
+  "nombre_en": "Bolster Relic",
+  "texto": "Obtienes un bonificador de +1 a tu Fuerza. Solo puedes llevar una reliquia.",
+  "tirada": 42
+ },
+ {
+  "id": "control-relic",
+  "nombre": "Reliquia de control",
+  "nombre_en": "Control Relic",
+  "texto": "Obtienes un bonificador de +1 a tu Sutileza. Solo puedes llevar una reliquia.",
+  "tirada": 43
+ },
+ {
+  "id": "attune-relic",
+  "nombre": "Reliquia de sintonía",
+  "nombre_en": "Attune Relic",
+  "texto": "Obtienes un bonificador de +1 a tu Instinto. Solo puedes llevar una reliquia.",
+  "tirada": 44
+ },
+ {
+  "id": "charm-relic",
+  "nombre": "Reliquia de encanto",
+  "nombre_en": "Charm Relic",
+  "texto": "Obtienes un bonificador de +1 a tu Presencia. Solo puedes llevar una reliquia.",
+  "tirada": 45
+ },
+ {
+  "id": "enlighten-relic",
+  "nombre": "Reliquia de iluminación",
+  "nombre_en": "Enlighten Relic",
+  "texto": "Obtienes un bonificador de +1 a tu Conocimiento. Solo puedes llevar una reliquia.",
+  "tirada": 46
+ },
+ {
+  "id": "honing-relic",
+  "nombre": "Reliquia de afinación",
+  "nombre_en": "Honing Relic",
+  "texto": "Obtienes un bonificador de +1 a una Experiencia de tu elección. Solo puedes llevar una reliquia.",
+  "tirada": 47
+ },
+ {
+  "id": "flickerfly-pendant",
+  "nombre": "Colgante de luciérnaga titilante",
+  "nombre_en": "Flickerfly Pendant",
+  "texto": "Mientras llevas este colgante, tus armas con alcance Cuerpo a cuerpo que hacen daño físico tienen un brillo sutil como de gasa y pueden atacar a objetivos a alcance Muy cercano.",
+  "tirada": 48
+ },
+ {
+  "id": "lakestrider-boots",
+  "nombre": "Botas zancalagos",
+  "nombre_en": "Lakestrider Boots",
+  "texto": "Puedes caminar sobre la superficie del agua como si fuera tierra blanda.",
+  "tirada": 49
+ },
+ {
+  "id": "clay-companion",
+  "nombre": "Compañero de arcilla",
+  "nombre_en": "Clay Companion",
+  "texto": "Cuando esculpes esta bola de arcilla en forma de un compañero animal, se comporta como ese animal. Por ejemplo, una araña de arcilla puede tejer telarañas de arcilla, y un ave de arcilla puede volar. El compañero de arcilla conserva su memoria e identidad entre formas, pero puede adoptar nuevos gestos con cada una.",
+  "tirada": 50
+ },
+ {
+  "id": "mythic-dust-recipe",
+  "nombre": "Receta de polvo mítico",
+  "nombre_en": "Mythic Dust Recipe",
+  "texto": "Como acción de tiempo de descanso, puedes usar un puñado de polvo de oro fino para elaborar Polvo mítico.",
+  "tirada": 51
+ },
+ {
+  "id": "shard-of-memory",
+  "nombre": "Fragmento de memoria",
+  "nombre_en": "Shard of Memory",
+  "texto": "Una vez por descanso largo, puedes gastar 2 de Esperanza para recuperar una carta de dominio de tu bóveda en lugar de pagar su costo de recuperación.",
+  "tirada": 52
+ },
+ {
+  "id": "gem-of-alacrity",
+  "nombre": "Gema de presteza",
+  "nombre_en": "Gem of Alacrity",
+  "texto": "Puedes engarzar esta gema en un arma, lo que te permite usar tu Agilidad al hacer un ataque con esa arma.",
+  "tirada": 53
+ },
+ {
+  "id": "gem-of-might",
+  "nombre": "Gema de poderío",
+  "nombre_en": "Gem of Might",
+  "texto": "Puedes engarzar esta gema en un arma, lo que te permite usar tu Fuerza al hacer un ataque con esa arma.",
+  "tirada": 54
+ },
+ {
+  "id": "gem-of-precision",
+  "nombre": "Gema de precisión",
+  "nombre_en": "Gem of Precision",
+  "texto": "Puedes engarzar esta gema en un arma, lo que te permite usar tu Sutileza al hacer un ataque con esa arma.",
+  "tirada": 55
+ },
+ {
+  "id": "gem-of-insight",
+  "nombre": "Gema de perspicacia",
+  "nombre_en": "Gem of Insight",
+  "texto": "Puedes engarzar esta gema en un arma, lo que te permite usar tu Instinto al hacer un ataque con esa arma.",
+  "tirada": 56
+ },
+ {
+  "id": "gem-of-audacity",
+  "nombre": "Gema de audacia",
+  "nombre_en": "Gem of Audacity",
+  "texto": "Puedes engarzar esta gema en un arma, lo que te permite usar tu Presencia al hacer un ataque con esa arma.",
+  "tirada": 57
+ },
+ {
+  "id": "gem-of-sagacity",
+  "nombre": "Gema de sagacidad",
+  "nombre_en": "Gem of Sagacity",
+  "texto": "Puedes engarzar esta gema en un arma, lo que te permite usar tu Conocimiento al hacer un ataque con esa arma.",
+  "tirada": 58
+ },
+ {
+  "id": "ring-of-unbreakable-resolve",
+  "nombre": "Anillo de determinación inquebrantable",
+  "nombre_en": "Ring of Unbreakable Resolve",
+  "texto": "Una vez por sesión, cuando el DJ gaste un Miedo, puedes gastar 4 de Esperanza para cancelar los efectos de ese Miedo gastado.",
+  "tirada": 59
+ },
+ {
+  "id": "belt-of-unity",
+  "nombre": "Cinturón de unidad",
+  "nombre_en": "Belt of Unity",
+  "texto": "Una vez por sesión, puedes gastar 5 de Esperanza para dirigir una Tirada en Equipo con tres PJ en lugar de dos.",
+  "tirada": 60
+ }
+]

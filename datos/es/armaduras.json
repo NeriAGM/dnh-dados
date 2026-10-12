@@ -1,0 +1,560 @@
+[
+ {
+  "id": "gambeson-armor",
+  "nombre": "Gambesón",
+  "nombre_en": "Gambeson Armor",
+  "nivel": 1,
+  "puntuacion": 3,
+  "umbrales": {
+   "mayor": 5,
+   "grave": 11
+  },
+  "rasgos": [
+   {
+    "nombre": "Flexible",
+    "texto": "+1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "leather-armor",
+  "nombre": "Armadura de cuero",
+  "nombre_en": "Leather Armor",
+  "nivel": 1,
+  "puntuacion": 3,
+  "umbrales": {
+   "mayor": 6,
+   "grave": 13
+  },
+  "rasgos": []
+ },
+ {
+  "id": "chainmail-armor",
+  "nombre": "Cota de malla",
+  "nombre_en": "Chainmail Armor",
+  "nivel": 1,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 7,
+   "grave": 15
+  },
+  "rasgos": [
+   {
+    "nombre": "Pesada",
+    "texto": "-1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "full-plate-armor",
+  "nombre": "Armadura de placas completa",
+  "nombre_en": "Full Plate Armor",
+  "nivel": 1,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 8,
+   "grave": 17
+  },
+  "rasgos": [
+   {
+    "nombre": "Muy pesada",
+    "texto": "-2 a la Evasión; -1 a la Agilidad"
+   }
+  ]
+ },
+ {
+  "id": "improved-gambeson-armor",
+  "nombre": "Gambesón mejorado",
+  "nombre_en": "Improved Gambeson Armor",
+  "nivel": 2,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 7,
+   "grave": 16
+  },
+  "rasgos": [
+   {
+    "nombre": "Flexible",
+    "texto": "+1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "improved-leather-armor",
+  "nombre": "Armadura de cuero mejorada",
+  "nombre_en": "Improved Leather Armor",
+  "nivel": 2,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 9,
+   "grave": 20
+  },
+  "rasgos": []
+ },
+ {
+  "id": "improved-chainmail-armor",
+  "nombre": "Cota de malla mejorada",
+  "nombre_en": "Improved Chainmail Armor",
+  "nivel": 2,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 11,
+   "grave": 24
+  },
+  "rasgos": [
+   {
+    "nombre": "Pesada",
+    "texto": "-1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "improved-full-plate-armor",
+  "nombre": "Armadura de placas completa mejorada",
+  "nombre_en": "Improved Full Plate Armor",
+  "nivel": 2,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 13,
+   "grave": 28
+  },
+  "rasgos": [
+   {
+    "nombre": "Muy pesada",
+    "texto": "-2 a la Evasión; -1 a la Agilidad"
+   }
+  ]
+ },
+ {
+  "id": "elundrian-chain-armor",
+  "nombre": "Armadura de malla elundriana",
+  "nombre_en": "Elundrian Chain Armor",
+  "nivel": 2,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 9,
+   "grave": 21
+  },
+  "rasgos": [
+   {
+    "nombre": "Resguardada",
+    "texto": "Reduces el daño mágico que recibes en una cantidad igual a tu Puntuación de Armadura antes de compararlo con tus umbrales de daño."
+   }
+  ]
+ },
+ {
+  "id": "harrowbone-armor",
+  "nombre": "Armadura de Hueso Funesto",
+  "nombre_en": "Harrowbone Armor",
+  "nivel": 2,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 9,
+   "grave": 21
+  },
+  "rasgos": [
+   {
+    "nombre": "Resiliente",
+    "texto": "Antes de marcar tu última casilla de Armadura, tira un d6. Con un resultado de 6, reduce la gravedad en un umbral sin marcar una casilla de Armadura."
+   }
+  ]
+ },
+ {
+  "id": "irontree-breastplate-armor",
+  "nombre": "Peto de Árbol de Hierro",
+  "nombre_en": "IronTree Breastplate Armor",
+  "nivel": 2,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 9,
+   "grave": 20
+  },
+  "rasgos": [
+   {
+    "nombre": "Reforzada",
+    "texto": "Cuando marcas tu última casilla de Armadura, aumenta tus umbrales de daño en +2 hasta que limpies al menos 1 casilla de Armadura."
+   }
+  ]
+ },
+ {
+  "id": "runetan-floating-armor",
+  "nombre": "Armadura flotante runetana",
+  "nombre_en": "Runetan Floating Armor",
+  "nivel": 2,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 9,
+   "grave": 20
+  },
+  "rasgos": [
+   {
+    "nombre": "Cambiante",
+    "texto": "Cuando eres objetivo de un ataque, puedes marcar una casilla de Armadura para que la tirada de ataque contra ti tenga desventaja."
+   }
+  ]
+ },
+ {
+  "id": "tyris-soft-armor",
+  "nombre": "Armadura blanda de Tyris",
+  "nombre_en": "Tyris Soft Armor",
+  "nivel": 2,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 8,
+   "grave": 18
+  },
+  "rasgos": [
+   {
+    "nombre": "Silenciosa",
+    "texto": "Obtienes un bonificador de +2 a las tiradas que hagas para moverte en silencio."
+   }
+  ]
+ },
+ {
+  "id": "rosewild-armor",
+  "nombre": "Armadura de Rosa Silvestre",
+  "nombre_en": "Rosewild Armor",
+  "nivel": 2,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 11,
+   "grave": 23
+  },
+  "rasgos": [
+   {
+    "nombre": "Esperanzadora",
+    "texto": "Cuando fueras a gastar una Esperanza, puedes marcar una casilla de Armadura en su lugar."
+   }
+  ]
+ },
+ {
+  "id": "advanced-gambeson-armor",
+  "nombre": "Gambesón avanzado",
+  "nombre_en": "Advanced Gambeson Armor",
+  "nivel": 3,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 9,
+   "grave": 23
+  },
+  "rasgos": [
+   {
+    "nombre": "Flexible",
+    "texto": "+1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "advanced-leather-armor",
+  "nombre": "Armadura de cuero avanzada",
+  "nombre_en": "Advanced Leather Armor",
+  "nivel": 3,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 11,
+   "grave": 27
+  },
+  "rasgos": []
+ },
+ {
+  "id": "advanced-chainmail-armor",
+  "nombre": "Cota de malla avanzada",
+  "nombre_en": "Advanced Chainmail Armor",
+  "nivel": 3,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 13,
+   "grave": 31
+  },
+  "rasgos": [
+   {
+    "nombre": "Pesada",
+    "texto": "-1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "advanced-full-plate-armor",
+  "nombre": "Armadura de placas completa avanzada",
+  "nombre_en": "Advanced Full Plate Armor",
+  "nivel": 3,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 15,
+   "grave": 35
+  },
+  "rasgos": [
+   {
+    "nombre": "Muy pesada",
+    "texto": "-2 a la Evasión; -1 a la Agilidad"
+   }
+  ]
+ },
+ {
+  "id": "bellamoi-fine-armor",
+  "nombre": "Armadura fina Bellamoi",
+  "nombre_en": "Bellamoi Fine Armor",
+  "nivel": 3,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 11,
+   "grave": 27
+  },
+  "rasgos": [
+   {
+    "nombre": "Dorada",
+    "texto": "+1 a la Presencia"
+   }
+  ]
+ },
+ {
+  "id": "dragonscale-armor",
+  "nombre": "Armadura de escamas de dragón",
+  "nombre_en": "Dragonscale Armor",
+  "nivel": 3,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 11,
+   "grave": 27
+  },
+  "rasgos": [
+   {
+    "nombre": "Impenetrable",
+    "texto": "Una vez por descanso corto, cuando fueras a marcar tu último Punto de Golpe, puedes marcar un Estrés en su lugar."
+   }
+  ]
+ },
+ {
+  "id": "spiked-plate-armor",
+  "nombre": "Armadura de placas con púas",
+  "nombre_en": "Spiked Plate Armor",
+  "nivel": 3,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 10,
+   "grave": 25
+  },
+  "rasgos": [
+   {
+    "nombre": "Afilada",
+    "texto": "Cuando aciertas un ataque contra un objetivo a alcance Cuerpo a cuerpo, suma un d4 a la tirada de daño."
+   }
+  ]
+ },
+ {
+  "id": "bladefare-armor",
+  "nombre": "Armadura Senda de Acero",
+  "nombre_en": "Bladefare Armor",
+  "nivel": 3,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 16,
+   "grave": 39
+  },
+  "rasgos": [
+   {
+    "nombre": "Física",
+    "texto": "No puedes marcar una casilla de Armadura para reducir daño mágico."
+   }
+  ]
+ },
+ {
+  "id": "monett-s-cloak",
+  "nombre": "Capa de Monett",
+  "nombre_en": "Monett's Cloak",
+  "nivel": 3,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 16,
+   "grave": 39
+  },
+  "rasgos": [
+   {
+    "nombre": "Mágica",
+    "texto": "No puedes marcar una casilla de Armadura para reducir daño físico."
+   }
+  ]
+ },
+ {
+  "id": "runes-of-fortification",
+  "nombre": "Runas de fortificación",
+  "nombre_en": "Runes of Fortification",
+  "nivel": 3,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 17,
+   "grave": 43
+  },
+  "rasgos": [
+   {
+    "nombre": "Dolorosa",
+    "texto": "Cada vez que marcas una casilla de Armadura, debes marcar un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "legendary-gambeson-armor",
+  "nombre": "Gambesón legendario",
+  "nombre_en": "Legendary Gambeson Armor",
+  "nivel": 4,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 11,
+   "grave": 32
+  },
+  "rasgos": [
+   {
+    "nombre": "Flexible",
+    "texto": "+1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "legendary-leather-armor",
+  "nombre": "Armadura de cuero legendaria",
+  "nombre_en": "Legendary Leather Armor",
+  "nivel": 4,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 13,
+   "grave": 36
+  },
+  "rasgos": []
+ },
+ {
+  "id": "legendary-chainmail-armor",
+  "nombre": "Cota de malla legendaria",
+  "nombre_en": "Legendary Chainmail Armor",
+  "nivel": 4,
+  "puntuacion": 7,
+  "umbrales": {
+   "mayor": 15,
+   "grave": 40
+  },
+  "rasgos": [
+   {
+    "nombre": "Pesada",
+    "texto": "-1 a la Evasión"
+   }
+  ]
+ },
+ {
+  "id": "legendary-full-plate-armor",
+  "nombre": "Armadura de placas completa legendaria",
+  "nombre_en": "Legendary Full Plate Armor",
+  "nivel": 4,
+  "puntuacion": 7,
+  "umbrales": {
+   "mayor": 17,
+   "grave": 44
+  },
+  "rasgos": [
+   {
+    "nombre": "Muy pesada",
+    "texto": "-2 a la Evasión; -1 a la Agilidad"
+   }
+  ]
+ },
+ {
+  "id": "dunamis-silkchain",
+  "nombre": "Malla de seda Dunamis",
+  "nombre_en": "Dunamis Silkchain",
+  "nivel": 4,
+  "puntuacion": 7,
+  "umbrales": {
+   "mayor": 13,
+   "grave": 36
+  },
+  "rasgos": [
+   {
+    "nombre": "Ralentizadora",
+    "texto": "Marca una casilla de Armadura para tirar un d4 y sumar su resultado como bonificador a tu Evasión contra un ataque entrante."
+   }
+  ]
+ },
+ {
+  "id": "channeling-armor",
+  "nombre": "Armadura canalizadora",
+  "nombre_en": "Channeling Armor",
+  "nivel": 4,
+  "puntuacion": 5,
+  "umbrales": {
+   "mayor": 13,
+   "grave": 36
+  },
+  "rasgos": [
+   {
+    "nombre": "Canalizadora",
+    "texto": "+1 a las tiradas de Lanzamiento"
+   }
+  ]
+ },
+ {
+  "id": "emberwoven-armor",
+  "nombre": "Armadura tejida con brasas",
+  "nombre_en": "Emberwoven Armor",
+  "nivel": 4,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 13,
+   "grave": 36
+  },
+  "rasgos": [
+   {
+    "nombre": "Ardiente",
+    "texto": "Cuando un adversario te ataca a alcance Cuerpo a cuerpo, marca un Estrés."
+   }
+  ]
+ },
+ {
+  "id": "full-fortified-armor",
+  "nombre": "Armadura fortificada completa",
+  "nombre_en": "Full Fortified Armor",
+  "nivel": 4,
+  "puntuacion": 4,
+  "umbrales": {
+   "mayor": 15,
+   "grave": 40
+  },
+  "rasgos": [
+   {
+    "nombre": "Fortificada",
+    "texto": "Cuando marcas una casilla de Armadura, reduces la gravedad de un ataque en dos umbrales en vez de uno."
+   }
+  ]
+ },
+ {
+  "id": "veritas-opal-armor",
+  "nombre": "Armadura de ópalo Veritas",
+  "nombre_en": "Veritas Opal Armor",
+  "nivel": 4,
+  "puntuacion": 6,
+  "umbrales": {
+   "mayor": 13,
+   "grave": 36
+  },
+  "rasgos": [
+   {
+    "nombre": "Buscadora de la verdad",
+    "texto": "Esta armadura brilla cuando otra criatura a alcance Cercano dice una mentira."
+   }
+  ]
+ },
+ {
+  "id": "savior-chainmail",
+  "nombre": "Cota de malla del Salvador",
+  "nombre_en": "Savior Chainmail",
+  "nivel": 4,
+  "puntuacion": 8,
+  "umbrales": {
+   "mayor": 18,
+   "grave": 48
+  },
+  "rasgos": [
+   {
+    "nombre": "Difícil",
+    "texto": "-1 a todos los rasgos del personaje y a la Evasión"
+   }
+  ]
+ }
+]

@@ -1,0 +1,554 @@
+[
+ {
+  "id": "troubadour",
+  "clase": "bard",
+  "nombre": "Trovador",
+  "nombre_en": "Troubadour",
+  "descripcion": "Juega como Trovador si quieres tocar música para fortalecer a tus aliados.",
+  "rasgo_lanzamiento": "presencia",
+  "base": [
+   {
+    "nombre": "Intérprete talentoso",
+    "texto": "Puedes tocar tres tipos distintos de canciones, cada una una vez por descanso largo; describe cómo actúas para los demás para obtener el beneficio indicado:\n\n- _Canción relajante:_ Tú y todos los aliados dentro de alcance Cercano limpian un Punto de Golpe.\n- _Canción épica:_ Vuelve temporalmente _Vulnerable_ a un objetivo dentro de alcance Cercano.\n- _Canción desgarradora:_ Tú y todos los aliados dentro de alcance Cercano obtienen 1 de Esperanza."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Maestro",
+    "texto": "Tus canciones de arenga templan el valor de quienes las escuchan. Cuando le das un Dado de Arenga a un aliado, este puede obtener 1 de Esperanza o limpiar un Estrés."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Virtuoso",
+    "texto": "Estás entre los más grandes de tu oficio y tu talento no tiene límites. Puedes interpretar cada una de las canciones de tu rasgo \"Intérprete talentoso\" dos veces por descanso largo."
+   }
+  ]
+ },
+ {
+  "id": "wordsmith",
+  "clase": "bard",
+  "nombre": "Forjador de Palabras",
+  "nombre_en": "Wordsmith",
+  "descripcion": "Juega como Forjador de Palabras si quieres usar juegos de palabras ingeniosos y cautivar multitudes.",
+  "rasgo_lanzamiento": "presencia",
+  "base": [
+   {
+    "nombre": "Discurso conmovedor",
+    "texto": "Una vez por descanso largo, puedes dar un discurso sincero e inspirador. Todos los aliados dentro de alcance Lejano limpian 2 de Estrés."
+   },
+   {
+    "nombre": "Corazón de poeta",
+    "texto": "Después de hacer una tirada de acción para impresionar, persuadir u ofender a alguien, puedes **gastar 1 de Esperanza** para sumar un **d4** a la tirada."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Elocuente",
+    "texto": "Tus palabras conmovedoras levantan la moral. Una vez por sesión, cuando animas a un aliado, puedes hacer una de las siguientes cosas:\n\n- Permitirle encontrar un objeto o herramienta común que necesite.\n- Ayudar a un Aliado sin gastar Esperanza.\n- Darle una acción de tiempo de descanso adicional durante su siguiente descanso."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Poesía épica",
+    "texto": "Tu Dado de Arenga aumenta a un **d10.** Además, cuando vas a Ayudar a un Aliado, puedes narrar el momento como si escribieras la historia de su heroísmo en unas memorias. Cuando lo hagas, tira un **d10** como tu dado de ventaja."
+   }
+  ]
+ },
+ {
+  "id": "warden-of-the-elements",
+  "clase": "druid",
+  "nombre": "Guardián de los Elementos",
+  "nombre_en": "Warden of the Elements",
+  "descripcion": "Juega como Guardián de los Elementos si quieres encarnar los elementos naturales de lo salvaje.",
+  "rasgo_lanzamiento": "instinto",
+  "base": [
+   {
+    "nombre": "Encarnación elemental",
+    "texto": "**Marca un Estrés** para _Canalizar_ uno de los siguientes elementos hasta que recibas daño Grave o hasta tu siguiente descanso:\n\n- _Fuego:_ Cuando un adversario dentro de alcance Cuerpo a cuerpo te causa daño, recibe **1d10** de daño mágico.\n- _Tierra:_ Obtienes un bonificador a tus umbrales de daño igual a tu Competencia.\n- _Agua:_ Cuando le causas daño a un adversario dentro de alcance Cuerpo a cuerpo, todos los demás adversarios dentro de alcance Muy cercano deben marcar un Estrés.\n- _Aire:_ Puedes levitar, lo que te da ventaja en las tiradas de Agilidad."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Aura elemental",
+    "texto": "Una vez por descanso mientras estás _Canalizando_, puedes adoptar un aura que corresponda a tu elemento. El aura afecta a los objetivos dentro de alcance Cercano hasta que termine tu _Canalización_.\n\n- _Fuego:_ Cuando un adversario marca 1 o más Puntos de Golpe, también debe marcar un Estrés.\n- _Tierra:_ Tus aliados obtienen un bonificador de +1 a Fuerza.\n- _Agua:_ Cuando un adversario te causa daño, puedes **marcar un Estrés** para moverlo a cualquier punto dentro de alcance Muy cercano de donde está.\n- _Aire:_ Cuando tú o un aliado reciben daño de un ataque hecho desde más allá del alcance Cuerpo a cuerpo, reduce el daño en **1d8**."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Dominio elemental",
+    "texto": "Encarnas tu elemento aún más. Mientras estás _Canalizando_, obtienes el siguiente beneficio:\n\n- _Fuego:_ Obtienes un bonificador de +1 a tu Competencia para ataques y hechizos que causen daño.\n- _Tierra:_ Cuando fueras a marcar Puntos de Golpe, tira un **d6** por cada Punto de Golpe marcado. Por cada resultado de 6, reduce en 1 la cantidad de Puntos de Golpe que marcas.\n- _Agua:_ Cuando un ataque contra ti acierta, puedes **marcar un Estrés** para volver temporalmente _Vulnerable_ al atacante.\n- _Aire:_ Obtienes un bonificador de +1 a tu Evasión y puedes volar."
+   }
+  ]
+ },
+ {
+  "id": "warden-of-renewal",
+  "clase": "druid",
+  "nombre": "Guardián de la Renovación",
+  "nombre_en": "Warden of Renewal",
+  "descripcion": "_Juega como Guardián de la Renovación si quieres usar magia poderosa para curar a tu grupo._",
+  "rasgo_lanzamiento": "instinto",
+  "base": [
+   {
+    "nombre": "Claridad de la naturaleza",
+    "texto": "Una vez por descanso largo, puedes crear un espacio de serenidad natural dentro de alcance Cercano. Cuando pasas unos minutos descansando dentro de ese espacio, limpia una cantidad de Estrés igual a tu Instinto, repartida como quieras entre tú y tus aliados."
+   },
+   {
+    "nombre": "Regeneración",
+    "texto": "Toca a una criatura y **gasta 3 de Esperanza.** Esa criatura limpia **1d4** Puntos de Golpe."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Alcance regenerativo",
+    "texto": "Puedes elegir como objetivo de tu rasgo \"Regeneración\" a criaturas dentro de alcance Muy cercano."
+   },
+   {
+    "nombre": "Protección del Guardián",
+    "texto": "Una vez por descanso largo, **gasta 2 de Esperanza** para limpiar 2 Puntos de Golpe a **1d4** aliados dentro de alcance Cercano."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Defensor",
+    "texto": "Tu transformación animal encarna un espíritu guardián sanador. Cuando estás en Forma de Bestia y un aliado dentro de alcance Cercano marca 2 o más Puntos de Golpe, puedes **marcar un Estrés** para reducir en 1 la cantidad de Puntos de Golpe que marca."
+   }
+  ]
+ },
+ {
+  "id": "stalwart",
+  "clase": "guardian",
+  "nombre": "Firme",
+  "nombre_en": "Stalwart",
+  "descripcion": "Juega como Firme si quieres aguantar golpes fuertes y seguir peleando.",
+  "rasgo_lanzamiento": null,
+  "base": [
+   {
+    "nombre": "Inquebrantable",
+    "texto": "Obtienes un bonificador permanente de +1 a tus umbrales de daño."
+   },
+   {
+    "nombre": "Voluntad de hierro",
+    "texto": "Cuando recibes daño físico, puedes **marcar una casilla de Armadura adicional** para reducir la gravedad."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Implacable",
+    "texto": "Obtienes un bonificador permanente de +2 a tus umbrales de daño."
+   },
+   {
+    "nombre": "Compañeros de armas",
+    "texto": "Cuando un aliado dentro de alcance Muy cercano recibe daño, puedes **marcar una casilla de Armadura** para reducir la gravedad en un umbral."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Impávido",
+    "texto": "Obtienes un bonificador permanente de +3 a tus umbrales de daño."
+   },
+   {
+    "nombre": "Protector leal",
+    "texto": "Cuando un aliado dentro de alcance Cercano tiene 2 Puntos de Golpe o menos y fuera a recibir daño, puedes **marcar un Estrés** para correr a su lado y recibir el daño en su lugar."
+   }
+  ]
+ },
+ {
+  "id": "vengeance",
+  "clase": "guardian",
+  "nombre": "Venganza",
+  "nombre_en": "Vengeance",
+  "descripcion": "Juega como Venganza si quieres abatir a los enemigos que te lastiman a ti o a tus aliados.",
+  "rasgo_lanzamiento": null,
+  "base": [
+   {
+    "nombre": "Sereno",
+    "texto": "Obtienes una casilla de Estrés adicional."
+   },
+   {
+    "nombre": "Revancha",
+    "texto": "Cuando un adversario dentro de alcance Cuerpo a cuerpo acierta un ataque contra ti, puedes **marcar 2 de Estrés** para obligar al atacante a marcar un Punto de Golpe."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Acto de represalia",
+    "texto": "Cuando un adversario daña a un aliado dentro de alcance Cuerpo a cuerpo, obtienes un bonificador de +1 a tu Competencia para el siguiente ataque exitoso que hagas contra ese adversario."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Némesis",
+    "texto": "**Gasta 2 de Esperanza** para _Priorizar_ a un adversario hasta tu siguiente descanso. Cuando haces un ataque contra tu adversario _Priorizado_, puedes intercambiar los resultados de tus Dados de Esperanza y de Miedo. Solo puedes _Priorizar_ a un adversario a la vez."
+   }
+  ]
+ },
+ {
+  "id": "beastbound",
+  "clase": "ranger",
+  "nombre": "Vínculo bestial",
+  "nombre_en": "Beastbound",
+  "descripcion": "Juega como Vínculo bestial si quieres formar un vínculo profundo con un aliado animal.",
+  "rasgo_lanzamiento": "agilidad",
+  "base": [
+   {
+    "nombre": "Compañero",
+    "texto": "Tienes un compañero animal de tu elección (a criterio del DJ). Se queda a tu lado a menos que le indiques otra cosa.\n\nToma la hoja de Compañero del Explorador. Cuando subas de nivel a tu personaje, elige también en esa hoja una opción de subida de nivel para tu compañero."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Entrenamiento experto",
+    "texto": "Elige una opción de subida de nivel adicional para tu compañero."
+   },
+   {
+    "nombre": "Unidos en batalla",
+    "texto": "Cuando un adversario te ataca mientras está dentro del alcance Cuerpo a cuerpo de tu compañero, obtienes un bonificador de +2 a tu Evasión contra ese ataque."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Entrenamiento avanzado",
+    "texto": "Elige dos opciones de subida de nivel adicionales para tu compañero."
+   },
+   {
+    "nombre": "Amigo leal",
+    "texto": "Una vez por descanso largo, cuando el daño de un ataque fuera a marcar el último Estrés de tu compañero o tu último Punto de Golpe y están dentro de alcance Cercano el uno del otro, tú o tu compañero pueden correr al lado del otro y recibir ese daño en su lugar."
+   }
+  ]
+ },
+ {
+  "id": "wayfinder",
+  "clase": "ranger",
+  "nombre": "Rastreador",
+  "nombre_en": "Wayfinder",
+  "descripcion": "Juega como Rastreador si quieres cazar a tu presa y atacar con fuerza letal.",
+  "rasgo_lanzamiento": "agilidad",
+  "base": [
+   {
+    "nombre": "Depredador despiadado",
+    "texto": "Cuando haces una tirada de daño, puedes **marcar un Estrés** para obtener un bonificador de +1 a tu Competencia. Además, cuando le causas daño Grave a un adversario, este debe marcar un Estrés."
+   },
+   {
+    "nombre": "El camino a seguir",
+    "texto": "Cuando viajas a un lugar que ya visitaste antes, o llevas contigo un objeto que ya estuvo en ese lugar, puedes identificar el camino más corto y directo a tu destino."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Depredador escurridizo",
+    "texto": "Cuando tu Foco hace un ataque contra ti, obtienes un bonificador de +2 a tu Evasión contra ese ataque."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Depredador alfa",
+    "texto": "Antes de hacer una tirada de ataque contra tu _Foco_, puedes **gastar 1 de Esperanza.** Si el ataque acierta, quitas 1 de Miedo de la reserva de Miedo del DJ."
+   }
+  ]
+ },
+ {
+  "id": "nightwalker",
+  "clase": "rogue",
+  "nombre": "Caminante Nocturno",
+  "nombre_en": "Nightwalker",
+  "descripcion": "Juega como Caminante Nocturno si quieres manipular las sombras para moverte por el entorno.",
+  "rasgo_lanzamiento": "sutileza",
+  "base": [
+   {
+    "nombre": "Salto entre sombras",
+    "texto": "Puedes moverte de sombra en sombra. Cuando te mueves a una zona de oscuridad o a una sombra proyectada por otra criatura u objeto, puedes **marcar un Estrés** para desaparecer de donde estás y reaparecer dentro de otra sombra dentro de alcance Lejano. Cuando reapareces, estás _Encapuchado._"
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Nube oscura",
+    "texto": "Haz una **tirada de Lanzamiento (15).** Si tienes éxito, crea una nube oscura temporal que cubre cualquier área dentro de alcance Cercano. Nadie dentro de la nube puede ver hacia afuera, y nadie fuera de ella puede ver hacia adentro. Se te considera _Encapuchado_ ante cualquier adversario al que la nube le bloquee la línea de visión."
+   },
+   {
+    "nombre": "Adrenalina",
+    "texto": "Mientras estás _Vulnerable,_ suma tu nivel a tus tiradas de daño."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Sombra fugaz",
+    "texto": "Obtienes un bonificador permanente de +1 a tu Evasión. Puedes usar tu rasgo \"Salto entre sombras\" para moverte dentro de alcance Muy lejano."
+   },
+   {
+    "nombre": "Acto de desaparición",
+    "texto": "**Marca un Estrés** para quedar _Encapuchado_ en cualquier momento. Cuando estás _Encapuchado_ por este rasgo, te liberas automáticamente de la condición _Apresado_ si la tienes. Sigues _Encapuchado_ de esta forma hasta que tires con Miedo o hasta tu siguiente descanso."
+   }
+  ]
+ },
+ {
+  "id": "syndicate",
+  "clase": "rogue",
+  "nombre": "Sindicato",
+  "nombre_en": "Syndicate",
+  "descripcion": "Juega como Sindicato si quieres tener una red de contactos en todos lados.",
+  "rasgo_lanzamiento": "sutileza",
+  "base": [
+   {
+    "nombre": "Bien conectado",
+    "texto": "Cuando llegas a un pueblo o entorno importante, conoces a alguien que vive ahí. Ponle un nombre, anota cómo crees que podría serte útil y elige un dato de la siguiente lista:\n\n- Me debe un favor, pero va a ser difícil encontrarlo.\n- Me va a pedir algo a cambio.\n- Siempre está metido en muchos problemas.\n- Antes andábamos juntos. Es una larga historia.\n- No terminamos en muy buenos términos."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Contactos en todas partes",
+    "texto": "Una vez por sesión, puedes recurrir brevemente a un contacto turbio. Elige uno de los siguientes beneficios y describe qué lo trajo aquí para ayudarte en este momento:\n\n- Te da 1 puñado de oro, una herramienta única o un objeto común que la situación requiera.\n- En tu siguiente tirada de acción, su ayuda te da un bonificador de +3 al resultado de tu Dado de Esperanza o de Miedo.\n- La próxima vez que causes daño, dispara desde las sombras y suma **2d8** a tu tirada de daño."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Refuerzos confiables",
+    "texto": "Puedes usar tu rasgo \"Contactos en todas partes\" tres veces por sesión. Se agregan las siguientes opciones a la lista de beneficios que puedes elegir al usar ese rasgo:\n\n- Cuando marcas 1 o más Puntos de Golpe, puede salir corriendo a protegerte y reducir en 1 los Puntos de Golpe marcados.\n- Cuando haces una tirada de Presencia en una conversación, te respalda. Puedes tirar un **d20** como tu Dado de Esperanza."
+   }
+  ]
+ },
+ {
+  "id": "divine-wielder",
+  "clase": "seraph",
+  "nombre": "Portador Divino",
+  "nombre_en": "Divine Wielder",
+  "descripcion": "Juega como Portador Divino si quieres dominar el campo de batalla con un arma legendaria.",
+  "rasgo_lanzamiento": "fuerza",
+  "base": [
+   {
+    "nombre": "Arma espiritual",
+    "texto": "Cuando tienes equipada un arma con alcance Cuerpo a cuerpo o Muy cercano, puede volar de tu mano para atacar a un adversario dentro de alcance Cercano y luego regresar a ti. Puedes **marcar un Estrés** para elegir como objetivo a un adversario adicional dentro del alcance con la misma tirada de ataque."
+   },
+   {
+    "nombre": "Toque compasivo",
+    "texto": "Una vez por descanso largo, toca a una criatura y límpiale 2 Puntos de Golpe o 2 de Estrés."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Devoto",
+    "texto": "Cuando tiras tus Dados de Oración, puedes tirar un dado adicional y descartar el resultado más bajo. Además, puedes usar tu rasgo \"Toque compasivo\" dos veces por descanso largo en lugar de una."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Resonancia sagrada",
+    "texto": "Cuando tiras el daño de tu rasgo \"Arma espiritual\", si algunos de los resultados de los dados coinciden, duplica el valor de cada dado que coincida. Por ejemplo, si sacas dos 5, cuentan como dos 10."
+   }
+  ]
+ },
+ {
+  "id": "winged-sentinel",
+  "clase": "seraph",
+  "nombre": "Centinela Alado",
+  "nombre_en": "Winged Sentinel",
+  "descripcion": "Juega como Centinela Alado si quieres alzar el vuelo y dar golpes demoledores desde el cielo.",
+  "rasgo_lanzamiento": "fuerza",
+  "base": [
+   {
+    "nombre": "Alas de luz",
+    "texto": "Puedes volar. Mientras vuelas, puedes hacer lo siguiente:\n\n- **Marca un Estrés** para levantar y cargar a otra criatura dispuesta de aproximadamente tu tamaño o más pequeña.\n- **Gasta 1 de Esperanza** para causar **1d8** de daño extra en un ataque exitoso."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Semblante etéreo",
+    "texto": "Tu semblante sobrenatural inspira asombro y temor. Mientras vuelas, tienes ventaja en las tiradas de Presencia. Cuando tienes éxito con Esperanza en una tirada de Presencia, puedes quitar 1 de Miedo de la reserva de Miedo del DJ en lugar de obtener Esperanza."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Ascendido",
+    "texto": "Obtienes un bonificador permanente de +4 a tu umbral de daño Grave."
+   },
+   {
+    "nombre": "Poder de los dioses",
+    "texto": "Mientras vuelas, causas **1d12** de daño extra en lugar de 1d8 con tu rasgo \"Alas de luz\"."
+   }
+  ]
+ },
+ {
+  "id": "elemental-origin",
+  "clase": "sorcerer",
+  "nombre": "Origen Elemental",
+  "nombre_en": "Elemental Origin",
+  "descripcion": "Juega como Origen Elemental si quieres canalizar magia pura para darle la forma de un elemento en particular.",
+  "rasgo_lanzamiento": "instinto",
+  "base": [
+   {
+    "nombre": "Elementalista",
+    "texto": "Elige uno de los siguientes elementos al crear a tu personaje: aire, tierra, fuego, rayo, agua.\n\nPuedes moldear este elemento para producir efectos inofensivos. Además, **gasta 1 de Esperanza** y describe cómo tu control sobre este elemento ayuda en una tirada de acción que estás por hacer; luego obtén un bonificador de +2 a la tirada o un bonificador de +3 al daño de la tirada."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Evasión natural",
+    "texto": "Puedes invocar a tu elemento para que te proteja del daño. Cuando una tirada de ataque contra ti acierta, puedes **marcar un Estrés** y describir cómo usas tu elemento para defenderte. Cuando lo hagas, tira un **d6** y suma su resultado a tu Evasión contra ese ataque."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Trascendencia",
+    "texto": "Una vez por descanso largo, puedes transformarte en una manifestación física de tu elemento. Cuando lo hagas, describe tu transformación y elige dos de los siguientes beneficios, que conservas hasta tu siguiente descanso:\n\n- +4 de bonificador a tu umbral Grave\n- +1 de bonificador a un rasgo de personaje de tu elección\n- +1 de bonificador a tu Competencia\n- +2 de bonificador a tu Evasión"
+   }
+  ]
+ },
+ {
+  "id": "primal-origin",
+  "clase": "sorcerer",
+  "nombre": "Origen Primigenio",
+  "nombre_en": "Primal Origin",
+  "descripcion": "Juega como Origen Primigenio si quieres ampliar la versatilidad de tus hechizos de formas poderosas.",
+  "rasgo_lanzamiento": "instinto",
+  "base": [
+   {
+    "nombre": "Manipular la magia",
+    "texto": "Tu origen primigenio te permite modificar la esencia misma de la magia. Después de lanzar un hechizo o hacer un ataque con un arma que cause daño mágico, puedes **marcar un Estrés** para hacer una de las siguientes cosas:\n\n- Ampliar en un alcance el alcance del hechizo o del ataque\n- Obtener un bonificador de +2 al resultado de la tirada de acción\n- Duplicar un dado de daño de tu elección\n- Golpear a un objetivo adicional dentro del alcance"
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Ayuda encantada",
+    "texto": "Puedes potenciar la magia de otros con tu esencia. Cuando vas a Ayudar a un Aliado en una tirada de Lanzamiento, puedes tirar un **d8** como tu dado de ventaja. Una vez por descanso largo, después de que un aliado haga una tirada de Lanzamiento con tu ayuda, puedes intercambiar los resultados de sus Dados de Dualidad."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Carga arcana",
+    "texto": "Puedes reunir energía mágica para potenciar tus capacidades. Cuando recibes daño mágico, quedas _Cargado_. Otra opción es **gastar 2 de Esperanza** para quedar _Cargado_. Cuando aciertas un ataque que causa daño mágico mientras estás _Cargado_, puedes gastar tu _Carga_ para obtener un bonificador de +10 a la tirada de daño, o un bonificador de +3 a la Dificultad de una tirada de reacción que el hechizo obligue a hacer al objetivo. Dejas de estar _Cargado_ en tu siguiente descanso largo."
+   }
+  ]
+ },
+ {
+  "id": "call-of-the-brave",
+  "clase": "warrior",
+  "nombre": "Llamado del Valiente",
+  "nombre_en": "Call of the Brave",
+  "descripcion": "Juega como Llamado del Valiente si quieres usar la fuerza de tus enemigos para alimentar tu propio poder.",
+  "rasgo_lanzamiento": null,
+  "base": [
+   {
+    "nombre": "Coraje",
+    "texto": "Cuando fallas una tirada con Miedo, obtienes 1 de Esperanza."
+   },
+   {
+    "nombre": "Ritual de batalla",
+    "texto": "Una vez por descanso largo, antes de intentar algo increíblemente peligroso o de enfrentarte a un enemigo que claramente te supera, describe qué ritual realizas o qué preparativos haces. Cuando lo hagas, limpia 2 de Estrés y obtén 2 de Esperanza."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Estar a la altura",
+    "texto": "Te mantienes alerta ante el peligro creciente. Mientras tengas 2 Puntos de Golpe o menos sin marcar, puedes tirar un **d20** como tu Dado de Esperanza."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Camaradería",
+    "texto": "Tu valentía inquebrantable es un punto de reunión para tus aliados. Puedes iniciar una Tirada en Equipo una vez adicional por sesión. Además, cuando un aliado inicia una Tirada en Equipo contigo, solo necesita gastar 2 de Esperanza para hacerlo."
+   }
+  ]
+ },
+ {
+  "id": "call-of-the-slayer",
+  "clase": "warrior",
+  "nombre": "Llamado del Cazador",
+  "nombre_en": "Call of the Slayer",
+  "descripcion": "Juega como Llamado del Cazador si quieres abatir a tus adversarios con una fuerza inmensa.",
+  "rasgo_lanzamiento": null,
+  "base": [
+   {
+    "nombre": "Cazador",
+    "texto": "Obtienes una reserva de dados llamados Dados de Cazador. En una tirada con Esperanza, puedes colocar un **d6** en esta carta en lugar de obtener 1 de Esperanza, agregando el dado a la reserva. Puedes guardar una cantidad de Dados de Cazador igual a tu Competencia. Cuando haces una tirada de ataque o una tirada de daño, puedes gastar cualquier cantidad de estos Dados de Cazador, tirarlos y sumar su resultado a la tirada. Al final de cada sesión, limpia los Dados de Cazador que no hayas gastado en esta carta y obtén 1 de Esperanza por cada dado limpiado."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Especialista en armas",
+    "texto": "Puedes empuñar varias armas con una facilidad peligrosa. Cuando aciertas un ataque, puedes **gastar 1 de Esperanza** para sumar a la tirada de daño uno de los dados de daño de tu arma secundaria. Además, una vez por descanso largo, cuando tiras tus Dados de Cazador, vuelve a tirar cualquier 1."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Preparación marcial",
+    "texto": "Eres un guerrero que inspira a todos los que viajan contigo. Tu grupo obtiene acceso a la acción de tiempo de descanso Preparación marcial. Para usar esta acción durante un descanso, describe cómo instruyes y entrenas a tu grupo. Tú y cada aliado que elija esta acción de tiempo de descanso obtienen un Dado de Cazador **d6**. Un PJ con un Dado de Cazador puede gastarlo para tirar el dado y sumar el resultado a una tirada de ataque o de daño de su elección."
+   }
+  ]
+ },
+ {
+  "id": "school-of-knowledge",
+  "clase": "wizard",
+  "nombre": "Escuela del Conocimiento",
+  "nombre_en": "School of Knowledge",
+  "descripcion": "Juega como Escuela del Conocimiento si quieres una comprensión aguda del mundo que te rodea.",
+  "rasgo_lanzamiento": "conocimiento",
+  "base": [
+   {
+    "nombre": "Preparado",
+    "texto": "Toma una carta de dominio adicional de tu nivel o menor de un dominio al que tengas acceso."
+   },
+   {
+    "nombre": "Adepto",
+    "texto": "Cuando usas una Experiencia, puedes **marcar un Estrés** en lugar de gastar 1 de Esperanza. Si lo haces, duplica el modificador de tu Experiencia para esa tirada."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Consumado",
+    "texto": "Toma una carta de dominio adicional de tu nivel o menor de un dominio al que tengas acceso."
+   },
+   {
+    "nombre": "Memoria perfecta",
+    "texto": "Una vez por descanso, cuando recuperas una carta de dominio de tu bóveda, puedes reducir en 1 su costo de recuperación."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Brillante",
+    "texto": "Toma una carta de dominio adicional de tu nivel o menor de un dominio al que tengas acceso."
+   },
+   {
+    "nombre": "Pericia afinada",
+    "texto": "Cuando usas una Experiencia, tira un **d6.** Con un resultado de 5 o más, puedes usarla sin gastar Esperanza."
+   }
+  ]
+ },
+ {
+  "id": "school-of-war",
+  "clase": "wizard",
+  "nombre": "Escuela de la Guerra",
+  "nombre_en": "School of War",
+  "descripcion": "Juega como Escuela de la Guerra si quieres usar magia entrenada para la violencia.",
+  "rasgo_lanzamiento": "conocimiento",
+  "base": [
+   {
+    "nombre": "Mago de batalla",
+    "texto": "Enfocaste tus estudios en convertirte en una fuerza invencible en el campo de batalla. Obtienes una casilla de Punto de Golpe adicional."
+   },
+   {
+    "nombre": "Enfrenta tu miedo",
+    "texto": "Cuando tienes éxito con Miedo en una tirada de ataque, causas **1d10** de daño mágico extra."
+   }
+  ],
+  "especializacion": [
+   {
+    "nombre": "Conjurar escudo",
+    "texto": "Puedes mantener una barrera mágica protectora. Mientras tengas al menos 2 de Esperanza, sumas tu Competencia a tu Evasión."
+   },
+   {
+    "nombre": "Impulsado por el miedo",
+    "texto": "El daño mágico extra de tu rasgo \"Enfrenta tu miedo\" aumenta a **2d10**."
+   }
+  ],
+  "maestria": [
+   {
+    "nombre": "Prosperar en el caos",
+    "texto": "Cuando aciertas un ataque, puedes **marcar un Estrés** después de tirar el daño para obligar al objetivo a marcar un Punto de Golpe adicional."
+   },
+   {
+    "nombre": "Sin miedo",
+    "texto": "El daño mágico extra de tu rasgo \"Enfrenta tu miedo\" aumenta a **3d10.**"
+   }
+  ]
+ }
+]
