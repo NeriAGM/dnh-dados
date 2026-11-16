@@ -454,3 +454,55 @@ test('cerrar sesión en otra pestaña: una carga tardía del usuario anterior no
   assert.deepEqual(m.app.campanias, [])
   assert.equal(m.app.campania, null)
 })
+
+test('cuenta oculta: al subir cuentas_revision el jugador vuelve a leer las cuentas (el DJ no)', async () => {
+  let cuentas = [{ id: 'k1', nombre: 'Ritual', valor: 3, visible: true }]
+  const base = datosBase()
+  const responder = (op) => (op.tabla === 'cuentas_regresivas' ? { data: structuredClone(cuentas), error: null } : base(op))
+  // Jugador
+  const cliente = clienteFalso(responder)
+  globalThis.__supabaseFalso = cliente
+  const m = await cargarMesa()
+  m.app.campanias = [{ ...CAMP, rol: 'jugador' }]
+  m.app.sesion = { user: { id: 'u-ana' } }
+  await m.abrirCampania('c1')
+  assert.equal(m.app.cuentas.length, 1)
+  // El DJ la oculta: al jugador no le llega la cuenta, solo el contador
+  cuentas = []
+  cliente.canales.at(-1).emitir('cuentas_revision', 'UPDATE', { new: { campania_id: 'c1', rev: 1 } })
+  await esperar(5)
+  assert.deepEqual(m.app.cuentas, [])
+  // El DJ ya tiene todo: no vuelve a leer
+  cuentas = [{ id: 'k1', nombre: 'Ritual', valor: 3, visible: false }]
+  const dj = await mesaAbierta(responder)
+  cuentas = []
+  dj.cliente.canales.at(-1).emitir('cuentas_revision', 'UPDATE', { new: { campania_id: 'c1', rev: 2 } })
+  await esperar(5)
+  assert.equal(dj.m.app.cuentas.length, 1)
+})
+
+test('gastar Esperanza: la resta el servidor y se queda con lo que él diga', async () => {
+  const base = datosBase()
+  const llamadas = []
+  const { m } = await mesaAbierta((op) => {
+    if (op.rpc === 'gastar_esperanza') {
+      llamadas.push(op.args)
+      // Mientras tanto una tirada con Esperanza la había subido a 3: quedan 2
+      return { data: { id: 'p1', esperanza: 2, actualizado: '2026-10-12T11:00:00.000000+00:00' }, error: null }
+    }
+    if (op.tabla === 'personajes' && op.accion === 'update') throw new Error('no debe escribir la Esperanza a mano')
+    return base(op)
+  })
+  const p = m.gastarEsperanza('p1', 1)
+  assert.equal(m.app.personajes[0].esperanza, 1, 'se ve al instante')
+  await p
+  assert.deepEqual(llamadas, [{ p_personaje: 'p1', p_cantidad: 1 }])
+  assert.equal(m.app.personajes[0].esperanza, 2)
+})
+
+test('gastar Esperanza: si el servidor la rechaza, se regresa y avisa', async () => {
+  const base = datosBase()
+  const { m } = await mesaAbierta((op) => (op.rpc === 'gastar_esperanza' ? { data: null, error: { message: 'Te falta Esperanza: cuesta 2' } } : base(op)))
+  await assert.rejects(m.gastarEsperanza('p1', 2), /Te falta Esperanza/)
+  assert.equal(m.app.personajes[0].esperanza, 2)
+})

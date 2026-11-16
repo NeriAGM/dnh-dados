@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
   import {
-    app, alLlegarTirada, registrarPropia, elegirPersonaje, ajustarPersonaje, ajustarMiedo, nombreDe, ajustarHoja, ajustesMesa,
+    app, alLlegarTirada, registrarPropia, elegirPersonaje, ajustarPersonaje, ajustarMiedo, nombreDe, ajustarHoja, ajustesMesa, gastarEsperanza,
   } from '../lib/mesa.svelte.js'
   import { cargarSRD, conCasero } from '../lib/srd.js'
   import { hojaDemo } from '../lib/demo.js'
@@ -172,6 +172,10 @@
   async function cambiarPJHoja(cambios) {
     if (app.demo) { Object.assign(demoPJ, cambios); return }
     await ajustarPersonaje(pjHoja.id, cambios)
+  }
+  async function gastarEsperanzaHoja(n) {
+    if (app.demo) { demoPJ.esperanza = Math.max(0, demoPJ.esperanza - n); return }
+    await gastarEsperanza(pjHoja.id, n)
   }
   function tirarDesdeHoja(params) {
     const id = pjHoja?.id
@@ -423,6 +427,7 @@
       jugador={app.demo || !pjHoja.usuario_id ? '' : nombreDe(pjHoja.usuario_id)}
       onHoja={cambiarHoja}
       onPJ={cambiarPJHoja}
+      onGastarEsperanza={gastarEsperanzaHoja}
       onTirar={tirarDesdeHoja}
       onTirarResultado={(p) => alTirar({ ...p, personajeId: app.demo ? 'demo' : pjHoja.id }, { propagar: true })}
       onCerrar={() => (verHoja = null)}

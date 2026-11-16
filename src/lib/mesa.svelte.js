@@ -240,6 +240,7 @@ function escuchar(id) {
     if (!error && app.campania?.id === id && canal === este) app.miembros = data || []
   }
   let uniones = 0
+  let lecturasCuentas = 0
   const este = supabase
     .channel(`mesa-${id}`)
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'lanzamientos', filter: `campania_id=eq.${id}` }, aqui(({ new: fila }) => {
@@ -305,6 +306,15 @@ function escuchar(id) {
     }))
     .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'cuentas_regresivas' }, aqui(({ old }) => {
       app.cuentas = app.cuentas.filter((x) => x.id !== old?.id)
+    }))
+    // Si el DJ oculta una cuenta, al jugador no le llega nada (ya no la puede
+    // ver): la base sube este contador y se vuelven a leer (migración 013).
+    // Solo cuenta la última lectura: una respuesta vieja no pisa a la nueva.
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'cuentas_revision', filter: `campania_id=eq.${id}` }, aqui(async () => {
+      if (app.rol === 'dj') return
+      const turno = ++lecturasCuentas
+      const { data, error } = await supabase.from('cuentas_regresivas').select('*').eq('campania_id', id).order('creado')
+      if (!error && turno === lecturasCuentas && app.campania?.id === id && canal === este) app.cuentas = data || []
     }))
     .on('postgres_changes', { event: '*', schema: 'public', table: 'contenido_casero', filter: `campania_id=eq.${id}` }, aqui(({ eventType, new: c, old }) => {
       app.casero = reemplazar(app.casero, eventType, c, old)
@@ -435,6 +445,18 @@ export async function ajustarPersonaje(id, cambios) {
     aplicar: (p) => ({ ...p, ...cambios }),
     deshacer: (p) => ({ ...p, ...antes }),
     enviar: () => supabase.from('personajes').update(cambios).eq('id', id).select().single(),
+  })
+}
+
+// Gastar Esperanza (en una Experiencia): la resta el servidor sobre lo que
+// tenga en ese momento. Mandar «lo que veo − costo» pisaba una ganancia que
+// llegara al mismo tiempo. Va en la misma cola que los demás cambios del PJ.
+export async function gastarEsperanza(id, cantidad) {
+  await escribirFila({
+    lista: 'personajes', tabla: 'personajes', clave: `personaje:${id}`, id,
+    aplicar: (p) => ({ ...p, esperanza: Math.max(0, p.esperanza - cantidad) }),
+    deshacer: (p) => ({ ...p, esperanza: p.esperanza + cantidad }),
+    enviar: () => supabase.rpc('gastar_esperanza', { p_personaje: id, p_cantidad: cantidad }),
   })
 }
 

@@ -18,7 +18,7 @@
 
   let {
     pj, cat, editable = true, jugador = '',
-    onHoja, onPJ, onTirar, onCerrar,
+    onHoja, onPJ, onGastarEsperanza, onTirar, onCerrar,
     onTirarResultado = null, // opcional: tira, anima y devuelve la tirada (para descansos y muerte)
   } = $props()
 
@@ -144,7 +144,7 @@
     tirada = null
     if (costo) {
       error = ''
-      try { await onPJ({ esperanza: pj.esperanza - costo }) } catch (e) {
+      try { await onGastarEsperanza(costo) } catch (e) {
         // Sin pagar la Esperanza no se suma la Experiencia
         error = `No se pudo gastar la Esperanza: ${e.message}`
         return
