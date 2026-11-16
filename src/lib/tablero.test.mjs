@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import {
   NIEBLA_COLUMNAS, crearNiebla, leerNiebla, escribirNiebla, pintar, llenar, tapado,
-  recortar, puedeMover, vistaFicha, fichasVisibles, pjsSinFicha, posicionInicial,
+  recortar, puedeMover, vistaFicha, fichasVisibles, pjsSinFicha, posicionInicial, dibujarNiebla,
 } from './tablero.js'
 
 test('niebla: el tamaño de la cuadrícula sigue la forma de la imagen (1 a 256 filas)', () => {
@@ -127,4 +127,26 @@ test('posicionInicial: siempre dentro del tablero y sin encimarse las primeras',
     vistas.add(`${x.toFixed(3)},${y.toFixed(3)}`)
   }
   assert.ok(vistas.size >= 16)
+})
+
+test('dibujarNiebla: el lienzo solo cambia de tamaño si cambia la niebla (no en cada trazo)', () => {
+  // Lienzo falso que cuenta cuántas veces se le cambia el tamaño (eso lo vuelve a crear)
+  const lienzo = () => {
+    const l = { cambios: 0, dibujos: 0, _w: 0, _h: 0 }
+    Object.defineProperty(l, 'width', { get: () => l._w, set: (v) => { l._w = v; l.cambios++ } })
+    Object.defineProperty(l, 'height', { get: () => l._h, set: (v) => { l._h = v; l.cambios++ } })
+    l.getContext = () => ({
+      createImageData: (w, h) => ({ data: new Uint8ClampedArray(w * h * 4) }),
+      putImageData() {}, clearRect() {}, drawImage() { l.dibujos++ },
+    })
+    return l
+  }
+  const destino = lienzo()
+  const chico = lienzo()
+  const n = crearNiebla(640, 480)
+  for (let i = 0; i < 20; i++) { pintar(n, i / 20, 0.5, 0.05, false); dibujarNiebla(destino, chico, n) }
+  assert.equal(destino.cambios, 2, 'ancho y alto una sola vez')
+  assert.equal(chico.cambios, 2)
+  assert.equal(destino.dibujos, 20, 'pero sí se vuelve a pintar cada vez')
+  assert.deepEqual([destino.width, destino.height], [n.c * 8, n.f * 8])
 })

@@ -10,7 +10,7 @@
     guardarTablero, mostrarTablero, moverFicha, borrarFicha, senalar,
   } from '../../lib/tablero.svelte.js'
   import Icono from '../Icono.svelte'
-  import { crearNiebla, leerNiebla, escribirNiebla, pintar, llenar, recortar, puedeMover, vistaFicha, fichasVisibles } from '../../lib/tablero.js'
+  import { crearNiebla, leerNiebla, escribirNiebla, dibujarNiebla, pintar, llenar, recortar, puedeMover, vistaFicha, fichasVisibles } from '../../lib/tablero.js'
 
   const PINCEL = 0.04
   const ESPERA_SENAL = 500
@@ -96,27 +96,9 @@
   const nieblaGuardada = $derived(leerNiebla(t?.niebla))
   let trabajo = null // la niebla mientras el DJ pinta (se guarda al soltar)
   let lienzoNiebla = $state()
-  // Una celda = un pixel en un lienzo chico; luego se agranda 8 veces con
-  // suavizado para que las orillas de la niebla no se vean cuadradas
   const chico = typeof document !== 'undefined' ? document.createElement('canvas') : null
-  const ESCALA = 8
   function dibujar(n) {
-    if (!lienzoNiebla || !n || !chico) return
-    chico.width = n.c
-    chico.height = n.f
-    const c = chico.getContext('2d')
-    const img = c.createImageData(n.c, n.f)
-    for (let k = 0; k < n.celdas.length; k++) {
-      img.data[k * 4] = 16; img.data[k * 4 + 1] = 11; img.data[k * 4 + 2] = 30
-      img.data[k * 4 + 3] = n.celdas[k] ? 255 : 0
-    }
-    c.putImageData(img, 0, 0)
-    lienzoNiebla.width = n.c * ESCALA
-    lienzoNiebla.height = n.f * ESCALA
-    const ctx = lienzoNiebla.getContext('2d')
-    ctx.imageSmoothingEnabled = true
-    ctx.imageSmoothingQuality = 'high'
-    ctx.drawImage(chico, 0, 0, lienzoNiebla.width, lienzoNiebla.height)
+    if (lienzoNiebla && n && chico) dibujarNiebla(lienzoNiebla, chico, n)
   }
   $effect(() => { dibujar(nieblaGuardada) })
 
@@ -387,7 +369,8 @@
         {#if t.texto}
           <div class="nota" class:sola={!t.imagen}>{@html md(t.texto)}</div>
         {/if}
-        {#if tablero.error && esDJ}
+        <!-- También al jugador: una ficha rechazada solo regresaba, sin decir por qué -->
+        {#if tablero.error}
           <p class="aviso-error error" role="alert">{tablero.error}</p>
         {/if}
       </section>

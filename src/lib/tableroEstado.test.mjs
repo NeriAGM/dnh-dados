@@ -181,3 +181,39 @@ test('olvidarUrl: si la imagen falló, el siguiente intento pide un enlace nuevo
   const u2 = await m.urlTablero(fila)
   assert.ok(u2 && u2 !== u1, `${u1} / ${u2}`)
 })
+
+test('agregarPJs: dos toques rápidos ponen una sola ficha por PJ', async () => {
+  const insertar = diferida()
+  const personajes = [{ id: 'p1', nombre: 'Mira', color: '#e9b44c' }, { id: 'p2', nombre: 'Soren', color: '#4c9be9' }]
+  const { m, cliente } = await preparar({ campania: { id: 'c1', tablero_id: 't1' }, rol: 'dj', personajes }, (op) => {
+    if (op.accion === 'insert') return insertar.promesa.then(() => ({ data: op.valores.map((f, i) => ({ ...f, id: `f${i}`, actualizado: '2026-11-15T10:00:00+00:00' })), error: null }))
+    return { data: op.tabla === 'tableros' ? [T1] : [], error: null }
+  })
+  m.sincronizarTablero()
+  await esperar(5)
+  const a = m.agregarPJs('t1')
+  const b = m.agregarPJs('t1')
+  insertar.resolver()
+  await Promise.all([a, b])
+  assert.equal(cliente.ops.filter((op) => op.accion === 'insert').length, 1)
+  assert.deepEqual(m.tablero.fichas.map((f) => f.personaje_id), ['p1', 'p2'])
+  // Ya terminó: si alguien nuevo entra a la campaña, sí se puede volver a agregar
+  assert.equal(await m.agregarPJs('t1'), undefined)
+})
+
+test('moverFicha: el error se le avisa también al jugador y se borra al siguiente movimiento que sale bien', async () => {
+  const ficha = { id: 'f1', tablero_id: 't1', campania_id: 'c1', personaje_id: 'p1', nombre: 'Mira', color: '#a77ce8', x: 0.1, y: 0.1, actualizado: '2026-11-15T10:00:00+00:00' }
+  let falla = true
+  const { m } = await preparar({ campania: { id: 'c1', tablero_id: 't1' }, rol: 'jugador', sesion: { user: { id: 'u-ana' } }, personajes: [{ id: 'p1', usuario_id: 'u-ana' }] }, (op) => {
+    if (op.rpc === 'mover_ficha') return falla ? { data: null, error: { message: 'Esa ficha no es tuya' } } : { data: { ...ficha, x: 0.4, actualizado: '2026-11-15T10:00:09+00:00' }, error: null }
+    return { data: op.tabla === 'tableros' ? [T1] : op.tabla === 'fichas' ? [ficha] : [], error: null }
+  })
+  m.sincronizarTablero()
+  await esperar(5)
+  await m.moverFicha('f1', 0.5, 0.5)
+  assert.match(m.tablero.error, /Esa ficha no es tuya/)
+  assert.equal(m.tablero.fichas[0].x, 0.1, 'la ficha regresa')
+  falla = false
+  await m.moverFicha('f1', 0.4, 0.1)
+  assert.equal(m.tablero.error, '')
+})

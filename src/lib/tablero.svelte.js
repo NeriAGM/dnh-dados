@@ -290,21 +290,31 @@ export function crearFicha({ tablero_id, personaje_id = null, nombre, color, x, 
   }])
 }
 
-// Una ficha por cada PJ de la campaña que aún no esté en ese tablero
-export function agregarPJs(tableroId) {
+// Una ficha por cada PJ de la campaña que aún no esté en ese tablero.
+// Mientras se guardan, otro toque no hace nada (antes duplicaba las fichas:
+// las primeras todavía no estaban en la lista).
+const agregando = new Set()
+export async function agregarPJs(tableroId) {
+  if (agregando.has(tableroId)) return
+  agregando.add(tableroId)
   const base = enTablero(tableroId)
-  return insertarFichas(pjsSinFicha(app.personajes, tablero.fichas, tableroId).map((p, i) => ({
-    tablero_id: tableroId, campania_id: clave, personaje_id: p.id,
-    nombre: String(p.nombre || 'PJ').slice(0, 40),
-    color: COLOR.test(p.color ?? '') ? p.color : MORADO,
-    ...posicionInicial(base + i),
-  })))
+  try {
+    await insertarFichas(pjsSinFicha(app.personajes, tablero.fichas, tableroId).map((p, i) => ({
+      tablero_id: tableroId, campania_id: clave, personaje_id: p.id,
+      nombre: String(p.nombre || 'PJ').slice(0, 40),
+      color: COLOR.test(p.color ?? '') ? p.color : MORADO,
+      ...posicionInicial(base + i),
+    })))
+  } finally {
+    agregando.delete(tableroId)
+  }
 }
 
 export function moverFicha(id, x, y) {
   const actual = tablero.fichas.find((f) => f.id === id)
   if (!actual) return
   const antes = { x: actual.x, y: actual.y }
+  tablero.error = ''
   tablero.fichas = cambiarEn(tablero.fichas, id, { x: recortar(x), y: recortar(y) })
   if (local()) return
   const llave = `ficha:${id}`

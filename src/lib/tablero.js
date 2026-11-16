@@ -63,6 +63,28 @@ export function pintar(niebla, x, y, radio, tapar) {
 
 export function llenar(niebla, tapar) { niebla.celdas.fill(tapar ? 1 : 0) }
 
+// Dibuja la niebla: una celda = un pixel en el lienzo «chico», que luego se
+// agranda con suavizado para que las orillas no se vean cuadradas. Cambiar
+// width/height vuelve a crear el lienzo (y en el celular se trababa al pintar
+// con el dedo): solo se cambia si la niebla es de otro tamaño.
+export function dibujarNiebla(destino, chico, n, escala = 8) {
+  const tam = (l, w, h) => { if (l.width !== w) l.width = w; if (l.height !== h) l.height = h }
+  tam(chico, n.c, n.f)
+  const c = chico.getContext('2d')
+  const img = c.createImageData(n.c, n.f)
+  for (let k = 0; k < n.celdas.length; k++) {
+    img.data[k * 4] = 16; img.data[k * 4 + 1] = 11; img.data[k * 4 + 2] = 30
+    img.data[k * 4 + 3] = n.celdas[k] ? 255 : 0
+  }
+  c.putImageData(img, 0, 0)
+  tam(destino, n.c * escala, n.f * escala)
+  const ctx = destino.getContext('2d')
+  ctx.clearRect(0, 0, destino.width, destino.height)
+  ctx.imageSmoothingEnabled = true
+  ctx.imageSmoothingQuality = 'high'
+  ctx.drawImage(chico, 0, 0, destino.width, destino.height)
+}
+
 export function tapado(niebla, x, y) {
   if (!niebla) return false
   const [i, j] = celdaDe(niebla, x, y)
