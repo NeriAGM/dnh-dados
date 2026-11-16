@@ -110,13 +110,13 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.2; text-wrap: balance; }
 
 /* Placa con el nombre de un PJ (como en una novela visual) */
 .placa {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
+  display: inline-block;
+  vertical-align: middle;
   max-width: 100%;
+  min-width: 0;
   padding: 0.25rem 0.8rem 0.3rem;
   border-radius: 11px 11px 11px 3px;
-  background: color-mix(in oklch, var(--color-pj, var(--texto)) 70%, #11142e);
+  background: color-mix(in oklab, var(--color-pj, var(--texto)) 64%, #11142e);
   color: var(--sobre-color);
   font-weight: 900;
   line-height: 1.2;
@@ -146,7 +146,7 @@ h1, h2, h3, h4 { font-weight: 900; line-height: 1.2; text-wrap: balance; }
 .boton:hover { background: var(--hundido-2); }
 .boton:active { transform: scale(0.97); }
 .boton:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-.boton[aria-pressed='true'] { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+.boton[aria-pressed='true'] { border-color: var(--filete-fuerte); background: #fff; box-shadow: 0 1px 2px rgb(18 20 50 / 0.12), 0 4px 12px -6px rgb(18 20 50 / 0.4); }
 /* El único plato sólido de cada pantalla */
 .boton.solido { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
 .boton.solido:hover { background: #2c3459; }

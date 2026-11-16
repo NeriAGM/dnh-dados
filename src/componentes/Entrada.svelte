@@ -44,7 +44,7 @@
     <form onsubmit={conCorreo}>
       <label class="etiqueta" for="correo"><span class="rotulo">Correo</span></label>
       <input id="correo" class="campo" type="email" autocomplete="email" placeholder="tu@correo.com" bind:value={correo} />
-      <button class="boton solido" type="submit" disabled={enviando}>{enviando ? 'Mandando…' : 'Mandarme el enlace'}</button>
+      <button class="boton" type="submit" disabled={enviando}>{enviando ? 'Mandando…' : 'Mandarme el enlace'}</button>
     </form>
 
     {#if aviso}<p class="aviso" role="status">{aviso}</p>{/if}

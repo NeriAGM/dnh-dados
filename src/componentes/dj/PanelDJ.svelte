@@ -198,7 +198,7 @@
           {#each app.encuentros as e (e.id)}<option value={e.id}>{e.nombre}{e.activo ? ' · activo' : ''}</option>{/each}
           {#if !app.encuentros.length}<option value="">Sin encuentros</option>{/if}
         </select>
-        <button class="boton solido" onclick={nuevoEncuentro}><Icono nombre="mas" tam={18} />Nuevo</button>
+        <button class="boton" onclick={nuevoEncuentro}><Icono nombre="mas" tam={18} />Nuevo</button>
       </div>
 
       {#if encuentro}
@@ -265,7 +265,7 @@
             <p class="vacio">Este encuentro está vacío. Abre el Bestiario y toca «+1» en un adversario para sumarlo.</p>
           {/each}
         </div>
-        <button class="boton solido" onclick={() => (pestana = 'bestiario')}><Icono nombre="mas" tam={18} />Agregar adversarios</button>
+        <button class="boton" onclick={() => (pestana = 'bestiario')}><Icono nombre="mas" tam={18} />Agregar adversarios</button>
 
         <section class="vista-mesa" aria-label="Así lo ve la mesa">
           <p class="vm-titulo">
@@ -333,7 +333,7 @@
           {#each Object.entries(TIPOS_CUENTA) as [k, v]}<option value={k}>{v}</option>{/each}
         </select>
         <label class="ocultas"><input type="checkbox" bind:checked={cVisible} /> La mesa la ve</label>
-        <button class="boton solido" disabled={!cNombre.trim()}>Crear</button>
+        <button class="boton" disabled={!cNombre.trim()}>Crear</button>
       </form>
       <p class="ayuda">Estándar: baja 1 en cada tirada. Dinámica: baja 0–3 según el resultado. En bucle: al llegar a 0 vuelve a empezar.</p>
       <div class="lista">
@@ -361,7 +361,7 @@
   .velo { position: fixed; inset: 0; background: var(--velo); z-index: 8; animation: aparecer-velo 0.25s ease-out; }
   @keyframes aparecer-velo { from { opacity: 0; } }
   .panel {
-    position: fixed; z-index: 9; top: 12px; bottom: 12px; left: 12px; width: min(600px, calc(100% - 24px));
+    position: fixed; z-index: 9; top: calc(84px + var(--seguro-arriba)); bottom: 12px; left: 12px; width: min(600px, calc(100% - 24px));
     display: flex; flex-direction: column; overflow: hidden;
     border-radius: var(--radio-panel);
     background: var(--superficie-firme); box-shadow: var(--sombra-alta);
@@ -375,7 +375,7 @@
   .paso { width: 2.5rem; padding: 0; border-radius: 50%; }
   .miedo-num { display: grid; justify-items: center; font-size: 2rem; font-weight: 900; line-height: 1; color: var(--miedo-hondo); min-width: 3.4rem; }
   .miedo-num small { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--texto-suave); font-weight: 700; }
-  .gastos { display: flex; gap: 0.4rem; padding: 0.3rem 1rem 0.7rem; overflow-x: auto; scrollbar-width: none; }
+  .gastos { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.3rem 1rem 0.7rem; }
   .gasto { flex: none; border-radius: 999px; background: var(--miedo-suave); border-color: color-mix(in srgb, var(--miedo) 35%, transparent); color: var(--miedo-hondo); font-size: 0.85rem; }
   .gasto:hover:not(:disabled) { background: color-mix(in srgb, var(--miedo) 22%, transparent); }
   .gasto small { font-size: 0.75rem; font-weight: 900; padding: 0.05rem 0.45rem; border-radius: 999px; background: var(--miedo-hondo); color: var(--sobre-color); }
@@ -396,7 +396,7 @@
   .ajustes, .filtros { display: flex; gap: 0.35rem; flex-wrap: wrap; }
   .chip { min-height: 2.25rem; border: 1px solid var(--filete); background: var(--hundido); color: var(--texto); border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.85rem; font-weight: 700; }
   .chip:hover { background: var(--hundido-2); }
-  .chip.activo { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+  .chip.activo { background: #fff; border-color: var(--filete-fuerte); box-shadow: inset 0 0 0 1.5px var(--texto); }
   .opciones-tirada { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
   .segmentos { display: flex; gap: 0.35rem; }
   .segmentos button { min-height: 2.5rem; border: 1px solid var(--filete); background: var(--hundido); border-radius: 999px; padding: 0.4rem 0.9rem; font-weight: 700; font-size: 0.9rem; }

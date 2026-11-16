@@ -432,7 +432,7 @@
             {@const camino = ruta(lore.paginas, r.p.id)}
             <li>
               <button class="fila resultado" class:activa={r.p.id === elegida} onclick={() => ir(r.p.id)}>
-                <span class="ico">{r.p.icono || '📜'}</span>
+                <span class="ico">{#if r.p.icono}{r.p.icono}{:else}<Icono nombre="lore" tam={16} />{/if}</span>
                 <span class="nom">
                   {r.p.titulo}
                   {#if camino.length}<small>{camino.map((m) => m.titulo).join(' › ')}</small>{/if}
@@ -481,7 +481,7 @@
                   <span class="plegar" aria-hidden="true"></span>
                 {/if}
                 <button class="abrir" onclick={() => ir(p.id)}>
-                  <span class="ico">{p.icono || '📜'}</span>
+                  <span class="ico">{#if p.icono}{p.icono}{:else}<Icono nombre="lore" tam={16} />{/if}</span>
                   <span class="nom">{p.titulo}</span>
                 </button>
                 {#if esDJ}
@@ -516,7 +516,7 @@
         <div class="folio" class:editando>
           {#if madres.length}
             <nav class="migas" aria-label="Dónde está esta página">
-              {#each madres as m (m.id)}<button onclick={() => ir(m.id)}>{m.icono || '📜'} {m.titulo}</button><Icono nombre="derecha" tam={12} />{/each}
+              {#each madres as m (m.id)}<button onclick={() => ir(m.id)}>{m.icono ? `${m.icono} ` : ''}{m.titulo}</button><Icono nombre="derecha" tam={12} />{/each}
             </nav>
           {/if}
 
@@ -533,7 +533,7 @@
               {:else}
                 <button class="boton" onclick={empezarEdicion}>Editar</button>
               {/if}
-              <button class="boton" onclick={() => nueva(pagina.id)}>+ Subpágina</button>
+              <button class="boton" onclick={() => nueva(pagina.id)}><Icono nombre="mas" tam={16} />Subpágina</button>
               <button class="boton" aria-pressed={verMover} onclick={() => (verMover = !verMover)}>Mover</button>
               <button class="boton peligro" class:confirmando={confirmar === pagina.id} onclick={() => pedirBorrar(pagina)}>
                 {confirmar === pagina.id ? (cuantasDentro(pagina.id) ? `¿Borrar con ${cuantasDentro(pagina.id)} subpágina${cuantasDentro(pagina.id) === 1 ? '' : 's'}? Toca otra vez` : '¿Seguro? Toca otra vez') : 'Borrar'}
@@ -550,7 +550,7 @@
                 <button class="boton" disabled={!pagina.padre_id} onclick={() => sacar(pagina)}><Icono nombre="izquierda" tam={16} /> Un nivel afuera</button>
                 <select class="campo" value={pagina.padre_id ?? ''} onchange={(e) => moverDentro(e.currentTarget.value)} aria-label="Mover dentro de otra página">
                   <option value="">Raíz del códice</option>
-                  {#each opcionesMover as o (o.p.id)}<option value={o.p.id}>{'  '.repeat(o.nivel)}{o.p.icono || '📜'} {o.p.titulo}</option>{/each}
+                  {#each opcionesMover as o (o.p.id)}<option value={o.p.id}>{'  '.repeat(o.nivel)}{o.p.icono ? `${o.p.icono} ` : ''}{o.p.titulo}</option>{/each}
                 </select>
                 <p class="ayuda">En computadora también puedes arrastrar páginas en el índice: arriba de otra para ponerla antes, en medio para meterla dentro.</p>
               </div>
@@ -567,7 +567,7 @@
           {#if editando}
             <div class="cabeza-editor">
               <div class="icono-editor">
-                <button class="ico-grande" onclick={() => (verIconos = !verIconos)} aria-label="Elegir ícono" aria-expanded={verIconos}>{borrador.icono || '📜'}</button>
+                <button class="ico-grande" onclick={() => (verIconos = !verIconos)} aria-label="Elegir ícono" aria-expanded={verIconos}>{#if borrador.icono}{borrador.icono}{:else}<Icono nombre="lore" tam={22} />{/if}</button>
                 {#if verIconos}
                   <div class="paleta" role="dialog" aria-label="Íconos">
                     {#each ICONOS as e}<button onclick={() => { cambio('icono', e); verIconos = false }}>{e}</button>{/each}
@@ -641,7 +641,7 @@
               <div class="tarjetas">
                 {#each hijas as h (h.id)}
                   <button class="tarjeta" class:oculta={esDJ && !h.visible} onclick={() => ir(h.id)}>
-                    <span class="ico">{h.icono || '📜'}</span>
+                    <span class="ico">{#if h.icono}{h.icono}{:else}<Icono nombre="lore" tam={16} />{/if}</span>
                     <span>{h.titulo}</span>
                     {#if esDJ && !h.visible}<small>oculta</small>{/if}
                   </button>
@@ -665,7 +665,7 @@
 <style>
   .velo { position: fixed; inset: 0; background: var(--velo); z-index: 8; animation: aparecer-velo 0.25s ease-out; }
   .lore {
-    position: fixed; z-index: 9; top: 12px; bottom: 12px; left: 12px; width: min(calc(100% - 24px), 1120px);
+    position: fixed; z-index: 9; top: calc(84px + var(--seguro-arriba)); bottom: 12px; left: 12px; width: min(calc(100% - 24px), 1080px);
     display: flex; flex-direction: column; overflow: hidden;
     border-radius: var(--radio-panel);
     background: var(--superficie-firme);
@@ -733,7 +733,8 @@
   .migas button { display: inline-flex; align-items: center; gap: 0.25rem; border: 0; background: none; padding: 0.2rem 0.35rem; border-radius: 6px; color: var(--texto-suave); font-weight: 700; max-width: 16rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .migas button:hover { color: var(--texto); background: var(--hundido); }
 
-  .herramientas-dj { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; padding: 0.55rem 0.7rem; margin-bottom: 0.9rem; border-radius: 14px; background: var(--hundido); border: 1px solid var(--filete); }
+  .herramientas-dj .boton { min-height: 2.25rem; padding: 0.3rem 0.7rem; font-size: 0.88rem; }
+  .herramientas-dj { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; padding: 0.55rem 0.7rem; margin-bottom: 0.9rem; border-radius: 14px; background: var(--hundido); border: 1px solid var(--filete); }
   .separa { flex: 1; }
   .interruptor { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; font-weight: 700; }
   .estado { font-size: 0.8rem; font-weight: 700; color: var(--exito-hondo); }

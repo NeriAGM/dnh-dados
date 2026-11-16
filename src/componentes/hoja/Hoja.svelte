@@ -665,7 +665,7 @@
   .cortina.arriba { z-index: 22; }
   .hoja {
     position: fixed; z-index: 9;
-    top: 12px; bottom: 12px; left: 12px;
+    top: calc(84px + var(--seguro-arriba)); bottom: 12px; left: 12px;
     width: min(560px, calc(100vw - 24px));
     display: flex; flex-direction: column;
     border-radius: var(--radio-panel);

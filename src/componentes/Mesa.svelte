@@ -119,11 +119,14 @@
     const medir = () => {
       const r = elCentro.getBoundingClientRect()
       if (!r.width || !r.height) return
+      // Margen extra: por la perspectiva, un dado junto a la pared del fondo
+      // se dibuja más arriba de ella (su cara de arriba) y uno junto a la del
+      // frente, un poco más abajo
       mesa3d.ajustarZona({
-        arriba: Math.round(r.top),
-        abajo: Math.round(window.innerHeight - r.bottom),
-        izquierda: Math.round(r.left),
-        derecha: Math.round(window.innerWidth - r.right),
+        arriba: Math.round(r.top + 36),
+        abajo: Math.round(window.innerHeight - r.bottom + 28),
+        izquierda: Math.round(r.left + 8),
+        derecha: Math.round(window.innerWidth - r.right + 8),
       })
     }
     const obs = new ResizeObserver(medir)
@@ -504,7 +507,7 @@
     transition: background 0.15s, color 0.15s;
   }
   .nav-b:hover { background: var(--hundido-2); }
-  .nav-b[aria-pressed='true'] { background: var(--texto); color: var(--sobre-color); }
+  .nav-b[aria-pressed='true'] { background: #fff; box-shadow: 0 1px 2px rgb(18 20 50 / 0.12), 0 4px 12px -6px rgb(18 20 50 / 0.4); }
   .nav-b:disabled { opacity: 0.45; cursor: progress; }
   .nav-tiradas { display: none; }
   .punto {
@@ -540,6 +543,7 @@
     border-radius: var(--radio-panel);
   }
   .pj-cabeza { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; min-width: 0; }
+  .pj-cabeza .placa { flex: 0 1 auto; }
   .pj .placa { margin: 0; font-size: 1.1rem; }
   .selector {
     min-width: 0;
@@ -727,13 +731,18 @@
     .mesa {
       --hueco: 8px;
       grid-template-columns: minmax(0, 1fr);
-      grid-template-rows: auto auto minmax(0, 1fr) auto minmax(6.5rem, auto) auto;
-      grid-template-areas: 'barra' 'pj' 'centro' 'abajo' 'resultado' 'lanzador';
+      /* La escena va arriba con el PJ y las cuentas abajo con el resultado:
+         la mesa 3D no deja que los dados pasen de ~45 % arriba ni de 50 %
+         abajo (dados3d/mesa.js), así que se reparte lo que rodea su zona */
+      grid-template-rows: auto auto auto minmax(0, 1fr) auto minmax(8.25rem, auto) auto;
+      grid-template-areas: 'barra' 'pj' 'escena' 'centro' 'cuentas' 'resultado' 'lanzador';
       padding: calc(8px + var(--seguro-arriba)) 8px 0;
     }
     .lado { display: contents; }
     .pj { grid-area: pj; padding: 0.7rem 0.85rem 0.75rem; gap: 0.35rem; }
-    .lado-abajo { grid-area: abajo; gap: 6px; }
+    .lado-abajo { display: contents; }
+    .lado-abajo > :global(.escena) { grid-area: escena; }
+    .cuentas { grid-area: cuentas; }
     .cuentas { padding: 0.55rem 0.7rem; }
     .cuentas h2 { display: none; }
     .medidor { grid-template-columns: 5rem minmax(0, 1fr) auto; grid-template-areas: 'rot ctl de'; }
@@ -769,21 +778,38 @@
   @media (max-height: 560px) and (min-width: 600px) {
     .mesa {
       --hueco: 8px;
-      --col-izq: 250px;
+      --col-izq: 260px;
       --col-der: 360px;
       grid-template-columns: var(--col-izq) minmax(0, 1fr) var(--col-der);
-      grid-template-rows: auto minmax(6.5rem, auto) minmax(0, 1fr);
+      grid-template-rows: auto minmax(0, 1fr) auto;
       grid-template-areas:
         'barra barra barra'
-        'lado resultado lanzador'
+        'lado centro resultado'
         'lado centro lanzador';
       padding: calc(8px + var(--seguro-arriba)) 8px calc(8px + var(--seguro-abajo));
     }
-    .lado { display: flex; }
+    .lado { display: flex; gap: 6px; }
+    .lado-abajo { gap: 6px; }
+    .pj { padding: 0.55rem 0.8rem 0.6rem; gap: 0.2rem; }
+    .pip-esp, .pip-miedo { height: 26px; }
+    .cuentas { padding: 0.45rem 0.6rem; }
+    .cuentas h2 { display: none; }
+    .cuentas ul { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .cuenta { flex: none; }
+    /* PJ en dos renglones: la cuenta 3/6 la dicen los mismos puntos */
+    .medidor { grid-template-columns: 4.3rem minmax(0, 1fr); grid-template-areas: 'rot ctl'; }
+    .medidor .rotulo { font-size: 0.68rem; }
+    .de { display: none; }
+    .pips-esp { margin-left: 0; }
+    .pip-esp { width: 22px; height: 24px; }
+    .pip-esp::before { width: 15px; height: 15px; }
+    .paso { width: 26px; height: 26px; }
+    .cajas span { width: 11px; height: 16px; }
     .barra { min-height: 3rem; padding-block: 0.2rem; }
     .nav-b { min-height: 2.6rem; }
-    .zona-resultado { align-items: start; }
-    .zona-lanzador { width: 100%; margin: 0; align-self: end; }
+    .zona-resultado { align-items: end; overflow-y: auto; padding-top: 1rem; }
+    .zona-lanzador { width: 100%; margin: 0; }
+    .ver-hoja { font-size: 0; gap: 0; width: 2.3rem; padding: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {

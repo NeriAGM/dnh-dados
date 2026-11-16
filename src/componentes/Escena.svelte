@@ -105,7 +105,9 @@
   .e-caido { opacity: 0.55; }
   .e-caido .c-nombre { text-decoration: line-through; text-decoration-thickness: 2px; }
 
-  @media (max-width: 759px) {
-    .escena { padding: 0.45rem 0.45rem 0.5rem 0.75rem; gap: 0.35rem; }
+  @media (max-width: 759px), (max-height: 560px) {
+    .escena { padding: 0.35rem 0.4rem 0.45rem 0.75rem; gap: 0.3rem; }
+    .chip { display: flex; align-items: center; gap: 0.45rem; padding: 0.3rem 0.65rem; }
+    .c-tipo { display: none; }
   }
 </style>

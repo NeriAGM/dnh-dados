@@ -166,7 +166,7 @@
               {/each}
             </div>
           </div>
-          <button class="boton solido" disabled={!nombre.trim()}>Agregar personaje</button>
+          <button class="boton" disabled={!nombre.trim()}>Agregar personaje</button>
         </form>
         {#if error}<p class="aviso-error" role="alert">{error}</p>{/if}
       </section>
@@ -256,7 +256,7 @@
     font-size: 0.72rem; font-weight: 700; line-height: 1.15; text-align: center; transition: background 0.15s;
   }
   .segmento:hover { background: var(--hundido-2); }
-  .segmento[aria-pressed='true'] { background: var(--texto); color: var(--sobre-color); }
+  .segmento[aria-pressed='true'] { background: #fff; box-shadow: 0 1px 2px rgb(18 20 50 / 0.12), 0 4px 12px -6px rgb(18 20 50 / 0.4); }
 
   .fila-accion {
     display: flex; align-items: center; gap: 0.7rem; width: 100%; padding: 0.7rem 0.85rem; text-align: left;

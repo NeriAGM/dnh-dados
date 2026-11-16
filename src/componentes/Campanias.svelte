@@ -42,7 +42,7 @@
       <label class="etiqueta" for="codigo"><span class="rotulo">Código de invitación</span></label>
       <div class="en-linea">
         <input id="codigo" class="campo codigo" maxlength="12" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="Ej. 2DA8EA" bind:value={codigo} />
-        <button class="boton solido" disabled={ocupado || codigoLimpio.length < 6}>Unirme</button>
+        <button class="boton" disabled={ocupado || codigoLimpio.length < 6}>Unirme</button>
       </div>
     </form>
 

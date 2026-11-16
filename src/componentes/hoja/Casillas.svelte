@@ -46,11 +46,9 @@
     transition: background 0.15s, transform 0.1s;
   }
   .caja:not(:disabled):active { transform: scale(0.9); }
-  .caja.estrella {
-    border: 0;
-    clip-path: polygon(50% 0, 64% 34%, 100% 50%, 64% 66%, 50% 100%, 36% 66%, 0 50%, 36% 34%);
-    background: color-mix(in srgb, var(--c) 25%, transparent);
-  }
+  /* Esperanza: el mismo círculo que en la tarjeta de la mesa */
+  .caja.estrella { border-radius: 50%; }
+  .caja.estrella.marcada { box-shadow: 0 0 0 3px var(--esperanza-suave); }
   .caja.escudo { border-radius: 6px 6px 14px 14px; }
   .caja.marcada { background: var(--c); }
   .caja:not(:disabled):hover { background: color-mix(in srgb, var(--c) 40%, transparent); }

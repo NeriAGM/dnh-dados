@@ -75,7 +75,7 @@ Quedan (para decidir o revisar):
 Hecho: identidad nueva (vidrio claro translúcido tipo One UI, Zen Maru Gothic, Esperanza azul cielo, Miedo rosa ocaso, también en los dados), la mesa como retícula sin nada encimado (escritorio, ventana partida, celular y celular acostado), la tirada como línea de diálogo con la placa del PJ, íconos propios en vez de emojis, y todas las pantallas restilizadas (hoja y sus diálogos, panel del DJ, lore, ajustes, personalización con selector de letra, entrada y campañas). Detalle del sistema en `DESIGN.md`.
 
 - [ ] Neri: revisar la rama en su compu (`npm run dev`) y decir si se publica (push a `main`).
-- [ ] Juntar con la rama de Ayudar a un Aliado: en `Lanzador.svelte` y `Resultado.svelte` solo cambió el marcado y el estilo; el contador «Ayudan» y los d6 de los ayudantes tienen que tomar las clases nuevas (`.boton-paso`, `.dado.ventaja`).
+- [ ] Juntar con el PR NeriAGM/dnh-dados#1 (Ayudar a un Aliado): en `Lanzador.svelte` y `Resultado.svelte` aquí solo cambió el marcado y el estilo; la fila «Te ayudan» y los d6 de los ayudantes tienen que tomar las clases nuevas (`.boton-paso`, `.dado.ventaja`). Ese PR también toca `src/lib/textos.js`.
 - [ ] La lista de Campañas no se pudo ver en capturas (necesita sesión real): revisarla al entrar con Discord.
-- [ ] `src/lib/tirador.test.mjs` falla solo en Windows (importa una ruta `C:\…` sin `pathToFileURL`); en GitHub Actions pasa. Arreglo de una línea cuando se toque ese archivo.
+- [ ] `src/lib/tirador.test.mjs` falla solo en Windows (importa una ruta `C:\…` sin `pathToFileURL`). Ya está arreglado en el PR NeriAGM/dnh-dados#1 (`reglas/ayudar-aliado`); al traer `main` a esta rama desaparece. No arreglarlo aquí.
 - [ ] Mejora futura (sesión aparte): tablero compartido del DJ para mostrar mapas e imágenes, al estilo Roll20.

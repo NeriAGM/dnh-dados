@@ -290,7 +290,7 @@
     transition: transform 0.15s;
   }
   .tarjeta:hover { transform: translateY(-2px); }
-  .tarjeta.activo { background: var(--texto); box-shadow: 0 0 0 2px var(--brillo); }
+  .tarjeta.activo { background: #fff; box-shadow: inset 0 0 0 2px var(--texto); }
   .marco { position: relative; display: block; border-radius: 11px; overflow: hidden; aspect-ratio: 16 / 10; background: #2b2c5c; }
   .marco canvas, .marco img { width: 100%; height: 100%; display: block; object-fit: cover; }
   .etiqueta {
@@ -353,7 +353,7 @@
     border: 1px solid var(--filete); border-radius: 12px; background: var(--hundido);
   }
   .modo:hover { background: var(--hundido-2); }
-  .modo.activo { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+  .modo.activo { background: #fff; border-color: var(--filete-fuerte); box-shadow: inset 0 0 0 1.5px var(--texto); }
   .dibujo { position: relative; width: 2rem; height: 1.3rem; border: 1.5px solid currentColor; border-radius: 3px; overflow: hidden; }
   .dibujo i { position: absolute; background: currentColor; opacity: 0.75; }
   .dibujo.cubrir i:first-child { inset: -3px -6px; border-radius: 2px; }

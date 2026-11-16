@@ -44,6 +44,7 @@
     border-radius: var(--radio-panel);
     text-align: left;
     background: var(--superficie-firme);
+    box-shadow: inset 0 0 0 5px var(--superficie-firme), inset 0 0 0 6px var(--filete-fuerte), var(--sombra);
     animation: aparecer 0.3s var(--suave);
   }
   @keyframes aparecer { from { opacity: 0; transform: translateY(10px); } }
@@ -125,12 +126,16 @@
   @keyframes encender { from { box-shadow: 0 0 0 2px var(--critico), 0 0 0 18px var(--critico-suave), var(--sombra); } }
   .critico .placa { background: var(--critico-hondo); }
 
-  @media (max-width: 759px) {
-    .resultado { padding: 1.1rem 2.2rem 0.75rem 1rem; gap: 0.3rem; margin-top: 0.8rem; }
-    .linea { font-size: 1.1rem; }
-    .total { font-size: 2.2rem; }
-    .dado { font-size: 0.8rem; }
-    .efecto { font-size: 0.82rem; }
+  @media (max-width: 759px), (max-height: 560px) and (min-width: 600px) {
+    .resultado { padding: 1.05rem 2.2rem 0.65rem 1rem; gap: 0.25rem; margin-top: 0.8rem; }
+    .linea { font-size: 1.05rem; }
+    .total { font-size: 2.1rem; }
+    .dados { flex-wrap: nowrap; overflow: hidden; }
+    .dado { flex: none; font-size: 0.78rem; padding: 0.1rem 0.5rem; }
+    /* Las consecuencias como una sola frase: ocupan menos que varias píldoras */
+    .efectos { display: block; font-size: 0.85rem; font-weight: 900; line-height: 1.3; color: var(--acento); }
+    .efecto { display: inline; padding: 0; background: none; font-size: inherit; }
+    .efecto + .efecto::before { content: ' · '; color: var(--texto-suave); }
   }
   @media (prefers-reduced-motion: reduce) {
     .linea, .dados, .efectos, .sigue { animation: none; }

@@ -52,7 +52,7 @@
             <span class="total">{t.total}</span>
             <div class="detalle">
               <div class="cabeza">
-                <strong>{pj?.nombre ?? nombreDe(t.usuario_id)}</strong>
+                <strong class="placa quien" style:--color-pj={t.tipo === 'dj' ? null : pj?.color}>{pj?.nombre ?? nombreDe(t.usuario_id)}</strong>
                 {#if des.texto}<span class="des">{des.texto}</span>{/if}
                 {#if t.oculta}<span class="etiqueta-oculta"><Icono nombre="ojo-no" tam={13} />oculta</span>{/if}
                 <time>{hora(t.creado)}</time>
@@ -104,7 +104,7 @@
   .total { font-size: 1.6rem; font-weight: 900; text-align: right; line-height: 1; font-variant-numeric: tabular-nums; color: var(--texto); }
   .detalle { display: grid; gap: 0.05rem; min-width: 0; font-size: 0.82rem; line-height: 1.35; }
   .cabeza { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.1rem 0.45rem; font-size: 0.9rem; }
-  .cabeza strong { font-weight: 900; }
+  .quien { padding: 0.05rem 0.5rem 0.1rem; font-size: 0.78rem; border-radius: 7px 7px 7px 2px; box-shadow: none; max-width: 11rem; }
   .des { font-weight: 700; color: var(--acento); }
   .cabeza time { margin-left: auto; font-size: 0.78rem; color: var(--texto-suave); font-variant-numeric: tabular-nums; }
   .nota { font-weight: 700; }
