@@ -7,6 +7,7 @@
     borrarTablero, crearFicha, agregarPJs,
   } from '../../lib/tablero.svelte.js'
   import { pjsSinFicha } from '../../lib/tablero.js'
+  import Icono from '../Icono.svelte'
 
   let { onCerrar } = $props()
 
@@ -44,28 +45,32 @@
   }
 </script>
 
-<section class="panel vidrio" aria-label="Tablero">
+<div class="velo" onclick={onCerrar} role="presentation"></div>
+<section class="panel vidrio" aria-label="Tablero para la mesa">
   <header class="cabecera">
-    <h2 class="titulo">Tablero</h2>
-    <button class="boton cerrar" onclick={onCerrar} aria-label="Cerrar el panel del tablero">✕</button>
+    <div class="titulos">
+      <h2 class="titulo">Tablero</h2>
+      <p class="sub">Un mapa, una imagen o una nota para toda la mesa.</p>
+    </div>
+    <button class="icono" onclick={onCerrar} aria-label="Cerrar el panel del tablero"><Icono nombre="cerrar" /></button>
   </header>
 
   <div class="cuerpo">
     <div class="nuevo">
       <label class="boton subir" class:ocupado={tablero.subiendo}>
-        {tablero.subiendo ? 'Subiendo…' : 'Subir mapa o imagen'}
+        <Icono nombre="subir" tam={18} />{tablero.subiendo ? 'Subiendo…' : 'Subir mapa o imagen'}
         <input class="sr-only" type="file" accept="image/jpeg,image/png,image/webp,image/gif" onchange={alElegirArchivo} disabled={tablero.subiendo} />
       </label>
-      <button class="boton" onclick={() => crearTablero({ nombre: 'Nota' })}>Nota de texto</button>
+      <button class="boton" onclick={() => crearTablero({ nombre: 'Nota' })}><Icono nombre="letra" tam={18} />Nota de texto</button>
     </div>
-    {#if tablero.error}<p class="error" role="alert">{tablero.error}</p>{/if}
+    {#if tablero.error}<p class="aviso-error" role="alert">{tablero.error}</p>{/if}
 
     {#if tablero.lista.length}
       <ul class="lista" aria-label="Tus tableros">
         {#each tablero.lista as t (t.id)}
           <li>
             <button class="elemento" class:activo={t.id === sel?.id} aria-current={t.id === sel?.id} onclick={() => (tablero.abierto = t.id)}>
-              <span aria-hidden="true">{t.imagen ? '🗺' : '📝'}</span>
+              <Icono nombre={t.imagen ? 'mapa' : 'letra'} tam={20} />
               <span class="texto">{t.nombre}</span>
               {#if t.id === mostrado}<span class="en-mesa">En la mesa</span>{/if}
             </button>
@@ -73,90 +78,97 @@
         {/each}
       </ul>
     {:else}
-      <p class="vacio">Sube un mapa, una ilustración o una carta, o escribe una nota. Luego tócala aquí y elige «Mostrar a la mesa».</p>
+      <p class="vacio">Aún no tienes tableros. Sube un mapa, una ilustración o una carta, o crea una nota de texto. Luego elígela aquí y toca «Mostrar a la mesa».</p>
     {/if}
 
     {#if sel}
       <div class="editor">
         {#if sel.id === mostrado}
-          <button class="boton ancho" onclick={() => mostrarTablero(null)}>Quitar de la mesa</button>
+          <button class="boton ancho" onclick={() => mostrarTablero(null)}><Icono nombre="ojo-no" tam={18} />Quitar de la mesa</button>
         {:else}
-          <button class="boton ancho primario" onclick={() => mostrarTablero(sel.id)}>Mostrar a la mesa</button>
+          <button class="boton solido ancho" onclick={() => mostrarTablero(sel.id)}><Icono nombre="ojo" tam={18} />Mostrar a la mesa</button>
         {/if}
 
-        <label class="campo-con-titulo">
-          <span>Nombre</span>
+        <label class="dato">
+          <span class="rotulo">Nombre</span>
           <input class="campo" maxlength="80" value={sel.nombre} onchange={cambiarNombre} />
         </label>
-        <label class="campo-con-titulo">
-          <span>Nota para la mesa <small>(opcional; **negritas** y _cursivas_)</small></span>
+        <label class="dato">
+          <span class="rotulo">Nota para la mesa</span>
           <textarea class="campo" rows="4" maxlength="2000" value={sel.texto} onchange={cambiarTexto}></textarea>
+          <small class="ayuda">Opcional. Escribe **negritas** y _cursivas_ así.</small>
         </label>
 
         {#if sel.imagen}
           <fieldset class="fichas">
-            <legend>Fichas <small>({fichasSel})</small></legend>
+            <legend class="rotulo">Fichas ({fichasSel})</legend>
             <button class="boton ancho" onclick={() => agregarPJs(sel.id)} disabled={!faltan}>
-              {faltan ? `Agregar PJ (${faltan})` : app.personajes.length ? 'Todos los PJ ya están' : 'Aún no hay PJ en la campaña'}
+              <Icono nombre="persona" tam={18} />{faltan ? `Agregar PJ (${faltan})` : app.personajes.length ? 'Todos los PJ ya están' : 'Aún no hay PJ en la campaña'}
             </button>
             <form class="nueva-ficha" onsubmit={ponerFicha}>
               <input class="campo" maxlength="40" placeholder="Adversario o PNJ" aria-label="Nombre de la ficha" bind:value={nombreFicha} />
               <input type="color" aria-label="Color de la ficha" bind:value={colorFicha} />
               <button class="boton" disabled={!nombreFicha.trim()}>Agregar</button>
             </form>
-            <label class="campo-con-titulo">
-              <span>Tamaño de las fichas</span>
+            <label class="dato">
+              <span class="rotulo">Tamaño de las fichas</span>
               <input type="range" min="0.02" max="0.15" step="0.005" value={sel.tam_ficha} onchange={(e) => guardarTablero(sel.id, { tam_ficha: Number(e.currentTarget.value) })} />
             </label>
             <p class="ayuda">Cada jugador arrastra la ficha de su PJ; tú mueves todas. Toca una ficha en el mapa para quitarla. Para la niebla, usa «Agregar niebla» arriba del mapa.</p>
           </fieldset>
         {/if}
 
-        <button class="boton ancho peligro" onclick={borrar}>Borrar tablero</button>
+        <button class="boton peligro ancho" onclick={borrar}><Icono nombre="basura" tam={18} />Borrar tablero</button>
       </div>
     {/if}
   </div>
 </section>
 
 <style>
+  .velo { position: fixed; inset: 0; background: var(--velo); z-index: 8; animation: aparecer-velo 0.25s ease-out; }
+  @keyframes aparecer-velo { from { opacity: 0; } }
   .panel {
-    position: fixed; z-index: 9; top: 0; bottom: 0; right: 0; width: min(100%, 360px);
-    display: flex; flex-direction: column;
-    border-radius: var(--radio-panel) 0 0 var(--radio-panel);
+    position: fixed; z-index: 9; top: calc(84px + var(--seguro-arriba)); bottom: 12px; left: 12px; width: min(380px, calc(100% - 24px));
+    display: flex; flex-direction: column; overflow: hidden;
+    border-radius: var(--radio-panel);
+    background: var(--superficie-firme); box-shadow: var(--sombra-alta);
+    animation: entrar 0.25s var(--suave);
   }
-  .cabecera { display: flex; align-items: center; justify-content: space-between; padding: calc(0.8rem + env(safe-area-inset-top, 0px)) 1rem 0.5rem; }
-  .cabecera h2 { margin: 0; font-size: 1.3rem; }
-  .cerrar { padding: 0.3rem 0.65rem; }
-  .cuerpo { flex: 1; overflow: auto; padding: 0 1rem calc(1rem + var(--seguro-abajo)); display: grid; gap: 0.8rem; align-content: start; }
-  .nuevo { display: grid; grid-template-columns: 1fr auto; gap: 0.4rem; }
-  .subir { text-align: center; cursor: pointer; }
+  @keyframes entrar { from { transform: translateX(-24px); opacity: 0; } }
+  .cabecera { flex: none; display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.9rem 1rem 0.5rem 1.2rem; }
+  .titulos { flex: 1; min-width: 0; }
+  h2 { margin: 0; font-size: 1.5rem; }
+  .sub { margin: 0.15rem 0 0; font-size: 0.85rem; color: var(--texto-suave); }
+  .cuerpo { flex: 1; min-height: 0; overflow-y: auto; padding: 0.75rem 1rem calc(1.4rem + var(--seguro-abajo)); display: grid; gap: 0.75rem; align-content: start; overscroll-behavior: contain; }
+  .nuevo { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; }
+  .subir { cursor: pointer; }
   .subir.ocupado { opacity: 0.6; cursor: progress; }
-  .subir:focus-within { outline: 2px solid var(--esperanza); outline-offset: 2px; }
-  .vacio, .ayuda { margin: 0; font-size: 0.85rem; color: var(--pergamino-suave); }
-  .error { margin: 0; color: #ffb3bd; font-size: 0.85rem; }
-  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+  .subir:focus-within { outline: 2.5px solid var(--esperanza-hondo); outline-offset: 2px; }
+  .vacio { margin: 0; padding: 1rem; border: 1px dashed var(--filete-fuerte); border-radius: var(--radio-control); color: var(--texto-suave); font-size: 0.95rem; text-align: center; }
+  .ayuda { margin: 0; font-size: 0.85rem; color: var(--texto-suave); }
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
   .elemento {
-    width: 100%; display: flex; align-items: center; gap: 0.5rem; text-align: left;
-    padding: 0.5rem 0.7rem; border-radius: var(--radio-control);
-    border: 1px solid var(--linea); background: var(--vidrio-claro); color: inherit; font: inherit;
+    width: 100%; min-height: 2.75rem; display: flex; align-items: center; gap: 0.6rem; text-align: left;
+    padding: 0.5rem 0.8rem; border-radius: var(--radio-control);
+    border: 1px solid var(--filete); background: var(--hundido); color: var(--texto); font-weight: 700;
   }
-  .elemento.activo { border-color: var(--miedo); background: rgba(167, 124, 232, 0.22); }
+  .elemento:hover { background: var(--hundido-2); }
+  .elemento.activo { background: #fff; border-color: var(--filete-fuerte); box-shadow: inset 0 0 0 1.5px var(--texto); }
+  .elemento :global(svg) { flex: none; }
   .elemento .texto { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .en-mesa { font-size: 0.72rem; font-weight: 800; color: var(--tinta); background: var(--esperanza); border-radius: 999px; padding: 0.1rem 0.5rem; }
-  .editor { display: grid; gap: 0.7rem; border-top: 1px solid var(--linea); padding-top: 0.8rem; }
-  .campo-con-titulo { display: grid; gap: 0.25rem; font-size: 0.85rem; font-weight: 700; }
-  .campo-con-titulo small, legend small { font-weight: 400; color: var(--pergamino-suave); }
-  textarea.campo { resize: vertical; font: inherit; }
-  .fichas { border: 1px solid var(--linea); border-radius: var(--radio-control); padding: 0.6rem 0.7rem 0.7rem; display: grid; gap: 0.55rem; margin: 0; }
-  legend { font-weight: 800; font-size: 0.9rem; padding: 0 0.3rem; }
-  .nueva-ficha { display: grid; grid-template-columns: 1fr 2.6rem auto; gap: 0.35rem; align-items: center; }
-  .nueva-ficha input[type='color'] { width: 100%; height: 2.3rem; padding: 0; border: 1px solid var(--linea); border-radius: 8px; background: none; }
+  .en-mesa { flex: none; font-size: 0.75rem; font-weight: 900; color: var(--esperanza-hondo); background: var(--esperanza-suave); border-radius: 999px; padding: 0.15rem 0.6rem; }
+  .editor { display: grid; gap: 0.75rem; border-top: 1px solid var(--filete); padding-top: 0.9rem; }
+  .dato { display: grid; gap: 0.3rem; }
+  textarea.campo { resize: vertical; }
+  .fichas { border: 1px solid var(--filete); border-radius: var(--radio-control); padding: 0.6rem 0.8rem 0.8rem; display: grid; gap: 0.6rem; margin: 0; min-width: 0; }
+  legend { padding: 0 0.3rem; }
+  .nueva-ficha { display: grid; grid-template-columns: 1fr 2.6rem auto; gap: 0.4rem; align-items: center; }
+  .nueva-ficha input[type='color'] { width: 100%; height: 2.5rem; padding: 0.15rem; border: 1px solid var(--filete); border-radius: 12px; background: rgb(255 255 255 / 0.62); }
   .ancho { width: 100%; }
-  .primario { background: var(--miedo); color: var(--tinta); border-color: transparent; font-weight: 800; }
-  .peligro { border-color: rgba(217, 74, 92, 0.7); color: #ffb3bd; }
-  input[type='range'] { width: 100%; accent-color: var(--miedo); }
-  @media (max-width: 600px) {
-    /* En celular va abajo y deja ver el mapa arriba */
-    .panel { top: auto; height: 55vh; width: 100%; border-radius: var(--radio-panel) var(--radio-panel) 0 0; background: rgb(22, 15, 38); }
+  input[type='range'] { width: 100%; }
+  @media (min-width: 1100px) { .velo { display: none; } }
+  @media (max-width: 759px) {
+    .panel { inset: 0; width: 100%; border-radius: 0; }
+    .cabecera { padding-top: calc(0.9rem + var(--seguro-arriba)); }
   }
 </style>

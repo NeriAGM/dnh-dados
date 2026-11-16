@@ -117,14 +117,20 @@
   // (barra, PJ, escena, registro, resultado y lanzador) queda fuera de ella.
   let elCentro = $state()
   $effect(() => {
-    if (!mesa3d || !elCentro) return
+    if (!elCentro) return
     const medir = () => {
       const r = elCentro.getBoundingClientRect()
       if (!r.width || !r.height) return
+      // El tablero compartido (debajo de los dados) se acomoda en esta misma celda
+      const raiz = document.documentElement.style
+      raiz.setProperty('--centro-x', `${Math.round(r.left)}px`)
+      raiz.setProperty('--centro-y', `${Math.round(r.top)}px`)
+      raiz.setProperty('--centro-ancho', `${Math.round(r.width)}px`)
+      raiz.setProperty('--centro-alto', `${Math.round(r.height)}px`)
       // Margen extra: por la perspectiva, un dado junto a la pared del fondo
       // se dibuja más arriba de ella (su cara de arriba) y uno junto a la del
       // frente, un poco más abajo
-      mesa3d.ajustarZona({
+      mesa3d?.ajustarZona({
         arriba: Math.round(r.top + 36),
         abajo: Math.round(window.innerHeight - r.bottom + 28),
         izquierda: Math.round(r.left + 8),
@@ -213,7 +219,7 @@
     if (app.demo) { demoMiedo = Math.max(0, Math.min(12, demoMiedo + delta)); return }
     return cola.agregar(() => ajustarMiedo(delta))
   }
-  const ladoOcupado = $derived(!!pjHoja || verDJ)
+  const ladoOcupado = $derived(!!pjHoja || verDJ || verTablero)
   const nombreMesa = $derived(app.demo ? 'Mesa de prueba' : app.campania?.nombre ?? '')
   // Punto en «Tiradas» cuando llegó algo y el registro está cerrado (celular)
   let vistaHasta = $state(null)
@@ -249,7 +255,7 @@
 </script>
 
 
-<div class="mesa" class:enfocada={ladoOcupado} class:con-dj={verDJ}>
+<div class="mesa" class:enfocada={ladoOcupado} class:con-dj={verDJ} class:con-tablero={verTablero}>
   <header class="barra vidrio">
     <h1 class="nombre" title={nombreMesa}>{nombreMesa}</h1>
 
@@ -692,6 +698,7 @@
   @media (min-width: 1100px) {
     .mesa.enfocada { --col-izq: 560px; }
     .mesa.enfocada.con-dj { --col-izq: 600px; }
+    .mesa.enfocada.con-tablero { --col-izq: 380px; }
     .enfocada .lado { visibility: hidden; }
     .enfocada .zona-historial { opacity: 0.55; }
     .enfocada .zona-historial:hover, .enfocada .zona-historial:focus-within { opacity: 1; }
