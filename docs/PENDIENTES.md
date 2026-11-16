@@ -97,7 +97,9 @@ Quedan (para decidir o revisar):
 
 Hecho: identidad nueva (vidrio claro translúcido tipo One UI, Zen Maru Gothic, Esperanza azul cielo, Miedo rosa ocaso, también en los dados), la mesa como retícula sin nada encimado (escritorio, ventana partida, celular y celular acostado), la tirada como línea de diálogo con la placa del PJ, íconos propios en vez de emojis, y todas las pantallas restilizadas (hoja y sus diálogos, panel del DJ, lore, ajustes, personalización con selector de letra, entrada y campañas). Detalle del sistema en `DESIGN.md`.
 
-- [ ] Neri: revisar la rama en su compu (`npm run dev`) y decir si se publica (push a `main`).
+- [x] Publicado el 15/11 (rediseño + tablero + Ayudar a un Aliado, `main` a765917). Revisado con la cuenta del DJ: Campañas, mesa, registro, «Te ayudan» y Ajustes.
+- [ ] Probar con una cuenta de jugador: tablero visible, «Te ayudan» resta 1 Esperanza a quien ayuda, tiradas que llegan a los dos.
+- [ ] Publicar junto con lo que salga de esa prueba: «Cerrar sesión» en blanco en Campañas (commit 7a66940 en `rediseno/impecable`, sin subir).
 - [x] Juntado con el PR NeriAGM/dnh-dados#1 (Ayudar a un Aliado) en la rama del rediseño; la fila «Te ayudan» y los d6 de ayuda ya usan el estilo nuevo.
 - [ ] La lista de Campañas no se pudo ver en capturas (necesita sesión real): revisarla al entrar con Discord.
 - [x] `src/lib/tirador.test.mjs` en Windows: arreglado con el PR NeriAGM/dnh-dados#1 (`pathToFileURL`).
