@@ -390,7 +390,7 @@
   </div>
 
   <div class="zona-lanzador">
-    <Lanzador esDJ={esDJ} {ocupado} onTirar={alTirar} />
+    <Lanzador esDJ={esDJ} {ocupado} aliados={app.demo || !pj ? [] : app.personajes.filter((p) => p.id !== pj.id)} onTirar={alTirar} />
   </div>
 
   {#if aviso}

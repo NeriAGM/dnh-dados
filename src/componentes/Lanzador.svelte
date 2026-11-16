@@ -1,7 +1,8 @@
 <script>
   import { leerFormula, leerDificultad, conSigno } from '../lib/formula.js'
 
-  let { esDJ = false, ocupado = false, onTirar } = $props()
+  // aliados: los demás personajes de la mesa que pueden Ayudar a un Aliado
+  let { esDJ = false, ocupado = false, aliados = [], onTirar } = $props()
 
   const MODOS = [
     { id: 'accion', nombre: 'Acción', ayuda: 'Dados de Dualidad: Esperanza contra Miedo' },
@@ -21,6 +22,7 @@
   let oculta = $state(false)
   let mas = $state(false)
   let error = $state('')
+  let ayudan = $state([]) // ids de los aliados que ayudan en esta tirada
 
   $effect(() => { if (esDJ && modo === 'accion' && !tocado) modo = 'dj' })
   // Si dejas de ser DJ (cambias a una campaña donde eres jugador), el modo
@@ -30,6 +32,13 @@
 
   const dual = $derived(modo === 'accion' || modo === 'reaccion')
   const conFormula = $derived(modo === 'dano' || modo === 'libre')
+  // Ayudar a un Aliado (SRD 2.0, p. 48–49): solo en acción; con desventaja no (por confirmar)
+  const puedenAyudar = $derived(modo === 'accion' && ventaja !== 'desventaja' && aliados.length > 0)
+  const ayudantes = $derived(puedenAyudar ? ayudan.filter((id) => aliados.some((a) => a.id === id && (a.esperanza ?? 0) >= 1)) : [])
+
+  function alternarAyuda(id) {
+    ayudan = ayudan.includes(id) ? ayudan.filter((x) => x !== id) : [...ayudan, id]
+  }
 
   function agregarDado(lados) {
     const f = leerFormula(formula)
@@ -42,7 +51,8 @@
 
   const vista = $derived.by(() => {
     if (dual) {
-      const extra = ventaja === 'ventaja' ? ' + d6' : ventaja === 'desventaja' ? ' − d6' : ''
+      const d6 = ayudantes.length + (ventaja === 'ventaja' ? 1 : 0)
+      const extra = ayudantes.length ? ` + el más alto de ${d6}d6` : ventaja === 'ventaja' ? ' + d6' : ventaja === 'desventaja' ? ' − d6' : ''
       return `Esperanza d12 + Miedo d12${extra} ${conSigno(modificador)}`.trim()
     }
     if (modo === 'dj') {
@@ -58,7 +68,7 @@
       const grupos = [{ lados: 12, rol: 'esperanza' }, { lados: 12, rol: 'miedo' }]
       if (ventaja === 'ventaja') grupos.push({ lados: 6, rol: 'ventaja', signo: 1 })
       if (ventaja === 'desventaja') grupos.push({ lados: 6, rol: 'desventaja', signo: -1 })
-      return { ...base, grupos, modificador }
+      return { ...base, grupos, modificador, ayudantes: [...ayudantes] }
     }
     if (modo === 'dj') {
       const grupos = ventaja === 'ninguna'
@@ -73,7 +83,7 @@
 
   function tirar() {
     error = ''
-    try { onTirar(armar()) } catch (e) { error = e.message }
+    try { onTirar(armar()); ayudan = [] } catch (e) { error = e.message }
   }
 
   function elegirModo(id) {
@@ -91,7 +101,7 @@
       </button>
     {/each}
   </div>
-  {#each modos as m (m.id)}{#if m.id === modo}<p class="ayuda">{m.ayuda}</p>{/if}{/each}
+  {#each modos as m (m.id)}{#if m.id === modo}<p class="explica">{m.ayuda}</p>{/if}{/each}
 
   <div class="controles">
     {#if dual || modo === 'dj'}
@@ -109,6 +119,19 @@
           <button role="radio" aria-checked={ventaja === 'ventaja'} class:ven={ventaja === 'ventaja'} onclick={() => (ventaja = ventaja === 'ventaja' ? 'ninguna' : 'ventaja')}>Ventaja</button>
           <button role="radio" aria-checked={ventaja === 'desventaja'} class:des={ventaja === 'desventaja'} onclick={() => (ventaja = ventaja === 'desventaja' ? 'ninguna' : 'desventaja')}>Desventaja</button>
         </div>
+      </div>
+    {/if}
+
+    {#if puedenAyudar}
+      <div class="chips ayuda" role="group" aria-label="Ayudar a un Aliado: quién te ayuda (gasta 1 Esperanza)">
+        <span class="rotulo">Te ayudan</span>
+        {#each aliados as a (a.id)}
+          {@const sinEsperanza = (a.esperanza ?? 0) < 1}
+          <button class="chip" class:prendido={ayudantes.includes(a.id)} aria-pressed={ayudantes.includes(a.id)} disabled={sinEsperanza}
+            title={sinEsperanza ? 'No tiene Esperanza para gastar' : 'Gasta 1 Esperanza y tira su d6'} onclick={() => alternarAyuda(a.id)}>
+            {a.nombre} · {a.esperanza ?? 0}
+          </button>
+        {/each}
       </div>
     {/if}
 
@@ -161,7 +184,7 @@
   }
   .modos { margin: 0 -0.35rem; }
   .modos button { flex: 1 0 auto; }
-  .ayuda { margin: -0.15rem 0 0; font-size: 0.82rem; color: var(--texto-suave); }
+  .explica { margin: -0.15rem 0 0; font-size: 0.82rem; color: var(--texto-suave); }
   .controles { display: grid; gap: 0.55rem; }
   .controles:empty { display: none; }
   .fila { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
@@ -230,6 +253,12 @@
   }
   .chip:hover { background: var(--hundido-2); }
   .chip.borrar { margin-left: auto; font-weight: 700; color: var(--texto-suave); background: none; border-color: transparent; }
+  /* Ayudar a un Aliado: quién te ayuda (cada uno gasta 1 Esperanza) */
+  .ayuda { align-items: center; }
+  .ayuda .rotulo { margin-right: 0.15rem; }
+  .ayuda .chip { font-weight: 700; }
+  .ayuda .chip.prendido { background: var(--exito); border-color: var(--exito); color: var(--sobre-color); }
+  .ayuda .chip:disabled { opacity: 0.45; cursor: not-allowed; }
   .extras .campo { flex: 1; min-width: 7rem; }
   .extras .nota { flex: 2; }
 
@@ -280,13 +309,13 @@
       border-radius: var(--radio-panel) var(--radio-panel) 0 0;
       border-bottom: 0;
     }
-    .ayuda { display: none; }
+    .explica { display: none; }
     .segmentos button { padding-inline: 0.75rem; }
     .tirar { min-height: 3.25rem; }
   }
   @media (max-height: 560px) and (min-width: 600px) {
     .lanzador { gap: 0.45rem; padding: 0.15rem 0.75rem 0.7rem; border-radius: var(--radio-panel); border-bottom: 1px solid var(--brillo); }
-    .ayuda { display: none; }
+    .explica { display: none; }
     .tirar { min-height: 3rem; }
     .tirar small { font-size: 0.75rem; }
   }

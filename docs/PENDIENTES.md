@@ -59,8 +59,16 @@ Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fic
 - [ ] Neri: confirmar vocabulario (por confirmar): «tablero», «ficha», «niebla» (Destapar / Tapar) y «señal». El panel de fondos ya dice «Tablero del día»: ¿se queda así?
 - [ ] Detalles menores de la revisión final (sin arreglar): al pintar niebla en celular el lienzo se vuelve a crear en cada movimiento (puede trabarse); tocar «Agregar PJ» dos veces rápido duplica fichas; si falla la primera lectura, un cambio que llegue por tiempo real puede traer el tablero sin niebla hasta la siguiente; el DJ podría ligar una ficha a un PJ de otra campaña (no le da nada a nadie); el jugador no ve mensajes de error del tablero (una ficha rechazada solo regresa).
 - [ ] Para después: dibujar trazos, cuadrícula con «snap», fichas ocultas a propósito, que las fichas se deslicen en vivo al arrastrarlas, mover fichas con teclado y un mapa de ejemplo en demo.
-- [ ] Rediseño: `Tablero.svelte`, `PanelTablero.svelte` y el botón «Tablero» usan el estilo actual; la rama `rediseno/impecable` debe tomarlos. En celular angosto los botones de la barra ahora bajan en filas (antes se salían ~12 px y cortaban Ajustes).
+- [x] Rediseño: `Tablero.svelte`, `PanelTablero.svelte` y el botón «Tablero» ya usan el estilo nuevo (rama `rediseno/impecable`).
 - [ ] En Windows, `npm run probar` falla en `tirador.test.mjs` (importa una ruta `C:\…` sin `file://`) y a veces en la prueba de rendimiento de los dados. En la nube (Linux) pasan; no es del tablero.
+
+## Reglas del tirador contra el SRD 2.0
+
+- [x] Ayudar a un Aliado (SRD 2.0 p. 48–49): cada ayudante gasta 1 Esperanza y tira su d6; cuenta solo el d6 de ventaja más alto (el propio incluido); no va en reacciones. Migración 009, pruebas en `supabase/pruebas/ayudar.test.mjs`.
+- [ ] Aplicar `supabase/migraciones/009_ayudar_aliado.sql` en Supabase **después** de la 008. Sin la 009 la app sigue tirando normal; solo elegir ayudantes da error.
+- [ ] Neri: ¿se puede ayudar a quien tira con desventaja? El SRD 2.0 no lo dice; hoy la app no lo permite.
+- [ ] Neri: quien tira elige a sus ayudantes y el servidor les resta la Esperanza sin pedirles confirmación (en la mesa cada quien dice «te ayudo»). ¿Así está bien?
+- [ ] Revisar los demás puntos «SIN VERIFICAR» de `docs/reglas/` con el reporte de verificación contra el SRD 2.0 (27 confirmados, 11 no aparecen, 5 dudas).
 
 ## Seguridad
 
@@ -90,7 +98,7 @@ Quedan (para decidir o revisar):
 Hecho: identidad nueva (vidrio claro translúcido tipo One UI, Zen Maru Gothic, Esperanza azul cielo, Miedo rosa ocaso, también en los dados), la mesa como retícula sin nada encimado (escritorio, ventana partida, celular y celular acostado), la tirada como línea de diálogo con la placa del PJ, íconos propios en vez de emojis, y todas las pantallas restilizadas (hoja y sus diálogos, panel del DJ, lore, ajustes, personalización con selector de letra, entrada y campañas). Detalle del sistema en `DESIGN.md`.
 
 - [ ] Neri: revisar la rama en su compu (`npm run dev`) y decir si se publica (push a `main`).
-- [ ] Juntar con el PR NeriAGM/dnh-dados#1 (Ayudar a un Aliado): en `Lanzador.svelte` y `Resultado.svelte` aquí solo cambió el marcado y el estilo; la fila «Te ayudan» y los d6 de los ayudantes tienen que tomar las clases nuevas (`.boton-paso`, `.dado.ventaja`). Ese PR también toca `src/lib/textos.js`.
+- [x] Juntado con el PR NeriAGM/dnh-dados#1 (Ayudar a un Aliado) en la rama del rediseño; la fila «Te ayudan» y los d6 de ayuda ya usan el estilo nuevo.
 - [ ] La lista de Campañas no se pudo ver en capturas (necesita sesión real): revisarla al entrar con Discord.
-- [ ] `src/lib/tirador.test.mjs` falla solo en Windows (importa una ruta `C:\…` sin `pathToFileURL`). Ya está arreglado en el PR NeriAGM/dnh-dados#1 (`reglas/ayudar-aliado`); al traer `main` a esta rama desaparece. No arreglarlo aquí.
+- [x] `src/lib/tirador.test.mjs` en Windows: arreglado con el PR NeriAGM/dnh-dados#1 (`pathToFileURL`).
 - [ ] Mejora futura (sesión aparte): tablero compartido del DJ para mostrar mapas e imágenes, al estilo Roll20.
