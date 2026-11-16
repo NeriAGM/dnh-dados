@@ -104,7 +104,7 @@ Quedan (para decidir o revisar):
 
 Cuentas ocultas, Esperanza en el servidor, rasgos de armadura, cartas repetidas, pestaña «Notas» y tres detalles del tablero (ver arriba). 273 pruebas en verde.
 
-- [ ] Neri: dar el «sí» para aplicar `supabase/migraciones/013_esperanza_y_cuentas.sql` en Supabase. **Va antes de publicar**: sin ella, gastar Esperanza en una Experiencia falla («No se pudo gastar la Esperanza») y el canal de la mesa escucharía una tabla que no existe.
+- [x] Migración 013 aplicada en Supabase el 15/11 (Claude en el editor SQL, con el «sí» de Neri; texto idéntico al archivo, huella SHA-256 comprobada). Verificado con solo lectura: `gastar_esperanza` creada (`anon` no la ejecuta, `authenticated` sí); `cuentas_avisar` sin permiso para `authenticated`; `cuentas_revision` con RLS y una sola política (SELECT), en `supabase_realtime`, con su disparador; 5 personajes, igual que antes.
 - [ ] Neri: dar el «sí» para publicar (juntar la rama en `main`).
 - [ ] Probar con cuenta de jugador: que una cuenta oculta desaparezca sin recargar y que el error del tablero se vea (en demo solo se ve la vista del DJ).
 - [ ] Para después: el fondo animado truena (`paisaje.js`, «canvas … width or height of 0») si la página carga con la ventana en tamaño 0 (pasó en el navegador integrado). No es de estos cambios.
