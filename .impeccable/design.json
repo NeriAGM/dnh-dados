@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-15T00:00:00Z",
+  "title": "Design System: Dolor & Hambre · Mesa",
+  "extensions": {
+    "colorMeta": {
+      "tinta": {
+        "role": "primary",
+        "displayName": "Tinta índigo",
+        "canonical": "oklch(26.9% 0.053 271.8)",
+        "tonalRamp": [
+          "oklch(15% 0.028 271.8)",
+          "oklch(25% 0.037 271.8)",
+          "oklch(36% 0.047 271.8)",
+          "oklch(47% 0.053 271.8)",
+          "oklch(58% 0.053 271.8)",
+          "oklch(70% 0.05 271.8)",
+          "oklch(82% 0.04 271.8)",
+          "oklch(95% 0.028 271.8)"
+        ]
+      },
+      "tinta-suave": {
+        "role": "primary",
+        "displayName": "Tinta tenue",
+        "canonical": "oklch(43.4% 0.052 272.9)",
+        "tonalRamp": [
+          "oklch(15% 0.028 272.9)",
+          "oklch(25% 0.036 272.9)",
+          "oklch(36% 0.046 272.9)",
+          "oklch(47% 0.052 272.9)",
+          "oklch(58% 0.052 272.9)",
+          "oklch(70% 0.049 272.9)",
+          "oklch(82% 0.039 272.9)",
+          "oklch(95% 0.028 272.9)"
+        ]
+      },
+      "tinta-presionada": {
+        "role": "primary",
+        "displayName": "Tinta presionada",
+        "canonical": "#2c3459",
+        "note": "Literal en .boton.solido:hover y .tirar:hover; sin variable CSS."
+      },
+      "esperanza": {
+        "role": "secondary",
+        "displayName": "Esperanza, azul cielo",
+        "canonical": "oklch(66.7% 0.128 236.2)",
+        "tonalRamp": [
+          "oklch(15% 0.068 236.2)",
+          "oklch(25% 0.09 236.2)",
+          "oklch(36% 0.113 236.2)",
+          "oklch(47% 0.128 236.2)",
+          "oklch(58% 0.128 236.2)",
+          "oklch(70% 0.122 236.2)",
+          "oklch(82% 0.096 236.2)",
+          "oklch(95% 0.068 236.2)"
+        ]
+      },
+      "esperanza-hondo": {
+        "role": "secondary",
+        "displayName": "Esperanza honda",
+        "canonical": "oklch(47.1% 0.103 241.0)"
+      },
+      "miedo": {
+        "role": "secondary",
+        "displayName": "Miedo, rosa ocaso",
+        "canonical": "oklch(56.8% 0.167 4.2)",
+        "tonalRamp": [
+          "oklch(15% 0.089 4.2)",
+          "oklch(25% 0.117 4.2)",
+          "oklch(36% 0.148 4.2)",
+          "oklch(47% 0.167 4.2)",
+          "oklch(58% 0.167 4.2)",
+          "oklch(70% 0.159 4.2)",
+          "oklch(82% 0.125 4.2)",
+          "oklch(95% 0.089 4.2)"
+        ]
+      },
+      "miedo-hondo": {
+        "role": "secondary",
+        "displayName": "Miedo hondo",
+        "canonical": "oklch(43.3% 0.144 4.3)"
+      },
+      "critico": {
+        "role": "tertiary",
+        "displayName": "Crítico, luz cálida",
+        "canonical": "oklch(80.9% 0.149 80.6)",
+        "tonalRamp": [
+          "oklch(15% 0.079 80.6)",
+          "oklch(25% 0.104 80.6)",
+          "oklch(36% 0.132 80.6)",
+          "oklch(47% 0.149 80.6)",
+          "oklch(58% 0.149 80.6)",
+          "oklch(70% 0.142 80.6)",
+          "oklch(82% 0.112 80.6)",
+          "oklch(95% 0.079 80.6)"
+        ]
+      },
+      "critico-hondo": {
+        "role": "tertiary",
+        "displayName": "Crítico hondo",
+        "canonical": "oklch(47.5% 0.100 74.2)"
+      },
+      "peligro": {
+        "role": "tertiary",
+        "displayName": "Peligro",
+        "canonical": "oklch(55.9% 0.171 32.0)",
+        "tonalRamp": [
+          "oklch(15% 0.091 32.0)",
+          "oklch(25% 0.12 32.0)",
+          "oklch(36% 0.151 32.0)",
+          "oklch(47% 0.171 32.0)",
+          "oklch(58% 0.171 32.0)",
+          "oklch(70% 0.162 32.0)",
+          "oklch(82% 0.128 32.0)",
+          "oklch(95% 0.091 32.0)"
+        ]
+      },
+      "peligro-hondo": {
+        "role": "tertiary",
+        "displayName": "Peligro hondo",
+        "canonical": "oklch(45.2% 0.146 31.4)"
+      },
+      "exito": {
+        "role": "tertiary",
+        "displayName": "Éxito",
+        "canonical": "oklch(56.7% 0.108 162.1)",
+        "tonalRamp": [
+          "oklch(15% 0.058 162.1)",
+          "oklch(25% 0.076 162.1)",
+          "oklch(36% 0.095 162.1)",
+          "oklch(47% 0.108 162.1)",
+          "oklch(58% 0.108 162.1)",
+          "oklch(70% 0.103 162.1)",
+          "oklch(82% 0.081 162.1)",
+          "oklch(95% 0.058 162.1)"
+        ]
+      },
+      "exito-hondo": {
+        "role": "tertiary",
+        "displayName": "Éxito hondo",
+        "canonical": "oklch(45.7% 0.088 162.2)"
+      },
+      "vidrio": {
+        "role": "neutral",
+        "displayName": "Vidrio claro",
+        "canonical": "rgb(247 249 253 / var(--vidrio-alfa))",
+        "note": "Alfa automático: min(0.95, 0.5 + 0.36·v + 0.2·oscuro); 0.68 en reposo."
+      },
+      "vidrio-firme": {
+        "role": "neutral",
+        "displayName": "Vidrio firme",
+        "canonical": "rgb(247 249 253 / max(var(--vidrio-alfa), 0.9))"
+      },
+      "noche-base": {
+        "role": "neutral",
+        "displayName": "Noche base",
+        "canonical": "oklch(31.9% 0.084 279.6)",
+        "tonalRamp": [
+          "oklch(15% 0.045 279.6)",
+          "oklch(25% 0.059 279.6)",
+          "oklch(36% 0.074 279.6)",
+          "oklch(47% 0.084 279.6)",
+          "oklch(58% 0.084 279.6)",
+          "oklch(70% 0.08 279.6)",
+          "oklch(82% 0.063 279.6)",
+          "oklch(95% 0.045 279.6)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Solo el nombre de la mesa en la entrada."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Total de la tirada en la caja de diálogo; 2.1rem en compacto."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de diálogos y Ajustes."
+      },
+      "accion": {
+        "displayName": "Acción",
+        "purpose": "La palabra «Tirar»."
+      },
+      "dialogo": {
+        "displayName": "Diálogo",
+        "purpose": "La línea del resultado; 1.05rem en compacto."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Placas de nombre y encabezados del registro."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto base."
+      },
+      "body-chico": {
+        "displayName": "Body chico",
+        "purpose": "Fichas, ayudas, subtítulos."
+      },
+      "label": {
+        "displayName": "Rótulo",
+        "purpose": "Mayúsculas en tinta tenue; nombra un dato o campo junto a él."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sombra",
+        "value": "0 1px 2px rgb(18 20 50 / 0.08), 0 14px 34px -18px rgb(18 20 50 / 0.5)",
+        "purpose": "Toda caja de vidrio de la mesa."
+      },
+      {
+        "name": "sombra-alta",
+        "value": "0 2px 6px rgb(18 20 50 / 0.1), 0 30px 70px -30px rgb(18 20 50 / 0.65)",
+        "purpose": "Diálogos, Ajustes, campañas, entrada, paneles del DJ."
+      },
+      {
+        "name": "sombra-texto",
+        "value": "0 1px 2px rgb(12 14 36 / 0.45), 0 0 16px rgb(12 14 36 / 0.3)",
+        "purpose": "Texto blanco directo sobre el paisaje; la ajusta el fondo."
+      },
+      {
+        "name": "vidrio-filete",
+        "value": "inset 0 0 0 1px rgb(255 255 255 / 0.35), var(--sombra)",
+        "purpose": "Filete interior del vidrio más su sombra."
+      },
+      {
+        "name": "tirar",
+        "value": "0 12px 24px -14px rgb(18 20 50 / 0.85)",
+        "purpose": "Solo el plato de Tirar."
+      },
+      {
+        "name": "resultado-marco",
+        "value": "inset 0 0 0 5px var(--superficie-firme), inset 0 0 0 6px var(--filete-fuerte), var(--sombra)",
+        "purpose": "Doble filete de caja de texto del resultado."
+      },
+      {
+        "name": "brillo-critico",
+        "value": "0 0 0 2px var(--critico), var(--sombra)",
+        "purpose": "Resultado crítico; arranca con un halo de 18px en critico-suave."
+      }
+    ],
+    "motion": [
+      {
+        "name": "suave",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Única curva: entradas, deslizamientos, perilla del interruptor."
+      },
+      {
+        "name": "hover",
+        "value": "0.15s",
+        "purpose": "Fondo y borde de botones, pestañas, campos."
+      },
+      {
+        "name": "presionar",
+        "value": "scale(0.97) en 0.1s",
+        "purpose": "Botones; Tirar a 0.98."
+      },
+      {
+        "name": "aparecer",
+        "value": "0.3s, translateY(10px) a 0",
+        "purpose": "Entrada del resultado; diálogos en 0.18s."
+      },
+      {
+        "name": "escribir",
+        "value": "0.5s steps(14, end), clip-path de izquierda a derecha",
+        "purpose": "La línea del resultado se escribe."
+      },
+      {
+        "name": "respirar",
+        "value": "1.6s ease-in-out infinite, retraso 0.6s",
+        "purpose": "Marca ▼ del resultado."
+      },
+      {
+        "name": "encender",
+        "value": "1.2s, retraso 0.2s",
+        "purpose": "Brillo del crítico, una vez."
+      },
+      {
+        "name": "reducido",
+        "value": "prefers-reduced-motion: duraciones a 0.01ms",
+        "purpose": "Regla global; resultado y cuenta en cero quitan sus animaciones."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "escritorio",
+        "value": "min-width: 1100px"
+      },
+      {
+        "name": "escritorio-enfocado-angosto",
+        "value": "1100px a 1359px"
+      },
+      {
+        "name": "mediana",
+        "value": "max-width: 1099px"
+      },
+      {
+        "name": "ventana-partida",
+        "value": "max-width: 959px"
+      },
+      {
+        "name": "celular",
+        "value": "max-width: 759px"
+      },
+      {
+        "name": "pantalla-baja",
+        "value": "max-height: 560px and min-width: 600px"
+      }
+    ],
+    "vidrioAutomatico": {
+      "fuente": "src/lib/fondo/ajustes.js#variablesLegibilidad",
+      "alfa": "min(0.95, 0.5 + 0.36·v + 0.2·oscuro); v = vidrio/100 (50 por defecto); oscuro = clamp((0.6 - luminancia)/0.45, 0, 1)",
+      "desenfoque": "12 + 28·v px",
+      "firme": "alfa mínima 0.9"
+    },
+    "dados3d": {
+      "fuente": "src/lib/dados3d/estilos.js",
+      "esperanza": "#45b2ec",
+      "miedo": "#de6b93",
+      "ventaja": "#2f8f7a",
+      "desventaja": "#a8323e",
+      "normal": "#efe4cf",
+      "dj": "#1d1a24, número #e0475a"
+    },
+    "letra": {
+      "fuente": "src/lib/letra.js",
+      "opciones": [
+        "Zen Maru Gothic (por defecto)",
+        "M PLUS Rounded 1c (data-letra=mplus)",
+        "Sistema (data-letra=sistema)"
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Botón",
+      "kind": "button",
+      "refersTo": "boton",
+      "description": "Botón hundido en el vidrio; el estándar de la interfaz.",
+      "html": "<button class=\"ds-boton\">Descanso corto</button>",
+      "css": ".ds-boton{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:2.5rem;border:1px solid var(--filete);background:var(--hundido);border-radius:var(--radio-control);padding:.5rem .95rem;font:inherit;font-weight:700;color:var(--texto);transition:background .15s,border-color .15s,transform .1s;cursor:pointer}.ds-boton:hover{background:var(--hundido-2)}.ds-boton:active{transform:scale(.97)}.ds-boton:focus-visible{outline:2.5px solid var(--esperanza-hondo);outline-offset:2px}"
+    },
+    {
+      "name": "Botón sólido",
+      "kind": "button",
+      "refersTo": "boton-solido",
+      "description": "La única acción sólida de un diálogo o panel: la que confirma.",
+      "html": "<button class=\"ds-solido\">Listo</button>",
+      "css": ".ds-solido{display:inline-flex;align-items:center;justify-content:center;min-height:2.5rem;border:1px solid var(--texto);background:var(--texto);color:var(--sobre-color);border-radius:var(--radio-control);padding:.5rem .95rem;font:inherit;font-weight:700;transition:background .15s,transform .1s;cursor:pointer}.ds-solido:hover{background:#2c3459}.ds-solido:active{transform:scale(.97)}.ds-solido:focus-visible{outline:2.5px solid var(--esperanza-hondo);outline-offset:2px}"
+    },
+    {
+      "name": "Botón de peligro",
+      "kind": "button",
+      "refersTo": "boton-peligro",
+      "description": "Acciones destructivas.",
+      "html": "<button class=\"ds-peligro\">Borrar</button>",
+      "css": ".ds-peligro{display:inline-flex;align-items:center;min-height:2.5rem;border:1px solid color-mix(in srgb,var(--peligro) 40%,transparent);background:var(--peligro-suave);color:var(--peligro-hondo);border-radius:var(--radio-control);padding:.5rem .95rem;font:inherit;font-weight:700;cursor:pointer;transition:transform .1s}.ds-peligro:active{transform:scale(.97)}.ds-peligro:focus-visible{outline:2.5px solid var(--esperanza-hondo);outline-offset:2px}"
+    },
+    {
+      "name": "Tirar",
+      "kind": "custom",
+      "refersTo": "tirar",
+      "description": "El único plato sólido de la mesa.",
+      "html": "<button class=\"ds-tirar\"><span class=\"ds-palabra\">Tirar</span><small>2d12+3</small></button>",
+      "css": ".ds-tirar{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;min-height:3.5rem;padding:.55rem 1.2rem;border:0;border-radius:16px;background:var(--texto);color:var(--sobre-color);box-shadow:0 12px 24px -14px rgb(18 20 50/.85);font:inherit;cursor:pointer;transition:background .15s,transform .1s}.ds-tirar:hover{background:#2c3459}.ds-tirar:active{transform:scale(.98)}.ds-tirar:focus-visible{outline:2.5px solid var(--esperanza-hondo);outline-offset:2px}.ds-palabra{font-size:1.45rem;font-weight:900;letter-spacing:.02em}.ds-tirar small{font-size:.85rem;font-weight:700;opacity:.85;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Caja de diálogo del resultado",
+      "kind": "custom",
+      "refersTo": "resultado",
+      "description": "La tirada como línea de novela visual, con placa y marca ▼.",
+      "html": "<div class=\"ds-resultado\"><span class=\"ds-placa\">Ilse</span><span class=\"ds-linea\"><span>Agilidad…</span><span class=\"ds-total\">17</span><span class=\"ds-desenlace\">con Esperanza</span></span><span class=\"ds-dados\"><span class=\"ds-dado ds-esp\">Esperanza 9</span><span class=\"ds-dado ds-mie\">Miedo 5</span><span class=\"ds-dado\">+3</span></span><span class=\"ds-sigue\"></span></div>",
+      "css": ".ds-resultado{--acento:var(--esperanza-hondo);position:relative;display:grid;justify-items:start;gap:.4rem;margin-top:.9rem;padding:1.3rem 2.6rem 1rem 1.4rem;border-radius:var(--radio-panel);background:var(--superficie-firme);box-shadow:inset 0 0 0 5px var(--superficie-firme),inset 0 0 0 6px var(--filete-fuerte),var(--sombra);color:var(--texto)}.ds-placa{position:absolute;top:-.95rem;left:1.1rem;padding:.25rem .8rem .3rem;border-radius:11px 11px 11px 3px;background:color-mix(in oklab,#d9646a 64%,#11142e);color:#fff;font-weight:900;line-height:1.2;box-shadow:0 6px 14px -8px rgb(18 20 50/.6)}.ds-linea{display:flex;align-items:baseline;flex-wrap:wrap;gap:.15rem .6rem;font-size:1.35rem;font-weight:700;line-height:1.2}.ds-total{font-size:2.7rem;font-weight:900;line-height:1;color:var(--acento);font-variant-numeric:tabular-nums}.ds-desenlace{font-weight:900;color:var(--acento)}.ds-dados{display:flex;gap:.35rem}.ds-dado{padding:.15rem .6rem;border-radius:999px;background:var(--hundido);font-size:.85rem;font-weight:700;font-variant-numeric:tabular-nums}.ds-esp{background:var(--esperanza-suave);color:var(--esperanza-hondo)}.ds-mie{background:var(--miedo-suave);color:var(--miedo-hondo)}.ds-sigue{position:absolute;right:1.2rem;bottom:1rem;border:7px solid transparent;border-top:10px solid var(--acento);border-bottom:0}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "campo",
+      "description": "Campo de texto o selección.",
+      "html": "<input class=\"ds-campo\" placeholder=\"p. ej. 2d8+3\" />",
+      "css": ".ds-campo{width:100%;min-height:2.5rem;border:1px solid var(--filete);background:rgb(255 255 255/.62);border-radius:12px;padding:.55rem .8rem;outline:none;font:inherit;color:var(--texto);transition:border-color .15s,box-shadow .15s}.ds-campo::placeholder{color:rgb(71 79 110/.75)}.ds-campo:focus{border-color:var(--esperanza-hondo);box-shadow:0 0 0 3px var(--esperanza-suave)}"
+    },
+    {
+      "name": "Pestañas",
+      "kind": "nav",
+      "refersTo": "pestanas",
+      "description": "Pestañas con subrayado del lanzador y la hoja.",
+      "html": "<div class=\"ds-pestanas\" role=\"tablist\"><button role=\"tab\" aria-selected=\"true\">Dualidad</button><button role=\"tab\">Daño</button><button role=\"tab\">Libre</button></div>",
+      "css": ".ds-pestanas{display:flex;gap:.15rem;border-bottom:1px solid var(--filete)}.ds-pestanas>button{border:0;background:none;padding:.55rem .85rem .65rem;margin-bottom:-1px;color:var(--texto-suave);font:inherit;font-weight:700;font-size:.95rem;border-radius:10px 10px 0 0;cursor:pointer;transition:color .15s,box-shadow .15s,background .15s}.ds-pestanas>button:hover{color:var(--texto);background:var(--hundido)}.ds-pestanas>button:focus-visible{outline:2.5px solid var(--esperanza-hondo);outline-offset:2px}.ds-pestanas>button[aria-selected=true]{color:var(--texto);box-shadow:inset 0 -3px 0 var(--texto)}"
+    },
+    {
+      "name": "Interruptor",
+      "kind": "custom",
+      "refersTo": "interruptor-si",
+      "description": "Sí / no.",
+      "html": "<button class=\"ds-interruptor\" role=\"switch\" aria-checked=\"true\" aria-label=\"Tirada oculta\"></button>",
+      "css": ".ds-interruptor{position:relative;width:2.9rem;height:1.7rem;border-radius:999px;border:0;background:var(--hundido-2);transition:background .2s;cursor:pointer}.ds-interruptor::after{content:'';position:absolute;top:.2rem;left:.2rem;width:1.3rem;height:1.3rem;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgb(18 20 50/.35);transition:transform .2s cubic-bezier(.22,1,.36,1)}.ds-interruptor[aria-checked=true]{background:var(--esperanza-hondo)}.ds-interruptor[aria-checked=true]::after{transform:translateX(1.2rem)}.ds-interruptor:focus-visible{outline:2.5px solid var(--esperanza-hondo);outline-offset:2px}"
+    },
+    {
+      "name": "Rótulo con dato",
+      "kind": "custom",
+      "refersTo": "rotulo",
+      "description": "Rótulo que nombra un valor junto a él.",
+      "html": "<div class=\"ds-dato\"><span class=\"ds-rotulo\">Evasión</span><span class=\"ds-valor\">11</span></div>",
+      "css": ".ds-dato{display:grid;gap:.1rem;color:var(--texto)}.ds-rotulo{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave)}.ds-valor{font-size:1.5rem;font-weight:900;font-variant-numeric:tabular-nums}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Novela visual al atardecer",
+    "overview": "Cada tirada es una línea de diálogo: una placa con el nombre del PJ montada sobre el borde de una caja de texto, el número grande y el desenlace escribiéndose de izquierda a derecha, y una marca ▼ que respira al final. Todo lo demás de la mesa (banda superior, PJ, escena, cuentas, registro, lanzador) son cajas de vidrio claro esmerilado, translúcidas al estilo One UI, flotando sobre el paisaje del fondo. El centro de la pantalla queda vacío a propósito: ahí caen los dados 3D.\n\nLa densidad es de herramienta de mesa, no de página: retícula fija a la altura de la ventana, sin desplazamiento global, con cajas que se compactan por corte en vez de apilarse sin fin. La tinta es índigo, nunca negro; el color se reserva para lo que significa algo en el juego (Esperanza, Miedo, crítico, daño, éxito) y para las placas de cada PJ. Una sola familia redondeada lleva toda la jerarquía por peso (500 / 700 / 900), y las cifras son tabulares.\n\nRechazado explícitamente por el contrato de dirección: el tablero oscuro de vidrio con paneles flotando sobre el paisaje. Aquí el vidrio es claro y la tinta oscura.",
+    "keyCharacteristics": [
+      "Vidrio claro translúcido cuya opacidad sube sola sobre fondos oscuros.",
+      "Tinta índigo; color solo con significado de juego o de PJ.",
+      "La tirada como línea de diálogo con placa de nombre.",
+      "Un solo plato sólido en la mesa: Tirar.",
+      "Una familia redondeada, peso como jerarquía, cifras tabulares.",
+      "La mesa se aparta y se atenúa cuando se enfoca un panel."
+    ],
+    "rules": [
+      {
+        "name": "The Color Con Significado Rule",
+        "body": "El color solo aparece cuando dice algo del juego (Esperanza, Miedo, crítico, daño, ventaja) o quién es (placa de PJ). Lo demás es tinta sobre vidrio.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hondo Para Leer Rule",
+        "body": "Sobre vidrio, el texto de color usa siempre la variante `-hondo`; la base es para dados, anillos y rellenos, y la `-suave` para fondos de ficha.",
+        "section": "colors"
+      },
+      {
+        "name": "The La Más Nueva a Todo Color Rule",
+        "body": "En el registro solo la tirada más reciente lleva su color de desenlace (fondo al 11 % y total de 1.9rem); las anteriores quedan en tinta.",
+        "section": "colors"
+      },
+      {
+        "name": "The Peso Es Jerarquía Rule",
+        "body": "Una sola familia; los niveles se distinguen por peso y tamaño, nunca por otra letra.",
+        "section": "typography"
+      },
+      {
+        "name": "The Cifras en Columna Rule",
+        "body": "Todo número que cambia (totales, contadores, dados, PG) va en cifras tabulares.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rótulo Nombra un Dato Rule",
+        "body": "El rótulo en mayúsculas etiqueta un valor o un campo que está junto a él; no se usa como antetítulo encima de un título.",
+        "section": "typography"
+      },
+      {
+        "name": "The Centro Libre Rule",
+        "body": "La celda central nunca lleva caja ni contenido: es de los dados.",
+        "section": "layout"
+      },
+      {
+        "name": "The Zona de los Dados Rule",
+        "body": "La mesa 3D (`dados3d/mesa.js`) no deja que la zona de los dados pase de ~45 % de la altura desde arriba ni de 50 % desde abajo. Todo lo que rodea al centro se reparte entre arriba y abajo en vez de amontonarse en un solo lado; por eso en celular la escena va arriba con el PJ y las cuentas abajo con el resultado.",
+        "section": "layout"
+      },
+      {
+        "name": "The Vidrio Que Se Ajusta Rule",
+        "body": "Nadie fija la opacidad del vidrio a mano: la decide el fondo. Si una caja necesita leerse siempre, usa vidrio firme.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Sombra Difusa Rule",
+        "body": "Las sombras son largas, suaves y de tinta índigo con desplazamiento negativo; no hay sombras duras ni desplazadas.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** poner toda caja nueva de la mesa en vidrio (`.vidrio`, 24px) y lo que flota encima en vidrio firme con sombra alta y cortina.",
+      "**Do** dejar que el fondo decida la opacidad del vidrio mediante `variablesLegibilidad`.",
+      "**Do** usar la variante `-hondo` para texto de color sobre vidrio y la `-suave` para rellenos.",
+      "**Do** escribir toda cifra que cambie en cifras tabulares.",
+      "**Do** dar a cada diálogo o panel a lo sumo una acción sólida, la que confirma; en la mesa, esa acción es Tirar.",
+      "**Do** repartir lo que rodea a los dados entre arriba (≤ ~45 %) y abajo (≤ 50 %) de la altura.",
+      "**Do** dibujar íconos nuevos en `Icono.svelte` con trazo redondo de 1.8 sobre 24."
+    ],
+    "donts": [
+      "**Don't** volver al tablero oscuro de vidrio con paneles flotando sobre el paisaje.",
+      "**Don't** poner un segundo plato sólido en la mesa junto a Tirar.",
+      "**Don't** fijar a mano la opacidad del vidrio ni bajar el vidrio firme de 0.9.",
+      "**Don't** usar el color sin significado de juego o de PJ.",
+      "**Don't** añadir otra familia de letra; la jerarquía va por peso.",
+      "**Don't** usar el rótulo en mayúsculas como antetítulo encima de un título.",
+      "**Don't** usar sombras duras o desplazadas, ni emojis o glifos como íconos.",
+      "**Don't** poner caja ni contenido en la celda central de la mesa."
+    ]
+  }
+}
