@@ -53,14 +53,14 @@ Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fic
 
 - [x] Migración 010 aplicada en Supabase (15/11, Postgres 17.11). Verificado con solo lectura: tablas `tableros` y `fichas` vacías con RLS, bucket `tablero` privado, columna `campanias.tablero_id`, 8 políticas, 2 tablas en tiempo real y `mover_ficha` cerrada para `anon`.
 - [x] Publicado en `main` el 15/11 (Neri: «primero publicamos esto»).
-- [ ] Probar con dos cuentas (DJ y jugador): mostrar y cambiar de tablero, mover la ficha propia, que la ajena no se mueva, niebla opaca para el jugador, fichas bajo niebla ocultas y señal. En demo solo se ve la vista del DJ.
+- [ ] Probar con dos cuentas lo fino del tablero (Neri ya probó DJ + jugador el 15/11 sin errores; falta confirmar): mostrar y cambiar de tablero, mover la ficha propia, que la ajena no se mueva, niebla opaca para el jugador, fichas bajo niebla ocultas y señal. En demo solo se ve la vista del DJ.
 - [ ] Riesgo aceptado por Neri (15/11): la niebla se pinta en la pantalla del jugador; con las herramientas del navegador se puede ver el mapa completo y las fichas tapadas.
 - [ ] Riesgo menor: las señales viajan por un canal de tiempo real público para quien sepa el id de la campaña (un uuid). Para cerrarlo: activar la autorización de Realtime (canales privados) en Supabase.
 - [ ] Neri: confirmar vocabulario (por confirmar): «tablero», «ficha», «niebla» (Destapar / Tapar) y «señal». El panel de fondos ya dice «Tablero del día»: ¿se queda así?
 - [ ] Detalles menores de la revisión final (sin arreglar): al pintar niebla en celular el lienzo se vuelve a crear en cada movimiento (puede trabarse); tocar «Agregar PJ» dos veces rápido duplica fichas; si falla la primera lectura, un cambio que llegue por tiempo real puede traer el tablero sin niebla hasta la siguiente; el DJ podría ligar una ficha a un PJ de otra campaña (no le da nada a nadie); el jugador no ve mensajes de error del tablero (una ficha rechazada solo regresa).
 - [ ] Para después: dibujar trazos, cuadrícula con «snap», fichas ocultas a propósito, que las fichas se deslicen en vivo al arrastrarlas, mover fichas con teclado y un mapa de ejemplo en demo.
 - [x] Rediseño: `Tablero.svelte`, `PanelTablero.svelte` y el botón «Tablero» ya usan el estilo nuevo (rama `rediseno/impecable`).
-- [ ] En Windows, `npm run probar` falla en `tirador.test.mjs` (importa una ruta `C:\…` sin `file://`) y a veces en la prueba de rendimiento de los dados. En la nube (Linux) pasan; no es del tablero.
+- [x] En Windows, `tirador.test.mjs` ya pasa (PR #1, `pathToFileURL`); 234/234 al 15/11.
 
 ## Reglas del tirador contra el SRD 2.0
 
@@ -72,10 +72,19 @@ Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fic
 
 ## Seguridad
 
-- [ ] Borrar la rama `importar-temporal` en GitHub (Branches → papelera): contiene el SQL con los datos de los personajes y el repositorio es público.
+- [x] Rama `importar-temporal` borrada de GitHub (15/11).
+- [ ] Su commit (con `importar.sql`) todavía se puede abrir en GitHub si alguien tiene su SHA. Para borrarlo del todo: pedir a GitHub Support que lo purgue (formulario «Remove sensitive data», con el repo y el SHA). El SHA no se escribe aquí porque el repo es público: está en las notas locales de la sesión.
 - [x] Aplicada el 15/11 (verificada: `fondos_ver` solo para `authenticated`, `tirar` nueva, 3 disparadores vigilantes, `anon` sin `tirar` ni `ajustar_hoja`, 0 usuarios sin perfil): `supabase/migraciones/008_auditoria.sql` (auditoría de la base: hojas sin dueño editables sin sesión, dados de Dualidad trucables, fondos listables por cualquiera, DJ que se quita a sí mismo, topes de tamaño y permisos de funciones). Va en una transacción; pruebas en `supabase/pruebas/auditoria.test.mjs`.
-- [ ] Código de invitación: 6 hex (16.7 millones) sin límite de intentos; cualquiera con cuenta de Discord lo puede adivinar por fuerza bruta. Requiere cambio en la app (código más largo y botón «cambiar código» para el DJ). Quien fue sacado de la campaña puede volver a entrar con el mismo código.
-- [ ] Revisar en producción las tablas viejas (`tiradas`, `jugadores`, de antes de la 001): que tengan RLS activado o borrarlas con permiso de Neri.
+- [x] Código de invitación (rama `seguridad/invitacion`, 15/11): 8 caracteres sin los que se confunden (0 O 1 I L V), unos 656 mil millones de combinaciones; a lo más 10 códigos equivocados por usuario por hora; botón «Cambiar código» solo para el DJ (el link y el QR anteriores dejan de servir, así quien fue sacado ya no vuelve); link `…/dnh-dados/?unirme=CODIGO` que une directo (si no hay sesión, espera a que entres) y QR del link en Ajustes → Invitar jugadores. Migración `012_invitacion.sql`, pruebas en `supabase/pruebas/invitacion.test.mjs`. Dependencia nueva autorizada: `qrcode-generator` (MIT).
+- [x] Tablas viejas `jugadores` (5 filas) y `tiradas` (98 filas): estaban abiertas a `anon` (leer, insertar, borrar o cambiar). Respaldo el 15/11 en `Proyectos\respaldos\tablas-viejas-2026-11-15.json` en la compu de Neri (fuera del repo). Se quitó el tirador anterior (`public/legado/`) y su enlace en Ajustes. Migración `011_retirar_legado.sql` (sin CASCADE: si algo dependiera de ellas, no borra nada), pruebas en `supabase/pruebas/legado.test.mjs`.
+- [ ] **Publicar la rama `seguridad/invitacion` y aplicar 011 y 012** (con el «sí» de Neri), en este orden:
+  1. Publicar la app (unir a `main`). La app nueva funciona con la base vieja; solo «Cambiar código» falla hasta el paso 3.
+  2. Solo lectura, para confirmar que el respaldo está completo: `select (select count(*) from jugadores) as jugadores, (select count(*) from tiradas) as tiradas;` → 5 y 98. Si salen más, respaldar de nuevo antes de seguir.
+  3. En el editor SQL de Supabase: correr `011_retirar_legado.sql` y luego `012_invitacion.sql` (el editor avisa «destructive operations» por el `drop table` de la 011; es justo lo que se quiere).
+  4. Verificar con solo lectura: `select to_regclass('public.jugadores'), to_regclass('public.tiradas');` → dos nulos; `select codigo_invitacion from campanias;` → 8 caracteres; `select proname from pg_proc where proname in ('cambiar_codigo', 'nuevo_codigo');` → las dos.
+  5. El código de cada campaña cambia con la 012: Neri copia el link nuevo en Ajustes → Invitar jugadores. Quien ya está en la campaña no tiene que hacer nada.
+- [ ] Neri: probar el QR con la cámara del celular y el link en Discord ya publicado (en local se verificó que el QR codifica el link exacto, pero no se escaneó con un teléfono).
+- [ ] Para después (no se hizo): botón para que el DJ saque a un jugador. Hoy solo se puede desde la base; después de sacarlo, «Cambiar código».
 
 ## Auditoría del 12/10/2026 (5 agentes, 71 pruebas nuevas, 200 en total)
 
@@ -101,6 +110,6 @@ Hecho: identidad nueva (vidrio claro translúcido tipo One UI, Zen Maru Gothic, 
 - [x] Probado por Neri con cuenta de jugador (15/11): sin errores.
 - [x] Publicado también «Cerrar sesión» en blanco en Campañas.
 - [x] Juntado con el PR NeriAGM/dnh-dados#1 (Ayudar a un Aliado) en la rama del rediseño; la fila «Te ayudan» y los d6 de ayuda ya usan el estilo nuevo.
-- [ ] La lista de Campañas no se pudo ver en capturas (necesita sesión real): revisarla al entrar con Discord.
+- [x] Campañas revisada con sesión real (15/11).
 - [x] `src/lib/tirador.test.mjs` en Windows: arreglado con el PR NeriAGM/dnh-dados#1 (`pathToFileURL`).
-- [ ] Mejora futura (sesión aparte): tablero compartido del DJ para mostrar mapas e imágenes, al estilo Roll20.
+- [x] Tablero compartido del DJ: hecho y publicado (15/11).

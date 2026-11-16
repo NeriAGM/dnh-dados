@@ -7,7 +7,7 @@
   let error = $state('')
   let ocupado = $state(false)
   let abriendo = $state(null) // id de la campaña que se está abriendo
-  // Al pegar " 2da8ea " (con espacios) el tope de 6 letras cortaba el código
+  // Al pegar " hk7p-m4xr " (con espacios y guion) el tope de letras cortaba el código
   const codigoLimpio = $derived(limpiarCodigo(codigo))
 
   async function hacer(fn) {
@@ -41,8 +41,8 @@
     <form onsubmit={(e) => { e.preventDefault(); hacer(() => unirseCampania(codigoLimpio)) }}>
       <label class="etiqueta" for="codigo"><span class="rotulo">Código de invitación</span></label>
       <div class="en-linea">
-        <input id="codigo" class="campo codigo" maxlength="12" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="Ej. 2DA8EA" bind:value={codigo} />
-        <button class="boton" disabled={ocupado || codigoLimpio.length < 6}>Unirme</button>
+        <input id="codigo" class="campo codigo" maxlength="12" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="Ej. HK7P-M4XR" bind:value={codigo} />
+        <button class="boton" disabled={ocupado || codigoLimpio.length < 8}>Unirme</button>
       </div>
     </form>
 

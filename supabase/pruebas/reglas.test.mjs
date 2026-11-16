@@ -13,9 +13,12 @@ test('el perfil toma el nombre de Discord o del correo', async () => {
   assert.deepEqual(rows.map((r) => r.nombre).sort(), ['Ana', 'Neri', 'malo'])
 })
 
-test('unirse con un código que no existe da un error claro', async () => {
+// Desde la 012 regresa vacío en vez de error (un error desharía el registro
+// del intento equivocado); el mensaje lo pone la app (ver mesa.test.mjs)
+test('unirse con un código que no existe regresa vacío', async () => {
   const r = await como(U.ana, `select * from unirse_campania('ZZZZZZ')`)
-  assert.match(r.error, /no existe/)
+  assert.equal(r.error, undefined)
+  assert.equal(r.filas[0].id, null)
 })
 
 test('la tirada de acción aplica Esperanza, Miedo y crítico', async () => {

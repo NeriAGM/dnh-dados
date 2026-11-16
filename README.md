@@ -2,7 +2,7 @@
 
 Mesa de dados en vivo para la campaña de Daggerheart *Dolor & Hambre*: dados 3D con física, paisaje animado según la hora y tiradas compartidas en tiempo real con toda la mesa.
 
-Vive en **https://neriagm.github.io/dnh-dados/**. El tirador anterior sigue en `/legado/`.
+Vive en **https://neriagm.github.io/dnh-dados/**.
 
 ## Cómo funciona el azar
 
@@ -35,7 +35,6 @@ supabase/
   migraciones/            SQL para crear tablas, seguridad y funciones
   pruebas/                pruebas de la base en un Postgres en memoria
 docs/reglas/              reglas de Daggerheart en español
-public/legado/            el tirador anterior
 ```
 
 ## Trabajar en tu computadora

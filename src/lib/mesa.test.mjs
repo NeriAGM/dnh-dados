@@ -361,6 +361,68 @@ test('código de invitación: minúsculas, espacios y guiones se limpian', async
   globalThis.__supabaseFalso = clienteFalso(() => ({ data: null, error: null }))
   const m = await cargarMesa()
   assert.equal(m.limpiarCodigo(' 2da-8ea '), '2DA8EA')
+  assert.equal(m.formatoCodigo('hk7pm4xr'), 'HK7P-M4XR')
+  assert.equal(m.formatoCodigo('HK7P-M4XR'), 'HK7P-M4XR')
+})
+
+// localStorage de verdad (el de cargarMesa siempre está vacío) y una barra de direcciones falsa
+function almacen(inicial = {}) {
+  const g = new Map(Object.entries(inicial))
+  globalThis.localStorage = { getItem: (k) => g.get(k) ?? null, setItem: (k, v) => g.set(k, v), removeItem: (k) => g.delete(k) }
+  return g
+}
+async function conBarra(href, fn) {
+  const r = { barra: null }
+  globalThis.location = { href }
+  globalThis.history = { state: null, replaceState: (_s, _t, url) => { r.barra = String(url) } }
+  try { await fn() } finally { delete globalThis.location; delete globalThis.history }
+  return r
+}
+
+test('unirse con un código equivocado: el servidor regresa vacío y se avisa', async () => {
+  globalThis.__supabaseFalso = clienteFalso((op) => (op.rpc ? { data: null, error: null } : { data: [], error: null }))
+  const m = await cargarMesa()
+  await assert.rejects(m.unirseCampania('ZZZZ-ZZZZ'), /no existe/)
+  assert.equal(m.app.campania, null)
+})
+
+test('link de invitación: se quita de la barra y al entrar une a esa campaña', async () => {
+  const llamadas = []
+  const base = datosBase()
+  globalThis.__supabaseFalso = clienteFalso((op) => {
+    if (op.rpc === 'unirse_campania') { llamadas.push(op.args.p_codigo); return { data: { ...CAMP }, error: null } }
+    return base(op)
+  })
+  const m = await cargarMesa()
+  const g = almacen()
+  const { barra } = await conBarra('https://neriagm.github.io/dnh-dados/?unirme=hk7p-m4xr#x', () => m.iniciar())
+  assert.equal(barra, 'https://neriagm.github.io/dnh-dados/#x')
+  assert.deepEqual(llamadas, ['HK7PM4XR'])
+  assert.equal(m.app.campania?.id, 'c1')
+  assert.equal(g.has('dnh.unirme'), false, 'no se vuelve a usar')
+  assert.equal(m.app.invitacion, null)
+})
+
+test('link de invitación sin sesión: espera a que entres', async () => {
+  const cliente = clienteFalso(() => ({ data: null, error: null }))
+  cliente.auth.sesion = null
+  globalThis.__supabaseFalso = cliente
+  const m = await cargarMesa()
+  const g = almacen()
+  await conBarra('https://neriagm.github.io/dnh-dados/?unirme=HK7P-M4XR', () => m.iniciar())
+  assert.equal(m.app.invitacion, 'HK7PM4XR')
+  assert.equal(g.get('dnh.unirme'), 'HK7PM4XR')
+})
+
+test('link de invitación que ya no sirve: avisa y no abre otra campaña', async () => {
+  const base = datosBase()
+  globalThis.__supabaseFalso = clienteFalso((op) => (op.rpc === 'unirse_campania' ? { data: null, error: null } : base(op)))
+  const m = await cargarMesa()
+  const g = almacen({ 'dnh.unirme': 'ZZZZZZZZ' })
+  await m.iniciar()
+  assert.match(m.app.error ?? '', /ya no sirve/)
+  assert.equal(m.app.campania, null)
+  assert.equal(g.has('dnh.unirme'), false)
 })
 
 test('iniciar: si algo truena, no se queda en "Preparando la mesa…"', async () => {

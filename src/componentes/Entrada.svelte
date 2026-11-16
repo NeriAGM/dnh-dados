@@ -1,6 +1,6 @@
 <script>
   import { supabase } from '../lib/supabase.js'
-  import { entrarDemo } from '../lib/mesa.svelte.js'
+  import { app, entrarDemo } from '../lib/mesa.svelte.js'
 
   let correo = $state('')
   let enviando = $state(false)
@@ -34,6 +34,7 @@
   </header>
 
   <div class="tarjeta vidrio">
+    {#if app.invitacion}<p class="aviso" role="status">Te invitaron a una campaña. Entra y te unimos en automático.</p>{/if}
     <button class="boton discord" onclick={conDiscord}>
       <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M19.3 5.3A16.6 16.6 0 0 0 15.2 4l-.5 1a15.3 15.3 0 0 0-5.4 0L8.8 4a16.6 16.6 0 0 0-4.1 1.3C2.1 9.2 1.4 13 1.7 16.7a16.7 16.7 0 0 0 5.1 2.6l1.1-1.7a10.8 10.8 0 0 1-1.7-.8l.4-.3a11.9 11.9 0 0 0 10.8 0l.4.3c-.5.3-1.1.6-1.7.8l1.1 1.7a16.6 16.6 0 0 0 5.1-2.6c.4-4.3-.7-8-2.9-11.4ZM8.7 14.4c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg>
       Entrar con Discord

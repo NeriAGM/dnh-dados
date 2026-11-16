@@ -18,6 +18,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",
     "cannon-es": "^0.20.0",
+    "qrcode-generator": "^2.0.4",
     "three": "^0.186.1"
   },
   "description": "Mesa de dados de Daggerheart para la campaña Dolor & Hambre"

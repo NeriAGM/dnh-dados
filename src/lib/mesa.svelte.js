@@ -23,6 +23,7 @@ export const app = $state({
   escena: null,         // lo que la mesa ve del encuentro activo (ver lib/escena.js)
   personajeActivo: null, // id
   ajustesDemo: {},      // reglas de la mesa en el modo prueba (no se guardan)
+  invitacion: null,     // código de un link ?unirme= que espera a que entres
   error: null,
 })
 
@@ -45,6 +46,8 @@ function reemplazar(lista, evento, nuevo, viejo, alPrincipio = false) {
 }
 const CAMPANIA_GUARDADA = 'dnh.campania'
 const PERSONAJE_GUARDADO = 'dnh.personaje'
+const INVITACION = 'dnh.unirme'
+const CODIGO_EQUIVOCADO = 'Ese código no existe. Revisa que esté bien escrito.'
 
 function guardar(clave, valor) { try { valor == null ? localStorage.removeItem(clave) : localStorage.setItem(clave, valor) } catch {} }
 function leer(clave) { try { return localStorage.getItem(clave) } catch { return null } }
@@ -54,8 +57,24 @@ const copiar = (x) => (x === undefined ? undefined : JSON.parse(JSON.stringify(x
 const previos = (fila, cambios) => Object.fromEntries(Object.keys(cambios).map((k) => [k, copiar(fila?.[k])]))
 const cambiarEn = (lista, id, fn) => lista.map((x) => (x.id === id ? fn(x) : x))
 
+// Link de invitación (?unirme=CODIGO): se guarda para después de entrar
+// (al volver de Discord o del correo la dirección ya no lo trae) y se quita
+// de la barra para que recargar no lo vuelva a usar.
+function guardarInvitacion() {
+  if (typeof location === 'undefined') return
+  const url = new URL(location.href)
+  const codigo = limpiarCodigo(url.searchParams.get('unirme'))
+  if (url.searchParams.has('unirme')) {
+    url.searchParams.delete('unirme')
+    history.replaceState(history.state, '', url)
+  }
+  if (codigo) guardar(INVITACION, codigo)
+}
+
 export async function iniciar() {
   try {
+    guardarInvitacion()
+    app.invitacion = leer(INVITACION)
     const { data } = await supabase.auth.getSession()
     app.sesion = data.session
     supabase.auth.onAuthStateChange((_evento, sesion) => {
@@ -110,6 +129,16 @@ async function cargarTodo() {
   app.perfil = perfil ?? null
   if (error) { app.campanias = []; app.error = `No se pudieron cargar tus campañas: ${error.message}`; return }
   app.campanias = (miembros || []).filter((m) => m.campanias).map((m) => ({ ...m.campanias, rol: m.rol }))
+  // Llegó con un link de invitación: se une (o abre, si ya estaba) esa campaña
+  const invitacion = leer(INVITACION)
+  if (invitacion) {
+    guardar(INVITACION, null)
+    app.invitacion = null
+    try { await unirseCampania(invitacion) } catch (e) {
+      if (gen === generacion) app.error = e.message === CODIGO_EQUIVOCADO ? 'Ese link de invitación ya no sirve (quizá el DJ cambió el código). Pídele uno nuevo.' : e.message
+    }
+    return
+  }
   const guardada = leer(CAMPANIA_GUARDADA)
   const elegida = app.campanias.find((c) => c.id === guardada) || (app.campanias.length === 1 ? app.campanias[0] : null)
   if (!elegida) return
@@ -331,11 +360,32 @@ export function limpiarCodigo(codigo) {
   return String(codigo ?? '').replace(/[^0-9a-z]/gi, '').toUpperCase()
 }
 
+// Para leerlo o dictarlo: HK7P-M4XR
+export function formatoCodigo(codigo) {
+  const c = limpiarCodigo(codigo)
+  return c.length === 8 ? `${c.slice(0, 4)}-${c.slice(4)}` : c
+}
+
+export function linkInvitacion(codigo) {
+  return `${location.origin}${location.pathname}?unirme=${formatoCodigo(codigo)}`
+}
+
 export async function unirseCampania(codigo) {
   const { data, error } = await supabase.rpc('unirse_campania', { p_codigo: limpiarCodigo(codigo) })
   if (error) throw new Error(error.message)
+  // Con un código equivocado el servidor regresa vacío (así cuenta el intento, ver 012)
+  if (!data?.id) throw new Error(CODIGO_EQUIVOCADO)
   if (!app.campanias.some((c) => c.id === data.id)) app.campanias = [...app.campanias, { ...data, rol: 'jugador' }]
   await abrirCampania(data.id)
+}
+
+// Solo el DJ. El código, el link y el QR anteriores dejan de servir.
+export async function cambiarCodigo() {
+  const id = app.campania.id
+  const { data, error } = await supabase.rpc('cambiar_codigo', { p_campania: id })
+  if (error) throw new Error(error.message)
+  if (app.campania?.id === id) app.campania = { ...app.campania, codigo_invitacion: data }
+  app.campanias = app.campanias.map((x) => (x.id === id ? { ...x, codigo_invitacion: data } : x))
 }
 
 export async function crearPersonaje(nombre, usuarioId, color) {

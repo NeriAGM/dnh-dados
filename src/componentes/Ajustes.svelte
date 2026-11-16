@@ -5,6 +5,7 @@
   import Casero from './Casero.svelte'
   import Fondos from './Fondos.svelte'
   import Icono from './Icono.svelte'
+  import Invitar from './Invitar.svelte'
   import { fondos } from '../lib/fondos.svelte.js'
   import { esPueblo, MOMENTOS as MOMENTOS_FONDO } from '../lib/fondo/ajustes.js'
 
@@ -21,7 +22,6 @@
   let para = $state('')
   let color = $state(COLORES[0])
   let error = $state('')
-  let copiado = $state(false)
   let confirmarBorrar = $state(null)
 
   const uid = $derived(app.sesion?.user?.id)
@@ -45,10 +45,6 @@
       nombre = ''
       onAbrirHoja?.(pjNuevo.id)
     } catch (err) { error = err.message }
-  }
-
-  async function copiar() {
-    try { await navigator.clipboard.writeText(app.campania.codigo_invitacion); copiado = true; setTimeout(() => (copiado = false), 1800) } catch {}
   }
 </script>
 
@@ -82,16 +78,7 @@
     </section>
 
     {#if !app.demo && app.campania}
-      {#if esDJ}
-        <section class="grupo">
-          <h3>Invitar jugadores</h3>
-          <p class="ayuda">Compárteles este código; lo escriben en «Unirme con código».</p>
-          <div class="codigo-caja">
-            <span class="codigo num" aria-label="Código de invitación">{app.campania.codigo_invitacion}</span>
-            <button class="boton" onclick={copiar}><Icono nombre="copiar" tam={18} />{copiado ? 'Copiado' : 'Copiar'}</button>
-          </div>
-        </section>
-      {/if}
+      {#if esDJ}<Invitar />{/if}
 
       {@render reglasDeLaMesa()}
 
@@ -190,7 +177,6 @@
         <button class="boton" onclick={() => { onCerrar(); salirDemo() }}><Icono nombre="salir" tam={18} />Salir del modo prueba</button>
       </section>
     {/if}
-    <p class="ayuda"><a href="./legado/">Abrir el tirador anterior</a></p>
   </div>
 </section>
 {/if}
@@ -247,7 +233,6 @@
   h4 { margin: 0.4rem 0 0; font-size: 1rem; }
   .rotulo { margin: 0; }
   .ayuda { color: var(--texto-suave); font-size: 0.85rem; margin: 0; }
-  .ayuda a { color: var(--esperanza-hondo); font-weight: 700; }
 
   .segmentos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem; padding: 0.25rem; border-radius: var(--radio-control); background: var(--hundido); }
   .segmento {
@@ -266,8 +251,6 @@
   .fila-accion .txt { flex: 1; display: grid; min-width: 0; }
   .fila-accion small { color: var(--texto-suave); font-size: 0.85rem; font-weight: 500; }
 
-  .codigo-caja { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding: 0.6rem 0.7rem 0.6rem 1rem; border-radius: var(--radio-control); background: var(--hundido); border: 1px solid var(--filete); }
-  .codigo { font-size: 1.9rem; font-weight: 900; letter-spacing: 0.2em; overflow-wrap: anywhere; }
 
   .reglas { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
   .regla { display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; border: 1px solid var(--filete); border-radius: var(--radio-control); background: var(--hundido); }
