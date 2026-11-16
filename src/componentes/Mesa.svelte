@@ -17,6 +17,7 @@
   import { escenaDe } from '../lib/escena.js'
   import Ajustes from './Ajustes.svelte'
   import Lore from './lore/Lore.svelte'
+  import PanelTablero from './tablero/PanelTablero.svelte'
   import { soltarLore } from '../lib/lore.svelte.js'
   import { crearCola } from '../lib/cola.js'
 
@@ -29,6 +30,7 @@
   let verHoja = $state(null) // id del personaje cuya hoja está abierta
   let verDJ = $state(false)
   let verLore = $state(false)
+  let verTablero = $state(false)
   // El lore escucha su propio canal: se suelta al salir de la mesa
   onDestroy(soltarLore)
   let catBase = $state(null)
@@ -265,9 +267,10 @@
 
     <div class="botones">
       {#if puedeDJ}
-        <button class="boton dj" aria-label="Panel del DJ" onclick={() => { verHoja = null; verLore = false; verDJ = !verDJ }} disabled={!catBase} aria-pressed={verDJ}><span class="largo">Panel del DJ</span><span class="corto">DJ</span></button>
+        <button class="boton dj" aria-label="Panel del DJ" onclick={() => { verHoja = null; verLore = false; verTablero = false; verDJ = !verDJ }} disabled={!catBase} aria-pressed={verDJ}><span class="largo">Panel del DJ</span><span class="corto">DJ</span></button>
+        <button class="boton dj" aria-label="Tablero para la mesa" aria-pressed={verTablero} onclick={() => { verHoja = null; verLore = false; verDJ = false; verTablero = !verTablero }}>Tablero</button>
       {/if}
-      <button class="boton lore-boton" aria-label="Lore de la campaña" aria-pressed={verLore} onclick={() => { verDJ = false; verHoja = null; verLore = !verLore }}>
+      <button class="boton lore-boton" aria-label="Lore de la campaña" aria-pressed={verLore} onclick={() => { verDJ = false; verHoja = null; verTablero = false; verLore = !verLore }}>
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v15.5H5.5c-.8 0-1.5.7-1.5 1.5zM20 5.5c0-.8-.7-1.5-1.5-1.5H13v15.5h5.5c.8 0 1.5.7 1.5 1.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 4v16" stroke="currentColor" stroke-width="1.2"/></svg>
         <span class="largo">Lore</span>
       </button>
@@ -363,6 +366,10 @@
 
   {#if verDJ && cat}
     <PanelDJ {cat} {miedo} onMiedo={sumarMiedo} onTirar={(p) => { if (!matchMedia('(min-width: 1100px)').matches) verDJ = false; alTirar(p) }} onCerrar={() => (verDJ = false)} />
+  {/if}
+
+  {#if verTablero}
+    <PanelTablero onCerrar={() => (verTablero = false)} />
   {/if}
 
   {#if verLore}
