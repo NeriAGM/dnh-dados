@@ -47,10 +47,25 @@
 - [ ] Lore: los 6 comentarios de «Historia de su nacimiento» no se trajeron.
 - [x] Decidido: el lore se edita en la app; Notion queda de archivo (no se reimporta).
 
+## Tablero compartido (migración 010, rama `tablero/compartido`)
+
+Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fichas (cada jugador mueve la de su PJ), niebla con pincel y señal manteniendo presionado. Funciona en modo demo. Diseño en `docs/superpowers/specs/2026-11-15-tablero-compartido-design.md`.
+
+- [x] Migración 010 aplicada en Supabase (15/11, Postgres 17.11). Verificado con solo lectura: tablas `tableros` y `fichas` vacías con RLS, bucket `tablero` privado, columna `campanias.tablero_id`, 8 políticas, 2 tablas en tiempo real y `mover_ficha` cerrada para `anon`.
+- [x] Publicado en `main` el 15/11 (Neri: «primero publicamos esto»).
+- [ ] Probar con dos cuentas (DJ y jugador): mostrar y cambiar de tablero, mover la ficha propia, que la ajena no se mueva, niebla opaca para el jugador, fichas bajo niebla ocultas y señal. En demo solo se ve la vista del DJ.
+- [ ] Riesgo aceptado por Neri (15/11): la niebla se pinta en la pantalla del jugador; con las herramientas del navegador se puede ver el mapa completo y las fichas tapadas.
+- [ ] Riesgo menor: las señales viajan por un canal de tiempo real público para quien sepa el id de la campaña (un uuid). Para cerrarlo: activar la autorización de Realtime (canales privados) en Supabase.
+- [ ] Neri: confirmar vocabulario (por confirmar): «tablero», «ficha», «niebla» (Destapar / Tapar) y «señal». El panel de fondos ya dice «Tablero del día»: ¿se queda así?
+- [ ] Detalles menores de la revisión final (sin arreglar): al pintar niebla en celular el lienzo se vuelve a crear en cada movimiento (puede trabarse); tocar «Agregar PJ» dos veces rápido duplica fichas; si falla la primera lectura, un cambio que llegue por tiempo real puede traer el tablero sin niebla hasta la siguiente; el DJ podría ligar una ficha a un PJ de otra campaña (no le da nada a nadie); el jugador no ve mensajes de error del tablero (una ficha rechazada solo regresa).
+- [ ] Para después: dibujar trazos, cuadrícula con «snap», fichas ocultas a propósito, que las fichas se deslicen en vivo al arrastrarlas, mover fichas con teclado y un mapa de ejemplo en demo.
+- [ ] Rediseño: `Tablero.svelte`, `PanelTablero.svelte` y el botón «Tablero» usan el estilo actual; la rama `rediseno/impecable` debe tomarlos. En celular angosto los botones de la barra ahora bajan en filas (antes se salían ~12 px y cortaban Ajustes).
+- [ ] En Windows, `npm run probar` falla en `tirador.test.mjs` (importa una ruta `C:\…` sin `file://`) y a veces en la prueba de rendimiento de los dados. En la nube (Linux) pasan; no es del tablero.
+
 ## Seguridad
 
 - [ ] Borrar la rama `importar-temporal` en GitHub (Branches → papelera): contiene el SQL con los datos de los personajes y el repositorio es público.
-- [ ] Aplicar `supabase/migraciones/008_auditoria.sql` (auditoría de la base: hojas sin dueño editables sin sesión, dados de Dualidad trucables, fondos listables por cualquiera, DJ que se quita a sí mismo, topes de tamaño y permisos de funciones). Va en una transacción; pruebas en `supabase/pruebas/auditoria.test.mjs`.
+- [x] Aplicada el 15/11 (verificada: `fondos_ver` solo para `authenticated`, `tirar` nueva, 3 disparadores vigilantes, `anon` sin `tirar` ni `ajustar_hoja`, 0 usuarios sin perfil): `supabase/migraciones/008_auditoria.sql` (auditoría de la base: hojas sin dueño editables sin sesión, dados de Dualidad trucables, fondos listables por cualquiera, DJ que se quita a sí mismo, topes de tamaño y permisos de funciones). Va en una transacción; pruebas en `supabase/pruebas/auditoria.test.mjs`.
 - [ ] Código de invitación: 6 hex (16.7 millones) sin límite de intentos; cualquiera con cuenta de Discord lo puede adivinar por fuerza bruta. Requiere cambio en la app (código más largo y botón «cambiar código» para el DJ). Quien fue sacado de la campaña puede volver a entrar con el mismo código.
 - [ ] Revisar en producción las tablas viejas (`tiradas`, `jugadores`, de antes de la 001): que tengan RLS activado o borrarlas con permiso de Neri.
 

@@ -17,6 +17,7 @@
   import { escenaDe } from '../lib/escena.js'
   import Ajustes from './Ajustes.svelte'
   import Lore from './lore/Lore.svelte'
+  import PanelTablero from './tablero/PanelTablero.svelte'
   import { soltarLore } from '../lib/lore.svelte.js'
   import { crearCola } from '../lib/cola.js'
   import Icono from './Icono.svelte'
@@ -30,6 +31,7 @@
   let verHoja = $state(null) // id del personaje cuya hoja está abierta
   let verDJ = $state(false)
   let verLore = $state(false)
+  let verTablero = $state(false)
   // El lore escucha su propio canal: se suelta al salir de la mesa
   onDestroy(soltarLore)
   let catBase = $state(null)
@@ -269,16 +271,19 @@
 
     <nav class="nav" aria-label="Secciones de la mesa">
       {#if pj}
-        <button class="nav-b nav-hoja" aria-pressed={verHoja === pj.id} disabled={!catBase} onclick={() => { verDJ = false; verLore = false; verHoja = verHoja === pj.id ? null : pj.id }}>
+        <button class="nav-b nav-hoja" aria-pressed={verHoja === pj.id} disabled={!catBase} onclick={() => { verDJ = false; verLore = false; verTablero = false; verHoja = verHoja === pj.id ? null : pj.id }}>
           <Icono nombre="hoja" /><span>Hoja</span>
         </button>
       {/if}
       {#if puedeDJ}
-        <button class="nav-b" aria-label="Panel del DJ" aria-pressed={verDJ} disabled={!catBase} onclick={() => { verHoja = null; verLore = false; verDJ = !verDJ }}>
+        <button class="nav-b" aria-label="Panel del DJ" aria-pressed={verDJ} disabled={!catBase} onclick={() => { verHoja = null; verLore = false; verTablero = false; verDJ = !verDJ }}>
           <Icono nombre="dj" /><span>DJ</span>
         </button>
+        <button class="nav-b" aria-label="Tablero para la mesa" aria-pressed={verTablero} onclick={() => { verHoja = null; verLore = false; verDJ = false; verTablero = !verTablero }}>
+          <Icono nombre="mapa" /><span>Tablero</span>
+        </button>
       {/if}
-      <button class="nav-b" aria-label="Lore de la campaña" aria-pressed={verLore} onclick={() => { verDJ = false; verHoja = null; verLore = !verLore }}>
+      <button class="nav-b" aria-label="Lore de la campaña" aria-pressed={verLore} onclick={() => { verDJ = false; verHoja = null; verTablero = false; verLore = !verLore }}>
         <Icono nombre="lore" /><span>Lore</span>
       </button>
       <button class="nav-b nav-tiradas" aria-label="Ver historial de tiradas" aria-pressed={verHistorial} onclick={() => (verHistorial = !verHistorial)}>
@@ -394,6 +399,10 @@
 
   {#if verDJ && cat}
     <PanelDJ {cat} {miedo} onMiedo={sumarMiedo} onTirar={(p) => { if (!matchMedia('(min-width: 1100px)').matches) verDJ = false; alTirar(p) }} onCerrar={() => (verDJ = false)} />
+  {/if}
+
+  {#if verTablero}
+    <PanelTablero onCerrar={() => (verTablero = false)} />
   {/if}
 
   {#if verLore}
