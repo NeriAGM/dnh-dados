@@ -231,7 +231,7 @@ export async function borrarPagina(id) {
 // ---------------------------------------------------------------------
 // Imágenes
 // ---------------------------------------------------------------------
-async function reducir(archivo) {
+export async function reducir(archivo) {
   if (archivo.type === 'image/gif' || typeof createImageBitmap !== 'function') return archivo
   let bmp
   try { bmp = await createImageBitmap(archivo) } catch { throw new Error('No se pudo leer la imagen; ¿está dañada?') }
