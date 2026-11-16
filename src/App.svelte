@@ -10,6 +10,7 @@
   import Entrada from './componentes/Entrada.svelte'
   import Campanias from './componentes/Campanias.svelte'
   import Mesa from './componentes/Mesa.svelte'
+  import Tablero from './componentes/tablero/Tablero.svelte'
 
   let lienzoFondo
   let lienzoDados
@@ -136,6 +137,9 @@
   {/key}
 </div>
 <div class="capa velo" style:background-color="rgba(10, 6, 22, {c.oscurecer / 100})" style:background-image={veloFondo} aria-hidden="true"></div>
+<!-- El tablero compartido va debajo de los dados (mismo z-index, antes en el DOM).
+     Siempre montado: al salir de la campaña es él quien suelta el tiempo real del tablero. -->
+<Tablero />
 <canvas class="capa dados" bind:this={lienzoDados} aria-hidden="true"></canvas>
 
 <main class="interfaz">
