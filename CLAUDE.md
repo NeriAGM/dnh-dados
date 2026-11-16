@@ -32,8 +32,8 @@ Estilo: 2 espacios, sin punto y coma. Sin dependencias nuevas sin permiso.
   Si una prueba falla, no se publica.
 
 ## Supabase
-Proyecto `dktpjdljsmofqmmvcpkr`. Migraciones en `supabase/migraciones/` (001…008 y 010 aplicadas
-en producción al 15/11/2026; la 009 de Ayudar a un Aliado vive en su rama). Para una nueva: crea `00N_nombre.sql` (solo agregar; `drop … if exists`
+Proyecto `dktpjdljsmofqmmvcpkr`. Migraciones en `supabase/migraciones/` (001…012 aplicadas
+en producción al 15/11/2026). Para una nueva: crea `0NN_nombre.sql` (solo agregar; `drop … if exists`
 únicamente de lo propio), su prueba en `supabase/pruebas/`, y aplícala en el editor SQL del panel
 de Supabase (el editor avisa "destructive operations" por los `drop policy if exists`: revisa con
 grep que no borre datos y confirma). Verifica con una consulta de solo lectura.
@@ -64,6 +64,8 @@ grep que no borre datos y confirma). Verifica con una consulta de solo lectura.
 - Las hojas importadas pueden traer números como texto, nulos y repetidos: lee siempre con `normalizarHoja()` / `num()`.
 - `tirar()` en el servidor (008) solo acepta Dualidad = un d12 Esperanza + un d12 Miedo (+ un d6 de ventaja/desventaja)
   y solo el DJ tira tipo `dj`. Si agregas tiradas nuevas, respeta esa forma o ajusta la función con prueba.
+- `unirse_campania` (012) con un código equivocado regresa vacío, no error (así cuenta el intento para el límite
+  de 10 por hora); el mensaje lo pone la app. Nunca escribas en el repo el SHA de un commit con datos sensibles.
 - En Svelte, un espacio al inicio de un `<span>` se pierde: usa `&nbsp;`.
 - En Playwright no uses `pkill -f` con un patrón que coincida con tu propio comando (mata el shell).
 - Chromium para capturas: `/opt/pw-browsers/chromium-1194/chrome-linux/chrome` con
