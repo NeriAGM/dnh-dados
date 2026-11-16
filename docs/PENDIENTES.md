@@ -51,7 +51,9 @@
 
 Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fichas (cada jugador mueve la de su PJ), niebla con pincel y señal manteniendo presionado. Funciona en modo demo. Diseño en `docs/superpowers/specs/2026-11-15-tablero-compartido-design.md`.
 
-- [ ] Neri: decir si se une a `main` (publicar). Antes, aplicar `supabase/migraciones/010_tablero.sql` en el editor SQL (no depende de la 009). Solo trae `drop policy/trigger if exists` de lo suyo; revísalo con grep y confirma. Antes, `select version();` debe dar Postgres 15 o más (la llave de `tablero_id` lo necesita). Para verificar: `select count(*) from tableros;` y que aparezca el bucket `tablero` en Storage.
+- [x] Migración 010 aplicada en Supabase (15/11, Postgres 17.11). Verificado con solo lectura: tablas `tableros` y `fichas` vacías con RLS, bucket `tablero` privado, columna `campanias.tablero_id`, 8 políticas, 2 tablas en tiempo real y `mover_ficha` cerrada para `anon`.
+- [ ] Neri: decir si se une a `main` (publicar).
+- [ ] Ojo: al verificar la 010 se vio que la **008 (auditoría de seguridad) no está aplicada** en producción: la política `fondos_ver` sigue para `public`, y la 008 la cambia a `authenticated`.
 - [ ] Probar con dos cuentas (DJ y jugador): mostrar y cambiar de tablero, mover la ficha propia, que la ajena no se mueva, niebla opaca para el jugador, fichas bajo niebla ocultas y señal. En demo solo se ve la vista del DJ.
 - [ ] Riesgo aceptado por Neri (15/11): la niebla se pinta en la pantalla del jugador; con las herramientas del navegador se puede ver el mapa completo y las fichas tapadas.
 - [ ] Riesgo menor: las señales viajan por un canal de tiempo real público para quien sepa el id de la campaña (un uuid). Para cerrarlo: activar la autorización de Realtime (canales privados) en Supabase.
