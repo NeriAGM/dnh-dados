@@ -57,7 +57,8 @@ Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fic
 - [ ] Riesgo aceptado por Neri (15/11): la niebla se pinta en la pantalla del jugador; con las herramientas del navegador se puede ver el mapa completo y las fichas tapadas.
 - [ ] Riesgo menor: las señales viajan por un canal de tiempo real público para quien sepa el id de la campaña (un uuid). Para cerrarlo: activar la autorización de Realtime (canales privados) en Supabase.
 - [ ] Neri: confirmar vocabulario (por confirmar): «tablero», «ficha», «niebla» (Destapar / Tapar) y «señal». El panel de fondos ya dice «Tablero del día»: ¿se queda así?
-- [ ] Detalles menores de la revisión final (sin arreglar): al pintar niebla en celular el lienzo se vuelve a crear en cada movimiento (puede trabarse); tocar «Agregar PJ» dos veces rápido duplica fichas; si falla la primera lectura, un cambio que llegue por tiempo real puede traer el tablero sin niebla hasta la siguiente; el DJ podría ligar una ficha a un PJ de otra campaña (no le da nada a nadie); el jugador no ve mensajes de error del tablero (una ficha rechazada solo regresa).
+- [x] Arreglados (15/11, rama `arreglos/mesa-menores`): la niebla ya no vuelve a crear el lienzo en cada movimiento del dedo; «Agregar PJ» con dos toques rápidos ya no duplica fichas; el jugador ya ve los errores del tablero (p. ej. una ficha rechazada).
+- [ ] Detalles menores que quedan: si falla la primera lectura, un cambio que llegue por tiempo real puede traer el tablero sin niebla hasta la siguiente; el DJ podría ligar una ficha a un PJ de otra campaña (no le da nada a nadie).
 - [ ] Para después: dibujar trazos, cuadrícula con «snap», fichas ocultas a propósito, que las fichas se deslicen en vivo al arrastrarlas, mover fichas con teclado y un mapa de ejemplo en demo.
 - [x] Rediseño: `Tablero.svelte`, `PanelTablero.svelte` y el botón «Tablero» ya usan el estilo nuevo (rama `rediseno/impecable`).
 - [x] En Windows, `tirador.test.mjs` ya pasa (PR #1, `pathToFileURL`); 234/234 al 15/11.
@@ -87,16 +88,26 @@ Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fic
 Corregidos y publicados: d4 con números al revés, tiradas de 2d12 que duraban 7 s, muchos dados congelaban la página, fuga de memoria de video, la app ya no se cae si no hay WebGL, Dificultad borrada contaba como 0, fórmulas ambiguas («2d6 3»), Lanzador en modo Adversario para jugadores, historial desordenado a medianoche, historial tapando el lanzador a 1100 px, toques rápidos que se perdían (Estrés, Esperanza, Miedo, casillas de la hoja, daño de adversarios, cuentas), datos de otra campaña que se colaban al cambiar o salir, borrados que no llegaban a los demás, cambios perdidos tras reconectar, demo que no empezaba limpio, código de invitación pegado con espacios, números guardados como texto en hojas importadas (Evasión 121), cartas repetidas que tronaban la hoja, oro que no pasaba a bolsa, Despertar / daño estando inconsciente, Casero que tronaba, Horda que no bajaba su daño, lore que perdía teclas o mostraba borradores en otra página, markdown que tronaba, fondos que aceptaban cualquier texto, y los hoyos de seguridad de la 008.
 
 Quedan (para decidir o revisar):
-- [ ] Cuando el DJ oculta una cuenta regresiva, a los jugadores no les llega el cambio hasta recargar (no se filtra nada oculto; solo se queda la vieja en pantalla). Arreglo: contador como `lore_revision`.
-- [ ] Gastar Esperanza en una Experiencia se calcula en el navegador; si llega al mismo tiempo una ganancia de Esperanza, una pisa a la otra. Arreglo: RPC que reste en el servidor.
+- [x] Cuando el DJ oculta una cuenta regresiva, a los jugadores no les llegaba el cambio hasta recargar. Arreglado (rama `arreglos/mesa-menores`, 15/11): contador `cuentas_revision` (migración 013); al subir, la app del jugador vuelve a leer las cuentas.
+- [x] Gastar Esperanza en una Experiencia se calculaba en el navegador y pisaba una ganancia simultánea. Arreglado (15/11): RPC `gastar_esperanza` (migración 013) que resta sobre lo que haya en el servidor.
 - [ ] Neri: ¿las cuentas «en bucle» se reinician solas al llegar a 0? Hoy el DJ usa ↺. Tampoco se automatiza «Esbirro (X)».
 - [ ] Neri: Esperanza y Miedo cambian al empezar la animación (se ve el resultado antes de que caigan los dados). ¿Esperar a que caigan?
 - [ ] Neri: cerrar sesión en un dispositivo cierra todas (scope global). ¿Solo el dispositivo actual?
 - [x] Celular horizontal (844×390): la tarjeta del PJ, el resultado y el lanzador se enciman. Resuelto en el rediseño (lanzador a la derecha).
-- [ ] Rasgos de armadura (Fortificada, Física/Mágica) no se aplican en Recibir daño. Cambiar de armadura conserva las casillas marcadas aunque sobren.
+- [x] Rasgos de armadura en Recibir daño (15/11): se aplican Física, Mágica, Fortificada (baja dos escalones) y Resguardada (resta la Puntuación al daño mágico, después de la resistencia); Dolorosa, Reforzada, Resiliente e Impenetrable solo se recuerdan en el diálogo. Al cambiar de armadura o su Puntuación se quitan las casillas marcadas que sobran.
+- [ ] Neri (por confirmar): el SRD no dice si las casillas marcadas pasan de una armadura a otra; hoy se conservan hasta el nuevo máximo. ¿Así, o al cambiar de armadura empiezan limpias?
 - [ ] Daño del compañero siempre tira 1 dado (¿escala con Competencia?).
-- [ ] La lista de cartas al agregar muestra las que ya tienes (elegirlas no hace nada).
-- [ ] Hoja a 1440 con compañero: la pestaña «Notas» queda cortada.
+- [x] La lista de cartas al agregar ya no muestra las que tienes en la mano o la bóveda (15/11).
+- [x] Hoja a 1440 con compañero: «Notas» cabía con 0 px de sobra y con la letra M PLUS se cortaba. Ahora sobran 32–61 px según la letra (15/11). En celular las pestañas se siguen deslizando de lado, como antes.
+
+## Arreglos menores de la mesa (rama `arreglos/mesa-menores`, 15/11/2026)
+
+Cuentas ocultas, Esperanza en el servidor, rasgos de armadura, cartas repetidas, pestaña «Notas» y tres detalles del tablero (ver arriba). 273 pruebas en verde.
+
+- [ ] Neri: dar el «sí» para aplicar `supabase/migraciones/013_esperanza_y_cuentas.sql` en Supabase. **Va antes de publicar**: sin ella, gastar Esperanza en una Experiencia falla («No se pudo gastar la Esperanza») y el canal de la mesa escucharía una tabla que no existe.
+- [ ] Neri: dar el «sí» para publicar (juntar la rama en `main`).
+- [ ] Probar con cuenta de jugador: que una cuenta oculta desaparezca sin recargar y que el error del tablero se vea (en demo solo se ve la vista del DJ).
+- [ ] Para después: el fondo animado truena (`paisaje.js`, «canvas … width or height of 0») si la página carga con la ventana en tamaño 0 (pasó en el navegador integrado). No es de estos cambios.
 
 ## Rediseño «novela visual al atardecer» (rama `rediseno/impecable`, 15/11/2026)
 
