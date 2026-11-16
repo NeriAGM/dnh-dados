@@ -338,7 +338,7 @@
   </div>
 
   <div class="zona-lanzador" class:con-hoja={ladoOcupado} bind:this={elLanzador}>
-    <Lanzador esDJ={esDJ} {ocupado} onTirar={alTirar} />
+    <Lanzador esDJ={esDJ} {ocupado} aliados={app.demo || !pj ? [] : app.personajes.filter((p) => p.id !== pj.id)} onTirar={alTirar} />
   </div>
 
   {#if verAjustes}

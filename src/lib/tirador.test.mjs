@@ -6,12 +6,14 @@ import assert from 'node:assert/strict'
 import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { pathToFileURL } from 'node:url'
 
 const fuente = readFileSync(new URL('./tirador.js', import.meta.url), 'utf8')
   .replace(/^import \{ supabase \}.*$/m, 'const supabase = null')
 const dir = mkdtempSync(join(tmpdir(), 'tirador-'))
 writeFileSync(join(dir, 'tirador.mjs'), fuente)
-const { tirarLocal, senalConLimite } = await import(join(dir, 'tirador.mjs'))
+// En Windows import() necesita una URL file://, no "C:\..."
+const { tirarLocal, senalConLimite } = await import(pathToFileURL(join(dir, 'tirador.mjs')).href)
 
 test('tirador: el corte de tiempo funciona aunque no exista AbortSignal.timeout (Safari 15)', async () => {
   const original = AbortSignal.timeout
@@ -43,6 +45,25 @@ test('tirador (prueba): Dualidad, ventaja de d6 y 2d20 con el más alto igual qu
     assert.equal(baja.total, Math.min(baja.dados[0].valor, baja.dados[1].valor))
     assert.equal(baja.critico, Math.min(baja.dados[0].valor, baja.dados[1].valor) === 20, 'el 20 descartado no es crítico')
   }
+})
+
+test('tirador (prueba): Ayudar a un Aliado cuenta solo el d6 de ventaja más alto', () => {
+  const DUAL = [{ lados: 12, rol: 'esperanza' }, { lados: 12, rol: 'miedo' }]
+  for (let i = 0; i < 300; i++) {
+    const propia = i % 2 === 0
+    const grupos = propia ? [...DUAL, { lados: 6, rol: 'ventaja', signo: 1 }] : DUAL
+    const t = tirarLocal({ tipo: 'accion', grupos, modificador: 2, ayudantes: ['a', 'b'] })
+    const d6 = t.dados.filter((d) => d.rol === 'ventaja')
+    assert.equal(d6.length, propia ? 3 : 2)
+    const cuentan = d6.filter((d) => !d.descartado)
+    assert.equal(cuentan.length, 1)
+    assert.equal(cuentan[0].valor, Math.max(...d6.map((d) => d.valor)))
+    const [e, m] = t.dados
+    assert.equal(t.total, e.valor + m.valor + cuentan[0].valor + 2)
+    assert.match(t.formula, propia ? /máx\(3d6\)/ : /máx\(2d6\)/)
+  }
+  assert.throws(() => tirarLocal({ tipo: 'reaccion', grupos: DUAL, ayudantes: ['a'] }), /solo va en tiradas de acción/)
+  assert.throws(() => tirarLocal({ tipo: 'accion', grupos: [...DUAL, { lados: 6, rol: 'desventaja', signo: -1 }], ayudantes: ['a'] }), /desventaja/)
 })
 
 test('tirador (prueba): daño crítico suma el máximo de los dados', () => {

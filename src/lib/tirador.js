@@ -14,9 +14,15 @@ function azar(n) {
   return (buf[0] % n) + 1
 }
 
-export function tirarLocal({ tipo, grupos, modificador = 0, dificultad = null, etiqueta = null, danoCritico = false }) {
+export function tirarLocal({ tipo, grupos, modificador = 0, dificultad = null, etiqueta = null, danoCritico = false, ayudantes = [] }) {
+  // Ayudar a un Aliado (SRD 2.0, p. 48–49): igual que tirar() en el servidor (009)
+  if (ayudantes.length) {
+    if (tipo !== 'accion') throw new Error('Ayudar a un Aliado solo va en tiradas de acción (no en reacciones)')
+    if (grupos.some((g) => g.rol === 'desventaja')) throw new Error('Con desventaja no se puede recibir ayuda (regla por confirmar con el DJ)')
+  }
   const dados = []
   let total = 0, esp = null, miedo = null, critico = false, maxExtra = 0
+  let idxVentaja = null
   const partes = []
   for (const g of grupos) {
     const cantidad = g.cantidad ?? 1
@@ -30,6 +36,7 @@ export function tirarLocal({ tipo, grupos, modificador = 0, dificultad = null, e
         if ((g.conservar === 'alto' && v > valores[keep]) || (g.conservar === 'bajo' && v < valores[keep])) keep = i
       })
     }
+    if (rol === 'ventaja') idxVentaja = dados.length
     valores.forEach((valor, i) => {
       const descartado = keep !== null && i !== keep
       dados.push({ lados: g.lados, valor, rol, signo, descartado })
@@ -41,7 +48,21 @@ export function tirarLocal({ tipo, grupos, modificador = 0, dificultad = null, e
       }
     })
     if (danoCritico && signo > 0) maxExtra += g.lados * (keep === null ? cantidad : 1)
-    partes.push(`${signo < 0 ? '-' : '+'}${cantidad}d${g.lados}${g.conservar ? g.conservar : ''}`)
+    if (!(rol === 'ventaja' && ayudantes.length)) partes.push(`${signo < 0 ? '-' : '+'}${cantidad}d${g.lados}${g.conservar ? g.conservar : ''}`)
+  }
+  // Cada ayudante tira su d6; cuenta solo el d6 de ventaja más alto (el propio gana los empates)
+  if (ayudantes.length) {
+    const propio = idxVentaja !== null ? dados[idxVentaja].valor : null
+    const valoresAyuda = ayudantes.map(() => azar(6))
+    const max = Math.max(propio ?? 0, ...valoresAyuda)
+    let keep = null
+    if (propio === null || propio < max) {
+      keep = valoresAyuda.indexOf(max)
+      if (propio !== null) dados[idxVentaja].descartado = true
+    }
+    total += max - (propio ?? 0)
+    ayudantes.forEach((id, i) => dados.push({ lados: 6, valor: valoresAyuda[i], rol: 'ventaja', signo: 1, descartado: keep !== i, ayudante: id }))
+    partes.push(`+máx(${ayudantes.length + (propio === null ? 0 : 1)}d6)`)
   }
   let formula = partes.join(' ').replace(/^\+/, '')
   if (modificador) formula += modificador > 0 ? ` +${modificador}` : ` ${modificador}`
@@ -77,9 +98,9 @@ export function senalConLimite(ms) {
   return control.signal
 }
 
-export async function tirar({ campania, personaje = null, tipo, grupos, modificador = 0, dificultad = null, oculta = false, etiqueta = null, danoCritico = false }) {
-  if (!campania) return tirarLocal({ tipo, grupos, modificador, dificultad, etiqueta, danoCritico })
-  const { data, error } = await supabase.rpc('tirar', {
+export async function tirar({ campania, personaje = null, tipo, grupos, modificador = 0, dificultad = null, oculta = false, etiqueta = null, danoCritico = false, ayudantes = [] }) {
+  if (!campania) return tirarLocal({ tipo, grupos, modificador, dificultad, etiqueta, danoCritico, ayudantes })
+  const args = {
     p_campania: campania,
     p_personaje: personaje,
     p_tipo: tipo,
@@ -89,7 +110,11 @@ export async function tirar({ campania, personaje = null, tipo, grupos, modifica
     p_oculta: oculta,
     p_etiqueta: etiqueta,
     p_dano_critico: danoCritico,
-  }).abortSignal(senalConLimite(ESPERA_MAXIMA))
+  }
+  // Solo se manda si hay ayudantes: así las tiradas normales siguen
+  // funcionando aunque la migración 009 todavía no esté en Supabase
+  if (ayudantes.length) args.p_ayudantes = ayudantes
+  const { data, error } = await supabase.rpc('tirar', args).abortSignal(senalConLimite(ESPERA_MAXIMA))
   if (error) {
     if (/abort|timeout/i.test(`${error.name} ${error.message} ${error.details ?? ''}`)) {
       throw new Error('El servidor tardó demasiado en contestar. Si la tirada sí llegó, aparecerá en el historial; si no, vuelve a tirar.')

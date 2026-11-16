@@ -47,6 +47,14 @@
 - [ ] Lore: los 6 comentarios de «Historia de su nacimiento» no se trajeron.
 - [x] Decidido: el lore se edita en la app; Notion queda de archivo (no se reimporta).
 
+## Reglas del tirador contra el SRD 2.0
+
+- [x] Ayudar a un Aliado (SRD 2.0 p. 48–49): cada ayudante gasta 1 Esperanza y tira su d6; cuenta solo el d6 de ventaja más alto (el propio incluido); no va en reacciones. Migración 009, pruebas en `supabase/pruebas/ayudar.test.mjs`.
+- [ ] Aplicar `supabase/migraciones/009_ayudar_aliado.sql` en Supabase **después** de la 008. Sin la 009 la app sigue tirando normal; solo elegir ayudantes da error.
+- [ ] Neri: ¿se puede ayudar a quien tira con desventaja? El SRD 2.0 no lo dice; hoy la app no lo permite.
+- [ ] Neri: quien tira elige a sus ayudantes y el servidor les resta la Esperanza sin pedirles confirmación (en la mesa cada quien dice «te ayudo»). ¿Así está bien?
+- [ ] Revisar los demás puntos «SIN VERIFICAR» de `docs/reglas/` con el reporte de verificación contra el SRD 2.0 (27 confirmados, 11 no aparecen, 5 dudas).
+
 ## Seguridad
 
 - [ ] Borrar la rama `importar-temporal` en GitHub (Branches → papelera): contiene el SQL con los datos de los personajes y el repositorio es público.

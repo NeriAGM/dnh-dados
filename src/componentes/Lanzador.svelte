@@ -1,7 +1,8 @@
 <script>
   import { leerFormula, leerDificultad, conSigno } from '../lib/formula.js'
 
-  let { esDJ = false, ocupado = false, onTirar } = $props()
+  // aliados: los demás personajes de la mesa que pueden Ayudar a un Aliado
+  let { esDJ = false, ocupado = false, aliados = [], onTirar } = $props()
 
   const MODOS = [
     { id: 'accion', nombre: 'Acción', ayuda: 'Dados de Dualidad: Esperanza contra Miedo' },
@@ -21,6 +22,7 @@
   let oculta = $state(false)
   let mas = $state(false)
   let error = $state('')
+  let ayudan = $state([]) // ids de los aliados que ayudan en esta tirada
 
   $effect(() => { if (esDJ && modo === 'accion' && !tocado) modo = 'dj' })
   // Si dejas de ser DJ (cambias a una campaña donde eres jugador), el modo
@@ -30,6 +32,13 @@
 
   const dual = $derived(modo === 'accion' || modo === 'reaccion')
   const conFormula = $derived(modo === 'dano' || modo === 'libre')
+  // Ayudar a un Aliado (SRD 2.0, p. 48–49): solo en acción; con desventaja no (por confirmar)
+  const puedenAyudar = $derived(modo === 'accion' && ventaja !== 'desventaja' && aliados.length > 0)
+  const ayudantes = $derived(puedenAyudar ? ayudan.filter((id) => aliados.some((a) => a.id === id && (a.esperanza ?? 0) >= 1)) : [])
+
+  function alternarAyuda(id) {
+    ayudan = ayudan.includes(id) ? ayudan.filter((x) => x !== id) : [...ayudan, id]
+  }
 
   function agregarDado(lados) {
     const f = leerFormula(formula)
@@ -42,7 +51,8 @@
 
   const vista = $derived.by(() => {
     if (dual) {
-      const extra = ventaja === 'ventaja' ? ' + d6' : ventaja === 'desventaja' ? ' − d6' : ''
+      const d6 = ayudantes.length + (ventaja === 'ventaja' ? 1 : 0)
+      const extra = ayudantes.length ? ` + el más alto de ${d6}d6` : ventaja === 'ventaja' ? ' + d6' : ventaja === 'desventaja' ? ' − d6' : ''
       return `Esperanza d12 + Miedo d12${extra} ${conSigno(modificador)}`.trim()
     }
     if (modo === 'dj') {
@@ -58,7 +68,7 @@
       const grupos = [{ lados: 12, rol: 'esperanza' }, { lados: 12, rol: 'miedo' }]
       if (ventaja === 'ventaja') grupos.push({ lados: 6, rol: 'ventaja', signo: 1 })
       if (ventaja === 'desventaja') grupos.push({ lados: 6, rol: 'desventaja', signo: -1 })
-      return { ...base, grupos, modificador }
+      return { ...base, grupos, modificador, ayudantes: [...ayudantes] }
     }
     if (modo === 'dj') {
       const grupos = ventaja === 'ninguna'
@@ -73,7 +83,7 @@
 
   function tirar() {
     error = ''
-    try { onTirar(armar()) } catch (e) { error = e.message }
+    try { onTirar(armar()); ayudan = [] } catch (e) { error = e.message }
   }
 
   function elegirModo(id) {
@@ -104,6 +114,19 @@
           <button role="radio" aria-checked={ventaja === 'ventaja'} class:ven={ventaja === 'ventaja'} onclick={() => (ventaja = ventaja === 'ventaja' ? 'ninguna' : 'ventaja')}>Ventaja</button>
           <button role="radio" aria-checked={ventaja === 'desventaja'} class:des={ventaja === 'desventaja'} onclick={() => (ventaja = ventaja === 'desventaja' ? 'ninguna' : 'desventaja')}>Desventaja</button>
         </div>
+      </div>
+    {/if}
+
+    {#if puedenAyudar}
+      <div class="chips ayuda" role="group" aria-label="Ayudar a un Aliado: quién te ayuda (gasta 1 Esperanza)">
+        <span class="rotulo">Te ayudan</span>
+        {#each aliados as a (a.id)}
+          {@const sinEsperanza = (a.esperanza ?? 0) < 1}
+          <button class="chip" class:prendido={ayudantes.includes(a.id)} aria-pressed={ayudantes.includes(a.id)} disabled={sinEsperanza}
+            title={sinEsperanza ? 'No tiene Esperanza para gastar' : 'Gasta 1 Esperanza y tira su d6'} onclick={() => alternarAyuda(a.id)}>
+            {a.nombre} · {a.esperanza ?? 0}
+          </button>
+        {/each}
       </div>
     {/if}
 
@@ -206,6 +229,10 @@
     font-size: 0.88rem;
   }
   .chip.borrar { color: var(--pergamino-suave); font-weight: 600; }
+  .ayuda { align-items: center; }
+  .ayuda .rotulo { font-size: 0.82rem; color: var(--pergamino-suave); font-weight: 700; }
+  .ayuda .chip.prendido { background: #2f8f7a; border-color: #6fd3b8; }
+  .ayuda .chip:disabled { opacity: 0.45; cursor: not-allowed; }
   .extras .campo { flex: 1; min-width: 7rem; }
   .accion { display: flex; gap: 0.6rem; align-items: stretch; }
   .mas {

@@ -308,6 +308,10 @@ export function registrarPropia(fila) {
     app.personajes = cambiarEn(app.personajes, fila.personaje_id, (p) => ({ ...p, estres: Math.max(0, (p.estres ?? 0) - 1) }))
   }
   if (fila.efectos?.miedo != null) app.campania = { ...app.campania, miedo: fila.efectos.miedo }
+  // Ayudar a un Aliado: cada ayudante gastó 1 Esperanza en el servidor
+  for (const a of fila.efectos?.ayudantes ?? []) {
+    app.personajes = cambiarEn(app.personajes, a.id, (p) => ({ ...p, esperanza: a.esperanza }))
+  }
 }
 
 export function elegirPersonaje(id) {

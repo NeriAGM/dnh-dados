@@ -20,8 +20,8 @@ Convenciones de este documento:
 Total = Dado de Esperanza + Dado de Miedo
       + modificador del Rasgo (Trait)
       + Experiencias usadas (cada una cuesta 1 Esperanza)
-      + dado de Ventaja (d6) o − dado de Desventaja (d6)
-      + mejor dado de Ayudar a un Aliado (d6), si alguien ayudó
+      + el d6 de ventaja MÁS ALTO (el tuyo y los de quienes te ayudan; solo cuenta uno)
+        o − dado de Desventaja (d6)                                   [SRD 2.0 p. 49]
       + otros bonos (Rally dice, rasgos, objetos, etc.)
 ```
 - **Rasgos (Traits)**: Agilidad (Agility), Fuerza (Strength), Destreza/Finura (Finesse), Instinto (Instinct), Presencia (Presence) y Conocimiento (Knowledge). En la creación del personaje se reparten los valores **+2, +1, +1, +0, +0, −1**. [SRD 1.0]
@@ -58,7 +58,7 @@ Notas para la app:
 - **Se gana**: con cualquier tirada de acción «con Esperanza» (incluido el crítico), +1. También en Tag Team, ver §4.3. [SRD 1.0]
 - **Se gasta en**:
   - **Usar una Experiencia (Utilize an Experience)**: **1 Esperanza** por Experiencia. Se suma su modificador a una tirada de **acción o de reacción**. Se pueden usar varias pagando 1 por cada una. [SRD 1.0, corregido sep. 2025]
-  - **Ayudar a un Aliado (Help an Ally)**: **1 Esperanza**. El que ayuda tira un dado de ventaja (d6) para el que actúa. Detalle en §3.2. [SRD 1.0]
+  - **Ayudar a un Aliado (Help an Ally)**: **1 Esperanza**. El que ayuda tira un dado de ventaja (d6) para el que actúa. Detalle en §3.2. [SRD 2.0 p. 49]
   - **Tirada en Equipo (Tag Team Roll)**: **3 Esperanza**. [SRD 1.0]
   - **Rasgos de Esperanza (Hope Features)**: cuestan lo que diga cada uno. Los **rasgos de Esperanza de clase cuestan 3**. [SRD 1.0]
 - La Esperanza que se gana en una tirada **se puede gastar en ese mismo momento** en un rasgo de Esperanza de esa acción. [SRD 1.0]
@@ -84,13 +84,14 @@ Notas para la app:
 - **Desventaja**: se tira **1d6 de desventaja** y **se resta** del total.
 - Se aplican a tiradas de **acción y de reacción** de los PJs. **No** se aplican a tiradas de daño (eso lo dicen herramientas de terceros; el SRD solo las nombra para acción/reacción).
 - Se **cancelan una a una** dentro de la misma reserva de dados (dice pool). Nunca se tiran las dos a la vez.
-- Los efectos de **otras fuentes que no están en tu reserva**, como el dado de Ayudar a un Aliado, **sí se acumulan** con lo que tú tires.
+- Los d6 de Ayudar a un Aliado **no se acumulan** con tu d6 de ventaja: de todos (el tuyo incluido) **solo cuenta el más alto**. [SRD 2.0 p. 49]
 - El SRD recomienda al DJ dar ventaja o desventaja **en vez de** mover la Dificultad.
 
-### 3.2 Cambio en SRD 2.0 [2.0, secundario — SIN VERIFICAR en el PDF oficial]
+### 3.2 SRD 2.0 [verificado en el PDF oficial, p. 48–49]
 - Una tirada lleva **como máximo UN dado de ventaja o de desventaja**, sin importar cuántas fuentes haya. Primero se cancelan una a una y luego queda máximo 1 dado neto. Ejemplo que citan: 3 fuentes de ventaja + 1 de desventaja = **1 dado de ventaja**.
-- **Excepción, Ayudar a un Aliado**: cada aliado paga 1 Esperanza y tira su propio d6. Si ayudan varios, **solo cuenta el resultado más alto** (no se suman). Esto ya venía en el SRD 1.0.
-- Ayudar a un Aliado **no aplica a tiradas de reacción** [SRD 1.0].
+- **Excepción, Ayudar a un Aliado**: cada aliado paga 1 Esperanza y tira su propio d6. Quien tira suma **solo el d6 de ventaja más alto de todos, incluido el suyo** (no se suman). [SRD 2.0 p. 49]
+- Ayudar a un Aliado **no aplica a tiradas de reacción**. [SRD 2.0 p. 48]
+- **Por confirmar (Neri):** el SRD no dice qué pasa si quien tira tiene desventaja y lo ayudan. La app no lo permite por ahora.
 - Lógica para la app con ambas versiones: `neto = fuentesVentaja − fuentesDesventaja` → si neto > 0 se tira 1d6 y se suma; si neto < 0 se tira 1d6 y se resta; con 0 no se tira nada. Luego se suma `max(d6 de cada ayudante)`. En 1.0 el SRD no limita explícitamente varias ventajas netas en la misma reserva; esa ambigüedad la quita 2.0 con el tope de 1.
 
 ### 3.3 Dados de ventaja de otro tamaño
@@ -206,7 +207,7 @@ Notas para la app:
 | Notación | Uso |
 |---|---|
 | `2d12` (H + F) | Dados de Dualidad, con el color de cada uno identificado |
-| `+/−1d6` (o d8, d10) | Ventaja / Desventaja / Ayudar a un Aliado (se queda el más alto de los ayudantes) |
+| `+/−1d6` (o d8, d10) | Ventaja / Desventaja / Ayudar a un Aliado (se queda el más alto de todos los d6 de ventaja, incluido el tuyo) |
 | `1d20 + mod` | Dado del DJ, ataques y acciones de adversarios |
 | `2d20kh1` / `2d20kl1` | Ventaja / Desventaja de adversario |
 | `NdX+M` | Daño; N = Competencia para armas de PJ |
