@@ -6,7 +6,7 @@
   import { md } from '../../lib/md.js'
   import { app } from '../../lib/mesa.svelte.js'
   import {
-    tablero, sincronizarTablero, tableroVisible, idMostrado, esDJTablero, urlTablero,
+    tablero, sincronizarTablero, tableroVisible, idMostrado, esDJTablero, urlTablero, olvidarUrl,
     guardarTablero, mostrarTablero, moverFicha, borrarFicha, senalar,
   } from '../../lib/tablero.svelte.js'
   import { crearNiebla, leerNiebla, escribirNiebla, pintar, llenar, recortar, puedeMover, vistaFicha, fichasVisibles } from '../../lib/tablero.js'
@@ -29,23 +29,46 @@
   let ultimo = null
   $effect(() => {
     const id = t?.id ?? null
-    if (id !== ultimo) { ultimo = id; minimizado = false; centrar(); seleccionada = null; herramienta = 'mover' }
+    if (id !== ultimo) {
+      ultimo = id
+      // Lo que se estaba haciendo con el tablero anterior se cierra (la pincelada se guarda en su tablero)
+      untrack(soltarGestos)
+      minimizado = false; centrar(); seleccionada = null; herramienta = 'mover'
+    }
   })
 
   // ---- Imagen ----
   let url = $state(null)
   let natural = $state({ w: 0, h: 0 })
-  // Solo cuando cambia la imagen (no cada vez que cambia la niebla o la nota)
+  // Solo cuando cambia la imagen (no cada vez que cambia la niebla o la nota).
+  // Si no se pudo (sin red, enlace vencido) se vuelve a intentar cada vez más espaciado.
   const claveImagen = $derived(t?.imagen ? `${t.id}|${t.imagen}` : null)
+  let reintento = $state(0)
+  let fallos = $state(0)
+  let claveAnterior = null
   $effect(() => {
+    reintento
+    if (claveImagen !== claveAnterior) { claveAnterior = claveImagen; fallos = 0 }
     if (!claveImagen) { url = null; natural = { w: 0, h: 0 }; return }
     const fila = untrack(() => t)
+    const demora = untrack(() => fallos) ? Math.min(30000, 2000 * untrack(() => fallos)) : 0
     let vigente = true
     url = null
     natural = { w: 0, h: 0 }
-    urlTablero(fila).then((u) => { if (vigente) url = u })
-    return () => { vigente = false }
+    const espera = setTimeout(() => {
+      urlTablero(fila).then((u) => {
+        if (!vigente) return
+        if (u) url = u
+        else { fallos++; reintento++ }
+      })
+    }, demora)
+    return () => { vigente = false; clearTimeout(espera) }
   })
+  function imagenFallo() {
+    olvidarUrl(t)
+    fallos++
+    reintento++
+  }
 
   // ---- Acomodo: la imagen cabe en el marco y la vista se mueve encima ----
   let anchoMarco = $state(0)
@@ -119,10 +142,11 @@
   const fichas = $derived.by(() => {
     if (!t) return []
     const propias = tablero.fichas.filter((f) => f.tablero_id === t.id)
-    return fichasVisibles(propias, nieblaGuardada, esDJ).map((f) => {
+    const quien = { uid: app.sesion?.user?.id, esDJ, personajes: app.personajes }
+    return fichasVisibles(propias, nieblaGuardada, esDJ, (f) => puedeMover(f, quien)).map((f) => {
       const v = vistaFicha(f, app.personajes)
       const enMano = arrastre?.id === f.id
-      return { ...f, ...v, x: enMano ? arrastre.x : f.x, y: enMano ? arrastre.y : f.y, mia: puedeMover(f, { uid: app.sesion?.user?.id, esDJ, personajes: app.personajes }) }
+      return { ...f, ...v, x: enMano ? arrastre.x : f.x, y: enMano ? arrastre.y : f.y, mia: puedeMover(f, quien) }
     })
   })
   const fichaSel = $derived(fichas.find((f) => f.id === seleccionada) ?? null)
@@ -139,14 +163,28 @@
     return { x: (e.clientX - r.left) / r.width, y: (e.clientY - r.top) / r.height }
   }
 
+  // Se guarda en el tablero donde empezó la pincelada (aunque ya se vea otro)
   function terminarPincel() {
     if (gesto?.modo !== 'pincel' || !trabajo) return
-    if (gesto.cambio) guardarTablero(t.id, { niebla: escribirNiebla(trabajo) })
+    if (gesto.cambio) guardarTablero(gesto.tableroId, { niebla: escribirNiebla(trabajo) })
+    trabajo = null
+  }
+
+  // Suelta todo gesto a medias: dedos cuyo pointerup nunca llegó (el marco
+  // desapareció al cambiar de tablero), arrastres y pinceladas
+  function soltarGestos() {
+    terminarPincel()
+    clearTimeout(esperaSenal)
+    punteros.clear()
+    gesto = null
+    arrastre = null
     trabajo = null
   }
 
   function alBajar(e) {
     if (!t || !lienzo || e.button > 0) return
+    // Un dedo "primario" empieza un gesto nuevo: lo que haya quedado colgado ya no cuenta
+    if (e.isPrimary && punteros.size) soltarGestos()
     try { marco.setPointerCapture(e.pointerId) } catch {} // sin captura el gesto sigue funcionando dentro del marco
     punteros.set(e.pointerId, { x: e.clientX, y: e.clientY })
     clearTimeout(esperaSenal)
@@ -167,7 +205,7 @@
     } else if (!ficha) seleccionada = null
     if (esDJ && herramienta !== 'mover' && nieblaGuardada) {
       trabajo = leerNiebla(t.niebla)
-      gesto = { modo: 'pincel', cambio: false, ultimo: null }
+      gesto = { modo: 'pincel', cambio: false, ultimo: null, tableroId: t.id }
       pintarEn(e)
       return
     }
@@ -313,7 +351,7 @@
                 style:height="{caja.h}px"
                 style:transform="translate(-50%, -50%) translate({vista.x}px, {vista.y}px) scale({vista.z})"
               >
-                <img src={url} alt={t.nombre} draggable="false" onload={(e) => (natural = { w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight })} />
+                <img src={url} alt={t.nombre} draggable="false" onload={(e) => (natural = { w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight })} onerror={imagenFallo} />
                 {#if nieblaGuardada}
                   <canvas class="niebla" class:dj={esDJ} bind:this={lienzoNiebla} aria-hidden="true"></canvas>
                 {/if}
@@ -340,7 +378,7 @@
                 {/each}
               </div>
             {:else}
-              <p class="cargando">Cargando el mapa…</p>
+              <p class="cargando">{fallos ? 'No se pudo cargar el mapa; vuelvo a intentar…' : 'Cargando el mapa…'}</p>
             {/if}
           </div>
         {/if}

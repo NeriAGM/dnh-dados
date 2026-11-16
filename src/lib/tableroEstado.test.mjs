@@ -54,7 +54,7 @@ function clienteFalso(responder) {
     channel(nombre) {
       const c = { nombre, handlers: [], enviados: [] }
       c.on = (tipo, filtro, fn) => { c.handlers.push({ tipo, filtro, fn }); return c }
-      c.subscribe = () => c
+      c.subscribe = (cb) => { c.alSuscribir = cb; return c }
       c.send = (m) => { c.enviados.push(m); return Promise.resolve('ok') }
       c.emitir = (tabla, evento, payload) => {
         for (const h of c.handlers) {
@@ -69,6 +69,9 @@ function clienteFalso(responder) {
       return c
     },
     removeChannel() {},
+    // Storage falso: cada enlace firmado es distinto, para ver cuándo se pide uno nuevo
+    firmas: 0,
+    storage: { from: () => ({ createSignedUrl: async (ruta) => ({ data: { signedUrl: `https://x/${ruta}?v=${++globalThis.__tableroSupabase.firmas}` }, error: null }) }) },
   }
 }
 
@@ -151,4 +154,30 @@ test('un borrado de ficha llega aunque el canal filtrado no lo reciba', async ()
   assert.equal(m.tablero.fichas.length, 1)
   cliente.canales[0].emitir('fichas', 'DELETE', { old: { id: 'f9' } })
   assert.equal(m.tablero.fichas.length, 0)
+})
+
+test('al reconectarse el tiempo real se vuelve a leer el tablero', async () => {
+  const { m, cliente } = await preparar({ campania: { id: 'c1', tablero_id: 't1' }, rol: 'jugador' }, (op) =>
+    ({ data: op.tabla === 'tableros' ? [T1] : [], error: null }))
+  m.sincronizarTablero()
+  await esperar(5)
+  const lecturas = () => cliente.ops.filter((o) => o.tabla === 'tableros').length
+  const antes = lecturas()
+  const canal = cliente.canales[0]
+  canal.alSuscribir('SUBSCRIBED') // la primera unión es la normal
+  assert.equal(lecturas(), antes)
+  canal.alSuscribir('SUBSCRIBED') // el celular se durmió y volvió
+  await esperar(5)
+  assert.equal(lecturas(), antes + 1)
+})
+
+test('olvidarUrl: si la imagen falló, el siguiente intento pide un enlace nuevo', async () => {
+  const { m } = await preparar({ campania: { id: 'c1', tablero_id: 't1' }, rol: 'jugador' })
+  m.sincronizarTablero()
+  const fila = { ...T1, imagen: '1-valle.webp' }
+  const u1 = await m.urlTablero(fila)
+  assert.equal(await m.urlTablero(fila), u1) // mientras sirve, se reusa
+  m.olvidarUrl(fila)
+  const u2 = await m.urlTablero(fila)
+  assert.ok(u2 && u2 !== u1, `${u1} / ${u2}`)
 })

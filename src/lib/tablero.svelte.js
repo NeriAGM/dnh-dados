@@ -352,6 +352,11 @@ export function senalar(x, y) {
   if (!local() && canal) canal.send({ type: 'broadcast', event: 'senal', payload: s }).catch(() => {})
 }
 
+// La imagen no cargó (sin red, enlace vencido): el siguiente intento pide otro enlace
+export function olvidarUrl(fila) {
+  if (fila?.imagen) firmadas.delete(`${fila.campania_id}/${fila.imagen}`)
+}
+
 // Enlace (firmado, dura una hora) para mostrar la imagen de un tablero
 export async function urlTablero(fila) {
   if (!fila?.imagen) return null

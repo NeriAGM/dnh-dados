@@ -107,6 +107,13 @@ test('fichasVisibles: bajo la niebla solo el DJ las ve', () => {
   assert.deepEqual(fichasVisibles(fichas, null, false).map((f) => f.id), ['a', 'b'])
 })
 
+test('fichasVisibles: la ficha que el jugador puede mover no se le esconde bajo la niebla', () => {
+  const n = crearNiebla(100, 100)
+  const fichas = [{ id: 'mia', x: 0.8, y: 0.8 }, { id: 'lobo', x: 0.8, y: 0.8 }]
+  const esMia = (f) => f.id === 'mia'
+  assert.deepEqual(fichasVisibles(fichas, n, false, esMia).map((f) => f.id), ['mia'])
+})
+
 test('pjsSinFicha: los PJ que aún no están en ese tablero', () => {
   const fichas = [{ tablero_id: 't1', personaje_id: 'p1' }, { tablero_id: 't2', personaje_id: 'p2' }]
   assert.deepEqual(pjsSinFicha(personajes, fichas, 't1').map((p) => p.id), ['p2', 'p3'])

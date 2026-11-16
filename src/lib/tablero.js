@@ -89,10 +89,11 @@ export function vistaFicha(ficha, personajes) {
   return { nombre, color, inicial: ([...nombre][0] ?? '?').toUpperCase() }
 }
 
-// Las fichas bajo la niebla no se le dibujan al jugador
-export function fichasVisibles(fichas, niebla, esDJ) {
+// Las fichas bajo la niebla no se le dibujan al jugador, salvo la suya:
+// si la suelta en lo tapado tiene que poder volver a agarrarla
+export function fichasVisibles(fichas, niebla, esDJ, esMia = () => false) {
   if (esDJ || !niebla) return fichas
-  return fichas.filter((f) => !tapado(niebla, f.x, f.y))
+  return fichas.filter((f) => esMia(f) || !tapado(niebla, f.x, f.y))
 }
 
 export function pjsSinFicha(personajes, fichas, tableroId) {
