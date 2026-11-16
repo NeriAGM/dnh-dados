@@ -137,6 +137,11 @@
     .efecto { display: inline; padding: 0; background: none; font-size: inherit; }
     .efecto + .efecto::before { content: ' · '; color: var(--texto-suave); }
   }
+  /* Celular acostado: los valores ya se leen en los dados 3D; queda espacio
+     para que las consecuencias de un crítico no se corten */
+  @media (max-height: 560px) and (min-width: 600px) {
+    .dados { display: none; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .linea, .dados, .efectos, .sigue { animation: none; }
   }

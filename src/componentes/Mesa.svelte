@@ -794,8 +794,7 @@
     .pip-esp, .pip-miedo { height: 26px; }
     .cuentas { padding: 0.45rem 0.6rem; }
     .cuentas h2 { display: none; }
-    .cuentas ul { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-    .cuenta { flex: none; }
+    .cuentas ul { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
     /* PJ en dos renglones: la cuenta 3/6 la dicen los mismos puntos */
     .medidor { grid-template-columns: 4.3rem minmax(0, 1fr); grid-template-areas: 'rot ctl'; }
     .medidor .rotulo { font-size: 0.68rem; }
