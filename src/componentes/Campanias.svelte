@@ -90,6 +90,7 @@
   .en-linea { display: flex; gap: 0.5rem; }
   .codigo { text-transform: uppercase; letter-spacing: 0.2em; font-weight: 800; }
   .aviso-error { margin: 0.9rem 0 0; }
-  .salir { text-shadow: var(--sombra-texto); font-weight: 700; }
+  /* Va directo sobre el paisaje: blanco (si no, .boton le pone la tinta oscura) */
+  .salir { color: #fff; text-shadow: var(--sombra-texto); font-weight: 700; }
   .salir:hover { background: rgb(255 255 255 / 0.18); }
 </style>
