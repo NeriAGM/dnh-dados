@@ -268,7 +268,10 @@
     <div class="botones">
       {#if puedeDJ}
         <button class="boton dj" aria-label="Panel del DJ" onclick={() => { verHoja = null; verLore = false; verTablero = false; verDJ = !verDJ }} disabled={!catBase} aria-pressed={verDJ}><span class="largo">Panel del DJ</span><span class="corto">DJ</span></button>
-        <button class="boton dj" aria-label="Tablero para la mesa" aria-pressed={verTablero} onclick={() => { verHoja = null; verLore = false; verDJ = false; verTablero = !verTablero }}>Tablero</button>
+        <button class="boton dj tablero-boton" aria-label="Tablero para la mesa" aria-pressed={verTablero} onclick={() => { verHoja = null; verLore = false; verDJ = false; verTablero = !verTablero }}>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.4"/></svg>
+          <span class="largo">Tablero</span>
+        </button>
       {/if}
       <button class="boton lore-boton" aria-label="Lore de la campaña" aria-pressed={verLore} onclick={() => { verDJ = false; verHoja = null; verTablero = false; verLore = !verLore }}>
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v15.5H5.5c-.8 0-1.5.7-1.5 1.5zM20 5.5c0-.8-.7-1.5-1.5-1.5H13v15.5h5.5c.8 0 1.5.7 1.5 1.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 4v16" stroke="currentColor" stroke-width="1.2"/></svg>
@@ -406,7 +409,14 @@
   }
   .barra > * { pointer-events: auto; }
   .nombre { margin: 0; font-size: clamp(1.1rem, 3.5vw, 1.6rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 0 1 auto; }
-  .botones { display: flex; gap: 0.4rem; margin-left: auto; }
+  /* Si no caben (celular angosto), bajan a otra línea en vez de salirse de la pantalla */
+  .botones { display: flex; gap: 0.4rem; margin-left: auto; flex-wrap: wrap; justify-content: flex-end; }
+  .tablero-boton { display: flex; align-items: center; gap: 0.35rem; }
+  @media (max-width: 759px) {
+    .tablero-boton { padding: 0.5rem; }
+    /* Con los botones en dos o tres filas, el Miedo se queda arriba (no detrás de la tarjeta del PJ) */
+    .miedo { align-self: flex-start; margin-top: 0.15rem; }
+  }
   .icono { padding: 0.5rem; display: grid; place-items: center; background: var(--vidrio); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 
   .miedo {

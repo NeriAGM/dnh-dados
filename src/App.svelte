@@ -184,6 +184,9 @@
     pointer-events: none;
   }
   .interfaz :global(> *) { pointer-events: auto; }
+  /* La mesa deja pasar los toques al tablero compartido que está debajo
+     (sus piezas sí los reciben, ver Mesa.svelte); antes esta regla le ganaba */
+  .interfaz :global(> .mesa) { pointer-events: none; }
   .cargando {
     position: absolute;
     inset: 0;

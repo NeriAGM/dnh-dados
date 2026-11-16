@@ -47,6 +47,19 @@
 - [ ] Lore: los 6 comentarios de «Historia de su nacimiento» no se trajeron.
 - [x] Decidido: el lore se edita en la app; Notion queda de archivo (no se reimporta).
 
+## Tablero compartido (migración 010, rama `tablero/compartido`)
+
+Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fichas (cada jugador mueve la de su PJ), niebla con pincel y señal manteniendo presionado. Funciona en modo demo. Diseño en `docs/superpowers/specs/2026-11-15-tablero-compartido-design.md`.
+
+- [ ] Neri: decir si se une a `main` (publicar). Antes, aplicar `supabase/migraciones/010_tablero.sql` en el editor SQL (no depende de la 009). Solo trae `drop policy/trigger if exists` de lo suyo; revísalo con grep y confirma. Para verificar: `select count(*) from tableros;` y que aparezca el bucket `tablero` en Storage.
+- [ ] Probar con dos cuentas (DJ y jugador): mostrar y cambiar de tablero, mover la ficha propia, que la ajena no se mueva, niebla opaca para el jugador, fichas bajo niebla ocultas y señal. En demo solo se ve la vista del DJ.
+- [ ] Riesgo aceptado por Neri (15/11): la niebla se pinta en la pantalla del jugador; con las herramientas del navegador se puede ver el mapa completo y las fichas tapadas.
+- [ ] Riesgo menor: las señales viajan por un canal de tiempo real público para quien sepa el id de la campaña (un uuid). Para cerrarlo: activar la autorización de Realtime (canales privados) en Supabase.
+- [ ] Neri: confirmar vocabulario (por confirmar): «tablero», «ficha», «niebla» (Destapar / Tapar) y «señal». El panel de fondos ya dice «Tablero del día»: ¿se queda así?
+- [ ] Para después: dibujar trazos, cuadrícula con «snap», fichas ocultas a propósito, que las fichas se deslicen en vivo al arrastrarlas, mover fichas con teclado y un mapa de ejemplo en demo.
+- [ ] Rediseño: `Tablero.svelte`, `PanelTablero.svelte` y el botón «Tablero» usan el estilo actual; la rama `rediseno/impecable` debe tomarlos. En celular angosto los botones de la barra ahora bajan en filas (antes se salían ~12 px y cortaban Ajustes).
+- [ ] En Windows, `npm run probar` falla en `tirador.test.mjs` (importa una ruta `C:\…` sin `file://`) y a veces en la prueba de rendimiento de los dados. En la nube (Linux) pasan; no es del tablero.
+
 ## Seguridad
 
 - [ ] Borrar la rama `importar-temporal` en GitHub (Branches → papelera): contiene el SQL con los datos de los personajes y el repositorio es público.

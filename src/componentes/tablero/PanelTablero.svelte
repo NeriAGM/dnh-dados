@@ -97,7 +97,7 @@
           <fieldset class="fichas">
             <legend>Fichas <small>({fichasSel})</small></legend>
             <button class="boton ancho" onclick={() => agregarPJs(sel.id)} disabled={!faltan}>
-              {faltan ? `Agregar PJ (${faltan})` : 'Todos los PJ ya están'}
+              {faltan ? `Agregar PJ (${faltan})` : app.personajes.length ? 'Todos los PJ ya están' : 'Aún no hay PJ en la campaña'}
             </button>
             <form class="nueva-ficha" onsubmit={ponerFicha}>
               <input class="campo" maxlength="40" placeholder="Adversario o PNJ" aria-label="Nombre de la ficha" bind:value={nombreFicha} />

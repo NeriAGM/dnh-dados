@@ -72,17 +72,27 @@
   const nieblaGuardada = $derived(leerNiebla(t?.niebla))
   let trabajo = null // la niebla mientras el DJ pinta (se guarda al soltar)
   let lienzoNiebla = $state()
+  // Una celda = un pixel en un lienzo chico; luego se agranda 8 veces con
+  // suavizado para que las orillas de la niebla no se vean cuadradas
+  const chico = typeof document !== 'undefined' ? document.createElement('canvas') : null
+  const ESCALA = 8
   function dibujar(n) {
-    if (!lienzoNiebla || !n) return
-    lienzoNiebla.width = n.c
-    lienzoNiebla.height = n.f
-    const ctx = lienzoNiebla.getContext('2d')
-    const img = ctx.createImageData(n.c, n.f)
+    if (!lienzoNiebla || !n || !chico) return
+    chico.width = n.c
+    chico.height = n.f
+    const c = chico.getContext('2d')
+    const img = c.createImageData(n.c, n.f)
     for (let k = 0; k < n.celdas.length; k++) {
       img.data[k * 4] = 16; img.data[k * 4 + 1] = 11; img.data[k * 4 + 2] = 30
       img.data[k * 4 + 3] = n.celdas[k] ? 255 : 0
     }
-    ctx.putImageData(img, 0, 0)
+    c.putImageData(img, 0, 0)
+    lienzoNiebla.width = n.c * ESCALA
+    lienzoNiebla.height = n.f * ESCALA
+    const ctx = lienzoNiebla.getContext('2d')
+    ctx.imageSmoothingEnabled = true
+    ctx.imageSmoothingQuality = 'high'
+    ctx.drawImage(chico, 0, 0, lienzoNiebla.width, lienzoNiebla.height)
   }
   $effect(() => { dibujar(nieblaGuardada) })
 
@@ -137,7 +147,7 @@
 
   function alBajar(e) {
     if (!t || !lienzo || e.button > 0) return
-    marco.setPointerCapture?.(e.pointerId)
+    try { marco.setPointerCapture(e.pointerId) } catch {} // sin captura el gesto sigue funcionando dentro del marco
     punteros.set(e.pointerId, { x: e.clientX, y: e.clientY })
     clearTimeout(esperaSenal)
     if (punteros.size === 2) {
@@ -157,7 +167,7 @@
     } else if (!ficha) seleccionada = null
     if (esDJ && herramienta !== 'mover' && nieblaGuardada) {
       trabajo = leerNiebla(t.niebla)
-      gesto = { modo: 'pincel', cambio: false }
+      gesto = { modo: 'pincel', cambio: false, ultimo: null }
       pintarEn(e)
       return
     }
@@ -168,9 +178,18 @@
     }
   }
 
+  // Pinta la línea desde el punto anterior: si el dedo va rápido no quedan huecos
   function pintarEn(e) {
     const p = relativo(e)
-    if (pintar(trabajo, p.x, p.y, PINCEL, herramienta === 'tapar')) { gesto.cambio = true; dibujar(trabajo) }
+    const a = gesto.ultimo ?? p
+    const pasos = Math.max(1, Math.ceil(Math.hypot(p.x - a.x, p.y - a.y) / (PINCEL / 2)))
+    let cambio = false
+    for (let i = 1; i <= pasos; i++) {
+      const k = i / pasos
+      cambio = pintar(trabajo, a.x + (p.x - a.x) * k, a.y + (p.y - a.y) * k, PINCEL, herramienta === 'tapar') || cambio
+    }
+    gesto.ultimo = p
+    if (cambio) { gesto.cambio = true; dibujar(trabajo) }
   }
 
   function alMover(e) {
@@ -215,10 +234,12 @@
 
   // La rueda tiene que poder cancelar el desplazamiento de la página: va sin "passive"
   $effect(() => {
-    if (!marco) return
+    // Se guarda el elemento: al cambiar a una nota sin imagen, "marco" ya es null al limpiar
+    const el = marco
+    if (!el) return
     const rueda = (e) => { e.preventDefault(); zoom(e.deltaY < 0 ? 1.15 : 1 / 1.15, e.clientX, e.clientY) }
-    marco.addEventListener('wheel', rueda, { passive: false })
-    return () => marco.removeEventListener('wheel', rueda)
+    el.addEventListener('wheel', rueda, { passive: false })
+    return () => el.removeEventListener('wheel', rueda)
   })
   $effect(() => () => clearTimeout(esperaSenal))
 </script>
@@ -230,7 +251,7 @@
         <span aria-hidden="true">🗺</span> {t.nombre}
       </button>
     {:else}
-      <section class="tablero vidrio" aria-label="Tablero: {t.nombre}">
+      <section class="tablero vidrio" class:solo-texto={!t.imagen} aria-label="Tablero: {t.nombre}">
         <header class="barra">
           <h2 class="nombre titulo">{t.nombre}</h2>
           {#if enPrevia}
@@ -343,18 +364,22 @@
     pointer-events: none;
   }
   .tablero, .pastilla { pointer-events: auto; }
+  /* El tablero va en el hueco del centro: a la izquierda la tarjeta del PJ,
+     a la derecha el historial (o el panel del DJ) y abajo el lanzador */
   .tablero {
     position: absolute;
-    left: 50%;
+    left: calc((100vw - 340px) / 2);
     transform: translateX(-50%);
-    top: calc(6.6rem + env(safe-area-inset-top, 0px));
-    bottom: calc(15rem + var(--seguro-abajo));
-    width: min(880px, calc(100vw - 2rem));
+    top: calc(12.5rem + env(safe-area-inset-top, 0px));
+    bottom: calc(var(--alto-lanzador, 13rem) + 0.6rem);
+    width: min(880px, calc(100vw - 340px - 2rem));
     display: flex;
     flex-direction: column;
     border-radius: var(--radio-panel);
     overflow: hidden;
   }
+  /* Una nota sin imagen mide lo que su texto */
+  .tablero.solo-texto { bottom: auto; max-height: 60vh; }
   .barra { display: flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.6rem; flex-wrap: wrap; }
   .nombre { margin: 0; font-size: 1.05rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 8rem; }
   .controles { display: flex; gap: 0.25rem; margin-left: auto; }
@@ -439,9 +464,9 @@
 
   .pastilla {
     position: absolute;
-    left: 50%;
+    left: calc((100vw - 340px) / 2);
     transform: translateX(-50%);
-    top: calc(6.6rem + env(safe-area-inset-top, 0px));
+    top: calc(12.5rem + env(safe-area-inset-top, 0px));
     border-radius: 999px;
     padding: 0.35rem 0.9rem;
     font-size: 0.85rem;
@@ -453,8 +478,14 @@
     white-space: nowrap;
   }
 
+  @media (min-width: 1100px) {
+    /* Columna libre entre la tarjeta del PJ (260 px) y el historial o el panel del DJ (360 px) */
+    .tablero, .pastilla { left: calc(260px + (100vw - 620px) / 2); top: calc(6.6rem + env(safe-area-inset-top, 0px)); }
+    .tablero { width: min(880px, calc(100vw - 620px - 2rem)); }
+  }
   @media (max-width: 759px) {
-    .tablero, .pastilla { top: calc(10.5rem + env(safe-area-inset-top, 0px)); }
-    .tablero { bottom: calc(14rem + var(--seguro-abajo)); width: calc(100vw - 1rem); }
+    /* Debajo de la tarjeta del PJ (termina en ~12 rem) */
+    .tablero, .pastilla { left: 50%; top: calc(12.4rem + env(safe-area-inset-top, 0px)); }
+    .tablero { width: calc(100vw - 1rem); }
   }
 </style>

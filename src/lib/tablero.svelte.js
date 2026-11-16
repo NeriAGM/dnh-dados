@@ -34,7 +34,7 @@ const COLOR = /^#[0-9a-fA-F]{6}$/
 
 let clave = null     // id de la campaña cargada ('demo' en modo prueba)
 let rolCargado = null
-let mostrado        // tablero que se mostraba en la última sincronización
+let mostrado = null // tablero que se mostraba en la última sincronización
 let canal = null
 let turno = 0        // sube en cada carga: una respuesta vieja se tira
 let numSenal = 0
@@ -84,7 +84,7 @@ export function sincronizarTablero() {
   if (m === mostrado) return
   mostrado = m
   // El DJ ya tiene todos; el jugador no podía ver el nuevo hasta ahora
-  if (!local() && !esDJTablero()) cargar()
+  if (clave && !local() && !esDJTablero()) cargar()
 }
 
 function soltar() {
@@ -100,6 +100,7 @@ function soltar() {
 
 async function cargar() {
   const c = clave
+  if (!c || c === 'demo') return // sin campaña (o en modo prueba) no hay nada que pedir
   const t = ++turno
   // La RLS ya le deja al jugador solo el tablero que se muestra
   const [rt, rf] = await Promise.all([
