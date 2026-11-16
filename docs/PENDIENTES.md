@@ -65,7 +65,7 @@ Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fic
 ## Reglas del tirador contra el SRD 2.0
 
 - [x] Ayudar a un Aliado (SRD 2.0 p. 48–49): cada ayudante gasta 1 Esperanza y tira su d6; cuenta solo el d6 de ventaja más alto (el propio incluido); no va en reacciones. Migración 009, pruebas en `supabase/pruebas/ayudar.test.mjs`.
-- [ ] Aplicar `supabase/migraciones/009_ayudar_aliado.sql` en Supabase **después** de la 008. Sin la 009 la app sigue tirando normal; solo elegir ayudantes da error.
+- [x] Migración 009 aplicada en Supabase (15/11), después de la 008. Verificado con solo lectura: una sola `tirar(…, uuid[])` con `p_ayudantes`; la ejecuta `authenticated`, no `anon`.
 - [ ] Neri: ¿se puede ayudar a quien tira con desventaja? El SRD 2.0 no lo dice; hoy la app no lo permite.
 - [ ] Neri: quien tira elige a sus ayudantes y el servidor les resta la Esperanza sin pedirles confirmación (en la mesa cada quien dice «te ayudo»). ¿Así está bien?
 - [ ] Revisar los demás puntos «SIN VERIFICAR» de `docs/reglas/` con el reporte de verificación contra el SRD 2.0 (27 confirmados, 11 no aparecen, 5 dudas).
