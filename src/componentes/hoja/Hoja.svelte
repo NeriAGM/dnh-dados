@@ -1,6 +1,6 @@
 <script>
   import { RASGOS, NOMBRE_RASGO, ALCANCES } from '../../lib/srd.js'
-  import { umbrales, evasion, avisos, bonoAtaque, grupoDano, textoDano, rangoDeNivel, MAX_MANO, normalizarHoja, ajustarOro } from '../../lib/reglas.js'
+  import { umbrales, evasion, avisos, bonoAtaque, grupoDano, textoDano, rangoDeNivel, MAX_MANO, normalizarHoja, ajustarOro, cartasParaAgregar } from '../../lib/reglas.js'
   import { md as mdBase } from '../../lib/md.js'
   import { conSigno } from '../../lib/formula.js'
   import Icono from '../Icono.svelte'
@@ -11,7 +11,7 @@
   import Descanso from './Descanso.svelte'
   import Muerte from './Muerte.svelte'
   import SubirNivel from './SubirNivel.svelte'
-  import { ESTADOS, necesitaMovimientoDeMuerte } from '../../lib/ayudas.js'
+  import { ESTADOS, necesitaMovimientoDeMuerte, armaduraMarcadaCon } from '../../lib/ayudas.js'
   import { NOMBRE_ETAPA, NIVEL_MAX } from '../../lib/avance.js'
   import { tirarDesdeHoja } from '../../lib/tiradaHoja.js'
   import { ajustesMesa } from '../../lib/mesa.svelte.js'
@@ -181,6 +181,16 @@
     cambiar(['cartas'], c)
   }
 
+  // Con menos casillas que antes, las marcadas que sobran se quitan
+  async function recortarArmadura(puntuacion) {
+    const n = armaduraMarcadaCon(hoja, puntuacion)
+    if (n !== (hoja.armadura_marcada ?? 0)) await cambiar(['armadura_marcada'], n)
+  }
+  async function cambiarPuntuacion(e) {
+    const p = leerNum(e, { min: 0, max: 12 })
+    if (await cambiar(['armadura', 'puntuacion'], p)) await recortarArmadura(p)
+  }
+
   async function elegir(x) {
     const t = selector.tipo
     selector = null
@@ -193,7 +203,7 @@
     } else if (t === 'arma') {
       agregarEn('armas', { id: x.id, nombre: x.nombre, tipo: x.tipo, rasgo: x.rasgo, alcance: x.alcance, dano: x.dano, manos: x.manos, rasgos: x.rasgos ?? [], activa: true })
     } else if (t === 'armadura') {
-      cambiar(['armadura'], { id: x.id, nombre: x.nombre, puntuacion: x.puntuacion, umbrales: x.umbrales, rasgos: x.rasgos ?? [] })
+      if (await cambiar(['armadura'], { id: x.id, nombre: x.nombre, puntuacion: x.puntuacion, umbrales: x.umbrales, rasgos: x.rasgos ?? [] })) await recortarArmadura(x.puntuacion)
     } else if (t === 'clase') {
       // Una tras otra: dos escrituras a la vez podían pisarse al volver del servidor
       const sinDominios = !hoja.dominios?.length
@@ -208,7 +218,7 @@
   const SELECTORES = $derived({
     carta: {
       titulo: 'Agregar carta de dominio',
-      items: cat?.cartas ?? [],
+      items: cartasParaAgregar(cat?.cartas, hoja),
       filtros: [
         { id: 'mios', nombre: `Mis dominios hasta nivel ${nivelMax}`, prueba: (c) => (dominiosIds.includes(c.dominio) || c.fuente === 'Casero') && (c.nivel ?? 1) <= nivelMax },
         { id: 'todas', nombre: 'Todas', prueba: () => true },
@@ -469,7 +479,7 @@
           {#each hoja.armadura.rasgos ?? [] as r}<p class="rasgo-arma"><b>{r.nombre}:</b> {r.texto}</p>{/each}
           {#if editar}
             <div class="mini-campos">
-              <label>Puntuación <input class="campo num" type="number" min="0" max="12" value={hoja.armadura.puntuacion} onchange={(e) => cambiar(['armadura', 'puntuacion'], leerNum(e, { min: 0, max: 12 }))} /></label>
+              <label>Puntuación <input class="campo num" type="number" min="0" max="12" value={hoja.armadura.puntuacion} onchange={cambiarPuntuacion} /></label>
             </div>
           {/if}
         </article>
@@ -684,7 +694,9 @@
   .botones { display: flex; gap: 0.3rem; align-items: flex-start; }
   .chico { padding: 0.35rem 0.8rem; font-size: 0.9rem; }
   .pestanas { padding: 0 0.5rem; }
-  .pestanas > button { padding-inline: 0.6rem; }
+  /* Con compañero son 7 pestañas: a 560 px cabían con 0 px de sobra y con la
+     letra M PLUS se cortaba «Notas». Menos relleno y se reparten lo que sobre. */
+  .pestanas > button { flex: 1 0 auto; padding-inline: 0.45rem; }
   .avisos { margin: 0.6rem 1rem 0; padding: 0.55rem 0.8rem 0.55rem 1.6rem; border-radius: var(--radio-control); background: var(--critico-suave); border: 1px solid color-mix(in srgb, var(--critico) 50%, transparent); color: var(--critico-hondo); font-size: 0.9rem; font-weight: 700; }
   .cuerpo-aviso { margin: 0.5rem 1rem 0; }
   .cuerpo { flex: 1; min-height: 0; overflow-y: auto; padding: 0.9rem 1rem calc(1.4rem + var(--seguro-abajo)); display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; align-content: start; overscroll-behavior: contain; }

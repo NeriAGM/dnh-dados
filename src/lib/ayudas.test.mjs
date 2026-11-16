@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import {
   resolverDano, armaduraLibre, formulaDescanso, validarDescanso, aplicarDescanso, efectosDeDescanso,
   avisoDescansosSeguidos, avisoMiedoDescanso, necesitaMovimientoDeMuerte, resolverEvitarMuerte,
-  resolverArriesgarlo, repartoValido,
+  resolverArriesgarlo, repartoValido, armaduraMarcadaCon,
 } from './ayudas.js'
 
 const u = { mayor: 7, grave: 14 }
@@ -136,4 +136,53 @@ test('recibir daño con PG escritos como texto no mata al personaje', () => {
   assert.equal(a.armaduraDespues, 2)
   assert.equal(necesitaMovimientoDeMuerte({ pg: '6', pg_max: '6' }), true)
   assert.equal(avisoDescansosSeguidos({ descansos_cortos: '3' }) !== null, true)
+})
+
+// Rasgos de armadura del SRD 2.0 (datos/es/armaduras.json)
+const conRasgo = (nombre, extra = {}) => ({ ...hoja, armadura: { puntuacion: 3, rasgos: [{ nombre, texto: '…' }] }, ...extra })
+
+test('armadura Física: no se marca contra daño mágico (sí contra físico)', () => {
+  const fisica = conRasgo('Física')
+  const m = resolverDano(14, fisica, u, { tipo: 'magico', usarArmadura: true })
+  assert.equal(m.puedeArmadura, false)
+  assert.equal(m.pg, 3)
+  assert.match(m.sinArmadura, /Física/)
+  assert.equal(resolverDano(14, fisica, u, { tipo: 'fisico', usarArmadura: true }).pg, 2)
+})
+
+test('armadura Mágica: no se marca contra daño físico (sí contra mágico)', () => {
+  const magica = conRasgo('Mágica')
+  assert.equal(resolverDano(14, magica, u, { tipo: 'fisico', usarArmadura: true }).pg, 3)
+  assert.equal(resolverDano(14, magica, u, { usarArmadura: true }).pg, 3, 'sin tipo cuenta como físico')
+  assert.equal(resolverDano(14, magica, u, { tipo: 'magico', usarArmadura: true }).pg, 2)
+  // Escrito sin acento (homebrew) también cuenta
+  assert.equal(resolverDano(14, conRasgo('magica'), u, { tipo: 'fisico', usarArmadura: true }).puedeArmadura, false)
+})
+
+test('armadura Fortificada: una casilla baja dos escalones', () => {
+  const fort = conRasgo('Fortificada')
+  const r = resolverDano(14, fort, u, { usarArmadura: true })
+  assert.equal(r.escalones, 2)
+  assert.equal(r.pg, 1)
+  assert.equal(r.severidadFinal, 'Menor')
+  assert.equal(r.armaduraDespues, 1, 'sigue gastando una sola casilla')
+  assert.equal(resolverDano(7, fort, u, { usarArmadura: true }).pg, 0, 'Mayor → nada, sin números negativos')
+  assert.equal(resolverDano(28, fort, u, { masivo: true, usarArmadura: true }).pg, 2, 'Masivo → Mayor')
+  assert.equal(resolverDano(14, hoja, u, { usarArmadura: true }).escalones, 1)
+})
+
+test('armadura Resguardada: el daño mágico baja en la Puntuación de Armadura (después de la resistencia)', () => {
+  const resg = conRasgo('Resguardada')
+  const r = resolverDano(15, resg, u, { tipo: 'magico', resistencia: true })
+  assert.equal(r.final, 5) // 15 → 8 por resistencia → 5
+  assert.equal(r.severidad, 'Menor')
+  assert.deepEqual(r.rasgos, ['Resguardada −3'])
+  assert.equal(resolverDano(15, resg, u, { tipo: 'fisico' }).final, 15, 'no aplica al daño físico')
+})
+
+test('cambiar de armadura: las casillas marcadas que sobran se quitan', () => {
+  assert.equal(armaduraMarcadaCon({ armadura_marcada: 5 }, 3), 3)
+  assert.equal(armaduraMarcadaCon({ armadura_marcada: 2 }, 4), 2)
+  assert.equal(armaduraMarcadaCon({ armadura_marcada: '4' }, null), 0, 'sin armadura no queda ninguna')
+  assert.equal(armaduraMarcadaCon({}, 3), 0)
 })

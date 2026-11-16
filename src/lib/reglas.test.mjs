@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { umbrales, pgPorDano, bonoAtaque, textoDano, avisos, rangoDeNivel, evasion } from './reglas.js'
+import { umbrales, pgPorDano, bonoAtaque, textoDano, avisos, rangoDeNivel, evasion, cartasParaAgregar } from './reglas.js'
 
 const cat = {
   porId: {
@@ -143,4 +143,12 @@ test('oro: al llenar una categoría pasa a la siguiente', () => {
   assert.deepEqual(ajustarOro({ monedas: 5, punados: 1 }, 'monedas', 23), { monedas: 3, punados: 3 })
   assert.deepEqual(ajustarOro(null, 'bolsas', -2), { bolsas: 0 })
   assert.deepEqual(ajustarOro({ punados: '4' }, 'cofres', 1), { punados: 4, cofres: 1 })
+})
+
+test('agregar carta: no ofrece las que ya están en la mano o la bóveda', () => {
+  const cartas = [{ id: 'a' }, { id: 'b' }, { id: 'c' }, { id: 'd' }]
+  const hoja = { cartas: { mano: ['a'], boveda: ['c'] } }
+  assert.deepEqual(cartasParaAgregar(cartas, hoja).map((c) => c.id), ['b', 'd'])
+  assert.equal(cartasParaAgregar(cartas, {}).length, 4, 'sin cartas todavía')
+  assert.deepEqual(cartasParaAgregar(undefined, hoja), [])
 })

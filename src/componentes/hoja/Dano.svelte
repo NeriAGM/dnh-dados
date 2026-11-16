@@ -19,8 +19,11 @@
   let aplicando = $state(false)
   let error = $state('')
 
-  const r = $derived(resolverDano(dano, hoja, u, { masivo, resistencia, reduccion, directo, usarArmadura }))
+  const r = $derived(resolverDano(dano, hoja, u, { tipo, masivo, resistencia, reduccion, directo, usarArmadura }))
   const libres = $derived(armaduraLibre(hoja))
+  // Rasgos de armadura que tocan el daño pero no se calculan solos: se recuerdan
+  const RECORDAR = ['Dolorosa', 'Reforzada', 'Resiliente', 'Impenetrable']
+  const recordar = $derived((hoja.armadura?.rasgos ?? []).filter((x) => RECORDAR.includes(x?.nombre)))
   const hayDano = $derived(dano !== '' && Number(dano) > 0)
   const TONO = { Ninguno: 'ninguno', Menor: 'menor', Mayor: 'mayor', Grave: 'grave', Masivo: 'masivo' }
 
@@ -68,7 +71,7 @@
     <div class="veredicto {TONO[r.severidadFinal]}" aria-live="polite">
       <strong>{r.pg ? `Marca ${r.pg} PG` : 'No marcas PG'}</strong>
       <small>
-        {r.final !== Number(dano) ? `Daño final ${r.final} · ` : ''}{r.severidad}{r.conArmadura ? ` → ${r.severidadFinal} con Armadura` : ''}
+        {r.final !== Number(dano) ? `Daño final ${r.final}${r.rasgos.length ? ` (${r.rasgos.join(', ')})` : ''} · ` : ''}{r.severidad}{r.conArmadura ? ` → ${r.severidadFinal} con Armadura` : ''}
         · quedarías en {r.pgDespues}/{hoja.pg_max ?? 6} PG
       </small>
     </div>
@@ -76,8 +79,10 @@
     <button class="boton armadura" class:on={r.conArmadura} aria-pressed={r.conArmadura} disabled={!r.puedeArmadura}
       onclick={() => (usarArmadura = !usarArmadura)}>
       {#if r.conArmadura}<Icono nombre="listo" tam={16} />{/if}Marcar una casilla de Armadura
-      <small>{directo ? 'no sirve contra daño directo' : libres ? `bajas un escalón · te quedan ${libres}` : 'no te quedan casillas libres'}</small>
+      <small>{r.sinArmadura || (libres ? `bajas ${r.escalones === 2 ? 'dos escalones (Fortificada)' : 'un escalón'} · te quedan ${libres}` : 'no te quedan casillas libres')}</small>
     </button>
+
+    {#each recordar as x}<p class="regla"><b>{x.nombre}:</b> {x.texto}</p>{/each}
 
     {#if r.cae}<p class="aviso">Con esto marcas tu último Punto de Golpe: tendrás que elegir un movimiento de muerte.</p>{/if}
   {/if}

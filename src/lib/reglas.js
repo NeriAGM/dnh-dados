@@ -170,6 +170,12 @@ export function avisos(hoja, cat) {
   return out
 }
 
+// Cartas que se pueden agregar: las del catálogo menos las que ya tiene (mano o bóveda)
+export function cartasParaAgregar(cartas, hoja) {
+  const tengo = new Set([...(hoja?.cartas?.mano ?? []), ...(hoja?.cartas?.boveda ?? [])])
+  return (cartas ?? []).filter((c) => !tengo.has(c.id))
+}
+
 // Hoja inicial para un personaje nuevo de una clase del catálogo
 export function hojaNueva(clase, extra = {}) {
   return {

@@ -14,18 +14,45 @@ export function armaduraLibre(hoja) {
   return Math.max(0, (num(hoja?.armadura?.puntuacion) ?? 0) - (num(hoja?.armadura_marcada) ?? 0))
 }
 
+// Al cambiar de armadura (o su Puntuación) no pueden quedar más casillas
+// marcadas que las que tiene. Por confirmar: el SRD no dice si las marcadas
+// pasan de una armadura a otra; aquí se conservan hasta el nuevo máximo.
+export function armaduraMarcadaCon(hoja, puntuacion) {
+  return Math.min(num(hoja?.armadura_marcada) ?? 0, Math.max(0, num(puntuacion) ?? 0))
+}
+
+// Rasgos de la armadura puesta, por nombre (sin acentos ni mayúsculas: el
+// homebrew puede escribir «Magica»)
+const simple = (t) => String(t ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').trim().toLowerCase()
+const tieneRasgo = (hoja, nombre) => (hoja?.armadura?.rasgos ?? []).some((r) => simple(r?.nombre) === nombre)
+
 // Orden del SRD: resistencia (mitad, redondeando hacia arriba) → reducciones
 // planas → umbrales → marcar una casilla de Armadura (baja un escalón).
-// opciones: { masivo, resistencia, reduccion, directo, usarArmadura }
+// Rasgos de armadura del SRD 2.0 que cambian esto:
+//   Resguardada: el daño mágico baja en la Puntuación de Armadura (con las reducciones)
+//   Física / Mágica: no se marca Armadura contra daño mágico / físico
+//   Fortificada: la casilla baja dos escalones en vez de uno
+// opciones: { tipo: 'fisico'|'magico', masivo, resistencia, reduccion, directo, usarArmadura }
 export function resolverDano(dano, hoja, u, opciones = {}) {
-  const { masivo = false, resistencia = false, reduccion = 0, directo = false, usarArmadura = false } = opciones
+  const { tipo = 'fisico', masivo = false, resistencia = false, reduccion = 0, directo = false, usarArmadura = false } = opciones
+  const rasgos = []
   let final = Math.max(0, Math.floor(Number(dano) || 0))
   if (resistencia) final = Math.ceil(final / 2)
-  final = Math.max(0, final - Math.max(0, Math.floor(Number(reduccion) || 0)))
+  let menos = Math.max(0, Math.floor(Number(reduccion) || 0))
+  const puntuacion = num(hoja?.armadura?.puntuacion) ?? 0
+  if (tipo === 'magico' && tieneRasgo(hoja, 'resguardada') && puntuacion > 0) {
+    menos += puntuacion
+    rasgos.push(`Resguardada −${puntuacion}`)
+  }
+  final = Math.max(0, final - menos)
   const pgSinArmadura = pgPorDano(final, u, { masivo })
-  const puedeArmadura = !directo && pgSinArmadura > 0 && armaduraLibre(hoja) > 0
+  const bloquea = tipo === 'magico' && tieneRasgo(hoja, 'fisica') ? 'Tu armadura es Física: no sirve contra daño mágico'
+    : tipo !== 'magico' && tieneRasgo(hoja, 'magica') ? 'Tu armadura es Mágica: no sirve contra daño físico'
+    : directo ? 'No sirve contra daño directo' : ''
+  const puedeArmadura = !bloquea && pgSinArmadura > 0 && armaduraLibre(hoja) > 0
   const conArmadura = puedeArmadura && usarArmadura
-  const pg = conArmadura ? pgSinArmadura - 1 : pgSinArmadura
+  const escalones = tieneRasgo(hoja, 'fortificada') ? 2 : 1
+  const pg = conArmadura ? Math.max(0, pgSinArmadura - escalones) : pgSinArmadura
 
   const pgMax = num(hoja?.pg_max) ?? 6
   const pgAntes = num(hoja?.pg) ?? 0
@@ -38,6 +65,9 @@ export function resolverDano(dano, hoja, u, opciones = {}) {
     pg,
     puedeArmadura,
     conArmadura,
+    sinArmadura: bloquea, // por qué no se puede marcar Armadura (si es por un rasgo o daño directo)
+    escalones,
+    rasgos,               // rasgos de armadura que cambiaron el daño, para mostrarlos
     pgDespues,
     armaduraDespues: (num(hoja?.armadura_marcada) ?? 0) + (conArmadura ? 1 : 0),
     // Marcó su último PG: toca elegir un movimiento de muerte
