@@ -89,12 +89,6 @@
     [c.tono ? `hue-rotate(${c.tono}deg)` : '', c.contraste !== 100 ? `contrast(${c.contraste}%)` : '', c.desenfoque ? `blur(${c.desenfoque}px)` : '']
       .filter(Boolean).join(' ') || null,
   )
-  // Velo: lo que el jugador oscurece es parejo; lo automático es una viñeta
-  // (más oscura en las orillas, donde está la interfaz) para no apagar la imagen
-  const veloAuto = $derived(Number(leg.vars['--velo-auto']))
-  const veloFondo = $derived(
-    `radial-gradient(ellipse 70% 65% at 50% 52%, rgba(10, 6, 22, ${(veloAuto * 0.3).toFixed(3)}), rgba(10, 6, 22, ${Math.min(0.85, veloAuto * 1.5).toFixed(3)}))`,
-  )
   const est = $derived(estiloModo(mostrada?.modo))
   const fundido = $derived(reducido ? 0 : 900)
 
@@ -135,12 +129,12 @@
     {/if}
   {/key}
 </div>
-<div class="capa velo" style:background-color="rgba(10, 6, 22, {c.oscurecer / 100})" style:background-image={veloFondo} aria-hidden="true"></div>
+<div class="capa velo" style:background-color="rgba(10, 6, 22, {c.oscurecer / 100})" aria-hidden="true"></div>
 <canvas class="capa dados" bind:this={lienzoDados} aria-hidden="true"></canvas>
 
 <main class="interfaz">
   {#if app.cargando}
-    <p class="cargando titulo">Preparando la mesa…</p>
+    <p class="cargando sobre-fondo" role="status">Preparando la mesa…</p>
   {:else if app.demo || app.campania}
     <Mesa {mesa3d} {momento} onMomento={aplicarMomento} />
   {:else if app.sesion}
@@ -158,7 +152,7 @@
     height: 100%;
     display: block;
   }
-  .fondo { z-index: 0; overflow: hidden; background: #2a1d3d; }
+  .fondo { z-index: 0; overflow: hidden; background: #2b2c5c; }
   .fondo .capa { position: absolute; }
   /* El desenfoque deja bordes transparentes: se agranda un poco para taparlos */
   .fondo.borroso { transform: scale(1.06); }
@@ -187,5 +181,6 @@
     place-items: center;
     margin: 0;
     font-size: 1.4rem;
+    font-weight: 900;
   }
 </style>

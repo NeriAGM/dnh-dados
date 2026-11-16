@@ -1,5 +1,6 @@
 <script>
   import { resumenDesenlace, nombreDado, hora } from '../lib/textos.js'
+  import Icono from './Icono.svelte'
 
   let { tiradas = [], nombreDe = () => '', pjDe = () => null, puedeBorrar = false, onBorrar, onCerrar } = $props()
 
@@ -25,15 +26,20 @@
     }
     return salida
   })
+  // Solo la tirada más nueva va a todo color; las demás quedan en tinta
+  const reciente = $derived(grupos[0]?.items[0]?.id)
 </script>
 
 <aside class="historial vidrio" aria-label="Historial de tiradas">
   <header>
-    <h2 class="titulo">Tiradas</h2>
-    {#if onCerrar}<button class="cerrar" onclick={onCerrar} aria-label="Cerrar historial">✕</button>{/if}
+    <h2>Tiradas</h2>
+    {#if onCerrar}<button class="icono" onclick={onCerrar} aria-label="Cerrar historial"><Icono nombre="cerrar" /></button>{/if}
   </header>
   {#if !tiradas.length}
-    <p class="vacio">Todavía nadie tira. La primera tirada aparecerá aquí para toda la mesa.</p>
+    <div class="vacio">
+      <Icono nombre="dado" tam={30} />
+      <p>Todavía nadie tira. Cuando alguien tire, la tirada aparecerá aquí para toda la mesa.</p>
+    </div>
   {/if}
   <div class="lista">
     {#each grupos as g (g.dia)}
@@ -42,25 +48,23 @@
         {#each g.items as t (t.id)}
           {@const des = resumenDesenlace(t)}
           {@const pj = pjDe(t.personaje_id)}
-          <li class={des.clase}>
-            <div class="cabeza">
-              <strong>{pj?.nombre ?? nombreDe(t.usuario_id)}</strong>
-              {#if t.oculta}<span class="etiqueta-oculta">oculta</span>{/if}
-              <time>{hora(t.creado)}</time>
-            </div>
-            <div class="cuerpo">
-              <span class="total titulo">{t.total}</span>
-              <span class="detalle">
+          <li class={des.clase} class:reciente={t.id === reciente}>
+            <span class="total">{t.total}</span>
+            <div class="detalle">
+              <div class="cabeza">
+                <strong>{pj?.nombre ?? nombreDe(t.usuario_id)}</strong>
                 {#if des.texto}<span class="des">{des.texto}</span>{/if}
-                {#if t.etiqueta}<span class="nota">{t.etiqueta}</span>{/if}
-                <span class="formula">
-                  {#each t.dados as d, i}{i ? ' · ' : ''}<span class:tachado={d.descartado}>{nombreDado(d)} {d.signo < 0 ? '−' : ''}{d.valor}</span>{/each}{t.modificador ? ` · ${t.modificador > 0 ? '+' : ''}${t.modificador}` : ''}
-                </span>
+                {#if t.oculta}<span class="etiqueta-oculta"><Icono nombre="ojo-no" tam={13} />oculta</span>{/if}
+                <time>{hora(t.creado)}</time>
+              </div>
+              {#if t.etiqueta}<span class="nota">{t.etiqueta}</span>{/if}
+              <span class="formula">
+                {#each t.dados as d, i}{i ? ' · ' : ''}<span class:tachado={d.descartado}>{nombreDado(d)} {d.signo < 0 ? '−' : ''}{d.valor}</span>{/each}{t.modificador ? ` · ${t.modificador > 0 ? '+' : ''}${t.modificador}` : ''}
               </span>
-              {#if puedeBorrar && !t.local}
-                <button class="borrar" onclick={() => onBorrar?.(t)} aria-label="Borrar esta tirada">✕</button>
-              {/if}
             </div>
+            {#if puedeBorrar && !t.local}
+              <button class="borrar icono" onclick={() => onBorrar?.(t)} aria-label="Borrar esta tirada"><Icono nombre="basura" tam={16} /></button>
+            {/if}
           </li>
         {/each}
       </ol>
@@ -72,45 +76,46 @@
   .historial {
     display: flex;
     flex-direction: column;
-    border-radius: var(--radio-panel);
     max-height: 100%;
     min-height: 0;
+    border-radius: var(--radio-panel);
   }
-  header { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1rem 0.3rem; }
-  h2 { margin: 0; font-size: 1.25rem; }
-  .cerrar { border: 0; background: none; font-size: 1.1rem; padding: 0.3rem 0.5rem; }
-  .vacio { margin: 0.3rem 1rem 1rem; color: var(--pergamino-suave); font-size: 0.92rem; }
+  header { display: flex; align-items: center; justify-content: space-between; min-height: 3.2rem; padding: 0.5rem 0.6rem 0.2rem 1.1rem; }
+  h2 { margin: 0; font-size: 1.15rem; }
+  .vacio { display: grid; justify-items: center; gap: 0.5rem; padding: 0.8rem 1.4rem 1.4rem; color: var(--texto-suave); text-align: center; }
+  .vacio p { margin: 0; font-size: 0.92rem; }
   .lista { overflow-y: auto; padding: 0 0.6rem 0.8rem; overscroll-behavior: contain; }
-  h3 {
-    margin: 0.7rem 0.4rem 0.35rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--pergamino-suave);
-  }
-  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+  h3 { margin: 0.8rem 0.5rem 0.35rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--texto-suave); }
+  ol { display: grid; margin: 0; padding: 0; list-style: none; }
   li {
+    --acento: var(--texto);
+    display: grid;
+    grid-template-columns: 2.6rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 0.5rem;
     border-radius: 14px;
-    padding: 0.5rem 0.65rem;
-    background: rgba(255, 245, 230, 0.05);
-    border-left: 3px solid rgba(255, 245, 230, 0.2);
   }
-  li.esperanza { border-left-color: var(--esperanza); }
-  li.miedo { border-left-color: var(--miedo); }
-  li.critico { border-left-color: #fff0b0; background: linear-gradient(90deg, rgba(240, 189, 85, 0.16), rgba(167, 124, 232, 0.1)); }
-  li.critico-dj { border-left-color: var(--sangre); }
-  .cabeza { display: flex; gap: 0.4rem; align-items: baseline; font-size: 0.85rem; }
-  .cabeza time { margin-left: auto; color: var(--pergamino-suave); font-size: 0.78rem; }
-  .etiqueta-oculta { font-size: 0.7rem; padding: 0 0.4rem; border-radius: 999px; background: rgba(217, 74, 92, 0.35); }
-  .cuerpo { display: flex; gap: 0.6rem; align-items: center; }
-  .total { font-size: 1.7rem; min-width: 2.2ch; text-align: center; text-shadow: none; }
-  .esperanza .total, .esperanza .des { color: var(--esperanza); }
-  .miedo .total, .miedo .des { color: var(--miedo); }
-  .critico .des { color: #fff0b0; }
-  .critico-dj .total, .critico-dj .des { color: var(--sangre); }
-  .detalle { display: grid; font-size: 0.8rem; line-height: 1.3; min-width: 0; }
-  .des { font-weight: 800; font-size: 0.86rem; }
-  .nota { font-style: italic; }
-  .formula { color: var(--pergamino-suave); }
+  li + li { box-shadow: 0 -1px 0 var(--filete); }
+  .esperanza { --acento: var(--esperanza-hondo); }
+  .miedo { --acento: var(--miedo-hondo); }
+  .critico { --acento: var(--critico-hondo); }
+  .critico-dj { --acento: var(--peligro-hondo); }
+  .total { font-size: 1.6rem; font-weight: 900; text-align: right; line-height: 1; font-variant-numeric: tabular-nums; color: var(--texto); }
+  .detalle { display: grid; gap: 0.05rem; min-width: 0; font-size: 0.82rem; line-height: 1.35; }
+  .cabeza { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.1rem 0.45rem; font-size: 0.9rem; }
+  .cabeza strong { font-weight: 900; }
+  .des { font-weight: 700; color: var(--acento); }
+  .cabeza time { margin-left: auto; font-size: 0.78rem; color: var(--texto-suave); font-variant-numeric: tabular-nums; }
+  .nota { font-weight: 700; }
+  .formula { color: var(--texto-suave); font-variant-numeric: tabular-nums; }
   .tachado { text-decoration: line-through; opacity: 0.6; }
-  .borrar { margin-left: auto; border: 0; background: none; color: var(--pergamino-suave); padding: 0.2rem 0.4rem; }
+  .etiqueta-oculta { display: inline-flex; align-items: center; gap: 0.2rem; padding: 0 0.45rem; border-radius: 999px; background: var(--hundido-2); font-size: 0.72rem; font-weight: 700; }
+  .borrar { width: 2.1rem; height: 2.1rem; color: var(--texto-suave); }
+  .borrar:hover { color: var(--peligro-hondo); }
+
+  /* La más nueva, a todo color */
+  li.reciente { background: color-mix(in srgb, var(--acento) 11%, transparent); box-shadow: none; }
+  li.reciente + li { box-shadow: none; }
+  li.reciente .total { color: var(--acento); font-size: 1.9rem; }
 </style>

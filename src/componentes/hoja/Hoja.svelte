@@ -3,6 +3,7 @@
   import { umbrales, evasion, avisos, bonoAtaque, grupoDano, textoDano, rangoDeNivel, MAX_MANO, normalizarHoja, ajustarOro } from '../../lib/reglas.js'
   import { md as mdBase } from '../../lib/md.js'
   import { conSigno } from '../../lib/formula.js'
+  import Icono from '../Icono.svelte'
   import Casillas from './Casillas.svelte'
   import Carta from './Carta.svelte'
   import Selector from './Selector.svelte'
@@ -238,13 +239,13 @@
   ]
 </script>
 
-<div class="velo" onclick={onCerrar} role="presentation"></div>
-<section class="hoja vidrio" style:--pj={pj.color} aria-label="Hoja de {pj.nombre}">
+<div class="cortina velo-hoja" onclick={onCerrar} role="presentation"></div>
+<section class="hoja vidrio" aria-label="Hoja de {pj.nombre}">
   <header class="cabecera">
     <div class="identidad">
-      <h2 class="titulo">{pj.nombre}</h2>
+      <h2 class="placa" style:--color-pj={pj.color}>{pj.nombre}</h2>
       <p class="linea">
-        Nivel {hoja.nivel ?? 1}
+        <b>Nivel {hoja.nivel ?? 1}</b>
         · {clase?.nombre ?? hoja.clase_texto ?? 'Sin clase'}{subclase ? ` (${subclase.nombre}${hoja.subclase_etapa && hoja.subclase_etapa !== 'base' ? `, ${NOMBRE_ETAPA[hoja.subclase_etapa]}` : ''})` : hoja.subclase_texto ? ` (${hoja.subclase_texto})` : ''}
         · {ancestria?.nombre ?? (hoja.ancestria_texto || 'Sin ancestría')}{comunidad ? ` · ${comunidad.nombre}` : ''}
       </p>
@@ -253,8 +254,8 @@
       </p>
     </div>
     <div class="botones">
-      {#if editable}<button class="boton chico" class:prendido={editar} aria-pressed={editar} onclick={() => (editar = !editar)}>{editar ? 'Listo' : 'Editar'}</button>{/if}
-      <button class="cerrar" onclick={onCerrar} aria-label="Cerrar hoja">✕</button>
+      {#if editable}<button class="boton" aria-pressed={editar} onclick={() => (editar = !editar)}><Icono nombre={editar ? 'listo' : 'editar'} tam={18} />{editar ? 'Listo' : 'Editar'}</button>{/if}
+      <button class="icono" onclick={onCerrar} aria-label="Cerrar hoja"><Icono nombre="cerrar" /></button>
     </div>
   </header>
 
@@ -269,7 +270,7 @@
       {#each listaAvisos as a}<li>{a.texto}</li>{/each}
     </ul>
   {/if}
-  {#if error}<p class="error" role="alert">{error}</p>{/if}
+  {#if error}<p class="aviso-error cuerpo-aviso" role="alert">{error}</p>{/if}
 
   {#if hoja.reparto_pendiente}
     <div class="estado gloria" role="status">
@@ -309,8 +310,8 @@
 
       <div class="defensas">
         <div class="defensa">
-          <span class="valor titulo">{evasion(hoja)}</span>
-          <span class="etq">Evasión</span>
+          <span class="valor num">{evasion(hoja)}</span>
+          <span class="rotulo">Evasión</span>
           {#if editar}
             <span class="mini-campos">
               <label>base <input class="campo num" type="number" value={hoja.evasion_base ?? 10} onchange={(e) => cambiar(['evasion_base'], leerNum(e))} /></label>
@@ -318,12 +319,15 @@
             </span>
           {/if}
         </div>
-        <div class="umbrales" aria-label="Umbrales de daño">
-          <span class="u menor">Menor<b>1 PG</b></span>
-          <span class="corte titulo">{u.mayor}</span>
-          <span class="u mayor">Mayor<b>2 PG</b></span>
-          <span class="corte titulo">{u.grave}</span>
-          <span class="u grave">Grave<b>3 PG</b></span>
+        <div class="umbrales-caja">
+          <span class="rotulo">Umbrales de daño</span>
+          <div class="umbrales" aria-label="Umbrales de daño">
+            <span class="u menor">Menor<b>1 PG</b></span>
+            <span class="corte"><small>desde</small>{u.mayor}</span>
+            <span class="u mayor">Mayor<b>2 PG</b></span>
+            <span class="corte"><small>desde</small>{u.grave}</span>
+            <span class="u grave">Grave<b>3 PG</b></span>
+          </div>
         </div>
         {#if editar}
           <div class="mini-campos">
@@ -335,9 +339,9 @@
       </div>
 
       <div class="marcadores">
-        <Casillas nombre="Puntos de Golpe" marcadas={hoja.pg ?? 0} maximo={hoja.pg_max ?? 6} color="var(--sangre)" {editable} onCambiar={cambiarPG} ayuda="Daño recibido" />
-        <Casillas nombre="Estrés" marcadas={pj.estres} maximo={pj.estres_max} color="#ff8a5c" {editable} onCambiar={(n) => cambiarPJ({ estres: n })} />
-        <Casillas nombre="Armadura" marcadas={hoja.armadura_marcada ?? 0} maximo={hoja.armadura?.puntuacion ?? 0} forma="escudo" color="#8fb7d9" {editable} onCambiar={(n) => cambiar(['armadura_marcada'], n)} ayuda="Casillas de Armadura gastadas" />
+        <Casillas nombre="Puntos de Golpe" marcadas={hoja.pg ?? 0} maximo={hoja.pg_max ?? 6} color="var(--peligro)" {editable} onCambiar={cambiarPG} ayuda="Daño recibido" />
+        <Casillas nombre="Estrés" marcadas={pj.estres} maximo={pj.estres_max} color="var(--texto)" {editable} onCambiar={(n) => cambiarPJ({ estres: n })} />
+        <Casillas nombre="Armadura" marcadas={hoja.armadura_marcada ?? 0} maximo={hoja.armadura?.puntuacion ?? 0} forma="escudo" color="var(--texto-suave)" {editable} onCambiar={(n) => cambiar(['armadura_marcada'], n)} ayuda="Casillas de Armadura gastadas" />
         <Casillas nombre="Esperanza" marcadas={pj.esperanza} maximo={pj.esperanza_max} tachadas={hoja.cicatrices ?? 0} forma="estrella" color="var(--esperanza)" {editable} onCambiar={(n) => cambiarPJ({ esperanza: n })} ayuda={hoja.cicatrices ? `${hoja.cicatrices} cicatriz(es)` : ''} />
         {#if editar}
           <div class="mini-campos">
@@ -349,9 +353,9 @@
 
       {#if editable}
         <div class="ayudas" aria-label="Ayudas de reglas">
-          <button class="boton ayuda dano" onclick={() => (ayuda = 'dano')}><span aria-hidden="true">⚔</span> Recibir daño</button>
-          <button class="boton ayuda" onclick={() => (ayuda = 'descanso')}><span aria-hidden="true">☾</span> Descansar</button>
-          <button class="boton ayuda" disabled={(hoja.nivel ?? 1) >= NIVEL_MAX} onclick={() => (ayuda = 'nivel')}><span aria-hidden="true">✦</span> Subir de nivel</button>
+          <button class="boton accion dano" onclick={() => (ayuda = 'dano')}><Icono nombre="espadas" tam={20} /> Recibir daño</button>
+          <button class="boton accion" onclick={() => (ayuda = 'descanso')}><Icono nombre="luna" tam={20} /> Descansar</button>
+          <button class="boton accion" disabled={(hoja.nivel ?? 1) >= NIVEL_MAX} onclick={() => (ayuda = 'nivel')}><Icono nombre="chispa" tam={20} /> Subir de nivel</button>
         </div>
       {/if}
 
@@ -361,15 +365,16 @@
           {@const v = Number(hoja.rasgos?.[r.id] ?? 0)}
           <div class="rasgo" class:mejorado={hoja.rasgos_mejorados?.includes(r.id)}>
             <button class="tirar-rasgo" onclick={() => abrirTirada(r.nombre, v)} title={r.ayuda}>
-              <span class="mod titulo">{conSigno(v) || '0'}</span>
+              <span class="mod num">{conSigno(v) || '0'}</span>
               <span class="nom">{r.nombre}</span>
+              <span class="tira"><Icono nombre="dado" tam={14} />Tirar</span>
             </button>
             {#if editar}
               <span class="pasos">
-                <button onclick={() => cambiar(['rasgos', r.id], v - 1)} aria-label="Bajar {r.nombre}">−</button>
-                <button onclick={() => cambiar(['rasgos', r.id], v + 1)} aria-label="Subir {r.nombre}">+</button>
+                <button onclick={() => cambiar(['rasgos', r.id], v - 1)} aria-label="Bajar {r.nombre}"><Icono nombre="menos" tam={16} /></button>
+                <button onclick={() => cambiar(['rasgos', r.id], v + 1)} aria-label="Subir {r.nombre}"><Icono nombre="mas" tam={16} /></button>
                 <button class:on={hoja.rasgos_mejorados?.includes(r.id)} title="Mejorado al subir de nivel" aria-pressed={hoja.rasgos_mejorados?.includes(r.id)}
-                  onclick={() => cambiar(['rasgos_mejorados'], hoja.rasgos_mejorados?.includes(r.id) ? hoja.rasgos_mejorados.filter((x) => x !== r.id) : [...(hoja.rasgos_mejorados ?? []), r.id])}>✓</button>
+                  onclick={() => cambiar(['rasgos_mejorados'], hoja.rasgos_mejorados?.includes(r.id) ? hoja.rasgos_mejorados.filter((x) => x !== r.id) : [...(hoja.rasgos_mejorados ?? []), r.id])}><Icono nombre="listo" tam={16} /></button>
               </span>
             {/if}
           </div>
@@ -377,7 +382,7 @@
       </div>
       {#if rasgoLanz}
         <button class="boton lanzamiento" onclick={() => abrirTirada(`Lanzamiento (${NOMBRE_RASGO[rasgoLanz]})`, Number(hoja.rasgos?.[rasgoLanz] ?? 0))}>
-          Tirada de Lanzamiento · {NOMBRE_RASGO[rasgoLanz]} {conSigno(Number(hoja.rasgos?.[rasgoLanz] ?? 0)) || '+0'}
+          <Icono nombre="dado" tam={18} />Tirada de Lanzamiento · {NOMBRE_RASGO[rasgoLanz]} {conSigno(Number(hoja.rasgos?.[rasgoLanz] ?? 0)) || '+0'}
         </button>
       {/if}
 
@@ -388,7 +393,7 @@
             {#if editar}
               <input class="campo" value={x.nombre} placeholder="Experiencia" onchange={(e) => cambiar(['experiencias', i, 'nombre'], e.currentTarget.value)} />
               <input class="campo num" type="number" value={x.valor} onchange={(e) => cambiar(['experiencias', i, 'valor'], leerNum(e))} />
-              <button class="quitar" onclick={() => quitarDe('experiencias', i)} aria-label="Quitar experiencia">✕</button>
+              <button class="icono" onclick={() => quitarDe('experiencias', i)} aria-label="Quitar experiencia"><Icono nombre="cerrar" tam={16} /></button>
             {:else}
               <span>{x.nombre || 'Sin nombre'}</span><b>{conSigno(Number(x.valor)) || '+0'}</b>
             {/if}
@@ -398,13 +403,13 @@
       {#if editar}<button class="boton chico" onclick={() => agregarEn('experiencias', { nombre: '', valor: 2 })}>Agregar experiencia</button>{/if}
 
     {:else if pestana === 'armas'}
-      <p class="ayuda">Competencia {competencia}: tus armas tiran {competencia} {competencia === 1 ? 'dado' : 'dados'} de daño.</p>
+      <p class="nota">Competencia {competencia}: tus armas tiran {competencia} {competencia === 1 ? 'dado' : 'dados'} de daño.</p>
       {#each hoja.armas ?? [] as a, i}
         {@const bono = bonoAtaque(a)}
         {@const mod = Number(hoja.rasgos?.[a.rasgo] ?? 0) + bono}
         <article class="arma">
           <header>
-            <strong class="titulo">{a.nombre}</strong>
+            <strong>{a.nombre}</strong>
             <small>{[a.tipo === 'secundaria' ? 'Secundaria' : 'Primaria', ALCANCES[a.alcance] ?? a.alcance, NOMBRE_RASGO[a.rasgo] ?? a.rasgo, a.manos === 2 ? 'Dos manos' : 'Una mano', a.dano?.tipo === 'magico' ? 'mágico' : 'físico'].filter(Boolean).join(' · ')}</small>
           </header>
           {#each a.rasgos ?? [] as r}<p class="rasgo-arma"><b>{r.nombre}:</b> {r.texto}</p>{/each}
@@ -412,11 +417,11 @@
             <button class="boton" onclick={() => abrirTirada(`Ataque · ${a.nombre}`, mod)}>Atacar {conSigno(mod) || '+0'}</button>
             <button class="boton" onclick={() => tirarDano(a)}>Daño {textoDano(a, competencia)}</button>
             <button class="boton critico" onclick={() => tirarDano(a, true)} title="Daño crítico: suma el máximo de los dados">Crítico</button>
-            {#if editar}<button class="quitar" onclick={() => quitarDe('armas', i)} aria-label="Quitar {a.nombre}">✕</button>{/if}
+            {#if editar}<button class="icono" onclick={() => quitarDe('armas', i)} aria-label="Quitar {a.nombre}"><Icono nombre="cerrar" tam={16} /></button>{/if}
           </div>
         </article>
       {:else}
-        <p class="vacio">Sin armas. {editable ? 'Agrega una desde el catálogo.' : ''}</p>
+        <p class="vacio-texto">Sin armas. {editable ? 'Agrega una desde el catálogo.' : ''}</p>
       {/each}
       {#if editable}<button class="boton" onclick={() => (selector = { tipo: 'arma' })}>Agregar arma</button>{/if}
 
@@ -435,7 +440,7 @@
             {/snippet}
           </Carta>
         {:else}
-          <p class="vacio">Tu mano está vacía.</p>
+          <p class="vacio-texto">Tu mano está vacía.</p>
         {/each}
       </div>
       <h3 class="seccion">Bóveda <small>recuperarla cuesta su número de recuperación en Estrés, salvo en un descanso</small></h3>
@@ -451,7 +456,7 @@
             {/snippet}
           </Carta>
         {:else}
-          <p class="vacio">Nada en la bóveda.</p>
+          <p class="vacio-texto">Nada en la bóveda.</p>
         {/each}
       </div>
       {#if editable}<button class="boton" onclick={() => (selector = { tipo: 'carta' })}>Agregar carta</button>{/if}
@@ -460,7 +465,7 @@
       <h3 class="seccion">Armadura</h3>
       {#if hoja.armadura}
         <article class="arma">
-          <header><strong class="titulo">{hoja.armadura.nombre}</strong><small>Puntuación {hoja.armadura.puntuacion} · umbrales base {hoja.armadura.umbrales?.mayor}/{hoja.armadura.umbrales?.grave}</small></header>
+          <header><strong>{hoja.armadura.nombre}</strong><small>Puntuación {hoja.armadura.puntuacion} · umbrales base {hoja.armadura.umbrales?.mayor}/{hoja.armadura.umbrales?.grave}</small></header>
           {#each hoja.armadura.rasgos ?? [] as r}<p class="rasgo-arma"><b>{r.nombre}:</b> {r.texto}</p>{/each}
           {#if editar}
             <div class="mini-campos">
@@ -469,7 +474,7 @@
           {/if}
         </article>
       {:else}
-        <p class="vacio">Sin armadura.</p>
+        <p class="vacio-texto">Sin armadura.</p>
       {/if}
       {#if editable}<button class="boton chico" onclick={() => (selector = { tipo: 'armadura' })}>{hoja.armadura ? 'Cambiar armadura' : 'Elegir armadura'}</button>{/if}
 
@@ -482,7 +487,7 @@
           </label>
         {/each}
       </div>
-      <p class="ayuda">{conMonedas ? '10 monedas = 1 puñado · ' : ''}10 puñados = 1 bolsa · 10 bolsas = 1 cofre.</p>
+      <p class="nota">{conMonedas ? '10 monedas = 1 puñado · ' : ''}10 puñados = 1 bolsa · 10 bolsas = 1 cofre.</p>
 
       <h3 class="seccion">Inventario</h3>
       <ul class="inventario">
@@ -492,13 +497,13 @@
               <input class="campo num" type="number" min="0" value={x.cantidad ?? 1} onchange={(e) => cambiar(['inventario', i, 'cantidad'], leerNum(e, { min: 0 }))} />
               <input class="campo" value={x.nombre} onchange={(e) => cambiar(['inventario', i, 'nombre'], e.currentTarget.value)} />
               <input class="campo" value={x.nota ?? ''} placeholder="Nota" onchange={(e) => cambiar(['inventario', i, 'nota'], e.currentTarget.value)} />
-              <button class="quitar" onclick={() => quitarDe('inventario', i)} aria-label="Quitar">✕</button>
+              <button class="icono" onclick={() => quitarDe('inventario', i)} aria-label="Quitar"><Icono nombre="cerrar" tam={16} /></button>
             {:else}
               <b>{x.cantidad ?? 1}×</b> <span>{x.nombre}</span>{#if x.nota}<small> · {x.nota}</small>{/if}
             {/if}
           </li>
         {:else}
-          <li class="vacio">Inventario vacío.</li>
+          <li class="vacio-texto">Inventario vacío.</li>
         {/each}
       </ul>
       {#if editable}<button class="boton chico" onclick={() => { editar = true; agregarEn('inventario', { nombre: '', cantidad: 1, nota: '' }) }}>Agregar objeto</button>{/if}
@@ -507,17 +512,17 @@
       {@const c = hoja.companero}
       {#if c}
         <div class="companero">
-          <h3 class="titulo">{c.nombre || 'Compañero'}{c.especie ? ` · ${c.especie}` : ''}</h3>
+          <h3>{c.nombre || 'Compañero'}{c.especie ? ` · ${c.especie}` : ''}</h3>
           <div class="defensas">
-            <div class="defensa"><span class="valor titulo">{c.evasion ?? 10}</span><span class="etq">Evasión</span></div>
-            <div class="defensa"><span class="valor titulo">d{c.dano_lados ?? 6}</span><span class="etq">Daño · {ALCANCES[c.alcance] ?? c.alcance ?? 'Cuerpo a cuerpo'}</span></div>
+            <div class="defensa"><span class="valor num">{c.evasion ?? 10}</span><span class="rotulo">Evasión</span></div>
+            <div class="defensa"><span class="valor num">d{c.dano_lados ?? 6}</span><span class="rotulo">Daño · {ALCANCES[c.alcance] ?? c.alcance ?? 'Cuerpo a cuerpo'}</span></div>
           </div>
-          <Casillas nombre="Estrés" marcadas={c.estres ?? 0} maximo={c.estres_max ?? 3} color="#ff8a5c" {editable} onCambiar={(n) => cambiar(['companero', 'estres'], n)} />
+          <Casillas nombre="Estrés" marcadas={c.estres ?? 0} maximo={c.estres_max ?? 3} color="var(--texto)" {editable} onCambiar={(n) => cambiar(['companero', 'estres'], n)} />
           <div class="acciones">
             <button class="boton" onclick={() => tirarCompanero()}>Daño d{c.dano_lados ?? 6}</button>
             <button class="boton critico" onclick={() => tirarCompanero(true)}>Crítico</button>
           </div>
-          <p class="ayuda">Para atacar con tu compañero haces una tirada de Lanzamiento; si aciertas, tira su daño.</p>
+          <p class="nota">Para atacar con tu compañero haces una tirada de Lanzamiento; si aciertas, tira su daño.</p>
           <ul class="experiencias">
             {#each c.experiencias ?? [] as x}<li><span>{x.nombre}</span><b>{conSigno(Number(x.valor)) || '+0'}</b></li>{/each}
           </ul>
@@ -582,7 +587,7 @@
     {:else if pestana === 'notas'}
       {#if editable}
         <textarea class="campo notas" rows="14" value={hoja.notas ?? ''} placeholder="Historia, contactos, pendientes…" onchange={(e) => cambiar(['notas'], e.currentTarget.value)}></textarea>
-        <p class="ayuda">Se guarda al salir del cuadro.</p>
+        <p class="nota">Se guarda al salir del cuadro.</p>
       {:else}
         <div class="texto-largo">{@html md(hoja.notas || 'Sin notas.')}</div>
       {/if}
@@ -591,11 +596,11 @@
 </section>
 
 {#if tirada}
-  <div class="velo arriba" onclick={() => (tirada = null)} role="presentation"></div>
+  <div class="cortina arriba" onclick={() => (tirada = null)} role="presentation"></div>
   <div class="tirada vidrio" role="dialog" aria-label="Tirada de {tirada.etiqueta}">
-    <h3 class="titulo">{tirada.etiqueta} {conSigno(tirada.mod) || '+0'}</h3>
+    <h3>{tirada.etiqueta} {conSigno(tirada.mod) || '+0'}</h3>
     {#if hoja.experiencias?.some((x) => x.nombre)}
-      <p class="ayuda">Experiencias (1 de Esperanza cada una · tienes {pj.esperanza})</p>
+      <p class="nota">Experiencias (1 de Esperanza cada una · tienes {pj.esperanza})</p>
       <div class="chips-exp">
         {#each hoja.experiencias as x, i}
           {#if x.nombre}
@@ -615,8 +620,8 @@
       <input class="campo num" type="number" placeholder="Dif." bind:value={dificultad} aria-label="Dificultad" />
       <label class="reaccion"><input type="checkbox" bind:checked={tirada.reaccion} /> Reacción</label>
     </div>
-    <button class="tirar-ya" onclick={confirmarTirada}>
-      <span class="titulo">Tirar</span>
+    <button class="boton solido tirar-ya" onclick={confirmarTirada}>
+      <span class="tirar-titulo"><Icono nombre="dado" tam={22} />Tirar</span>
       <small>Dualidad {conSigno(tirada.mod + bonoExp) || '+0'}{ventaja === 'ventaja' ? ' + d6' : ventaja === 'desventaja' ? ' − d6' : ''}{costoExp ? ` · gasta ${costoExp} de Esperanza` : ''}</small>
     </button>
   </div>
@@ -656,152 +661,151 @@
 {/if}
 
 <style>
-  .velo { position: fixed; inset: 0; background: rgba(8, 4, 18, 0.45); z-index: 8; }
-  .velo.arriba { z-index: 22; background: rgba(8, 4, 18, 0.4); }
+  .velo-hoja { z-index: 8; }
+  .cortina.arriba { z-index: 22; }
   .hoja {
     position: fixed; z-index: 9;
-    top: 0; bottom: 0; left: 0;
-    width: min(100%, 560px);
+    top: 12px; bottom: 12px; left: 12px;
+    width: min(560px, calc(100vw - 24px));
     display: flex; flex-direction: column;
-    border-radius: 0 var(--radio-panel) var(--radio-panel) 0;
-    background: rgba(22, 15, 38, 0.96);
-    border-left: 4px solid var(--pj);
-    animation: entrar 0.25s ease-out;
+    border-radius: var(--radio-panel);
+    background: var(--superficie-firme);
+    box-shadow: var(--sombra-alta);
+    overflow: hidden;
+    animation: entrar 0.25s var(--suave);
   }
   @keyframes entrar { from { transform: translateX(-24px); opacity: 0; } }
-  .cabecera { display: flex; gap: 0.6rem; padding: calc(0.9rem + env(safe-area-inset-top, 0px)) 1rem 0.4rem; }
-  .identidad { flex: 1; min-width: 0; }
-  h2 { margin: 0; font-size: 1.7rem; line-height: 1.1; }
-  .linea { margin: 0.2rem 0 0; font-size: 0.86rem; font-weight: 600; }
-  .linea.suave { color: var(--pergamino-suave); font-weight: 500; }
+  .cabecera { display: flex; gap: 0.6rem; padding: 1rem 0.75rem 0.6rem 1.1rem; }
+  .identidad { flex: 1; min-width: 0; display: grid; gap: 0.3rem; justify-items: start; }
+  .placa { margin: 0; font-size: 1.5rem; }
+  .linea { margin: 0; font-size: 0.95rem; font-weight: 500; }
+  .linea b { font-weight: 900; }
+  .linea.suave { color: var(--texto-suave); font-size: 0.85rem; }
   .botones { display: flex; gap: 0.3rem; align-items: flex-start; }
-  .chico { padding: 0.35rem 0.75rem; font-size: 0.85rem; }
-  .prendido { background: var(--pergamino); color: var(--tinta); }
-  .cerrar { border: 0; background: none; font-size: 1.15rem; padding: 0.25rem 0.5rem; }
-  .pestanas { display: flex; gap: 0.2rem; overflow-x: auto; padding: 0.3rem 0.8rem 0.5rem; scrollbar-width: none; border-bottom: 1px solid var(--linea); }
-  .pestanas button { flex: none; border: 0; background: none; color: var(--pergamino-suave); font-weight: 700; padding: 0.4rem 0.7rem; border-radius: 999px; font-size: 0.9rem; }
-  .pestanas button.activa { background: color-mix(in srgb, var(--pj) 35%, transparent); color: var(--pergamino); }
-  .avisos { margin: 0.5rem 1rem 0; padding: 0.5rem 0.8rem 0.5rem 1.6rem; border-radius: 12px; background: rgba(240, 189, 85, 0.12); border: 1px solid rgba(240, 189, 85, 0.35); font-size: 0.84rem; }
-  .error { margin: 0.4rem 1rem 0; color: #ffb3bd; font-size: 0.88rem; }
-  .cuerpo { overflow-y: auto; padding: 0.7rem 1rem calc(1.4rem + var(--seguro-abajo)); display: grid; gap: 0.7rem; align-content: start; overscroll-behavior: contain; }
-  .seccion { margin: 0.5rem 0 0; font-size: 1rem; font-family: var(--fuente-titulo); display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
-  .seccion small { font-family: var(--fuente); font-size: 0.75rem; color: var(--pergamino-suave); font-weight: 500; }
-  .ayuda { margin: 0; color: var(--pergamino-suave); font-size: 0.82rem; }
-  .vacio { margin: 0; color: var(--pergamino-suave); font-size: 0.9rem; }
+  .chico { padding: 0.35rem 0.8rem; font-size: 0.9rem; }
+  .pestanas { padding: 0 0.5rem; }
+  .pestanas > button { padding-inline: 0.6rem; }
+  .avisos { margin: 0.6rem 1rem 0; padding: 0.55rem 0.8rem 0.55rem 1.6rem; border-radius: var(--radio-control); background: var(--critico-suave); border: 1px solid color-mix(in srgb, var(--critico) 50%, transparent); color: var(--critico-hondo); font-size: 0.9rem; font-weight: 700; }
+  .cuerpo-aviso { margin: 0.5rem 1rem 0; }
+  .cuerpo { flex: 1; min-height: 0; overflow-y: auto; padding: 0.9rem 1rem calc(1.4rem + var(--seguro-abajo)); display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; align-content: start; overscroll-behavior: contain; }
+  .seccion { margin: 0.6rem 0 0; font-size: 1.1rem; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
+  .seccion small { font-size: 0.85rem; color: var(--texto-suave); font-weight: 500; }
+  .nota { margin: 0; color: var(--texto-suave); font-size: 0.85rem; }
 
-  .datos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-  .datos label, .eleccion { display: grid; gap: 0.2rem; font-size: 0.8rem; color: var(--pergamino-suave); }
+  .datos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; padding: 0.75rem; border-radius: var(--radio-control); background: var(--hundido); }
+  .datos label, .eleccion { display: grid; gap: 0.2rem; font-size: 0.85rem; font-weight: 700; color: var(--texto-suave); }
   .num { width: 4.5rem; text-align: center; padding: 0.45rem; }
-  .mini-campos { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; font-size: 0.8rem; color: var(--pergamino-suave); }
-  .mini-campos label { display: flex; gap: 0.3rem; align-items: center; }
+  .mini-campos { display: flex; gap: 0.7rem; flex-wrap: wrap; align-items: center; font-size: 0.85rem; font-weight: 700; color: var(--texto-suave); }
+  .mini-campos label { display: flex; gap: 0.35rem; align-items: center; }
 
-  .defensas { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: stretch; }
+  .defensas { display: flex; gap: 0.7rem; flex-wrap: wrap; align-items: stretch; }
   .defensa {
-    display: grid; justify-items: center; align-content: center; padding: 0.4rem 0.9rem; min-width: 5.5rem;
-    border-radius: 14px 14px 28px 28px; background: rgba(143, 183, 217, 0.12); border: 1px solid rgba(143, 183, 217, 0.4);
+    display: grid; justify-items: center; align-content: center; gap: 0.1rem; padding: 0.55rem 1rem; min-width: 6rem;
+    border-radius: var(--radio-control); background: rgb(255 255 255 / 0.6); border: 1px solid var(--filete);
   }
-  .defensa .valor { font-size: 2rem; line-height: 1; text-shadow: none; }
-  .defensa .etq { font-size: 0.75rem; font-weight: 700; color: var(--pergamino-suave); }
-  .umbrales { flex: 1; min-width: 15rem; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; border-radius: 14px; overflow: hidden; border: 1px solid var(--linea); }
-  .u { display: grid; justify-items: center; font-size: 0.75rem; padding: 0.45rem 0.2rem; font-weight: 700; }
-  .u b { font-size: 0.7rem; opacity: 0.8; }
-  .u.menor { background: rgba(127, 214, 168, 0.15); }
-  .u.mayor { background: rgba(240, 189, 85, 0.17); }
-  .u.grave { background: rgba(217, 74, 92, 0.22); }
-  .corte { font-size: 1.35rem; padding: 0 0.45rem; text-shadow: none; }
+  .defensa .valor { font-size: 2.4rem; font-weight: 900; line-height: 1; width: auto; padding: 0; }
+  .umbrales-caja { flex: 1; min-width: 15rem; display: grid; gap: 0.3rem; align-content: center; }
+  .umbrales { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; border-radius: var(--radio-control); overflow: hidden; border: 1px solid var(--filete); background: rgb(255 255 255 / 0.5); }
+  .u { display: grid; justify-items: center; align-content: center; font-size: 0.85rem; padding: 0.5rem 0.2rem; font-weight: 700; }
+  .u b { font-size: 0.8rem; font-weight: 900; }
+  .u.menor { background: var(--exito-suave); color: var(--exito-hondo); }
+  .u.mayor { background: var(--critico-suave); color: var(--critico-hondo); }
+  .u.grave { background: var(--peligro-suave); color: var(--peligro-hondo); }
+  .corte { display: grid; justify-items: center; align-content: center; font-size: 1.5rem; font-weight: 900; padding: 0 0.6rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .corte small { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--texto-suave); }
 
-  .estado { margin: 0.5rem 1rem 0; display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; padding: 0.5rem 0.75rem; border-radius: 12px; font-size: 0.84rem; line-height: 1.4; border: 1px solid; }
+  .estado { margin: 0.5rem 1rem 0; display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; padding: 0.6rem 0.8rem; border-radius: var(--radio-control); font-size: 0.9rem; line-height: 1.4; border: 1px solid; }
   .estado span { flex: 1 1 14rem; }
-  .estado.cayendo { background: rgba(217, 74, 92, 0.2); border-color: rgba(217, 74, 92, 0.6); }
-  .estado.inconsciente { background: rgba(143, 183, 217, 0.16); border-color: rgba(143, 183, 217, 0.5); }
-  .estado.gloria { background: rgba(240, 189, 85, 0.16); border-color: rgba(240, 189, 85, 0.55); }
-  .estado.muerto { background: rgba(167, 124, 232, 0.18); border-color: rgba(167, 124, 232, 0.55); }
-  .ayudas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
-  .ayuda { display: flex; gap: 0.35rem; align-items: center; justify-content: center; padding: 0.55rem 0.4rem; font-size: 0.88rem; line-height: 1.15; text-align: center; }
-  .ayuda span { font-size: 1rem; }
-  .ayuda.dano { border-color: rgba(217, 74, 92, 0.55); }
+  .estado.cayendo { background: var(--peligro-suave); border-color: color-mix(in srgb, var(--peligro) 55%, transparent); color: var(--peligro-hondo); }
+  .estado.inconsciente { background: var(--esperanza-suave); border-color: color-mix(in srgb, var(--esperanza) 55%, transparent); color: var(--esperanza-hondo); }
+  .estado.gloria { background: var(--critico-suave); border-color: color-mix(in srgb, var(--critico) 60%, transparent); color: var(--critico-hondo); }
+  .estado.muerto { background: var(--miedo-suave); border-color: color-mix(in srgb, var(--miedo) 55%, transparent); color: var(--miedo-hondo); }
+  .ayudas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .accion { flex-direction: column; gap: 0.25rem; min-height: 4rem; padding: 0.55rem 0.4rem; font-size: 0.9rem; line-height: 1.15; text-align: center; }
+  .accion.dano { color: var(--peligro-hondo); border-color: color-mix(in srgb, var(--peligro) 40%, transparent); background: var(--peligro-suave); }
 
-  .marcadores { display: grid; gap: 0.55rem; padding: 0.7rem; border-radius: 14px; background: rgba(255, 245, 230, 0.04); }
+  .marcadores { display: grid; gap: 0.85rem; padding: 0.9rem; border-radius: var(--radio-control); background: rgb(255 255 255 / 0.55); border: 1px solid var(--filete); }
 
-  .rasgos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
-  .rasgo { display: grid; gap: 0.25rem; }
+  .rasgos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .rasgo { display: grid; gap: 0.3rem; }
   .tirar-rasgo {
-    display: grid; justify-items: center; gap: 0.05rem; padding: 0.5rem 0.3rem;
-    border-radius: 14px; border: 1px solid var(--linea); background: rgba(255, 245, 230, 0.06);
-    transition: background 0.15s, transform 0.1s;
+    display: grid; justify-items: center; gap: 0.05rem; padding: 0.55rem 0.3rem 0.45rem; min-height: 5rem;
+    border-radius: var(--radio-control); border: 1px solid var(--filete-fuerte); background: rgb(255 255 255 / 0.7);
+    color: var(--texto); box-shadow: 0 1px 2px rgb(18 20 50 / 0.1);
+    transition: background 0.15s, transform 0.1s, border-color 0.15s;
   }
-  .tirar-rasgo:hover { background: color-mix(in srgb, var(--pj) 25%, transparent); }
+  .tirar-rasgo:hover { background: var(--esperanza-suave); border-color: var(--esperanza-hondo); }
   .tirar-rasgo:active { transform: scale(0.97); }
-  .rasgo.mejorado .tirar-rasgo { border-color: var(--esperanza); }
-  .mod { font-size: 1.5rem; line-height: 1.1; text-shadow: none; }
-  .nom { font-size: 0.78rem; font-weight: 700; }
-  .pasos { display: flex; justify-content: center; gap: 0.2rem; }
-  .pasos button { border: 1px solid var(--linea); background: none; border-radius: 6px; width: 1.7rem; height: 1.6rem; padding: 0; font-weight: 800; }
-  .pasos button.on { background: var(--esperanza); color: var(--tinta); }
+  .rasgo.mejorado .tirar-rasgo { border-color: var(--esperanza-hondo); box-shadow: inset 0 0 0 1px var(--esperanza-hondo); }
+  .mod { font-size: 1.6rem; font-weight: 900; line-height: 1.1; }
+  .nom { font-size: 0.85rem; font-weight: 700; }
+  .tira { display: flex; align-items: center; gap: 0.25rem; font-size: 0.75rem; font-weight: 700; color: var(--esperanza-hondo); }
+  .pasos { display: flex; justify-content: center; gap: 0.25rem; }
+  .pasos button { display: grid; place-items: center; border: 1px solid var(--filete); background: var(--hundido); border-radius: var(--radio-chico); width: 2.5rem; height: 2.5rem; padding: 0; color: var(--texto); }
+  .pasos button:hover { background: var(--hundido-2); }
+  .pasos button.on { background: var(--esperanza-hondo); border-color: var(--esperanza-hondo); color: var(--sobre-color); }
   .lanzamiento { justify-self: start; }
 
-  .experiencias, .inventario { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
-  .experiencias li, .inventario li { display: flex; gap: 0.45rem; align-items: center; padding: 0.4rem 0.6rem; border-radius: 10px; background: rgba(255, 245, 230, 0.05); }
+  .experiencias, .inventario { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+  .experiencias li, .inventario li { display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem 0.75rem; min-height: 2.75rem; border-radius: var(--radio-control); background: rgb(255 255 255 / 0.55); border: 1px solid var(--filete); }
   .experiencias li span { flex: 1; }
+  .experiencias li b { font-variant-numeric: tabular-nums; color: var(--esperanza-hondo); font-weight: 900; }
   .experiencias li .campo:first-child, .inventario li .campo:nth-child(2) { flex: 1; }
-  .quitar { border: 0; background: none; color: var(--pergamino-suave); padding: 0.2rem 0.4rem; }
+  .experiencias li:has(.campo), .inventario li:has(.campo) { padding: 0.3rem 0.3rem 0.3rem 0.5rem; }
 
-  .arma { border-radius: 14px; border: 1px solid var(--linea); padding: 0.65rem 0.8rem; display: grid; gap: 0.35rem; background: rgba(255, 245, 230, 0.04); }
+  .arma { border-radius: var(--radio-control); border: 1px solid var(--filete); padding: 0.75rem 0.9rem; display: grid; gap: 0.45rem; background: rgb(255 255 255 / 0.6); }
   .arma header { display: grid; }
-  .arma strong { font-size: 1.1rem; }
-  .arma small { color: var(--pergamino-suave); font-size: 0.78rem; }
-  .rasgo-arma { margin: 0; font-size: 0.85rem; }
-  .acciones { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
-  .critico { border-color: rgba(217, 74, 92, 0.6); }
-  .cartas { display: grid; gap: 0.5rem; }
-  .oro { display: flex; gap: 0.6rem; }
-  .moneda { display: grid; gap: 0.2rem; font-size: 0.8rem; color: var(--pergamino-suave); }
-  .companero { display: grid; gap: 0.6rem; }
+  .arma strong { font-size: 1.1rem; font-weight: 900; }
+  .arma small { color: var(--texto-suave); font-size: 0.85rem; }
+  .rasgo-arma { margin: 0; font-size: 0.9rem; }
+  .acciones { display: flex; gap: 0.45rem; flex-wrap: wrap; align-items: center; }
+  .critico { color: var(--critico-hondo); border-color: color-mix(in srgb, var(--critico) 60%, transparent); background: var(--critico-suave); }
+  .cartas { display: grid; gap: 0.55rem; }
+  .oro { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+  .moneda { display: grid; gap: 0.2rem; }
+  .moneda span { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--texto-suave); }
+  .companero { display: grid; gap: 0.7rem; }
   .companero h3 { margin: 0; font-size: 1.3rem; }
-  .texto-largo { font-size: 0.9rem; line-height: 1.5; display: grid; gap: 0.3rem; }
+  .texto-largo { font-size: 0.95rem; line-height: 1.5; display: grid; gap: 0.3rem; }
   .texto-largo :global(p) { margin: 0; }
   .texto-largo :global(ul) { margin: 0; padding-left: 1.1rem; }
-  .texto-largo :global(table) { border-collapse: collapse; font-size: 0.8rem; }
-  .texto-largo :global(td), .texto-largo :global(th) { border: 1px solid var(--linea); padding: 0.2rem 0.35rem; }
+  .texto-largo :global(table) { border-collapse: collapse; font-size: 0.85rem; }
+  .texto-largo :global(td), .texto-largo :global(th) { border: 1px solid var(--filete); padding: 0.2rem 0.35rem; }
   .notas { resize: vertical; line-height: 1.5; }
-  .opcion { display: grid; text-align: left; gap: 0.1rem; width: 100%; border: 1px solid var(--linea); background: rgba(255, 245, 230, 0.05); border-radius: 12px; padding: 0.55rem 0.75rem; }
-  .opcion:hover { background: rgba(255, 245, 230, 0.12); }
-  .opcion small { color: var(--pergamino-suave); font-size: 0.78rem; }
+  .opcion { display: grid; text-align: left; gap: 0.1rem; width: 100%; border: 1px solid var(--filete); background: rgb(255 255 255 / 0.6); border-radius: var(--radio-control); padding: 0.65rem 0.85rem; color: var(--texto); }
+  .opcion:hover { background: var(--hundido-2); }
+  .opcion small { color: var(--texto-suave); font-size: 0.85rem; }
 
   .tirada {
     position: fixed; z-index: 23; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: min(440px, calc(100vw - 1.2rem));
-    border-radius: var(--radio-panel); padding: 1rem; display: grid; gap: 0.6rem;
-    background: rgba(22, 15, 38, 0.97);
+    width: min(440px, calc(100vw - 1.2rem)); max-height: calc(100dvh - 1.2rem); overflow-y: auto;
+    border-radius: var(--radio-panel); padding: 1.1rem; display: grid; gap: 0.75rem;
+    background: var(--superficie-firme); box-shadow: var(--sombra-alta);
   }
-  .tirada h3 { margin: 0; font-size: 1.35rem; }
-  .chips-exp { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-  .chip { border: 1px solid var(--linea); background: none; border-radius: 999px; padding: 0.35rem 0.75rem; font-weight: 700; font-size: 0.85rem; }
-  .chip.activo { background: var(--esperanza); color: var(--tinta); border-color: var(--esperanza); }
-  .fila-tirada { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-  .segmentos { display: flex; gap: 0.3rem; }
-  .segmentos button { border: 1px solid var(--linea); background: none; border-radius: 999px; padding: 0.35rem 0.75rem; font-weight: 700; font-size: 0.85rem; }
-  .segmentos .ven { background: #2f8f7a; border-color: #6fd3b8; }
-  .segmentos .des { background: #a8323e; border-color: #f2a3ab; }
-  .reaccion { display: flex; gap: 0.3rem; align-items: center; font-size: 0.85rem; }
-  .tirar-ya {
-    border: 0; border-radius: 16px; padding: 0.55rem 1rem;
-    background: linear-gradient(135deg, #f6cf72, #e09a35 55%, #b9641c); color: #2a1606;
-    display: grid; justify-items: center;
-  }
-  .tirar-ya .titulo { font-size: 1.4rem; text-shadow: none; }
-  .tirar-ya small { font-weight: 700; font-size: 0.78rem; }
+  .tirada h3 { margin: 0; font-size: 1.5rem; }
+  .chips-exp { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--filete); background: var(--hundido); border-radius: 999px; padding: 0.4rem 0.85rem; min-height: 2.5rem; font-weight: 700; font-size: 0.9rem; color: var(--texto); }
+  .chip:hover { background: var(--hundido-2); }
+  .chip.activo { background: var(--esperanza-hondo); color: var(--sobre-color); border-color: var(--esperanza-hondo); }
+  .fila-tirada { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+  .fila-tirada .campo { width: 5rem; text-align: center; }
+  .segmentos { display: flex; gap: 0.35rem; }
+  .segmentos button { border: 1px solid var(--filete); background: var(--hundido); border-radius: 999px; padding: 0.4rem 0.85rem; min-height: 2.5rem; font-weight: 700; font-size: 0.9rem; color: var(--texto); }
+  .segmentos button:hover { background: var(--hundido-2); }
+  .segmentos .ven { background: var(--exito-hondo); border-color: var(--exito-hondo); color: var(--sobre-color); }
+  .segmentos .des { background: var(--peligro-hondo); border-color: var(--peligro-hondo); color: var(--sobre-color); }
+  .reaccion { display: flex; gap: 0.35rem; align-items: center; font-size: 0.9rem; font-weight: 700; }
+  .tirar-ya { flex-direction: column; gap: 0.1rem; min-height: 3.6rem; padding: 0.6rem 1rem; }
+  .tirar-titulo { display: flex; align-items: center; gap: 0.4rem; font-size: 1.3rem; font-weight: 900; }
+  .tirar-ya small { font-weight: 700; font-size: 0.85rem; opacity: 0.9; }
 
   @media (min-width: 1100px) {
-    .velo:not(.arriba) { display: none; }
+    .velo-hoja { display: none; }
   }
-  @media (max-width: 600px) {
-    .hoja { width: 100%; border-radius: 0; border-left: 0; border-top: 4px solid var(--pj); background: rgb(22, 15, 38); }
-    .pestanas { flex: none; }
-    .rasgos { grid-template-columns: repeat(3, 1fr); }
-    .datos { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 480px) {
-    .ayuda { flex-direction: column; gap: 0.1rem; font-size: 0.82rem; padding: 0.45rem 0.3rem; }
+  @media (max-width: 759px) {
+    .hoja { inset: 0; width: 100%; border-radius: 0; border: 0; box-shadow: none; background: var(--superficie-firme); }
+    .cabecera { padding-top: calc(0.9rem + var(--seguro-arriba)); }
+    .datos { grid-template-columns: minmax(0, 1fr); }
+    .ayudas { gap: 0.4rem; }
   }
 </style>

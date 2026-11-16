@@ -64,8 +64,18 @@ Quedan (para decidir o revisar):
 - [ ] Neri: ¿las cuentas «en bucle» se reinician solas al llegar a 0? Hoy el DJ usa ↺. Tampoco se automatiza «Esbirro (X)».
 - [ ] Neri: Esperanza y Miedo cambian al empezar la animación (se ve el resultado antes de que caigan los dados). ¿Esperar a que caigan?
 - [ ] Neri: cerrar sesión en un dispositivo cierra todas (scope global). ¿Solo el dispositivo actual?
-- [ ] Celular horizontal (844×390): la tarjeta del PJ, el resultado y el lanzador se enciman.
+- [x] Celular horizontal (844×390): la tarjeta del PJ, el resultado y el lanzador se enciman. Resuelto en el rediseño (lanzador a la derecha).
 - [ ] Rasgos de armadura (Fortificada, Física/Mágica) no se aplican en Recibir daño. Cambiar de armadura conserva las casillas marcadas aunque sobren.
 - [ ] Daño del compañero siempre tira 1 dado (¿escala con Competencia?).
 - [ ] La lista de cartas al agregar muestra las que ya tienes (elegirlas no hace nada).
 - [ ] Hoja a 1440 con compañero: la pestaña «Notas» queda cortada.
+
+## Rediseño «novela visual al atardecer» (rama `rediseno/impecable`, 15/11/2026)
+
+Hecho: identidad nueva (vidrio claro translúcido tipo One UI, Zen Maru Gothic, Esperanza azul cielo, Miedo rosa ocaso, también en los dados), la mesa como retícula sin nada encimado (escritorio, ventana partida, celular y celular acostado), la tirada como línea de diálogo con la placa del PJ, íconos propios en vez de emojis, y todas las pantallas restilizadas (hoja y sus diálogos, panel del DJ, lore, ajustes, personalización con selector de letra, entrada y campañas). Detalle del sistema en `DESIGN.md`.
+
+- [ ] Neri: revisar la rama en su compu (`npm run dev`) y decir si se publica (push a `main`).
+- [ ] Juntar con la rama de Ayudar a un Aliado: en `Lanzador.svelte` y `Resultado.svelte` solo cambió el marcado y el estilo; el contador «Ayudan» y los d6 de los ayudantes tienen que tomar las clases nuevas (`.boton-paso`, `.dado.ventaja`).
+- [ ] La lista de Campañas no se pudo ver en capturas (necesita sesión real): revisarla al entrar con Discord.
+- [ ] `src/lib/tirador.test.mjs` falla solo en Windows (importa una ruta `C:\…` sin `pathToFileURL`); en GitHub Actions pasa. Arreglo de una línea cuando se toque ese archivo.
+- [ ] Mejora futura (sesión aparte): tablero compartido del DJ para mostrar mapas e imágenes, al estilo Roll20.

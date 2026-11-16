@@ -61,18 +61,20 @@ test('oscurecer y contraste bajan el brillo efectivo', () => {
   assert.ok(luminanciaEfectiva(0.8, { contraste: 50, oscurecer: 0 }) < 0.8)
 })
 
-test('legibilidad: un fondo claro refuerza vidrio, velo y sombra; uno oscuro no', () => {
+test('legibilidad: el vidrio claro se hace más blanco sobre un fondo oscuro', () => {
   const oscuro = variablesLegibilidad(0.12, fondoInicial())
   const claro = variablesLegibilidad(0.95, fondoInicial())
   assert.equal(oscuro.nivel, 'oscuro')
-  assert.equal(oscuro.vars['--velo-auto'], '0')
   assert.equal(claro.nivel, 'claro')
-  assert.ok(Number(claro.vars['--vidrio-alfa']) > Number(oscuro.vars['--vidrio-alfa']) + 0.2)
-  assert.ok(Number(claro.vars['--velo-auto']) > 0.25)
-  assert.match(claro.vars['--boton-fondo'], /^rgba\(24, 17, 42/)
-  // Con vidrio al 50 % y fondo oscuro queda igual que antes (0.58, 18px)
-  assert.equal(oscuro.vars['--vidrio-alfa'], '0.58')
-  assert.equal(oscuro.vars['--vidrio-desenfoque'], '18px')
+  assert.ok(Number(oscuro.vars['--vidrio-alfa']) > Number(claro.vars['--vidrio-alfa']) + 0.15)
+  // Con vidrio al 50 % y fondo claro: 0.68 de blanco y 26 px de desenfoque
+  assert.equal(claro.vars['--vidrio-alfa'], '0.68')
+  assert.equal(claro.vars['--vidrio-desenfoque'], '26px')
+  // Nunca transparente del todo ni opaco del todo
+  assert.ok(Number(variablesLegibilidad(1, { vidrio: 0 }).vars['--vidrio-alfa']) >= 0.5)
+  assert.ok(Number(variablesLegibilidad(0, { vidrio: 100 }).vars['--vidrio-alfa']) <= 0.95)
+  // La sombra del texto sobre el paisaje se refuerza en fondos claros
+  assert.notEqual(claro.vars['--sombra-texto'], oscuro.vars['--sombra-texto'])
 })
 
 test('modos de ajuste', () => {

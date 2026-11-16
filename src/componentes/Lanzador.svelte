@@ -84,21 +84,26 @@
 </script>
 
 <div class="lanzador vidrio">
-  <div class="modos" role="tablist" aria-label="Tipo de tirada">
+  <div class="pestanas modos" role="tablist" aria-label="Tipo de tirada">
     {#each modos as m (m.id)}
       <button role="tab" aria-selected={modo === m.id} class:activo={modo === m.id} onclick={() => elegirModo(m.id)} title={m.ayuda}>
         {m.nombre}
       </button>
     {/each}
   </div>
+  {#each modos as m (m.id)}{#if m.id === modo}<p class="ayuda">{m.ayuda}</p>{/if}{/each}
 
   <div class="controles">
     {#if dual || modo === 'dj'}
       <div class="fila">
-        <div class="paso" aria-label="Modificador">
-          <button class="boton chico" onclick={() => (modificador = Math.max(-10, modificador - 1))} aria-label="Restar 1">−</button>
-          <output>{modificador > 0 ? '+' : ''}{modificador}</output>
-          <button class="boton chico" onclick={() => (modificador = Math.min(20, modificador + 1))} aria-label="Sumar 1">+</button>
+        <div class="paso" role="group" aria-label="Modificador">
+          <button class="boton-paso" onclick={() => (modificador = Math.max(-10, modificador - 1))} aria-label="Restar 1">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5.5 12h13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg>
+          </button>
+          <output aria-label="Modificador">{modificador > 0 ? '+' : ''}{modificador}</output>
+          <button class="boton-paso" onclick={() => (modificador = Math.min(20, modificador + 1))} aria-label="Sumar 1">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5.5v13M5.5 12h13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg>
+          </button>
         </div>
         <div class="segmentos" role="radiogroup" aria-label="Ventaja">
           <button role="radio" aria-checked={ventaja === 'ventaja'} class:ven={ventaja === 'ventaja'} onclick={() => (ventaja = ventaja === 'ventaja' ? 'ninguna' : 'ventaja')}>Ventaja</button>
@@ -112,10 +117,10 @@
         <label class="sr-only" for="formula">Fórmula</label>
         <input id="formula" class="campo formula" placeholder="p. ej. 2d8+3" bind:value={formula} onkeydown={(e) => e.key === 'Enter' && tirar()} />
         {#if modo === 'dano'}
-          <button class="boton chico interruptor" class:prendido={critico} aria-pressed={critico} onclick={() => (critico = !critico)}>Crítico</button>
+          <button class="boton interruptor" class:prendido={critico} aria-pressed={critico} onclick={() => (critico = !critico)}>Crítico</button>
         {/if}
       </div>
-      <div class="chips">
+      <div class="chips" role="group" aria-label="Agregar dados">
         {#each [4, 6, 8, 10, 12, 20] as l}
           <button class="chip" onclick={() => agregarDado(l)}>d{l}</button>
         {/each}
@@ -126,18 +131,21 @@
     {#if mas}
       <div class="fila extras">
         <input class="campo" type="number" inputmode="numeric" placeholder="Dificultad" bind:value={dificultad} aria-label="Dificultad" />
-        <input class="campo" placeholder="¿Qué intentas?" maxlength="60" bind:value={etiqueta} aria-label="Descripción de la tirada" />
+        <input class="campo nota" placeholder="¿Qué intentas?" maxlength="60" bind:value={etiqueta} aria-label="Descripción de la tirada" />
         {#if esDJ}
-          <button class="boton chico interruptor" class:prendido={oculta} aria-pressed={oculta} onclick={() => (oculta = !oculta)}>Oculta</button>
+          <button class="boton interruptor" class:prendido={oculta} aria-pressed={oculta} onclick={() => (oculta = !oculta)}>Oculta</button>
         {/if}
       </div>
     {/if}
   </div>
 
   <div class="accion">
-    <button class="mas" onclick={() => (mas = !mas)} aria-expanded={mas}>{mas ? 'Menos' : 'Dificultad y nota'}</button>
+    <button class="mas" onclick={() => (mas = !mas)} aria-expanded={mas}>
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d={mas ? 'M6.5 14.5 12 9l5.5 5.5' : 'M6.5 9.5 12 15l5.5-5.5'} fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      {mas ? 'Menos' : 'Dificultad y nota'}
+    </button>
     <button class="tirar" onclick={tirar} disabled={ocupado}>
-      <span class="titulo">{ocupado ? 'Rodando…' : 'Tirar'}</span>
+      <span class="palabra">{ocupado ? 'Rodando…' : 'Tirar'}</span>
       <small>{vista}</small>
     </button>
   </div>
@@ -146,95 +154,140 @@
 
 <style>
   .lanzador {
-    border-radius: var(--radio-panel) var(--radio-panel) 0 0;
-    padding: 0.7rem 0.8rem calc(0.8rem + var(--seguro-abajo));
     display: grid;
     gap: 0.6rem;
-    border-bottom: 0;
+    padding: 0.3rem 0.9rem 0.9rem;
+    border-radius: var(--radio-panel);
   }
-  @media (min-width: 760px) {
-    .lanzador { border-radius: var(--radio-panel); border-bottom: 1px solid var(--linea); padding-bottom: 0.9rem; }
+  .modos { margin: 0 -0.35rem; }
+  .modos button { flex: 1 0 auto; }
+  .ayuda { margin: -0.15rem 0 0; font-size: 0.82rem; color: var(--texto-suave); }
+  .controles { display: grid; gap: 0.55rem; }
+  .controles:empty { display: none; }
+  .fila { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+
+  .paso { display: flex; align-items: center; gap: 0.25rem; }
+  .boton-paso {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 1px solid var(--filete);
+    border-radius: 12px;
+    background: var(--hundido);
+    color: var(--texto);
+    transition: background 0.15s, transform 0.1s;
   }
-  .modos {
+  .boton-paso:hover { background: var(--hundido-2); }
+  .boton-paso:active { transform: scale(0.94); }
+  .paso output {
+    min-width: 2.8ch;
+    text-align: center;
+    font-size: 1.45rem;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .segmentos {
     display: flex;
-    gap: 0.25rem;
-    overflow-x: auto;
-    scrollbar-width: none;
+    margin-left: auto;
+    border: 1px solid var(--filete);
+    border-radius: 12px;
+    background: var(--hundido);
+    overflow: hidden;
   }
-  .modos button {
-    flex: 1 0 auto;
+  .segmentos button {
+    min-height: 2.5rem;
+    padding: 0.4rem 0.95rem;
     border: 0;
     background: none;
-    padding: 0.45rem 0.7rem;
-    border-radius: 999px;
-    color: var(--pergamino-suave);
     font-weight: 700;
     font-size: 0.92rem;
+    color: var(--texto);
+    transition: background 0.15s, color 0.15s;
   }
-  .modos button.activo { background: var(--pergamino); color: var(--tinta); }
-  .controles { display: grid; gap: 0.5rem; }
-  .fila { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-  .paso { display: flex; align-items: center; gap: 0.35rem; }
-  .paso output {
-    min-width: 2.6ch;
-    text-align: center;
-    font-family: var(--fuente-titulo);
-    font-size: 1.35rem;
-    font-weight: 900;
-  }
-  .chico { padding: 0.4rem 0.75rem; min-width: 2.4rem; }
-  .segmentos { display: flex; gap: 0.3rem; margin-left: auto; }
-  .segmentos button {
-    border: 1px solid var(--linea);
-    background: none;
-    border-radius: 999px;
-    padding: 0.4rem 0.8rem;
-    font-weight: 700;
-    font-size: 0.88rem;
-  }
-  .segmentos .ven { background: #2f8f7a; border-color: #6fd3b8; }
-  .segmentos .des { background: #a8323e; border-color: #f2a3ab; }
-  .formula { flex: 1; min-width: 9rem; font-weight: 700; letter-spacing: 0.03em; }
-  .interruptor.prendido { background: var(--sangre); border-color: #ffb3bd; }
+  .segmentos button + button { border-left: 1px solid var(--filete); }
+  .segmentos button:hover { background: var(--hundido-2); }
+  .segmentos .ven { background: var(--exito); color: var(--sobre-color); }
+  .segmentos .des { background: var(--peligro); color: var(--sobre-color); }
+  .segmentos .ven:hover { background: var(--exito-hondo); }
+  .segmentos .des:hover { background: var(--peligro-hondo); }
+
+  .formula { flex: 1; min-width: 9rem; font-weight: 700; letter-spacing: 0.03em; font-variant-numeric: tabular-nums; }
+  .interruptor.prendido { background: var(--peligro); border-color: var(--peligro); color: var(--sobre-color); }
   .chips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
   .chip {
-    border: 1px solid var(--linea);
-    background: rgba(255, 245, 230, 0.06);
-    border-radius: 8px;
-    padding: 0.3rem 0.6rem;
-    font-weight: 800;
-    font-size: 0.88rem;
+    min-width: 2.75rem;
+    min-height: 2.25rem;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--filete);
+    border-radius: 10px;
+    background: var(--hundido);
+    font-weight: 900;
+    font-size: 0.9rem;
+    transition: background 0.15s;
   }
-  .chip.borrar { color: var(--pergamino-suave); font-weight: 600; }
+  .chip:hover { background: var(--hundido-2); }
+  .chip.borrar { margin-left: auto; font-weight: 700; color: var(--texto-suave); background: none; border-color: transparent; }
   .extras .campo { flex: 1; min-width: 7rem; }
-  .accion { display: flex; gap: 0.6rem; align-items: stretch; }
+  .extras .nota { flex: 2; }
+
+  .accion { display: flex; gap: 0.5rem; align-items: center; }
   .mas {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    max-width: 8.5rem;
+    padding: 0.4rem 0.35rem;
     border: 0;
+    border-radius: 10px;
     background: none;
-    color: var(--pergamino-suave);
-    font-size: 0.82rem;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    padding: 0 0.2rem;
-    max-width: 6.5rem;
+    color: var(--texto-suave);
+    font-weight: 700;
+    font-size: 0.85rem;
+    line-height: 1.2;
     text-align: left;
   }
+  .mas:hover { color: var(--texto); background: var(--hundido); }
+  /* El único plato sólido de la mesa */
   .tirar {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3.5rem;
+    padding: 0.55rem 1.2rem;
     border: 0;
     border-radius: 16px;
-    padding: 0.55rem 1rem 0.6rem;
-    background: linear-gradient(135deg, #f6cf72, #e09a35 55%, #b9641c);
-    color: #2a1606;
-    box-shadow: 0 8px 24px -8px rgba(240, 160, 60, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    display: grid;
-    justify-items: center;
-    transition: transform 0.1s, filter 0.15s;
+    background: var(--texto);
+    color: var(--sobre-color);
+    box-shadow: 0 12px 24px -14px rgb(18 20 50 / 0.85);
+    transition: background 0.15s, transform 0.1s;
   }
-  .tirar:hover { filter: brightness(1.06); }
+  .tirar:hover { background: #2c3459; }
   .tirar:active { transform: scale(0.98); }
-  .tirar:disabled { filter: saturate(0.4) brightness(0.8); cursor: wait; }
-  .tirar .titulo { font-size: 1.45rem; line-height: 1.1; text-shadow: none; }
-  .tirar small { font-weight: 700; font-size: 0.78rem; opacity: 0.8; }
-  .error { margin: 0; color: #ffb3bd; font-size: 0.88rem; }
+  .tirar:disabled { background: #555b78; cursor: wait; }
+  .palabra { font-size: 1.45rem; font-weight: 900; letter-spacing: 0.02em; }
+  .tirar small { font-size: 0.85rem; font-weight: 700; opacity: 0.85; text-align: right; font-variant-numeric: tabular-nums; }
+  .error { margin: 0; color: var(--peligro-hondo); font-size: 0.88rem; font-weight: 700; }
+
+  @media (max-width: 759px) {
+    .lanzador {
+      gap: 0.5rem;
+      padding: 0.2rem 0.75rem calc(0.75rem + var(--seguro-abajo));
+      border-radius: var(--radio-panel) var(--radio-panel) 0 0;
+      border-bottom: 0;
+    }
+    .ayuda { display: none; }
+    .segmentos button { padding-inline: 0.75rem; }
+    .tirar { min-height: 3.25rem; }
+  }
+  @media (max-height: 560px) and (min-width: 600px) {
+    .lanzador { gap: 0.45rem; padding: 0.15rem 0.75rem 0.7rem; border-radius: var(--radio-panel); border-bottom: 1px solid var(--brillo); }
+    .ayuda { display: none; }
+    .tirar { min-height: 3rem; }
+    .tirar small { font-size: 0.75rem; }
+  }
 </style>

@@ -2,11 +2,12 @@
 // para poder probarlas con node: valores por defecto, límites de las
 // barras, validación de archivos y legibilidad automática.
 
+// icono: nombre de un ícono de componentes/Icono.svelte
 export const MOMENTOS = [
-  { id: 'amanecer', nombre: 'Amanecer', icono: '🌅' },
-  { id: 'dia', nombre: 'Día', icono: '☀️' },
-  { id: 'atardecer', nombre: 'Atardecer', icono: '🌇' },
-  { id: 'noche', nombre: 'Noche', icono: '🌙' },
+  { id: 'amanecer', nombre: 'Amanecer', icono: 'amanecer' },
+  { id: 'dia', nombre: 'Día', icono: 'sol' },
+  { id: 'atardecer', nombre: 'Atardecer', icono: 'atardecer' },
+  { id: 'noche', nombre: 'Noche', icono: 'luna' },
 ]
 
 export const MODOS = [
@@ -121,25 +122,25 @@ export function luminanciaEfectiva(l, cfg) {
   return limitar(((l - 0.5) * c + 0.5) * (1 - o), 0, 1)
 }
 
-// Variables CSS para que el texto se lea siempre. "extra" sube de 0 (fondo
-// oscuro, nada que corregir) a 1 (fondo casi blanco, corrección máxima).
+// Variables CSS para que el texto se lea siempre. La interfaz es de vidrio
+// claro con tinta oscura: sobre un fondo oscuro el vidrio necesita más
+// blanco ("oscuro" sube de 0 a 1) y sobre uno claro basta con poco.
+// "nivel" describe el fondo: oscuro, medio o claro.
 export function variablesLegibilidad(l, cfg) {
   const lef = luminanciaEfectiva(l, cfg)
-  const extra = limitar((lef - 0.38) / 0.5, 0, 1)
+  const claro = limitar((lef - 0.38) / 0.5, 0, 1)
+  const oscuro = limitar((0.6 - lef) / 0.45, 0, 1)
   const v = (cfg?.vidrio ?? 50) / 100
-  const alfa = Math.min(0.94, 0.25 + v * 0.66 + extra * 0.3)
+  const alfa = Math.min(0.95, 0.5 + v * 0.36 + oscuro * 0.2)
   const r = (x) => Math.round(x * 1000) / 1000
   return {
-    nivel: extra === 0 ? 'oscuro' : extra < 0.5 ? 'medio' : 'claro',
+    nivel: claro === 0 ? 'oscuro' : claro < 0.5 ? 'medio' : 'claro',
     brillo: lef,
     vars: {
       '--vidrio-alfa': String(r(alfa)),
-      '--vidrio-desenfoque': `${r(6 + v * 24)}px`,
-      '--velo-auto': String(r(extra * 0.34)),
-      '--sombra-texto': extra > 0
-        ? `0 1px 2px rgba(10, 4, 24, ${r(0.45 + 0.4 * extra)}), 0 0 14px rgba(10, 4, 24, ${r(0.35 * extra)})`
-        : '0 1px 2px rgba(10, 4, 24, 0.25)',
-      '--boton-fondo': extra > 0 ? `rgba(24, 17, 42, ${r(0.22 + 0.4 * extra)})` : 'rgba(255, 245, 230, 0.1)',
+      '--vidrio-desenfoque': `${r(12 + v * 28)}px`,
+      // Solo para el texto que va directo sobre el paisaje (blanco con sombra)
+      '--sombra-texto': `0 1px 2px rgba(12, 14, 36, ${r(0.45 + 0.3 * claro)}), 0 0 16px rgba(12, 14, 36, ${r(0.3 + 0.35 * claro)})`,
     },
   }
 }

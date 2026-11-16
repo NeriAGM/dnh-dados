@@ -2,7 +2,7 @@
   // Fila de casillas marcables (PG, Estrés, Armadura, Esperanza).
   // Tocar la casilla N deja marcadas N; tocar la última marcada la desmarca.
   // "tachadas" son casillas perdidas para siempre (p. ej. cicatrices en la Esperanza).
-  let { nombre, marcadas = 0, maximo = 6, forma = 'cuadro', color = 'var(--sangre)', editable = true, onCambiar, ayuda = '', tachadas = 0 } = $props()
+  let { nombre, marcadas = 0, maximo = 6, forma = 'cuadro', color = 'var(--peligro)', editable = true, onCambiar, ayuda = '', tachadas = 0 } = $props()
 
   // Un máximo que no es número (o con decimales) tronaba Array(): "Invalid array length"
   const total = $derived(Math.max(0, Math.floor(Number(maximo) || 0)))
@@ -35,28 +35,29 @@
 </div>
 
 <style>
-  .casillas { display: grid; grid-template-columns: 6.5rem 1fr auto; align-items: center; gap: 0.5rem; }
-  .nombre { font-size: 0.85rem; font-weight: 700; color: var(--pergamino-suave); }
-  .fila { display: flex; flex-wrap: wrap; gap: 4px; }
+  .casillas { display: grid; grid-template-columns: 8.5rem 1fr auto; align-items: center; gap: 0.6rem; }
+  .nombre { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--texto-suave); }
+  .fila { display: flex; flex-wrap: wrap; gap: 6px; }
   .caja {
-    width: 20px; height: 20px; padding: 0;
-    border: 1.5px solid color-mix(in srgb, var(--c) 70%, white);
+    width: 28px; height: 28px; padding: 0;
+    border: 2px solid var(--c);
     background: transparent;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: background 0.15s, transform 0.1s;
   }
-  .caja.rombo { transform: rotate(45deg) scale(0.82); border-radius: 3px; }
+  .caja:not(:disabled):active { transform: scale(0.9); }
   .caja.estrella {
     border: 0;
     clip-path: polygon(50% 0, 64% 34%, 100% 50%, 64% 66%, 50% 100%, 36% 66%, 0 50%, 36% 34%);
-    background: color-mix(in srgb, var(--c) 28%, transparent);
+    background: color-mix(in srgb, var(--c) 25%, transparent);
   }
-  .caja.escudo { border-radius: 4px 4px 10px 10px; }
-  .caja.marcada { background: var(--c); box-shadow: 0 0 8px color-mix(in srgb, var(--c) 60%, transparent); }
-  .caja:not(:disabled):hover { filter: brightness(1.2); }
+  .caja.escudo { border-radius: 6px 6px 14px 14px; }
+  .caja.marcada { background: var(--c); }
+  .caja:not(:disabled):hover { background: color-mix(in srgb, var(--c) 40%, transparent); }
+  .caja.marcada:not(:disabled):hover { background: color-mix(in srgb, var(--c) 82%, black); }
   .caja:disabled { cursor: default; }
-  .caja.tachada { position: relative; display: inline-block; opacity: 0.55; background: transparent; border: 1.5px dashed var(--pergamino-suave); clip-path: none; transform: none; }
-  .caja.tachada::after { content: ''; position: absolute; left: -2px; right: -2px; top: 50%; height: 2px; background: var(--sangre); transform: rotate(-45deg); }
-  .cifra { font-family: var(--fuente-titulo); font-weight: 900; font-size: 0.95rem; min-width: 3ch; text-align: right; }
-  @media (max-width: 480px) { .casillas { grid-template-columns: 5.2rem 1fr auto; } .caja { width: 22px; height: 22px; } }
+  .caja.tachada { position: relative; display: inline-block; opacity: 0.6; background: transparent; border: 2px dashed var(--texto-suave); clip-path: none; }
+  .caja.tachada::after { content: ''; position: absolute; left: -3px; right: -3px; top: 50%; height: 2px; background: var(--peligro); transform: rotate(-45deg); }
+  .cifra { font-weight: 900; font-size: 1.1rem; min-width: 3.2ch; text-align: right; font-variant-numeric: tabular-nums; }
+  @media (max-width: 480px) { .casillas { grid-template-columns: 1fr auto; } .nombre { grid-column: 1 / -1; } .caja { width: 32px; height: 32px; } }
 </style>

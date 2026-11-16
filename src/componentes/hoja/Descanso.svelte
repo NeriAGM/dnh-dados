@@ -2,6 +2,7 @@
   // Descanso corto o largo: dos movimientos (se puede repetir uno), tiradas de 1d4 + Rango
   // por el lanzador del servidor y recordatorios para la mesa.
   import Dialogo from './Dialogo.svelte'
+  import Icono from '../Icono.svelte'
   import {
     MOVIMIENTOS, MOVIMIENTOS_POR_DESCANSO, formulaDescanso, validarDescanso, aplicarDescanso,
     efectosDeDescanso, avisoDescansosSeguidos, avisoMiedoDescanso,
@@ -106,7 +107,7 @@
             {#if e.id === 'prepararse'}
               <label class="grupo"><input type="checkbox" bind:checked={elegidos[i].enGrupo} /> con el grupo (+2)</label>
             {/if}
-            <button class="quitar" onclick={() => (elegidos = elegidos.filter((_, j) => j !== i))} aria-label="Quitar {nombreMov(e.id)}">✕</button>
+            <button class="icono" onclick={() => (elegidos = elegidos.filter((_, j) => j !== i))} aria-label="Quitar {nombreMov(e.id)}"><Icono nombre="cerrar" tam={16} /></button>
           {:else}
             <span>Movimiento {i + 1}: toca uno de arriba</span>
           {/if}
@@ -130,48 +131,47 @@
     {#if resultado.tipo === 'largo'}<p class="nota">Se recargan los usos «por descanso» y «por descanso largo».</p>{:else}<p class="nota">Se recargan los usos «por descanso».</p>{/if}
   {/if}
 
-  <p class="miedo"><span aria-hidden="true">◆</span> {avisoMiedoDescanso(resultado?.tipo ?? tipo)}</p>
-  {#if error}<p class="error" role="alert">{error}</p>{/if}
+  <p class="miedo"><Icono nombre="alerta" tam={18} /> {avisoMiedoDescanso(resultado?.tipo ?? tipo)}</p>
+  {#if error}<p class="aviso-error" role="alert">{error}</p>{/if}
 
   {#snippet pie()}
     {#if resultado}
-      <button class="boton principal" onclick={onCerrar}>Listo</button>
+      <button class="boton solido" onclick={onCerrar}>Listo</button>
     {:else}
       <button class="boton" onclick={onCerrar}>Cancelar</button>
-      <button class="boton principal" disabled={!listo || trabajando} onclick={descansar}>{trabajando ? 'Tirando…' : 'Descansar'}</button>
+      <button class="boton solido" disabled={!listo || trabajando} onclick={descansar}>{trabajando ? 'Tirando…' : 'Descansar'}</button>
     {/if}
   {/snippet}
 </Dialogo>
 
 <style>
-  .segmentos { display: flex; gap: 0.35rem; }
-  .segmentos button { flex: 1; display: grid; border: 1px solid var(--linea); background: none; border-radius: 14px; padding: 0.45rem 0.5rem; font-weight: 800; font-size: 0.9rem; }
-  .segmentos small { font-weight: 500; font-size: 0.72rem; opacity: 0.8; }
-  .segmentos .on { background: var(--pergamino); color: var(--tinta); }
-  .nota { margin: 0; font-size: 0.82rem; color: var(--pergamino-suave); }
-  .aviso { margin: 0; padding: 0.45rem 0.7rem; border-radius: 12px; background: rgba(240, 189, 85, 0.14); border: 1px solid rgba(240, 189, 85, 0.4); font-size: 0.85rem; }
-  .movimientos { display: grid; gap: 0.4rem; }
-  .mov { display: grid; gap: 0.1rem; text-align: left; border: 1px solid var(--linea); background: rgba(255, 245, 230, 0.05); border-radius: 12px; padding: 0.5rem 0.7rem; }
-  .mov:hover { background: rgba(255, 245, 230, 0.1); }
-  .mov.on { border-color: var(--esperanza); background: rgba(240, 189, 85, 0.12); }
+  .segmentos { display: flex; gap: 0.4rem; }
+  .segmentos button { flex: 1; display: grid; min-height: 3rem; border: 1px solid var(--filete); background: var(--hundido); border-radius: var(--radio-control); padding: 0.45rem 0.5rem; font-weight: 900; color: var(--texto); }
+  .segmentos button:hover { background: var(--hundido-2); }
+  .segmentos small { font-weight: 500; font-size: 0.8rem; color: var(--texto-suave); }
+  .segmentos .on { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+  .segmentos .on small { color: var(--sobre-color); opacity: 0.85; }
+  .nota { margin: 0; font-size: 0.85rem; color: var(--texto-suave); }
+  .aviso { margin: 0; padding: 0.5rem 0.75rem; border-radius: var(--radio-control); background: var(--critico-suave); border: 1px solid color-mix(in srgb, var(--critico) 50%, transparent); color: var(--critico-hondo); font-size: 0.9rem; font-weight: 700; }
+  .movimientos { display: grid; gap: 0.45rem; }
+  .mov { display: grid; gap: 0.1rem; text-align: left; border: 1px solid var(--filete); background: var(--hundido); border-radius: var(--radio-control); padding: 0.6rem 0.8rem; min-height: 3rem; color: var(--texto); }
+  .mov:hover { background: var(--hundido-2); }
+  .mov.on { border-color: var(--esperanza-hondo); background: var(--esperanza-suave); }
   .cab { display: flex; gap: 0.45rem; align-items: center; flex-wrap: wrap; }
   .cab strong { flex: 1; min-width: 8rem; }
-  .formula { font-size: 0.75rem; font-weight: 800; padding: 0.05rem 0.45rem; border-radius: 999px; background: rgba(255, 245, 230, 0.12); }
-  .veces { font-weight: 900; color: var(--tinta); background: var(--esperanza); border-radius: 999px; padding: 0 0.45rem; font-size: 0.8rem; }
-  .mov small { color: var(--pergamino-suave); font-size: 0.8rem; }
-  .elegidos { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
-  .elegidos li { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; padding: 0.4rem 0.65rem; border-radius: 10px; background: rgba(255, 245, 230, 0.07); font-weight: 700; font-size: 0.9rem; }
+  .formula { font-size: 0.8rem; font-weight: 700; padding: 0.05rem 0.5rem; border-radius: 999px; background: var(--hundido-2); font-variant-numeric: tabular-nums; }
+  .veces { font-weight: 900; color: var(--sobre-color); background: var(--esperanza-hondo); border-radius: 999px; padding: 0 0.5rem; font-size: 0.85rem; }
+  .mov small { color: var(--texto-suave); font-size: 0.85rem; }
+  .elegidos { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+  .elegidos li { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; padding: 0.3rem 0.4rem 0.3rem 0.75rem; min-height: 2.75rem; border-radius: var(--radio-control); background: var(--hundido-2); font-weight: 700; }
   .elegidos li span { flex: 1; }
-  .elegidos li.vacio { background: none; border: 1px dashed var(--linea); color: var(--pergamino-suave); font-weight: 500; }
-  .grupo { display: flex; gap: 0.3rem; align-items: center; font-weight: 500; font-size: 0.82rem; }
-  .quitar { border: 0; background: none; color: var(--pergamino-suave); padding: 0.1rem 0.35rem; }
-  .proyecto { display: grid; gap: 0.3rem; font-size: 0.86rem; font-weight: 700; }
-  .proyecto small { font-weight: 500; color: var(--pergamino-suave); }
-  .resumen { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
-  .resumen li { display: grid; padding: 0.5rem 0.7rem; border-radius: 12px; background: rgba(127, 214, 168, 0.12); border: 1px solid rgba(127, 214, 168, 0.35); }
-  .resumen span { font-size: 0.86rem; }
-  .miedo { margin: 0; padding: 0.45rem 0.7rem; border-radius: 12px; background: rgba(167, 124, 232, 0.16); border: 1px solid rgba(167, 124, 232, 0.45); font-size: 0.86rem; }
-  .miedo span { color: var(--miedo); }
-  .error { margin: 0; color: #ffb3bd; font-size: 0.88rem; }
-  .principal { background: linear-gradient(135deg, #f6cf72, #e09a35 55%, #b9641c); color: #2a1606; border: 0; }
+  .elegidos li.vacio { background: none; border: 1px dashed var(--filete-fuerte); color: var(--texto-suave); font-weight: 500; padding-left: 0.75rem; }
+  .grupo { display: flex; gap: 0.3rem; align-items: center; font-weight: 500; font-size: 0.85rem; }
+  .proyecto { display: grid; gap: 0.3rem; font-size: 0.9rem; font-weight: 700; }
+  .proyecto small { font-weight: 500; color: var(--texto-suave); }
+  .resumen { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+  .resumen li { display: grid; padding: 0.55rem 0.8rem; border-radius: var(--radio-control); background: var(--exito-suave); border: 1px solid color-mix(in srgb, var(--exito) 40%, transparent); }
+  .resumen span { font-size: 0.9rem; }
+  .miedo { margin: 0; display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.55rem 0.75rem; border-radius: var(--radio-control); background: var(--miedo-suave); border: 1px solid color-mix(in srgb, var(--miedo) 40%, transparent); font-size: 0.9rem; }
+  .miedo :global(svg) { flex: none; margin-top: 0.1rem; color: var(--miedo-hondo); }
 </style>

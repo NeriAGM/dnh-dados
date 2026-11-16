@@ -29,8 +29,8 @@
 
 <section class="entrada">
   <header>
-    <h1 class="titulo">Dolor <span class="y">&</span> Hambre</h1>
-    <p class="sub">La mesa de dados de la campaña</p>
+    <h1 class="sobre-fondo">Dolor <span class="y">&</span> Hambre</h1>
+    <p class="sub sobre-fondo">La mesa de dados de la campaña</p>
   </header>
 
   <div class="tarjeta vidrio">
@@ -42,15 +42,15 @@
     <div class="o"><span>o con tu correo</span></div>
 
     <form onsubmit={conCorreo}>
-      <label class="sr-only" for="correo">Correo</label>
+      <label class="etiqueta" for="correo"><span class="rotulo">Correo</span></label>
       <input id="correo" class="campo" type="email" autocomplete="email" placeholder="tu@correo.com" bind:value={correo} />
-      <button class="boton" type="submit" disabled={enviando}>{enviando ? 'Mandando…' : 'Mandarme el enlace'}</button>
+      <button class="boton solido" type="submit" disabled={enviando}>{enviando ? 'Mandando…' : 'Mandarme el enlace'}</button>
     </form>
 
     {#if aviso}<p class="aviso" role="status">{aviso}</p>{/if}
-    {#if error}<p class="error" role="alert">{error}</p>{/if}
+    {#if error}<p class="aviso-error" role="alert">{error}</p>{/if}
 
-    <button class="probar" onclick={entrarDemo}>Probar los dados sin cuenta</button>
+    <button class="boton fantasma" onclick={entrarDemo}>Probar los dados sin cuenta</button>
   </div>
 </section>
 
@@ -62,7 +62,8 @@
     align-content: center;
     justify-items: center;
     gap: 1.6rem;
-    padding: 1.5rem 1rem calc(1.5rem + var(--seguro-abajo));
+    padding: calc(1.5rem + var(--seguro-arriba)) 1rem calc(1.5rem + var(--seguro-abajo));
+    overflow-y: auto;
   }
   header { text-align: center; }
   h1 {
@@ -70,47 +71,36 @@
     font-size: clamp(2.6rem, 9vw, 4.6rem);
     line-height: 1;
   }
-  .y { color: var(--sangre); font-size: 0.8em; }
-  .sub {
-    margin: 0.6rem 0 0;
-    color: var(--pergamino-suave);
-    text-shadow: 0 1px 10px rgba(10, 4, 24, 0.8);
-  }
+  .y { color: var(--miedo); font-size: 0.8em; }
+  .sub { margin: 0.6rem 0 0; font-size: 1.1rem; font-weight: 700; }
   .tarjeta {
     width: min(100%, 380px);
     border-radius: var(--radio-panel);
+    background: var(--superficie-firme);
+    box-shadow: var(--sombra-alta);
     padding: 1.3rem;
     display: grid;
     gap: 0.9rem;
   }
   .discord {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 3rem;
     gap: 0.55rem;
     background: #5865f2;
     border-color: transparent;
-    padding: 0.8rem;
+    color: #fff;
   }
   .discord:hover { background: #4752c4; }
   .o {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    color: var(--pergamino-suave);
+    color: var(--texto-suave);
     font-size: 0.85rem;
-  }
-  .o::before, .o::after { content: ''; flex: 1; height: 1px; background: var(--linea); }
-  form { display: grid; gap: 0.6rem; }
-  .aviso { margin: 0; color: var(--exito); font-size: 0.92rem; }
-  .error { margin: 0; color: #ffb3bd; font-size: 0.92rem; }
-  .probar {
-    background: none;
-    border: 0;
-    color: var(--esperanza);
     font-weight: 700;
-    padding: 0.4rem;
-    text-decoration: underline;
-    text-underline-offset: 3px;
   }
+  .o::before, .o::after { content: ''; flex: 1; height: 1px; background: var(--filete); }
+  .tarjeta > .fantasma { border-color: var(--filete-fuerte); min-height: 2.75rem; }
+  form { display: grid; gap: 0.45rem; }
+  form .boton { margin-top: 0.3rem; }
+  .aviso { margin: 0; padding: 0.6rem 0.8rem; border-radius: var(--radio-control); background: var(--exito-suave); color: var(--exito-hondo); font-size: 0.92rem; font-weight: 700; }
 </style>

@@ -1,6 +1,7 @@
 <script>
   // Subir de nivel en 4 pasos (SRD): logros de rango, dos mejoras, umbrales +1 y carta nueva.
   import Dialogo from './Dialogo.svelte'
+  import Icono from '../Icono.svelte'
   import Carta from './Carta.svelte'
   import { RASGOS } from '../../lib/srd.js'
   import { rangoDeNivel } from '../../lib/reglas.js'
@@ -171,7 +172,7 @@
         <h4>Elegidas</h4>
         {#each mejoras as m, i}
           <div class="elegida">
-            <div class="cab"><strong>{OPCION[m.tipo].nombre}</strong><button class="quitar" onclick={() => quitar(i)} aria-label="Quitar {OPCION[m.tipo].nombre}">✕</button></div>
+            <div class="cab"><strong>{OPCION[m.tipo].nombre}</strong><button class="icono" onclick={() => quitar(i)} aria-label="Quitar {OPCION[m.tipo].nombre}"><Icono nombre="cerrar" tam={16} /></button></div>
             {#if m.tipo === 'rasgos'}
               <div class="chips">
                 {#each RASGOS as r (r.id)}
@@ -244,56 +245,53 @@
         <ul class="resumen">{#each vistaPrevia.resumen as linea}<li>{linea}</li>{/each}</ul>
       {/if}
     {/if}
-    {#if error}<p class="error" role="alert">{error}</p>{/if}
+    {#if error}<p class="aviso-error" role="alert">{error}</p>{/if}
   {/if}
 
   {#snippet pie()}
     {#if hecho}
-      <button class="boton principal" onclick={onCerrar}>Listo</button>
+      <button class="boton solido" onclick={onCerrar}>Listo</button>
     {:else if elegirCartaPara === null}
       {#if paso > 0}<button class="boton" onclick={() => paso--}>Anterior</button>{/if}
       {#if paso < PASOS.length - 1}
-        <button class="boton principal" disabled={!puedeSeguir} onclick={() => paso++}>Siguiente</button>
+        <button class="boton solido" disabled={!puedeSeguir} onclick={() => paso++}>Siguiente</button>
       {:else}
-        <button class="boton principal" disabled={!!errores.length || guardando} onclick={subir}>Subir a nivel {nivel}</button>
+        <button class="boton solido" disabled={!!errores.length || guardando} onclick={subir}>Subir a nivel {nivel}</button>
       {/if}
     {/if}
   {/snippet}
 </Dialogo>
 
 <style>
-  h4 { margin: 0.2rem 0 0; font-family: var(--fuente-titulo); font-size: 1.05rem; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
-  h4 small { font-family: var(--fuente); font-size: 0.78rem; color: var(--pergamino-suave); font-weight: 600; }
+  h4 { margin: 0.2rem 0 0; font-size: 1.1rem; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
+  h4 small { font-size: 0.85rem; color: var(--texto-suave); font-weight: 700; }
   .pasos { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  .pasos span { font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px; border: 1px solid var(--linea); color: var(--pergamino-suave); }
-  .pasos .activo { background: var(--pergamino); color: var(--tinta); border-color: var(--pergamino); }
-  .pasos .hecho { border-color: rgba(127, 214, 168, 0.6); color: var(--pergamino); }
-  .lista, .resumen, .errores { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.25rem; font-size: 0.9rem; }
+  .pasos span { font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 999px; border: 1px solid var(--filete); color: var(--texto-suave); }
+  .pasos .activo { background: var(--texto); color: var(--sobre-color); border-color: var(--texto); }
+  .pasos .hecho { border-color: color-mix(in srgb, var(--exito) 55%, transparent); background: var(--exito-suave); color: var(--exito-hondo); }
+  .lista, .resumen, .errores { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.3rem; font-size: 0.95rem; }
   .resumen li::marker { color: var(--exito); }
-  .errores { color: #ffd0d6; }
-  .campo-etq { display: grid; gap: 0.3rem; font-size: 0.86rem; font-weight: 700; }
-  .opciones { display: grid; gap: 0.35rem; }
-  .opcion { display: grid; gap: 0.1rem; text-align: left; border: 1px solid var(--linea); background: rgba(255, 245, 230, 0.05); border-radius: 12px; padding: 0.45rem 0.7rem; }
-  .opcion:not(:disabled):hover { background: rgba(255, 245, 230, 0.11); border-color: var(--esperanza); }
+  .errores { color: var(--peligro-hondo); font-weight: 700; }
+  .campo-etq { display: grid; gap: 0.3rem; font-size: 0.9rem; font-weight: 700; }
+  .opciones { display: grid; gap: 0.4rem; }
+  .opcion { display: grid; gap: 0.1rem; text-align: left; border: 1px solid var(--filete); background: var(--hundido); border-radius: var(--radio-control); padding: 0.55rem 0.8rem; min-height: 3rem; color: var(--texto); }
+  .opcion:not(:disabled):hover { background: var(--hundido-2); border-color: var(--esperanza-hondo); }
   .opcion:disabled { opacity: 0.5; cursor: not-allowed; }
-  .opcion small { color: var(--pergamino-suave); font-size: 0.78rem; }
+  .opcion small { color: var(--texto-suave); font-size: 0.85rem; }
   .cab { display: flex; gap: 0.45rem; align-items: center; flex-wrap: wrap; }
   .cab strong { flex: 1; min-width: 8rem; }
-  .etq { font-size: 0.7rem; font-weight: 800; padding: 0 0.45rem; border-radius: 999px; background: rgba(167, 124, 232, 0.35); }
-  .libres { font-size: 0.72rem; font-weight: 800; color: var(--pergamino-suave); }
-  .elegida { display: grid; gap: 0.4rem; padding: 0.55rem 0.7rem; border-radius: 12px; border: 1px solid rgba(240, 189, 85, 0.5); background: rgba(240, 189, 85, 0.08); }
-  .quitar { border: 0; background: none; color: var(--pergamino-suave); padding: 0.1rem 0.35rem; }
-  .chips { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  .chip { border: 1px solid var(--linea); background: none; border-radius: 999px; padding: 0.3rem 0.65rem; font-weight: 700; font-size: 0.82rem; }
-  .chip.activo { background: var(--esperanza); color: var(--tinta); border-color: var(--esperanza); }
-  .chip:disabled { opacity: 0.35; text-decoration: line-through; cursor: not-allowed; }
-  .selects { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.4rem; }
-  .selects label { display: grid; gap: 0.2rem; font-size: 0.78rem; color: var(--pergamino-suave); }
-  .selects select { padding: 0.4rem; }
+  .etq { font-size: 0.75rem; font-weight: 700; padding: 0 0.5rem; border-radius: 999px; background: var(--miedo-suave); color: var(--miedo-hondo); }
+  .libres { font-size: 0.8rem; font-weight: 700; color: var(--texto-suave); }
+  .elegida { display: grid; gap: 0.4rem; padding: 0.55rem 0.4rem 0.7rem 0.8rem; border-radius: var(--radio-control); border: 1px solid color-mix(in srgb, var(--esperanza) 55%, transparent); background: var(--esperanza-suave); }
+  .chips { display: flex; gap: 0.35rem; flex-wrap: wrap; padding-right: 0.4rem; }
+  .chip { border: 1px solid var(--filete); background: rgb(255 255 255 / 0.6); border-radius: 999px; padding: 0.4rem 0.8rem; min-height: 2.25rem; font-weight: 700; font-size: 0.85rem; color: var(--texto); }
+  .chip:hover { background: var(--hundido-2); }
+  .chip.activo { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+  .chip:disabled { opacity: 0.4; text-decoration: line-through; cursor: not-allowed; }
+  .selects { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.4rem; padding-right: 0.4rem; }
+  .selects label { display: grid; gap: 0.2rem; font-size: 0.85rem; color: var(--texto-suave); font-weight: 700; }
   .buscador { display: flex; gap: 0.4rem; }
   .cartas { display: grid; gap: 0.45rem; }
-  .nota { margin: 0; font-size: 0.82rem; color: var(--pergamino-suave); }
-  .chico { padding: 0.35rem 0.75rem; font-size: 0.85rem; }
-  .error { margin: 0; color: #ffb3bd; font-size: 0.88rem; }
-  .principal { background: linear-gradient(135deg, #f6cf72, #e09a35 55%, #b9641c); color: #2a1606; border: 0; }
+  .nota { margin: 0; font-size: 0.85rem; color: var(--texto-suave); }
+  .elegida .nota, .elegida > button.boton { margin-right: 0.4rem; }
 </style>

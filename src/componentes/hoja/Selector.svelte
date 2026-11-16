@@ -1,4 +1,5 @@
 <script>
+  import Icono from '../Icono.svelte'
   // Ventana para elegir algo del catálogo (cartas, armas, armaduras…) con buscador.
   let { titulo, items = [], filtros = [], onElegir, onCerrar, item } = $props()
 
@@ -16,11 +17,11 @@
   })
 </script>
 
-<div class="velo" onclick={onCerrar} role="presentation"></div>
+<div class="cortina arriba" onclick={onCerrar} role="presentation"></div>
 <div class="selector vidrio" role="dialog" aria-label={titulo}>
   <header>
-    <h3 class="titulo">{titulo}</h3>
-    <button class="cerrar" onclick={onCerrar} aria-label="Cerrar">✕</button>
+    <h3>{titulo}</h3>
+    <button class="icono" onclick={onCerrar} aria-label="Cerrar"><Icono nombre="cerrar" /></button>
   </header>
   <input class="campo" placeholder="Buscar por nombre o texto" bind:value={texto} aria-label="Buscar" />
   {#if filtros.length > 1}
@@ -34,27 +35,27 @@
     {#each visibles as x (x.id)}
       {@render item(x, () => onElegir(x))}
     {:else}
-      <p class="vacio">No hay nada que coincida. Prueba con otra palabra o crea uno casero en Ajustes → Contenido casero.</p>
+      <p class="vacio-texto">No hay nada que coincida. Prueba con otra palabra o crea uno casero en Ajustes → Contenido casero.</p>
     {/each}
   </div>
 </div>
 
 <style>
-  .velo { position: fixed; inset: 0; background: rgba(8, 4, 18, 0.55); z-index: 20; }
+  .cortina.arriba { z-index: 20; }
   .selector {
     position: fixed; z-index: 21;
     left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: min(620px, calc(100vw - 1.2rem)); max-height: min(86vh, 900px);
+    width: min(620px, calc(100vw - 1.2rem)); max-height: min(86dvh, 900px);
     display: flex; flex-direction: column; gap: 0.6rem;
     border-radius: var(--radio-panel); padding: 1rem;
-    background: rgba(22, 15, 38, 0.97);
+    background: var(--superficie-firme);
+    box-shadow: var(--sombra-alta);
   }
   header { display: flex; justify-content: space-between; align-items: center; }
-  h3 { margin: 0; font-size: 1.3rem; }
-  .cerrar { border: 0; background: none; font-size: 1.1rem; padding: 0.3rem 0.5rem; }
-  .filtros { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-  .chip { border: 1px solid var(--linea); background: none; border-radius: 999px; padding: 0.3rem 0.7rem; font-size: 0.82rem; font-weight: 700; }
-  .chip.activo { background: var(--pergamino); color: var(--tinta); }
+  h3 { margin: 0; font-size: 1.5rem; }
+  .filtros { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .chip { border: 1px solid var(--filete); background: var(--hundido); border-radius: 999px; padding: 0.4rem 0.8rem; font-size: 0.85rem; font-weight: 700; color: var(--texto); min-height: 2.25rem; }
+  .chip:hover { background: var(--hundido-2); }
+  .chip.activo { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
   .lista { overflow-y: auto; display: grid; grid-auto-rows: max-content; gap: 0.45rem; padding-right: 0.2rem; overscroll-behavior: contain; min-height: 0; }
-  .vacio { color: var(--pergamino-suave); font-size: 0.9rem; }
 </style>

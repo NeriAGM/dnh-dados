@@ -19,6 +19,7 @@
   import Lore from './lore/Lore.svelte'
   import { soltarLore } from '../lib/lore.svelte.js'
   import { crearCola } from '../lib/cola.js'
+  import Icono from './Icono.svelte'
 
   let { mesa3d, momento, onMomento } = $props()
 
@@ -109,40 +110,27 @@
     demoTiradas = [t, ...demoTiradas].slice(0, 100)
   }
 
-  // Avisa a la mesa 3D qué parte de la pantalla está libre para los dados
-  let elBarra = $state(), elPJ = $state(), elLanzador = $state(), elHistorial = $state(), elEscena = $state(), elCuentas = $state()
+  // Avisa a la mesa 3D qué parte de la pantalla está libre para los dados:
+  // la celda vacía del centro de la retícula (ver estilos). Todo lo demás
+  // (barra, PJ, escena, registro, resultado y lanzador) queda fuera de ella.
+  let elCentro = $state()
   $effect(() => {
-    if (!mesa3d || !elLanzador) return
+    if (!mesa3d || !elCentro) return
     const medir = () => {
-      const h = window.innerHeight, w = window.innerWidth
-      const ancho = w >= 760
-      const techo = Math.max(elBarra?.getBoundingClientRect().bottom ?? 0, elPJ?.getBoundingClientRect().bottom ?? 0)
-      const resultadoAlto = ancho ? 210 : 120
-      // En pantalla ancha las cuentas van arriba: el resultado se acomoda debajo de ellas
-      const finCuentas = ancho && elCuentas ? Math.round(elCuentas.getBoundingClientRect().bottom + 6) : 0
-      document.documentElement.style.setProperty('--fin-cuentas', `${finCuentas}px`)
-      const arriba = Math.max(techo, Math.max(ancho ? 64 : 56, finCuentas) + resultadoAlto) + 8
-      const topeLanzador = elLanzador.getBoundingClientRect().top
-      document.documentElement.style.setProperty('--alto-lanzador', `${Math.round(h - topeLanzador + 8)}px`)
-      // La escena y (en celular) las cuentas se apilan sobre el lanzador: los dados no caen ahí
-      let tope = topeLanzador
-      for (const el of [elEscena, elCuentas]) {
-        const r = el?.getBoundingClientRect()
-        if (r && r.height > 0 && r.top > h / 2) tope = Math.min(tope, r.top)
-      }
-      const abajo = h - tope + 8
-      const derecha = ancho && elHistorial ? w - elHistorial.getBoundingClientRect().left + 8 : 0
-      const hojaAbierta = w >= 1100 ? document.querySelector('.hoja, .panel') : null
-      const izquierda = hojaAbierta ? hojaAbierta.getBoundingClientRect().right + 8 : 0
-      mesa3d.ajustarZona({ arriba, abajo, derecha, izquierda })
+      const r = elCentro.getBoundingClientRect()
+      if (!r.width || !r.height) return
+      mesa3d.ajustarZona({
+        arriba: Math.round(r.top),
+        abajo: Math.round(window.innerHeight - r.bottom),
+        izquierda: Math.round(r.left),
+        derecha: Math.round(window.innerWidth - r.right),
+      })
     }
-    verHoja; verDJ
     const obs = new ResizeObserver(medir)
-    for (const el of [elBarra, elPJ, elLanzador, elHistorial, elEscena, elCuentas]) if (el) obs.observe(el)
+    obs.observe(elCentro)
     window.addEventListener('resize', medir)
     medir()
-    const t = setTimeout(medir, 350)
-    return () => { clearTimeout(t); obs.disconnect(); window.removeEventListener('resize', medir) }
+    return () => { obs.disconnect(); window.removeEventListener('resize', medir) }
   })
 
   onMount(() => {
@@ -221,6 +209,18 @@
     return cola.agregar(() => ajustarMiedo(delta))
   }
   const ladoOcupado = $derived(!!pjHoja || verDJ)
+  const nombreMesa = $derived(app.demo ? 'Mesa de prueba' : app.campania?.nombre ?? '')
+  // Punto en «Tiradas» cuando llegó algo y el registro está cerrado (celular)
+  let vistaHasta = $state(null)
+  $effect(() => { if ((verHistorial || vistaHasta === null) && tiradas.length) vistaHasta = tiradas[0].id })
+  // Color de la placa del resultado: el del PJ que tiró (el DJ va en tinta)
+  const colorResultado = $derived.by(() => {
+    const t = resultado?.tirada
+    if (!t || t.tipo === 'dj') return null
+    const p = app.demo ? demoPJ : app.personajes.find((x) => x.id === t.personaje_id)
+    return p?.color ?? null
+  })
+  const hayNuevas = $derived(!verHistorial && !!tiradas[0] && vistaHasta !== null && tiradas[0].id !== vistaHasta)
   const puedeDJ = $derived(app.demo || esDJ)
 
   function cambiarMiedo(n) {
@@ -243,11 +243,12 @@
   }
 </script>
 
-<div class="mesa">
-  <header class="barra" bind:this={elBarra}>
-    <h1 class="titulo nombre">{app.demo ? 'Mesa de prueba' : app.campania?.nombre}</h1>
 
-    <div class="miedo" class:editable={esDJ || app.demo} aria-label="Miedo del DJ: {miedo} de 12">
+<div class="mesa" class:enfocada={ladoOcupado} class:con-dj={verDJ}>
+  <header class="barra vidrio">
+    <h1 class="nombre" title={nombreMesa}>{nombreMesa}</h1>
+
+    <div class="miedo" class:editable={esDJ || app.demo} role="group" aria-label="Miedo del DJ: {miedo} de 12">
       <span class="rotulo">Miedo</span>
       <span class="pips">
         {#each Array(12) as _, i}
@@ -260,73 +261,110 @@
           ></button>
         {/each}
       </span>
-      <span class="cifra">{miedo}</span>
+      <span class="cifra num" aria-hidden="true">{miedo}</span>
     </div>
 
-    <div class="botones">
-      {#if puedeDJ}
-        <button class="boton dj" aria-label="Panel del DJ" onclick={() => { verHoja = null; verLore = false; verDJ = !verDJ }} disabled={!catBase} aria-pressed={verDJ}><span class="largo">Panel del DJ</span><span class="corto">DJ</span></button>
+    <nav class="nav" aria-label="Secciones de la mesa">
+      {#if pj}
+        <button class="nav-b nav-hoja" aria-pressed={verHoja === pj.id} disabled={!catBase} onclick={() => { verDJ = false; verLore = false; verHoja = verHoja === pj.id ? null : pj.id }}>
+          <Icono nombre="hoja" /><span>Hoja</span>
+        </button>
       {/if}
-      <button class="boton lore-boton" aria-label="Lore de la campaña" aria-pressed={verLore} onclick={() => { verDJ = false; verHoja = null; verLore = !verLore }}>
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v15.5H5.5c-.8 0-1.5.7-1.5 1.5zM20 5.5c0-.8-.7-1.5-1.5-1.5H13v15.5h5.5c.8 0 1.5.7 1.5 1.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 4v16" stroke="currentColor" stroke-width="1.2"/></svg>
-        <span class="largo">Lore</span>
+      {#if puedeDJ}
+        <button class="nav-b" aria-label="Panel del DJ" aria-pressed={verDJ} disabled={!catBase} onclick={() => { verHoja = null; verLore = false; verDJ = !verDJ }}>
+          <Icono nombre="dj" /><span>DJ</span>
+        </button>
+      {/if}
+      <button class="nav-b" aria-label="Lore de la campaña" aria-pressed={verLore} onclick={() => { verDJ = false; verHoja = null; verLore = !verLore }}>
+        <Icono nombre="lore" /><span>Lore</span>
       </button>
-      <button class="boton icono solo-movil" onclick={() => (verHistorial = true)} aria-label="Ver historial">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h10"/></svg>
+      <button class="nav-b nav-tiradas" aria-label="Ver historial de tiradas" aria-pressed={verHistorial} onclick={() => (verHistorial = !verHistorial)}>
+        <Icono nombre="tiradas" /><span>Tiradas</span>
+        {#if hayNuevas}<i class="punto" aria-hidden="true"></i><span class="sr-only">(hay tiradas nuevas)</span>{/if}
       </button>
-      <button class="boton icono" onclick={() => (verAjustes = true)} aria-label="Ajustes">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+      <button class="nav-b" aria-label="Ajustes" aria-pressed={verAjustes} onclick={() => (verAjustes = true)}>
+        <Icono nombre="ajustes" /><span>Ajustes</span>
       </button>
-    </div>
+    </nav>
   </header>
 
-  {#if pj || misPJs.length}
-    <section class="pj vidrio" bind:this={elPJ} style:--color-pj={pj?.color ?? '#e9b44c'}>
-      {#if misPJs.length > 1}
-        <select class="selector titulo" value={app.personajeActivo ?? ''} onchange={(e) => elegirPersonaje(e.currentTarget.value || null)} aria-label="Personaje con el que tiras">
-          {#if esDJ}<option value="">Elige un personaje</option>{/if}
-          {#each misPJs as p (p.id)}<option value={p.id}>{p.nombre}</option>{/each}
-        </select>
-      {:else}
-        <h2 class="titulo pj-nombre">{pj?.nombre}</h2>
-      {/if}
-      {#if pj}
-        <button class="ver-hoja" onclick={() => (verHoja = pj.id)} disabled={!catBase}>Ver hoja</button>
-      {/if}
-      {#if pj}
-        <div class="esperanza" aria-label="Esperanza: {esperanzaVista} de {pj.esperanza_max}">
-          {#each Array(pj.esperanza_max) as _, i}
-            <button class="pip-esp" class:lleno={i < esperanzaVista} disabled={!puedoEditarPJ} onclick={() => cambiarEsperanza(i + 1)} aria-label="Poner Esperanza en {i + 1}"></button>
-          {/each}
-          <span class="rotulo">Esperanza</span>
+  <div class="lado">
+    {#if pj || misPJs.length}
+      <section class="pj vidrio" style:--color-pj={pj?.color ?? '#e0873a'} aria-label="Tu personaje">
+        <div class="pj-cabeza">
+          {#if misPJs.length > 1}
+            <select class="placa selector" value={app.personajeActivo ?? ''} onchange={(e) => elegirPersonaje(e.currentTarget.value || null)} aria-label="Personaje con el que tiras">
+              {#if esDJ}<option value="">Elige un personaje</option>{/if}
+              {#each misPJs as p (p.id)}<option value={p.id}>{p.nombre}</option>{/each}
+            </select>
+          {:else}
+            <h2 class="placa">{pj?.nombre}</h2>
+          {/if}
+          {#if pj}
+            <button class="boton ver-hoja" onclick={() => (verHoja = pj.id)} disabled={!catBase}><Icono nombre="hoja" tam={18} />Ver hoja</button>
+          {/if}
         </div>
-        <div class="estres">
-          <span class="rotulo">Estrés</span>
-          <button class="mini" disabled={!puedoEditarPJ} onclick={() => cambiarEstres(-1)} aria-label="Limpiar 1 Estrés">−</button>
-          <span class="barra-estres" aria-label="Estrés: {estresVista} de {pj.estres_max}">
-            {#each Array(pj.estres_max) as _, i}<span class:marcado={i < estresVista}></span>{/each}
-          </span>
-          <button class="mini" disabled={!puedoEditarPJ} onclick={() => cambiarEstres(1)} aria-label="Marcar 1 Estrés">+</button>
-        </div>
-      {/if}
-    </section>
-  {:else if !esDJ}
-    <section class="pj vidrio vacio">
-      <p>Aún no tienes personaje en esta campaña. Créalo en <button class="enlace" onclick={() => (verAjustes = true)}>Ajustes</button>.</p>
-    </section>
-  {/if}
+        {#if pj}
+          <div class="medidor">
+            <span class="rotulo">Esperanza</span>
+            <span class="pips-esp" role="group" aria-label="Esperanza: {esperanzaVista} de {pj.esperanza_max}">
+              {#each Array(pj.esperanza_max) as _, i}
+                <button class="pip-esp" class:lleno={i < esperanzaVista} disabled={!puedoEditarPJ} onclick={() => cambiarEsperanza(i + 1)} aria-label="Poner Esperanza en {i + 1}"></button>
+              {/each}
+            </span>
+            <span class="de num">{esperanzaVista}/{pj.esperanza_max}</span>
+          </div>
+          <div class="medidor">
+            <span class="rotulo">Estrés</span>
+            <span class="estres">
+              <button class="paso" disabled={!puedoEditarPJ || estresVista <= 0} onclick={() => cambiarEstres(-1)} aria-label="Limpiar 1 Estrés"><Icono nombre="menos" tam={16} /></button>
+              <span class="cajas" role="img" aria-label="Estrés: {estresVista} de {pj.estres_max}">
+                {#each Array(pj.estres_max) as _, i}<span class:marcado={i < estresVista}></span>{/each}
+              </span>
+              <button class="paso" disabled={!puedoEditarPJ || estresVista >= pj.estres_max} onclick={() => cambiarEstres(1)} aria-label="Marcar 1 Estrés"><Icono nombre="mas" tam={16} /></button>
+            </span>
+            <span class="de num">{estresVista}/{pj.estres_max}</span>
+          </div>
+        {/if}
+      </section>
+    {:else if !esDJ}
+      <section class="pj vidrio vacio">
+        <p><b>Aún no tienes personaje en esta campaña.</b> Créalo o pide que te asignen uno en Ajustes → Personajes.</p>
+        <button class="boton" onclick={() => (verAjustes = true)}><Icono nombre="ajustes" tam={18} />Abrir Ajustes</button>
+      </section>
+    {/if}
 
-  {#if resultado}
-    <div class="zona-resultado" class:con-hoja={ladoOcupado}>
+    {#if escena || app.cuentas.length}
+      <div class="lado-abajo">
+        {#if escena}<Escena {escena} />{/if}
+        {#if app.cuentas.length}
+          <section class="cuentas vidrio" aria-label="Cuentas regresivas">
+            <h2 class="rotulo">Cuentas regresivas</h2>
+            <ul>
+              {#each app.cuentas as c (c.id)}
+                <li class="cuenta" class:cero={c.valor <= 0} class:oculta={!c.visible}>
+                  <b class="num">{c.valor}</b>
+                  <span>{c.nombre}</span>
+                  {#if !c.visible}<span class="oculta-marca" title="Solo la ves tú"><Icono nombre="ojo-no" tam={16} /><span class="sr-only">(oculta para la mesa)</span></span>{/if}
+                </li>
+              {/each}
+            </ul>
+          </section>
+        {/if}
+      </div>
+    {/if}
+  </div>
+
+  <div class="centro" bind:this={elCentro} aria-hidden="true"></div>
+
+  <div class="zona-resultado" style:--color-pj={colorResultado}>
+    {#if resultado}
       <Resultado tirada={resultado.tirada} autor={resultado.autor} personaje={resultado.personaje} onCerrar={() => (resultado = null)} />
-    </div>
-  {/if}
+    {/if}
+  </div>
 
-  {#if aviso}
-    <button class="aviso vidrio" role="alert" onclick={() => (aviso = '')}>{aviso}</button>
-  {/if}
-
-  <div class="zona-historial" class:abierto={verHistorial} class:con-hoja={ladoOcupado} bind:this={elHistorial}>
+  {#if verHistorial}<div class="cortina cortina-historial" onclick={() => (verHistorial = false)} role="presentation"></div>{/if}
+  <div class="zona-historial" class:abierto={verHistorial}>
     <Historial
       {tiradas}
       nombreDe={(id) => (app.demo ? 'Tú' : nombreDe(id))}
@@ -337,29 +375,19 @@
     />
   </div>
 
-  <div class="zona-lanzador" class:con-hoja={ladoOcupado} bind:this={elLanzador}>
+  <div class="zona-lanzador">
     <Lanzador esDJ={esDJ} {ocupado} onTirar={alTirar} />
   </div>
+
+  {#if aviso}
+    <button class="aviso vidrio" role="alert" onclick={() => (aviso = '')}>
+      <Icono nombre="alerta" /><span>{aviso}</span><span class="cerrar-aviso" aria-hidden="true"><Icono nombre="cerrar" tam={16} /></span>
+    </button>
+  {/if}
 
   {#if verAjustes}
     <Ajustes {momento} {onMomento} {cat} onCerrar={() => (verAjustes = false)} onAbrirHoja={(id) => { verAjustes = false; verDJ = false; verHoja = id }} />
   {/if}
-
-  <!-- En celular, la escena y las cuentas se apilan justo arriba del lanzador -->
-  <div class="pila">
-    {#if escena}
-      <div class="zona-escena" class:con-hoja={ladoOcupado} bind:this={elEscena}>
-        <Escena {escena} />
-      </div>
-    {/if}
-    {#if app.cuentas.length}
-      <div class="cuentas" class:con-hoja={ladoOcupado} aria-label="Cuentas regresivas" bind:this={elCuentas}>
-        {#each app.cuentas as c (c.id)}
-          <span class="cuenta" class:cero={c.valor <= 0} class:oculta={!c.visible}><b class="titulo">{c.valor}</b>{c.nombre}</span>
-        {/each}
-      </div>
-    {/if}
-  </div>
 
   {#if verDJ && cat}
     <PanelDJ {cat} {miedo} onMiedo={sumarMiedo} onTirar={(p) => { if (!matchMedia('(min-width: 1100px)').matches) verDJ = false; alTirar(p) }} onCerrar={() => (verDJ = false)} />
@@ -385,206 +413,380 @@
 </div>
 
 <style>
-  .mesa { position: absolute; inset: 0; pointer-events: none; }
-  .mesa > :global(*) { pointer-events: auto; }
-
-  .barra {
+  /* La mesa es una retícula: cada cosa tiene su celda y la celda vacía del
+     centro es donde caen los dados (se mide en el script). */
+  .mesa {
+    --col-izq: 300px;
+    --col-der: 320px;
+    --hueco: 12px;
     position: absolute;
-    top: 0; left: 0; right: 0;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: calc(0.6rem + env(safe-area-inset-top, 0px)) 0.8rem 0.4rem;
+    inset: 0;
+    display: grid;
+    grid-template-columns: var(--col-izq) minmax(0, 1fr) var(--col-der);
+    grid-template-rows: auto minmax(0, 1fr) minmax(8.5rem, auto) auto;
+    grid-template-areas:
+      'barra barra barra'
+      'lado centro historial'
+      'lado resultado historial'
+      'lado lanzador historial';
+    gap: var(--hueco);
+    padding: calc(var(--hueco) + var(--seguro-arriba)) var(--hueco) calc(var(--hueco) + var(--seguro-abajo));
     pointer-events: none;
   }
-  .barra > * { pointer-events: auto; }
-  .nombre { margin: 0; font-size: clamp(1.1rem, 3.5vw, 1.6rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 0 1 auto; }
-  .botones { display: flex; gap: 0.4rem; margin-left: auto; }
-  .icono { padding: 0.5rem; display: grid; place-items: center; background: var(--vidrio); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .mesa > :global(*) { pointer-events: auto; min-width: 0; }
+  .centro { grid-area: centro; pointer-events: none !important; }
 
+  /* ---- Barra superior ---- */
+  .barra {
+    grid-area: barra;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.5rem;
+    padding: 0.35rem 0.4rem 0.35rem 1.1rem;
+    border-radius: 20px;
+  }
+  .nombre {
+    margin: 0;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex: 0 1 auto;
+  }
   .miedo {
     display: flex;
     align-items: center;
-    gap: 0.45rem;
-    padding: 0.35rem 0.7rem;
+    gap: 0.5rem;
+    flex: none;
+    padding: 0.2rem 0.35rem 0.2rem 0.85rem;
     border-radius: 999px;
-    background: rgba(30, 14, 52, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(167, 124, 232, 0.35);
+    background: var(--miedo-suave);
   }
-  .rotulo { font-size: 0.75rem; font-weight: 700; color: var(--pergamino-suave); }
-  .pips { display: grid; grid-template-columns: repeat(12, auto); gap: 3px; }
+  .miedo .rotulo { color: var(--miedo-hondo); }
+  .pips { display: flex; }
   .pip-miedo {
-    width: 11px; height: 11px;
-    padding: 0;
-    border: 1.5px solid rgba(167, 124, 232, 0.6);
-    background: transparent;
-    transform: rotate(45deg);
-    border-radius: 2px;
-    transition: background 0.2s, box-shadow 0.2s;
-  }
-  .pip-miedo.lleno { background: var(--miedo); box-shadow: 0 0 8px rgba(167, 124, 232, 0.9); border-color: #d6bfff; }
-  .pip-miedo:disabled { cursor: default; }
-  .cifra { font-family: var(--fuente-titulo); font-weight: 900; font-size: 1.1rem; color: #d6bfff; min-width: 1.4ch; text-align: right; }
-
-  .pj {
-    position: absolute;
-    top: calc(3.6rem + env(safe-area-inset-top, 0px));
-    left: 0.8rem;
-    border-radius: 18px;
-    padding: 0.55rem 0.8rem 0.65rem;
     display: grid;
-    gap: 0.35rem;
-    border-left: 3px solid var(--color-pj);
-    max-width: calc(100% - 1.6rem);
-  }
-  .pj.vacio p { margin: 0; font-size: 0.9rem; }
-  .enlace { border: 0; background: none; padding: 0; color: var(--esperanza); text-decoration: underline; font-weight: 700; }
-  .pj-nombre, .selector { margin: 0; font-size: 1.15rem; }
-  .ver-hoja {
-    justify-self: start; border: 1px solid var(--linea); background: rgba(255, 245, 230, 0.08);
-    border-radius: 999px; padding: 0.2rem 0.7rem; font-size: 0.78rem; font-weight: 700;
-  }
-  .ver-hoja:hover { background: color-mix(in srgb, var(--color-pj) 30%, transparent); }
-  .selector { background: transparent; border: 0; padding: 0; outline: none; }
-  .selector option { background: #241a3a; font-family: var(--fuente); }
-  .esperanza { display: flex; align-items: center; gap: 0.35rem; }
-  .pip-esp {
-    width: 18px; height: 18px;
+    place-items: center;
+    width: 21px;
+    height: 28px;
     padding: 0;
     border: 0;
     background: none;
-    clip-path: polygon(50% 0, 64% 34%, 100% 50%, 64% 66%, 50% 100%, 36% 66%, 0 50%, 36% 34%);
-    background: rgba(240, 189, 85, 0.25);
-    transition: background 0.2s, transform 0.15s;
   }
-  .pip-esp.lleno { background: var(--esperanza); filter: drop-shadow(0 0 6px rgba(240, 189, 85, 0.9)); }
-  .pip-esp:not(:disabled):hover { transform: scale(1.15); }
-  .pip-esp:disabled { cursor: default; }
-  .esperanza .rotulo { margin-left: 0.25rem; }
-  .estres { display: flex; align-items: center; gap: 0.35rem; }
-  .mini { border: 1px solid var(--linea); background: none; border-radius: 6px; width: 1.4rem; height: 1.4rem; padding: 0; line-height: 1; font-weight: 800; }
-  .mini:disabled { opacity: 0.35; cursor: default; }
-  .barra-estres { display: flex; gap: 2px; }
-  .barra-estres span { width: 9px; height: 12px; border-radius: 2px; border: 1px solid rgba(255, 179, 189, 0.5); }
-  .barra-estres span.marcado { background: var(--sangre); border-color: #ffb3bd; }
+  .pip-miedo::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--miedo);
+    transition: background 0.2s, transform 0.15s var(--suave);
+  }
+  .pip-miedo.lleno::before { background: var(--miedo); }
+  .pip-miedo:not(:disabled):hover::before { transform: scale(1.25); }
+  .pip-miedo:disabled { cursor: default; }
+  .cifra { min-width: 2ch; font-size: 1.25rem; font-weight: 900; text-align: center; color: var(--miedo-hondo); }
 
-  .zona-resultado {
+  .nav { display: flex; gap: 0.2rem; margin-left: auto; }
+  .nav-b {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.6rem;
+    padding: 0.4rem 0.85rem;
+    border: 0;
+    border-radius: 13px;
+    background: none;
+    color: var(--texto);
+    font-weight: 700;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-b:hover { background: var(--hundido-2); }
+  .nav-b[aria-pressed='true'] { background: var(--texto); color: var(--sobre-color); }
+  .nav-b:disabled { opacity: 0.45; cursor: progress; }
+  .nav-tiradas { display: none; }
+  .punto {
     position: absolute;
-    left: 50%;
-    top: max(calc(4rem + env(safe-area-inset-top, 0px)), var(--fin-cuentas, 0px));
-    transform: translateX(-50%);
-    z-index: 4;
-  }
-  /* Con la hoja abierta el lanzador mide al menos 380 px y su orilla derecha
-     queda en 50% + 330 px: por debajo de ~1326 px de ancho se metía debajo del
-     historial (que tapaba Libre, Daño y parte de Tirar). Ahí el historial
-     termina arriba del lanzador. */
-  @media (min-width: 1100px) and (max-width: 1325px) {
-    .zona-historial.con-hoja { bottom: var(--alto-lanzador, 13rem); }
-  }
-  @media (min-width: 1100px) {
-    .cuentas.con-hoja { left: calc(50% + 140px); }
-    .zona-resultado.con-hoja { left: calc(50% + 140px); z-index: 10; }
-    .zona-lanzador.con-hoja { left: calc(50% + 140px); width: min(520px, calc(100% - 560px - 360px - 2rem)); min-width: 380px; }
-  }
-  .boton.dj { background: rgba(91, 47, 145, 0.55); border-color: rgba(167, 124, 232, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 0.85rem; padding: 0.45rem 0.8rem; }
-  .boton.dj[aria-pressed='true'] { background: var(--miedo); color: var(--tinta); }
-  .lore-boton {
-    display: flex; align-items: center; gap: 0.35rem; font-size: 0.85rem; padding: 0.45rem 0.75rem;
-    background: rgba(120, 90, 30, 0.5); border-color: rgba(217, 181, 107, 0.6); color: #f3dfb0;
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  }
-  .lore-boton[aria-pressed='true'] { background: #d9b56b; color: var(--tinta); }
-  @media (max-width: 759px) { .lore-boton { padding: 0.5rem; } }
-  .cuentas {
-    position: absolute; left: 50%; transform: translateX(-50%);
-    top: calc(3.2rem + env(safe-area-inset-top, 0px));
-    display: flex; gap: 0.35rem; flex-wrap: wrap; justify-content: center; max-width: min(92vw, 640px); z-index: 2;
-  }
-  .cuenta {
-    display: flex; gap: 0.4rem; align-items: center; padding: 0.25rem 0.7rem 0.25rem 0.35rem; border-radius: 999px;
-    background: rgba(24, 17, 42, 0.75); border: 1px solid rgba(240, 189, 85, 0.45); font-size: 0.8rem; font-weight: 700;
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  }
-  .corto { display: none; }
-  .pila { display: contents; }
-  .zona-escena { position: absolute; z-index: 2; bottom: var(--alto-lanzador, 13rem); left: 0.6rem; right: 0.6rem; }
-  @media (min-width: 760px) {
-    .zona-escena { left: 50%; right: auto; transform: translateX(-50%); width: min(560px, calc(100% - 360px - 2rem)); }
-  }
-  @media (min-width: 760px) and (max-width: 1100px) {
-    .zona-escena { left: 0.8rem; transform: none; }
-  }
-  @media (min-width: 1100px) {
-    .zona-escena.con-hoja { left: calc(50% + 140px); width: min(520px, calc(100% - 560px - 360px - 2rem)); min-width: 380px; }
-  }
-  @media (max-width: 759px) {
-    .largo { display: none; }
-    .corto { display: inline; }
-    .pila {
-      display: flex; flex-direction: column; gap: 0.35rem; align-items: stretch;
-      position: absolute; left: 0.6rem; right: 0.6rem; bottom: var(--alto-lanzador, 13rem); z-index: 2;
-      pointer-events: none;
-    }
-    .pila > * { pointer-events: auto; }
-    .zona-escena { position: static; }
-    .cuentas { position: static; transform: none; max-width: none; align-self: center; }
-  }
-  .cuenta b { display: grid; place-items: center; min-width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--esperanza); color: var(--tinta); text-shadow: none; font-size: 0.95rem; }
-  .cuenta.cero { border-color: var(--sangre); animation: latido 1.2s ease-in-out infinite; }
-  .cuenta.cero b { background: var(--sangre); color: white; }
-  .cuenta.oculta { opacity: 0.6; border-style: dashed; }
-  @keyframes latido { 50% { box-shadow: 0 0 18px rgba(217, 74, 92, 0.8); } }
-  .aviso {
-    position: absolute;
-    left: 50%;
-    top: 14%;
-    transform: translateX(-50%);
-    margin: 0;
-    padding: 0.6rem 1rem;
-    border-radius: 12px;
-    color: #ffd0d6;
-    max-width: 90vw;
-    z-index: 4;
+    top: 5px;
+    right: 7px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--esperanza);
+    box-shadow: 0 0 0 2px #fff;
   }
 
-  .zona-lanzador {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-  }
-  .zona-historial {
-    position: absolute;
-    right: 0.8rem;
-    top: calc(3.6rem + env(safe-area-inset-top, 0px));
-    bottom: 1rem;
-    width: 320px;
+  /* ---- Columna izquierda: PJ, escena y cuentas ---- */
+  .lado {
+    grid-area: lado;
+    align-self: start;
+    max-height: 100%;
+    min-height: 0;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    z-index: 3;
+    gap: var(--hueco);
+    padding: 2px;
+    margin: -2px;
   }
-  .solo-movil { display: none; }
+  .lado-abajo { display: flex; flex-direction: column; gap: var(--hueco); }
 
-  @media (min-width: 760px) {
-    .zona-lanzador { left: 50%; transform: translateX(-50%); bottom: 1rem; width: min(560px, calc(100% - 360px - 2rem)); }
+  .pj {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.85rem 1rem 0.95rem;
+    border-radius: var(--radio-panel);
   }
-  @media (min-width: 760px) and (max-width: 1100px) {
-    .zona-lanzador { left: 0.8rem; transform: none; }
+  .pj-cabeza { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; min-width: 0; }
+  .pj .placa { margin: 0; font-size: 1.1rem; }
+  .selector {
+    min-width: 0;
+    border: 0;
+    appearance: none;
+    padding-right: 1.9rem;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 9.5 12 15l5.5-5.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem;
   }
-  @media (max-width: 759px) {
-    .solo-movil { display: grid; }
-    .miedo .rotulo { display: none; }
-    .pip-miedo { width: 8px; height: 8px; }
+  .selector option { background: #fff; color: var(--texto); font-weight: 500; }
+  .ver-hoja { min-height: 2.3rem; padding: 0.3rem 0.8rem; font-size: 0.9rem; flex: none; }
+  .vacio { gap: 0.7rem; }
+  .vacio p { margin: 0; font-size: 0.92rem; }
+
+  /* En la columna: rótulo y cuenta arriba, el control abajo */
+  .medidor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: 'rot de' 'ctl ctl';
+    align-items: center;
+    gap: 0.1rem 0.5rem;
+  }
+  .medidor .rotulo { grid-area: rot; }
+  .de { grid-area: de; }
+  .pips-esp, .estres { grid-area: ctl; }
+  .de { font-size: 0.92rem; font-weight: 900; color: var(--texto-suave); }
+  .pips-esp { margin-left: -5px; }
+  .pips-esp { display: flex; flex-wrap: wrap; }
+  .pip-esp {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+  .pip-esp::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--esperanza);
+    transition: background 0.2s, transform 0.15s var(--suave), box-shadow 0.2s;
+  }
+  .pip-esp.lleno::before { background: var(--esperanza); box-shadow: 0 0 0 3px var(--esperanza-suave); }
+  .pip-esp:not(:disabled):hover::before { transform: scale(1.15); }
+  .pip-esp:disabled { cursor: default; }
+  .estres { display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+  .paso {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--filete);
+    border-radius: 9px;
+    background: var(--hundido);
+    color: var(--texto);
+  }
+  .paso:hover:not(:disabled) { background: var(--hundido-2); }
+  .paso:disabled { opacity: 0.35; cursor: default; }
+  .cajas { display: flex; gap: 3px; flex-wrap: wrap; }
+  .cajas span { width: 13px; height: 18px; border-radius: 4px; border: 1.5px solid var(--filete-fuerte); transition: background 0.2s; }
+  .cajas span.marcado { background: var(--texto); border-color: var(--texto); }
+
+  .cuentas { display: grid; gap: 0.5rem; padding: 0.75rem 0.9rem 0.85rem; border-radius: var(--radio-panel); }
+  .cuentas h2 { margin: 0; }
+  .cuentas ul { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+  .cuenta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.2rem 0.75rem 0.2rem 0.2rem;
+    border-radius: 999px;
+    background: var(--hundido);
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+  .cuenta b {
+    display: grid;
+    place-items: center;
+    min-width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    background: var(--texto);
+    color: var(--sobre-color);
+    font-size: 1rem;
+  }
+  .cuenta.cero { color: var(--peligro-hondo); background: var(--peligro-suave); animation: latido 1.4s ease-in-out infinite; }
+  .cuenta.cero b { background: var(--peligro); }
+  .cuenta.oculta { background: none; outline: 1.5px dashed var(--filete-fuerte); outline-offset: -1.5px; }
+  .oculta-marca { display: grid; color: var(--texto-suave); }
+  @keyframes latido { 50% { box-shadow: 0 0 0 4px var(--peligro-suave); } }
+
+  /* ---- Centro: resultado y lanzador ---- */
+  .zona-resultado {
+    grid-area: resultado;
+    display: grid;
+    align-items: end;
+    justify-items: center;
+    min-height: 0;
+    pointer-events: none !important;
+  }
+  .zona-resultado > :global(*) { pointer-events: auto; width: min(100%, 640px); }
+  .zona-lanzador { grid-area: lanzador; justify-self: center; width: min(100%, 640px); }
+
+  /* ---- Derecha: registro de tiradas ---- */
+  .zona-historial { grid-area: historial; display: flex; flex-direction: column; min-height: 0; transition: opacity 0.25s; }
+  .cortina-historial { display: none; }
+
+  .aviso {
+    position: fixed;
+    z-index: 30;
+    top: calc(5rem + var(--seguro-arriba));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    max-width: min(90vw, 520px);
+    padding: 0.7rem 0.9rem;
+    border-radius: 16px;
+    color: var(--peligro-hondo);
+    font-weight: 700;
+    text-align: left;
+    background: var(--superficie-firme);
+    animation: bajar 0.3s var(--suave);
+  }
+  .cerrar-aviso { color: var(--texto-suave); }
+  @keyframes bajar { from { opacity: 0; transform: translate(-50%, -8px); } }
+
+  /* ---- Con la hoja o el panel del DJ abierto (escritorio): la mesa se aparta ---- */
+  @media (min-width: 1100px) {
+    .mesa.enfocada { --col-izq: 560px; }
+    .mesa.enfocada.con-dj { --col-izq: 600px; }
+    .enfocada .lado { visibility: hidden; }
+    .enfocada .zona-historial { opacity: 0.55; }
+    .enfocada .zona-historial:hover, .enfocada .zona-historial:focus-within { opacity: 1; }
+  }
+  @media (min-width: 1100px) and (max-width: 1359px) {
+    .mesa.enfocada { --col-der: 0px; }
+    .enfocada .zona-historial { display: none; }
+  }
+
+  /* ---- Pantallas medianas: botones con su nombre debajo del ícono ---- */
+  @media (max-width: 1099px) {
+    .mesa { --col-izq: 270px; --col-der: 280px; }
+    .barra { gap: 0.7rem; padding-left: 0.95rem; }
+    .nav-b { flex-direction: column; gap: 0.05rem; min-width: 3.2rem; min-height: 2.9rem; padding: 0.3rem 0.4rem; font-size: 0.7rem; }
+    .nav-hoja { display: none; }
+  }
+
+  /* ---- Dos columnas: el registro se abre desde «Tiradas» ---- */
+  @media (max-width: 959px) {
+    .mesa {
+      --col-izq: 280px;
+      grid-template-columns: var(--col-izq) minmax(0, 1fr);
+      grid-template-areas:
+        'barra barra'
+        'lado centro'
+        'lado resultado'
+        'lado lanzador';
+    }
+    .nav-tiradas { display: inline-flex; }
+    .cortina-historial { display: block; z-index: 6; }
     .zona-historial {
-      left: 0; right: 0; top: auto; bottom: 0; width: auto;
-      height: 72vh;
-      transform: translateY(105%);
-      transition: transform 0.3s ease;
-      z-index: 5;
+      position: fixed;
+      z-index: 7;
+      top: calc(var(--hueco) + var(--seguro-arriba));
+      right: var(--hueco);
+      bottom: var(--hueco);
+      width: min(340px, calc(100% - 2 * var(--hueco)));
+      transform: translateX(calc(100% + 2rem));
+      transition: transform 0.3s var(--suave);
     }
     .zona-historial.abierto { transform: none; }
+  }
+
+  /* ---- Celular ---- */
+  @media (max-width: 759px) {
+    .mesa {
+      --hueco: 8px;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto auto minmax(0, 1fr) auto minmax(6.5rem, auto) auto;
+      grid-template-areas: 'barra' 'pj' 'centro' 'abajo' 'resultado' 'lanzador';
+      padding: calc(8px + var(--seguro-arriba)) 8px 0;
+    }
+    .lado { display: contents; }
+    .pj { grid-area: pj; padding: 0.7rem 0.85rem 0.75rem; gap: 0.35rem; }
+    .lado-abajo { grid-area: abajo; gap: 6px; }
+    .cuentas { padding: 0.55rem 0.7rem; }
+    .cuentas h2 { display: none; }
+    .medidor { grid-template-columns: 5rem minmax(0, 1fr) auto; grid-template-areas: 'rot ctl de'; }
+    .pips-esp { margin-left: 0; }
+    .barra {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: 'nombre nav' 'miedo miedo';
+      gap: 0.3rem 0.5rem;
+      padding: 0.35rem 0.35rem 0.5rem 0.85rem;
+    }
+    .nombre { grid-area: nombre; font-size: 1.08rem; }
+    .nav { grid-area: nav; gap: 0; }
+    .nav-b { min-width: 3rem; padding: 0.25rem 0.3rem; }
+    .miedo { grid-area: miedo; padding-left: 0.75rem; }
+    .pips { flex: 1; justify-content: space-between; }
+    .pip-miedo { flex: 1; width: auto; max-width: 26px; }
+    .zona-lanzador { width: auto; margin: 0 -8px; justify-self: stretch; }
+    .zona-historial {
+      top: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: auto;
+      height: min(78dvh, 640px);
+      transform: translateY(calc(100% + 2rem));
+    }
     .zona-historial :global(.historial) { border-radius: var(--radio-panel) var(--radio-panel) 0 0; height: 100%; }
-    .zona-resultado { top: calc(3.5rem + env(safe-area-inset-top, 0px)); width: calc(100% - 1.2rem); }
+    .aviso { top: calc(7.5rem + var(--seguro-arriba)); }
+  }
+
+  /* ---- Celular acostado y pantallas muy bajas: lanzador a la derecha ---- */
+  @media (max-height: 560px) and (min-width: 600px) {
+    .mesa {
+      --hueco: 8px;
+      --col-izq: 250px;
+      --col-der: 360px;
+      grid-template-columns: var(--col-izq) minmax(0, 1fr) var(--col-der);
+      grid-template-rows: auto minmax(6.5rem, auto) minmax(0, 1fr);
+      grid-template-areas:
+        'barra barra barra'
+        'lado resultado lanzador'
+        'lado centro lanzador';
+      padding: calc(8px + var(--seguro-arriba)) 8px calc(8px + var(--seguro-abajo));
+    }
+    .lado { display: flex; }
+    .barra { min-height: 3rem; padding-block: 0.2rem; }
+    .nav-b { min-height: 2.6rem; }
+    .zona-resultado { align-items: start; }
+    .zona-lanzador { width: 100%; margin: 0; align-self: end; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cuenta.cero { animation: none; }
   }
 </style>

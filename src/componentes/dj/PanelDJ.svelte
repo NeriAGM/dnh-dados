@@ -9,6 +9,7 @@
   import { puntosDeBatalla, AJUSTES_BATALLA, NOMBRE_TIPO } from '../../lib/reglas.js'
   import { md } from '../../lib/md.js'
   import Adversario from './Adversario.svelte'
+  import Icono from '../Icono.svelte'
   import { crearCola } from './cola.js'
 
   let { cat, miedo = 0, onMiedo, onTirar, onCerrar } = $props()
@@ -145,10 +146,10 @@
   }
 
   const GASTOS = [
-    { texto: 'Interrumpir y tomar el foco' },
-    { texto: 'Dar el foco a otro adversario' },
-    { texto: 'Rasgo de Miedo' },
-    { texto: 'Sumar una Experiencia' },
+    { texto: 'Interrumpir y tomar el foco', costo: 1 },
+    { texto: 'Dar el foco a otro adversario', costo: 1 },
+    { texto: 'Rasgo de Miedo', costo: 1 },
+    { texto: 'Sumar una Experiencia', costo: 1 },
   ]
 
   function nuevaCuenta(e) {
@@ -168,27 +169,27 @@
 <section class="panel vidrio" aria-label="Panel del DJ">
   <header class="cabecera">
     <h2 class="titulo">Panel del DJ</h2>
-    <div class="miedo-ctl" aria-label="Miedo: {miedo} de 12">
-      <button class="boton chico" disabled={miedo <= 0} onclick={() => hacer(() => onMiedo(-1))} aria-label="Gastar 1 Miedo">−</button>
-      <span class="miedo-num titulo">{miedo}<small>Miedo</small></span>
-      <button class="boton chico" disabled={miedo >= 12} onclick={() => hacer(() => onMiedo(1))} aria-label="Ganar 1 Miedo">+</button>
+    <div class="miedo-ctl" role="group" aria-label="Miedo: {miedo} de 12">
+      <button class="boton paso" disabled={miedo <= 0} onclick={() => hacer(() => onMiedo(-1))} aria-label="Gastar 1 Miedo"><Icono nombre="menos" /></button>
+      <span class="miedo-num num">{miedo}<small>Miedo</small></span>
+      <button class="boton paso" disabled={miedo >= 12} onclick={() => hacer(() => onMiedo(1))} aria-label="Ganar 1 Miedo"><Icono nombre="mas" /></button>
     </div>
-    <button class="cerrar" onclick={onCerrar} aria-label="Cerrar panel">✕</button>
+    <button class="icono" onclick={onCerrar} aria-label="Cerrar panel"><Icono nombre="cerrar" /></button>
   </header>
 
-  <div class="gastos" aria-label="Gastar Miedo">
+  <div class="gastos" role="group" aria-label="Gastar Miedo">
     {#each GASTOS as g}
-      <button class="gasto" disabled={miedo <= 0} onclick={() => hacer(() => onMiedo(-1))}>{g.texto}<small>−1</small></button>
+      <button class="boton gasto" disabled={miedo < g.costo} onclick={() => hacer(() => onMiedo(-g.costo))}>{g.texto}<small>−{g.costo} Miedo</small></button>
     {/each}
   </div>
 
-  <nav class="pestanas">
+  <nav class="pestanas" aria-label="Secciones del panel">
     {#each [['encuentro', 'Encuentro'], ['bestiario', 'Bestiario'], ['entornos', 'Entornos'], ['cuentas', `Cuentas (${app.cuentas.length})`]] as [id, n]}
-      <button class:activa={pestana === id} onclick={() => (pestana = id)} aria-current={pestana === id}>{n}</button>
+      <button class:activa={pestana === id} onclick={() => (pestana = id)} aria-selected={pestana === id}>{n}</button>
     {/each}
   </nav>
 
-  {#if error}<p class="error" role="alert">{error}</p>{/if}
+  {#if error}<p class="aviso-error error" role="alert">{error}</p>{/if}
 
   <div class="cuerpo">
     {#if pestana === 'encuentro'}
@@ -197,18 +198,18 @@
           {#each app.encuentros as e (e.id)}<option value={e.id}>{e.nombre}{e.activo ? ' · activo' : ''}</option>{/each}
           {#if !app.encuentros.length}<option value="">Sin encuentros</option>{/if}
         </select>
-        <button class="boton chico" onclick={nuevoEncuentro}>Nuevo</button>
+        <button class="boton solido" onclick={nuevoEncuentro}><Icono nombre="mas" tam={18} />Nuevo</button>
       </div>
 
       {#if encuentro}
         <div class="fila">
           <input class="campo" value={encuentro.nombre} onchange={(e) => { const nombre = e.currentTarget.value.trim().slice(0, 80) || 'Encuentro'; hacer(() => guardarE(encuentro.id, { nombre })) }} aria-label="Nombre del encuentro" />
           {#if encuentro.activo}
-            <button class="boton chico" onclick={() => hacer(async () => { await colaE.esperar(); await terminarEncuentro(encuentro.id) })} title="La mesa deja de verlo">Terminar encuentro</button>
+            <button class="boton" onclick={() => hacer(async () => { await colaE.esperar(); await terminarEncuentro(encuentro.id) })} title="La mesa deja de verlo">Terminar encuentro</button>
           {:else}
-            <button class="boton chico" onclick={() => hacer(async () => { await guardarAdversarios(encuentro.id, instancias()); await colaE.esperar(); await activarEncuentro(encuentro.id) })}>Activar</button>
+            <button class="boton" onclick={() => hacer(async () => { await guardarAdversarios(encuentro.id, instancias()); await colaE.esperar(); await activarEncuentro(encuentro.id) })}>Activar</button>
           {/if}
-          <button class="boton chico" onclick={() => { if (confirmar === encuentro.id) { const id = encuentro.id; hacer(async () => { await colaE.esperar(); colaE.olvidar(id); await borrarEncuentro(id) }); confirmar = null; elegido = null } else confirmar = encuentro.id }}>{confirmar === encuentro.id ? '¿Borrar?' : 'Borrar'}</button>
+          <button class="boton" onclick={() => { if (confirmar === encuentro.id) { const id = encuentro.id; hacer(async () => { await colaE.esperar(); colaE.olvidar(id); await borrarEncuentro(id) }); confirmar = null; elegido = null } else confirmar = encuentro.id }}>{confirmar === encuentro.id ? '¿Borrar?' : 'Borrar'}</button>
         </div>
 
         <div class="presupuesto" class:pasado={puntos.restante < 0}>
@@ -243,7 +244,7 @@
             {#each entorno.rasgos ?? [] as r}
               <div class="r"><p><b>{r.nombre}</b> <small>{r.clase}</small></p>{@html md(r.texto)}</div>
             {/each}
-            <button class="boton chico" onclick={() => hacer(() => guardarE(encuentro.id, { entorno: null, entorno_nombre: null }))}>Quitar entorno</button>
+            <button class="boton" onclick={() => hacer(() => guardarE(encuentro.id, { entorno: null, entorno_nombre: null }))}>Quitar entorno</button>
           </details>
         {/if}
 
@@ -258,13 +259,13 @@
                 onQuitar={() => quitarInstancia(i)}
                 onDuplicar={() => duplicarInstancia(i)} />
             {:else}
-              <p class="vacio">«{inst.ref}» ya no existe en el catálogo. <button class="boton chico" onclick={() => quitarInstancia(i)}>Quitar</button></p>
+              <p class="vacio">«{inst.ref}» ya no existe en el catálogo. <button class="boton" onclick={() => quitarInstancia(i)}>Quitar de la lista</button></p>
             {/if}
           {:else}
-            <p class="vacio">Sin adversarios. Agrégalos desde el Bestiario.</p>
+            <p class="vacio">Este encuentro está vacío. Abre el Bestiario y toca «+1» en un adversario para sumarlo.</p>
           {/each}
         </div>
-        <button class="boton" onclick={() => (pestana = 'bestiario')}>Agregar adversarios</button>
+        <button class="boton solido" onclick={() => (pestana = 'bestiario')}><Icono nombre="mas" tam={18} />Agregar adversarios</button>
 
         <section class="vista-mesa" aria-label="Así lo ve la mesa">
           <p class="vm-titulo">
@@ -279,7 +280,7 @@
           <p class="ayuda">Sin números: solo nombre, tipo y estado (Ileso · Herido · Grave · Caído).</p>
         </section>
       {:else}
-        <p class="vacio">Crea tu primer encuentro para empezar a armar la pelea.</p>
+        <p class="vacio">Aún no hay encuentros. Crea uno con «Nuevo» para armar la pelea.</p>
       {/if}
 
     {:else if pestana === 'bestiario'}
@@ -297,14 +298,14 @@
           <Adversario adv={a}>
             {#snippet acciones()}
               {#if a.tipo === 'esbirro'}
-                <button class="boton chico" onclick={() => agregar(a, pjs)} title="Un grupo del tamaño de tu mesa cuesta 1 punto">+{pjs}</button>
+                <button class="boton" onclick={() => agregar(a, pjs)} title="Un grupo del tamaño de tu mesa cuesta 1 punto">+{pjs}</button>
               {:else}
-                <button class="boton chico" onclick={() => agregar(a)}>+1</button>
+                <button class="boton" onclick={() => agregar(a)}>+1</button>
               {/if}
             {/snippet}
           </Adversario>
         {:else}
-          <p class="vacio">Nada coincide con esa búsqueda.</p>
+          <p class="vacio">Nada coincide con esa búsqueda. Prueba otra palabra o quita los filtros.</p>
         {/each}
       </div>
 
@@ -319,7 +320,7 @@
             {#each e.rasgos ?? [] as r}
               <div class="r"><p><b>{r.nombre}</b> <small>{r.clase}{r.cuenta_regresiva ? ` · ${r.cuenta_regresiva}` : ''}</small></p>{@html md(r.texto)}</div>
             {/each}
-            <button class="boton chico" onclick={() => hacer(async () => { const enc = await asegurarEncuentro(); await guardarE(enc.id, { entorno: e.id, entorno_nombre: e.nombre }); pestana = 'encuentro' })}>Usar en el encuentro</button>
+            <button class="boton" onclick={() => hacer(async () => { const enc = await asegurarEncuentro(); await guardarE(enc.id, { entorno: e.id, entorno_nombre: e.nombre }); pestana = 'encuentro' })}>Usar en el encuentro</button>
           </details>
         {/each}
       </div>
@@ -332,7 +333,7 @@
           {#each Object.entries(TIPOS_CUENTA) as [k, v]}<option value={k}>{v}</option>{/each}
         </select>
         <label class="ocultas"><input type="checkbox" bind:checked={cVisible} /> La mesa la ve</label>
-        <button class="boton chico" disabled={!cNombre.trim()}>Crear</button>
+        <button class="boton solido" disabled={!cNombre.trim()}>Crear</button>
       </form>
       <p class="ayuda">Estándar: baja 1 en cada tirada. Dinámica: baja 0–3 según el resultado. En bucle: al llegar a 0 vuelve a empezar.</p>
       <div class="lista">
@@ -341,15 +342,15 @@
             <span class="c-num titulo">{c.valor}</span>
             <span class="c-info"><b>{c.nombre}</b><small>{TIPOS_CUENTA[c.tipo]} · empezó en {c.inicial}{c.visible ? '' : ' · oculta'}</small></span>
             <span class="c-btn">
-              <button class="boton chico" disabled={c.valor <= 0} onclick={() => hacer(() => colaC.poner(c.id, { valor: Math.max(0, c.valor - 1) }))} aria-label="Bajar">−1</button>
-              <button class="boton chico" disabled={c.valor >= 99} onclick={() => hacer(() => colaC.poner(c.id, { valor: Math.min(99, c.valor + 1) }))} aria-label="Subir">+1</button>
-              <button class="boton chico" onclick={() => hacer(() => colaC.poner(c.id, { valor: c.inicial }))} title="Reiniciar">↺</button>
-              <button class="boton chico" onclick={() => hacer(() => colaC.poner(c.id, { visible: !c.visible }))}>{c.visible ? 'Ocultar' : 'Mostrar'}</button>
-              <button class="boton chico" onclick={() => hacer(async () => { await colaC.esperar(); colaC.olvidar(c.id); await borrarCuenta(c.id) })} aria-label="Borrar">✕</button>
+              <button class="boton" disabled={c.valor <= 0} onclick={() => hacer(() => colaC.poner(c.id, { valor: Math.max(0, c.valor - 1) }))} aria-label="Bajar">−1</button>
+              <button class="boton" disabled={c.valor >= 99} onclick={() => hacer(() => colaC.poner(c.id, { valor: Math.min(99, c.valor + 1) }))} aria-label="Subir">+1</button>
+              <button class="boton" onclick={() => hacer(() => colaC.poner(c.id, { valor: c.inicial }))} title="Reiniciar" aria-label="Reiniciar"><Icono nombre="reiniciar" tam={18} /></button>
+              <button class="boton" onclick={() => hacer(() => colaC.poner(c.id, { visible: !c.visible }))}>{c.visible ? 'Ocultar' : 'Mostrar'}</button>
+              <button class="boton" onclick={() => hacer(async () => { await colaC.esperar(); colaC.olvidar(c.id); await borrarCuenta(c.id) })} aria-label="Borrar"><Icono nombre="basura" tam={18} /></button>
             </span>
           </div>
         {:else}
-          <p class="vacio">Sin cuentas regresivas.</p>
+          <p class="vacio">Aún no hay cuentas regresivas. Escribe un nombre arriba, elige su valor y toca «Crear».</p>
         {/each}
       </div>
     {/if}
@@ -357,69 +358,75 @@
 </section>
 
 <style>
-  .velo { position: fixed; inset: 0; background: rgba(8, 4, 18, 0.45); z-index: 8; }
+  .velo { position: fixed; inset: 0; background: var(--velo); z-index: 8; animation: aparecer-velo 0.25s ease-out; }
+  @keyframes aparecer-velo { from { opacity: 0; } }
   .panel {
-    position: fixed; z-index: 9; top: 0; bottom: 0; left: 0; width: min(100%, 600px);
-    display: flex; flex-direction: column;
-    border-radius: 0 var(--radio-panel) var(--radio-panel) 0;
-    background: rgba(22, 15, 38, 0.97); border-left: 4px solid var(--miedo);
-    animation: entrar 0.25s ease-out;
+    position: fixed; z-index: 9; top: 12px; bottom: 12px; left: 12px; width: min(600px, calc(100% - 24px));
+    display: flex; flex-direction: column; overflow: hidden;
+    border-radius: var(--radio-panel);
+    background: var(--superficie-firme); box-shadow: var(--sombra-alta);
+    animation: entrar 0.25s var(--suave);
   }
   @keyframes entrar { from { transform: translateX(-24px); opacity: 0; } }
   .cabecera, .gastos, .pestanas { flex: none; }
-  .cabecera { display: flex; align-items: center; gap: 0.7rem; padding: calc(0.8rem + env(safe-area-inset-top, 0px)) 1rem 0.3rem; }
-  h2 { margin: 0; font-size: 1.5rem; flex: 1; }
-  .miedo-ctl { display: flex; align-items: center; gap: 0.35rem; }
-  .miedo-num { display: grid; justify-items: center; font-size: 1.6rem; line-height: 1; color: #d6bfff; min-width: 3.2rem; text-shadow: 0 0 14px rgba(167, 124, 232, 0.6); }
-  .miedo-num small { font-family: var(--fuente); font-size: 0.65rem; color: var(--pergamino-suave); font-weight: 700; }
-  .chico { padding: 0.35rem 0.65rem; font-size: 0.82rem; }
-  .cerrar { border: 0; background: none; font-size: 1.15rem; padding: 0.25rem 0.5rem; }
-  .gastos { display: flex; gap: 0.3rem; padding: 0 1rem 0.5rem; overflow-x: auto; scrollbar-width: none; }
-  .gasto { flex: none; border: 1px solid rgba(167, 124, 232, 0.4); background: rgba(91, 47, 145, 0.25); border-radius: 999px; padding: 0.3rem 0.7rem; font-size: 0.78rem; font-weight: 700; display: flex; gap: 0.35rem; align-items: center; }
-  .gasto small { color: #d6bfff; }
-  .gasto:disabled { opacity: 0.4; }
-  .pestanas { display: flex; gap: 0.2rem; overflow-x: auto; padding: 0.2rem 0.8rem 0.5rem; border-bottom: 1px solid var(--linea); scrollbar-width: none; }
-  .pestanas button { flex: none; border: 0; background: none; color: var(--pergamino-suave); font-weight: 700; padding: 0.4rem 0.75rem; border-radius: 999px; font-size: 0.9rem; }
-  .pestanas button.activa { background: rgba(167, 124, 232, 0.3); color: var(--pergamino); }
-  .error { margin: 0.4rem 1rem 0; color: #ffb3bd; font-size: 0.88rem; }
-  .cuerpo { overflow-y: auto; padding: 0.7rem 1rem calc(1.4rem + var(--seguro-abajo)); display: grid; gap: 0.6rem; align-content: start; overscroll-behavior: contain; }
-  .fila { display: flex; gap: 0.4rem; align-items: center; }
-  .fila .campo { flex: 1; min-width: 0; }
-  .mini { width: 3.6rem; padding: 0.3rem 0.4rem; text-align: center; display: inline-block; }
-  .presupuesto { border-radius: 14px; padding: 0.6rem 0.75rem; background: rgba(255, 245, 230, 0.05); border: 1px solid var(--linea); display: grid; gap: 0.35rem; }
-  .barra { height: 8px; border-radius: 999px; background: rgba(255, 245, 230, 0.1); overflow: hidden; }
-  .barra span { display: block; height: 100%; background: linear-gradient(90deg, var(--exito), var(--esperanza)); transition: width 0.3s; }
-  .pasado .barra span { background: var(--sangre); }
-  .pb { margin: 0; font-size: 0.9rem; }
-  .pb b { font-size: 1.15rem; text-shadow: none; }
-  .ayuda { margin: 0; color: var(--pergamino-suave); font-size: 0.8rem; }
-  .ajustes, .filtros { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  .chip { border: 1px solid var(--linea); background: none; border-radius: 999px; padding: 0.25rem 0.6rem; font-size: 0.76rem; font-weight: 700; }
-  .chip.activo { background: var(--pergamino); color: var(--tinta); }
-  .opciones-tirada { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
-  .segmentos { display: flex; gap: 0.3rem; }
-  .segmentos button { border: 1px solid var(--linea); background: none; border-radius: 999px; padding: 0.3rem 0.7rem; font-weight: 700; font-size: 0.8rem; }
-  .segmentos .ven { background: #2f8f7a; border-color: #6fd3b8; }
-  .segmentos .des { background: #a8323e; border-color: #f2a3ab; }
-  .ocultas { display: flex; gap: 0.3rem; align-items: center; font-size: 0.82rem; }
-  .lista { display: grid; gap: 0.5rem; }
-  .vacio { margin: 0; color: var(--pergamino-suave); font-size: 0.9rem; }
-  .entorno { border-radius: 14px; border: 1px solid rgba(79, 174, 107, 0.45); background: rgba(79, 174, 107, 0.08); padding: 0.55rem 0.75rem; font-size: 0.86rem; line-height: 1.45; }
-  .entorno summary { cursor: pointer; }
-  .entorno .r p { margin: 0.4rem 0 0.1rem; }
-  .entorno :global(p) { margin: 0.2rem 0; }
-  .desc { font-style: italic; color: var(--pergamino-suave); margin: 0.3rem 0; }
-  .vista-mesa { border-radius: 14px; border: 1px dashed rgba(240, 189, 85, 0.45); padding: 0.55rem 0.7rem; display: grid; gap: 0.4rem; background: rgba(240, 189, 85, 0.05); }
-  .vm-titulo { margin: 0; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; font-size: 0.88rem; }
-  .vm-titulo small { color: var(--pergamino-suave); font-size: 0.76rem; }
-  .nueva-cuenta { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
+  .cabecera { display: flex; align-items: center; gap: 0.7rem; padding: 0.9rem 1rem 0.5rem 1.2rem; }
+  h2 { margin: 0; font-size: 1.5rem; flex: 1; min-width: 0; }
+  .miedo-ctl { display: flex; align-items: center; gap: 0.3rem; }
+  .paso { width: 2.5rem; padding: 0; border-radius: 50%; }
+  .miedo-num { display: grid; justify-items: center; font-size: 2rem; font-weight: 900; line-height: 1; color: var(--miedo-hondo); min-width: 3.4rem; }
+  .miedo-num small { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--texto-suave); font-weight: 700; }
+  .gastos { display: flex; gap: 0.4rem; padding: 0.3rem 1rem 0.7rem; overflow-x: auto; scrollbar-width: none; }
+  .gasto { flex: none; border-radius: 999px; background: var(--miedo-suave); border-color: color-mix(in srgb, var(--miedo) 35%, transparent); color: var(--miedo-hondo); font-size: 0.85rem; }
+  .gasto:hover:not(:disabled) { background: color-mix(in srgb, var(--miedo) 22%, transparent); }
+  .gasto small { font-size: 0.75rem; font-weight: 900; padding: 0.05rem 0.45rem; border-radius: 999px; background: var(--miedo-hondo); color: var(--sobre-color); }
+  .pestanas { padding: 0 0.8rem; }
+  .error { margin: 0.5rem 1rem 0; }
+  .cuerpo { flex: 1; min-height: 0; overflow-y: auto; padding: 1rem 1rem calc(1.4rem + var(--seguro-abajo)); display: grid; gap: 0.75rem; align-content: start; overscroll-behavior: contain; }
+  .fila { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+  .fila .campo { flex: 1; min-width: 8rem; }
+  .mini { width: 4rem; text-align: center; display: inline-block; }
+  .presupuesto { border-radius: var(--radio-control); padding: 0.75rem 0.9rem; background: var(--hundido); border: 1px solid var(--filete); display: grid; gap: 0.5rem; }
+  .barra { height: 8px; border-radius: 999px; background: var(--hundido-2); overflow: hidden; }
+  .barra span { display: block; height: 100%; background: var(--exito); transition: width 0.3s; }
+  .pasado .barra span { background: var(--peligro); }
+  .pb { margin: 0; font-size: 1rem; }
+  .pb b { font-size: 1.1rem; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .pasado .pb { color: var(--peligro-hondo); }
+  .ayuda { margin: 0; color: var(--texto-suave); font-size: 0.85rem; }
+  .ajustes, .filtros { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .chip { min-height: 2.25rem; border: 1px solid var(--filete); background: var(--hundido); color: var(--texto); border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.85rem; font-weight: 700; }
+  .chip:hover { background: var(--hundido-2); }
+  .chip.activo { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+  .opciones-tirada { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+  .segmentos { display: flex; gap: 0.35rem; }
+  .segmentos button { min-height: 2.5rem; border: 1px solid var(--filete); background: var(--hundido); border-radius: 999px; padding: 0.4rem 0.9rem; font-weight: 700; font-size: 0.9rem; }
+  .segmentos .ven { background: var(--exito-hondo); border-color: var(--exito-hondo); color: var(--sobre-color); }
+  .segmentos .des { background: var(--peligro-hondo); border-color: var(--peligro-hondo); color: var(--sobre-color); }
+  .ocultas { display: flex; gap: 0.4rem; align-items: center; font-size: 0.9rem; font-weight: 700; }
+  .lista { display: grid; gap: 0.6rem; }
+  .vacio { margin: 0; padding: 1rem; border: 1px dashed var(--filete-fuerte); border-radius: var(--radio-control); color: var(--texto-suave); font-size: 0.95rem; text-align: center; display: grid; gap: 0.6rem; justify-items: center; }
+  .entorno { border-radius: var(--radio-control); border: 1px solid color-mix(in srgb, var(--exito) 40%, transparent); background: var(--exito-suave); padding: 0.65rem 0.85rem; font-size: 0.92rem; line-height: 1.45; }
+  .entorno summary { cursor: pointer; min-height: 1.5rem; }
+  .entorno .r p { margin: 0.5rem 0 0.1rem; }
+  .entorno :global(p) { margin: 0.25rem 0; }
+  .entorno .boton { margin-top: 0.5rem; }
+  .desc { color: var(--texto-suave); margin: 0.3rem 0; }
+  .vista-mesa { border-radius: var(--radio-control); border: 1px dashed var(--filete-fuerte); padding: 0.7rem 0.85rem; display: grid; gap: 0.5rem; background: var(--hundido); }
+  .vm-titulo { margin: 0; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; font-size: 0.95rem; }
+  .vm-titulo small { color: var(--texto-suave); font-size: 0.85rem; }
+  .nueva-cuenta { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
   .nueva-cuenta .campo:first-child { flex: 1 1 100%; }
-  .cuenta { display: flex; gap: 0.6rem; align-items: center; padding: 0.5rem 0.65rem; border-radius: 12px; background: rgba(255, 245, 230, 0.05); border: 1px solid var(--linea); flex-wrap: wrap; }
-  .cuenta.cero { border-color: var(--sangre); background: rgba(217, 74, 92, 0.15); }
-  .c-num { font-size: 1.8rem; min-width: 2.2ch; text-align: center; text-shadow: none; }
+  .nueva-cuenta .campo:not(.mini):not(:first-child) { flex: 1; min-width: 8rem; }
+  .cuenta { display: flex; gap: 0.7rem; align-items: center; padding: 0.65rem 0.8rem; border-radius: var(--radio-control); background: var(--hundido); border: 1px solid var(--filete); flex-wrap: wrap; }
+  .cuenta.cero { border-color: var(--peligro); background: var(--peligro-suave); }
+  .c-num { font-size: 1.8rem; font-weight: 900; min-width: 2.2ch; text-align: center; font-variant-numeric: tabular-nums; }
   .c-info { flex: 1; display: grid; min-width: 8rem; }
-  .c-info small { color: var(--pergamino-suave); font-size: 0.75rem; }
-  .c-btn { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+  .c-info small { color: var(--texto-suave); font-size: 0.85rem; }
+  .c-btn { display: flex; gap: 0.3rem; flex-wrap: wrap; }
   @media (min-width: 1100px) { .velo { display: none; } }
-  @media (max-width: 600px) { .panel { width: 100%; border-radius: 0; border-left: 0; border-top: 4px solid var(--miedo); background: rgb(22, 15, 38); } }
+  @media (max-width: 759px) {
+    .panel { inset: 0; width: 100%; border-radius: 0; }
+    .cabecera { padding-top: calc(0.9rem + var(--seguro-arriba)); }
+    .chip { min-height: 2.5rem; }
+  }
 </style>

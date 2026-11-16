@@ -8,11 +8,15 @@
   const lista = $derived(consecuencias(tirada, personaje))
 </script>
 
+<!-- La tirada llega como una línea de diálogo: placa con quién tiró, el número
+     y el desenlace escribiéndose; abajo los dados y lo que pasa. -->
 <button class="resultado vidrio {des.clase}" onclick={onCerrar} aria-live="polite" aria-label="Cerrar resultado">
-  {#if des.clase === 'critico'}<span class="destello" aria-hidden="true"></span>{/if}
-  <span class="quien">{personaje || autor}{tirada.etiqueta ? ` · ${tirada.etiqueta}` : ''}{tirada.oculta ? ' · oculta' : ''}</span>
-  <span class="total titulo">{tirada.total}</span>
-  {#if des.texto}<span class="desenlace titulo">{des.texto}</span>{/if}
+  <span class="placa">{personaje || autor}{tirada.oculta ? ' · oculta' : ''}</span>
+  <span class="linea">
+    {#if tirada.etiqueta}<span class="que">{tirada.etiqueta}…</span>{/if}
+    <span class="total">{tirada.total}</span>
+    {#if des.texto}<span class="desenlace">{des.texto}</span>{/if}
+  </span>
   <span class="dados">
     {#each tirada.dados as d}
       <span class="dado {d.rol}" class:descartado={d.descartado}>{nombreDado(d)} {d.signo < 0 ? '−' : ''}{d.valor}</span>
@@ -20,77 +24,115 @@
     {#if tirada.modificador}<span class="dado">{conSigno(tirada.modificador)}</span>{/if}
   </span>
   {#if lista.length}
-    <span class="efectos">{lista.join(' · ')}</span>
+    <span class="efectos">
+      {#each lista as e}<span class="efecto">{e}</span>{/each}
+    </span>
   {/if}
+  <span class="sigue" aria-hidden="true"></span>
 </button>
 
 <style>
   .resultado {
+    --acento: var(--texto);
     position: relative;
-    isolation: isolate;
-    overflow: hidden;
     display: grid;
-    justify-items: center;
-    gap: 0.15rem;
+    justify-items: start;
+    gap: 0.4rem;
+    width: 100%;
+    margin-top: 0.9rem;
+    padding: 1.3rem 2.6rem 1rem 1.4rem;
     border-radius: var(--radio-panel);
-    padding: 0.9rem 1.4rem 1rem;
-    min-width: min(88vw, 300px);
-    max-width: min(92vw, 420px);
-    text-align: center;
-    animation: aparecer 0.35s cubic-bezier(0.2, 1.3, 0.4, 1);
+    text-align: left;
+    background: var(--superficie-firme);
+    animation: aparecer 0.3s var(--suave);
   }
-  @keyframes aparecer { from { transform: scale(0.85) translateY(-8px); opacity: 0; } }
-  .quien { font-size: 0.85rem; color: var(--pergamino-suave); font-weight: 700; }
-  .total { font-size: 3.6rem; line-height: 1; }
-  .desenlace { font-size: 1.3rem; line-height: 1.2; }
-  .esperanza .desenlace, .esperanza .total { color: var(--esperanza); }
-  .miedo .desenlace, .miedo .total { color: var(--miedo); }
-  .critico { border-color: rgba(255, 220, 140, 0.8); box-shadow: 0 0 0 1px rgba(255, 220, 140, 0.4), 0 0 60px -6px rgba(255, 190, 90, 0.75); }
-  .critico .total, .critico .desenlace {
-    background: linear-gradient(100deg, #fff3c4, #f0bd55 40%, #c79bff 80%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .critico-dj .total, .critico-dj .desenlace { color: var(--sangre); }
-  .dados { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3rem; margin-top: 0.35rem; }
-  .dado {
-    font-size: 0.78rem;
-    font-weight: 800;
-    padding: 0.12rem 0.5rem;
-    border-radius: 999px;
-    background: rgba(255, 245, 230, 0.1);
-  }
-  .dado.esperanza { background: rgba(240, 189, 85, 0.22); color: #ffd98a; }
-  .dado.miedo { background: rgba(167, 124, 232, 0.25); color: #d6bfff; }
-  .dado.ventaja { background: rgba(47, 143, 122, 0.35); }
-  .dado.desventaja { background: rgba(168, 50, 62, 0.4); }
-  .dado.descartado { opacity: 0.4; text-decoration: line-through; }
-  .efectos { margin-top: 0.4rem; font-size: 0.88rem; font-weight: 700; }
-  .destello {
+  @keyframes aparecer { from { opacity: 0; transform: translateY(10px); } }
+  .esperanza { --acento: var(--esperanza-hondo); }
+  .miedo { --acento: var(--miedo-hondo); }
+  .critico { --acento: var(--critico-hondo); }
+  .critico-dj { --acento: var(--peligro-hondo); }
+
+  /* Placa de nombre, montada sobre el borde como en una novela visual */
+  .placa {
     position: absolute;
-    inset: -40%;
-    background: conic-gradient(from 0deg, transparent, rgba(255, 220, 140, 0.35), transparent 30%, rgba(199, 155, 255, 0.3), transparent 60%);
-    animation: girar 3s linear infinite;
-    z-index: -1;
+    top: -0.95rem;
+    left: 1.1rem;
+    max-width: calc(100% - 2.2rem);
+    font-size: 1rem;
   }
-  @keyframes girar { to { transform: rotate(1turn); } }
+
+  /* La línea se "escribe" de izquierda a derecha */
+  .linea {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.6rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.2;
+    animation: escribir 0.5s steps(14, end) both;
+  }
+  @keyframes escribir { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  .que { color: var(--texto); }
+  .total {
+    font-size: 2.7rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--acento);
+    font-variant-numeric: tabular-nums;
+  }
+  .desenlace { font-weight: 900; color: var(--acento); }
+
+  .dados, .efectos { display: flex; flex-wrap: wrap; gap: 0.35rem; animation: asomar 0.3s 0.4s var(--suave) both; }
+  @keyframes asomar { from { opacity: 0; transform: translateY(4px); } }
+  .dado {
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: var(--hundido);
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .dado.esperanza { background: var(--esperanza-suave); color: var(--esperanza-hondo); }
+  .dado.miedo { background: var(--miedo-suave); color: var(--miedo-hondo); }
+  .dado.ventaja { background: var(--exito-suave); color: var(--exito-hondo); }
+  .dado.desventaja { background: var(--peligro-suave); color: var(--peligro-hondo); }
+  .dado.descartado { opacity: 0.5; text-decoration: line-through; }
+  .efecto {
+    padding: 0.2rem 0.65rem;
+    border-radius: 9px;
+    background: color-mix(in srgb, var(--acento) 12%, transparent);
+    color: var(--acento);
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+  .neutro .efecto { background: var(--hundido); }
+
+  /* Marca de "sigue" que respira, como al terminar una línea de diálogo */
+  .sigue {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1rem;
+    border: 7px solid transparent;
+    border-top: 10px solid var(--acento);
+    border-bottom: 0;
+    animation: respirar 1.6s 0.6s ease-in-out infinite;
+  }
+  @keyframes respirar { 50% { transform: translateY(3px); opacity: 0.45; } }
+
+  /* Crítico: el vidrio se enciende una vez con luz cálida */
+  .critico { box-shadow: 0 0 0 2px var(--critico), var(--sombra); animation: aparecer 0.3s var(--suave), encender 1.2s 0.2s var(--suave); }
+  @keyframes encender { from { box-shadow: 0 0 0 2px var(--critico), 0 0 0 18px var(--critico-suave), var(--sombra); } }
+  .critico .placa { background: var(--critico-hondo); }
+
   @media (max-width: 759px) {
-    .resultado {
-      width: 100%;
-      max-width: none;
-      grid-template-columns: auto 1fr;
-      justify-items: start;
-      text-align: left;
-      column-gap: 0.9rem;
-      row-gap: 0.1rem;
-      padding: 0.7rem 1rem;
-      background: rgba(24, 17, 42, 0.94);
-    }
-    .total { grid-row: 1 / span 3; align-self: center; font-size: 3rem; }
-    .quien, .desenlace, .dados, .efectos { grid-column: 2; }
-    .dados { justify-content: flex-start; margin-top: 0.15rem; }
-    .efectos { margin-top: 0.15rem; font-size: 0.8rem; }
-    .desenlace { font-size: 1.15rem; }
+    .resultado { padding: 1.1rem 2.2rem 0.75rem 1rem; gap: 0.3rem; margin-top: 0.8rem; }
+    .linea { font-size: 1.1rem; }
+    .total { font-size: 2.2rem; }
+    .dado { font-size: 0.8rem; }
+    .efecto { font-size: 0.82rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .linea, .dados, .efectos, .sigue { animation: none; }
   }
 </style>

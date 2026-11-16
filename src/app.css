@@ -1,29 +1,59 @@
+/* Dolor & Hambre · Mesa — sistema visual "novela visual al atardecer".
+   Vidrio claro translúcido (tipo One UI) sobre el paisaje, tinta índigo,
+   Esperanza azul cielo, Miedo rosa ocaso. Ver DESIGN.md. */
 :root {
-  --tinta: #1b1430;
-  --pergamino: #f7eedf;
-  --pergamino-suave: rgba(247, 238, 223, 0.72);
-  --esperanza: #f0bd55;
-  --esperanza-hondo: #9a6510;
-  --miedo: #a77ce8;
-  --miedo-hondo: #4a2580;
-  --sangre: #d94a5c;
-  --exito: #7fd6a8;
-  /* El vidrio y la sombra del texto los ajusta el fondo (ver lib/fondo/ajustes.js) */
-  --vidrio-alfa: 0.58;
-  --vidrio-desenfoque: 18px;
-  --vidrio: rgba(24, 17, 42, var(--vidrio-alfa));
-  --sombra-texto: 0 1px 2px rgba(10, 4, 24, 0.25);
-  --boton-fondo: rgba(255, 245, 230, 0.1);
-  --vidrio-claro: rgba(255, 245, 230, 0.1);
-  --linea: rgba(247, 238, 223, 0.16);
-  --sombra: 0 18px 50px -18px rgba(8, 4, 20, 0.75);
-  --radio-panel: 22px;
-  --radio-control: 12px;
-  --fuente-titulo: 'Zen Old Mincho', 'Iowan Old Style', Georgia, serif;
-  --fuente: 'M PLUS Rounded 1c', 'Nunito', system-ui, sans-serif;
+  /* Tinta */
+  --texto: #1d2440;
+  --texto-suave: #474f6e;
+  --sobre-color: #ffffff;
+
+  /* Vidrio: la opacidad y el desenfoque los ajusta el fondo (lib/fondo/ajustes.js) */
+  --vidrio-alfa: 0.68;
+  --vidrio-desenfoque: 26px;
+  --superficie: rgb(247 249 253 / var(--vidrio-alfa));
+  --superficie-firme: rgb(247 249 253 / max(var(--vidrio-alfa), 0.9));
+  --hundido: rgb(29 36 64 / 0.06);
+  --hundido-2: rgb(29 36 64 / 0.11);
+  --filete: rgb(29 36 64 / 0.13);
+  --filete-fuerte: rgb(29 36 64 / 0.26);
+  --brillo: rgb(255 255 255 / 0.62);
+  --velo: rgb(16 18 42 / 0.3);
+
+  /* Color con significado */
+  --esperanza: #2f9fd8;
+  --esperanza-hondo: #11618f;
+  --esperanza-suave: rgb(47 159 216 / 0.15);
+  --miedo: #c2416b;
+  --miedo-hondo: #8c2147;
+  --miedo-suave: rgb(194 65 107 / 0.13);
+  --critico: #f2b53a;
+  --critico-hondo: #7d5200;
+  --critico-suave: rgb(242 181 58 / 0.22);
+  --peligro: #c4412b;
+  --peligro-hondo: #962a1a;
+  --peligro-suave: rgb(196 65 43 / 0.12);
+  --exito: #2a8a63;
+  --exito-hondo: #1b6648;
+  --exito-suave: rgb(42 138 99 / 0.13);
+
+  /* Forma */
+  --radio-panel: 24px;
+  --radio-control: 14px;
+  --radio-chico: 9px;
+  --sombra: 0 1px 2px rgb(18 20 50 / 0.08), 0 14px 34px -18px rgb(18 20 50 / 0.5);
+  --sombra-alta: 0 2px 6px rgb(18 20 50 / 0.1), 0 30px 70px -30px rgb(18 20 50 / 0.65);
+  --sombra-texto: 0 1px 2px rgb(12 14 36 / 0.45), 0 0 16px rgb(12 14 36 / 0.3);
+  --suave: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Letra: elegible en Personalizar (lib/letra.js) */
+  --fuente: 'Zen Maru Gothic', 'M PLUS Rounded 1c', system-ui, sans-serif;
   --seguro-abajo: env(safe-area-inset-bottom, 0px);
-  color-scheme: dark;
+  --seguro-arriba: env(safe-area-inset-top, 0px);
+  color-scheme: light;
+  accent-color: var(--esperanza-hondo);
 }
+:root[data-letra='mplus'] { --fuente: 'M PLUS Rounded 1c', 'Zen Maru Gothic', system-ui, sans-serif; }
+:root[data-letra='sistema'] { --fuente: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
 
 * { box-sizing: border-box; }
 
@@ -31,64 +61,186 @@ html, body {
   margin: 0;
   height: 100%;
   overflow: hidden;
-  background: #2a1d3d;
-  color: var(--pergamino);
+  background: #2b2c5c;
+  color: var(--texto);
   font-family: var(--fuente);
   font-size: 16px;
+  font-weight: 500;
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  text-shadow: var(--sombra-texto);
 }
 
 #app { height: 100%; }
 
 button, input, select, textarea { font: inherit; color: inherit; }
-
 button { cursor: pointer; }
+h1, h2, h3, h4 { font-weight: 900; line-height: 1.2; text-wrap: balance; }
+::selection { background: var(--esperanza-suave); color: var(--texto); }
 
 :focus-visible {
-  outline: 2px solid var(--esperanza);
+  outline: 2.5px solid var(--esperanza-hondo);
   outline-offset: 2px;
 }
 
+/* Barras de desplazamiento finas, del color de la tinta */
+* { scrollbar-width: thin; scrollbar-color: var(--filete-fuerte) transparent; }
+
+/* ---- Vidrio: toda caja de la interfaz ---- */
 .vidrio {
-  background: var(--vidrio);
-  backdrop-filter: blur(var(--vidrio-desenfoque)) saturate(1.3);
-  -webkit-backdrop-filter: blur(var(--vidrio-desenfoque)) saturate(1.3);
-  border: 1px solid var(--linea);
-  box-shadow: var(--sombra);
+  background: var(--superficie);
+  backdrop-filter: blur(var(--vidrio-desenfoque)) saturate(1.5);
+  -webkit-backdrop-filter: blur(var(--vidrio-desenfoque)) saturate(1.5);
+  border: 1px solid var(--brillo);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.35), var(--sombra);
+  color: var(--texto);
 }
 
-.titulo {
-  font-family: var(--fuente-titulo);
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  text-shadow: 0 2px 18px rgba(10, 4, 24, 0.6);
-}
+/* Texto que va directo sobre el paisaje (sin caja) */
+.sobre-fondo { color: #fff; text-shadow: var(--sombra-texto); }
 
-.boton {
-  border: 1px solid var(--linea);
-  background: var(--boton-fondo);
-  border-radius: var(--radio-control);
-  padding: 0.6rem 0.95rem;
+/* Rótulo de dato: "Esperanza", "Estrés", "Evasión"… */
+.rotulo {
+  font-size: 0.75rem;
   font-weight: 700;
-  transition: background 0.15s, transform 0.1s, border-color 0.15s;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
 }
-.boton:hover { background: rgba(255, 245, 230, 0.18); }
-.boton:active { transform: scale(0.97); }
-.boton:disabled { opacity: 0.45; cursor: not-allowed; }
 
+/* Placa con el nombre de un PJ (como en una novela visual) */
+.placa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: 100%;
+  padding: 0.25rem 0.8rem 0.3rem;
+  border-radius: 11px 11px 11px 3px;
+  background: color-mix(in oklch, var(--color-pj, var(--texto)) 70%, #11142e);
+  color: var(--sobre-color);
+  font-weight: 900;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 6px 14px -8px rgb(18 20 50 / 0.6);
+}
+
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---- Botones ---- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  border: 1px solid var(--filete);
+  background: var(--hundido);
+  border-radius: var(--radio-control);
+  padding: 0.5rem 0.95rem;
+  font-weight: 700;
+  color: var(--texto);
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.boton:hover { background: var(--hundido-2); }
+.boton:active { transform: scale(0.97); }
+.boton:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.boton[aria-pressed='true'] { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+/* El único plato sólido de cada pantalla */
+.boton.solido { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+.boton.solido:hover { background: #2c3459; }
+.boton.peligro { color: var(--peligro-hondo); border-color: color-mix(in srgb, var(--peligro) 40%, transparent); background: var(--peligro-suave); }
+.boton.fantasma { background: none; border-color: transparent; }
+.boton.fantasma:hover { background: var(--hundido); }
+.boton svg { flex: none; }
+
+/* Botón redondo de solo ícono (cerrar, ajustes…) */
+.icono {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--texto);
+  transition: background 0.15s;
+}
+.icono:hover { background: var(--hundido-2); }
+
+/* ---- Campos ---- */
 .campo {
   width: 100%;
-  border: 1px solid var(--linea);
-  background: rgba(10, 6, 22, 0.45);
-  border-radius: var(--radio-control);
-  padding: 0.65rem 0.85rem;
+  min-height: 2.5rem;
+  border: 1px solid var(--filete);
+  background: rgb(255 255 255 / 0.62);
+  border-radius: 12px;
+  padding: 0.55rem 0.8rem;
   outline: none;
+  color: var(--texto);
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-.campo::placeholder { color: rgba(247, 238, 223, 0.42); }
-.campo:focus { border-color: var(--esperanza); }
+.campo::placeholder { color: rgb(71 79 110 / 0.75); }
+.campo:focus { border-color: var(--esperanza-hondo); box-shadow: 0 0 0 3px var(--esperanza-suave); }
+select.campo { cursor: pointer; }
+
+/* ---- Pestañas (subrayado, como las del lanzador y la hoja) ---- */
+.pestanas {
+  display: flex;
+  gap: 0.15rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--filete);
+}
+.pestanas > button {
+  flex: none;
+  border: 0;
+  background: none;
+  padding: 0.55rem 0.85rem 0.65rem;
+  margin-bottom: -1px;
+  color: var(--texto-suave);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 10px 10px 0 0;
+  transition: color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.pestanas > button:hover { color: var(--texto); background: var(--hundido); }
+.pestanas > button[aria-selected='true'], .pestanas > button.activa, .pestanas > button.activo {
+  color: var(--texto);
+  box-shadow: inset 0 -3px 0 var(--texto);
+}
+
+/* ---- Interruptor (sí / no) ---- */
+.interruptor-si {
+  position: relative;
+  flex: none;
+  width: 2.9rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--hundido-2);
+  transition: background 0.2s;
+}
+.interruptor-si::after {
+  content: '';
+  position: absolute;
+  top: 0.2rem; left: 0.2rem;
+  width: 1.3rem; height: 1.3rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(18 20 50 / 0.35);
+  transition: transform 0.2s var(--suave);
+}
+.interruptor-si[aria-checked='true'], .interruptor-si[aria-pressed='true'] { background: var(--esperanza-hondo); }
+.interruptor-si[aria-checked='true']::after, .interruptor-si[aria-pressed='true']::after { transform: translateX(1.2rem); }
+
+/* ---- Paneles laterales (hoja, DJ, lore, ajustes) ---- */
+.cortina { position: fixed; inset: 0; background: var(--velo); animation: aparecer-velo 0.25s ease-out; }
+@keyframes aparecer-velo { from { opacity: 0; } }
+.aviso-error { margin: 0; color: var(--peligro-hondo); font-size: 0.9rem; font-weight: 700; }
+.vacio-texto { margin: 0; color: var(--texto-suave); font-size: 0.92rem; }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; overflow: hidden;

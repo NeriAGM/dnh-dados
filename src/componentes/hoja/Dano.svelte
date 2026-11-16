@@ -1,6 +1,7 @@
 <script>
   // Recibir daño: umbrales → PG a marcar, con la opción de gastar una casilla de Armadura.
   import Dialogo from './Dialogo.svelte'
+  import Icono from '../Icono.svelte'
   import { resolverDano, armaduraLibre } from '../../lib/ayudas.js'
   import { ajustesMesa } from '../../lib/mesa.svelte.js'
 
@@ -38,7 +39,7 @@
 
 <Dialogo titulo="Recibir daño" subtitulo="Umbrales {u.mayor} / {u.grave}{u.sinArmadura ? ' (sin armadura)' : ''}" {onCerrar}>
   <label class="cifra">
-    <span>Daño entrante</span>
+    <span class="rotulo">Daño entrante</span>
     <input class="campo" type="number" inputmode="numeric" min="0" placeholder="0" bind:value={dano} aria-label="Daño entrante" />
   </label>
 
@@ -65,7 +66,7 @@
 
   {#if hayDano}
     <div class="veredicto {TONO[r.severidadFinal]}" aria-live="polite">
-      <span class="titulo">{r.pg ? `Marca ${r.pg} PG` : 'No marcas PG'}</span>
+      <strong>{r.pg ? `Marca ${r.pg} PG` : 'No marcas PG'}</strong>
       <small>
         {r.final !== Number(dano) ? `Daño final ${r.final} · ` : ''}{r.severidad}{r.conArmadura ? ` → ${r.severidadFinal} con Armadura` : ''}
         · quedarías en {r.pgDespues}/{hoja.pg_max ?? 6} PG
@@ -74,48 +75,48 @@
 
     <button class="boton armadura" class:on={r.conArmadura} aria-pressed={r.conArmadura} disabled={!r.puedeArmadura}
       onclick={() => (usarArmadura = !usarArmadura)}>
-      {r.conArmadura ? '✓ ' : ''}Marcar una casilla de Armadura
+      {#if r.conArmadura}<Icono nombre="listo" tam={16} />{/if}Marcar una casilla de Armadura
       <small>{directo ? 'no sirve contra daño directo' : libres ? `bajas un escalón · te quedan ${libres}` : 'no te quedan casillas libres'}</small>
     </button>
 
     {#if r.cae}<p class="aviso">Con esto marcas tu último Punto de Golpe: tendrás que elegir un movimiento de muerte.</p>{/if}
   {/if}
-  {#if error}<p class="error" role="alert">{error}</p>{/if}
+  {#if error}<p class="aviso-error" role="alert">{error}</p>{/if}
 
   {#snippet pie()}
     <button class="boton" onclick={onCerrar}>Cancelar</button>
-    <button class="boton principal" disabled={!hayDano || aplicando} onclick={aplicar}>Aplicar</button>
+    <button class="boton solido" disabled={!hayDano || aplicando} onclick={aplicar}>Aplicar</button>
   {/snippet}
 </Dialogo>
 
 <style>
-  .cifra { display: grid; gap: 0.25rem; font-size: 0.82rem; color: var(--pergamino-suave); font-weight: 700; }
-  .cifra input { font-size: 2rem; font-family: var(--fuente-titulo); font-weight: 900; text-align: center; padding: 0.3rem; }
-  .segmentos { display: flex; gap: 0.3rem; }
-  .segmentos button { flex: 1; border: 1px solid var(--linea); background: none; border-radius: 999px; padding: 0.4rem 0.75rem; font-weight: 700; font-size: 0.88rem; }
-  .segmentos .on { background: var(--pergamino); color: var(--tinta); }
-  .opciones { display: grid; gap: 0.4rem; font-size: 0.88rem; }
-  .opciones label { display: flex; gap: 0.45rem; align-items: center; flex-wrap: wrap; }
-  .opciones small { color: var(--pergamino-suave); }
+  .cifra { display: grid; gap: 0.25rem; }
+  .cifra input { font-size: 2.2rem; font-weight: 900; text-align: center; padding: 0.3rem; min-height: 3.4rem; }
+  .segmentos { display: flex; gap: 0.35rem; }
+  .segmentos button { flex: 1; min-height: 2.5rem; border: 1px solid var(--filete); background: var(--hundido); border-radius: var(--radio-control); padding: 0.4rem 0.75rem; font-weight: 700; color: var(--texto); }
+  .segmentos button:hover { background: var(--hundido-2); }
+  .segmentos .on { background: var(--texto); border-color: var(--texto); color: var(--sobre-color); }
+  .opciones { display: grid; gap: 0.5rem; font-size: 0.95rem; }
+  .opciones label { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; min-height: 2rem; }
+  .opciones input[type='checkbox'] { width: 1.2rem; height: 1.2rem; }
+  .opciones small { color: var(--texto-suave); font-size: 0.85rem; }
   .num { width: 4.2rem; text-align: center; padding: 0.35rem; }
-  .escala { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border-radius: 14px; overflow: hidden; border: 1px solid var(--linea); }
-  .paso { display: grid; justify-items: center; font-size: 0.78rem; font-weight: 700; padding: 0.45rem 0.2rem; opacity: 0.55; transition: opacity 0.15s, box-shadow 0.15s; }
-  .paso b { font-size: 0.7rem; opacity: 0.85; }
-  .paso.activo, .paso.final { opacity: 1; box-shadow: inset 0 0 0 2px var(--pergamino); }
-  .paso.final { box-shadow: inset 0 0 0 2px #8fb7d9; }
-  .menor { background: rgba(127, 214, 168, 0.18); }
-  .mayor { background: rgba(240, 189, 85, 0.2); }
-  .grave { background: rgba(217, 74, 92, 0.28); }
-  .masivo { background: rgba(167, 124, 232, 0.3); }
-  .ninguno { background: rgba(255, 245, 230, 0.06); }
-  .veredicto { display: grid; justify-items: center; text-align: center; padding: 0.6rem; border-radius: 14px; border: 1px solid var(--linea); }
-  .veredicto .titulo { font-size: 1.6rem; text-shadow: none; }
-  .veredicto small { font-size: 0.82rem; font-weight: 600; }
-  .armadura { display: grid; justify-items: center; gap: 0.1rem; border-color: rgba(143, 183, 217, 0.55); }
-  .armadura small { font-weight: 500; font-size: 0.78rem; color: var(--pergamino-suave); }
-  .armadura.on { background: rgba(143, 183, 217, 0.3); border-color: #8fb7d9; }
-  .regla { margin: 0; font-size: 0.8rem; color: var(--pergamino-suave); }
-  .aviso { margin: 0; padding: 0.5rem 0.7rem; border-radius: 12px; background: rgba(217, 74, 92, 0.18); border: 1px solid rgba(217, 74, 92, 0.5); font-size: 0.86rem; }
-  .error { margin: 0; color: #ffb3bd; font-size: 0.88rem; }
-  .principal { background: linear-gradient(135deg, #f6cf72, #e09a35 55%, #b9641c); color: #2a1606; border: 0; }
+  .escala { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border-radius: var(--radio-control); overflow: hidden; border: 1px solid var(--filete); }
+  .paso { display: grid; justify-items: center; font-size: 0.85rem; font-weight: 700; padding: 0.5rem 0.2rem; opacity: 0.6; transition: opacity 0.15s, box-shadow 0.15s; }
+  .paso b { font-size: 0.75rem; color: var(--texto-suave); }
+  .paso.activo, .paso.final { opacity: 1; box-shadow: inset 0 0 0 2.5px var(--texto); }
+  .paso.final { box-shadow: inset 0 0 0 2.5px var(--esperanza-hondo); }
+  .menor { background: var(--exito-suave); }
+  .mayor { background: var(--critico-suave); }
+  .grave { background: var(--peligro-suave); }
+  .masivo { background: var(--miedo-suave); }
+  .ninguno { background: var(--hundido); }
+  .veredicto { display: grid; justify-items: center; text-align: center; padding: 0.7rem; border-radius: var(--radio-control); border: 1px solid var(--filete); }
+  .veredicto strong { font-size: 1.6rem; font-weight: 900; }
+  .veredicto small { font-size: 0.85rem; font-weight: 700; color: var(--texto-suave); }
+  .armadura { flex-direction: column; gap: 0.1rem; min-height: 3rem; }
+  .armadura small { font-weight: 500; font-size: 0.85rem; color: var(--texto-suave); }
+  .armadura.on { background: var(--esperanza-suave); border-color: var(--esperanza-hondo); color: var(--texto); }
+  .regla { margin: 0; font-size: 0.85rem; color: var(--texto-suave); }
+  .aviso { margin: 0; padding: 0.55rem 0.75rem; border-radius: var(--radio-control); background: var(--peligro-suave); border: 1px solid color-mix(in srgb, var(--peligro) 40%, transparent); color: var(--peligro-hondo); font-size: 0.9rem; font-weight: 700; }
 </style>
