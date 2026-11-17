@@ -73,7 +73,11 @@
       brillo = brillos.get(clave)
     } else if (momentoPueblo) {
       const clave = `pueblo:${momentoPueblo}`
-      if (!brillos.has(clave)) brillos.set(clave, medirLienzo(lienzoFondo))
+      if (!brillos.has(clave)) {
+        const b = medirLienzo(lienzoFondo)
+        if (b == null) return // lienzo vacío: no se guarda, se vuelve a medir al redimensionar
+        brillos.set(clave, b)
+      }
       brillo = brillos.get(clave)
     }
   })

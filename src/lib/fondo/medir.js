@@ -17,7 +17,9 @@ function leer(c) {
   catch { return 0.7 } // imagen "contaminada" (sin CORS): mejor suponer que es clara
 }
 
+// Devuelve null si el lienzo mide 0 (pestaña oculta, panel cerrado): drawImage truena y no hay nada que medir
 export function medirLienzo(canvas) {
+  if (!canvas?.width || !canvas?.height) return null
   const c = lienzoMuestra()
   c.getContext('2d').drawImage(canvas, 0, 0, c.width, c.height)
   return leer(c)
