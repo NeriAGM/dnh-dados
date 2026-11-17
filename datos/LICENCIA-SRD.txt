@@ -1,5 +1,11 @@
-This repository includes materials from the Daggerheart System Reference Document 1.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com/. There are minor modifications to format and structure. No previous modifications by others.
+Daggerheart™ Compatible.
 
-Daggerheart and all related marks are trademarks of Critical Role, LLC and used with permission. This project is not affiliated with, endorsed, or sponsored by Critical Role or Darrington Press.
+This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com.
 
-For full license terms, see: https://www.daggerheart.com/
+This product includes materials from the Daggerheart System Reference Document 1.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com.
+
+Modifications: this material was translated into Spanish and adapted for this app by Dolor & Hambre. It was taken from community transcriptions of the SRD (seansbox/daggerheart-srd for SRD 1.0 and JHerrin00/daggerheart-srd-2.0 for part of SRD 2.0), which changed its format and structure, and checked against the official SRD 2.0 PDF.
+
+For full license terms, see: https://darringtonpress.com/license/ . SRD: https://www.daggerheart.com/srd/
+
+This project is not affiliated with, endorsed, or sponsored by Critical Role or Darrington Press.

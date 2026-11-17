@@ -8,7 +8,7 @@ web
 
 ## Users
 
-- **Neri, el DJ** de la campaña de Daggerheart *Dolor & Hambre*. Lleva Miedo, encuentros, adversarios, cuentas regresivas y el lore; muchas veces desde la compu con el panel del DJ abierto mientras los jugadores están en el celular.
+- **Neri, el DJ** de la campaña *Dolor & Hambre* (Daggerheart™ Compatible). Lleva Miedo, encuentros, adversarios, cuentas regresivas y el lore; muchas veces desde la compu con el panel del DJ abierto mientras los jugadores están en el celular.
 - **Los jugadores de la mesa.** Tiran Dualidad, daño y tiradas libres; llevan su Esperanza, Estrés, Puntos de Golpe y la hoja de su personaje; leen el lore que el DJ deja visible.
 - Juegan **en línea, hablando por Discord**. Uso privado de la mesa: no hay público externo.
 

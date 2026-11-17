@@ -183,7 +183,7 @@
     <section class="grupo">
       <button class="fila-accion" onclick={() => (verAcerca = true)}>
         <Icono nombre="info" tam={20} />
-        <span class="txt"><b>Acerca de</b><small>Licencia y créditos de Daggerheart</small></span>
+        <span class="txt"><b>Acerca de</b><small>Licencia y créditos</small></span>
         <Icono nombre="derecha" tam={18} />
       </button>
     </section>

@@ -1,6 +1,6 @@
 ---
 name: Dolor & Hambre · Mesa
-description: Mesa de dados de Daggerheart como novela visual al atardecer: vidrio claro sobre el paisaje, tinta índigo, Esperanza cielo y Miedo ocaso.
+description: Mesa de dados Daggerheart™ Compatible como novela visual al atardecer: vidrio claro sobre el paisaje, tinta índigo, Esperanza cielo y Miedo ocaso.
 colors:
   tinta: "#1d2440"
   tinta-suave: "#474f6e"

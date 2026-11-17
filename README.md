@@ -1,6 +1,6 @@
 # Dolor & Hambre · Mesa de dados
 
-Mesa de dados en vivo para la campaña de Daggerheart *Dolor & Hambre*: dados 3D con física, paisaje animado según la hora y tiradas compartidas en tiempo real con toda la mesa.
+Mesa de dados en vivo para la campaña *Dolor & Hambre* de Daggerheart™ Compatible: dados 3D con física, paisaje animado según la hora y tiradas compartidas en tiempo real con toda la mesa.
 
 Vive en **https://neriagm.github.io/dnh-dados/**.
 
@@ -10,7 +10,7 @@ El número de cada dado lo decide el **servidor** (la función `tirar()` en Supa
 
 Nadie puede escribir tiradas directo en la base: la tabla `lanzamientos` no acepta inserciones, solo la función `tirar()`.
 
-## Reglas que aplica (SRD de Daggerheart)
+## Reglas que aplica (SRD)
 
 - **Acción:** d12 de Esperanza + d12 de Miedo + modificador. Con Esperanza → +1 Esperanza al personaje. Con Miedo → +1 Miedo al DJ. Dados iguales → crítico: éxito automático, +1 Esperanza y se limpia 1 Estrés.
 - **Reacción:** igual, pero no genera Esperanza ni Miedo.
@@ -34,7 +34,7 @@ src/
 supabase/
   migraciones/            SQL para crear tablas, seguridad y funciones
   pruebas/                pruebas de la base en un Postgres en memoria
-docs/reglas/              reglas de Daggerheart en español
+docs/reglas/              reglas del juego en español
 ```
 
 ## Trabajar en tu computadora
@@ -48,16 +48,18 @@ npm run build     # genera la versión final en dist/
 
 Cada vez que se sube algo a `main`, GitHub Actions corre las pruebas, construye la app y la publica.
 
-## Licencia de Daggerheart
+## Licencia
 
 Daggerheart™ Compatible.
 
-This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com/srd/. There are no previous modifications by others.
+This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com.
 
-This product includes materials from the Daggerheart System Reference Document 1.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com/srd/. There are no previous modifications by others.
+This product includes materials from the Daggerheart System Reference Document 1.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com.
 
-Licencia: https://darringtonpress.com/license/
+Modifications: this material was translated into Spanish and adapted for this app by Dolor & Hambre. It was taken from community transcriptions of the SRD (seansbox/daggerheart-srd for SRD 1.0 and JHerrin00/daggerheart-srd-2.0 for part of SRD 2.0), which changed its format and structure, and checked against the official SRD 2.0 PDF.
 
-Modificaciones: el contenido de los dos documentos se tradujo al español y se adaptó a una mesa digital. La app en línea muestra este aviso en «Acerca de» (pantalla de entrada y Ajustes). El SRD 2.0 aporta, además del contenido que ya traía el 1.0, lo nuevo de *Hope & Fear*, que en la app lleva la etiqueta «SRD 2.0».
+Licencia: https://darringtonpress.com/license/ · Documento de referencia (SRD): https://www.daggerheart.com/srd/
+
+Modificaciones: ver el párrafo en inglés de arriba. El contenido de los dos documentos se tradujo al español y se adaptó a una mesa digital. La app en línea muestra este aviso en «Acerca de» (pantalla de entrada y Ajustes). El SRD 2.0 aporta, además del contenido que ya traía el 1.0, contenido nuevo.
 
 Uso privado de la mesa; no es un producto oficial de Darrington Press.
