@@ -44,7 +44,7 @@
   "tipo": "event",
   "descripcion": "Alguien tendió una emboscada para tomar por sorpresa a un grupo desprevenido.",
   "impulsos": "Abrumar, dispersar, rodear",
-  "dificultad": null,
+  "dificultad": "Especial (ver «Fuerza relativa»)",
   "posibles_adversarios": "Cualquiera",
   "rasgos": [
    {
@@ -69,7 +69,7 @@
   "tipo": "event",
   "descripcion": "Los PJ tienden una emboscada para tomar por sorpresa a unos adversarios desprevenidos.",
   "impulsos": "Escapar, reagruparse, proteger a los más vulnerables",
-  "dificultad": null,
+  "dificultad": "Especial (ver «Fuerza relativa»)",
   "posibles_adversarios": "Cualquiera",
   "rasgos": [
    {
