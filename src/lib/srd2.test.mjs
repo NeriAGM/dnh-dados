@@ -67,3 +67,10 @@ test('casos especiales del SRD 2.0', () => {
   const ent = Object.fromEntries(leer('es_2_0/entornos').map((x) => [x.id, x]))
   assert.equal(ent.duel.dificultad, 'Especial (ver «Fuerza relativa»)') // p. 168
 })
+
+test('Acechafauces: el estado «Beguiled» es «Engatusado», no «Embelesado» ni «Cautivado» (SRD 2.0 p. 122)', () => {
+  const g = leer('es_2_0/adversarios').find((x) => x.id === 'gobstalker')
+  const rayos = g.rasgos.find((r) => r.nombre === 'Rayos de tentáculo').texto
+  assert.match(rayos, /Engatusado/)
+  assert.doesNotMatch(rayos, /Embelesad|Cautiv/)
+})
