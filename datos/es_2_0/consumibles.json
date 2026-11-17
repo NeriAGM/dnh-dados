@@ -1,0 +1,542 @@
+[
+  {
+    "id": "warding-candle",
+    "nombre": "Vela de resguardo",
+    "nombre_en": "Warding Candle",
+    "texto": "Puedes encender esta vela para llenar un área dentro del alcance Cercano con un halo de luz. Una criatura fuera del halo no puede entrar en él si tiene malas intenciones hacia una criatura dentro. La vela arde durante una hora.",
+    "tirada": 1,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "iridian-dust",
+    "nombre": "Polvo iridiano",
+    "nombre_en": "Iridian Dust",
+    "texto": "Este polvo multicolor se pega a todo e impide que las criaturas cubiertas con él queden Ocultas.",
+    "tirada": 2,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "verglasian-seed",
+    "nombre": "Semilla verglasiana",
+    "nombre_en": "Verglasian Seed",
+    "texto": "Puedes usar esta astilla de hielo para congelar al instante un área de agua hasta el alcance Cercano.",
+    "tirada": 3,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "cupbearers-bezoar",
+    "nombre": "Bezoar del copero",
+    "nombre_en": "Cupbearer's Bezoar",
+    "texto": "Puedes tragar este bezoar para volverte inmune a los venenos hasta tu próximo descanso largo.",
+    "tirada": 4,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "mossmantle-potion",
+    "nombre": "Poción manto de musgo",
+    "nombre_en": "Mossmantle Potion",
+    "texto": "Puedes beber este té para camuflarte perfectamente en entornos naturales hasta tu próximo descanso.",
+    "tirada": 5,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "lyrebird-lozenge",
+    "nombre": "Pastilla de ave lira",
+    "nombre_en": "Lyrebird Lozenge",
+    "texto": "Puedes disolver esta pastilla en la boca para imitar a la perfección cualquier voz que hayas oído hasta el final de la escena.",
+    "tirada": 6,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "vial-of-featherfall",
+    "nombre": "Vial de caída de pluma",
+    "nombre_en": "Vial of Featherfall",
+    "texto": "Puedes beber esta poción para ignorar el daño por caídas durante los próximos 10 minutos.",
+    "tirada": 7,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "chimeric-saliva",
+    "nombre": "Saliva quimérica",
+    "nombre_en": "Chimeric Saliva",
+    "texto": "Puedes aplicar esta saliva a un arma que inflija daño físico para cambiar su tipo de daño a mágico hasta tu próximo descanso.",
+    "tirada": 8,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "packet-of-space-dust",
+    "nombre": "Sobre de polvo espacial",
+    "nombre_en": "Packet of Space Dust",
+    "texto": "Este polvo hace que todo lo que cubre se vuelva más ligero que el aire. Un sobre contiene polvo suficiente para cubrir el contenido de una canasta de picnic, y los efectos duran una hora.",
+    "tirada": 9,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "pipeweed",
+    "nombre": "Hierba de pipa",
+    "nombre_en": "Pipeweed",
+    "texto": "Cuando elijas la acción de tiempo de descanso Limpiar Estrés durante un descanso corto, puedes fumar esta hoja no intoxicante para limpiar un Estrés adicional. Cualquier otro PJ que haya elegido la acción de tiempo de descanso Limpiar Estrés también obtiene este beneficio.",
+    "tirada": 10,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "deathseers-powder",
+    "nombre": "Polvo del vidente de la muerte",
+    "nombre_en": "Deathseer's Powder",
+    "texto": "Puedes espolvorear este polvo sobre un cadáver recién fallecido para conjurar una reprise espectral de su último minuto de vida.",
+    "tirada": 11,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "slayers-salt",
+    "nombre": "Sal del cazador",
+    "nombre_en": "Slayer's Salt",
+    "texto": "Puedes esparcir esta sal en una línea a lo largo de alféizares o umbrales para crear una barrera mágica que las criaturas no muertas no pueden cruzar hasta que la línea se rompa.",
+    "tirada": 12,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "yakamel-milk",
+    "nombre": "Leche de yakamel",
+    "nombre_en": "Yakamel Milk",
+    "texto": "Después de consumir esta leche, la próxima vez que limpies 1 o más Puntos de Golpe, limpias un Punto de Golpe adicional.",
+    "tirada": 13,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "glowmoss-mushroom",
+    "nombre": "Hongo de musgo brillante",
+    "nombre_en": "Glowmoss Mushroom",
+    "texto": "Puedes partir este hongo en pedazos para que brille de un azul intenso hasta tu próximo descanso largo.",
+    "tirada": 14,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "red-ooze-oil",
+    "nombre": "Aceite de limo rojo",
+    "nombre_en": "Red Ooze Oil",
+    "texto": "Puedes untar tu arma con este aceite. El siguiente ataque exitoso que hagas con esta arma inflige 1d8 de daño mágico adicional y prende fuego temporalmente al objetivo. Mientras esté en llamas, el objetivo sufre 1d4 de daño mágico cuando tome el foco.",
+    "tirada": 15,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "instant-camp",
+    "nombre": "Campamento instantáneo",
+    "nombre_en": "Instant Camp",
+    "texto": "Puedes desplegar esta pequeña caja mecánica para formar una tienda de campaña lo bastante grande para alojar de forma segura a seis personas. La tienda se pliega al final de tu próximo descanso largo.",
+    "tirada": 16,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "bundle-of-spiderlegs",
+    "nombre": "Manojo de patas de araña",
+    "nombre_en": "Bundle of Spiderlegs",
+    "texto": "Puedes comer estas patas de araña para caminar por las paredes hasta tu próximo descanso.",
+    "tirada": 17,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "ciscan-fog-bottle",
+    "nombre": "Botella de niebla ciscana",
+    "nombre_en": "Ciscan Fog Bottle",
+    "texto": "Puedes romper este frasco para llenar el área dentro del alcance Cercano con una niebla mágica. Una criatura que entre en la niebla limpia un Estrés y queda Oculta.",
+    "tirada": 18,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "snapthorn-seed",
+    "nombre": "Semilla de espino chasqueante",
+    "nombre_en": "Snapthorn Seed",
+    "texto": "Puedes lanzar esta semilla a un punto que puedas ver. Estalla en una maraña de enredaderas que temporalmente deja Apresadas a todas las criaturas dentro del alcance Cercano de ese punto.",
+    "tirada": 19,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "sprite-bottle",
+    "nombre": "Botella de duendecillo",
+    "nombre_en": "Sprite Bottle",
+    "texto": "Cuando marques tu último Punto de Golpe, esta botella se hace añicos para liberar al duendecillo que contiene. El duendecillo limpia todos tus Puntos de Golpe antes de desvanecerse del Reino Mortal.",
+    "tirada": 20,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "gravity-bomb",
+    "nombre": "Bomba de gravedad",
+    "nombre_en": "Gravity Bomb",
+    "texto": "Puedes lanzar este orbe mecánico del tamaño de un durazno a un punto dentro del alcance Lejano. Implosiona y atrae a todas las criaturas y objetos dentro del alcance Cercano de ese punto hasta el alcance Cuerpo a cuerpo de él.",
+    "tirada": 21,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "gossip-flower",
+    "nombre": "Flor chismosa",
+    "nombre_en": "Gossip Flower",
+    "texto": "Puedes plantar esta semilla en la tierra. Al instante crece como una pequeña flor que graba todo lo que escucha hasta por una semana. Al arrancarla, la flor recita lo que grabó en tiempo real y luego se marchita.",
+    "tirada": 22,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "displacement-token",
+    "nombre": "Talismán de desplazamiento",
+    "nombre_en": "Displacement Token",
+    "texto": "Puedes tragar este talismán para conjurar dos ilusiones de ti mismo que puedes controlar. Cada ilusión dura hasta que reciba daño o hasta tu próximo descanso.",
+    "tirada": 23,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "night-hags-dust",
+    "nombre": "Polvo de la saga nocturna",
+    "nombre_en": "Night Hag's Dust",
+    "texto": "Puedes soplar este polvo en la cara de un adversario para impedirle limpiar Estrés hasta tu próximo descanso largo.",
+    "tirada": 24,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "self-sewing-thread",
+    "nombre": "Hilo que se cose solo",
+    "nombre_en": "Self-Sewing Thread",
+    "texto": "Puedes usar este hilo para limpiar un Punto de Golpe o 2 casillas de Armadura.",
+    "tirada": 25,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "stonemasons-fortune",
+    "nombre": "Fortuna del cantero",
+    "nombre_en": "Stonemason's Fortune",
+    "texto": "Cuando arrojas este ladrillo gris al suelo, crece de inmediato hasta formar un muro de piedra sólida de 6 pies de alto, 10 pies de ancho y 2 pies de profundidad.",
+    "tirada": 26,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "mnemonic-potion",
+    "nombre": "Poción mnemónica",
+    "nombre_en": "Mnemonic Potion",
+    "texto": "Puedes beber esta poción para Utilizar una Experiencia sin gastar una Esperanza.",
+    "tirada": 27,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "salamander-salve",
+    "nombre": "Ungüento de salamandra",
+    "nombre_en": "Salamander Salve",
+    "texto": "Puedes aplicar este ungüento en tu piel para volverte inmune al calor hasta tu próximo descanso.",
+    "tirada": 28,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "green-ooze-oil",
+    "nombre": "Aceite de limo verde",
+    "nombre_en": "Green Ooze Oil",
+    "texto": "Puedes untar tu arma con este aceite. El siguiente ataque exitoso que hagas con esta arma inflige 1d8 de daño mágico adicional y corroe temporalmente al objetivo. Mientras esté corroído, el objetivo recibe una penalización de -2 a sus umbrales de daño.",
+    "tirada": 29,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "sunlight-orb",
+    "nombre": "Orbe de luz solar",
+    "nombre_en": "Sunlight Orb",
+    "texto": "Puedes romper este orbe para que el área dentro del alcance Muy lejano parezca un día soleado durante las próximas 24 horas.",
+    "tirada": 30,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "moonlight-orb",
+    "nombre": "Orbe de luz lunar",
+    "nombre_en": "Moonlight Orb",
+    "texto": "Puedes romper este orbe para que el área dentro del alcance Muy lejano parezca una noche de luna durante las próximas 24 horas.",
+    "tirada": 31,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "midas-flask",
+    "nombre": "Frasco de Midas",
+    "nombre_en": "Midas Flask",
+    "texto": "Puedes verter este pequeño frasco de líquido alquímico sobre un objeto mundano para transmutarlo al instante en un puñado de oro.",
+    "tirada": 32,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "staff-of-reversal",
+    "nombre": "Bastón de reversión",
+    "nombre_en": "Staff of Reversal",
+    "texto": "Puedes romper este bastón contra el suelo para revertir una transformación o un efecto mágico dentro del alcance Lejano.",
+    "tirada": 33,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "berserkers-brew",
+    "nombre": "Brebaje del berserker",
+    "nombre_en": "Berserker's Brew",
+    "texto": "Cuando bebas este trago de líquido, obtienes un bonificador a tu Fuerza y una penalización a tu Sutileza y a tu Conocimiento iguales a tu Instinto (mínimo 1). Este efecto dura hasta que hagas un movimiento de muerte o hasta tu próximo descanso.",
+    "tirada": 34,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "emberite-shard",
+    "nombre": "Esquirla de brasita",
+    "nombre_en": "Emberite Shard",
+    "texto": "Elige un punto dentro del alcance Lejano. Todos los objetivos dentro del alcance Cercano de ese punto deben superar una tirada de reacción (16) o sufrir 3d6 de daño mágico y quedar temporalmente En llamas. Mientras esté En llamas, una criatura debe tirar un d4 cada vez que haga una tirada de acción. Con un resultado de 1, marca un Punto de Golpe. Con un resultado de 4, elimina la condición En llamas.",
+    "tirada": 35,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "arcticite-shard",
+    "nombre": "Esquirla de articita",
+    "nombre_en": "Arcticite Shard",
+    "texto": "Elige un punto dentro del alcance Lejano. Todos los objetivos dentro del alcance Cercano de ese punto deben superar una tirada de reacción (16) o sufrir 3d6 de daño mágico y quedar temporalmente Apresados por hielo.",
+    "tirada": 36,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "fulgurite-shard",
+    "nombre": "Esquirla de fulgurita",
+    "nombre_en": "Fulgurite Shard",
+    "texto": "Elige un punto dentro del alcance Lejano. Todos los objetivos dentro del alcance Cercano de ese punto deben superar una tirada de reacción (16) o sufrir 3d6 de daño mágico y marcar 1d4 Estrés mientras los relámpagos crepitan por el área.",
+    "tirada": 37,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "demiurges-draught",
+    "nombre": "Trago del demiurgo",
+    "nombre_en": "Demiurge's Draught",
+    "texto": "Puedes beber este trago para obtener un bonificador de +1 a tu Competencia en tu siguiente tirada de ataque exitosa.",
+    "tirada": 38,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "cockerel-claw-tea",
+    "nombre": "Té de garra de gallo",
+    "nombre_en": "Cockerel Claw Tea",
+    "texto": "Puedes beber este té para renovar tus rasgos como si hubieras tomado un descanso largo.",
+    "tirada": 39,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "potion-of-vigilance",
+    "nombre": "Poción de vigilancia",
+    "nombre_en": "Potion of Vigilance",
+    "texto": "Puedes beber esta poción para obtener un bonificador de +1 a tu Evasión hasta que marques un Punto de Golpe.",
+    "tirada": 40,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "cacophonous-concoction",
+    "nombre": "Mejunje cacofónico",
+    "nombre_en": "Cacophonous Concoction",
+    "texto": "Cuando bebas esta poción, todo lo que digas o hagas durante la siguiente hora se vuelve imposible de relatar para un testigo. Cualquier intento que haga de comunicar lo que vio, oyó o percibió de otro modo sale confuso o sin sentido.",
+    "tirada": 41,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "nightmare-mead",
+    "nombre": "Hidromiel de pesadilla",
+    "nombre_en": "Nightmare Mead",
+    "texto": "Puedes beber esta poción para descubrir el miedo más profundo de la siguiente persona con la que hagas contacto visual. Cuando lo hagas, el DJ gana un Miedo.",
+    "tirada": 42,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "stake-of-abjuration",
+    "nombre": "Estaca de abjuración",
+    "nombre_en": "Stake of Abjuration",
+    "texto": "Puedes clavar esta estaca en el suelo y hacer una proclama. Hasta tu próximo descanso, una criatura dentro del alcance Lejano de la estaca que transgreda esa proclama debe marcar un Estrés. La estaca dura hasta tu próximo descanso y luego se hace añicos.",
+    "tirada": 43,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "psychopomps-shroud",
+    "nombre": "Sudario del psicopompo",
+    "nombre_en": "Psychopomp's Shroud",
+    "texto": "Puedes colocar este sudario sobre el cadáver de una criatura recién fallecida. El espíritu de la criatura entra en el sudario y se convierte en tu asistente espectral hasta el siguiente amanecer, cuando atraviesa el velo de la muerte y se lleva el sudario consigo.",
+    "tirada": 44,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "phial-of-deep-ink",
+    "nombre": "Redoma de tinta profunda",
+    "nombre_en": "Phial of Deep Ink",
+    "texto": "Puedes beber esta botella de tinta para transformarte en un cefalópodo de aproximadamente tu tamaño durante la siguiente hora. Obtienes piel gomosa, huesos blandos, la capacidad de respirar bajo el agua y nuevas extremidades hasta tener ocho en total.",
+    "tirada": 45,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "mesmers-tonic",
+    "nombre": "Tónico del hipnotizador",
+    "nombre_en": "Mesmer's Tonic",
+    "texto": "Cuando bebas este tónico, lo único que puedes oír hasta tu próximo descanso son los pensamientos superficiales de las criaturas dentro del alcance Muy cercano.",
+    "tirada": 46,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "invisibility-potion",
+    "nombre": "Poción de invisibilidad",
+    "nombre_en": "Invisibility Potion",
+    "texto": "Estás Oculto hasta que inflijas daño a otra criatura o hasta tu próximo descanso.",
+    "tirada": 47,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "formoid-serum",
+    "nombre": "Suero formoide",
+    "nombre_en": "Formoid Serum",
+    "texto": "Puedes beber esta poción para convertirte en un enjambre de 16 millones de hormigas hasta el final de la escena. Conservas y tienes acceso a todo tu equipo, botín y rasgos.",
+    "tirada": 48,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "steelskin-salve",
+    "nombre": "Ungüento piel de acero",
+    "nombre_en": "Steelskin Salve",
+    "texto": "Puedes aplicar este ungüento en tu piel para obtener un bonificador a tus umbrales de daño igual a tu rango hasta el final de la escena.",
+    "tirada": 49,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "godlings-pomelo",
+    "nombre": "Pomelo del diosecillo",
+    "nombre_en": "Godling's Pomelo",
+    "texto": "Puedes comer esta fruta cítrica para limpiar todos tus Puntos de Golpe y todo tu Estrés.",
+    "tirada": 50,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "snakeskin-spirit",
+    "nombre": "Licor de piel de serpiente",
+    "nombre_en": "Snakeskin Spirit",
+    "texto": "Puedes beber esta poción para mudar tu capa exterior de piel y sanar una cicatriz.",
+    "tirada": 51,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "magic-users-malison",
+    "nombre": "Maleficio del lanzahechizos",
+    "nombre_en": "Magic-User's Malison",
+    "texto": "Cuando liberes el alma atrapada de este lanzador de hechizos, puedes lanzar un hechizo de una carta de tu bóveda como si estuviera en tu mano. Esto no funciona con cartas que estén en la bóveda de forma permanente.",
+    "tirada": 52,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "quintessential-severant",
+    "nombre": "Cercenador quintaesencial",
+    "nombre_en": "Quintessential Severant",
+    "texto": "Puedes usar esta hoja mágica para cortar un vínculo mágico o metafísico, como un encantamiento, un contrato, un lazo mágico o un juramento divino. Cuando lo hagas, la hoja se hace añicos.",
+    "tirada": 53,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "mask-of-the-echoed-self",
+    "nombre": "Máscara del yo resonante",
+    "nombre_en": "Mask of the Echoed Self",
+    "texto": "Puedes ponerte esta máscara durante tu próxima subida de nivel para intercambiar los valores de cualquiera de tus rasgos. Cuando lo hagas, la máscara se convierte en tu rostro permanente.",
+    "tirada": 54,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "necroprancers-bell",
+    "nombre": "Campana del necrocorcel",
+    "nombre_en": "Necroprancer's Bell",
+    "texto": "Puedes romper esta campana oxidada y sin badajo contra el suelo para invocar un corcel esquelético que sale de la tierra y te sirve hasta el siguiente amanecer.",
+    "tirada": 55,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "drakemantle",
+    "nombre": "Manto de draco",
+    "nombre_en": "Drakemantle",
+    "texto": "Puedes usar este encantado cuero de dragón ancestral para obtener características dracónicas hasta el final de la escena, cuando el cuero se deshace en jirones. Mientras tanto, puedes volar y obtienes un bonificador de +5 a tus umbrales de daño y un bonificador de +1 a tu Competencia.",
+    "tirada": 56,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "gamblers-fallacy",
+    "nombre": "Falacia del apostador",
+    "nombre_en": "Gambler's Fallacy",
+    "texto": "Puedes gastar cualquier cantidad de puñados de oro metiéndolos en esta jarra de cerámica con ranura en forma de cerdito. Cuando lances la jarra a un punto dentro del alcance Lejano, explota e inflige 1d20 de daño mágico por cada puñado de oro gastado a todas las criaturas dentro del alcance Cercano de ese punto. Todo el oro dentro de la jarra se destruye.",
+    "tirada": 57,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "lionheart-tonic",
+    "nombre": "Tónico corazón de león",
+    "nombre_en": "Lionheart Tonic",
+    "texto": "Puedes beber este tónico para obtener un bonificador de +1 a tu Competencia hasta que tires con Miedo.",
+    "tirada": 58,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "tears-of-the-undying-hero",
+    "nombre": "Lágrimas del héroe imperecedero",
+    "nombre_en": "Tears of the Undying Hero",
+    "texto": "Cuando bebas esta poción, la muerte no puede tocarte hasta tu próximo descanso largo. Cuando fueras a marcar tu último Punto de Golpe, en lugar de hacer un movimiento de muerte, haces una última tirada de acción antes de caer en un sueño sin sueños hasta que un aliado elija la acción de tiempo de descanso Atender heridas para limpiar tus Puntos de Golpe.",
+    "tirada": 59,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "featherstep-potion",
+    "nombre": "Poción de paso de pluma",
+    "nombre_en": "Featherstep Potion",
+    "texto": "Puedes beber esta poción para que te broten pequeñas alas de los tobillos que te dan un bonificador a tu Evasión igual a tu rango hasta tu próximo descanso.",
+    "tirada": 60,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  }
+]
