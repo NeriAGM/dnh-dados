@@ -107,8 +107,8 @@ export function pgPorDano(dano, u, { masivo = false } = {}) {
 // («gain features from items they have equipped»). El «-1 … por cada paso» del Bastón infinito (p. 64) es condicional
 // y no cuenta. «+1 a las tiradas de ataque hechas con tu arma primaria» (Martillo de hojalatero, p. 68) lo recibe la
 // primaria activa cuando el martillo está activo como secundaria; el martillo no se lo da a sí mismo. `armas` = hoja.armas.
-// shortcut: solo reconoce el bono fijo escrito así (Fiable y Martillo de hojalatero); un bono casero con otra redacción no se suma: el jugador lo agrega a mano. Si la mesa usa otras fórmulas, agregarlas aquí.
-const INICIO = /^\s*(?:[^.:]+:\s*)?([+\-−–])\s*(\d+)\s+a\s+las\s+tiradas\s+de\s+ataque/i
+// shortcut: solo reconoce el bono fijo escrito así (Fiable y Martillo de hojalatero), con «Fiable:» como única etiqueta permitida; un bono casero con otra redacción u otra etiqueta no se suma: el jugador lo agrega a mano. Si la mesa usa otras fórmulas, agregarlas aquí.
+const INICIO = /^\s*(?:fiable:\s*)?([+\-−–])(\d{1,2})\s+a\s+las\s+tiradas\s+de\s+ataque/i
 const PROPIO = new RegExp(INICIO.source + /(?:\s+y\s+de\s+daño)?\s*\.?\s*$/.source, 'i')
 const A_PRIMARIA = new RegExp(INICIO.source + /\s+hechas\s+con\s+tu\s+arma\s+primaria\s*\.?\s*$/.source, 'i')
 function bonos(arma, forma) {

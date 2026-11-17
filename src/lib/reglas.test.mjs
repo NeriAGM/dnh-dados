@@ -240,6 +240,22 @@ test('bono de ataque en armas caseras o importadas: solo la forma fija cuenta', 
   assert.equal(bonoAtaque({ rasgos: [null] }), 0)
 })
 
+test('bono de ataque: «Fiable:» es la única etiqueta y las estructuras raras no truenan', () => {
+  const con = (texto, tipo = 'primaria') => ({ tipo, rasgos: [{ nombre: 'X', texto }] })
+  assert.equal(bonoAtaque(con('Fiable: +1 a las tiradas de ataque')), 1)
+  assert.equal(bonoAtaque(con('FIABLE: +1 a las tiradas de ataque')), 1)
+  for (const t of ['Si estás oculto: +1 a las tiradas de ataque', 'Mientras vueles: +1 a las tiradas de ataque',
+    'Una vez por escena: +2 a las tiradas de ataque', '+ 1 a las tiradas de ataque', '+100 a las tiradas de ataque']) assert.equal(bonoAtaque(con(t)), 0, t)
+  const espada = { id: 'espada', tipo: 'primaria', rasgos: [] }
+  assert.equal(bonoAtaque(espada, [espada, con('Fiable: +1 a las tiradas de ataque hechas con tu arma primaria', 'secundaria')]), 1)
+  for (const t of ['Si estás oculto: +1 a las tiradas de ataque hechas con tu arma primaria',
+    'Una vez por escena: +2 a las tiradas de ataque hechas con tu arma primaria']) assert.equal(bonoAtaque(espada, [espada, con(t, 'secundaria')]), 0, t)
+  // rasgos y armas que no son arreglos: 0, sin tronar
+  assert.equal(bonoAtaque({ tipo: 'primaria', rasgos: { 0: { texto: '+1 a las tiradas de ataque' } } }), 0)
+  assert.equal(bonoAtaque(espada, null), 0)
+  assert.equal(bonoAtaque(espada, { 0: con('+1 a las tiradas de ataque hechas con tu arma primaria', 'secundaria') }), 0)
+})
+
 test('datos 2.0: «N de Miedo», nunca «N Miedo» ni «N Miedos»', () => {
   for (const f of ['adversarios', 'entornos']) {
     const texto = readFileSync(new URL(`../../datos/es_2_0/${f}.json`, import.meta.url), 'utf8')
