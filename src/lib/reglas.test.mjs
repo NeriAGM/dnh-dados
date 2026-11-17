@@ -1,4 +1,5 @@
 import { test } from 'node:test'
+import { readFileSync } from 'node:fs'
 import assert from 'node:assert/strict'
 import { umbrales, pgPorDano, bonoAtaque, textoDano, avisos, rangoDeNivel, evasion, cartasParaAgregar } from './reglas.js'
 
@@ -179,4 +180,22 @@ test('agregar carta: no ofrece las que ya están en la mano o la bóveda', () =>
   assert.deepEqual(cartasParaAgregar(cartas, hoja).map((c) => c.id), ['b', 'd'])
   assert.equal(cartasParaAgregar(cartas, {}).length, 4, 'sin cartas todavía')
   assert.deepEqual(cartasParaAgregar(undefined, hoja), [])
+})
+
+test('bono de ataque: solo cuenta lo incondicional del arma (SRD 2.0 p. 64 y 68)', () => {
+  const leer = (r) => JSON.parse(readFileSync(new URL(`../../datos/${r}.json`, import.meta.url), 'utf8'))
+  const armas = [...leer('es/armas'), ...leer('es_2_0/armas')]
+  // Bastón infinito: «-1 … por cada paso que aumentes el alcance» no es un -1 fijo
+  assert.equal(bonoAtaque(armas.find((a) => a.id === 'infinite-staff')), 0)
+  // Todas las «Fiable» siguen dando +1
+  const fiables = armas.filter((a) => a.rasgos.some((r) => r.nombre === 'Fiable'))
+  assert.ok(fiables.length >= 11)
+  for (const a of fiables) assert.equal(bonoAtaque(a), 1, a.id)
+  // Martillo de hojalatero: no se da a sí mismo; da +1 a la primaria activa solo si él está activo
+  const martillo = armas.find((a) => a.id === 'tinkers-hammer')
+  const espada = { id: 'espada', tipo: 'primaria', rasgos: [] }
+  assert.equal(bonoAtaque(martillo, [espada, martillo]), 0)
+  assert.equal(bonoAtaque(espada, [espada, martillo]), 1)
+  assert.equal(bonoAtaque(espada, [espada, { ...martillo, activa: false }]), 0)
+  assert.equal(bonoAtaque({ ...espada, activa: false }, [{ ...espada, activa: false }, martillo]), 0)
 })

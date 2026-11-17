@@ -103,12 +103,27 @@ export function pgPorDano(dano, u, { masivo = false } = {}) {
   return 1
 }
 
-// Bono a la tirada de ataque que dan los rasgos del arma ("+1 a las tiradas de ataque")
-export function bonoAtaque(arma) {
+// Bono a la tirada de ataque de un arma.
+// Solo cuenta lo incondicional del arma misma: el texto es solo «+1 a las tiradas de ataque» (Fiable). Un bono con
+// condición («…por cada paso que aumentes el alcance», Bastón infinito, SRD 2.0 p. 64) no es fijo.
+// «+N a las tiradas de ataque hechas con tu arma primaria» (Martillo de hojalatero, p. 68) lo recibe la primaria
+// activa cuando ese arma está activa como secundaria; el martillo no se lo da a sí mismo. `armas` = hoja.armas.
+const SOLO_BONO = /^\s*([+-]\d+)\s+a\s+las?\s+tiradas?\s+de\s+ataque\s*\.?\s*$/i
+const BONO_A_PRIMARIA = /^\s*([+-]\d+)\s+a\s+las?\s+tiradas?\s+de\s+ataque\s+hechas?\s+con\s+tu\s+arma\s+primaria\s*\.?\s*$/i
+export function bonoAtaque(arma, armas = []) {
   let b = 0
   for (const r of arma?.rasgos || []) {
-    const m = /([+-]\d+)\s+a\s+las?\s+tiradas?\s+de\s+ataque/i.exec(r.texto || '')
+    const m = SOLO_BONO.exec(r.texto || '')
     if (m) b += parseInt(m[1], 10)
+  }
+  if (arma?.tipo !== 'secundaria' && arma?.activa !== false) {
+    for (const o of armas) {
+      if (o === arma || o?.tipo !== 'secundaria' || o?.activa === false) continue
+      for (const r of o.rasgos || []) {
+        const m = BONO_A_PRIMARIA.exec(r.texto || '')
+        if (m) b += parseInt(m[1], 10)
+      }
+    }
   }
   return b
 }
