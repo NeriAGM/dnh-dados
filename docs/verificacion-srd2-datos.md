@@ -8,11 +8,11 @@ desde el RAG local. Las páginas que se citan son las del PDF.
 
 - Se revisaron **los 19 archivos** de `datos/es` y `datos/es_2_0`: **816 entradas** en total.
 - El contenido que la app ya tiene **está muy bien**: casi todo coincide con el SRD 2.0 en números y en texto.
-- Se corrigieron **13 datos** en 5 archivos (abajo, con página). Además, las 16 etiquetas de cuenta regresiva
+- Se corrigieron **12 datos** en 5 archivos (abajo, con página). Además, las 16 etiquetas de cuenta regresiva
   de adversarios y entornos, que estaban en inglés, quedaron en español.
-- Quedan **8 dudas** para que decida Neri.
+- Quedan **9 dudas** para que decida Neri.
 - El SRD 2.0 trae mucho contenido nuevo (del suplemento *Hope & Fear*) que la app **no tiene**:
-  134 adversarios, 28 entornos, unas 130 armas, 35 armaduras, 60 objetos, 60 consumibles y 6 Transformaciones.
+  135 adversarios, 28 entornos, unas 130 armas, 35 armaduras, 60 objetos, 60 consumibles y 6 Transformaciones.
   No se agregó nada: los nombres en español los decide Neri. La lista completa está en el anexo.
 - `npm run probar`: 281 de 281 en verde antes y después.
 
@@ -44,7 +44,7 @@ desde el RAG local. Las páginas que se citan son las del PDF.
 
 | Archivo | Entradas | Resultado | Corregido |
 |---|---|---|---|
-| `adversarios.json` | 129 | 126 bloques de estadísticas exactos; 417 de 417 rasgos | Hordas, nombre en inglés, cuentas regresivas |
+| `adversarios.json` | 129 | 126 bloques de estadísticas exactos; 417 de 417 rasgos | Hordas, cuentas regresivas |
 | `entornos.json` | 19 | 17 encabezados exactos; 78 de 78 rasgos | Cuentas regresivas |
 | `armas.json` | 192 | 182 filas exactas; 9 armas ya no están en el 2.0 | Legendary Dagger |
 | `armaduras.json` | 34 | 34 exactas | — |
@@ -71,9 +71,8 @@ Cada una se aplicó al español (`datos/es`) y al inglés de referencia (`datos/
 | consumibles | Semilla puente (Bridge Seed) | se disipan en tu siguiente descanso | se disipan en tu siguiente **descanso corto** | p. 81 |
 | armas | Legendary Dagger (Daga legendaria) | d8+9 | **d8+10** | p. 63 |
 | cartas | Notorio (Notorious, Gracia, nivel 10) | «Esta carta no cuenta para el máximo de 5 cartas de dominio de tu mano y no puede ponerse en tu bóveda.» | Frase quitada: el 2.0 ya no la trae, así que cuenta como cualquier carta | p. 216 |
-| adversarios | Swarm of Rats (Enjambre de ratas) | Horda sin número | **Horda (1/PG)** | p. 110 |
+| adversarios | Swarm of Rats (Enjambre de ratas) | Horda sin número | **Horda (10/PG)** | p. 110 |
 | adversarios | Electric Eels (Anguilas eléctricas) | Horda sin número | **Horda (2/PG)** | p. 118 |
-| adversarios | Outer Realms Corruptor | nombre en inglés «Corruptor» | «Outer Realms **Corrupter**» (el nombre en español no cambia) | p. 153 |
 | adversarios | 12 cuentas regresivas | «Countdown (Loop 1d6)», «Long-Term Countdown (8)»… | «Cuenta regresiva (bucle 1d6)», «Cuenta regresiva de largo plazo (8)», «(decreciente 8)» | p. 91 |
 | entornos | 4 cuentas regresivas | «Countdown (Loop 4)»… | «Cuenta regresiva (bucle 4)»… | p. 91 |
 | dominios | Hoja | Guardián y Guerrero | **Asesino**, Guardián y Guerrero | p. 7 |
@@ -109,6 +108,9 @@ Para las cuentas regresivas se usaron las palabras que ya usa la app en `docs/re
    en español, o que apruebes una propuesta de nombres. Es un trabajo grande, mejor en su propio chat.
 8. **Etiqueta «SRD 1.0» en la app.** `src/lib/srd.js` marca todo `datos/es` como «SRD 1.0». Con estas
    correcciones ya coincide con el 2.0. Es solo una etiqueta (no se muestra en casi ningún lado); no se tocó.
+9. **Outer Realms Corruptor o Corrupter.** El PDF usa las dos formas: la ficha y su rasgo dicen «Corrupter»
+   (p. 153), y la lista de adversarios y otros textos dicen «Corruptor». Como es ambiguo, no se cambió.
+   El nombre en español («Corruptor de los Reinos Exteriores») sirve para los dos.
 
 ### Notas menores de la traducción (no se cambiaron)
 
@@ -134,6 +136,12 @@ Están anotadas en `datos/fuente_2_0/FALTANTES.md`.
   menor de lectura (las armas secundarias de rango 4 y la silla de ruedas de combate, p. 69–71, salieron
   incompletas).
 
+- El PDF trae algunos dígitos como glifos raros. Uno de ellos, el «0», se me pasó al principio: el Enjambre
+  de ratas había quedado en Horda (1/PG). Lo encontró la revisión independiente y ya dice 10/PG. Ese glifo solo
+  aparece en tres lugares del PDF y los otros dos son de adversarios que la app no tiene.
+- `herramientas/normalizar_srd.py` regenera `datos/fuente` desde la transcripción del 1.0. Si se vuelve a correr,
+  borra estas correcciones del inglés de referencia (el español de `datos/es` no se toca).
+
 ## Anexo: lo que trae el SRD 2.0 y la app no
 
 - **Transformaciones** (p. 42–45): Demigod, Ghost, Reanimated, Shapeshifter, Vampire, Werewolf.
@@ -157,9 +165,9 @@ Están anotadas en `datos/fuente_2_0/FALTANTES.md`.
   - Secundaria rango 4 (10): Legendary Hatchet, Legendary Offhand Brass Knuckles, Legendary Throwing Knives, Legendary Fighting Cloak, Legendary Rune Shield, Legendary Focus Runes, Void Needle, Echo Blade, Möbius Orb, Blackblood Tendril
 - **Adversarios y entornos** (p. 93–182):
 
-**Adversarios (134):**
+**Adversarios (135):**
 
-- Rango 1 (33): Ahuizotl (p. 97), Atototl (p. 97), Bugboar (p. 98), Common Ruffian (p. 98), Darkweave Crawler (p. 99), Darkweave Queen (p. 99), Darkweave Spinner (p. 99), Darkweave Swarmlings (p. 99), Elk (p. 100), Falcon (p. 100), Grimmling Warband (p. 101), Kelpie (p. 103), Masque Muerte (p. 103), Mechanorb (p. 104), Mountain Troll (p. 105), Octopus (p. 105), Panther (p. 106), Phantom (p. 106), Poltergeist (p. 107), Rabble Mawb (p. 107), Redcap Biters (p. 107), Redcap Breaker (p. 108), Redcap Butcher (p. 108), Redcap Candlemaker (p. 108), Redcap Skinner (p. 108), Rugaru (p. 108), Sawtoothed Gillbeast (p. 109), Soul-Shattered Mage (p. 110), Spellbound Armor (p. 110), Viper (p. 111), Waxwork Creation (p. 111), Will-O’-The-Wisps (p. 112), Yufo (p. 112)
+- Rango 1 (34): Ahuizotl (p. 97), Atototl (p. 97), Bugboar (p. 98), Common Ruffian (p. 98), Darkweave Crawler (p. 99), Darkweave Queen (p. 99), Darkweave Spinner (p. 99), Darkweave Swarmlings (p. 99), Elk (p. 100), Falcon (p. 100), Grimmling Warband (p. 101), Harpy (p. 102), Kelpie (p. 103), Masque Muerte (p. 103), Mechanorb (p. 104), Mountain Troll (p. 105), Octopus (p. 105), Panther (p. 106), Phantom (p. 106), Poltergeist (p. 107), Rabble Mawb (p. 107), Redcap Biters (p. 107), Redcap Breaker (p. 108), Redcap Butcher (p. 108), Redcap Candlemaker (p. 108), Redcap Skinner (p. 108), Rugaru (p. 108), Sawtoothed Gillbeast (p. 109), Soul-Shattered Mage (p. 110), Spellbound Armor (p. 110), Viper (p. 111), Waxwork Creation (p. 111), Will-O’-The-Wisps (p. 112), Yufo (p. 112)
 - Rango 2 (42): Banshee (p. 114), Basilisk (p. 115), Berserker Alpha (p. 115), Berserker Initiate (p. 115), Centaur Warden (p. 115), Chicken-Foot Hut (p. 116), Dire Pangolati (p. 117), Doppelhound (p. 117), Dragon Knight (p. 117), Elephant (p. 118), Entombed Cat Beast (p. 118), Entombed Elite Guard (p. 118), Entombed Empress (p. 119), Entombed Necropriest (p. 119), Entombed Skin Beetles (p. 119), Entombed Stonemason (p. 119), Flock of Feather Fiends (p. 120), Fowlbear (p. 120), Fungispunj Sporeling (p. 120), Fungispunj Sporophore (p. 120), Gargoyle (p. 121), Giant Octopus (p. 122), Gobstalker (p. 122), Guahalan Alebrujo (p. 123), Guahalan Fang Lord (p. 123), Guahalan Shifter (p. 123), Guahalan Spirit Beast (p. 124), Guahalan Spirit Singer (p. 124), Hill Titan (p. 124), Hive Walker (p. 124), Jack-O’-Lantern (p. 124), Landshark (p. 125), Landshark Behemoth (p. 125), Ravenous Mockery (p. 126), Rust Eater (p. 127), Scarecrow (p. 127), Sprite (p. 128), Stone Titan (p. 129), Triceratops (p. 129), Tyrannosaurus (p. 129), Urco (p. 130), Valdenhax (p. 130)
 - Rango 3 (32): Archmage (p. 131), Catrin (p. 131), Chimera (p. 132), Crimson Lepus (p. 132), Cryptimoth (p. 132), Cursed Merfolk (p. 132), Deep Dweller (p. 133), Drake (p. 134), Dullahan (p. 135), Fellmounted Shadow King (p. 135), Fire Titan (p. 135), Frost Titan (p. 136), Gargantuan Sea Turtle (p. 136), Lamia (p. 137), Lamplight Beguiler (p. 137), Manticore (p. 138), Night Children (p. 138), Pain Priest (p. 138), Phoenix (p. 139), Plesiosaurus (p. 139), Roc (p. 139), Sandwyrm (p. 139), Shapeshifting Fiend (p. 140), Shapeshifting Fiend Revealed (p. 140), Storm Titan (p. 140), Unicorn (p. 141), Vampire Bat Swarm (p. 142), Vampire Lord (p. 142), Viscera Sucker (p. 143), Whisper Wraith (p. 143), Wyvern (p. 144), Young Fire Dragon (p. 144)
 - Rango 4 (27): Cephilith Abomination (p. 145), Cephilith Hatchling (p. 145), Cephilith Novitiate (p. 146), Cephilith Priest (p. 146), Cephilith Titan (p. 146), Cipactli (p. 146), Cloud Titan (p. 147), Demon Lord Berzug (p. 147), Dragon Mother Mitera (p. 148), Fire Titan Warlord (p. 150), Gargantuan War Machine (p. 150), Ghastly Legion (p. 150), Griffin (p. 150), Hallowed Choir (p. 151), Harbinger of Death (p. 151), Harbinger of Famine (p. 151), Harbinger of Pestilence (p. 152), Harbinger of War (p. 152), Owl Witch (p. 154), Ruby Dragon (p. 154), Severed Shadow (p. 154), Supreme Demiurge Adonix (p. 155), Temporal Enforcer (p. 155), Water Mother (p. 157), Wyrmfiend (p. 157), Wyrmlings (p. 157), Xero the Castle Killer (p. 157)
