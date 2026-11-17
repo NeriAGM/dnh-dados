@@ -176,6 +176,11 @@ export function avisos(hoja, cat) {
   if (primarias > 1) out.push({ campo: 'armas', texto: `Tienes ${primarias} armas primarias activas; la regla es 1. Guarda las demás.` })
   if (secundarias > 1) out.push({ campo: 'armas', texto: `Tienes ${secundarias} armas secundarias activas; la regla es 1. Guarda las demás.` })
   if (guardadas > 2) out.push({ campo: 'armas', texto: `Tienes ${guardadas} armas guardadas; el máximo es 2.` })
+  // Carga máxima 2 manos. El Guerrero la ignora («Entrenamiento de combate»; en multiclase pudo tomarlo)
+  const dosManos = activas.find((a) => num(a?.manos) === 2)
+  if (dosManos && secundarias && ![hoja.clase, hoja.multiclase?.clase].includes('warrior')) {
+    out.push({ campo: 'armas', texto: `«${dosManos.nombre}» es a dos manos: no puede ir junto con una secundaria activa. Guarda una.` })
+  }
   return out
 }
 

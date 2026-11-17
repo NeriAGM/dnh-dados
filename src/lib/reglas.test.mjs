@@ -66,6 +66,21 @@ test('avisos: armas activas y guardadas (SRD p. 55)', () => {
   assert.equal(textos([{ nombre: 'X' }, arma('primaria')]).length, 1)
 })
 
+test('avisos: arma a dos manos con secundaria activa (carga máxima 2 manos)', () => {
+  const mandoble = { nombre: 'Mandoble', tipo: 'primaria', manos: 2 }
+  const daga = { nombre: 'Daga', tipo: 'secundaria', manos: 1 }
+  const textos = (hoja) => avisos(hoja, cat).filter((a) => a.campo === 'armas').map((a) => a.texto)
+  assert.match(textos({ armas: [mandoble, daga] }).join(), /«Mandoble» es a dos manos/)
+  // Importadas: «manos» como texto
+  assert.equal(textos({ armas: [{ ...mandoble, manos: '2' }, daga] }).length, 1)
+  // Guardada cualquiera de las dos: en regla
+  assert.deepEqual(textos({ armas: [{ ...mandoble, activa: false }, daga] }), [])
+  assert.deepEqual(textos({ armas: [mandoble, { ...daga, activa: false }] }), [])
+  // El Guerrero ignora la carga (Entrenamiento de combate)
+  assert.deepEqual(textos({ clase: 'warrior', armas: [mandoble, daga] }), [])
+  assert.deepEqual(textos({ multiclase: { clase: 'warrior' }, armas: [mandoble, daga] }), [])
+})
+
 import { puntosDeBatalla } from './reglas.js'
 
 test('puntos de batalla: ejemplo del SRD con 4 PJ', () => {
