@@ -174,3 +174,14 @@ que tienen palabra común en español.
 | Inglés | Español |
 |---|---|
 | Ooze | Limo |
+
+## Hope & Fear (SRD 2.0, aprobados por Neri el 17/11/2026)
+
+La lista completa de nombres está en `datos/es_2_0/*.json` (campo `nombre_en`).
+
+| Inglés | Español |
+|---|---|
+| Transformation | Transformación (SRD 2.0 p. 42) |
+| Evolution (clase de rasgo de adversario) | Evolución |
+| Combat Wheelchair | Silla de ruedas de combate (ligera / pesada / arcana) |
+| Darkweave / Redcap / Entombed | tejesombras / Gorrorrojo / del sepulcro |
