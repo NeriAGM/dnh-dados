@@ -7,12 +7,12 @@
  {
   "id": "blade",
   "nombre": "Blade",
-  "descripcion": "Blade is the domain of **weapon mastery.** Whether by steel, bow, or perhaps a more specialized arm, those who follow this path have the skill to cut short the lives of others. Wielders of Blade dedicate themselves to achieving inexorable power over death. The Blade domain can be accessed by the **Guardian** and **Warrior** classes."
+  "descripcion": "Blade is the domain of **weapon mastery.** Whether by steel, bow, or perhaps a more specialized arm, those who follow this path have the skill to cut short the lives of others. Wielders of Blade dedicate themselves to achieving inexorable power over death. The Blade domain can be accessed by the **Assassin**, **Guardian**, and **Warrior** classes."
  },
  {
   "id": "bone",
   "nombre": "Bone",
-  "descripcion": "Bone is the domain of **tactics and the body.** Practitioners of this domain have an uncanny control over their own physical abilities and an eye for predicting the behaviors of others in combat. Adherents to Bone gain an unparalleled understanding of bodies and their movements. The Bone domain can be accessed by the **Ranger** & **Warrior** classes."
+  "descripcion": "Bone is the domain of **tactics and the body.** Practitioners of this domain have an uncanny control over their own physical abilities and an eye for predicting the behaviors of others in combat. Adherents to Bone gain an unparalleled understanding of bodies and their movements. The Bone domain can be accessed by the **Brawler**, **Ranger**, and **Warrior** classes."
  },
  {
   "id": "codex",
@@ -22,17 +22,17 @@
  {
   "id": "grace",
   "nombre": "Grace",
-  "descripcion": "Grace is the domain of **charisma.** Through rapturous storytelling, charming spells, or a shroud of lies, those who channel this power define the realities of their adversaries, bending perception to their will. Grace offers its wielders raw magnetism and mastery over language. The Grace domain can be accessed by the **Bard** and **Rogue** classes"
+  "descripcion": "Grace is the domain of **charisma.** Through rapturous storytelling, charming spells, or a shroud of lies, those who channel this power define the realities of their adversaries, bending perception to their will. Grace offers its wielders raw magnetism and mastery over language. The Grace domain can be accessed by the **Bard**, **Rogue**, and **Warlock** classes"
  },
  {
   "id": "midnight",
   "nombre": "Midnight",
-  "descripcion": "Midnight is the domain of **shadows and secrecy.** Whether by clever tricks, deft magic, or the cloak of night, those who channel these forces practice the art of obscurity and can uncover sequestered treasures. Midnight offers practitioners the power to control and create enigmas. The Midnight domain can be accessed by the **Rogue** and **Sorcerer** classes."
+  "descripcion": "Midnight is the domain of **shadows and secrecy.** Whether by clever tricks, deft magic, or the cloak of night, those who channel these forces practice the art of obscurity and can uncover sequestered treasures. Midnight offers practitioners the power to control and create enigmas. The Midnight domain can be accessed by the **Assassin**, **Rogue**, and **Sorcerer** classes."
  },
  {
   "id": "sage",
   "nombre": "Sage",
-  "descripcion": "Sage is the domain **of the natural world.** Those who walk this path tap into the unfettered power of the earth and its creatures to unleash raw magic. Sage grants its adherents the vitality of a blooming flower and the ferocity of a ravenous predator. The Sage domain can be accessed by the **Druid** and **Ranger** classes."
+  "descripcion": "Sage is the domain **of the natural world.** Those who walk this path tap into the unfettered power of the earth and its creatures to unleash raw magic. Sage grants its adherents the vitality of a blooming flower and the ferocity of a ravenous predator. The Sage domain can be accessed by the **Druid**, **Ranger**, and **Witch** classes."
  },
  {
   "id": "splendor",
@@ -42,6 +42,6 @@
  {
   "id": "valor",
   "nombre": "Valor",
-  "descripcion": "Valor is the domain of **protection**. Whether through attack or defense, those who choose this discipline channel formidable strength to protect their allies in battle. Valor oﬀers great power to those who raise their shields in defense of others. The Valor domain can be accessed by the **Guardian** and **Seraph** classes."
+  "descripcion": "Valor is the domain of **protection**. Whether through attack or defense, those who choose this discipline channel formidable strength to protect their allies in battle. Valor oﬀers great power to those who raise their shields in defense of others. The Valor domain can be accessed by the **Brawler**, **Guardian**, and **Seraph** classes."
  }
 ]
