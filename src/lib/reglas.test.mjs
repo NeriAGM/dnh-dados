@@ -200,16 +200,44 @@ test('bono de ataque: solo cuenta lo incondicional del arma (SRD 2.0 p. 64 y 68)
   assert.equal(bonoAtaque({ ...espada, activa: false }, [{ ...espada, activa: false }, martillo]), 0)
 })
 
-test('bono de ataque en armas caseras o importadas (texto libre)', () => {
-  const con = (texto) => ({ tipo: 'primaria', rasgos: [{ nombre: 'X', texto }] })
-  // cuentan: el bono fijo, con algo antes o con algo que no lo condiciona después
-  assert.equal(bonoAtaque(con('+1 a las tiradas de ataque y de daño')), 1)
-  assert.equal(bonoAtaque(con('Fiable: +1 a las tiradas de ataque')), 1)
-  assert.equal(bonoAtaque(con('−1 a las tiradas de ataque')), -1)
-  // no cuentan: lo condiciona lo que sigue
-  for (const t of ['-1 a las tiradas de ataque por cada paso que aumentes el alcance', '+1 a las tiradas de ataque contra criaturas Vulnerables',
-    '+1 a las tiradas de ataque cuando estés oculto', '+1 a las tiradas de ataque si tienes ventaja', '+1 a las tiradas de ataque mientras vuele',
-    '+1 a las tiradas de ataque hasta tu siguiente descanso', 'Cuando estés oculto, +1 a las tiradas de ataque']) assert.equal(bonoAtaque(con(t)), 0, t)
+test('bono de ataque en armas caseras o importadas: solo la forma fija cuenta', () => {
+  const con = (texto, tipo = 'primaria') => ({ tipo, rasgos: [{ nombre: 'X', texto }] })
+  const cuentan = [
+    ['+1 a las tiradas de ataque', 1], ['+1 a las tiradas de ataque.', 1], ['Fiable: +1 a las tiradas de ataque', 1],
+    ['+1 a las tiradas de ataque y de daño', 1], ['−1 a las tiradas de ataque', -1], ['–1 a las tiradas de ataque', -1],
+    ['**+1** a las tiradas de ataque', 1],
+  ]
+  for (const [t, n] of cuentan) assert.equal(bonoAtaque(con(t)), n, t)
+  const no = [
+    '+1 a las tiradas de ataque y de daño contra criaturas Vulnerables',
+    '+1 a las tiradas de ataque con esta arma cuando estés oculto',
+    '+1 a las tiradas de ataque (contra criaturas Vulnerables)',
+    '+1 a las tiradas de ataque — si estás oculto',
+    '+2 a las tiradas de ataque de Agilidad mientras vueles',
+    '+1 a las tiradas de ataque **por cada** aliado',
+    'Por cada aliado a alcance Cercano, +1 a las tiradas de ataque',
+    'Cada vez que marques un Estrés, +1 a las tiradas de ataque',
+    'Una vez por escena, +2 a las tiradas de ataque',
+    'Los adversarios a alcance Muy cercano tienen -1 a las tiradas de ataque',
+    'Tus aliados obtienen +1 a las tiradas de ataque',
+    'No obtienes +1 a las tiradas de ataque',
+    '+1 a las tiradas de ataque. Si fallas un ataque, marca un Estrés.',
+  ]
+  for (const t of no) assert.equal(bonoAtaque(con(t)), 0, t)
+  // Bono a la primaria: solo la forma exacta, y solo a la primaria activa
+  const espada = { id: 'espada', tipo: 'primaria', rasgos: [] }
+  for (const t of ['+2 a las tiradas de ataque hechas con tu arma primaria contra criaturas Vulnerables',
+    '-1 a las tiradas de ataque hechas con tu arma primaria por cada paso', '+1 a las tiradas de ataque con tu arma primaria']) {
+    const sec = con(t, 'secundaria')
+    assert.equal(bonoAtaque(espada, [espada, sec]), 0, t)
+    assert.equal(bonoAtaque(sec, [espada, sec]), 0, t)
+  }
+  // texto que no es cadena: 0, sin tronar
+  for (const texto of [3, [1, 2], null, undefined, { a: 1 }]) {
+    assert.equal(bonoAtaque({ tipo: 'primaria', rasgos: [{ nombre: 'X', texto }] }), 0)
+    assert.equal(bonoAtaque(espada, [espada, { tipo: 'secundaria', rasgos: [{ texto }] }]), 0)
+  }
+  assert.equal(bonoAtaque({ rasgos: [null] }), 0)
 })
 
 test('datos 2.0: «N de Miedo», nunca «N Miedo» ni «N Miedos»', () => {

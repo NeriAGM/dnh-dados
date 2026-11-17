@@ -103,35 +103,27 @@ export function pgPorDano(dano, u, { masivo = false } = {}) {
   return 1
 }
 
-// Bono a la tirada de ataque de un arma. Solo con armas activas: el SRD 2.0 p. 55 dice que se ganan los rasgos de
-// lo que se tiene equipado («gain features from items they have equipped»).
-// Cuenta el bono fijo «±N a las tiradas de ataque», aunque lleve algo antes («Fiable: ») o algo que no lo condicione
-// después («… y de daño»). No lo cuenta si lo condiciona: «por cada paso…» (Bastón infinito, SRD 2.0 p. 64), «contra…»,
-// «cuando…», «si…», «mientras…», «hasta…». «… hechas con tu arma primaria» (Martillo de hojalatero, p. 68) lo recibe
-// la primaria activa cuando ese arma está activa como secundaria; el martillo no se lo da a sí mismo. `armas` = hoja.armas.
-const BONO = /([+\-−]\d+)\s+a\s+las?\s+tiradas?\s+de\s+ataque/gi
-const CONDICION_ANTES = /\b(cuando|si|mientras|contra|hasta)\b/i
-const CONDICION_DESPUES = /^[\s,;:.]*(por\s+cada|contra|cuando|si|mientras|hasta)\b/i
-const A_PRIMARIA = /^\s+hechas?\s+con\s+tu\s+arma\s+primaria/i
-function bonos(arma, paraPrimaria) {
+// Bono a la tirada de ataque de un arma. Los rasgos cuentan con el arma equipada (activa): SRD 2.0 p. 55
+// («gain features from items they have equipped»). El «-1 … por cada paso» del Bastón infinito (p. 64) es condicional
+// y no cuenta. «+1 a las tiradas de ataque hechas con tu arma primaria» (Martillo de hojalatero, p. 68) lo recibe la
+// primaria activa cuando el martillo está activo como secundaria; el martillo no se lo da a sí mismo. `armas` = hoja.armas.
+// shortcut: solo reconoce el bono fijo escrito así (Fiable y Martillo de hojalatero); un bono casero con otra redacción no se suma: el jugador lo agrega a mano. Si la mesa usa otras fórmulas, agregarlas aquí.
+const INICIO = /^\s*(?:[^.:]+:\s*)?([+\-−–])\s*(\d+)\s+a\s+las\s+tiradas\s+de\s+ataque/i
+const PROPIO = new RegExp(INICIO.source + /(?:\s+y\s+de\s+daño)?\s*\.?\s*$/.source, 'i')
+const A_PRIMARIA = new RegExp(INICIO.source + /\s+hechas\s+con\s+tu\s+arma\s+primaria\s*\.?\s*$/.source, 'i')
+function bonos(arma, forma) {
   let b = 0
-  for (const r of arma?.rasgos || []) {
-    const t = r.texto || ''
-    for (const m of t.matchAll(BONO)) {
-      const despues = t.slice(m.index + m[0].length)
-      const primaria = A_PRIMARIA.test(despues)
-      if (primaria !== paraPrimaria) continue
-      if (!primaria && (CONDICION_DESPUES.test(despues) || CONDICION_ANTES.test(t.slice(0, m.index)))) continue
-      b += parseInt(m[1].replace('−', '-'), 10)
-    }
+  for (const r of Array.isArray(arma?.rasgos) ? arma.rasgos : []) {
+    const m = forma.exec(String(r?.texto ?? '').replace(/[*_]/g, ''))
+    if (m) b += (m[1] === '+' ? 1 : -1) * parseInt(m[2], 10)
   }
   return b
 }
 export function bonoAtaque(arma, armas = []) {
-  let b = bonos(arma, false)
+  let b = bonos(arma, PROPIO)
   if (arma?.tipo !== 'secundaria' && arma?.activa !== false) {
-    for (const o of armas) {
-      if (o !== arma && o?.tipo === 'secundaria' && o?.activa !== false) b += bonos(o, true)
+    for (const o of Array.isArray(armas) ? armas : []) {
+      if (o !== arma && o?.tipo === 'secundaria' && o?.activa !== false) b += bonos(o, A_PRIMARIA)
     }
   }
   return b
