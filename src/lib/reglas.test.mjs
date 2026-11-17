@@ -262,3 +262,23 @@ test('datos 2.0: «N de Miedo», nunca «N Miedo» ni «N Miedos»', () => {
     assert.deepEqual(texto.match(/\b\d*d?\d+\*{0,2} Miedos?\b/g) ?? [], [], f)
   }
 })
+
+test('avisos: arma mágica sin rasgo de Lanzamiento en la subclase (SRD 2.0 p. 56 y 71)', () => {
+  const catL = { porId: { subclases: {
+    stalwart: { id: 'stalwart', fuente: 'SRD 1.0', rasgo_lanzamiento: null },
+    wizard: { id: 'wizard', fuente: 'SRD 1.0', rasgo_lanzamiento: 'conocimiento' },
+    casera: { id: 'casera', fuente: 'Casero', rasgo_lanzamiento: null },
+  } } }
+  const silla = { id: 'arcane-frame-wheelchair', nombre: 'Silla de ruedas arcana', tipo: 'primaria', rasgo: 'lanzamiento', dano: { tipo: 'magico' } }
+  const espada = { id: 'espada', nombre: 'Espada', tipo: 'primaria', rasgo: 'fuerza', dano: { tipo: 'fisico' } }
+  const textos = (hoja) => avisos(hoja, catL).filter((a) => a.campo === 'armas').map((a) => a.texto)
+  const sale = textos({ subclase: 'stalwart', armas: [silla] })
+  assert.equal(sale.length, 1)
+  assert.match(sale[0], /«Silla de ruedas arcana» es un arma mágica y tu subclase no tiene rasgo de Lanzamiento/)
+  assert.deepEqual(textos({ subclase: 'stalwart', armas: [{ ...silla, activa: false }] }), [])
+  assert.deepEqual(textos({ subclase: 'wizard', armas: [silla] }), [])
+  assert.deepEqual(textos({ subclase: 'stalwart', armas: [espada] }), [])
+  assert.deepEqual(textos({ subclase: 'stalwart', multiclase: { clase: 'wizard' }, armas: [silla] }), [])
+  assert.deepEqual(textos({ subclase: 'casera', armas: [silla] }), [])
+  assert.deepEqual(textos({ subclase: null, armas: [silla] }), [])
+})

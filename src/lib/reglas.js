@@ -197,6 +197,15 @@ export function avisos(hoja, cat) {
   if (dosManos && secundarias && ![hoja.clase, hoja.multiclase?.clase].includes('warrior')) {
     out.push({ campo: 'armas', texto: `«${dosManos.nombre}» es a dos manos: no puede ir junto con una secundaria activa. Guarda una.` })
   }
+  // Toda arma mágica requiere un rasgo de Lanzamiento (SRD 2.0 p. 56, «All magic weapons require a Spellcast trait»; la silla
+  // de ruedas arcana usa el de la subclase, p. 71). Solo avisa si se sabe la subclase y no hay multiclase ni subclase casera.
+  const subclase = cat?.porId?.subclases?.[hoja.subclase]
+  if (subclase && subclase.fuente !== 'Casero' && !subclase.rasgo_lanzamiento && !hoja.multiclase) {
+    // Campo de arma mágica: dano.tipo === 'magico' (no hay otro campo en los datos)
+    for (const a of activas.filter((x) => x?.dano?.tipo === 'magico')) {
+      out.push({ campo: 'armas', texto: `«${a.nombre}» es un arma mágica y tu subclase no tiene rasgo de Lanzamiento: por regla no puedes usarla (SRD 2.0 p. 56).` })
+    }
+  }
   return out
 }
 
