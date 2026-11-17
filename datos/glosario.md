@@ -175,7 +175,8 @@ que tienen palabra común en español.
 |---|---|
 | Ooze | Limo |
 | Enchanted (Kelpie) | Hechizado |
-| Beguiled / beguile (Acechafauces) | Embelesado / embelesar |
+| Beguiled / beguile (Acechafauces) | Cautivado / cautivar |
+| Enraptured (cartas de Gracia Embelesar y Embeleso masivo, SRD 2.0 p. 215–216) | Embelesado |
 
 ## Hope & Fear (SRD 2.0, aprobados por Neri el 17/11/2026)
 
