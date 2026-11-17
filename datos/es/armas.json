@@ -2351,7 +2351,7 @@
   "dano": {
    "dados": 1,
    "lados": 8,
-   "mod": 9,
+   "mod": 10,
    "tipo": "fisico"
   },
   "manos": 1,
