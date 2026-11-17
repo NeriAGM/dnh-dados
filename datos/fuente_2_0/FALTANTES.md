@@ -48,11 +48,17 @@ Contrastado solo contra otro espejo comunitario (daggerheartsrd.com):
 4. **Martial Artist, hoja de "Martial Stances".** Las reglas de Focus y de posturas, con las 16 posturas por tier, vienen después de las preguntas del Brawler y no forman parte de ningún rasgo en el JSON de origen. Se agregaron al final del texto de **Stance Fighter** (`subclases.json` → `martial-artist` → `base[0]`) porque el esquema no tiene un campo para ellas.
 5. **Tablas en Markdown.** Commune (Witch), Lunar Phases (Moon Witch) y las esferas del Warlock se quedaron como tablas Markdown dentro de `texto`. Si la app no muestra tablas, hay que convertirlas.
 6. **Fuera del alcance de esta captura (existen en el SRD 2.0, pero no se capturaron):**
-   - Las 6 Transformaciones: Demigod, Ghost, Reanimated, Shapeshifter, Vampire y Werewolf.
-   - Las armas, armaduras, objetos y consumibles nuevos de Hope & Fear.
-   - Las reglas de Mixed Ancestry.
    - Las mecánicas de los marcos de campaña.
-   - Los adversarios y entornos nuevos.
+   - **Agregado el 17/11/2026** (rama `datos/contenido-srd2`), leído directo del PDF oficial y no de la transcripción:
+     `adversarios.json` (135, p. 97–158), `entornos.json` (28, p. 160–182), `armas.json` (132, p. 56–71, con las 12 sillas
+     de ruedas de combate), `armaduras.json` (35, p. 72–74), `objetos.json` (60, p. 77–79), `consumibles.json` (60, p. 82–84)
+     y `transformaciones.json` (6, p. 42–45). Cada entrada cita su página en `fuente`. Nombres en español aprobados por Neri.
+     La regla de Mixed Ancestry (p. 38) quedó confirmada en `docs/reglas/reglas-2-personajes.md`.
+   - Decisiones de Neri para esos datos: la Hoja de sombras (*Shadowblade*, daño «phy/mag») guarda daño `fisico` y su rasgo
+     explica que puede ser mágico; la silla de ruedas arcana usa `rasgo: "lanzamiento"` (el de la subclase, p. 71); el
+     ataque del Ejecutor temporal lleva `dano.directo: true` (p. 155); la Armadura hechizada tiene `estres: null` (p. 110).
+   - Las negritas y cursivas de adversarios y entornos se pusieron con reglas (costos «Mark/Spend…», dados de daño y
+     condiciones), porque el texto del PDF no trae el formato.
 
 ## Erratas del 2.0 que tocan contenido 1.0 existente
 
