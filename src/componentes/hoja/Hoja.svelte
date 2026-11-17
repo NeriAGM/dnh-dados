@@ -673,7 +673,7 @@
         <button class="opcion" onclick={elegirlo}>
           <strong>{x.nombre}</strong>
           <small>
-            {#if selector.tipo === 'arma'}Rango {x.nivel} · {x.tipo} · {NOMBRE_RASGO[x.rasgo]} · {ALCANCES[x.alcance]} · d{x.dano?.lados}{x.dano?.mod ? `+${x.dano.mod}` : ''} {x.dano?.tipo === 'magico' ? 'mág.' : 'fís.'}{x.rasgos?.length ? ` · ${x.rasgos.map((r) => r.nombre).join(', ')}` : ''}
+            {#if selector.tipo === 'arma'}Rango {x.nivel} · {x.tipo} · {NOMBRE_RASGO[x.rasgo]} · {ALCANCES[x.alcance]} · d{x.dano?.lados}{x.dano?.mod ? `+${x.dano.mod}` : ''} {x.dano?.tipo === 'magico' ? 'mág.' : 'fís.'}{x.rasgos?.length ? ` · ${x.rasgos.map((r) => r.nombre).join(', ')}` : ''}{x.solo_srd_1 ? ' · Solo SRD 1.0' : ''}
             {:else if selector.tipo === 'armadura'}Rango {x.nivel} · Puntuación {x.puntuacion} · {x.umbrales?.mayor}/{x.umbrales?.grave}{x.rasgos?.length ? ` · ${x.rasgos.map((r) => r.nombre).join(', ')}` : ''}
             {:else if selector.tipo === 'clase'}Evasión {x.evasion} · PG {x.pg} · {(x.dominios ?? []).map((d) => cat?.porId?.dominios?.[d]?.nombre ?? d).join(' y ')}
             {:else}{x.fuente}{/if}

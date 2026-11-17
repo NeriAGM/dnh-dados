@@ -1924,6 +1924,7 @@
  },
  {
   "id": "axe-of-fortunis",
+  "solo_srd_1": true,
   "nombre": "Axe of Fortunis",
   "nivel": 3,
   "tipo": "primaria",
@@ -1945,6 +1946,7 @@
  },
  {
   "id": "blessed-anlace",
+  "solo_srd_1": true,
   "nombre": "Blessed Anlace",
   "nivel": 3,
   "tipo": "primaria",
@@ -1966,6 +1968,7 @@
  },
  {
   "id": "ghostblade",
+  "solo_srd_1": true,
   "nombre": "Ghostblade",
   "nivel": 3,
   "tipo": "primaria",
@@ -1987,6 +1990,7 @@
  },
  {
   "id": "runes-of-ruination",
+  "solo_srd_1": true,
   "nombre": "Runes of Ruination",
   "nivel": 3,
   "tipo": "primaria",
@@ -2008,6 +2012,7 @@
  },
  {
   "id": "widogast-pendant",
+  "solo_srd_1": true,
   "nombre": "Widogast Pendant",
   "nivel": 3,
   "tipo": "primaria",
@@ -2029,6 +2034,7 @@
  },
  {
   "id": "gilded-bow",
+  "solo_srd_1": true,
   "nombre": "Gilded Bow",
   "nivel": 3,
   "tipo": "primaria",
@@ -2050,6 +2056,7 @@
  },
  {
   "id": "firestaff",
+  "solo_srd_1": true,
   "nombre": "Firestaff",
   "nivel": 3,
   "tipo": "primaria",
@@ -2071,6 +2078,7 @@
  },
  {
   "id": "mage-orb",
+  "solo_srd_1": true,
   "nombre": "Mage Orb",
   "nivel": 3,
   "tipo": "primaria",
@@ -2092,6 +2100,7 @@
  },
  {
   "id": "ilmari-s-rifle",
+  "solo_srd_1": true,
   "nombre": "Ilmari's Rifle",
   "nivel": 3,
   "tipo": "primaria",

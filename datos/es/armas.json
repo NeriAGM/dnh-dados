@@ -2027,6 +2027,7 @@
  },
  {
   "id": "axe-of-fortunis",
+  "solo_srd_1": true,
   "nombre": "Hacha de Fortunis",
   "nombre_en": "Axe of Fortunis",
   "nivel": 3,
@@ -2049,6 +2050,7 @@
  },
  {
   "id": "blessed-anlace",
+  "solo_srd_1": true,
   "nombre": "Anelace bendito",
   "nombre_en": "Blessed Anlace",
   "nivel": 3,
@@ -2071,6 +2073,7 @@
  },
  {
   "id": "ghostblade",
+  "solo_srd_1": true,
   "nombre": "Hoja fantasma",
   "nombre_en": "Ghostblade",
   "nivel": 3,
@@ -2093,6 +2096,7 @@
  },
  {
   "id": "runes-of-ruination",
+  "solo_srd_1": true,
   "nombre": "Runas de la ruina",
   "nombre_en": "Runes of Ruination",
   "nivel": 3,
@@ -2115,6 +2119,7 @@
  },
  {
   "id": "widogast-pendant",
+  "solo_srd_1": true,
   "nombre": "Colgante de Widogast",
   "nombre_en": "Widogast Pendant",
   "nivel": 3,
@@ -2137,6 +2142,7 @@
  },
  {
   "id": "gilded-bow",
+  "solo_srd_1": true,
   "nombre": "Arco dorado",
   "nombre_en": "Gilded Bow",
   "nivel": 3,
@@ -2159,6 +2165,7 @@
  },
  {
   "id": "firestaff",
+  "solo_srd_1": true,
   "nombre": "Bastón de fuego",
   "nombre_en": "Firestaff",
   "nivel": 3,
@@ -2181,6 +2188,7 @@
  },
  {
   "id": "mage-orb",
+  "solo_srd_1": true,
   "nombre": "Orbe de mago",
   "nombre_en": "Mage Orb",
   "nivel": 3,
@@ -2203,6 +2211,7 @@
  },
  {
   "id": "ilmari-s-rifle",
+  "solo_srd_1": true,
   "nombre": "Rifle de Ilmari",
   "nombre_en": "Ilmari's Rifle",
   "nivel": 3,
