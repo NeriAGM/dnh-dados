@@ -65,7 +65,7 @@
       <span title="Dificultad"><b>{adv.dificultad ?? '—'}</b>Dificultad</span>
       <span title="Umbrales Mayor / Grave"><b>{adv.umbrales ? `${adv.umbrales.mayor ?? '—'}/${adv.umbrales.grave ?? '—'}` : '—'}</b>Umbrales</span>
       <span><b>{adv.pg}</b>PG</span>
-      <span><b>{adv.estres ?? 0}</b>Estrés</span>
+      <span><b>{adv.estres ?? '—'}</b>Estrés</span>
       <span title="{adv.ataque?.nombre} · {ALCANCES[adv.ataque?.alcance] ?? ''}"><b>{textoAtaque(adv)}</b>{adv.ataque?.nombre}</span>
       <span title={d.horda ? 'Daño de Horda: ya marcó la mitad de sus PG' : undefined}><b>{textoDano}</b>{d.tipo === 'magico' ? 'mág.' : 'fís.'}{d.horda ? ' · horda' : ''}</span>
     </div>
