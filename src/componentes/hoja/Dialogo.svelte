@@ -1,9 +1,20 @@
 <script>
   // Ventana encima de la hoja para las ayudas de reglas (daño, descanso, muerte, nivel).
+  import { onMount } from 'svelte'
   import Icono from '../Icono.svelte'
   let { titulo, subtitulo = '', onCerrar, children, pie, ancho = 480 } = $props()
+
+  // Lo mínimo de accesibilidad: Esc cierra, al abrir el foco va al botón «Cerrar» y al cerrar regresa a quien abrió.
+  // (No es una trampa de foco completa.)
+  let cerrar
+  onMount(() => {
+    const antes = document.activeElement
+    cerrar?.focus()
+    return () => { if (antes instanceof HTMLElement && antes.isConnected) antes.focus() }
+  })
 </script>
 
+<svelte:window onkeydown={(e) => { if (e.key === 'Escape') { e.stopPropagation(); onCerrar() } }} />
 <div class="cortina arriba" onclick={onCerrar} role="presentation"></div>
 <div class="dialogo vidrio" role="dialog" aria-modal="true" aria-label={titulo} style:--ancho="{ancho}px">
   <header>
@@ -11,7 +22,7 @@
       <h3>{titulo}</h3>
       {#if subtitulo}<p>{subtitulo}</p>{/if}
     </div>
-    <button class="icono" onclick={onCerrar} aria-label="Cerrar"><Icono nombre="cerrar" /></button>
+    <button class="icono" bind:this={cerrar} onclick={onCerrar} aria-label="Cerrar"><Icono nombre="cerrar" /></button>
   </header>
   <div class="contenido">{@render children()}</div>
   {#if pie}<footer>{@render pie()}</footer>{/if}
