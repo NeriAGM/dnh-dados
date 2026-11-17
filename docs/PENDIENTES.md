@@ -99,6 +99,7 @@ Quedan (para decidir o revisar):
 - [ ] Daño del compañero siempre tira 1 dado (¿escala con Competencia?).
 - [x] La lista de cartas al agregar ya no muestra las que tienes en la mano o la bóveda (15/11).
 - [x] Hoja a 1440 con compañero: «Notas» cabía con 0 px de sobra y con la letra M PLUS se cortaba. Ahora sobran 32–61 px según la letra (15/11). En celular las pestañas se siguen deslizando de lado, como antes.
+- [x] Armas activas y guardadas (16/11, rama `claude/xenodochial-gagarin-376571`, sin publicar): botón «Al inventario» / «Sacar» por arma; las guardadas no tiran y dicen «Guardada · sacarla en combate cuesta 1 Estrés». Avisa sin bloquear si hay más de 1 primaria o 1 secundaria activa, o más de 2 guardadas (SRD p. 55); el Estrés no se marca solo. Falta: no avisa si un arma a dos manos va junto con una secundaria.
 
 ## Arreglos menores de la mesa (rama `arreglos/mesa-menores`, 15/11/2026)
 

@@ -53,6 +53,19 @@ test('avisos: arreglo de rasgos, Evasión, cartas', () => {
   assert.doesNotMatch(t, /«Carta A»/)
 })
 
+test('avisos: armas activas y guardadas (SRD p. 55)', () => {
+  const arma = (tipo, activa) => ({ nombre: `${tipo} ${activa}`, tipo, ...(activa === undefined ? {} : { activa }) })
+  const textos = (armas) => avisos({ armas }, cat).filter((a) => a.campo === 'armas').map((a) => a.texto)
+  // Una primaria y una secundaria activas, dos guardadas: todo en regla
+  assert.deepEqual(textos([arma('primaria', true), arma('secundaria'), arma('primaria', false), arma('secundaria', false)]), [])
+  // Hojas viejas sin «activa» cuentan como activas
+  assert.match(textos([arma('primaria'), arma('primaria')]).join(), /2 armas primarias activas/)
+  assert.match(textos([arma('secundaria', true), arma('secundaria')]).join(), /2 armas secundarias activas/)
+  assert.match(textos([arma('primaria', false), arma('primaria', false), arma('secundaria', false)]).join(), /3 armas guardadas/)
+  // Sin tipo cuenta como primaria (así la muestra la hoja)
+  assert.equal(textos([{ nombre: 'X' }, arma('primaria')]).length, 1)
+})
+
 import { puntosDeBatalla } from './reglas.js'
 
 test('puntos de batalla: ejemplo del SRD con 4 PJ', () => {

@@ -167,6 +167,15 @@ export function avisos(hoja, cat) {
     if (c.nivel > nivel) out.push({ campo: 'cartas', texto: `«${c.nombre}» es de nivel ${c.nivel} y tu personaje es nivel ${nivel}.` })
   }
   if ((hoja.pg_max ?? 0) > 12) out.push({ campo: 'pg', texto: 'Los PG máximos no pueden pasar de 12.' })
+  // SRD p. 55: activas = 1 primaria + 1 secundaria; hasta 2 guardadas. Sin «activa» = activa (hojas viejas)
+  const armas = Array.isArray(hoja.armas) ? hoja.armas : []
+  const activas = armas.filter((a) => a?.activa !== false)
+  const secundarias = activas.filter((a) => a?.tipo === 'secundaria').length
+  const primarias = activas.length - secundarias
+  const guardadas = armas.length - activas.length
+  if (primarias > 1) out.push({ campo: 'armas', texto: `Tienes ${primarias} armas primarias activas; la regla es 1. Guarda las demás.` })
+  if (secundarias > 1) out.push({ campo: 'armas', texto: `Tienes ${secundarias} armas secundarias activas; la regla es 1. Guarda las demás.` })
+  if (guardadas > 2) out.push({ campo: 'armas', texto: `Tienes ${guardadas} armas guardadas; el máximo es 2.` })
   return out
 }
 
