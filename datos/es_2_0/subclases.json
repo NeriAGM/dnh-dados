@@ -37,7 +37,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Executioners%20Guild.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "poisoners-guild",
@@ -73,7 +73,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Poisoners%20Guild.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "juggernaut",
@@ -113,7 +113,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Juggernaut.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "martial-artist",
@@ -149,7 +149,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Martial%20Artist.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "pact-of-the-endless",
@@ -189,7 +189,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Pact%20of%20the%20Endless.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "pact-of-the-wrathful",
@@ -229,7 +229,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/subclasses/Pact%20of%20the%20Wrathful.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "hedge-witch",

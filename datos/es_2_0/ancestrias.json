@@ -15,7 +15,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Aetheris.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "earthkin",
@@ -33,7 +33,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Earthkin.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "emberkin",
@@ -51,7 +51,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Emberkin.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "skykin",
@@ -69,7 +69,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Skykin.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "tidekin",
@@ -87,7 +87,7 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Tidekin.md",
-  "verificado": false
+  "verificado": true
  },
  {
   "id": "gnome",
@@ -105,6 +105,6 @@
    }
   ],
   "fuente": "https://github.com/JHerrin00/daggerheart-srd-2.0/blob/e30aeb70d6c002af1b3fd783c037a45ec79cb984/ancestries/Gnome.md",
-  "verificado": false
+  "verificado": true
  }
 ]

@@ -6,7 +6,14 @@ Captura del contenido nuevo para jugadores del **Daggerheart SRD 2.0** (Darringt
 - Página oficial con el changelog: https://www.daggerheart.com/srd/
 - Transcripción comunitaria de donde se tomó el texto: https://github.com/JHerrin00/daggerheart-srd-2.0 (commit `e30aeb70d6c002af1b3fd783c037a45ec79cb984`, del 4 de octubre de 2026)
 
-## Por qué todo tiene `"verificado": false`
+## Actualización del 16/11/2026: ya se verificó contra el PDF oficial
+
+Se comparó todo contra el texto completo del PDF oficial (extraído página por página). Ahora todo tiene
+`"verificado": true`, menos las subclases `hedge-witch` y `moon-witch`, porque en el SRD 2.0 se llaman
+**Hedge** y **Moon** (p. 29–30) y Neri tiene que decidir cómo se nombran. El detalle está en
+`docs/verificacion-srd2-datos.md`. Lo que sigue es la historia de la captura.
+
+## Por qué todo tenía `"verificado": false`
 
 - El shell no puede llegar a daggerheart.com, darringtonpress.com ni daggerheartsrd.com: el proxy de salida responde 403.
 - WebFetch sí lee el PDF oficial, pero **no copia el texto literal**: solo lo resume. Además, el texto que obtiene del PDF se corta en unos 103,390 caracteres, más o menos en la página 27, dentro de la clase Warrior. No llega a la Witch, a las ancestrías, a las comunidades ni al apéndice de cartas.
