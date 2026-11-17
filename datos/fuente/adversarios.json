@@ -1926,7 +1926,7 @@
   "nombre": "Swarm of Rats",
   "nivel": 1,
   "tipo": "horda",
-  "horda_por_pg": null,
+  "horda_por_pg": 1,
   "descripcion": "A skittering mass of ordinary rodents moving as one like a ravenous wave.",
   "motivos": "Consume, obscure, swarm",
   "dificultad": 10,
@@ -3001,7 +3001,7 @@
   "nombre": "Electric Eels",
   "nivel": 2,
   "tipo": "horda",
-  "horda_por_pg": null,
+  "horda_por_pg": 2,
   "descripcion": "A swarm of eels that encircle and electrocute.",
   "motivos": "Avoid larger predators, shock prey, tear apart",
   "dificultad": 14,
@@ -6036,7 +6036,7 @@
  },
  {
   "id": "outer-realms-corruptor",
-  "nombre": "Outer Realms Corruptor",
+  "nombre": "Outer Realms Corrupter",
   "nivel": 4,
   "tipo": "apoyo",
   "horda_por_pg": null,
@@ -6065,7 +6065,7 @@
    {
     "nombre": "Will-Shattering Touch",
     "clase": "pasiva",
-    "texto": "When a PC takes damage from the Corruptor, they lose a Hope."
+    "texto": "When a PC takes damage from the Corrupter, they lose a Hope."
    },
    {
     "nombre": "Disgorge Reality Flotsam",

@@ -730,7 +730,7 @@
    {
     "nombre": "A mi señal",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (5)",
+    "cuenta_regresiva": "Cuenta regresiva (5)",
     "texto": "Cuando el Jefe de la guardia tiene el foco por primera vez, activa la cuenta regresiva. Avanza cuando un PJ hace una tirada de ataque. Cuando se activa, todos los Guardias arqueros dentro del alcance Lejano hacen un ataque estándar con ventaja contra el objetivo más cercano dentro de su alcance. Si varios ataques tienen éxito contra el mismo objetivo, suma su daño."
    },
    {
@@ -1968,7 +1968,7 @@
   "nombre_en": "Swarm of Rats",
   "nivel": 1,
   "tipo": "horda",
-  "horda_por_pg": null,
+  "horda_por_pg": 1,
   "descripcion": "Una masa correteante de roedores comunes que se mueve como una sola ola voraz.",
   "motivos": "Consumir, ocultar, pulular",
   "dificultad": 10,
@@ -3066,7 +3066,7 @@
   "nombre_en": "Electric Eels",
   "nivel": 2,
   "tipo": "horda",
-  "horda_por_pg": null,
+  "horda_por_pg": 2,
   "descripcion": "Un enjambre de anguilas que rodean y electrocutan.",
   "motivos": "Evitar depredadores más grandes, electrocutar a su presa, despedazar",
   "dificultad": 14,
@@ -3492,7 +3492,7 @@
    {
     "nombre": "Aliento alucinógeno",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Loop 1d6)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 1d6)",
     "texto": "Cuando el Destellífero recibe daño por primera vez, activa la cuenta regresiva. Cuando se activa, el Destellífero exhala gas alucinógeno sobre todos los objetivos frente a él hasta el alcance Lejano. Los objetivos deben tener éxito en una tirada de reacción de Instinto o los atormentan alucinaciones aterradoras. Los objetivos cuyos miedos conoce el Destellífero tienen desventaja en esta tirada. Los objetivos que fallen deben marcar un Estrés y pierden una Esperanza."
    }
   ]
@@ -3760,7 +3760,7 @@
    {
     "nombre": "Arrasar",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Loop 1d6)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 1d6)",
     "texto": "Cuando el Cazador tiene el foco por primera vez, activa la cuenta regresiva. Cuando se activa, mueve al Cazador en línea recta hasta un punto dentro del alcance Lejano y haz un ataque contra todos los objetivos en su camino. Los objetivos contra los que el Cazador tenga éxito reciben **2d8+2** de daño físico."
    }
   ]
@@ -3871,7 +3871,7 @@
    {
     "nombre": "Ritual de invocación",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (6)",
+    "cuenta_regresiva": "Cuenta regresiva (6)",
     "texto": "Cuando el Guardián de secretos tiene el foco por primera vez, activa la cuenta regresiva. Cuando marque PG, haz avanzar esta cuenta regresiva tantas veces como PG haya marcado. Cuando se activa, invoca a un Demonio menor que aparece a alcance Cercano."
    },
    {
@@ -4350,7 +4350,7 @@
    {
     "nombre": "Aliento alucinógeno",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Loop 1d6)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 1d6)",
     "texto": "Cuando el Destellífero recibe daño por primera vez, activa la cuenta regresiva. Cuando se activa, el Destellífero exhala gas alucinógeno sobre todos los objetivos frente a él hasta el alcance Lejano. Los objetivos deben hacer una tirada de reacción de Instinto o los atormentan alucinaciones aterradoras. Los objetivos cuyos miedos conoce el Destellífero tienen desventaja en esta tirada. Los objetivos que fallen pierden 2 de Esperanza y reciben **3d8+3** de daño mágico directo."
    },
    {
@@ -4636,7 +4636,7 @@
    {
     "nombre": "Sangre y almas",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Loop 6)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 6)",
     "texto": "Se activa la primera vez que se hace un ataque a la vista del Demonio. Avanza cuando un PJ realiza una acción violenta. Cuando se activa, invoca a **1d4** Demonios menores, que aparecen a alcance Cercano."
    }
   ]
@@ -5046,7 +5046,7 @@
    {
     "nombre": "Casus belli",
     "clase": "reaccion",
-    "cuenta_regresiva": "Long-Term Countdown (8)",
+    "cuenta_regresiva": "Cuenta regresiva de largo plazo (8)",
     "texto": "**Gasta un Miedo** para activarla después de que se revele por primera vez el deseo de guerra del Monarca. Cuando se activa, el Monarca tiene un motivo para llamar a la nación a la guerra y el apoyo para actuar en consecuencia. Ganas **1d4** de Miedo."
    }
   ]
@@ -5573,7 +5573,7 @@
    {
     "nombre": "Tu vida es mía",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Loop 2d6)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 2d6)",
     "texto": "Cuando el Nigromante ha marcado 6 o más de sus PG, activa la cuenta regresiva. Cuando se activa, inflige **2d10+6** de daño mágico directo a un objetivo dentro del alcance Cercano. Después, el Nigromante **limpia una cantidad de Estrés o PG** igual a los PG que marcó el objetivo por este ataque."
    }
   ]
@@ -5673,7 +5673,7 @@
    {
     "nombre": "Grilletes de culpa",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Loop 2d6)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 2d6)",
     "texto": "Cuando el Hechicero tiene el foco por primera vez, activa la cuenta regresiva. Cuando se activa, todos los objetivos dentro del alcance Lejano quedan _Vulnerables_ y deben marcar un Estrés mientras reviven sus mayores remordimientos. Un objetivo puede liberarse de su remordimiento con una tirada de Presencia o de Fuerza exitosa. Cuando un PJ no logra liberarse, pierde una Esperanza."
    }
   ]
@@ -5738,7 +5738,7 @@
    {
     "nombre": "Ira que todo lo consume",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Decreasing 8)",
+    "cuenta_regresiva": "Cuenta regresiva (decreciente 8)",
     "texto": "Cuando el Rompereinos tiene el foco por primera vez, activa la cuenta regresiva. Cuando se activa, crea un torrente de ira encarnada que arranca la carne de los huesos. Todos los objetivos dentro del alcance Lejano deben hacer una tirada de reacción de Presencia. Los objetivos que fallen reciben **2d6+10** de daño mágico directo. Los objetivos que tengan éxito reciben la mitad del daño. Por cada PG marcado por este daño, invoca a una Tropa de choque de los Caídos dentro del alcance Muy cercano del objetivo que marcó ese PG. Si alguna vez el valor máximo de la cuenta regresiva baja a 0, el Rompereinos marca los PG que le queden y todos los objetivos dentro del alcance Lejano deben marcar todos los PG que les queden y hacer un movimiento de muerte."
    },
    {
@@ -5818,7 +5818,7 @@
    {
     "nombre": "Círculo de profanación",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (1d8)",
+    "cuenta_regresiva": "Cuenta regresiva (1d8)",
     "texto": "Cuando el Campeón invicto tiene el foco por primera vez, activa la cuenta regresiva. Cuando se activa, activa un círculo mágico que cubre un área dentro del alcance Lejano del Campeón. Un objetivo dentro de esa área está _Vulnerable_ hasta que salga del círculo. El círculo se puede eliminar infligiéndole daño Grave al Campeón invicto."
    },
    {
@@ -6159,7 +6159,7 @@
  {
   "id": "outer-realms-corruptor",
   "nombre": "Corruptor de los Reinos Exteriores",
-  "nombre_en": "Outer Realms Corruptor",
+  "nombre_en": "Outer Realms Corrupter",
   "nivel": 4,
   "tipo": "apoyo",
   "horda_por_pg": null,
@@ -6439,7 +6439,7 @@
    {
     "nombre": "Sacudida apocalíptica",
     "clase": "accion",
-    "cuenta_regresiva": "Countdown (1d12)",
+    "cuenta_regresiva": "Cuenta regresiva (1d12)",
     "texto": "**Gasta un Miedo** para activarla. Avanza cuando un PJ tira con Miedo. Cuando se activa, el Tirano de ceniza se sacude con violencia y causa daño al entorno (como un terremoto, una avalancha o muros que se derrumban). Todos los objetivos dentro del alcance Lejano deben hacer una tirada de reacción de Fuerza. Los objetivos que fallen reciben **2d10+10** de daño físico y quedan _Apresados_ por los escombros hasta que se liberen con una tirada de Fuerza exitosa. Los objetivos que tengan éxito reciben la mitad del daño. Si el Tirano de ceniza es derrotado mientras esta cuenta regresiva está activa, activa la cuenta regresiva de inmediato como la destrucción causada por su agonía."
    }
   ]
