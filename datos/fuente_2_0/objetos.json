@@ -1,0 +1,482 @@
+[
+  {
+    "id": "caltrops",
+    "nombre": "Caltrops",
+    "texto": "You can spread these caltrops in a Very Close area around you. A creature hastening through that area must mark a Stress.",
+    "tirada": 1,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "grapnel",
+    "nombre": "Grapnel",
+    "texto": "You gain advantage on action rolls to climb sheer surfaces.",
+    "tirada": 2,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "ball-bearings",
+    "nombre": "Ball Bearings",
+    "texto": "This pouch contains perfectly smooth metal spheres.",
+    "tirada": 3,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "box-of-dragon-dust",
+    "nombre": "Box of Dragon Dust",
+    "texto": "This snuffbox is filled with combustible powder.",
+    "tirada": 4,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "nighthawkers-ring",
+    "nombre": "Nighthawker's Ring",
+    "texto": "Spend a Hope to activate the gemstone in this ring until the end of the scene. While active, the gemstone changes color to indicate the wearer's proximity to hidden treasure: warm colors for near, cool colors for far.",
+    "tirada": 5,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "elven-spyglass",
+    "nombre": "Elven Spyglass",
+    "texto": "You can use this spyglass to magnify your vision a hundredfold.",
+    "tirada": 6,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "gourmet-granules",
+    "nombre": "Gourmet Granules",
+    "texto": "This savory powder makes any food it's sprinkled on delicious and healthy, no matter how bland or rotten it is.",
+    "tirada": 7,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "collapsible-pole",
+    "nombre": "Collapsible Pole",
+    "texto": "You can break down this 18-foot pole into six interlinked 3-foot segments.",
+    "tirada": 8,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "blackwing-quill",
+    "nombre": "Blackwing Quill",
+    "texto": "This writing quill never runs out of ink or needs to be sharpened.",
+    "tirada": 9,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "silees-folding-knife",
+    "nombre": "Silee's Folding Knife",
+    "texto": "This 3-inch blade has an edge that easily cuts through anything except the handle it's stored in.",
+    "tirada": 10,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "windup-toy",
+    "nombre": "Windup Toy",
+    "texto": "This small mechanical device is shaped like a strixwolf pup and can be programmed to perform simple tricks.",
+    "tirada": 11,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "loaded-dice",
+    "nombre": "Loaded Dice",
+    "texto": "You can choose what result this set of weighted dice rolls with a successful Finesse Roll (14). If you roll with Fear, anyone watching knows the dice are loaded.",
+    "tirada": 12,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "hollowbark-horn",
+    "nombre": "Hollowbark Horn",
+    "texto": "You can blow this horn to summon a small woodland creature to perform a simple task.",
+    "tirada": 13,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "self-tying-rope",
+    "nombre": "Self-Tying Rope",
+    "texto": "You can command this rope to tie or untie itself.",
+    "tirada": 14,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "thiefs-compass",
+    "nombre": "Thief's Compass",
+    "texto": "This compass points the way toward the nearest exit while indoors and the closest entrance while outdoors.",
+    "tirada": 15,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "travelers-bell",
+    "nombre": "Traveler's Bell",
+    "texto": "Once per long rest, you can ring this bell to magically open the shortest safe path through rough terrain for 1 hour.",
+    "tirada": 16,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "mandragorian-torch",
+    "nombre": "Mandragorian Torch",
+    "texto": "This torch gives off light only the bearer can see.",
+    "tirada": 17,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "boots-of-supple-mystique",
+    "nombre": "Boots of Supple Mystique",
+    "texto": "While wearing these boots, you don't leave tracks or footprints.",
+    "tirada": 18,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "zephyrs-jar",
+    "nombre": "Zephyr's Jar",
+    "texto": "You can open this empty jar during inclement weather to capture the storm and leave behind clear skies. The storm remains inside until unleashed by reopening the jar.",
+    "tirada": 19,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "returning-ring",
+    "nombre": "Returning Ring",
+    "texto": "When you throw your primary weapon while wearing this ring, the weapon appears in your hand immediately after the attack.",
+    "tirada": 20,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "kingfishers-net",
+    "nombre": "Kingfisher's Net",
+    "texto": "Once per long rest, you can use this net to scoop one live fish out of any amount of water, no matter how unlikely it is for that water to have fish in it.",
+    "tirada": 21,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "titans-girdle",
+    "nombre": "Titan's Girdle",
+    "texto": "Once per scene, you can activate this girdle to gain a +1 bonus to your Proficiency for your next attack.",
+    "tirada": 22,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "iron-veil",
+    "nombre": "Iron Veil",
+    "texto": "This chain-link head covering renders the wearer invisible to fey creatures.",
+    "tirada": 23,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "furball-bag",
+    "nombre": "Furball Bag",
+    "texto": "Once per rest, you can produce 2d20 harmless, cat-sized fur creatures of indeterminate origin and species from this bag.",
+    "tirada": 24,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "whisperstep-anklet",
+    "nombre": "Whisperstep Anklet",
+    "texto": "This anklet makes your steps silent as long as you don't move faster than walking speed.",
+    "tirada": 25,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "enchanters-loupe",
+    "nombre": "Enchanter's Loupe",
+    "texto": "You can use this loupe to see through illusions and enchantments.",
+    "tirada": 26,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "eschers-mirrorball",
+    "nombre": "Escher's Mirrorball",
+    "texto": "Once per long rest, you can command this fist-sized silver orb to capture an omnidirectional image of its surroundings on its surface. This image lasts until your next long rest.",
+    "tirada": 27,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "cheaters-coin",
+    "nombre": "Cheater's Coin",
+    "texto": "When you flip this coin, you can spend a Hope to determine which side it lands on.",
+    "tirada": 28,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "gravewardens-bell",
+    "nombre": "Gravewarden's Bell",
+    "texto": "This bell rings when a ghost or undead creature moves within Far range of it.",
+    "tirada": 29,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "reliquary-of-the-sightless-saint",
+    "nombre": "Reliquary of the Sightless Saint",
+    "texto": "You gain a +1 bonus to your Hope Die when you make the Risk It All death move.",
+    "tirada": 30,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "map-of-revelation",
+    "nombre": "Map of Revelation",
+    "texto": "You can attune this map to one creature at a time. The map always shows the attuned creature's location.",
+    "tirada": 31,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "dagginaes-obsidian-slate",
+    "nombre": "Dagginae's Obsidian Slate",
+    "texto": "This wafer-thin sheet of volcanic glass is used by archivists to keep notes. Any information etched onto its surface disappears but can be recalled via a command you set.",
+    "tirada": 32,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "gadimans-backpack",
+    "nombre": "Gadiman's Backpack",
+    "texto": "Once per rest, you can spend a Hope to conjure a mundane item up to a cubic foot in size inside this satchel.",
+    "tirada": 33,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "eclipse-coin",
+    "nombre": "Eclipse Coin",
+    "texto": "Once per rest, flip a coin. On heads, you gain a +1 bonus to attack rolls until your next successful attack. On tails, you gain +1 to your Evasion until an attack fails against you.",
+    "tirada": 34,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "sorcerers-hat",
+    "nombre": "Sorcerer's Hat",
+    "texto": "This conical blue hat is covered in silver stars. Once per rest, you can cast a spell from your vault with a Recall Cost equal to or less than your tier. This doesn't work for permanently vaulted cards.",
+    "tirada": 35,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "ghoulskin-gloves",
+    "nombre": "Ghoulskin Gloves",
+    "texto": "When you attack with a physical weapon while wearing these gloves, the damage is considered both physical and magic.",
+    "tirada": 36,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "gloves-of-alacrity",
+    "nombre": "Gloves of Alacrity",
+    "texto": "When you would mark a Stress to reload a weapon, you don't mark it.",
+    "tirada": 37,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "insomniacs-periapt",
+    "nombre": "Insomniac's Periapt",
+    "texto": "When you take a rest without clearing Hit Points or Stress, you gain a +2 bonus to attack and damage rolls until your next rest.",
+    "tirada": 38,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "wildriders-saddle",
+    "nombre": "Wildrider's Saddle",
+    "texto": "This saddle grants any animal it's strapped onto the ability to understand their rider's commands.",
+    "tirada": 39,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "soul-twin-circlets",
+    "nombre": "Soul-Twin Circlets",
+    "texto": "Two creatures can wear this pair of circlets. You can spend a Hope to switch places with whoever is wearing the other circlet.",
+    "tirada": 40,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "namers-oracle",
+    "nombre": "Namer's Oracle",
+    "texto": "Once per session, you can roll this set of runic dice to reveal the full name of the last person you touched.",
+    "tirada": 41,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "crucible-frames",
+    "nombre": "Crucible Frames",
+    "texto": "These eyeglasses reveal weak points in objects and creatures. Three times per rest, you can spend a Hope to gain advantage on an attack roll.",
+    "tirada": 42,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "two-faced-aegis-brooch",
+    "nombre": "Two-Faced Aegis Brooch",
+    "texto": "Once per rest, flip a coin. On heads, you become immune to the next physical damage you take. On tails, you become immune to the next magic damage you take.",
+    "tirada": 43,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "knockback-bracelets",
+    "nombre": "Knockback Bracelets",
+    "texto": "On a successful weapon attack, you can knock your target back up to Close range from their location.",
+    "tirada": 44,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "force-disc",
+    "nombre": "Force Disc",
+    "texto": "This shimmering two-dimensional disc of magical force has a 4-foot diameter and is magically tethered to a pebble. The disc always floats 3 feet north of, and at the same elevation as, the pebble. The pebble has a mass equal to one-hundredth of the total mass carried by the disc.",
+    "tirada": 45,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "molepaw-mittens",
+    "nombre": "Molepaw Mittens",
+    "texto": "Spend a Hope to swim through earth as if it were water for the next 10 minutes.",
+    "tirada": 46,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "timekeepers-pendant",
+    "nombre": "Timekeeper's Pendant",
+    "texto": "You can choose an additional downtime move each rest.",
+    "tirada": 47,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "iron-dagger-pendant",
+    "nombre": "Iron Dagger Pendant",
+    "texto": "Once per long rest, you can spend a Hope to tell the pendant a creature's name. The pendant gently pulls you toward that creature's current location until your next long rest.",
+    "tirada": 48,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "collar-of-ascendancy",
+    "nombre": "Collar of Ascendancy",
+    "texto": "An animal who wears this collar gains the ability to speak and understand common speech.",
+    "tirada": 49,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "temporal-sanctuary",
+    "nombre": "Temporal Sanctuary",
+    "texto": "A PC who takes a rest in the temporal sanctuary can choose an additional downtime move.",
+    "tirada": 50,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "heros-helm",
+    "nombre": "Hero's Helm",
+    "texto": "When you critically succeed on an attack, all allies within Close range gain a Hope.",
+    "tirada": 51,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "rings-of-friendship",
+    "nombre": "Rings of Friendship",
+    "texto": "Two creatures can wear this pair of rings shaped like coiled snakes. You can spend the Hope of whoever is wearing the other ring (with their permission) as if it were your own.",
+    "tirada": 52,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "rings-of-camaraderie",
+    "nombre": "Rings of Camaraderie",
+    "texto": "Two creatures can wear this pair of wooden rings. You can mark the Stress of whoever is wearing the other ring (with their permission) as if it were your own.",
+    "tirada": 53,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "rings-of-alliance",
+    "nombre": "Rings of Alliance",
+    "texto": "Two creatures can wear this pair of rose gold rings. Once per session, you can initiate a Tag Team Roll with whoever is wearing the other ring without spending Hope or counting against your session limit for Tag Team Rolls.",
+    "tirada": 54,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "phobophages-circlet",
+    "nombre": "Phobophage's Circlet",
+    "texto": "When the GM spends a Fear, roll a d4. Once per scene on a result of 4, you clear a Stress.",
+    "tirada": 55,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "quillshawl",
+    "nombre": "Quillshawl",
+    "texto": "If an adversary attacks you within Melee range, they must succeed on a Reaction Roll (12) or mark a Hit Point.",
+    "tirada": 56,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "warp-pendant",
+    "nombre": "Warp Pendant",
+    "texto": "Once per rest, mark a Stress to teleport to a location you can clearly see.",
+    "tirada": 57,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "portal-frames",
+    "nombre": "Portal Frames",
+    "texto": "This pair of small ornate frames, one red and one blue, are connected. Anything that passes into one exits from the other.",
+    "tirada": 58,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "communion-relic",
+    "nombre": "Communion Relic",
+    "texto": "Once per rest, you can spend a Hope to use an ally's Experience as if it were your own. You can carry only one relic.",
+    "tirada": 59,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "augurs-relic",
+    "nombre": "Augur's Relic",
+    "texto": "Once per long rest, you can activate your Hope feature without spending Hope. You can carry only one relic.",
+    "tirada": 60,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  }
+]
