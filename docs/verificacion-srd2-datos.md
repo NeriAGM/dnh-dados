@@ -135,10 +135,9 @@ Están anotadas en `datos/fuente_2_0/FALTANTES.md`.
 - Las listas del anexo salen de leer las tablas del PDF automáticamente; los nombres pueden traer algún error
   menor de lectura (las armas secundarias de rango 4 y la silla de ruedas de combate, p. 69–71, salieron
   incompletas).
-
 - El PDF trae algunos dígitos como glifos raros. Uno de ellos, el «0», se me pasó al principio: el Enjambre
   de ratas había quedado en Horda (1/PG). Lo encontró la revisión independiente y ya dice 10/PG. Ese glifo solo
-  aparece en tres lugares del PDF y los otros dos son de adversarios que la app no tiene.
+  aparece en tres lugares del PDF; los otros dos son de Ghastly Legion, un adversario que la app no tiene.
 - `herramientas/normalizar_srd.py` regenera `datos/fuente` desde la transcripción del 1.0. Si se vuelve a correr,
   borra estas correcciones del inglés de referencia (el español de `datos/es` no se toca).
 
