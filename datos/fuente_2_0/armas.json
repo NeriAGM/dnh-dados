@@ -1,0 +1,2953 @@
+[
+  {
+    "id": "katana",
+    "nombre": "Katana",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 56",
+    "verificado": true
+  },
+  {
+    "id": "brass-knuckles",
+    "nombre": "Brass Knuckles",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 1,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 56",
+    "verificado": true
+  },
+  {
+    "id": "scimitar",
+    "nombre": "Scimitar",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 1,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 56",
+    "verificado": true
+  },
+  {
+    "id": "twisted-dagger",
+    "nombre": "Twisted Dagger",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Piercing",
+        "texto": "Damage dealt with this weapon treats the target's Major threshold as having a -2 penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 56",
+    "verificado": true
+  },
+  {
+    "id": "whipsword",
+    "nombre": "Whipsword",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Finesse, Melee, d10."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 56",
+    "verificado": true
+  },
+  {
+    "id": "rope-dart",
+    "nombre": "Rope Dart",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 1,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 56",
+    "verificado": true
+  },
+  {
+    "id": "brightsword",
+    "nombre": "Brightsword",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 56",
+    "verificado": true
+  },
+  {
+    "id": "shadowblade",
+    "nombre": "Shadowblade",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Otherworldly",
+        "texto": "On a successful attack, you can deal physical or magic damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 56",
+    "verificado": true
+  },
+  {
+    "id": "enchanted-chakram",
+    "nombre": "Enchanted Chakram",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 1,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Ricochet",
+        "texto": "When you throw this weapon, it returns to your hand. When you make an attack, you can mark a Stress to target another creature within Very Close range of the first target with that attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 57",
+    "verificado": true
+  },
+  {
+    "id": "casting-dagger",
+    "nombre": "Casting Dagger",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 0,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Instinct, Melee, d8."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 57",
+    "verificado": true
+  },
+  {
+    "id": "runelock-pistol",
+    "nombre": "Runelock Pistol",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Reloading",
+        "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 57",
+    "verificado": true
+  },
+  {
+    "id": "arcane-rifle",
+    "nombre": "Arcane Rifle",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "muy-lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Aimed",
+        "texto": "Your attack has disadvantage if the target is within Very Close range of you or within Melee range of one of your allies. You can mark a Stress to ignore this penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 57",
+    "verificado": true
+  },
+  {
+    "id": "improved-katana",
+    "nombre": "Improved Katana",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 57",
+    "verificado": true
+  },
+  {
+    "id": "improved-brass-knuckles",
+    "nombre": "Improved Brass Knuckles",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 57",
+    "verificado": true
+  },
+  {
+    "id": "improved-scimitar",
+    "nombre": "Improved Scimitar",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 57",
+    "verificado": true
+  },
+  {
+    "id": "improved-twisted-dagger",
+    "nombre": "Improved Twisted Dagger",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Piercing",
+        "texto": "Damage dealt with this weapon treats the target's Major threshold as having a -2 penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "improved-whipsword",
+    "nombre": "Improved Whipsword",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Finesse, Melee, d10+3."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "improved-rope-dart",
+    "nombre": "Improved Rope Dart",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "war-pick",
+    "nombre": "War Pick",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Deadly",
+        "texto": "When you deal Severe damage, the target must mark an additional HP."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "cane-sword",
+    "nombre": "Cane Sword",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Retractable",
+        "texto": "The blade can be hidden in the cane to avoid detection."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "bladed-fan",
+    "nombre": "Bladed Fan",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Parry",
+        "texto": "When you are attacked, roll this weapon's damage dice. If any of the attacker's damage dice rolled the same value as your dice, the matching results are discarded from the attacker's damage dice before the damage you take is totaled."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "cyrurgiens-scalpel",
+    "nombre": "Cyrurgien's Scalpel",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Scary",
+        "texto": "On a successful attack, the target must mark a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "javelins",
+    "nombre": "Javelins",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Stockpiled",
+        "texto": "You can throw this weapon at a target within Far range by making an attack roll using Agility without having to retrieve it, as you always have another one on hand."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "lance",
+    "nombre": "Lance",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 5,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Cumbersome",
+        "texto": "-1 to Finesse"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 58",
+    "verificado": true
+  },
+  {
+    "id": "improved-brightsword",
+    "nombre": "Improved Brightsword",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 59",
+    "verificado": true
+  },
+  {
+    "id": "improved-shadowblade",
+    "nombre": "Improved Shadowblade",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Otherworldly",
+        "texto": "On a successful attack, you can deal physical or magic damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 59",
+    "verificado": true
+  },
+  {
+    "id": "improved-enchanted-chakram",
+    "nombre": "Improved Enchanted Chakram",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 4,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Ricochet",
+        "texto": "When you throw this weapon, it returns to your hand. When you make an attack, you can mark a Stress to target another creature within Very Close range of the first target with that attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 59",
+    "verificado": true
+  },
+  {
+    "id": "improved-casting-dagger",
+    "nombre": "Improved Casting Dagger",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Instinct, Melee, d8+3."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 59",
+    "verificado": true
+  },
+  {
+    "id": "improved-runelock-pistol",
+    "nombre": "Improved Runelock Pistol",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Reloading",
+        "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 59",
+    "verificado": true
+  },
+  {
+    "id": "improved-arcane-rifle",
+    "nombre": "Improved Arcane Rifle",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "muy-lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Aimed",
+        "texto": "Your attack has disadvantage if the target is within Very Close range of you or within Melee range of one of your allies. You can mark a Stress to ignore this penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 59",
+    "verificado": true
+  },
+  {
+    "id": "enchanted-shillelagh",
+    "nombre": "Enchanted Shillelagh",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Protective",
+        "texto": "+1 to your Armor Score"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 59",
+    "verificado": true
+  },
+  {
+    "id": "displacement-razor",
+    "nombre": "Displacement Razor",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Omnipresent",
+        "texto": "You can make attacks against targets within Very Far range, but must do so with disadvantage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 59",
+    "verificado": true
+  },
+  {
+    "id": "spellbound-bangles",
+    "nombre": "Spellbound Bangles",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 60",
+    "verificado": true
+  },
+  {
+    "id": "fury-gem",
+    "nombre": "Fury Gem",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Burning",
+        "texto": "When you roll the maximum result on a damage die, the target must mark a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 60",
+    "verificado": true
+  },
+  {
+    "id": "enchanted-lute",
+    "nombre": "Enchanted Lute",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Invigorating",
+        "texto": "On a successful attack, roll a d4. On a result of 4, clear a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 60",
+    "verificado": true
+  },
+  {
+    "id": "splintershaft-bow",
+    "nombre": "Splintershaft Bow",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Volleyed",
+        "texto": "Spend a Hope to target a group of creatures within range. Targets you succeed against take half damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 60",
+    "verificado": true
+  },
+  {
+    "id": "advanced-katana",
+    "nombre": "Advanced Katana",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 9,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 60",
+    "verificado": true
+  },
+  {
+    "id": "advanced-brass-knuckles",
+    "nombre": "Advanced Brass Knuckles",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 7,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 60",
+    "verificado": true
+  },
+  {
+    "id": "advanced-scimitar",
+    "nombre": "Advanced Scimitar",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 7,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "advanced-twisted-dagger",
+    "nombre": "Advanced Twisted Dagger",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Piercing",
+        "texto": "Damage dealt with this weapon treats the target's Major threshold as having a -2 penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "advanced-whipsword",
+    "nombre": "Advanced Whipsword",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Finesse, Melee, d10+6."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "advanced-rope-dart",
+    "nombre": "Advanced Rope Dart",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 7,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "blitz-hammer",
+    "nombre": "Blitz Hammer",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 7,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Accelerator",
+        "texto": "Once per scene, mark a Stress to move to Far range then make an attack. Gain a +1 bonus to your Proficiency on this attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "platinum-estoc",
+    "nombre": "Platinum Estoc",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 7,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Piercing",
+        "texto": "Damage dealt with this weapon treats the target's Major threshold as having a -2 penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "soldiers-pike",
+    "nombre": "Soldier's Pike",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 5,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Braced",
+        "texto": "When an adversary within this weapon's range deals damage to you, you can mark 2 Stress to force them to mark a Hit Point."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "chained-scythe",
+    "nombre": "Chained Scythe",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 5,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "singing-sword",
+    "nombre": "Singing Sword",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 5,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Bolstering",
+        "texto": "When you critically succeed on an attack, all PCs within Close range gain a Hope."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "bladed-star",
+    "nombre": "Bladed Star",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 7,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Rebounding",
+        "texto": "When you throw this weapon, it returns to your hand. On a failed attack, you can reroll your attack with disadvantage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 61",
+    "verificado": true
+  },
+  {
+    "id": "advanced-brightsword",
+    "nombre": "Advanced Brightsword",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 9,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "advanced-shadowblade",
+    "nombre": "Advanced Shadowblade",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Otherworldly",
+        "texto": "On a successful attack, you can deal physical or magic damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "advanced-enchanted-chakram",
+    "nombre": "Advanced Enchanted Chakram",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 7,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Ricochet",
+        "texto": "When you throw this weapon, it returns to your hand. When you make an attack, you can mark a Stress to target another creature within Very Close range of the first target with that attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "advanced-casting-dagger",
+    "nombre": "Advanced Casting Dagger",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Instinct, Melee, d8+6."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "advanced-runelock-pistol",
+    "nombre": "Advanced Runelock Pistol",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 9,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Reloading",
+        "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "advanced-arcane-rifle",
+    "nombre": "Advanced Arcane Rifle",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "muy-lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 9,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Aimed",
+        "texto": "Your attack has disadvantage if the target is within Very Close range of you or within Melee range of one of your allies. You can mark a Stress to ignore this penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "rocket-maul",
+    "nombre": "Rocket Maul",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 7,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Concussive",
+        "texto": "On a successful attack, you can spend a Hope to knock the target back to Far range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "crystal-spear",
+    "nombre": "Crystal Spear",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Piercing",
+        "texto": "Damage dealt with this weapon treats the target's Major threshold as having a -2 penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "arc-wand",
+    "nombre": "Arc Wand",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Bouncing",
+        "texto": "Mark any number of Stress to target that many additional creatures in range of the attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "rime-scepter",
+    "nombre": "Rime Scepter",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Freezing",
+        "texto": "When an attack from this weapon causes a target to mark 2 or more HP, they become temporarily Restrained."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 62",
+    "verificado": true
+  },
+  {
+    "id": "gunblade",
+    "nombre": "Gunblade",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Agility, Melee, d8+6 phy."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 63",
+    "verificado": true
+  },
+  {
+    "id": "staff-of-augma",
+    "nombre": "Staff of Augma",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 7,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Catalytic",
+        "texto": "On a successful attack, you can mark a Stress to give an ally within Close range a +3 bonus to their next attack roll."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 63",
+    "verificado": true
+  },
+  {
+    "id": "legendary-katana",
+    "nombre": "Legendary Katana",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 12,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 63",
+    "verificado": true
+  },
+  {
+    "id": "legendary-brass-knuckles",
+    "nombre": "Legendary Brass Knuckles",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 10,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 63",
+    "verificado": true
+  },
+  {
+    "id": "legendary-scimitar",
+    "nombre": "Legendary Scimitar",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 10,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 63",
+    "verificado": true
+  },
+  {
+    "id": "legendary-twisted-dagger",
+    "nombre": "Legendary Twisted Dagger",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 9,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Piercing",
+        "texto": "Damage dealt with this weapon treats the target's Major threshold as having a -2 penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 63",
+    "verificado": true
+  },
+  {
+    "id": "legendary-whipsword",
+    "nombre": "Legendary Whipsword",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 9,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Finesse, Melee, d10+9."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 63",
+    "verificado": true
+  },
+  {
+    "id": "legendary-rope-dart",
+    "nombre": "Legendary Rope Dart",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 10,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 63",
+    "verificado": true
+  },
+  {
+    "id": "severed-dragon-claw",
+    "nombre": "Severed Dragon Claw",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 11,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Destructive",
+        "texto": "-1 to Agility; on a successful attack, all adversaries within Very Close range must mark a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 64",
+    "verificado": true
+  },
+  {
+    "id": "infinite-staff",
+    "nombre": "Infinite Staff",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 9,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Extending",
+        "texto": "You can increase the range of this weapon up to Very Far. You gain a -1 penalty to attack rolls for each step you increase the range by (such as Melee to Very Close, Very Close to Close, or Close to Far)."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 64",
+    "verificado": true
+  },
+  {
+    "id": "bec-de-corbin",
+    "nombre": "Bec de Corbin",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 9,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Devastating",
+        "texto": "Before you make an attack roll, you can mark a Stress to use a d20 as your damage die."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 64",
+    "verificado": true
+  },
+  {
+    "id": "black-powder-serpentine",
+    "nombre": "Black Powder Serpentine",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 12,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Incendiary",
+        "texto": "-1 to Agility; on a successful attack, all creatures within Very Close range of the target must mark a Hit Point."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 64",
+    "verificado": true
+  },
+  {
+    "id": "clockwork-crossbow",
+    "nombre": "Clockwork Crossbow",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 11,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 64",
+    "verificado": true
+  },
+  {
+    "id": "arquebus",
+    "nombre": "Arquebus",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 10,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Reloading",
+        "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 64",
+    "verificado": true
+  },
+  {
+    "id": "legendary-brightsword",
+    "nombre": "Legendary Brightsword",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 12,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [],
+    "fuente": "SRD 2.0 p. 64",
+    "verificado": true
+  },
+  {
+    "id": "legendary-shadowblade",
+    "nombre": "Legendary Shadowblade",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 9,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Otherworldly",
+        "texto": "On a successful attack, you can deal physical or magic damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 64",
+    "verificado": true
+  },
+  {
+    "id": "legendary-enchanted-chakram",
+    "nombre": "Legendary Enchanted Chakram",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 10,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Ricochet",
+        "texto": "When you throw this weapon, it returns to your hand. When you make an attack, you can mark a Stress to target another creature within Very Close range of the first target with that attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "legendary-casting-dagger",
+    "nombre": "Legendary Casting Dagger",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 9,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Instinct, Melee, d8+9."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "legendary-runelock-pistol",
+    "nombre": "Legendary Runelock Pistol",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 12,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Reloading",
+        "texto": "After you make an attack, roll a d6. On a result of 1, you must mark a Stress to reload this weapon before you can fire it again."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "legendary-arcane-rifle",
+    "nombre": "Legendary Arcane Rifle",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "muy-lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 12,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Aimed",
+        "texto": "Your attack has disadvantage if the target is within Very Close range of you or within Melee range of one of your allies. You can mark a Stress to ignore this penalty."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "starmetal-blade",
+    "nombre": "Starmetal Blade",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 10,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Serrated",
+        "texto": "When you roll a 1 on a damage die, it deals 8 damage instead."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "adders-fang",
+    "nombre": "Adder's Fang",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 9,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Venomous",
+        "texto": "When you deal Major or greater damage with this weapon, the target becomes temporarily Vulnerable."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "demons-edge",
+    "nombre": "Demon's Edge",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 10,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Disturbing",
+        "texto": "When you defeat a creature with this weapon, all adversaries within Close range must mark a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "storm-gods-greataxe",
+    "nombre": "Storm God's Greataxe",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 9,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Bouncing",
+        "texto": "Mark any number of Stress to target that many additional creatures in range of the attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "ethereal-zweihander",
+    "nombre": "Ethereal Zweihänder",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "instinto",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 10,
+      "mod": 9,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Ethereal",
+        "texto": "You must mark a Stress to conjure this weapon. It lasts until the end of the scene."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 65",
+    "verificado": true
+  },
+  {
+    "id": "gravity-arbalest",
+    "nombre": "Gravity Arbalest",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "conocimiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Magnetic",
+        "texto": "When you make an attack with this weapon, you can spend a Hope to force all adversaries within Very Close range of the target to make a Reaction Roll (16). Creatures who fail must mark a Stress and are pulled into Melee range of the target."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 66",
+    "verificado": true
+  },
+  {
+    "id": "hatchet",
+    "nombre": "Hatchet",
+    "nivel": 1,
+    "tipo": "secundaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Follow-Up",
+        "texto": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 66",
+    "verificado": true
+  },
+  {
+    "id": "offhand-brass-knuckles",
+    "nombre": "Offhand Brass Knuckles",
+    "nivel": 1,
+    "tipo": "secundaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Paired",
+        "texto": "+2 to primary weapon damage to targets within Melee range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 66",
+    "verificado": true
+  },
+  {
+    "id": "throwing-knives",
+    "nombre": "Throwing Knives",
+    "nivel": 1,
+    "tipo": "secundaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Stockpiled",
+        "texto": "You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 66",
+    "verificado": true
+  },
+  {
+    "id": "fighting-cloak",
+    "nombre": "Fighting Cloak",
+    "nivel": 1,
+    "tipo": "secundaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Padded",
+        "texto": "+2 to damage thresholds"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 66",
+    "verificado": true
+  },
+  {
+    "id": "rune-shield",
+    "nombre": "Rune Shield",
+    "nivel": 1,
+    "tipo": "secundaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 0,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Protective",
+        "texto": "+1 to Armor Score"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 66",
+    "verificado": true
+  },
+  {
+    "id": "focus-runes",
+    "nombre": "Focus Runes",
+    "nivel": 1,
+    "tipo": "secundaria",
+    "rasgo": "instinto",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 0,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Focused",
+        "texto": "+1 to primary weapon damage to targets within Very Close range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 66",
+    "verificado": true
+  },
+  {
+    "id": "improved-hatchet",
+    "nombre": "Improved Hatchet",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 2,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Follow-Up",
+        "texto": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "improved-offhand-brass-knuckles",
+    "nombre": "Improved Offhand Brass Knuckles",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 2,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Paired",
+        "texto": "+3 to primary weapon damage to targets within Melee range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "improved-throwing-knives",
+    "nombre": "Improved Throwing Knives",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 2,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Stockpiled",
+        "texto": "You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "improved-fighting-cloak",
+    "nombre": "Improved Fighting Cloak",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 2,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Padded",
+        "texto": "+3 to damage thresholds"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "improved-rune-shield",
+    "nombre": "Improved Rune Shield",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 2,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Protective",
+        "texto": "+2 to Armor Score"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "improved-focus-runes",
+    "nombre": "Improved Focus Runes",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "instinto",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 2,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Focused",
+        "texto": "+1 to primary weapon damage to targets within Very Close range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "collapsible-baton",
+    "nombre": "Collapsible Baton",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Nonlethal",
+        "texto": "When a target would mark any number of Hit Points from an attack with this weapon, they mark an equal number of Stress instead."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "eldritch-vambrace",
+    "nombre": "Eldritch Vambrace",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "instinto",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Deflecting",
+        "texto": "When you are attacked, you can mark an Armor Slot to gain a bonus to your Evasion equal to your Armor Score against the attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "segmented-staff",
+    "nombre": "Segmented Staff",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "agilidad",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Double Duty",
+        "texto": "+1 to Armor Score; +1 to primary weapon damage within Melee range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "razor-wire",
+    "nombre": "Razor Wire",
+    "nivel": 2,
+    "tipo": "secundaria",
+    "rasgo": "sutileza",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Entangling",
+        "texto": "On a successful attack with your primary weapon against a target within Very Close range, you can spend a Hope to make the target temporarily Vulnerable."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 67",
+    "verificado": true
+  },
+  {
+    "id": "advanced-hatchet",
+    "nombre": "Advanced Hatchet",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Follow-Up",
+        "texto": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "advanced-offhand-brass-knuckles",
+    "nombre": "Advanced Offhand Brass Knuckles",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Paired",
+        "texto": "+4 to primary weapon damage to targets within Melee range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "advanced-throwing-knives",
+    "nombre": "Advanced Throwing Knives",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Stockpiled",
+        "texto": "You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "advanced-fighting-cloak",
+    "nombre": "Advanced Fighting Cloak",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Padded",
+        "texto": "+4 to damage thresholds"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "advanced-rune-shield",
+    "nombre": "Advanced Rune Shield",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 4,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Protective",
+        "texto": "+3 to Armor Score"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "advanced-focus-runes",
+    "nombre": "Advanced Focus Runes",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "instinto",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 4,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Focused",
+        "texto": "+1 to primary weapon damage to targets within Very Close range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "tinkers-hammer",
+    "nombre": "Tinker's Hammer",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 4,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Trusty",
+        "texto": "+1 to attack rolls made with your primary weapon"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "vorpal-shard",
+    "nombre": "Vorpal Shard",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 0,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Targeted",
+        "texto": "When you fail a weapon attack, you can spend a Hope to succeed on your next weapon attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "soul-chain",
+    "nombre": "Soul Chain",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "presencia",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 5,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Draining",
+        "texto": "On a successful attack, you can spend a Hope to force the target to mark a Stress. If they do, you clear a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "war-dart",
+    "nombre": "War Dart",
+    "nivel": 3,
+    "tipo": "secundaria",
+    "rasgo": "agilidad",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 5,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Versatile",
+        "texto": "This weapon can also be used with these statistics—Agility, Melee, d8+5."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 68",
+    "verificado": true
+  },
+  {
+    "id": "legendary-hatchet",
+    "nombre": "Legendary Hatchet",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Follow-Up",
+        "texto": "On a successful attack with your primary weapon within Melee range, you can mark a Stress to gain a +1 bonus to your Proficiency for this attack."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "legendary-offhand-brass-knuckles",
+    "nombre": "Legendary Offhand Brass Knuckles",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Paired",
+        "texto": "+5 to primary weapon damage to targets within Melee range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "legendary-throwing-knives",
+    "nombre": "Legendary Throwing Knives",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Stockpiled",
+        "texto": "You can throw this weapon within Close range by making an attack roll using Finesse. You don't have to retrieve it, as you always have another on hand."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "legendary-fighting-cloak",
+    "nombre": "Legendary Fighting Cloak",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Padded",
+        "texto": "+5 to damage thresholds"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "legendary-rune-shield",
+    "nombre": "Legendary Rune Shield",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Protective",
+        "texto": "+4 to Armor Score"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "legendary-focus-runes",
+    "nombre": "Legendary Focus Runes",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "instinto",
+    "alcance": "muy-cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Focused",
+        "texto": "+1 to primary weapon damage to targets within Very Close range"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "void-needle",
+    "nombre": "Void Needle",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "sutileza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Inverted",
+        "texto": "When you roll a weapon attack with Fear, you gain a Hope."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "echo-blade",
+    "nombre": "Echo Blade",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "presencia",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 4,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Doubled Up",
+        "texto": "When you succeed on an attack with your primary weapon, you can deal damage to another target within Melee range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "mobius-orb",
+    "nombre": "Möbius Orb",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "conocimiento",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Recursive",
+        "texto": "When you roll the maximum value on a damage die, roll an additional damage die and add the result to the total damage. This feature can trigger repeatedly."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "blackblood-tendril",
+    "nombre": "Blackblood Tendril",
+    "nivel": 4,
+    "tipo": "secundaria",
+    "rasgo": "instinto",
+    "alcance": "cercano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 8,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Poisonous",
+        "texto": "When a target marks any number of Hit Points from an attack you rolled with Fear, they mark an equal number of Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 69",
+    "verificado": true
+  },
+  {
+    "id": "light-frame-wheelchair",
+    "nombre": "Light-Frame Wheelchair",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 0,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 70",
+    "verificado": true
+  },
+  {
+    "id": "improved-light-frame-wheelchair",
+    "nombre": "Improved Light-Frame Wheelchair",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 70",
+    "verificado": true
+  },
+  {
+    "id": "advanced-light-frame-wheelchair",
+    "nombre": "Advanced Light-Frame Wheelchair",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 70",
+    "verificado": true
+  },
+  {
+    "id": "legendary-light-frame-wheelchair",
+    "nombre": "Legendary Light-Frame Wheelchair",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "agilidad",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 8,
+      "mod": 9,
+      "tipo": "fisico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Quick",
+        "texto": "When you make an attack, you can mark a Stress to target another creature within range."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 70",
+    "verificado": true
+  },
+  {
+    "id": "heavy-frame-wheelchair",
+    "nombre": "Heavy-Frame Wheelchair",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 12,
+      "mod": 3,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Heavy",
+        "texto": "-1 to Evasion"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 71",
+    "verificado": true
+  },
+  {
+    "id": "improved-heavy-frame-wheelchair",
+    "nombre": "Improved Heavy-Frame Wheelchair",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 12,
+      "mod": 6,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Heavy",
+        "texto": "-1 to Evasion"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 71",
+    "verificado": true
+  },
+  {
+    "id": "advanced-heavy-frame-wheelchair",
+    "nombre": "Advanced Heavy-Frame Wheelchair",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 12,
+      "mod": 9,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Heavy",
+        "texto": "-1 to Evasion"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 71",
+    "verificado": true
+  },
+  {
+    "id": "legendary-heavy-frame-wheelchair",
+    "nombre": "Legendary Heavy-Frame Wheelchair",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "fuerza",
+    "alcance": "cuerpo",
+    "dano": {
+      "dados": 1,
+      "lados": 12,
+      "mod": 12,
+      "tipo": "fisico"
+    },
+    "manos": 2,
+    "rasgos": [
+      {
+        "nombre": "Heavy",
+        "texto": "-1 to Evasion"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 71",
+    "verificado": true
+  },
+  {
+    "id": "arcane-frame-wheelchair",
+    "nombre": "Arcane-Frame Wheelchair",
+    "nivel": 1,
+    "tipo": "primaria",
+    "rasgo": "lanzamiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 0,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Reliable",
+        "texto": "+1 to attack rolls"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 71",
+    "verificado": true
+  },
+  {
+    "id": "improved-arcane-frame-wheelchair",
+    "nombre": "Improved Arcane-Frame Wheelchair",
+    "nivel": 2,
+    "tipo": "primaria",
+    "rasgo": "lanzamiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 3,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Reliable",
+        "texto": "+1 to attack rolls"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 71",
+    "verificado": true
+  },
+  {
+    "id": "advanced-arcane-frame-wheelchair",
+    "nombre": "Advanced Arcane-Frame Wheelchair",
+    "nivel": 3,
+    "tipo": "primaria",
+    "rasgo": "lanzamiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 6,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Reliable",
+        "texto": "+1 to attack rolls"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 71",
+    "verificado": true
+  },
+  {
+    "id": "legendary-arcane-frame-wheelchair",
+    "nombre": "Legendary Arcane-Frame Wheelchair",
+    "nivel": 4,
+    "tipo": "primaria",
+    "rasgo": "lanzamiento",
+    "alcance": "lejano",
+    "dano": {
+      "dados": 1,
+      "lados": 6,
+      "mod": 9,
+      "tipo": "magico"
+    },
+    "manos": 1,
+    "rasgos": [
+      {
+        "nombre": "Reliable",
+        "texto": "+1 to attack rolls"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 71",
+    "verificado": true
+  }
+]
