@@ -297,7 +297,7 @@
    {
     "nombre": "La invocación",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (6)",
+    "cuenta_regresiva": "Cuenta regresiva (6)",
     "texto": "Cuando los PJ entran en la escena o el culto comienza el ritual para invocar a un demonio, activa la cuenta regresiva. Designa a un adversario para que dirija el ritual. La cuenta regresiva baja cuando un PJ tira con Miedo. Cuando se cumple, invoca a un Demonio Menor dentro del alcance Muy cercano del líder del ritual. Si el líder es derrotado, la cuenta regresiva termina sin efecto porque el ritual fracasa. _¿Qué hará el culto con este demonio encadenado si lo logra? ¿Qué intentará invocar después?_",
     "pregunta": "¿Qué hará el culto con este demonio encadenado si lo logra? ¿Qué intentará invocar después?"
    },
@@ -415,7 +415,7 @@
    {
     "nombre": "Vientos helados",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Loop 4)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 4)",
     "texto": "Cuando los PJ entran al paso de montaña, activa la cuenta regresiva. Cuando se cumple, todos los personajes que viajan por el paso deben tener éxito en una tirada de reacción de Fuerza o marcar un Estrés. Un PJ que lleva ropa adecuada para el frío extremo obtiene ventaja en estas tiradas. _¿Qué partes del cuerpo de los PJ se entumen primero? ¿Cómo intentan mantenerse calientes mientras siguen avanzando?_",
     "pregunta": "¿Qué partes del cuerpo de los PJ se entumen primero? ¿Cómo intentan mantenerse calientes mientras siguen avanzando?"
    }
@@ -459,7 +459,7 @@
    {
     "nombre": "Ceniza asfixiante",
     "clase": "reaccion",
-    "cuenta_regresiva": "Countdown (Loop 6)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 6)",
     "texto": "Cuando los PJ entran al Corazón ardiente del bosque, activa la cuenta regresiva. Cuando se cumple, todos los personajes deben hacer una tirada de reacción de Fuerza o de Instinto. Los objetivos que fallan reciben **4d6+5** de daño físico directo. Los objetivos que tienen éxito reciben la mitad del daño. Las máscaras o ropas protectoras dan ventaja en la tirada de reacción. _¿Qué alucinaciones provoca la ceniza? ¿Qué sabor incongruente tiene?_",
     "pregunta": "¿Qué alucinaciones provoca la ceniza? ¿Qué sabor incongruente tiene?"
    }
@@ -559,7 +559,7 @@
    {
     "nombre": "Este lugar te quitará todo lo que eres",
     "clase": "accion",
-    "cuenta_regresiva": "Countdown (Loop 1d4)",
+    "cuenta_regresiva": "Cuenta regresiva (bucle 1d4)",
     "texto": "Activa la cuenta regresiva. Cuando se cumple, todos los PJ deben tener éxito en una tirada de reacción de Presencia o su rasgo más alto se reduce temporalmente en **1d4**, a menos que marquen tantos Estrés como el valor de esa reducción. Cualquier punto de rasgo perdido se recupera si el PJ obtiene un éxito crítico o escapa del Reino del caos. _¿Cómo intenta este lugar robarte lo que te hace legendario? ¿Qué se siente que te arrebaten este poder?_",
     "pregunta": "¿Cómo intenta este lugar robarte lo que te hace legendario? ¿Qué se siente que te arrebaten este poder?"
    },
