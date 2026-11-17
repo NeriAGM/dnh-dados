@@ -97,7 +97,7 @@
         {#if adv.experiencias?.length}<p><b>Experiencias:</b> {adv.experiencias.map((x) => `${x.nombre} ${conSigno(x.valor)}`).join(', ')}</p>{/if}
         {#each adv.rasgos ?? [] as r}
           <div class="rasgo">
-            <p class="r-nombre"><b>{r.nombre}</b> <span class="clase c-{r.clase}">{CLASE[r.clase] ?? r.clase}</span>{#if r.cuenta_regresiva}<span class="clase">Cuenta: {r.cuenta_regresiva}</span>{/if}</p>
+            <p class="r-nombre"><b>{r.nombre}</b> <span class="clase c-{r.clase}">{CLASE[r.clase] ?? r.clase}</span>{#if r.cuenta_regresiva}<span class="clase">{r.cuenta_regresiva}</span>{/if}</p>
             <div class="r-texto">{@html md(r.texto)}</div>
           </div>
         {/each}
