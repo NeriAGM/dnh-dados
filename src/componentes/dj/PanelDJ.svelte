@@ -4,7 +4,7 @@
     crearCuenta, guardarCuenta, borrarCuenta, ajustesMesa,
   } from '../../lib/mesa.svelte.js'
   import { untrack } from 'svelte'
-  import { escenaDe, completarInstancia, leFalta } from '../../lib/escena.js'
+  import { escenaDe, completarInstancia, leFalta, gruposAtaque } from '../../lib/escena.js'
   import Escena from '../Escena.svelte'
   import { puntosDeBatalla, AJUSTES_BATALLA, NOMBRE_TIPO } from '../../lib/reglas.js'
   import { md } from '../../lib/md.js'
@@ -137,8 +137,7 @@
   }
 
   function tirarAtaque(adv, inst) {
-    const grupos = ventaja === 'ninguna' ? [{ lados: 20 }] : [{ lados: 20, cantidad: 2, conservar: ventaja === 'ventaja' ? 'alto' : 'bajo' }]
-    onTirar({ tipo: 'dj', grupos, modificador: adv.ataque?.mod ?? 0, oculta, etiqueta: `${inst.nombre || adv.nombre} · ${adv.ataque?.nombre ?? 'Ataque'}` })
+    onTirar({ tipo: 'dj', grupos: gruposAtaque(adv, ventaja), modificador: adv.ataque?.mod ?? 0, oculta, etiqueta: `${inst.nombre || adv.nombre} · ${adv.ataque?.nombre ?? 'Ataque'}` })
   }
   function tirarDano(adv, inst, critico, dano) {
     const d = dano ?? adv.ataque.dano

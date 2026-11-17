@@ -49,3 +49,27 @@ test('una Horda a la mitad de sus PG pega con el daño reducido', async () => {
   assert.deepEqual(danoActual({ ...zombis, rasgos: [] }, { pg: 6 }), zombis.ataque.dano)
   assert.deepEqual(danoActual({ ...zombis, tipo: 'bruto' }, { pg: 6 }), zombis.ataque.dano)
 })
+
+// Decisiones de Neri sobre el SRD 2.0 (16/11/2026, docs/verificacion-srd2-datos.md)
+test('ataque con dados: la Abominación tira d20 + 2d4 (SRD 2.0 p. 153)', async () => {
+  const { gruposAtaque, textoAtaque } = await import('./escena.js')
+  const { readFileSync } = await import('node:fs')
+  const leer = (f) => JSON.parse(readFileSync(new URL(`../../datos/${f}`, import.meta.url), 'utf8'))
+  for (const dir of ['es', 'fuente']) {
+    const abom = leer(`${dir}/adversarios.json`).find((a) => a.id === 'outer-realms-abomination')
+    assert.deepEqual(gruposAtaque(abom, 'ninguna'), [{ lados: 20 }, { lados: 4, cantidad: 2 }])
+    assert.deepEqual(gruposAtaque(abom, 'ventaja'), [{ lados: 20, cantidad: 2, conservar: 'alto' }, { lados: 4, cantidad: 2 }])
+    assert.equal(textoAtaque(abom), '+2d4')
+  }
+  // Los demás siguen igual
+  assert.deepEqual(gruposAtaque({ ataque: { mod: 3 } }, 'desventaja'), [{ lados: 20, cantidad: 2, conservar: 'bajo' }])
+  assert.equal(textoAtaque({ ataque: { mod: 3 } }), '+3')
+  assert.equal(textoAtaque({ ataque: { mod: -1 } }), '−1')
+  assert.equal(textoAtaque({ ataque: {} }), '+0')
+  // Emboscados y Emboscadores: Dificultad especial (p. 161); las 9 armas que el 2.0 quitó, marcadas
+  for (const dir of ['es', 'fuente']) {
+    const especiales = leer(`${dir}/entornos.json`).filter((e) => typeof e.dificultad === 'string').map((e) => e.id)
+    assert.deepEqual(especiales, ['ambushed', 'ambushers'])
+    assert.equal(leer(`${dir}/armas.json`).filter((a) => a.solo_srd_1).length, 9)
+  }
+})

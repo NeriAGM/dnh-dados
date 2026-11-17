@@ -7,7 +7,7 @@
   import { conSigno } from '../../lib/formula.js'
   import Casillas from '../hoja/Casillas.svelte'
   import Icono from '../Icono.svelte'
-  import { danoActual } from '../../lib/escena.js'
+  import { danoActual, textoAtaque } from '../../lib/escena.js'
 
   let { adv, instancia = null, abierto = false, onCambiar, onTirarAtaque, onTirarDano, onQuitar, onDuplicar, acciones } = $props()
 
@@ -65,7 +65,7 @@
       <span title="Umbrales Mayor / Grave"><b>{adv.umbrales ? `${adv.umbrales.mayor ?? '—'}/${adv.umbrales.grave ?? '—'}` : '—'}</b>Umbrales</span>
       <span><b>{adv.pg}</b>PG</span>
       <span><b>{adv.estres ?? 0}</b>Estrés</span>
-      <span title="{adv.ataque?.nombre} · {ALCANCES[adv.ataque?.alcance] ?? ''}"><b>{conSigno(adv.ataque?.mod ?? 0) || '+0'}</b>{adv.ataque?.nombre}</span>
+      <span title="{adv.ataque?.nombre} · {ALCANCES[adv.ataque?.alcance] ?? ''}"><b>{textoAtaque(adv)}</b>{adv.ataque?.nombre}</span>
       <span title={d.horda ? 'Daño de Horda: ya marcó la mitad de sus PG' : undefined}><b>{textoDano}</b>{d.tipo === 'magico' ? 'mág.' : 'fís.'}{d.horda ? ' · horda' : ''}</span>
     </div>
 
@@ -77,7 +77,7 @@
         {/if}
       </div>
       <div class="botones">
-        <button class="boton tirar" onclick={() => onTirarAtaque?.()}><Icono nombre="dado" tam={18} />Atacar {conSigno(adv.ataque?.mod ?? 0) || '+0'}</button>
+        <button class="boton tirar" onclick={() => onTirarAtaque?.()}><Icono nombre="dado" tam={18} />Atacar {textoAtaque(adv)}</button>
         {#if d.lados}
           <button class="boton tirar" onclick={() => onTirarDano?.(false, d)}>Daño {textoDano}</button>
           <button class="boton critico" onclick={() => onTirarDano?.(true, d)}>Crítico</button>

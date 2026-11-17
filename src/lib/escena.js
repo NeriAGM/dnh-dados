@@ -3,7 +3,9 @@
 // en el navegador para el modo prueba y para la vista previa del DJ.
 // Si cambias la regla aquí, cámbiala también en estado_adversario().
 
-export const NOMBRE_ESTADO = { ileso: 'Ileso', herido: 'Herido', grave: 'Grave', caido: 'Caído' }
+import { conSigno } from './formula.js'
+
+export const NOMBRE_ESTADO ={ ileso: 'Ileso', herido: 'Herido', grave: 'Grave', caido: 'Caído' }
 
 const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : null)
 
@@ -57,4 +59,18 @@ export function danoActual(adv, inst) {
     if (m) return { ...normal, dados: +m[1] || 1, lados: +m[2], mod: m[4] ? (m[3] === '-' ? -m[4] : +m[4]) : 0, horda: true }
   }
   return normal
+}
+
+// Dados de la tirada de ataque del DJ. Un modificador con dados (mod_dados,
+// como el +2d4 de la Abominación, SRD 2.0 p. 153) se tira junto con el d20.
+export function gruposAtaque(adv, ventaja) {
+  const d20 = ventaja === 'ninguna' ? { lados: 20 } : { lados: 20, cantidad: 2, conservar: ventaja === 'ventaja' ? 'alto' : 'bajo' }
+  const d = adv?.ataque?.mod_dados
+  return d ? [d20, { lados: d.lados, cantidad: d.dados }] : [d20]
+}
+
+export function textoAtaque(adv) {
+  const a = adv?.ataque ?? {}
+  if (a.mod_dados) return `+${a.mod_dados.dados}d${a.mod_dados.lados}${conSigno(a.mod)}`
+  return conSigno(a.mod ?? 0) || '+0'
 }

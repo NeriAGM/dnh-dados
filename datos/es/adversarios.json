@@ -6123,7 +6123,11 @@
   "estres": 5,
   "ataque": {
    "nombre": "Seudópodo masivo",
-   "mod": 2,
+   "mod": 0,
+   "mod_dados": {
+    "dados": 2,
+    "lados": 4
+   },
    "alcance": "muy-cercano",
    "dano": {
     "dados": 4,
