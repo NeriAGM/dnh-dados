@@ -1,0 +1,667 @@
+[
+  {
+    "id": "mage-robes",
+    "nombre": "Ropas de mago",
+    "nombre_en": "Mage Robes",
+    "nivel": 1,
+    "puntuacion": 2,
+    "umbrales": {
+      "mayor": 4,
+      "grave": 10
+    },
+    "rasgos": [
+      {
+        "nombre": "Encantada",
+        "texto": "Obtienes un bono a tus umbrales de daño igual a tu rasgo de Lanzamiento."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "brigandine-armor",
+    "nombre": "Brigantina",
+    "nombre_en": "Brigandine Armor",
+    "nivel": 1,
+    "puntuacion": 3,
+    "umbrales": {
+      "mayor": 6,
+      "grave": 12
+    },
+    "rasgos": [
+      {
+        "nombre": "Forrada",
+        "texto": "Marca un Estrés para anular el daño Menor."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "scale-mail-armor",
+    "nombre": "Cota de escamas",
+    "nombre_en": "Scale Mail Armor",
+    "nivel": 1,
+    "puntuacion": 3,
+    "umbrales": {
+      "mayor": 7,
+      "grave": 14
+    },
+    "rasgos": [
+      {
+        "nombre": "Aparatosa",
+        "texto": "-1 a la Sutileza"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "banded-armor",
+    "nombre": "Armadura de bandas",
+    "nombre_en": "Banded Armor",
+    "nivel": 1,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 8,
+      "grave": 16
+    },
+    "rasgos": [
+      {
+        "nombre": "Voluminosa",
+        "texto": "-1 a la Evasión; cuando recibas daño Grave, debes marcar un Estrés."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "improved-mage-robes",
+    "nombre": "Ropas de mago mejoradas",
+    "nombre_en": "Improved Mage Robes",
+    "nivel": 2,
+    "puntuacion": 3,
+    "umbrales": {
+      "mayor": 6,
+      "grave": 15
+    },
+    "rasgos": [
+      {
+        "nombre": "Encantada",
+        "texto": "Obtienes un bono a tus umbrales de daño igual a tu rasgo de Lanzamiento."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "improved-brigandine-armor",
+    "nombre": "Brigantina mejorada",
+    "nombre_en": "Improved Brigandine Armor",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 19
+    },
+    "rasgos": [
+      {
+        "nombre": "Forrada",
+        "texto": "Marca un Estrés para anular el daño Menor."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "improved-scale-mail-armor",
+    "nombre": "Cota de escamas mejorada",
+    "nombre_en": "Improved Scale Mail Armor",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 23
+    },
+    "rasgos": [
+      {
+        "nombre": "Aparatosa",
+        "texto": "-1 a la Sutileza"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "improved-banded-armor",
+    "nombre": "Armadura de bandas mejorada",
+    "nombre_en": "Improved Banded Armor",
+    "nivel": 2,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Voluminosa",
+        "texto": "-1 a la Evasión; cuando recibas daño Grave, debes marcar un Estrés."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "enchanters-robes",
+    "nombre": "Ropas de encantador",
+    "nombre_en": "Enchanter's Robes",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 20
+    },
+    "rasgos": [
+      {
+        "nombre": "Mnemónica",
+        "texto": "Una vez por escena, puedes recuperar una carta de dominio de tu bóveda sin pagar su costo de recuperación."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "hawkguards-mantle",
+    "nombre": "Manto de la Guardia del Halcón",
+    "nombre_en": "Hawkguard's Mantle",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 20
+    },
+    "rasgos": [
+      {
+        "nombre": "Planeadora",
+        "texto": "Puedes planear hasta alcance Lejano y eres inmune al daño por caídas."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "spidersilk-tunic",
+    "nombre": "Túnica de seda de araña",
+    "nombre_en": "Spidersilk Tunic",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 20
+    },
+    "rasgos": [
+      {
+        "nombre": "Trepamuros",
+        "texto": "+1 a la Evasión; puedes caminar por las paredes con la misma facilidad que por el suelo."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "stormthread-habit",
+    "nombre": "Hábito de hilo de tormenta",
+    "nombre_en": "Stormthread Habit",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 20
+    },
+    "rasgos": [
+      {
+        "nombre": "Absorbente",
+        "texto": "Una vez por escena, cuando recibas daño mágico, puedes limpiar una casilla de Armadura."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "wyrdwood-splint-armor",
+    "nombre": "Armadura de tablillas de madera del sino",
+    "nombre_en": "Wyrdwood Splint Armor",
+    "nivel": 2,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 10,
+      "grave": 21
+    },
+    "rasgos": [
+      {
+        "nombre": "Zancada veloz",
+        "texto": "No puedes quedar Apresado y puedes moverte hasta alcance Lejano como parte de una tirada de acción."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "trollhide-cuirass",
+    "nombre": "Coraza de piel de trol",
+    "nombre_en": "Trollhide Cuirass",
+    "nivel": 2,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 23
+    },
+    "rasgos": [
+      {
+        "nombre": "Autorreparable",
+        "texto": "Cuando tomes un descanso, limpia una casilla de Armadura."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "gilded-sunplate",
+    "nombre": "Placa solar dorada",
+    "nombre_en": "Gilded Sunplate",
+    "nivel": 2,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 12,
+      "grave": 26
+    },
+    "rasgos": [
+      {
+        "nombre": "Resplandeciente",
+        "texto": "Una vez por escena, cuando gastes Esperanza, puedes limpiar una casilla de Armadura."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "advanced-mage-robes",
+    "nombre": "Ropas de mago avanzadas",
+    "nombre_en": "Advanced Mage Robes",
+    "nivel": 3,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 8,
+      "grave": 22
+    },
+    "rasgos": [
+      {
+        "nombre": "Encantada",
+        "texto": "Obtienes un bono a tus umbrales de daño igual a tu rasgo de Lanzamiento."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "advanced-brigandine-armor",
+    "nombre": "Brigantina avanzada",
+    "nombre_en": "Advanced Brigandine Armor",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 26
+    },
+    "rasgos": [
+      {
+        "nombre": "Forrada",
+        "texto": "Marca un Estrés para anular el daño Menor."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "advanced-scale-mail-armor",
+    "nombre": "Cota de escamas avanzada",
+    "nombre_en": "Advanced Scale Mail Armor",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 30
+    },
+    "rasgos": [
+      {
+        "nombre": "Aparatosa",
+        "texto": "-1 a la Sutileza"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "advanced-banded-armor",
+    "nombre": "Armadura de bandas avanzada",
+    "nombre_en": "Advanced Banded Armor",
+    "nivel": 3,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 15,
+      "grave": 34
+    },
+    "rasgos": [
+      {
+        "nombre": "Voluminosa",
+        "texto": "-1 a la Evasión; cuando recibas daño Grave, debes marcar un Estrés."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "granminsters-finery",
+    "nombre": "Galas de Granminster",
+    "nombre_en": "Granminster's Finery",
+    "nivel": 3,
+    "puntuacion": 2,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Magnífica",
+        "texto": "Obtienes un bono a tu Puntuación de Armadura igual a tu Presencia."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "astral-raiment",
+    "nombre": "Vestiduras astrales",
+    "nombre_en": "Astral Raiment",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Estelar",
+        "texto": "Marca un Estrés para obtener ventaja en una tirada de Lanzamiento."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "cloverweave-cloak",
+    "nombre": "Capa de trébol tejido",
+    "nombre_en": "Cloverweave Cloak",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Favorecida por la fortuna",
+        "texto": "Una vez por escena, puedes convertir un fallo con Esperanza en un éxito con Miedo."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "skywardens-lamellar",
+    "nombre": "Armadura lamelar del guardacielos",
+    "nombre_en": "Skywarden's Lamellar",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Vigilante",
+        "texto": "+2 a la Evasión"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "bloodstone-plate-armor",
+    "nombre": "Armadura de placas de piedra de sangre",
+    "nombre_en": "Bloodstone Plate Armor",
+    "nivel": 3,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 35
+    },
+    "rasgos": [
+      {
+        "nombre": "Sanguinaria",
+        "texto": "Cuando tengas un éxito crítico en un ataque con arma a alcance Cuerpo a cuerpo, limpia un Punto de Golpe."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "deep-forged-coral-armor",
+    "nombre": "Armadura de coral forjada en las profundidades",
+    "nombre_en": "Deep-Forged Coral Armor",
+    "nivel": 3,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 35
+    },
+    "rasgos": [
+      {
+        "nombre": "Acuática",
+        "texto": "Puedes respirar bajo el agua y obtienes ventaja en las tiradas de Agilidad mientras estés sumergido."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "legendary-mage-robes",
+    "nombre": "Ropas de mago legendarias",
+    "nombre_en": "Legendary Mage Robes",
+    "nivel": 4,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 10,
+      "grave": 31
+    },
+    "rasgos": [
+      {
+        "nombre": "Encantada",
+        "texto": "Obtienes un bono a tus umbrales de daño igual a tu rasgo de Lanzamiento."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "legendary-brigandine-armor",
+    "nombre": "Brigantina legendaria",
+    "nombre_en": "Legendary Brigandine Armor",
+    "nivel": 4,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 35
+    },
+    "rasgos": [
+      {
+        "nombre": "Forrada",
+        "texto": "Marca un Estrés para anular el daño Menor."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "legendary-scale-mail-armor",
+    "nombre": "Cota de escamas legendaria",
+    "nombre_en": "Legendary Scale Mail Armor",
+    "nivel": 4,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 15,
+      "grave": 39
+    },
+    "rasgos": [
+      {
+        "nombre": "Aparatosa",
+        "texto": "-1 a la Sutileza"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "legendary-banded-armor",
+    "nombre": "Armadura de bandas legendaria",
+    "nombre_en": "Legendary Banded Armor",
+    "nivel": 4,
+    "puntuacion": 7,
+    "umbrales": {
+      "mayor": 17,
+      "grave": 43
+    },
+    "rasgos": [
+      {
+        "nombre": "Voluminosa",
+        "texto": "-1 a la Evasión; cuando recibas daño Grave, debes marcar un Estrés."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "darkweave-shroud",
+    "nombre": "Sudario tejesombras",
+    "nombre_en": "Darkweave Shroud",
+    "nivel": 4,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 36
+    },
+    "rasgos": [
+      {
+        "nombre": "Paso fantasmal",
+        "texto": "Una vez por descanso, marca un Estrés para moverte hasta alcance Cercano atravesando objetos sólidos."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "godbound-laminar",
+    "nombre": "Armadura laminar ligada a un dios",
+    "nombre_en": "Godbound Laminar",
+    "nivel": 4,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 36
+    },
+    "rasgos": [
+      {
+        "nombre": "Divina",
+        "texto": "Cuando marques una casilla de Armadura, obtienes una Esperanza."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "circle-forged-dreadplate",
+    "nombre": "Placa del pavor forjada en los Círculos",
+    "nombre_en": "Circle-Forged Dreadplate",
+    "nivel": 4,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 14,
+      "grave": 38
+    },
+    "rasgos": [
+      {
+        "nombre": "Maldita",
+        "texto": "Cuando marques cualquier cantidad de Puntos de Golpe por un ataque, tira un d4. Con un resultado de 4, el atacante debe marcar la misma cantidad de Estrés."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "rune-forged-exosuit",
+    "nombre": "Exotraje forjado con runas",
+    "nombre_en": "Rune-Forged Exosuit",
+    "nivel": 4,
+    "puntuacion": 7,
+    "umbrales": {
+      "mayor": 12,
+      "grave": 39
+    },
+    "rasgos": [
+      {
+        "nombre": "Sintonizada",
+        "texto": "El número máximo de cartas de dominio en tu mano se reduce en uno, pero obtienes un bono a tus umbrales de daño igual a tu rango."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "hallowed-heroplate",
+    "nombre": "Placa heroica consagrada",
+    "nombre_en": "Hallowed Heroplate",
+    "nivel": 4,
+    "puntuacion": 7,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 35
+    },
+    "rasgos": [
+      {
+        "nombre": "Bendita",
+        "texto": "Una vez por descanso largo, puedes gastar cualquier cantidad de Esperanza antes de hacer el movimiento de muerte Arriesgarlo todo. Obtienes un bono al resultado de tu Dado de Esperanza igual a la cantidad de Esperanza gastada."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "resonant-harness",
+    "nombre": "Arnés resonante",
+    "nombre_en": "Resonant Harness",
+    "nivel": 4,
+    "puntuacion": 7,
+    "umbrales": {
+      "mayor": 15,
+      "grave": 40
+    },
+    "rasgos": [
+      {
+        "nombre": "Vítrea",
+        "texto": "Cuando fueras a recibir daño Grave o superior, puedes marcar 2 casillas de Armadura para anular ese daño. Si lo haces, obtienes una penalización de -5 a tus umbrales de daño hasta que decidas reparar tu armadura como acción de tiempo de descanso."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  }
+]
