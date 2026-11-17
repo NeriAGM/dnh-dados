@@ -45,8 +45,9 @@ for (const [archivo, cuantos] of Object.entries(NUEVOS)) {
   })
 
   test(`${archivo}: ningún id choca con los del SRD 1.0`, () => {
-    let viejos = []
-    try { viejos = leer(`es/${archivo}`).map((x) => x.id) } catch { /* transformaciones no existe en el 1.0 */ }
+    // Transformaciones no existen en el 1.0: ahí un archivo ausente es lo esperado; en los demás debe leerse
+    const viejos = archivo === 'transformaciones' ? [] : leer(`es/${archivo}`).map((x) => x.id)
+    if (archivo !== 'transformaciones') assert.ok(viejos.length > 0, `datos/es/${archivo}.json vacío`)
     const repetidos = es.filter((x) => viejos.includes(x.id)).map((x) => x.id)
     assert.deepEqual(repetidos, [])
   })
