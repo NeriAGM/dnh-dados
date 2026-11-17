@@ -65,6 +65,20 @@ test('el DJ con ventaja se queda con el d20 más alto', async () => {
   }
 })
 
+test('el ataque de la Abominación suma d20 + 2d4 en el servidor (SRD 2.0 p. 153)', async () => {
+  const { gruposAtaque } = await import('../../src/lib/escena.js')
+  const abom = { ataque: { mod: 0, mod_dados: { dados: 2, lados: 4 } } }
+  for (const ventaja of ['ninguna', 'ventaja', 'desventaja']) {
+    for (let i = 0; i < 5; i++) {
+      const t = (await como(U.dj, `select * from tirar($1, null, 'dj', $2::jsonb, 0)`, [camp.id, JSON.stringify(gruposAtaque(abom, ventaja))])).filas[0]
+      const vivos = t.dados.filter((d) => !d.descartado)
+      assert.deepEqual(vivos.map((d) => d.lados), [20, 4, 4])
+      assert.equal(t.total, vivos.reduce((s, d) => s + d.valor, 0))
+      assert.equal(t.critico, vivos[0].valor === 20)
+    }
+  }
+})
+
 test('el daño crítico suma el máximo de los dados', async () => {
   const t = (await como(U.ana, `select * from tirar($1, $2, 'dano', $3::jsonb, 3, null, false, 'Espada', true)`, [camp.id, pj.id, JSON.stringify([{ lados: 8, cantidad: 2 }])])).filas[0]
   assert.equal(t.efectos.dano_critico_extra, 16)

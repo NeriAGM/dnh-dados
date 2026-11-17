@@ -5,7 +5,7 @@
 
 import { conSigno } from './formula.js'
 
-export const NOMBRE_ESTADO ={ ileso: 'Ileso', herido: 'Herido', grave: 'Grave', caido: 'Caído' }
+export const NOMBRE_ESTADO = { ileso: 'Ileso', herido: 'Herido', grave: 'Grave', caido: 'Caído' }
 
 const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : null)
 
