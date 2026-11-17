@@ -692,7 +692,7 @@
       {
         "nombre": "Hechizar",
         "clase": "accion",
-        "texto": "**Gasta un Miedo** para que el Kelpie embelese a un PJ dentro del alcance Cercano. El PJ debe tener éxito en una tirada de reacción de Instinto o quedar Hechizado hasta que reciba daño. Mientras está Hechizado, el PJ percibe al Kelpie como un amigo o aliado de confianza y hará lo que el Kelpie diga, a menos que contradiga la moral más profunda del PJ."
+        "texto": "**Gasta un Miedo** para que el Kelpie engatuse a un PJ dentro del alcance Cercano. El PJ debe tener éxito en una tirada de reacción de Instinto o quedar Hechizado hasta que reciba daño. Mientras está Hechizado, el PJ percibe al Kelpie como un amigo o aliado de confianza y hará lo que el Kelpie diga, a menos que contradiga la moral más profunda del PJ."
       }
     ],
     "fuente": "SRD 2.0 p. 103",

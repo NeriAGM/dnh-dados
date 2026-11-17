@@ -1,4 +1,4 @@
-# Daggerheart — Reglas núcleo de resolución (referencia para app de dados)
+# Reglas 1: núcleo de resolución (referencia para app de dados)
 
 Fuente principal: SRD oficial de Darrington Press. El texto de reglas que se revisó línea por línea es el **SRD 1.0** (2025, con las correcciones de jul. y sep. 2025). El **SRD 2.0** (25/08/2026) es la versión vigente; su registro de cambios dice que **reescribió** Ventaja/Desventaja, la resolución de la tirada de acción y el foco (spotlight). Las páginas de mecánicas del PDF 2.0 no se pudieron extraer, así que lo que cambia en 2.0 se marca aparte.
 

@@ -1,4 +1,4 @@
-# Daggerheart — Reglas de combate, daño, condiciones, muerte y descanso
+# Reglas 3: combate, daño, condiciones, muerte y descanso
 
 Referencia para implementar trackers en una app. Fuente principal: **SRD oficial de Darrington Press** (texto de la versión 1.0 de septiembre 2025, que ya incluye las correcciones del 27/jul/2025 y del 9/sep/2025). Todo está parafraseado; los números son exactos.
 

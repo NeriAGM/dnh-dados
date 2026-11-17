@@ -1,4 +1,4 @@
-# Daggerheart: lado del DJ, licencia y herramientas digitales
+# Reglas 4: lado del DJ, licencia y herramientas digitales
 
 Investigación para el **panel del DJ** de una app digital. Todo está parafraseado. Las reglas de juego se tomaron del texto del **SRD 1.0 (versión del 9 de septiembre de 2025)**, que se leyó completo en una copia en Markdown. El **SRD 2.0 (25 de agosto de 2026)** es la versión vigente. Su registro de cambios no menciona cambios en Miedo, movimientos del DJ, tipos de adversario, puntos de batalla ni entornos. Sí dice que se **reescribió la redacción del foco (spotlight) para hacerla más clara** y que se agregó el contenido de *Hope & Fear*. Si una cifra exacta es crítica para la app, conviene compararla con el PDF 2.0.
 
@@ -264,7 +264,7 @@ Versión vigente: **DPCGL 2.0, del 26 de agosto de 2026**. También siguen publi
 - **Material de prueba (playtest, "The Void"):** no se puede usar en nada comercial (§1.9.2).
 - No se le deben pagos ni regalías a Darrington Press si se cumple la licencia.
 
-### 4.4 Atribución obligatoria (texto exacto, §4.1, bloque de Daggerheart)
+### 4.4 Atribución obligatoria (texto exacto, §4.1, bloque del juego)
 > Copyright/Attribution:
 > Daggerheart
 > This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com. There are no previous modifications by others.
@@ -293,7 +293,7 @@ Versión vigente: **DPCGL 2.0, del 26 de agosto de 2026**. También siguen publi
 - **Pantalla del DJ oficial con rastreador de Miedo físico:** se anunció en PAX Unplugged 2025 para 2026. Tiene piezas en forma de d12 que se deslizan como ábaco para marcar el Miedo. Es una buena idea visual para el panel.
 - **Creador de daggerheart.com** para cartas y adversarios: la licencia lo menciona (§4.2 f iii). **SIN VERIFICAR** qué hace exactamente.
 
-### 5.2 Foundry VTT: sistema "Daggerheart" de Foundryborne
+### 5.2 Foundry VTT: el sistema de Foundryborne
 - Se presenta como el **sistema oficial** para Foundry. El código está bajo **MIT** y el contenido bajo DPCGL (SRD 1.0).
 - Funciones:
   - tiradas de Dualidad con **Dice So Nice** personalizable;

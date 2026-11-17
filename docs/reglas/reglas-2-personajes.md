@@ -1,4 +1,4 @@
-# Daggerheart: referencia de creación y progresión de personajes
+# Reglas 2: referencia de creación y progresión de personajes
 
 Para construir una hoja de personaje digital. Reglas **oficiales** (Darrington Press). No incluye homebrew.
 
@@ -83,7 +83,7 @@ Notas de modelado:
   - Escuela de Guerra, en Especialización: suma la Competencia a la Evasión mientras tengas 2 o más de Esperanza.
 - **Vinculado a Bestia (Beastbound):** agrega una mini-hoja de compañero animal con su propia Evasión, Experiencias, dado de daño, Estrés y opciones de subida.
 
-### 2.2 Clases agregadas en SRD 2.0 (*Hope & Fear*, 2026) [SRD 2.0]
+### 2.2 Clases agregadas en el contenido nuevo del SRD 2.0 (2026) [SRD 2.0]
 
 | Clase | Dominios | Evasión | HP | Rasgo de Esperanza | Subclases (rasgo de lanzamiento) |
 |---|---|---|---|---|---|

@@ -176,10 +176,11 @@ que tienen palabra común en español.
 | Ooze | Limo |
 | Enchanted (Kelpie) | Hechizado |
 | Beguiled / beguile (Acechafauces, p. 122) | Engatusado / engatusar |
+| Beguile (opción del Acechafauces) | Engaño |
 | Enthralled (Señor demonio Berzug, p. 147) | Cautivado |
 | Enraptured (cartas de Gracia Embelesar y Embeleso masivo, SRD 2.0 p. 215–216) | Embelesado |
 
-## Hope & Fear (SRD 2.0, aprobados por Neri el 17/11/2026)
+## Contenido nuevo del SRD 2.0 (aprobados por Neri el 17/11/2026)
 
 La lista completa de nombres está en `datos/es_2_0/*.json` (campo `nombre_en`).
 

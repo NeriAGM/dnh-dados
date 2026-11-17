@@ -72,5 +72,10 @@ test('Acechafauces: el estado «Beguiled» es «Engatusado», no «Embelesado» 
   const g = leer('es_2_0/adversarios').find((x) => x.id === 'gobstalker')
   const rayos = g.rasgos.find((r) => r.nombre === 'Rayos de tentáculo').texto
   assert.match(rayos, /Engatusado/)
-  assert.doesNotMatch(rayos, /Embelesad|Cautiv/)
+  assert.doesNotMatch(rayos, /Embeles|Cautiv/)
+  // El Kelpie usa el mismo verbo («beguile a PC», p. 103) y su estado sigue «Hechizado»
+  const kelpie = leer('es_2_0/adversarios').find((x) => x.id === 'kelpie').rasgos.find((r) => r.nombre === 'Hechizar').texto
+  assert.match(kelpie, /engatuse/)
+  assert.match(kelpie, /Hechizado/)
+  assert.doesNotMatch(kelpie, /embeles/i)
 })
