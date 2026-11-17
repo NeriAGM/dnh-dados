@@ -206,7 +206,7 @@ export function avisos(hoja, cat) {
     // guarda una copia del arma sin ese campo, así que también se busca en el catálogo por id.
     const magica = (x) => x?.dano?.tipo === 'magico' || x?.magica === true || cat?.porId?.armas?.[x?.id]?.magica === true
     for (const a of activas.filter(magica)) {
-      out.push({ campo: 'armas', texto: `«${a.nombre}» es un arma mágica y tu subclase no tiene rasgo de Lanzamiento: por regla no puedes usarla (SRD 2.0 p. 55; p. 71 para la silla de ruedas arcana).` })
+      out.push({ campo: 'armas', texto: `«${a.nombre}» es un arma mágica y tu subclase no tiene rasgo de Lanzamiento: por regla no puedes usarla (SRD 2.0 p. 55${a.rasgo === 'lanzamiento' ? '; p. 71' : ''}).` })
     }
   }
   return out
