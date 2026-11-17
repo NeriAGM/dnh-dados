@@ -1,0 +1,542 @@
+[
+  {
+    "id": "caltrops",
+    "nombre": "Abrojos",
+    "nombre_en": "Caltrops",
+    "texto": "Puedes esparcir estos abrojos en un área Muy cercana a tu alrededor. Una criatura que atraviese esa área apresurada debe marcar un Estrés.",
+    "tirada": 1,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "grapnel",
+    "nombre": "Gancho de escalada",
+    "nombre_en": "Grapnel",
+    "texto": "Tienes ventaja en las tiradas de acción para escalar superficies verticales.",
+    "tirada": 2,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "ball-bearings",
+    "nombre": "Balines",
+    "nombre_en": "Ball Bearings",
+    "texto": "Esta bolsita contiene esferas de metal perfectamente lisas.",
+    "tirada": 3,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "box-of-dragon-dust",
+    "nombre": "Caja de polvo de dragón",
+    "nombre_en": "Box of Dragon Dust",
+    "texto": "Esta tabaquera está llena de un polvo combustible.",
+    "tirada": 4,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "nighthawkers-ring",
+    "nombre": "Anillo del saqueador nocturno",
+    "nombre_en": "Nighthawker's Ring",
+    "texto": "Gasta una Esperanza para activar la gema de este anillo hasta el final de la escena. Mientras está activa, la gema cambia de color para indicar qué tan cerca está quien lo porta de un tesoro oculto: colores cálidos si está cerca, colores fríos si está lejos.",
+    "tirada": 5,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "elven-spyglass",
+    "nombre": "Catalejo élfico",
+    "nombre_en": "Elven Spyglass",
+    "texto": "Puedes usar este catalejo para aumentar cien veces tu vista.",
+    "tirada": 6,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "gourmet-granules",
+    "nombre": "Gránulos gourmet",
+    "nombre_en": "Gourmet Granules",
+    "texto": "Este polvo sabroso hace que cualquier alimento en el que lo espolvorees quede delicioso y saludable, sin importar qué tan simple o podrido esté.",
+    "tirada": 7,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "collapsible-pole",
+    "nombre": "Pértiga plegable",
+    "nombre_en": "Collapsible Pole",
+    "texto": "Puedes desarmar esta pértiga de 18 pies en seis segmentos enlazados de 3 pies.",
+    "tirada": 8,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "blackwing-quill",
+    "nombre": "Pluma de ala negra",
+    "nombre_en": "Blackwing Quill",
+    "texto": "Esta pluma de escribir nunca se queda sin tinta ni necesita afilarse.",
+    "tirada": 9,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "silees-folding-knife",
+    "nombre": "Navaja plegable de Silee",
+    "nombre_en": "Silee's Folding Knife",
+    "texto": "Esta hoja de 3 pulgadas tiene un filo que corta con facilidad cualquier cosa, excepto el mango en el que se guarda.",
+    "tirada": 10,
+    "fuente": "SRD 2.0 p. 77",
+    "verificado": true
+  },
+  {
+    "id": "windup-toy",
+    "nombre": "Juguete de cuerda",
+    "nombre_en": "Windup Toy",
+    "texto": "Este pequeño mecanismo tiene forma de cachorro de lobo búho y se puede programar para hacer trucos sencillos.",
+    "tirada": 11,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "loaded-dice",
+    "nombre": "Dados cargados",
+    "nombre_en": "Loaded Dice",
+    "texto": "Puedes elegir qué resultado saca este juego de dados cargados con una tirada de Sutileza exitosa (14). Si tiras con Miedo, todos los que observan saben que los dados están cargados.",
+    "tirada": 12,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "hollowbark-horn",
+    "nombre": "Cuerno de corteza hueca",
+    "nombre_en": "Hollowbark Horn",
+    "texto": "Puedes soplar este cuerno para invocar a una pequeña criatura del bosque que realice una tarea sencilla.",
+    "tirada": 13,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "self-tying-rope",
+    "nombre": "Cuerda que se ata sola",
+    "nombre_en": "Self-Tying Rope",
+    "texto": "Puedes ordenarle a esta cuerda que se ate o se desate sola.",
+    "tirada": 14,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "thiefs-compass",
+    "nombre": "Brújula del ladrón",
+    "nombre_en": "Thief's Compass",
+    "texto": "Esta brújula señala el camino hacia la salida más cercana cuando estás en interiores y hacia la entrada más cercana cuando estás al aire libre.",
+    "tirada": 15,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "travelers-bell",
+    "nombre": "Campana del viajero",
+    "nombre_en": "Traveler's Bell",
+    "texto": "Una vez por descanso largo, puedes hacer sonar esta campana para abrir mágicamente el camino seguro más corto a través de terreno difícil durante 1 hora.",
+    "tirada": 16,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "mandragorian-torch",
+    "nombre": "Antorcha mandragórica",
+    "nombre_en": "Mandragorian Torch",
+    "texto": "Esta antorcha emite una luz que solo puede ver quien la porta.",
+    "tirada": 17,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "boots-of-supple-mystique",
+    "nombre": "Botas de misterio flexible",
+    "nombre_en": "Boots of Supple Mystique",
+    "texto": "Mientras lleves puestas estas botas, no dejas huellas ni rastros.",
+    "tirada": 18,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "zephyrs-jar",
+    "nombre": "Tarro del céfiro",
+    "nombre_en": "Zephyr's Jar",
+    "texto": "Puedes abrir este tarro vacío durante el mal tiempo para capturar la tormenta y dejar el cielo despejado. La tormenta permanece dentro hasta que la liberas al volver a abrir el tarro.",
+    "tirada": 19,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "returning-ring",
+    "nombre": "Anillo del retorno",
+    "nombre_en": "Returning Ring",
+    "texto": "Cuando lanzas tu arma primaria mientras llevas puesto este anillo, el arma aparece en tu mano inmediatamente después del ataque.",
+    "tirada": 20,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "kingfishers-net",
+    "nombre": "Red del martín pescador",
+    "nombre_en": "Kingfisher's Net",
+    "texto": "Una vez por descanso largo, puedes usar esta red para sacar un pez vivo de cualquier cantidad de agua, sin importar qué tan improbable sea que esa agua tenga peces.",
+    "tirada": 21,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "titans-girdle",
+    "nombre": "Ceñidor del titán",
+    "nombre_en": "Titan's Girdle",
+    "texto": "Una vez por escena, puedes activar este ceñidor para obtener un bonificador de +1 a tu Competencia en tu siguiente ataque.",
+    "tirada": 22,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "iron-veil",
+    "nombre": "Velo de hierro",
+    "nombre_en": "Iron Veil",
+    "texto": "Esta cubierta de malla para la cabeza vuelve invisible a quien la lleva ante las criaturas feéricas.",
+    "tirada": 23,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "furball-bag",
+    "nombre": "Bolsa de bolas de pelo",
+    "nombre_en": "Furball Bag",
+    "texto": "Una vez por descanso, puedes sacar de esta bolsa 2d20 criaturas peludas, inofensivas, del tamaño de un gato y de origen y especie indeterminados.",
+    "tirada": 24,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "whisperstep-anklet",
+    "nombre": "Tobillera de paso susurrante",
+    "nombre_en": "Whisperstep Anklet",
+    "texto": "Esta tobillera silencia tus pasos mientras no te muevas más rápido que a la velocidad de caminar.",
+    "tirada": 25,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "enchanters-loupe",
+    "nombre": "Lupa del encantador",
+    "nombre_en": "Enchanter's Loupe",
+    "texto": "Puedes usar esta lupa para ver a través de ilusiones y encantamientos.",
+    "tirada": 26,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "eschers-mirrorball",
+    "nombre": "Bola de espejos de Escher",
+    "nombre_en": "Escher's Mirrorball",
+    "texto": "Una vez por descanso largo, puedes ordenarle a esta esfera de plata del tamaño de un puño que capture en su superficie una imagen omnidireccional de lo que la rodea. Esa imagen dura hasta tu siguiente descanso largo.",
+    "tirada": 27,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "cheaters-coin",
+    "nombre": "Moneda del tramposo",
+    "nombre_en": "Cheater's Coin",
+    "texto": "Cuando lances esta moneda, puedes gastar una Esperanza para determinar de qué lado cae.",
+    "tirada": 28,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "gravewardens-bell",
+    "nombre": "Campana del guardatumbas",
+    "nombre_en": "Gravewarden's Bell",
+    "texto": "Esta campana suena cuando un fantasma o una criatura no muerta se mueve dentro del alcance Lejano de ella.",
+    "tirada": 29,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "reliquary-of-the-sightless-saint",
+    "nombre": "Relicario del santo ciego",
+    "nombre_en": "Reliquary of the Sightless Saint",
+    "texto": "Obtienes un bonificador de +1 a tu Dado de Esperanza cuando haces el movimiento de muerte Arriesgarlo todo.",
+    "tirada": 30,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "map-of-revelation",
+    "nombre": "Mapa de revelación",
+    "nombre_en": "Map of Revelation",
+    "texto": "Puedes sintonizar este mapa con una criatura a la vez. El mapa siempre muestra la ubicación de la criatura sintonizada.",
+    "tirada": 31,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "dagginaes-obsidian-slate",
+    "nombre": "Pizarra de obsidiana de Dagginae",
+    "nombre_en": "Dagginae's Obsidian Slate",
+    "texto": "Esta lámina finísima de vidrio volcánico la usan los archivistas para tomar notas. Cualquier información grabada en su superficie desaparece, pero se puede recuperar con una orden que tú establezcas.",
+    "tirada": 32,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "gadimans-backpack",
+    "nombre": "Mochila de Gadiman",
+    "nombre_en": "Gadiman's Backpack",
+    "texto": "Una vez por descanso, puedes gastar una Esperanza para conjurar dentro de esta mochila un objeto común de hasta un pie cúbico de tamaño.",
+    "tirada": 33,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "eclipse-coin",
+    "nombre": "Moneda del eclipse",
+    "nombre_en": "Eclipse Coin",
+    "texto": "Una vez por descanso, lanza una moneda. Si cae cara, obtienes un bonificador de +1 a las tiradas de ataque hasta tu siguiente ataque exitoso. Si cae cruz, obtienes +1 a tu Evasión hasta que un ataque falle contra ti.",
+    "tirada": 34,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "sorcerers-hat",
+    "nombre": "Sombrero del hechicero",
+    "nombre_en": "Sorcerer's Hat",
+    "texto": "Este sombrero cónico azul está cubierto de estrellas de plata. Una vez por descanso, puedes lanzar un hechizo de tu bóveda con un costo de recuperación igual o menor a tu rango. Esto no funciona con cartas que estén en la bóveda de forma permanente.",
+    "tirada": 35,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "ghoulskin-gloves",
+    "nombre": "Guantes de piel de necrófago",
+    "nombre_en": "Ghoulskin Gloves",
+    "texto": "Cuando atacas con un arma física mientras llevas puestos estos guantes, el daño se considera tanto físico como mágico.",
+    "tirada": 36,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "gloves-of-alacrity",
+    "nombre": "Guantes de presteza",
+    "nombre_en": "Gloves of Alacrity",
+    "texto": "Cuando fueras a marcar un Estrés para recargar un arma, no lo marcas.",
+    "tirada": 37,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "insomniacs-periapt",
+    "nombre": "Periapto del insomne",
+    "nombre_en": "Insomniac's Periapt",
+    "texto": "Cuando tomas un descanso sin limpiar Puntos de Golpe ni Estrés, obtienes un bonificador de +2 a las tiradas de ataque y de daño hasta tu siguiente descanso.",
+    "tirada": 38,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "wildriders-saddle",
+    "nombre": "Silla del jinete salvaje",
+    "nombre_en": "Wildrider's Saddle",
+    "texto": "Esta silla le da a cualquier animal al que se le ate la capacidad de entender las órdenes de su jinete.",
+    "tirada": 39,
+    "fuente": "SRD 2.0 p. 78",
+    "verificado": true
+  },
+  {
+    "id": "soul-twin-circlets",
+    "nombre": "Diademas de almas gemelas",
+    "nombre_en": "Soul-Twin Circlets",
+    "texto": "Dos criaturas pueden llevar este par de diademas. Puedes gastar una Esperanza para intercambiar lugares con quien lleve la otra diadema.",
+    "tirada": 40,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "namers-oracle",
+    "nombre": "Oráculo del nombrador",
+    "nombre_en": "Namer's Oracle",
+    "texto": "Una vez por sesión, puedes tirar este juego de dados rúnicos para revelar el nombre completo de la última persona que tocaste.",
+    "tirada": 41,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "crucible-frames",
+    "nombre": "Anteojos de crisol",
+    "nombre_en": "Crucible Frames",
+    "texto": "Estos anteojos revelan los puntos débiles de objetos y criaturas. Tres veces por descanso, puedes gastar una Esperanza para tener ventaja en una tirada de ataque.",
+    "tirada": 42,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "two-faced-aegis-brooch",
+    "nombre": "Broche de égida de dos caras",
+    "nombre_en": "Two-Faced Aegis Brooch",
+    "texto": "Una vez por descanso, lanza una moneda. Si cae cara, te vuelves inmune al siguiente daño físico que recibas. Si cae cruz, te vuelves inmune al siguiente daño mágico que recibas.",
+    "tirada": 43,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "knockback-bracelets",
+    "nombre": "Brazaletes de empuje",
+    "nombre_en": "Knockback Bracelets",
+    "texto": "Con un ataque con arma exitoso, puedes empujar a tu objetivo hacia atrás hasta el alcance Cercano desde donde se encuentra.",
+    "tirada": 44,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "force-disc",
+    "nombre": "Disco de fuerza",
+    "nombre_en": "Force Disc",
+    "texto": "Este disco bidimensional y reluciente de fuerza mágica tiene un diámetro de 4 pies y está unido mágicamente a un guijarro. El disco siempre flota 3 pies al norte del guijarro y a su misma altura. El guijarro tiene una masa igual a una centésima parte de la masa total que carga el disco.",
+    "tirada": 45,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "molepaw-mittens",
+    "nombre": "Mitones de pata de topo",
+    "nombre_en": "Molepaw Mittens",
+    "texto": "Gasta una Esperanza para nadar a través de la tierra como si fuera agua durante los siguientes 10 minutos.",
+    "tirada": 46,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "timekeepers-pendant",
+    "nombre": "Colgante del guardián del tiempo",
+    "nombre_en": "Timekeeper's Pendant",
+    "texto": "Puedes elegir una acción de tiempo de descanso adicional en cada descanso.",
+    "tirada": 47,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "iron-dagger-pendant",
+    "nombre": "Colgante de daga de hierro",
+    "nombre_en": "Iron Dagger Pendant",
+    "texto": "Una vez por descanso largo, puedes gastar una Esperanza para decirle al colgante el nombre de una criatura. El colgante te jala suavemente hacia la ubicación actual de esa criatura hasta tu siguiente descanso largo.",
+    "tirada": 48,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "collar-of-ascendancy",
+    "nombre": "Collar de ascensión",
+    "nombre_en": "Collar of Ascendancy",
+    "texto": "Un animal que lleve este collar obtiene la capacidad de hablar y entender el habla común.",
+    "tirada": 49,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "temporal-sanctuary",
+    "nombre": "Santuario temporal",
+    "nombre_en": "Temporal Sanctuary",
+    "texto": "Un PJ que toma un descanso en el santuario temporal puede elegir una acción de tiempo de descanso adicional.",
+    "tirada": 50,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "heros-helm",
+    "nombre": "Yelmo del héroe",
+    "nombre_en": "Hero's Helm",
+    "texto": "Cuando logras un éxito crítico en un ataque, todos los aliados dentro del alcance Cercano ganan una Esperanza.",
+    "tirada": 51,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "rings-of-friendship",
+    "nombre": "Anillos de la amistad",
+    "nombre_en": "Rings of Friendship",
+    "texto": "Dos criaturas pueden llevar este par de anillos con forma de serpientes enroscadas. Puedes gastar la Esperanza de quien lleve el otro anillo (con su permiso) como si fuera tuya.",
+    "tirada": 52,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "rings-of-camaraderie",
+    "nombre": "Anillos de camaradería",
+    "nombre_en": "Rings of Camaraderie",
+    "texto": "Dos criaturas pueden llevar este par de anillos de madera. Puedes marcar el Estrés de quien lleve el otro anillo (con su permiso) como si fuera tuyo.",
+    "tirada": 53,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "rings-of-alliance",
+    "nombre": "Anillos de alianza",
+    "nombre_en": "Rings of Alliance",
+    "texto": "Dos criaturas pueden llevar este par de anillos de oro rosa. Una vez por sesión, puedes iniciar una Tirada en Equipo con quien lleve el otro anillo sin gastar Esperanza y sin contar para tu límite de Tiradas en Equipo por sesión.",
+    "tirada": 54,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "phobophages-circlet",
+    "nombre": "Diadema del fobófago",
+    "nombre_en": "Phobophage's Circlet",
+    "texto": "Cuando el DJ gasta un Miedo, tira un d4. Una vez por escena, con un resultado de 4, limpias un Estrés.",
+    "tirada": 55,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "quillshawl",
+    "nombre": "Chal de púas",
+    "nombre_en": "Quillshawl",
+    "texto": "Si un adversario te ataca dentro del alcance Cuerpo a cuerpo, debe tener éxito en una tirada de reacción (12) o marcar un Punto de Golpe.",
+    "tirada": 56,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "warp-pendant",
+    "nombre": "Colgante de salto",
+    "nombre_en": "Warp Pendant",
+    "texto": "Una vez por descanso, marca un Estrés para teletransportarte a un lugar que puedas ver con claridad.",
+    "tirada": 57,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "portal-frames",
+    "nombre": "Marcos portal",
+    "nombre_en": "Portal Frames",
+    "texto": "Este par de marcos pequeños y ornamentados, uno rojo y uno azul, están conectados. Todo lo que entre por uno sale por el otro.",
+    "tirada": 58,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "communion-relic",
+    "nombre": "Reliquia de comunión",
+    "nombre_en": "Communion Relic",
+    "texto": "Una vez por descanso, puedes gastar una Esperanza para usar la Experiencia de un aliado como si fuera tuya. Solo puedes llevar una reliquia.",
+    "tirada": 59,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  },
+  {
+    "id": "augurs-relic",
+    "nombre": "Reliquia del augur",
+    "nombre_en": "Augur's Relic",
+    "texto": "Una vez por descanso largo, puedes activar tu rasgo de Esperanza sin gastar Esperanza. Solo puedes llevar una reliquia.",
+    "tirada": 60,
+    "fuente": "SRD 2.0 p. 79",
+    "verificado": true
+  }
+]
