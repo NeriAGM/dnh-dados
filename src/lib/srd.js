@@ -4,7 +4,8 @@
 let promesa = null
 
 const ARCHIVOS = ['clases', 'subclases', 'ancestrias', 'comunidades', 'dominios', 'cartas', 'armas', 'armaduras', 'objetos', 'consumibles', 'formas_bestia', 'adversarios', 'entornos']
-const DE_2_0 = ['clases', 'subclases', 'ancestrias', 'comunidades', 'dominios', 'cartas']
+// Lo nuevo del 2.0 (Hope & Fear, SRD 2.0 p. 42–182) va aparte y sale con la etiqueta «SRD 2.0» (Neri, 17/11/2026).
+const DE_2_0 = ['clases', 'subclases', 'ancestrias', 'comunidades', 'dominios', 'cartas', 'armas', 'armaduras', 'objetos', 'consumibles', 'adversarios', 'entornos', 'transformaciones']
 
 export function cargarSRD() {
   if (!promesa) {
@@ -14,7 +15,7 @@ export function cargarSRD() {
     ]).then(([v1, v2]) => {
       const cat = {}
       ARCHIVOS.forEach((f, i) => { cat[f] = v1[i].map((x) => ({ ...x, fuente: 'SRD 1.0' })) })
-      DE_2_0.forEach((f, i) => { cat[f] = [...cat[f], ...v2[i].map((x) => ({ ...x, fuente: 'SRD 2.0' }))] })
+      DE_2_0.forEach((f, i) => { cat[f] = [...(cat[f] ?? []), ...v2[i].map((x) => ({ ...x, fuente: 'SRD 2.0' }))] })
       return cat
     })
   }
@@ -59,4 +60,5 @@ export const ALCANCES = {
   cuerpo: 'Cuerpo a cuerpo', 'muy-cercano': 'Muy cercano', cercano: 'Cercano', lejano: 'Lejano', 'muy-lejano': 'Muy lejano',
 }
 
-export const NOMBRE_RASGO = Object.fromEntries(RASGOS.map((r) => [r.id, r.nombre]))
+// «lanzamiento» no es un rasgo: la silla de ruedas arcana ataca con el rasgo de Lanzamiento de la subclase (SRD 2.0 p. 71)
+export const NOMBRE_RASGO = { ...Object.fromEntries(RASGOS.map((r) => [r.id, r.nombre])), lanzamiento: 'Lanzamiento' }
