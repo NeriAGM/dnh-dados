@@ -981,8 +981,8 @@
       {
         "nombre": "An Offer You Can't Refuse",
         "clase": "accion",
-        "texto": "Convergence is home to a tenuous network of rival factions. **Spend a Fear** to have one of them present the party with an easy solution to a difficult problem in exchange for their allegiance. If the party refuses, each PC must **mark a Stress**, and they can't turn to that faction for help in the future. _Which faction off ers the party their support? Who do they want the party to act against?_",
-        "pregunta": "Which faction off ers the party their support? Who do they want the party to act against?"
+        "texto": "Convergence is home to a tenuous network of rival factions. **Spend a Fear** to have one of them present the party with an easy solution to a difficult problem in exchange for their allegiance. If the party refuses, each PC must **mark a Stress**, and they can't turn to that faction for help in the future. _Which faction offers the party their support? Who do they want the party to act against?_",
+        "pregunta": "Which faction offers the party their support? Who do they want the party to act against?"
       }
     ],
     "fuente": "SRD 2.0 p. 179",
