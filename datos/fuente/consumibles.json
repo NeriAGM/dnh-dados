@@ -284,13 +284,13 @@
  {
   "id": "dragonbloom-tea",
   "nombre": "Dragonbloom Tea",
-  "texto": "You can drink this tea to unleash a fiery breath attack. Make an Instinct Roll against all adversaries in front of you within Close range. Targets you succeed against take 2d20 physical damage using your Proficiency.",
+  "texto": "You can drink this tea to unleash a fiery breath attack. Make an Instinct Roll against all adversaries in front of you within Close range. Targets you succeed against take d20 physical damage using your Proficiency.",
   "tirada": 48
  },
  {
   "id": "bridge-seed",
   "nombre": "Bridge Seed",
-  "texto": "Thick vines grow from your location to a point of your choice within Far range, allowing you to climb up or across them. The vines dissipate on your next rest.",
+  "texto": "Thick vines grow from your location to a point of your choice within Far range, allowing you to climb up or across them. The vines dissipate on your next short rest.",
   "tirada": 49
  },
  {

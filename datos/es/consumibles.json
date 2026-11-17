@@ -332,14 +332,14 @@
   "id": "dragonbloom-tea",
   "nombre": "Té de flor de dragón",
   "nombre_en": "Dragonbloom Tea",
-  "texto": "Puedes beber este té para liberar un ataque de aliento ardiente. Haz una tirada de Instinto contra todos los adversarios frente a ti a alcance Cercano. Los objetivos contra los que tengas éxito reciben 2d20 de daño físico usando tu Competencia.",
+  "texto": "Puedes beber este té para liberar un ataque de aliento ardiente. Haz una tirada de Instinto contra todos los adversarios frente a ti a alcance Cercano. Los objetivos contra los que tengas éxito reciben d20 de daño físico usando tu Competencia.",
   "tirada": 48
  },
  {
   "id": "bridge-seed",
   "nombre": "Semilla puente",
   "nombre_en": "Bridge Seed",
-  "texto": "Crecen enredaderas gruesas desde tu ubicación hasta un punto de tu elección a alcance Lejano, lo que te permite trepar por ellas o cruzar sobre ellas. Las enredaderas se disipan en tu siguiente descanso.",
+  "texto": "Crecen enredaderas gruesas desde tu ubicación hasta un punto de tu elección a alcance Lejano, lo que te permite trepar por ellas o cruzar sobre ellas. Las enredaderas se disipan en tu siguiente descanso corto.",
   "tirada": 49
  },
  {
