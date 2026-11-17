@@ -1,0 +1,632 @@
+[
+  {
+    "id": "mage-robes",
+    "nombre": "Mage Robes",
+    "nivel": 1,
+    "puntuacion": 2,
+    "umbrales": {
+      "mayor": 4,
+      "grave": 10
+    },
+    "rasgos": [
+      {
+        "nombre": "Enchanted",
+        "texto": "Gain a bonus to your damage thresholds equal to your Spellcast trait."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "brigandine-armor",
+    "nombre": "Brigandine Armor",
+    "nivel": 1,
+    "puntuacion": 3,
+    "umbrales": {
+      "mayor": 6,
+      "grave": 12
+    },
+    "rasgos": [
+      {
+        "nombre": "Lined",
+        "texto": "Mark a Stress to negate Minor damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "scale-mail-armor",
+    "nombre": "Scale Mail Armor",
+    "nivel": 1,
+    "puntuacion": 3,
+    "umbrales": {
+      "mayor": 7,
+      "grave": 14
+    },
+    "rasgos": [
+      {
+        "nombre": "Cumbersome",
+        "texto": "-1 to Finesse"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "banded-armor",
+    "nombre": "Banded Armor",
+    "nivel": 1,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 8,
+      "grave": 16
+    },
+    "rasgos": [
+      {
+        "nombre": "Bulky",
+        "texto": "-1 to Evasion; when you take Severe damage, you must mark a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "improved-mage-robes",
+    "nombre": "Improved Mage Robes",
+    "nivel": 2,
+    "puntuacion": 3,
+    "umbrales": {
+      "mayor": 6,
+      "grave": 15
+    },
+    "rasgos": [
+      {
+        "nombre": "Enchanted",
+        "texto": "Gain a bonus to your damage thresholds equal to your Spellcast trait."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "improved-brigandine-armor",
+    "nombre": "Improved Brigandine Armor",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 19
+    },
+    "rasgos": [
+      {
+        "nombre": "Lined",
+        "texto": "Mark a Stress to negate Minor damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "improved-scale-mail-armor",
+    "nombre": "Improved Scale Mail Armor",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 23
+    },
+    "rasgos": [
+      {
+        "nombre": "Cumbersome",
+        "texto": "-1 to Finesse"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "improved-banded-armor",
+    "nombre": "Improved Banded Armor",
+    "nivel": 2,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Bulky",
+        "texto": "-1 to Evasion; when you take Severe damage, you must mark a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "enchanters-robes",
+    "nombre": "Enchanter's Robes",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 20
+    },
+    "rasgos": [
+      {
+        "nombre": "Mnemonic",
+        "texto": "Once per scene, you can recall a domain card from your vault without paying its Recall Cost."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "hawkguards-mantle",
+    "nombre": "Hawkguard's Mantle",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 20
+    },
+    "rasgos": [
+      {
+        "nombre": "Gliding",
+        "texto": "You can glide up to Far range and are immune to damage from falling."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "spidersilk-tunic",
+    "nombre": "Spidersilk Tunic",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 20
+    },
+    "rasgos": [
+      {
+        "nombre": "Wall-Crawling",
+        "texto": "+1 Evasion; you can walk on walls as easily as on the ground."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 72",
+    "verificado": true
+  },
+  {
+    "id": "stormthread-habit",
+    "nombre": "Stormthread Habit",
+    "nivel": 2,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 9,
+      "grave": 20
+    },
+    "rasgos": [
+      {
+        "nombre": "Absorbing",
+        "texto": "Once per scene when you take magic damage, you can clear an Armor Slot."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "wyrdwood-splint-armor",
+    "nombre": "Wyrdwood Splint Armor",
+    "nivel": 2,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 10,
+      "grave": 21
+    },
+    "rasgos": [
+      {
+        "nombre": "Quick-Striding",
+        "texto": "You can't be Restrained and can move up to Far range as part of an action roll."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "trollhide-cuirass",
+    "nombre": "Trollhide Cuirass",
+    "nivel": 2,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 23
+    },
+    "rasgos": [
+      {
+        "nombre": "Self-Healing",
+        "texto": "When you take a rest, clear an Armor Slot."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "gilded-sunplate",
+    "nombre": "Gilded Sunplate",
+    "nivel": 2,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 12,
+      "grave": 26
+    },
+    "rasgos": [
+      {
+        "nombre": "Resplendent",
+        "texto": "Once per scene when you spend Hope, you can clear an Armor Slot."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "advanced-mage-robes",
+    "nombre": "Advanced Mage Robes",
+    "nivel": 3,
+    "puntuacion": 4,
+    "umbrales": {
+      "mayor": 8,
+      "grave": 22
+    },
+    "rasgos": [
+      {
+        "nombre": "Enchanted",
+        "texto": "Gain a bonus to your damage thresholds equal to your Spellcast trait."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "advanced-brigandine-armor",
+    "nombre": "Advanced Brigandine Armor",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 26
+    },
+    "rasgos": [
+      {
+        "nombre": "Lined",
+        "texto": "Mark a Stress to negate Minor damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "advanced-scale-mail-armor",
+    "nombre": "Advanced Scale Mail Armor",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 30
+    },
+    "rasgos": [
+      {
+        "nombre": "Cumbersome",
+        "texto": "-1 to Finesse"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "advanced-banded-armor",
+    "nombre": "Advanced Banded Armor",
+    "nivel": 3,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 15,
+      "grave": 34
+    },
+    "rasgos": [
+      {
+        "nombre": "Bulky",
+        "texto": "-1 to Evasion; when you take Severe damage, you must mark a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "granminsters-finery",
+    "nombre": "Granminster's Finery",
+    "nivel": 3,
+    "puntuacion": 2,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Magnificent",
+        "texto": "Gain a bonus to your Armor Score equal to your Presence."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "astral-raiment",
+    "nombre": "Astral Raiment",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Stellar",
+        "texto": "Mark a Stress to gain advantage on a Spellcast roll."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "cloverweave-cloak",
+    "nombre": "Cloverweave Cloak",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Fortune-Favored",
+        "texto": "Once per scene, you can change a failure with Hope into a success with Fear."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "skywardens-lamellar",
+    "nombre": "Skywarden's Lamellar",
+    "nivel": 3,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 11,
+      "grave": 27
+    },
+    "rasgos": [
+      {
+        "nombre": "Vigilant",
+        "texto": "+2 to Evasion"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "bloodstone-plate-armor",
+    "nombre": "Bloodstone Plate Armor",
+    "nivel": 3,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 35
+    },
+    "rasgos": [
+      {
+        "nombre": "Bloodthirsty",
+        "texto": "When you critically succeed on a weapon attack within Melee range, clear a Hit Point."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "deep-forged-coral-armor",
+    "nombre": "Deep-Forged Coral Armor",
+    "nivel": 3,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 35
+    },
+    "rasgos": [
+      {
+        "nombre": "Aquatic",
+        "texto": "You can breathe underwater and gain advantage on Agility Rolls while submerged."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 73",
+    "verificado": true
+  },
+  {
+    "id": "legendary-mage-robes",
+    "nombre": "Legendary Mage Robes",
+    "nivel": 4,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 10,
+      "grave": 31
+    },
+    "rasgos": [
+      {
+        "nombre": "Enchanted",
+        "texto": "Gain a bonus to your damage thresholds equal to your Spellcast trait."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "legendary-brigandine-armor",
+    "nombre": "Legendary Brigandine Armor",
+    "nivel": 4,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 35
+    },
+    "rasgos": [
+      {
+        "nombre": "Lined",
+        "texto": "Mark a Stress to negate Minor damage."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "legendary-scale-mail-armor",
+    "nombre": "Legendary Scale Mail Armor",
+    "nivel": 4,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 15,
+      "grave": 39
+    },
+    "rasgos": [
+      {
+        "nombre": "Cumbersome",
+        "texto": "-1 to Finesse"
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "legendary-banded-armor",
+    "nombre": "Legendary Banded Armor",
+    "nivel": 4,
+    "puntuacion": 7,
+    "umbrales": {
+      "mayor": 17,
+      "grave": 43
+    },
+    "rasgos": [
+      {
+        "nombre": "Bulky",
+        "texto": "-1 to Evasion; when you take Severe damage, you must mark a Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "darkweave-shroud",
+    "nombre": "Darkweave Shroud",
+    "nivel": 4,
+    "puntuacion": 5,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 36
+    },
+    "rasgos": [
+      {
+        "nombre": "Ghostwalker",
+        "texto": "Once per rest, mark a Stress to move up to Close range through solid objects."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "godbound-laminar",
+    "nombre": "Godbound Laminar",
+    "nivel": 4,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 36
+    },
+    "rasgos": [
+      {
+        "nombre": "Divine",
+        "texto": "When you mark an Armor Slot, gain a Hope."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "circle-forged-dreadplate",
+    "nombre": "Circle-Forged Dreadplate",
+    "nivel": 4,
+    "puntuacion": 6,
+    "umbrales": {
+      "mayor": 14,
+      "grave": 38
+    },
+    "rasgos": [
+      {
+        "nombre": "Accursed",
+        "texto": "When you mark any number of Hit Points from an attack, roll a d4. On a result of 4, the attacker must mark an equal number of Stress."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "rune-forged-exosuit",
+    "nombre": "Rune-Forged Exosuit",
+    "nivel": 4,
+    "puntuacion": 7,
+    "umbrales": {
+      "mayor": 12,
+      "grave": 39
+    },
+    "rasgos": [
+      {
+        "nombre": "Attuned",
+        "texto": "The maximum number of domain cards in your loadout is reduced by one, but you gain a bonus to your damage thresholds equal to your tier."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "hallowed-heroplate",
+    "nombre": "Hallowed Heroplate",
+    "nivel": 4,
+    "puntuacion": 7,
+    "umbrales": {
+      "mayor": 13,
+      "grave": 35
+    },
+    "rasgos": [
+      {
+        "nombre": "Blessed",
+        "texto": "Once per long rest, you can spend any number of Hope before you make the Risk It All death move. You gain a bonus to the result of your Hope Die equal to the number of Hope spent."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  },
+  {
+    "id": "resonant-harness",
+    "nombre": "Resonant Harness",
+    "nivel": 4,
+    "puntuacion": 7,
+    "umbrales": {
+      "mayor": 15,
+      "grave": 40
+    },
+    "rasgos": [
+      {
+        "nombre": "Vitreous",
+        "texto": "When you would take Severe or greater damage, you can mark 2 Armor Slots to negate that damage. If you do, you gain a -5 penalty to your damage thresholds until you choose to repair your armor as a downtime move."
+      }
+    ],
+    "fuente": "SRD 2.0 p. 74",
+    "verificado": true
+  }
+]
