@@ -320,7 +320,7 @@
       {
         "nombre": "Madre de la guarida",
         "clase": "accion",
-        "texto": "Una vez por escena, **gasta 2 Miedos** para invocar hasta dos adversarios tejesombras (que no sean Reinas tejesombras), que aparecen dentro del alcance Cercano y toman el foco de inmediato."
+        "texto": "Una vez por escena, **gasta 2 de Miedo** para invocar hasta dos adversarios tejesombras (que no sean Reinas tejesombras), que aparecen dentro del alcance Cercano y toman el foco de inmediato."
       },
       {
         "nombre": "Más rápida de lo que parece",
@@ -3222,7 +3222,7 @@
       {
         "nombre": "Llamado de la Guahala",
         "clase": "accion",
-        "texto": "**Gasta 2 Miedo** para darles el foco a todos los Cambiaformas guahalanos dentro del alcance Cercano. Cada uno hace un ataque estándar contra un objetivo dentro del alcance. Si varios ataques tienen éxito contra el mismo objetivo, suma su daño."
+        "texto": "**Gasta 2 de Miedo** para darles el foco a todos los Cambiaformas guahalanos dentro del alcance Cercano. Cada uno hace un ataque estándar contra un objetivo dentro del alcance. Si varios ataques tienen éxito contra el mismo objetivo, suma su daño."
       },
       {
         "nombre": "Forma salvaje (Cambio de fase)",
@@ -4463,7 +4463,7 @@
       {
         "nombre": "Chillido psíquico",
         "clase": "accion",
-        "texto": "**Gasta 2 Miedo** para que la Criptopolilla desate una ráfaga de energía psíquica que hace que cada PJ dentro del alcance Lejano sufra visiones de su aterrador destino. Cada objetivo debe hacer una tirada de reacción de Instinto (16). Los objetivos que fallen reciben **3d8** de daño mágico directo y quedan _Vulnerables_ hasta su siguiente descanso. Los objetivos que tengan éxito deben **marcar un Estrés** o recibir la mitad del daño."
+        "texto": "**Gasta 2 de Miedo** para que la Criptopolilla desate una ráfaga de energía psíquica que hace que cada PJ dentro del alcance Lejano sufra visiones de su aterrador destino. Cada objetivo debe hacer una tirada de reacción de Instinto (16). Los objetivos que fallen reciben **3d8** de daño mágico directo y quedan _Vulnerables_ hasta su siguiente descanso. Los objetivos que tengan éxito deben **marcar un Estrés** o recibir la mitad del daño."
       },
       {
         "nombre": "Enjambre de sombras",
@@ -4583,7 +4583,7 @@
       {
         "nombre": "Llamado de las profundidades",
         "clase": "accion",
-        "texto": "**Gasta 2 Miedo** para invocar 1d4 Sirénidos malditos, que aparecen en el alcance Lejano y toman el foco de inmediato."
+        "texto": "**Gasta 2 de Miedo** para invocar 1d4 Sirénidos malditos, que aparecen en el alcance Lejano y toman el foco de inmediato."
       },
       {
         "nombre": "Contaminación mucosa",
@@ -4752,7 +4752,7 @@
       {
         "nombre": "Canto infernal",
         "clase": "accion",
-        "texto": "**Gasta 2 Miedo** para que la montura del Rey sombra suelte un chillido escalofriante que resuena por el campo de batalla. Cada PJ dentro del alcance Lejano debe hacer una tirada de reacción de Presencia (18). Los objetivos que tengan éxito deben **marcar un Estrés**. Los objetivos que fallen deben **marcar un Estrés** y perder una Esperanza. Si un PJ no puede perder una Esperanza, ganas 2 Miedo."
+        "texto": "**Gasta 2 de Miedo** para que la montura del Rey sombra suelte un chillido escalofriante que resuena por el campo de batalla. Cada PJ dentro del alcance Lejano debe hacer una tirada de reacción de Presencia (18). Los objetivos que tengan éxito deben **marcar un Estrés**. Los objetivos que fallen deben **marcar un Estrés** y perder una Esperanza. Si un PJ no puede perder una Esperanza, ganas 2 de Miedo."
       },
       {
         "nombre": "Apoyo aéreo",
@@ -4960,7 +4960,7 @@
       {
         "nombre": "Aliento de vapor",
         "clase": "accion",
-        "texto": "**Gasta 2 Miedo** para que la Tortuga suelte una ráfaga de vapor sobrecalentado contra todos los PJ frente a ella dentro del alcance Cercano. Cada objetivo debe hacer una tirada de reacción de Agilidad. Los objetivos que fallen reciben **4d8** de daño mágico y quedan _Vulnerables_ temporalmente. Los objetivos que tengan éxito deben elegir entre **marcar un Estrés** o recibir la mitad del daño."
+        "texto": "**Gasta 2 de Miedo** para que la Tortuga suelte una ráfaga de vapor sobrecalentado contra todos los PJ frente a ella dentro del alcance Cercano. Cada objetivo debe hacer una tirada de reacción de Agilidad. Los objetivos que fallen reciben **4d8** de daño mágico y quedan _Vulnerables_ temporalmente. Los objetivos que tengan éxito deben elegir entre **marcar un Estrés** o recibir la mitad del daño."
       }
     ],
     "fuente": "SRD 2.0 p. 136",
@@ -6538,7 +6538,7 @@
       {
         "nombre": "Doble o nada",
         "clase": "reaccion",
-        "texto": "Cuando fueras a ganar un Miedo por un ataque contra el Titán, puedes tirar un d6. Con un resultado impar, no ganas el Miedo. Con un resultado par, ganas 2 Miedo en lugar de 1."
+        "texto": "Cuando fueras a ganar un Miedo por un ataque contra el Titán, puedes tirar un d6. Con un resultado impar, no ganas el Miedo. Con un resultado par, ganas 2 de Miedo en lugar de 1."
       }
     ],
     "fuente": "SRD 2.0 p. 147",
@@ -7015,7 +7015,7 @@
       {
         "nombre": "Decapitar",
         "clase": "accion",
-        "texto": "**Gasta 2 Miedo** para que el Heraldo haga una tirada de ataque contra un PJ dentro del alcance Cuerpo a cuerpo. Si tiene éxito, tira un d6. Con un resultado de 6, el objetivo marca todos sus PG y debe hacer un movimiento de muerte."
+        "texto": "**Gasta 2 de Miedo** para que el Heraldo haga una tirada de ataque contra un PJ dentro del alcance Cuerpo a cuerpo. Si tiene éxito, tira un d6. Con un resultado de 6, el objetivo marca todos sus PG y debe hacer un movimiento de muerte."
       },
       {
         "nombre": "Despertar a los caídos",
@@ -7151,7 +7151,7 @@
       {
         "nombre": "Plaga de langostas",
         "clase": "accion",
-        "texto": "**Gasta 2 Miedo** para que el Heraldo conjure un enjambre de langostas en un punto dentro del alcance Muy lejano. Cada PJ dentro del alcance Cercano de ese punto debe marcar una casilla de Armadura o recibir **4d10** de daño físico directo, y tirar un d6. Con un resultado de 1–2, el PJ queda Contagioso."
+        "texto": "**Gasta 2 de Miedo** para que el Heraldo conjure un enjambre de langostas en un punto dentro del alcance Muy lejano. Cada PJ dentro del alcance Cercano de ese punto debe marcar una casilla de Armadura o recibir **4d10** de daño físico directo, y tirar un d6. Con un resultado de 1–2, el PJ queda Contagioso."
       },
       {
         "nombre": "Huevos de rana",

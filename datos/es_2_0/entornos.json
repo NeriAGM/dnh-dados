@@ -299,7 +299,7 @@
       {
         "nombre": "«¡Disparen los cañones!»",
         "clase": "accion",
-        "texto": "Gasta hasta 3 Miedos para que el barco pirata dispare sus cañones contra el combate. Por cada Miedo gastado, elige un punto cualquiera del campo de batalla. Cada PJ dentro del alcance Cercano de uno o más de esos puntos debe hacer una tirada de reacción de Agilidad. Los objetivos que fallen reciben **1d8+3** de daño físico. Los objetivos que tengan éxito deben **marcar un Estrés** o recibir la mitad del daño. _¿Qué daños colaterales causan estas balas de cañón? ¿La vida de quiénes ponen en peligro sin ningún reparo?_",
+        "texto": "Gasta hasta 3 de Miedo para que el barco pirata dispare sus cañones contra el combate. Por cada Miedo gastado, elige un punto cualquiera del campo de batalla. Cada PJ dentro del alcance Cercano de uno o más de esos puntos debe hacer una tirada de reacción de Agilidad. Los objetivos que fallen reciben **1d8+3** de daño físico. Los objetivos que tengan éxito deben **marcar un Estrés** o recibir la mitad del daño. _¿Qué daños colaterales causan estas balas de cañón? ¿La vida de quiénes ponen en peligro sin ningún reparo?_",
         "pregunta": "¿Qué daños colaterales causan estas balas de cañón? ¿La vida de quiénes ponen en peligro sin ningún reparo?"
       },
       {
