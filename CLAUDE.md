@@ -32,8 +32,8 @@ Estilo: 2 espacios, sin punto y coma. Sin dependencias nuevas sin permiso.
   Si una prueba falla, no se publica.
 
 ## Supabase
-Proyecto `dktpjdljsmofqmmvcpkr`. Migraciones en `supabase/migraciones/` (001…013 aplicadas
-en producción al 15/11/2026). Para una nueva: crea `0NN_nombre.sql` (solo agregar; `drop … if exists`
+Proyecto `dktpjdljsmofqmmvcpkr`. Migraciones en `supabase/migraciones/` (001…014 aplicadas
+en producción al 16/11/2026). Para una nueva: crea `0NN_nombre.sql` (solo agregar; `drop … if exists`
 únicamente de lo propio), su prueba en `supabase/pruebas/`, y aplícala en el editor SQL del panel
 de Supabase (el editor avisa "destructive operations" por los `drop policy if exists`: revisa con
 grep que no borre datos y confirma). Verifica con una consulta de solo lectura.

@@ -70,7 +70,7 @@ Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fic
 
 - [x] Ayudar a un Aliado (SRD 2.0 p. 48–49): cada ayudante gasta 1 Esperanza y tira su d6; cuenta solo el d6 de ventaja más alto (el propio incluido); no va en reacciones. Migración 009, pruebas en `supabase/pruebas/ayudar.test.mjs`.
 - [x] Migración 009 aplicada en Supabase (15/11), después de la 008. Verificado con solo lectura: una sola `tirar(…, uuid[])` con `p_ayudantes`; la ejecuta `authenticated`, no `anon`.
-- [ ] Aplicar `supabase/migraciones/014_ayuda_confirmada.sql` en Supabase antes de publicar la app que la usa.
+- [x] Migración 014 aplicada en Supabase (16/11), antes de publicar la app. Verificado con solo lectura: tabla `ayudas` con RLS, su política y en tiempo real; una sola `tirar`, la nueva; `anon` no ejecuta `ofrecer_ayuda`, `retirar_ayuda` ni `tirar`; nadie inserta directo.
 - [x] Ayudar con desventaja (Neri, 16/11): se puede; ventaja y desventaja se cancelan una por una (SRD 2.0 p. 49): la ayuda del primero cancela la desventaja y, si ayudan más, cuenta el d6 más alto de los demás. Migración 014.
 - [x] Cada ayudante confirma (Neri, 16/11): toca «Ayudar a» con el nombre de su aliado en su pantalla; quien tira solo ve y usa a quienes lo marcaron. La marca dura 10 minutos y se borra con la siguiente tirada de acción del aliado. Migración 014.
 - [ ] Revisar los demás puntos «SIN VERIFICAR» de `docs/reglas/` con el reporte de verificación contra el SRD 2.0 (27 confirmados, 11 no aparecen, 5 dudas).
