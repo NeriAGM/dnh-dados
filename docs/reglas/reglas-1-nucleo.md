@@ -91,7 +91,8 @@ Notas para la app:
 - Una tirada lleva **como máximo UN dado de ventaja o de desventaja**, sin importar cuántas fuentes haya. Primero se cancelan una a una y luego queda máximo 1 dado neto. Ejemplo que citan: 3 fuentes de ventaja + 1 de desventaja = **1 dado de ventaja**.
 - **Excepción, Ayudar a un Aliado**: cada aliado paga 1 Esperanza y tira su propio d6. Quien tira suma **solo el d6 de ventaja más alto de todos, incluido el suyo** (no se suman). [SRD 2.0 p. 49]
 - Ayudar a un Aliado **no aplica a tiradas de reacción**. [SRD 2.0 p. 48]
-- **Por confirmar (Neri):** el SRD no dice qué pasa si quien tira tiene desventaja y lo ayudan. La app no lo permite por ahora.
+- **Ayuda con desventaja (decisión de Neri, 16/11):** el SRD no lo dice explícito; se aplica la cancelación una por una de p. 49. La ayuda del primer ayudante cancela la desventaja (ninguno de los dos d6 se tira) y, si ayudan más, cuenta el d6 más alto de los demás. Todos gastan su Esperanza. Migración 014.
+- **En la app (decisión de Neri, 16/11):** cada ayudante lo confirma en su pantalla («Ayudar a» con el nombre de su aliado); sin esa marca no se le resta Esperanza. Migración 014.
 - Lógica para la app con ambas versiones: `neto = fuentesVentaja − fuentesDesventaja` → si neto > 0 se tira 1d6 y se suma; si neto < 0 se tira 1d6 y se resta; con 0 no se tira nada. Luego se suma `max(d6 de cada ayudante)`. En 1.0 el SRD no limita explícitamente varias ventajas netas en la misma reserva; esa ambigüedad la quita 2.0 con el tope de 1.
 
 ### 3.3 Dados de ventaja de otro tamaño

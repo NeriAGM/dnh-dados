@@ -15,11 +15,12 @@ function azar(n) {
 }
 
 export function tirarLocal({ tipo, grupos, modificador = 0, dificultad = null, etiqueta = null, danoCritico = false, ayudantes = [] }) {
-  // Ayudar a un Aliado (SRD 2.0, p. 48–49): igual que tirar() en el servidor (009)
-  if (ayudantes.length) {
-    if (tipo !== 'accion') throw new Error('Ayudar a un Aliado solo va en tiradas de acción (no en reacciones)')
-    if (grupos.some((g) => g.rol === 'desventaja')) throw new Error('Con desventaja no se puede recibir ayuda (regla por confirmar con el DJ)')
-  }
+  // Ayudar a un Aliado (SRD 2.0, p. 48–49): igual que tirar() en el servidor (014)
+  if (ayudantes.length && tipo !== 'accion') throw new Error('Ayudar a un Aliado solo va en tiradas de acción (no en reacciones)')
+  // La ayuda cancela la desventaja, una por una (p. 49): ese d6 no se tira y
+  // el primer ayudante tampoco tira (gasta su Esperanza igual)
+  const cancela = ayudantes.length && grupos.some((g) => g.rol === 'desventaja') ? ayudantes[0] : null
+  if (cancela) { grupos = grupos.filter((g) => g.rol !== 'desventaja'); ayudantes = ayudantes.slice(1) }
   const dados = []
   let total = 0, esp = null, miedo = null, critico = false, maxExtra = 0
   let idxVentaja = null
@@ -79,6 +80,7 @@ export function tirarLocal({ tipo, grupos, modificador = 0, dificultad = null, e
 
   const efectos = {}
   if (maxExtra) efectos.dano_critico_extra = maxExtra
+  if (cancela) efectos.cancela_desventaja = cancela
   return {
     id: `local-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
     tipo, etiqueta, formula, dados, modificador, total, dificultad, desenlace, exito, critico,

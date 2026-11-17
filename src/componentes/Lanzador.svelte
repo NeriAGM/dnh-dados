@@ -1,7 +1,7 @@
 <script>
   import { leerFormula, leerDificultad, conSigno } from '../lib/formula.js'
 
-  // aliados: los demás personajes de la mesa que pueden Ayudar a un Aliado
+  // aliados: los personajes que ya marcaron «Ayudar a» con tu nombre en su pantalla (014)
   let { esDJ = false, ocupado = false, aliados = [], onTirar } = $props()
 
   const MODOS = [
@@ -22,7 +22,7 @@
   let oculta = $state(false)
   let mas = $state(false)
   let error = $state('')
-  let ayudan = $state([]) // ids de los aliados que ayudan en esta tirada
+  let quitados = $state([]) // aliados que confirmaron pero quien tira no quiere usar
 
   $effect(() => { if (esDJ && modo === 'accion' && !tocado) modo = 'dj' })
   // Si dejas de ser DJ (cambias a una campaña donde eres jugador), el modo
@@ -32,12 +32,13 @@
 
   const dual = $derived(modo === 'accion' || modo === 'reaccion')
   const conFormula = $derived(modo === 'dano' || modo === 'libre')
-  // Ayudar a un Aliado (SRD 2.0, p. 48–49): solo en acción; con desventaja no (por confirmar)
-  const puedenAyudar = $derived(modo === 'accion' && ventaja !== 'desventaja' && aliados.length > 0)
-  const ayudantes = $derived(puedenAyudar ? ayudan.filter((id) => aliados.some((a) => a.id === id && (a.esperanza ?? 0) >= 1)) : [])
+  // Ayudar a un Aliado (SRD 2.0, p. 48–49): solo en acción. Cada ayudante ya
+  // lo confirmó en su pantalla; con desventaja, la ayuda la cancela (p. 49)
+  const puedenAyudar = $derived(modo === 'accion' && aliados.length > 0)
+  const ayudantes = $derived(puedenAyudar ? aliados.filter((a) => !quitados.includes(a.id) && (a.esperanza ?? 0) >= 1).map((a) => a.id) : [])
 
   function alternarAyuda(id) {
-    ayudan = ayudan.includes(id) ? ayudan.filter((x) => x !== id) : [...ayudan, id]
+    quitados = quitados.includes(id) ? quitados.filter((x) => x !== id) : [...quitados, id]
   }
 
   function agregarDado(lados) {
@@ -51,8 +52,12 @@
 
   const vista = $derived.by(() => {
     if (dual) {
-      const d6 = ayudantes.length + (ventaja === 'ventaja' ? 1 : 0)
-      const extra = ayudantes.length ? ` + el más alto de ${d6}d6` : ventaja === 'ventaja' ? ' + d6' : ventaja === 'desventaja' ? ' − d6' : ''
+      // Con desventaja, el primer ayudante la cancela y los demás tiran
+      const cancela = ayudantes.length > 0 && ventaja === 'desventaja'
+      const d6 = ayudantes.length - (cancela ? 1 : 0) + (ventaja === 'ventaja' ? 1 : 0)
+      const extra = cancela
+        ? `${d6 ? ` + el más alto de ${d6}d6` : ''} (la ayuda cancela tu desventaja)`
+        : ayudantes.length ? ` + el más alto de ${d6}d6` : ventaja === 'ventaja' ? ' + d6' : ventaja === 'desventaja' ? ' − d6' : ''
       return `Esperanza d12 + Miedo d12${extra} ${conSigno(modificador)}`.trim()
     }
     if (modo === 'dj') {
@@ -83,7 +88,7 @@
 
   function tirar() {
     error = ''
-    try { onTirar(armar()); ayudan = [] } catch (e) { error = e.message }
+    try { onTirar(armar()); quitados = [] } catch (e) { error = e.message }
   }
 
   function elegirModo(id) {
@@ -123,12 +128,12 @@
     {/if}
 
     {#if puedenAyudar}
-      <div class="chips ayuda" role="group" aria-label="Ayudar a un Aliado: quién te ayuda (gasta 1 Esperanza)">
+      <div class="chips ayuda" role="group" aria-label="Ayudar a un Aliado: quién te ayuda (ya lo confirmaron; gastan 1 Esperanza)">
         <span class="rotulo">Te ayudan</span>
         {#each aliados as a (a.id)}
           {@const sinEsperanza = (a.esperanza ?? 0) < 1}
           <button class="chip" class:prendido={ayudantes.includes(a.id)} aria-pressed={ayudantes.includes(a.id)} disabled={sinEsperanza}
-            title={sinEsperanza ? 'No tiene Esperanza para gastar' : 'Gasta 1 Esperanza y tira su d6'} onclick={() => alternarAyuda(a.id)}>
+            title={sinEsperanza ? 'No tiene Esperanza para gastar' : 'Lo confirmó: gasta 1 Esperanza y tira su d6. Tócalo para no usar su ayuda.'} onclick={() => alternarAyuda(a.id)}>
             {a.nombre} · {a.esperanza ?? 0}
           </button>
         {/each}

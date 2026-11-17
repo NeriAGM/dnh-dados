@@ -163,6 +163,17 @@
   }
 
   const TIPOS_CUENTA = { estandar: 'Estándar', dinamica: 'Dinámica', bucle: 'En bucle', 'largo-plazo': 'Largo plazo' }
+
+  // Una cuenta en bucle se dispara y vuelve sola a su valor inicial (SRD 2.0 p. 91)
+  let disparada = $state(null)
+  function bajarCuenta(c) {
+    if (c.tipo === 'bucle' && c.valor - 1 <= 0) {
+      disparada = c.id
+      setTimeout(() => { if (disparada === c.id) disparada = null }, 5000)
+      return hacer(() => colaC.poner(c.id, { valor: c.inicial }))
+    }
+    hacer(() => colaC.poner(c.id, { valor: Math.max(0, c.valor - 1) }))
+  }
 </script>
 
 <div class="velo" onclick={onCerrar} role="presentation"></div>
@@ -335,14 +346,14 @@
         <label class="ocultas"><input type="checkbox" bind:checked={cVisible} /> La mesa la ve</label>
         <button class="boton" disabled={!cNombre.trim()}>Crear</button>
       </form>
-      <p class="ayuda">Estándar: baja 1 en cada tirada. Dinámica: baja 0–3 según el resultado. En bucle: al llegar a 0 vuelve a empezar.</p>
+      <p class="ayuda">Estándar: baja 1 en cada tirada. Dinámica: baja 0–3 según el resultado. En bucle: al llegar a 0 se dispara y vuelve sola a su valor inicial.</p>
       <div class="lista">
         {#each cuentas as c (c.id)}
           <div class="cuenta" class:cero={c.valor <= 0}>
             <span class="c-num titulo">{c.valor}</span>
-            <span class="c-info"><b>{c.nombre}</b><small>{TIPOS_CUENTA[c.tipo]} · empezó en {c.inicial}{c.visible ? '' : ' · oculta'}</small></span>
+            <span class="c-info"><b>{c.nombre}</b><small>{TIPOS_CUENTA[c.tipo]} · empezó en {c.inicial}{c.visible ? '' : ' · oculta'}</small>{#if disparada === c.id}<small class="disparo" role="status">¡Se disparó! Volvió a {c.inicial}.</small>{/if}</span>
             <span class="c-btn">
-              <button class="boton" disabled={c.valor <= 0} onclick={() => hacer(() => colaC.poner(c.id, { valor: Math.max(0, c.valor - 1) }))} aria-label="Bajar">−1</button>
+              <button class="boton" disabled={c.valor <= 0} onclick={() => bajarCuenta(c)} aria-label="Bajar">−1</button>
               <button class="boton" disabled={c.valor >= 99} onclick={() => hacer(() => colaC.poner(c.id, { valor: Math.min(99, c.valor + 1) }))} aria-label="Subir">+1</button>
               <button class="boton" onclick={() => hacer(() => colaC.poner(c.id, { valor: c.inicial }))} title="Reiniciar" aria-label="Reiniciar"><Icono nombre="reiniciar" tam={18} /></button>
               <button class="boton" onclick={() => hacer(() => colaC.poner(c.id, { visible: !c.visible }))}>{c.visible ? 'Ocultar' : 'Mostrar'}</button>
@@ -422,6 +433,7 @@
   .c-num { font-size: 1.8rem; font-weight: 900; min-width: 2.2ch; text-align: center; font-variant-numeric: tabular-nums; }
   .c-info { flex: 1; display: grid; min-width: 8rem; }
   .c-info small { color: var(--texto-suave); font-size: 0.85rem; }
+  .c-info .disparo { color: var(--peligro); font-weight: 700; }
   .c-btn { display: flex; gap: 0.3rem; flex-wrap: wrap; }
   @media (min-width: 1100px) { .velo { display: none; } }
   @media (max-width: 759px) {

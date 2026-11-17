@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from 'svelte'
   import {
     app, alLlegarTirada, registrarPropia, elegirPersonaje, ajustarPersonaje, ajustarMiedo, nombreDe, ajustarHoja, ajustesMesa, gastarEsperanza,
+    ofrecerAyuda, retirarAyuda, ayudaVigente,
   } from '../lib/mesa.svelte.js'
   import { cargarSRD, conCasero } from '../lib/srd.js'
   import { hojaDemo } from '../lib/demo.js'
@@ -85,6 +86,26 @@
   const miedo = $derived(miedoObjetivo ?? congelado?.miedo ?? (app.demo ? demoMiedo : app.campania?.miedo ?? 0))
   const tiradas = $derived(app.demo ? demoTiradas : app.lanzamientos)
   const puedoEditarPJ = $derived(app.demo || (pj && (esDJ || pj.usuario_id === uid)))
+  // Ayudar a un Aliado (014): quien ayuda lo marca aquí; quien tira ve a
+  // quienes lo marcaron. La marca dura 10 minutos: el reloj las va quitando.
+  let ahora = $state(Date.now())
+  $effect(() => { const t = setInterval(() => (ahora = Date.now()), 30000); return () => clearInterval(t) })
+  const otrosPJs = $derived(app.demo || !pj ? [] : app.personajes.filter((p) => p.id !== pj.id))
+  const miAyuda = $derived(pj ? app.ayudas.find((a) => a.ayudante_id === pj.id && ayudaVigente(a, ahora)) : null)
+  const meAyudan = $derived(app.demo || !pj ? [] : app.ayudas
+    .filter((a) => a.objetivo_id === pj.id && ayudaVigente(a, ahora))
+    .map((a) => app.personajes.find((p) => p.id === a.ayudante_id))
+    .filter(Boolean))
+  let ayudando = $state(false)
+  async function alternarAyudaA(objetivo) {
+    if (ayudando || !pj) return
+    ayudando = true
+    aviso = ''
+    try {
+      if (miAyuda?.objetivo_id === objetivo) await retirarAyuda(pj.id)
+      else await ofrecerAyuda(pj.id, objetivo)
+    } catch (e) { aviso = e.message } finally { ayudando = false }
+  }
   const esperanzaVista = $derived(pj ? pendiente[`${pj.id}:esperanza`] ?? congelado?.pjs[pj.id]?.esperanza ?? pj.esperanza : 0)
   const estresVista = $derived(pj ? pendiente[`${pj.id}:estres`] ?? congelado?.pjs[pj.id]?.estres ?? pj.estres : 0)
   // Encuentro activo tal como lo ve la mesa: en prueba se arma aquí mismo
@@ -373,6 +394,20 @@
             </span>
             <span class="de num">{estresVista}/{pj.estres_max}</span>
           </div>
+          {#if puedoEditarPJ && otrosPJs.length}
+            <div class="ayudar">
+              <span class="rotulo">Ayudar a</span>
+              <span class="chips-ayuda" role="group" aria-label="Ayudar a un Aliado: gastas 1 Esperanza en su próxima tirada de acción">
+                {#each otrosPJs as o (o.id)}
+                  {@const activa = miAyuda?.objetivo_id === o.id}
+                  <button class="chip-ayuda" class:prendido={activa} aria-pressed={activa} disabled={ayudando || (!activa && esperanzaVista < 1)}
+                    title={activa ? 'Toca otra vez para ya no ayudar' : esperanzaVista < 1 ? 'Necesitas 1 Esperanza para ayudar' : `Te ayudo: gastas 1 Esperanza cuando ${o.nombre} tire`}
+                    onclick={() => alternarAyudaA(o.id)}>{o.nombre}</button>
+                {/each}
+              </span>
+              {#if miAyuda}<p class="nota-ayuda">Gastas 1 Esperanza y tiras tu d6 cuando {otrosPJs.find((o) => o.id === miAyuda.objetivo_id)?.nombre ?? 'tu aliado'} haga su tirada de acción.</p>{/if}
+            </div>
+          {/if}
         {/if}
       </section>
     {:else if !esDJ}
@@ -424,7 +459,7 @@
   </div>
 
   <div class="zona-lanzador">
-    <Lanzador esDJ={esDJ} {ocupado} aliados={app.demo || !pj ? [] : app.personajes.filter((p) => p.id !== pj.id)} onTirar={alTirar} />
+    <Lanzador esDJ={esDJ} {ocupado} aliados={meAyudan} onTirar={alTirar} />
   </div>
 
   {#if aviso}
@@ -620,6 +655,22 @@
     gap: 0.1rem 0.5rem;
   }
   .medidor .rotulo { grid-area: rot; }
+  /* Ayudar a un Aliado: a quién ayudas (gasta 1 Esperanza en su tirada) */
+  .ayudar { display: grid; gap: 0.3rem; }
+  .chips-ayuda { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .chip-ayuda {
+    min-height: 2.25rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--filete);
+    border-radius: 10px;
+    background: var(--hundido);
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+  .chip-ayuda:hover:not(:disabled) { background: var(--hundido-2); }
+  .chip-ayuda.prendido { background: var(--exito); border-color: var(--exito); color: var(--sobre-color); }
+  .chip-ayuda:disabled { opacity: 0.45; cursor: not-allowed; }
+  .nota-ayuda { margin: 0; font-size: 0.82rem; color: var(--texto-suave); }
   .de { grid-area: de; }
   .pips-esp, .estres { grid-area: ctl; }
   .de { font-size: 0.92rem; font-weight: 900; color: var(--texto-suave); }

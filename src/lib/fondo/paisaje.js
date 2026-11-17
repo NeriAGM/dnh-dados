@@ -310,6 +310,8 @@ export function crearPaisaje(canvas, { momento = momentoActual(), reducido = fal
   }
 
   function cuadro(dt) {
+    // Ventana en tamaño 0 (pestaña oculta, panel cerrado): drawImage truena con un lienzo vacío
+    if (!capaFondo.width || !capaFondo.height) return
     t += dt
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.drawImage(capaFondo, 0, 0, w, h)

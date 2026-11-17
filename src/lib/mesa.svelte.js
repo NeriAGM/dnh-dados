@@ -20,7 +20,8 @@ export const app = $state({
   casero: [],           // contenido homebrew de la campaña
   encuentros: [],       // solo el DJ los recibe
   cuentas: [],          // cuentas regresivas
-  escena: null,         // lo que la mesa ve del encuentro activo (ver lib/escena.js)
+  ayudas: [],           // marcas de «te ayudo» (Ayudar a un Aliado, migración 014)
+  escena: null,        // lo que la mesa ve del encuentro activo (ver lib/escena.js)
   personajeActivo: null, // id
   ajustesDemo: {},      // reglas de la mesa en el modo prueba (no se guardan)
   invitacion: null,     // código de un link ?unirme= que espera a que entres
@@ -106,6 +107,7 @@ function limpiarCampania() {
   app.casero = []
   app.encuentros = []
   app.cuentas = []
+  app.ayudas = []
   app.escena = null
   app.personajeActivo = null
 }
@@ -157,11 +159,13 @@ async function cargarCampania(id, rol) {
     rol === 'dj' ? supabase.from('encuentros').select('*').eq('campania_id', id).order('creado', { ascending: false }) : Promise.resolve({ data: [] }),
     supabase.from('cuentas_regresivas').select('*').eq('campania_id', id).order('creado'),
     supabase.from('escenas').select('*').eq('campania_id', id).maybeSingle(),
+    supabase.from('ayudas').select('*').eq('campania_id', id),
   ])
-  const fallo = resps.find((r) => r?.error)
+  // Las marcas de ayuda no detienen la campaña si fallan (p. ej. sin la 014 aplicada)
+  const fallo = resps.slice(0, -1).find((r) => r?.error)
   if (fallo) throw new Error(`No se pudo abrir la campaña: ${fallo.error.message}`)
-  const [campania, miembros, personajes, lanzamientos, casero, encuentros, cuentas, escena] = resps.map((r) => r.data)
-  return { campania, miembros, personajes, lanzamientos, casero, encuentros, cuentas, escena }
+  const [campania, miembros, personajes, lanzamientos, casero, encuentros, cuentas, escena, ayudas] = resps.map((r) => (r.error ? null : r.data))
+  return { campania, miembros, personajes, lanzamientos, casero, encuentros, cuentas, escena, ayudas }
 }
 
 // Si el personaje con el que tiras ya no existe o ya no es tuyo, se elige otro
@@ -194,6 +198,7 @@ export async function abrirCampania(id) {
   app.casero = d.casero || []
   app.encuentros = d.encuentros || []
   app.cuentas = d.cuentas || []
+  app.ayudas = d.ayudas || []
   app.escena = d.escena ?? null
 
   const uid = app.sesion.user.id
@@ -226,6 +231,7 @@ async function recargar(id) {
   app.casero = d.casero || []
   app.encuentros = mantener(app.encuentros, d.encuentros, 'encuentro')
   app.cuentas = mantener(app.cuentas, d.cuentas, 'cuenta')
+  app.ayudas = d.ayudas || []
   app.escena = d.escena ?? null
   revisarActivo()
 }
@@ -322,6 +328,13 @@ function escuchar(id) {
     .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'contenido_casero' }, aqui(({ old }) => {
       app.casero = app.casero.filter((x) => x.id !== old?.id)
     }))
+    // Marcas de «te ayudo»: la llave es el personaje que ayuda
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'ayudas', filter: `campania_id=eq.${id}` }, aqui(({ eventType, new: a }) => {
+      if (eventType !== 'DELETE') app.ayudas = [...app.ayudas.filter((x) => x.ayudante_id !== a.ayudante_id), a]
+    }))
+    .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'ayudas' }, aqui(({ old }) => {
+      app.ayudas = app.ayudas.filter((x) => x.ayudante_id !== old?.ayudante_id)
+    }))
     .on('postgres_changes', { event: '*', schema: 'public', table: 'miembros', filter: `campania_id=eq.${id}` }, aqui(miembrosDeNuevo))
     // La llave de miembros es (campania_id, usuario_id): el borrado sí trae la campaña
     .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'miembros' }, aqui(({ old }) => {
@@ -351,6 +364,25 @@ export function registrarPropia(fila) {
   for (const a of fila.efectos?.ayudantes ?? []) {
     app.personajes = cambiarEn(app.personajes, a.id, (p) => ({ ...p, esperanza: a.esperanza }))
   }
+  // Las marcas de «te ayudo» valen para una tirada de acción (el servidor ya las borró)
+  if (fila.tipo === 'accion' && fila.personaje_id) app.ayudas = app.ayudas.filter((a) => a.objetivo_id !== fila.personaje_id)
+}
+
+// Ayudar a un Aliado (014): quien ayuda lo marca en su pantalla. La marca
+// dura 10 minutos y se borra con la siguiente tirada de acción del aliado.
+export const VIGENCIA_AYUDA = 10 * 60 * 1000
+export const ayudaVigente = (a, ahora = Date.now()) => ahora - Date.parse(a.creado) < VIGENCIA_AYUDA
+
+export async function ofrecerAyuda(ayudante, objetivo) {
+  const { data, error } = await supabase.rpc('ofrecer_ayuda', { p_ayudante: ayudante, p_objetivo: objetivo })
+  if (error) throw new Error(error.message)
+  app.ayudas = [...app.ayudas.filter((a) => a.ayudante_id !== ayudante), data]
+}
+
+export async function retirarAyuda(ayudante) {
+  const { error } = await supabase.rpc('retirar_ayuda', { p_ayudante: ayudante })
+  if (error) throw new Error(error.message)
+  app.ayudas = app.ayudas.filter((a) => a.ayudante_id !== ayudante)
 }
 
 export function elegirPersonaje(id) {

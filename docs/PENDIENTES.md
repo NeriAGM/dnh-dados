@@ -14,7 +14,7 @@
 - [x] **Mira:** cuadrada con las reglas el 12/10 (Instinto 0, Evasión 14, Gambesón 3, umbrales 7/13, arco Lejano, cartas en mano). La nota para su jugador está en sus Notas.
 - [ ] **Mira:** falta saber su segunda mejora de nivel 2 (solo se registró +1 PG). Si fue +1 Evasión, queda en 15.
 - [ ] **Mira / Soladius:** el ataque del compañero dice alcance Cercano; el del compañero base es Cuerpo a cuerpo. Tiene 3 Experiencias. Sin verificar contra la hoja del compañero (era una imagen).
-- [ ] Vocabulario: la carta física de Mira dice «Maniobras ágiles»; la app dice «Maniobras hábiles». ¿Cuál dejamos? Es *Deft Maneuvers* (Hueso, nivel 1, SRD 2.0 p. 209).
+- [x] Vocabulario: *Deft Maneuvers* (Hueso, nivel 1, SRD 2.0 p. 209) queda «Maniobras ágiles», como la carta física de Mira (Neri, 16/11).
 - [ ] **Valerius:** tiene tres +1 en rasgos.
 - [x] **Valerius:** Artificiero rediseñado y capturado en Contenido casero el 16/11 (clase, subclases Artillero y Armero, Pistola rúnica rangos 1–4). El diseño vive en un documento privado, no en el repo.
 - [x] **Valerius:** en nivel 2 tomó +1 Evasión (lo confirmó Neri el 16/11): base 10 + 1 en «extra» = Evasión 11.
@@ -28,18 +28,18 @@
 - [ ] Revisar las armas e inventario de Milo: en Notion son iguales a los de Soren (parece plantilla copiada).
 - [ ] Capturar la hoja de Aida (en Notion solo hay trasfondo).
 - [ ] Asignar cada personaje importado a su jugador (Ajustes → Personajes).
-- [ ] Verificar el contenido del SRD 2.0 contra el PDF oficial (hoy viene de una transcripción comunitaria).
+- [ ] Verificar el contenido del SRD 2.0 contra el PDF oficial (hoy viene de una transcripción comunitaria). Neri decidió (16/11) hacerlo en otro chat después de publicar.
 - [x] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla). Migración 003.
 - [x] Nombres traducidos del bestiario: Neri los aprueba de momento (16/11). Para cambiar uno: decirle a Claude "X cámbialo por Y".
 - [x] Escena: los jugadores ven nombre, tipo y estado de los enemigos del encuentro activo; ojo para ocultar. Migración 005.
 - [x] Ayudas de reglas en la hoja: recibir daño, descansos, movimientos de muerte, subir de nivel.
 - [x] Fase 5: fondos personalizados por jugador. Migración 004.
 - [ ] Neri: confirmar regla del estado (Herido < mitad, Grave ≥ mitad, Caído = todos). Si la mesa ve el entorno ya se decide en Ajustes → Reglas de la mesa.
-- [ ] Neri: confirmar casillas por mejora al subir de nivel (tomadas de la hoja oficial; los docs las marcan sin verificar).
+- [ ] Neri: confirmar casillas por mejora al subir de nivel con tu hoja impresa. El texto del SRD 2.0 (p. 54) confirma qué hace cada mejora y que Competencia y Multiclase cuestan las dos, pero el número de casillas solo viene en la hoja de personaje (imagen, sin texto).
 - [x] Reglas de la mesa (ajustes de campaña que decide el DJ): daño masivo, monedas y si la mesa ve el entorno. Migración 006.
 - [x] Migración 006 aplicada en Supabase (12/10).
 - [ ] Neri: decidir si se agregan las fichas de acción (regla opcional del foco) como regla de la mesa.
-- [ ] Glosario: agregar términos de descansos, muerte y subir de nivel (Limpiar Estrés, Llamarada de gloria, cicatriz, mejoras, logros de rango).
+- [x] Glosario: términos de descansos, muerte y subir de nivel agregados tal como los usa la app (16/11).
 - [ ] Personajes importados con nivel no tienen avances registrados: los límites de mejoras solo cuentan desde la app.
 
 ## Lore de la campaña (migración 007)
@@ -70,8 +70,9 @@ Hecho el 15/11: el DJ sube mapas, imágenes o notas y muestra uno a la mesa; fic
 
 - [x] Ayudar a un Aliado (SRD 2.0 p. 48–49): cada ayudante gasta 1 Esperanza y tira su d6; cuenta solo el d6 de ventaja más alto (el propio incluido); no va en reacciones. Migración 009, pruebas en `supabase/pruebas/ayudar.test.mjs`.
 - [x] Migración 009 aplicada en Supabase (15/11), después de la 008. Verificado con solo lectura: una sola `tirar(…, uuid[])` con `p_ayudantes`; la ejecuta `authenticated`, no `anon`.
-- [ ] Neri: ¿se puede ayudar a quien tira con desventaja? El SRD 2.0 no lo dice; hoy la app no lo permite.
-- [ ] Neri: quien tira elige a sus ayudantes y el servidor les resta la Esperanza sin pedirles confirmación (en la mesa cada quien dice «te ayudo»). ¿Así está bien?
+- [ ] Aplicar `supabase/migraciones/014_ayuda_confirmada.sql` en Supabase antes de publicar la app que la usa.
+- [x] Ayudar con desventaja (Neri, 16/11): se puede; ventaja y desventaja se cancelan una por una (SRD 2.0 p. 49): la ayuda del primero cancela la desventaja y, si ayudan más, cuenta el d6 más alto de los demás. Migración 014.
+- [x] Cada ayudante confirma (Neri, 16/11): toca «Ayudar a» con el nombre de su aliado en su pantalla; quien tira solo ve y usa a quienes lo marcaron. La marca dura 10 minutos y se borra con la siguiente tirada de acción del aliado. Migración 014.
 - [ ] Revisar los demás puntos «SIN VERIFICAR» de `docs/reglas/` con el reporte de verificación contra el SRD 2.0 (27 confirmados, 11 no aparecen, 5 dudas).
 
 ## Seguridad
@@ -93,7 +94,8 @@ Corregidos y publicados: d4 con números al revés, tiradas de 2d12 que duraban 
 Quedan (para decidir o revisar):
 - [x] Cuando el DJ oculta una cuenta regresiva, a los jugadores no les llegaba el cambio hasta recargar. Arreglado (rama `arreglos/mesa-menores`, 15/11): contador `cuentas_revision` (migración 013); al subir, la app del jugador vuelve a leer las cuentas.
 - [x] Gastar Esperanza en una Experiencia se calculaba en el navegador y pisaba una ganancia simultánea. Arreglado (15/11): RPC `gastar_esperanza` (migración 013) que resta sobre lo que haya en el servidor.
-- [ ] Neri: ¿las cuentas «en bucle» se reinician solas al llegar a 0? El SRD 2.0 p. 91 dice que vuelven a su valor inicial después de dispararse; hoy el DJ usa ↺. Tampoco se automatiza «Esbirro (X)».
+- [x] Las cuentas «en bucle» se disparan y vuelven solas a su valor inicial (SRD 2.0 p. 91), con aviso «¡Se disparó!» al DJ (16/11).
+- [ ] «Esbirro (X)» no se automatiza: el DJ derriba a mano a los esbirros extra.
 - [x] Esperanza, Estrés y Miedo de la mesa cambian hasta que se detienen los dados (decisión de Neri, 16/11).
 - [x] Cerrar sesión cierra solo el dispositivo actual (decisión de Neri, 16/11).
 - [x] Celular horizontal (844×390): la tarjeta del PJ, el resultado y el lanzador se enciman. Resuelto en el rediseño (lanzador a la derecha).
@@ -111,7 +113,7 @@ Cuentas ocultas, Esperanza en el servidor, rasgos de armadura, cartas repetidas,
 - [x] Migración 013 aplicada en Supabase el 15/11 (Claude en el editor SQL, con el «sí» de Neri; texto idéntico al archivo, huella SHA-256 comprobada). Verificado con solo lectura: `gastar_esperanza` creada (`anon` no la ejecuta, `authenticated` sí); `cuentas_avisar` sin permiso para `authenticated`; `cuentas_revision` con RLS y una sola política (SELECT), en `supabase_realtime`, con su disparador; 5 personajes, igual que antes.
 - [x] Publicado en `main` el 15/11 (Neri: «Sí, publica»; avance rápido `c94dff3..6ff60dd`, despliegue en verde). Revisado con la cuenta del DJ en la app publicada: trae el código nuevo y arranca sin mensajes en la consola.
 - [ ] Probar con cuenta de jugador: que una cuenta oculta desaparezca sin recargar y que el error del tablero se vea (en demo solo se ve la vista del DJ). Neri lo probará en partida.
-- [ ] Para después: el fondo animado truena (`paisaje.js`, «canvas … width or height of 0») si la página carga con la ventana en tamaño 0 (pasó en el navegador integrado). No es de estos cambios.
+- [x] El fondo animado ya no truena si la página carga con la ventana en tamaño 0 (16/11).
 
 ## Rediseño «novela visual al atardecer» (rama `rediseno/impecable`, 15/11/2026)
 

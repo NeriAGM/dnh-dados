@@ -86,6 +86,25 @@ Reglas de estilo para traducir:
 | Distracted / Distract | Distraído / distraer |
 | temporary | temporal |
 
+## Descansos, muerte y subir de nivel
+
+Los que ya usa la app (SRD 2.0 p. 52–54).
+
+| Inglés | Español |
+|---|---|
+| downtime / Short Rest / Long Rest | descanso / descanso corto / descanso largo |
+| Tend to Wounds / Tend to All Wounds | Atender heridas / Atender todas las heridas |
+| Clear Stress / Clear All Stress | Limpiar Estrés / Limpiar todo el Estrés |
+| Repair Armor / Repair All Armor | Reparar armadura / Reparar toda la armadura |
+| Prepare | Prepararse |
+| Work on a Project | Trabajar en un proyecto |
+| death move | movimiento de muerte |
+| Blaze of Glory / Avoid Death / Risk It All | Llamarada de gloria / Evitar la muerte / Arriesgarlo todo |
+| scar | cicatriz |
+| level up / advancement | subir de nivel / mejora |
+| Tier Achievements | logros de rango |
+| multiclass | multiclase |
+
 ## Clases
 
 | Inglés | Español | Rasgos de clase | Rasgo de Esperanza |

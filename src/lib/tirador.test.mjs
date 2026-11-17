@@ -63,7 +63,23 @@ test('tirador (prueba): Ayudar a un Aliado cuenta solo el d6 de ventaja más alt
     assert.match(t.formula, propia ? /máx\(3d6\)/ : /máx\(2d6\)/)
   }
   assert.throws(() => tirarLocal({ tipo: 'reaccion', grupos: DUAL, ayudantes: ['a'] }), /solo va en tiradas de acción/)
-  assert.throws(() => tirarLocal({ tipo: 'accion', grupos: [...DUAL, { lados: 6, rol: 'desventaja', signo: -1 }], ayudantes: ['a'] }), /desventaja/)
+})
+
+test('tirador (prueba): la ayuda cancela la desventaja; si ayudan más, cuenta el d6 más alto de los demás', () => {
+  const CON_DESV = [{ lados: 12, rol: 'esperanza' }, { lados: 12, rol: 'miedo' }, { lados: 6, rol: 'desventaja', signo: -1 }]
+  const uno = tirarLocal({ tipo: 'accion', grupos: CON_DESV, ayudantes: ['a'] })
+  assert.equal(uno.dados.filter((d) => d.lados === 6).length, 0, 'ni desventaja ni ayuda')
+  assert.equal(uno.total, uno.dados[0].valor + uno.dados[1].valor)
+  assert.equal(uno.efectos.cancela_desventaja, 'a')
+  for (let i = 0; i < 100; i++) {
+    const dos = tirarLocal({ tipo: 'accion', grupos: CON_DESV, ayudantes: ['a', 'b', 'c'] })
+    const d6 = dos.dados.filter((d) => d.lados === 6)
+    assert.deepEqual(d6.map((d) => d.ayudante), ['b', 'c'], 'quien cancela no tira')
+    const cuenta = d6.find((d) => !d.descartado)
+    assert.equal(cuenta.valor, Math.max(...d6.map((d) => d.valor)))
+    assert.equal(dos.total, dos.dados[0].valor + dos.dados[1].valor + cuenta.valor)
+    assert.match(dos.formula, /máx\(2d6\)/)
+  }
 })
 
 test('tirador (prueba): daño crítico suma el máximo de los dados', () => {

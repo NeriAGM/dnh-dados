@@ -23,6 +23,7 @@ export function consecuencias(t, nombrePJ) {
   if (t.tipo === 'reaccion' && t.desenlace === 'critico') lista.push('Ignora los efectos')
   if (t.tipo === 'dj' && t.critico) lista.push('Acierta y hace daño crítico')
   if (t.efectos?.dano_critico_extra) lista.push(`+${t.efectos.dano_critico_extra} por crítico`)
+  if (t.efectos?.cancela_desventaja) lista.push('La ayuda canceló la desventaja')
   const ayudaron = t.efectos?.ayudantes?.length ?? 0
   if (ayudaron) lista.push(ayudaron === 1 ? 'Quien ayudó gastó 1 Esperanza' : `Los ${ayudaron} que ayudaron gastaron 1 Esperanza cada uno`)
   return lista
