@@ -197,13 +197,16 @@ export function avisos(hoja, cat) {
   if (dosManos && secundarias && ![hoja.clase, hoja.multiclase?.clase].includes('warrior')) {
     out.push({ campo: 'armas', texto: `«${dosManos.nombre}» es a dos manos: no puede ir junto con una secundaria activa. Guarda una.` })
   }
-  // Toda arma mágica requiere un rasgo de Lanzamiento (SRD 2.0 p. 56, «All magic weapons require a Spellcast trait»; la silla
-  // de ruedas arcana usa el de la subclase, p. 71). Solo avisa si se sabe la subclase y no hay multiclase ni subclase casera.
+  // Las armas que hacen daño mágico solo las usa quien tiene rasgo de Lanzamiento (SRD 2.0 p. 55; p. 56 en las tablas
+  // «Magic Weapons»; la silla de ruedas arcana usa el de la subclase, p. 71). Solo avisa si la subclase está en el catálogo
+  // (las caseras también, con su propio rasgo_lanzamiento; «Ninguno» = vacío) y no hay multiclase.
   const subclase = cat?.porId?.subclases?.[hoja.subclase]
-  if (subclase && subclase.fuente !== 'Casero' && !subclase.rasgo_lanzamiento && !hoja.multiclase) {
-    // Campo de arma mágica: dano.tipo === 'magico' (no hay otro campo en los datos)
-    for (const a of activas.filter((x) => x?.dano?.tipo === 'magico')) {
-      out.push({ campo: 'armas', texto: `«${a.nombre}» es un arma mágica y tu subclase no tiene rasgo de Lanzamiento: por regla no puedes usarla (SRD 2.0 p. 56).` })
+  if (subclase && !subclase.rasgo_lanzamiento && !hoja.multiclase) {
+    // Arma mágica: dano.tipo === 'magico', o `magica: true` (Hoja de sombras: «phy/mag», se guarda como físico). La hoja
+    // guarda una copia del arma sin ese campo, así que también se busca en el catálogo por id.
+    const magica = (x) => x?.dano?.tipo === 'magico' || x?.magica === true || cat?.porId?.armas?.[x?.id]?.magica === true
+    for (const a of activas.filter(magica)) {
+      out.push({ campo: 'armas', texto: `«${a.nombre}» es un arma mágica y tu subclase no tiene rasgo de Lanzamiento: por regla no puedes usarla (SRD 2.0 p. 55; p. 71 para la silla de ruedas arcana).` })
     }
   }
   return out

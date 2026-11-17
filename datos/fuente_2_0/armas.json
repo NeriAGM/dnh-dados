@@ -154,6 +154,7 @@
       "tipo": "fisico"
     },
     "manos": 1,
+    "magica": true,
     "rasgos": [
       {
         "nombre": "Otherworldly",
@@ -548,6 +549,7 @@
       "tipo": "fisico"
     },
     "manos": 1,
+    "magica": true,
     "rasgos": [
       {
         "nombre": "Otherworldly",
@@ -1075,6 +1077,7 @@
       "tipo": "fisico"
     },
     "manos": 1,
+    "magica": true,
     "rasgos": [
       {
         "nombre": "Otherworldly",
@@ -1607,6 +1610,7 @@
       "tipo": "fisico"
     },
     "manos": 1,
+    "magica": true,
     "rasgos": [
       {
         "nombre": "Otherworldly",

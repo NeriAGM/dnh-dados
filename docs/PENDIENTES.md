@@ -41,7 +41,8 @@
   - [x] Cosas del contenido nuevo que Neri decidió (17/11):
     - [x] «Beguiled» (Acechafauces, p. 122) pasa a «Embelesado» («Embeleso» la opción); «Enchanted» (Kelpie, p. 103) se queda «Hechizado» (Neri, 17/11);
     - [x] la Experiencia «Hunter» sale «Cazador» y «Cazadora» según la criatura: se queda así (Neri, 17/11);
-    - [x] la Silla de ruedas arcana ataca con el rasgo de Lanzamiento de la subclase; si la subclase no tiene (6 lo tienen en `null`), la hoja avisa para cada arma mágica activa, sin bloquear (SRD 2.0 p. 56 y 71). No avisa con multiclase, subclase casera ni subclase desconocida.
+    - [x] la Silla de ruedas arcana ataca con el rasgo de Lanzamiento de la subclase; si la subclase no tiene (6 lo tienen en `null`), la hoja avisa para cada arma mágica activa, sin bloquear (SRD 2.0 p. 56 y 71). También avisa por la Hoja de sombras (mágica aunque guarda daño físico) y por armas secundarias mágicas (SRD 2.0 p. 55). La subclase casera avisa según su propio rasgo de Lanzamiento («Ninguno» = sin rasgo). No avisa con multiclase ni con una subclase que no está en el catálogo.
+  - [ ] Neri: la Hoja fantasma (*Ghostblade*, SRD 1.0) quizá también es mágica, pero el SRD 1.0 no está en el RAG y no se pudo comprobar; no se tocó.
   - [ ] Las Transformaciones solo están en los datos: la hoja todavía no deja elegir una. Tampoco deja elegir dos ancestrías; la mixta se escribe en el texto libre.
   - [x] «Hallows Above» sale «Santuarios Superiores» en las ancestrías y los adversarios del 2.0, y «Santuarios de Arriba» en 4 entornos viejos. Neri lo deja así de momento (17/11).
 - [x] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla). Migración 003.

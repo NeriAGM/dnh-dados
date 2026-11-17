@@ -279,6 +279,33 @@ test('avisos: arma mágica sin rasgo de Lanzamiento en la subclase (SRD 2.0 p. 5
   assert.deepEqual(textos({ subclase: 'wizard', armas: [silla] }), [])
   assert.deepEqual(textos({ subclase: 'stalwart', armas: [espada] }), [])
   assert.deepEqual(textos({ subclase: 'stalwart', multiclase: { clase: 'wizard' }, armas: [silla] }), [])
-  assert.deepEqual(textos({ subclase: 'casera', armas: [silla] }), [])
+  assert.equal(textos({ subclase: 'casera', armas: [silla] }).length, 1) // la casera usa su propio rasgo_lanzamiento («Ninguno» = vacío)
   assert.deepEqual(textos({ subclase: null, armas: [silla] }), [])
+})
+
+test('avisos: arma mágica con los datos reales y con subclases caseras (SRD 2.0 p. 55)', () => {
+  const leer = (r) => JSON.parse(readFileSync(new URL(`../../datos/${r}.json`, import.meta.url), 'utf8'))
+  const armas = leer('es_2_0/armas')
+  const porId = { armas: Object.fromEntries(armas.map((a) => [a.id, a])), subclases: {
+    stalwart: { id: 'stalwart', fuente: 'SRD 1.0', rasgo_lanzamiento: null },
+    casera_ninguno: { id: 'casera_ninguno', fuente: 'Casero', rasgo_lanzamiento: '' },
+    casera_con: { id: 'casera_con', fuente: 'Casero', rasgo_lanzamiento: 'presencia' },
+  } }
+  const catR = { porId }
+  const copia = (id, extra = {}) => { const a = porId.armas[id]; return { id: a.id, nombre: a.nombre, tipo: a.tipo, dano: a.dano, rasgos: a.rasgos, activa: true, ...extra } }
+  const textos = (hoja) => avisos(hoja, catR).filter((a) => a.campo === 'armas').map((a) => a.texto)
+  // Hoja de sombras («phy/mag», p. 56): se guarda como física pero es mágica; la copia de la hoja no trae `magica`
+  assert.equal(copia('shadowblade').dano.tipo, 'fisico')
+  assert.equal(textos({ subclase: 'stalwart', armas: [copia('shadowblade')] }).length, 1)
+  assert.equal(textos({ subclase: 'stalwart', armas: [copia('legendary-shadowblade')] }).length, 1)
+  // dos armas mágicas activas: dos avisos (una primaria y una secundaria mágica)
+  const dos = textos({ subclase: 'stalwart', armas: [copia('brightsword'), copia('rune-shield')] })
+  assert.equal(dos.length, 2)
+  assert.match(dos[1], /«Escudo rúnico»/)
+  assert.match(dos[0], /SRD 2.0 p. 55/)
+  // subclase que no existe en el catálogo: no avisa
+  assert.deepEqual(textos({ subclase: 'no-existe', armas: [copia('shadowblade')] }), [])
+  // casera con «Ninguno» sí avisa; casera con Lanzamiento no
+  assert.equal(textos({ subclase: 'casera_ninguno', armas: [copia('shadowblade')] }).length, 1)
+  assert.deepEqual(textos({ subclase: 'casera_con', armas: [copia('shadowblade')] }), [])
 })

@@ -162,6 +162,7 @@
       "tipo": "fisico"
     },
     "manos": 1,
+    "magica": true,
     "rasgos": [
       {
         "nombre": "De otro mundo",
@@ -574,6 +575,7 @@
       "tipo": "fisico"
     },
     "manos": 1,
+    "magica": true,
     "rasgos": [
       {
         "nombre": "De otro mundo",
@@ -1125,6 +1127,7 @@
       "tipo": "fisico"
     },
     "manos": 1,
+    "magica": true,
     "rasgos": [
       {
         "nombre": "De otro mundo",
@@ -1681,6 +1684,7 @@
       "tipo": "fisico"
     },
     "manos": 1,
+    "magica": true,
     "rasgos": [
       {
         "nombre": "De otro mundo",
