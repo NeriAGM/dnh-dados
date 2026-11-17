@@ -131,7 +131,7 @@ Cada una tiene **dos rasgos** (features): uno "de arriba" (el primero) y uno "de
 | Ribbet | *Amphibious*: respira bajo el agua | *Long Tongue*: arma de Delicadeza a rango Cercano, d12 |
 | Simiah | *Natural Climber*: ventaja al trepar y mantener el equilibrio | *Nimble*: +1 permanente a Evasión |
 
-**Ancestría mixta (Mixed Ancestry):** se toma el **primer** rasgo de una ancestría y el **segundo** de otra. No se pueden tomar dos "primeros" ni dos "segundos". En Herencia (Heritage) se escribe el nombre que el jugador quiera, por ejemplo "goblin-orco". Aunque el linaje incluya más de dos ancestrías, solo se toman rasgos de dos.
+**Ancestría mixta (Mixed Ancestry)** — confirmada contra el SRD 2.0 p. 38: con tu DJ eliges dos rasgos de las ancestrías de tu linaje: el **primer** rasgo de una ancestría y el **segundo** de otra. No se pueden tomar dos "primeros" ni dos "segundos". Se anotan en una tarjeta junto a tus cartas o tu hoja. En Herencia (Heritage) se escribe cómo se identifica el personaje: un término híbrido ("goblin-orco"), solo la ancestría con la que más se identifica, o un nombre nuevo. Aunque el linaje incluya más de dos ancestrías, solo se toman rasgos de dos; las demás se reflejan en la apariencia o la historia. En la app, el nombre va en el texto libre de la ancestría.
 
 Para la app conviene guardar `ancestry_feature_top` y `ancestry_feature_bottom` como campos independientes.
 
