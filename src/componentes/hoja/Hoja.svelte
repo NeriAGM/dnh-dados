@@ -425,7 +425,8 @@
       {/if}
       {#each hoja.armas ?? [] as a, i}
         {@const bono = bonoAtaque(a)}
-        {@const mod = Number(hoja.rasgos?.[a.rasgo] ?? 0) + bono}
+        <!-- La silla de ruedas arcana usa el rasgo de Lanzamiento de la subclase (SRD 2.0 p. 71) -->
+        {@const mod = Number(hoja.rasgos?.[a.rasgo === 'lanzamiento' ? rasgoLanz : a.rasgo] ?? 0) + bono}
         {@const activa = a.activa !== false}
         <article class="arma" class:guardada={!activa}>
           <header>
