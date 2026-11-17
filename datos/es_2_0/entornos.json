@@ -297,7 +297,7 @@
         "pregunta": "¿Por qué estos piratas respetan a este capitán lo bastante para seguirlo? ¿Qué les importa más que el botín mal habido?"
       },
       {
-        "nombre": "\"¡Disparen los cañones!\"",
+        "nombre": "«¡Disparen los cañones!»",
         "clase": "accion",
         "texto": "Gasta hasta 3 Miedos para que el barco pirata dispare sus cañones contra el combate. Por cada Miedo gastado, elige un punto cualquiera del campo de batalla. Cada PJ dentro del alcance Cercano de uno o más de esos puntos debe hacer una tirada de reacción de Agilidad. Los objetivos que fallen reciben **1d8+3** de daño físico. Los objetivos que tengan éxito deben **marcar un Estrés** o recibir la mitad del daño. _¿Qué daños colaterales causan estas balas de cañón? ¿La vida de quiénes ponen en peligro sin ningún reparo?_",
         "pregunta": "¿Qué daños colaterales causan estas balas de cañón? ¿La vida de quiénes ponen en peligro sin ningún reparo?"
@@ -330,7 +330,7 @@
         "pregunta": "¿Qué tiene este lugar de tan relajante? ¿Te recuerda a algún sitio donde has estado antes?"
       },
       {
-        "nombre": "\"Nuestra historia hasta ahora…\"",
+        "nombre": "«Nuestra historia hasta ahora…»",
         "clase": "pasiva",
         "texto": "Una vez por escena, cuando un PJ relata un momento memorable de la campaña en conversación con otro PJ, ambos ganan una Esperanza. _¿Qué sonidos, olores o sensaciones te evoca el recuerdo? ¿Cómo te cambió para siempre ese momento, o cambió tu opinión de tu compañero?_",
         "pregunta": "¿Qué sonidos, olores o sensaciones te evoca el recuerdo? ¿Cómo te cambió para siempre ese momento, o cambió tu opinión de tu compañero?"
@@ -403,7 +403,7 @@
     "posibles_adversarios": "Cualquiera",
     "rasgos": [
       {
-        "nombre": "\"Exijo satisfacción.\"",
+        "nombre": "«Exijo satisfacción.»",
         "clase": "pasiva",
         "texto": "Cuando un adversario reta a un PJ a un combate uno contra uno, el PJ decide si acepta. Si rechaza el reto, debe **marcar un Estrés** y ganas un Miedo. Si un PJ acepta el reto de un adversario, activa una cuenta regresiva de progreso (6) y una cuenta regresiva de consecuencia (4). Si la cuenta regresiva de progreso se cumple primero, el PJ gana el Duelo y obtiene un favor o una concesión de su adversario. Si la cuenta regresiva de consecuencia se cumple primero, el adversario gana el Duelo y reclama un favor o una concesión del PJ. _¿Por qué se eligió a este PJ? ¿Qué espera ganar si resulta victorioso?_",
         "pregunta": "¿Por qué se eligió a este PJ? ¿Qué espera ganar si resulta victorioso?"
@@ -448,7 +448,7 @@
         "pregunta": "¿De qué llegan disfrazados los PJ? ¿Qué revelan sus disfraces sobre su verdadero yo?"
       },
       {
-        "nombre": "\"¿Me concede esta pieza?\"",
+        "nombre": "«¿Me concede esta pieza?»",
         "clase": "pasiva",
         "texto": "Mientras baila, un PJ puede hacer una tirada de Agilidad en lugar de una tirada de Presencia para influir en los demás. _¿Qué tienen de notable o singular los bailes que están de moda aquí? ¿Dónde aprendieron los PJ a bailarlos?_",
         "pregunta": "¿Qué tienen de notable o singular los bailes que están de moda aquí? ¿Dónde aprendieron los PJ a bailarlos?"
@@ -539,7 +539,7 @@
         "pregunta": "¿Qué pasó con las raciones? ¿Qué medidas drásticas toma la tripulación para no morir todos de hambre y sed?"
       },
       {
-        "nombre": "\"¡Piratas!\"",
+        "nombre": "«¡Piratas!»",
         "clase": "accion",
         "texto": "**Gasta un Miedo** para que un tripulante en el puesto de vigía avista velas negras en el horizonte. Inicia una cuenta regresiva de consecuencia (4). Si se cumple antes de que el grupo llegue a su destino, los piratas alcanzan el barco y lo abordan. Gana un Miedo, luego invoca un Capitán pirata y tres Hordas de Saqueadores piratas dentro del alcance Cercano del grupo. _¿Reconoce el capitán el barco que los persigue? ¿Por qué prácticas poco caballerosas son famosos los piratas de esta zona?_",
         "pregunta": "¿Reconoce el capitán el barco que los persigue? ¿Por qué prácticas poco caballerosas son famosos los piratas de esta zona?"
@@ -1133,7 +1133,7 @@
         "pregunta": "¿Quién dirige la fiscalía y cuál es su relación con el Consejo del Tiempo? ¿Qué magia o tecnología usa este tribunal para presentar y registrar las pruebas?"
       },
       {
-        "nombre": "\"¡Orden en la sala!\"",
+        "nombre": "«¡Orden en la sala!»",
         "clase": "reaccion",
         "texto": "Cuando los PJ intentan escapar o poner fin al juicio por la fuerza, invoca una cantidad de Ejecutores temporales igual al número de PJ en la escena dentro del alcance Cercano y dale el foco de inmediato a uno. _¿La autoridad de este tribunal merece respeto? ¿Qué, además del poder del Consejo del Tiempo y sus ejecutores, justifica su control sobre la línea temporal?_",
         "pregunta": "¿La autoridad de este tribunal merece respeto? ¿Qué, además del poder del Consejo del Tiempo y sus ejecutores, justifica su control sobre la línea temporal?"
