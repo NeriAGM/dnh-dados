@@ -1968,7 +1968,7 @@
   "nombre_en": "Swarm of Rats",
   "nivel": 1,
   "tipo": "horda",
-  "horda_por_pg": 1,
+  "horda_por_pg": 10,
   "descripcion": "Una masa correteante de roedores comunes que se mueve como una sola ola voraz.",
   "motivos": "Consumir, ocultar, pulular",
   "dificultad": 10,
@@ -6159,7 +6159,7 @@
  {
   "id": "outer-realms-corruptor",
   "nombre": "Corruptor de los Reinos Exteriores",
-  "nombre_en": "Outer Realms Corrupter",
+  "nombre_en": "Outer Realms Corruptor",
   "nivel": 4,
   "tipo": "apoyo",
   "horda_por_pg": null,
