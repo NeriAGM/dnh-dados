@@ -33,6 +33,9 @@
   const dominios = $derived((hoja.dominios?.length ? hoja.dominios : clase?.dominios ?? []).map((d) => cat?.porId?.dominios?.[d]).filter(Boolean))
   const u = $derived(umbrales(hoja))
   const listaAvisos = $derived(avisos(hoja, cat))
+  // Los de armas se ven siempre en su pestaña: cambiar de arma se hace jugando, sin «Editar»
+  const avisosArmas = $derived(listaAvisos.filter((a) => a.campo === 'armas'))
+  const avisosHoja = $derived(listaAvisos.filter((a) => a.campo !== 'armas'))
   const competencia = $derived(hoja.competencia ?? 1)
   const rasgoLanz = $derived(subclase?.rasgo_lanzamiento)
   // Monedas: regla opcional de la mesa. Si ya había monedas anotadas, se siguen viendo
@@ -276,9 +279,9 @@
     {/each}
   </nav>
 
-  {#if listaAvisos.length && editar}
+  {#if avisosHoja.length && editar}
     <ul class="avisos" aria-label="Avisos de reglas">
-      {#each listaAvisos as a}<li>{a.texto}</li>{/each}
+      {#each avisosHoja as a}<li>{a.texto}</li>{/each}
     </ul>
   {/if}
   {#if error}<p class="aviso-error cuerpo-aviso" role="alert">{error}</p>{/if}
@@ -415,19 +418,29 @@
 
     {:else if pestana === 'armas'}
       <p class="nota">Competencia {competencia}: tus armas tiran {competencia} {competencia === 1 ? 'dado' : 'dados'} de daño.</p>
+      {#if avisosArmas.length}
+        <ul class="avisos sin-margen" aria-label="Avisos de armas">
+          {#each avisosArmas as a}<li>{a.texto}</li>{/each}
+        </ul>
+      {/if}
       {#each hoja.armas ?? [] as a, i}
         {@const bono = bonoAtaque(a)}
         {@const mod = Number(hoja.rasgos?.[a.rasgo] ?? 0) + bono}
-        <article class="arma">
+        {@const activa = a.activa !== false}
+        <article class="arma" class:guardada={!activa}>
           <header>
             <strong>{a.nombre}</strong>
             <small>{[a.tipo === 'secundaria' ? 'Secundaria' : 'Primaria', ALCANCES[a.alcance] ?? a.alcance, NOMBRE_RASGO[a.rasgo] ?? a.rasgo, a.manos === 2 ? 'Dos manos' : 'Una mano', a.dano?.tipo === 'magico' ? 'mágico' : 'físico'].filter(Boolean).join(' · ')}</small>
           </header>
           {#each a.rasgos ?? [] as r}<p class="rasgo-arma"><b>{r.nombre}:</b> {r.texto}</p>{/each}
+          {#if !activa}<p class="nota">Guardada · sacarla en combate cuesta 1 Estrés</p>{/if}
           <div class="acciones">
-            <button class="boton" onclick={() => abrirTirada(`Ataque · ${a.nombre}`, mod)}>Atacar {conSigno(mod) || '+0'}</button>
-            <button class="boton" onclick={() => tirarDano(a)}>Daño {textoDano(a, competencia)}</button>
-            <button class="boton critico" onclick={() => tirarDano(a, true)} title="Daño crítico: suma el máximo de los dados">Crítico</button>
+            {#if activa}
+              <button class="boton" onclick={() => abrirTirada(`Ataque · ${a.nombre}`, mod)}>Atacar {conSigno(mod) || '+0'}</button>
+              <button class="boton" onclick={() => tirarDano(a)}>Daño {textoDano(a, competencia)}</button>
+              <button class="boton critico" onclick={() => tirarDano(a, true)} title="Daño crítico: suma el máximo de los dados">Crítico</button>
+            {/if}
+            {#if editable}<button class="boton chico" onclick={() => cambiar(['armas', i, 'activa'], !activa)}>{activa ? 'Al inventario' : 'Sacar'}</button>{/if}
             {#if editar}<button class="icono" onclick={() => quitarDe('armas', i)} aria-label="Quitar {a.nombre}"><Icono nombre="cerrar" tam={16} /></button>{/if}
           </div>
         </article>
@@ -771,6 +784,8 @@
   .arma strong { font-size: 1.1rem; font-weight: 900; }
   .arma small { color: var(--texto-suave); font-size: 0.85rem; }
   .rasgo-arma { margin: 0; font-size: 0.9rem; }
+  .arma.guardada { background: transparent; border-style: dashed; }
+  .avisos.sin-margen { margin: 0; }
   .acciones { display: flex; gap: 0.45rem; flex-wrap: wrap; align-items: center; }
   .critico { color: var(--critico-hondo); border-color: color-mix(in srgb, var(--critico) 60%, transparent); background: var(--critico-suave); }
   .cartas { display: grid; gap: 0.55rem; }

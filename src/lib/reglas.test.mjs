@@ -53,6 +53,34 @@ test('avisos: arreglo de rasgos, Evasión, cartas', () => {
   assert.doesNotMatch(t, /«Carta A»/)
 })
 
+test('avisos: armas activas y guardadas (SRD p. 55)', () => {
+  const arma = (tipo, activa) => ({ nombre: `${tipo} ${activa}`, tipo, ...(activa === undefined ? {} : { activa }) })
+  const textos = (armas) => avisos({ armas }, cat).filter((a) => a.campo === 'armas').map((a) => a.texto)
+  // Una primaria y una secundaria activas, dos guardadas: todo en regla
+  assert.deepEqual(textos([arma('primaria', true), arma('secundaria'), arma('primaria', false), arma('secundaria', false)]), [])
+  // Hojas viejas sin «activa» cuentan como activas
+  assert.match(textos([arma('primaria'), arma('primaria')]).join(), /2 armas primarias activas/)
+  assert.match(textos([arma('secundaria', true), arma('secundaria')]).join(), /2 armas secundarias activas/)
+  assert.match(textos([arma('primaria', false), arma('primaria', false), arma('secundaria', false)]).join(), /3 armas guardadas/)
+  // Sin tipo cuenta como primaria (así la muestra la hoja)
+  assert.equal(textos([{ nombre: 'X' }, arma('primaria')]).length, 1)
+})
+
+test('avisos: arma a dos manos con secundaria activa (carga máxima 2 manos)', () => {
+  const mandoble = { nombre: 'Mandoble', tipo: 'primaria', manos: 2 }
+  const daga = { nombre: 'Daga', tipo: 'secundaria', manos: 1 }
+  const textos = (hoja) => avisos(hoja, cat).filter((a) => a.campo === 'armas').map((a) => a.texto)
+  assert.match(textos({ armas: [mandoble, daga] }).join(), /«Mandoble» es a dos manos/)
+  // Importadas: «manos» como texto
+  assert.equal(textos({ armas: [{ ...mandoble, manos: '2' }, daga] }).length, 1)
+  // Guardada cualquiera de las dos: en regla
+  assert.deepEqual(textos({ armas: [{ ...mandoble, activa: false }, daga] }), [])
+  assert.deepEqual(textos({ armas: [mandoble, { ...daga, activa: false }] }), [])
+  // El Guerrero ignora la carga (Entrenamiento de combate)
+  assert.deepEqual(textos({ clase: 'warrior', armas: [mandoble, daga] }), [])
+  assert.deepEqual(textos({ multiclase: { clase: 'warrior' }, armas: [mandoble, daga] }), [])
+})
+
 import { puntosDeBatalla } from './reglas.js'
 
 test('puntos de batalla: ejemplo del SRD con 4 PJ', () => {
