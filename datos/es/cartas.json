@@ -1047,7 +1047,7 @@
   "nivel": 10,
   "recuerdo": 0,
   "tipo": "habilidad",
-  "texto": "La gente sabe quién eres y lo que has hecho, y por eso te trata diferente. Cuando aprovechas tu fama para conseguir lo que quieres, puedes **marcar un Estrés** antes de tirar para obtener un bono de +10 al resultado. Tu comida y bebida siempre son gratis adondequiera que vayas, y todo lo demás que compres baja de precio una bolsa de oro (hasta un mínimo de un puñado).\n\nEsta carta no cuenta para el máximo de 5 cartas de dominio de tu mano y no puede ponerse en tu bóveda."
+  "texto": "La gente sabe quién eres y lo que has hecho, y por eso te trata diferente. Cuando aprovechas tu fama para conseguir lo que quieres, puedes **marcar un Estrés** antes de tirar para obtener un bono de +10 al resultado. Tu comida y bebida siempre son gratis adondequiera que vayas, y todo lo demás que compres baja de precio una bolsa de oro (hasta un mínimo de un puñado)."
  },
  {
   "id": "pick-and-pull",
