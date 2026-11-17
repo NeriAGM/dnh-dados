@@ -16,7 +16,10 @@
 - [ ] **Mira / Soladius:** el ataque del compañero dice alcance Cercano; el del compañero base es Cuerpo a cuerpo. Tiene 3 Experiencias. Sin verificar contra la hoja del compañero (era una imagen).
 - [ ] Vocabulario: la carta física de Mira dice «Maniobras ágiles»; la app dice «Maniobras hábiles». ¿Cuál dejamos? Es *Deft Maneuvers* (Hueso, nivel 1, SRD 2.0 p. 209).
 - [ ] **Valerius:** tiene tres +1 en rasgos.
-- [ ] **Valerius:** el Artificiero es homebrew; decidir sus números finales para capturarlo.
+- [x] **Valerius:** Artificiero rediseñado y capturado en Contenido casero el 16/11 (clase, subclases Artillero y Armero, Pistola rúnica rangos 1–4). El diseño vive en un documento privado, no en el repo.
+- [x] **Valerius:** en nivel 2 tomó +1 Evasión (lo confirmó Neri el 16/11): base 10 + 1 en «extra» = Evasión 11.
+- [x] **Valerius:** se borraron de su hoja los 5 rasgos caseros de la versión vieja (16/11, con el «sí» de Neri). Siguen en su página de Notion.
+- [ ] **Valerius:** la pistola está en su hoja junto al estoque y el látigo; por regla, el estoque va guardado (sacarlo en combate cuesta 1 Estrés). Con «Al inventario» ya se puede marcar: falta hacerlo en su hoja.
 
 ## Fases siguientes
 
@@ -99,7 +102,7 @@ Quedan (para decidir o revisar):
 - [x] El daño del compañero tira tantos dados como tu Competencia (SRD 2.0 p. 22).
 - [x] La lista de cartas al agregar ya no muestra las que tienes en la mano o la bóveda (15/11).
 - [x] Hoja a 1440 con compañero: «Notas» cabía con 0 px de sobra y con la letra M PLUS se cortaba. Ahora sobran 32–61 px según la letra (15/11). En celular las pestañas se siguen deslizando de lado, como antes.
-- [x] Armas activas y guardadas (16/11, rama `claude/xenodochial-gagarin-376571`, sin publicar): botón «Al inventario» / «Sacar» por arma; las guardadas no tiran y dicen «Guardada · sacarla en combate cuesta 1 Estrés». Avisa sin bloquear si hay más de 1 primaria o 1 secundaria activa, o más de 2 guardadas (SRD p. 55); el Estrés no se marca solo. También avisa si un arma a dos manos va junto con una secundaria activa (carga máxima 2 manos), salvo al Guerrero, que ignora la carga (también en multiclase, por si tomó «Entrenamiento de combate»).
+- [x] Armas activas y guardadas (16/11): botón «Al inventario» / «Sacar» por arma; las guardadas no tiran y dicen «Guardada · sacarla en combate cuesta 1 Estrés». Avisa sin bloquear si hay más de 1 primaria o 1 secundaria activa, o más de 2 guardadas (SRD p. 55); el Estrés no se marca solo. También avisa si un arma a dos manos va junto con una secundaria activa (carga máxima 2 manos), salvo al Guerrero, que ignora la carga (también en multiclase, por si tomó «Entrenamiento de combate»).
 
 ## Arreglos menores de la mesa (rama `arreglos/mesa-menores`, 15/11/2026)
 
