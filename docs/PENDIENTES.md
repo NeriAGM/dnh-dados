@@ -30,8 +30,13 @@
 - [ ] Asignar cada personaje importado a su jugador (Ajustes → Personajes).
 - [x] Verificar el contenido del SRD 2.0 contra el PDF oficial (16/11, rama `datos/verificar-srd2`): 816 entradas revisadas, 12 datos corregidos y las 16 cuentas regresivas en español. Detalle en `docs/verificacion-srd2-datos.md`.
   - [x] Publicada en `main` (`45ffe62`, 16/11, con el «sí» de Neri), después de una revisión independiente que encontró y arregló la Horda del Enjambre de ratas (10/PG).
-  - [ ] Neri: decidir las 9 dudas del reporte (9 armas que ya no están en el 2.0, nombres Hedge/Moon de la Bruja, daño «phy/mag» del Espadachín arcano, ataque +2d4 de la Abominación, Dificultad «Especial» de Emboscados/Emboscadores, sugerencias de creación de las clases 1.0, contenido nuevo, la etiqueta «SRD 1.0» y si es «Corruptor» o «Corrupter»).
-  - [ ] Agregar el contenido nuevo del SRD 2.0 (*Hope & Fear*): 135 adversarios, 28 entornos, unas 130 armas, 35 armaduras, 60 objetos, 60 consumibles, 6 Transformaciones y la regla de ancestría mixta. Necesita los nombres en español de Neri.
+  - [x] Neri decidió las 9 dudas del reporte (16/11). Cambios en la rama `datos/decisiones-srd2`:
+    - las 9 armas que el 2.0 quitó se quedan, marcadas «Solo SRD 1.0»;
+    - la Abominación tira d20 + 2d4;
+    - Emboscados y Emboscadores tienen Dificultad «Especial».
+
+    Lo demás se queda como está. Detalle en el reporte.
+  - [ ] Agregar el contenido nuevo del SRD 2.0 (*Hope & Fear*): 135 adversarios, 28 entornos, unas 130 armas, 35 armaduras, 60 objetos, 60 consumibles, 6 Transformaciones y la regla de ancestría mixta. Neri pidió agregarlo todo (16/11), en su propio chat (`contenido-srd2`), que propone primero los nombres en español.
 - [x] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla). Migración 003.
 - [x] Nombres traducidos del bestiario: Neri los aprueba de momento (16/11). Para cambiar uno: decirle a Claude "X cámbialo por Y".
 - [x] Escena: los jugadores ven nombre, tipo y estado de los enemigos del encuentro activo; ojo para ocultar. Migración 005.

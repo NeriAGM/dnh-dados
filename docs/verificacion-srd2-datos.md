@@ -85,32 +85,44 @@ Cada una se aplicó al español (`datos/es`) y al inglés de referencia (`datos/
 Para las cuentas regresivas se usaron las palabras que ya usa la app en `docs/reglas/reglas-3-combate.md`
 («en bucle», «decreciente», «de largo plazo»). Si Neri prefiere otras, se cambian en un solo lugar.
 
-## Dudas para Neri
+## Dudas para Neri (decididas el 16/11/2026)
 
 1. **Nueve armas de rango 3 ya no existen en el SRD 2.0** (tabla de armas mágicas, p. 62–63):
    Axe of Fortunis, Blessed Anlace, Ghostblade, Runes of Ruination, Widogast Pendant, Gilded Bow, Firestaff,
    Mage Orb e Ilmari's Rifle. En su lugar el 2.0 trae otras (Rocket Maul, Crystal Spear, Arc Wand, Rime Scepter,
    Gunblade, Staff of Augma). No se borraron: si alguna hoja las usa, se rompería. ¿Las quitamos, las dejamos
    marcadas como «SRD 1.0» o las dejamos igual?
+   **Neri: «Déjalas y márcalas».** Se quedan, con `"solo_srd_1": true`. El catálogo de «Agregar arma» les pone
+   «Solo SRD 1.0».
 2. **Subclases de la Bruja.** En el SRD 2.0 se llaman **Hedge** y **Moon**, no «Hedge Witch» y «Moon Witch»
    (p. 29–30). En la app son «Bruja de Seto» y «Bruja de la Luna». ¿Se quedan así o se cambian?
+   **Neri: se quedan en español como están.**
 3. **Espadachín arcano (Spellblade).** Su ataque hace daño «phy/mag», físico y mágico a la vez (p. 110). La app
    solo puede guardar un tipo, así que muestra «fís.». El rasgo «Acero arcano» ya lo explica en el texto.
    ¿Basta así o quieres que la app acepte los dos tipos?
+   **Neri: se queda así.**
 4. **Abominación de los Reinos Exteriores.** Su modificador de ataque es **+2d4** (p. 153). La app guarda
    un número y tira con +2. Su rasgo «Forma caótica» ya dice que se tiran 2d4. ¿Basta así o se cambia la app
    para que tire el 2d4?
+   **Neri: se cambia la app.** El ataque guarda `"mod": 0` y `"mod_dados": { "dados": 2, "lados": 4 }`; el botón
+   dice «Atacar +2d4» y tira d20 + 2d4, también en el servidor (sin cambiar Supabase).
 5. **Emboscados y Emboscadores (Ambushed, Ambushers).** Su Dificultad es «Especial (ver "Fuerza relativa")»
    (p. 161). La app muestra «—». ¿Lo dejamos o ponemos el texto?
+   **Neri: se pone el texto.** Ahora dice «Dificultad Especial (ver «Fuerza relativa»)».
 6. **Sugerencias de creación en las 9 clases del 1.0.** La app trae rasgos, armas y armadura sugeridos
    (`sugerido`). El SRD 2.0 ya no los trae en ninguna clase. No se quitaron. ¿Se quedan?
+   **Neri: se quedan.**
 7. **Contenido nuevo del SRD 2.0** (anexo). ¿Quieres que se agregue? Hace falta que decidas los nombres
    en español, o que apruebes una propuesta de nombres. Es un trabajo grande, mejor en su propio chat.
+   **Neri: se agrega todo, en otro chat.** Ese chat propone primero los nombres en español.
 8. **Etiqueta «SRD 1.0» en la app.** `src/lib/srd.js` marca todo `datos/es` como «SRD 1.0». Con estas
    correcciones ya coincide con el 2.0. Es solo una etiqueta (no se muestra en casi ningún lado); no se tocó.
+   **Neri: si no es importante que se vea, se queda.** Se queda: la app la oculta a propósito y solo muestra
+   las otras fuentes. Si dijera «SRD 2.0», todas las clases y cartas mostrarían «· SRD 2.0».
 9. **Outer Realms Corruptor o Corrupter.** El PDF usa las dos formas: la ficha y su rasgo dicen «Corrupter»
    (p. 153), y la lista de adversarios y otros textos dicen «Corruptor». Como es ambiguo, no se cambió.
    El nombre en español («Corruptor de los Reinos Exteriores») sirve para los dos.
+   **Neri: se queda «Corruptor».**
 
 ### Notas menores de la traducción (no se cambiaron)
 
