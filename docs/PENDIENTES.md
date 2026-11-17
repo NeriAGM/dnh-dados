@@ -36,7 +36,10 @@
     - Emboscados y Emboscadores tienen Dificultad «Especial».
 
     Lo demás se queda como está. Detalle en el reporte.
-  - [ ] Agregar el contenido nuevo del SRD 2.0 (*Hope & Fear*): 135 adversarios, 28 entornos, unas 130 armas, 35 armaduras, 60 objetos, 60 consumibles, 6 Transformaciones y la regla de ancestría mixta. Neri pidió agregarlo todo (16/11), en su propio chat (`contenido-srd2`), que propone primero los nombres en español.
+  - [x] Agregar el contenido nuevo del SRD 2.0 (*Hope & Fear*), 17/11, rama `datos/contenido-srd2` (encima de `datos/decisiones-srd2`, sin publicar): 135 adversarios, 28 entornos, 132 armas (incluye las 12 sillas de ruedas de combate), 35 armaduras, 60 objetos, 60 consumibles y 6 Transformaciones, en `datos/es_2_0` y `datos/fuente_2_0`. Cada entrada cita su página y sale con la etiqueta «SRD 2.0». Nombres en español aprobados por Neri (16/11). La ancestría mixta quedó confirmada contra la p. 38 en `docs/reglas/reglas-2-personajes.md`. Revisión independiente: los números coinciden con el PDF y se corrigieron 6 frases del español.
+  - [ ] Neri: dudas de traducción del contenido nuevo. El SRD dice «Storm Giant» en la Megatormenta, pero la criatura de la app es el Titán de la tormenta; «Ignited» y «Ablaze» quedaron los dos como «en llamas»; unos 600 nombres de rasgos, ataques y Experiencias, y condiciones nuevas (Envenenado, Agarrado, Tembloroso…), los tradujeron agentes y no los has visto. Para cambiar uno: «X cámbialo por Y».
+  - [ ] Las Transformaciones solo están en los datos: la hoja todavía no deja elegir una. Tampoco deja elegir dos ancestrías; la mixta se escribe en el texto libre.
+  - [ ] «Hallows Above» sale «Santuarios Superiores» en las ancestrías y los adversarios del 2.0, y «Santuarios de Arriba» en 4 entornos viejos. Falta elegir uno.
 - [x] Fase 4: panel del DJ (adversarios, entornos, cuentas regresivas, puntos de batalla). Migración 003.
 - [x] Nombres traducidos del bestiario: Neri los aprueba de momento (16/11). Para cambiar uno: decirle a Claude "X cámbialo por Y".
 - [x] Escena: los jugadores ven nombre, tipo y estado de los enemigos del encuentro activo; ojo para ocultar. Migración 005.
