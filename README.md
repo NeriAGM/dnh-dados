@@ -50,6 +50,14 @@ Cada vez que se sube algo a `main`, GitHub Actions corre las pruebas, construye 
 
 ## Licencia de Daggerheart
 
-This product includes materials from the Daggerheart System Reference Document 1.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com. There are no previous modifications by others.
+Daggerheart™ Compatible.
+
+This product includes materials from the Daggerheart System Reference Document 2.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com/srd/. There are no previous modifications by others.
+
+This product includes materials from the Daggerheart System Reference Document 1.0, © Critical Role, LLC. under the terms of the Darrington Press Community Gaming (DPCGL) License. More information can be found at https://www.daggerheart.com/srd/. There are no previous modifications by others.
+
+Licencia: https://darringtonpress.com/license/
+
+Modificaciones: el contenido de los dos documentos se tradujo al español y se adaptó a una mesa digital. La app en línea muestra este aviso en «Acerca de» (pantalla de entrada y Ajustes). El SRD 2.0 aporta, además del contenido que ya traía el 1.0, lo nuevo de *Hope & Fear*, que en la app lleva la etiqueta «SRD 2.0».
 
 Uso privado de la mesa; no es un producto oficial de Darrington Press.

@@ -6,6 +6,7 @@
   import Fondos from './Fondos.svelte'
   import Icono from './Icono.svelte'
   import Invitar from './Invitar.svelte'
+  import AcercaDe from './AcercaDe.svelte'
   import { fondos } from '../lib/fondos.svelte.js'
   import { esPueblo, MOMENTOS as MOMENTOS_FONDO } from '../lib/fondo/ajustes.js'
 
@@ -13,6 +14,7 @@
   let claseNueva = $state('')
   let verCasero = $state(false)
   let verFondos = $state(false)
+  let verAcerca = $state(false)
   const imagenesEnTablero = $derived(Object.values(fondos.config.tablero).filter((id) => !esPueblo(id)).length)
 
   const MOMENTOS = [{ id: 'auto', nombre: 'Según la hora', icono: 'reloj' }, ...MOMENTOS_FONDO]
@@ -177,6 +179,14 @@
         <button class="boton" onclick={() => { onCerrar(); salirDemo() }}><Icono nombre="salir" tam={18} />Salir del modo prueba</button>
       </section>
     {/if}
+
+    <section class="grupo">
+      <button class="fila-accion" onclick={() => (verAcerca = true)}>
+        <Icono nombre="info" tam={20} />
+        <span class="txt"><b>Acerca de</b><small>Licencia y créditos de Daggerheart</small></span>
+        <Icono nombre="derecha" tam={18} />
+      </button>
+    </section>
   </div>
 </section>
 {/if}
@@ -209,6 +219,8 @@
 {#if verCasero}
   <Casero {cat} onCerrar={() => (verCasero = false)} />
 {/if}
+
+{#if verAcerca}<AcercaDe onCerrar={() => (verAcerca = false)} />{/if}
 
 <style>
   .velo-aj { z-index: 5; }

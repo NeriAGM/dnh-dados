@@ -10,6 +10,7 @@
     tiradas: '<path d="M9 6.5h11M9 12h11M9 17.5h7"/><circle cx="4.75" cy="6.5" r=".9"/><circle cx="4.75" cy="12" r=".9"/><circle cx="4.75" cy="17.5" r=".9"/>',
     ajustes: '<path d="M4 7h9M18 7h2M4 17h3M12 17h8"/><circle cx="15.5" cy="7" r="2.5"/><circle cx="9.5" cy="17" r="2.5"/>',
     cerrar: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
+    info: '<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="7.9" r=".9"/>',
     mas: '<path d="M12 5.5v13M5.5 12h13"/>',
     menos: '<path d="M5.5 12h13"/>',
     arriba: '<path d="M6.5 14.5 12 9l5.5 5.5"/>',

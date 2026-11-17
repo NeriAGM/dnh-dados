@@ -1,11 +1,13 @@
 <script>
   import { supabase } from '../lib/supabase.js'
   import { app, entrarDemo } from '../lib/mesa.svelte.js'
+  import AcercaDe from './AcercaDe.svelte'
 
   let correo = $state('')
   let enviando = $state(false)
   let aviso = $state('')
   let error = $state('')
+  let verAcerca = $state(false)
 
   const regreso = () => location.origin + location.pathname
 
@@ -53,7 +55,10 @@
 
     <button class="boton fantasma" onclick={entrarDemo}>Probar los dados sin cuenta</button>
   </div>
+  <button class="acerca sobre-fondo" onclick={() => (verAcerca = true)}>Acerca de · licencia</button>
 </section>
+
+{#if verAcerca}<AcercaDe onCerrar={() => (verAcerca = false)} />{/if}
 
 <style>
   .entrada {
@@ -101,6 +106,8 @@
   }
   .o::before, .o::after { content: ''; flex: 1; height: 1px; background: var(--filete); }
   .tarjeta > .fantasma { border-color: var(--filete-fuerte); min-height: 2.75rem; }
+  .acerca { background: none; border: 0; padding: 0.4rem 0.6rem; min-height: 2.5rem; font-size: 0.85rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; opacity: 0.85; }
+  .acerca:hover { opacity: 1; }
   form { display: grid; gap: 0.45rem; }
   form .boton { margin-top: 0.3rem; }
   .aviso { margin: 0; padding: 0.6rem 0.8rem; border-radius: var(--radio-control); background: var(--exito-suave); color: var(--exito-hondo); font-size: 0.92rem; font-weight: 700; }
