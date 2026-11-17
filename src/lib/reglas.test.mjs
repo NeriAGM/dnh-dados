@@ -189,7 +189,7 @@ test('bono de ataque: solo cuenta lo incondicional del arma (SRD 2.0 p. 64 y 68)
   assert.equal(bonoAtaque(armas.find((a) => a.id === 'infinite-staff')), 0)
   // Todas las «Fiable» siguen dando +1
   const fiables = armas.filter((a) => a.rasgos.some((r) => r.nombre === 'Fiable'))
-  assert.ok(fiables.length >= 11)
+  assert.equal(fiables.length, 13)
   for (const a of fiables) assert.equal(bonoAtaque(a), 1, a.id)
   // Martillo de hojalatero: no se da a sí mismo; da +1 a la primaria activa solo si él está activo
   const martillo = armas.find((a) => a.id === 'tinkers-hammer')
@@ -198,4 +198,23 @@ test('bono de ataque: solo cuenta lo incondicional del arma (SRD 2.0 p. 64 y 68)
   assert.equal(bonoAtaque(espada, [espada, martillo]), 1)
   assert.equal(bonoAtaque(espada, [espada, { ...martillo, activa: false }]), 0)
   assert.equal(bonoAtaque({ ...espada, activa: false }, [{ ...espada, activa: false }, martillo]), 0)
+})
+
+test('bono de ataque en armas caseras o importadas (texto libre)', () => {
+  const con = (texto) => ({ tipo: 'primaria', rasgos: [{ nombre: 'X', texto }] })
+  // cuentan: el bono fijo, con algo antes o con algo que no lo condiciona después
+  assert.equal(bonoAtaque(con('+1 a las tiradas de ataque y de daño')), 1)
+  assert.equal(bonoAtaque(con('Fiable: +1 a las tiradas de ataque')), 1)
+  assert.equal(bonoAtaque(con('−1 a las tiradas de ataque')), -1)
+  // no cuentan: lo condiciona lo que sigue
+  for (const t of ['-1 a las tiradas de ataque por cada paso que aumentes el alcance', '+1 a las tiradas de ataque contra criaturas Vulnerables',
+    '+1 a las tiradas de ataque cuando estés oculto', '+1 a las tiradas de ataque si tienes ventaja', '+1 a las tiradas de ataque mientras vuele',
+    '+1 a las tiradas de ataque hasta tu siguiente descanso', 'Cuando estés oculto, +1 a las tiradas de ataque']) assert.equal(bonoAtaque(con(t)), 0, t)
+})
+
+test('datos 2.0: «N de Miedo», nunca «N Miedo» ni «N Miedos»', () => {
+  for (const f of ['adversarios', 'entornos']) {
+    const texto = readFileSync(new URL(`../../datos/es_2_0/${f}.json`, import.meta.url), 'utf8')
+    assert.deepEqual(texto.match(/\b\d*d?\d+\*{0,2} Miedos?\b/g) ?? [], [], f)
+  }
 })

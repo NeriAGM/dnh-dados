@@ -103,26 +103,35 @@ export function pgPorDano(dano, u, { masivo = false } = {}) {
   return 1
 }
 
-// Bono a la tirada de ataque de un arma.
-// Solo cuenta lo incondicional del arma misma: el texto es solo «+1 a las tiradas de ataque» (Fiable). Un bono con
-// condición («…por cada paso que aumentes el alcance», Bastón infinito, SRD 2.0 p. 64) no es fijo.
-// «+N a las tiradas de ataque hechas con tu arma primaria» (Martillo de hojalatero, p. 68) lo recibe la primaria
-// activa cuando ese arma está activa como secundaria; el martillo no se lo da a sí mismo. `armas` = hoja.armas.
-const SOLO_BONO = /^\s*([+-]\d+)\s+a\s+las?\s+tiradas?\s+de\s+ataque\s*\.?\s*$/i
-const BONO_A_PRIMARIA = /^\s*([+-]\d+)\s+a\s+las?\s+tiradas?\s+de\s+ataque\s+hechas?\s+con\s+tu\s+arma\s+primaria\s*\.?\s*$/i
-export function bonoAtaque(arma, armas = []) {
+// Bono a la tirada de ataque de un arma. Solo con armas activas: el SRD 2.0 p. 55 dice que se ganan los rasgos de
+// lo que se tiene equipado («gain features from items they have equipped»).
+// Cuenta el bono fijo «±N a las tiradas de ataque», aunque lleve algo antes («Fiable: ») o algo que no lo condicione
+// después («… y de daño»). No lo cuenta si lo condiciona: «por cada paso…» (Bastón infinito, SRD 2.0 p. 64), «contra…»,
+// «cuando…», «si…», «mientras…», «hasta…». «… hechas con tu arma primaria» (Martillo de hojalatero, p. 68) lo recibe
+// la primaria activa cuando ese arma está activa como secundaria; el martillo no se lo da a sí mismo. `armas` = hoja.armas.
+const BONO = /([+\-−]\d+)\s+a\s+las?\s+tiradas?\s+de\s+ataque/gi
+const CONDICION_ANTES = /\b(cuando|si|mientras|contra|hasta)\b/i
+const CONDICION_DESPUES = /^[\s,;:.]*(por\s+cada|contra|cuando|si|mientras|hasta)\b/i
+const A_PRIMARIA = /^\s+hechas?\s+con\s+tu\s+arma\s+primaria/i
+function bonos(arma, paraPrimaria) {
   let b = 0
   for (const r of arma?.rasgos || []) {
-    const m = SOLO_BONO.exec(r.texto || '')
-    if (m) b += parseInt(m[1], 10)
+    const t = r.texto || ''
+    for (const m of t.matchAll(BONO)) {
+      const despues = t.slice(m.index + m[0].length)
+      const primaria = A_PRIMARIA.test(despues)
+      if (primaria !== paraPrimaria) continue
+      if (!primaria && (CONDICION_DESPUES.test(despues) || CONDICION_ANTES.test(t.slice(0, m.index)))) continue
+      b += parseInt(m[1].replace('−', '-'), 10)
+    }
   }
+  return b
+}
+export function bonoAtaque(arma, armas = []) {
+  let b = bonos(arma, false)
   if (arma?.tipo !== 'secundaria' && arma?.activa !== false) {
     for (const o of armas) {
-      if (o === arma || o?.tipo !== 'secundaria' || o?.activa === false) continue
-      for (const r of o.rasgos || []) {
-        const m = BONO_A_PRIMARIA.exec(r.texto || '')
-        if (m) b += parseInt(m[1], 10)
-      }
+      if (o !== arma && o?.tipo === 'secundaria' && o?.activa !== false) b += bonos(o, true)
     }
   }
   return b
