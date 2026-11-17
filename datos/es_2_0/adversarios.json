@@ -325,7 +325,7 @@
       {
         "nombre": "Más rápida de lo que parece",
         "clase": "accion",
-        "texto": "**Gasta un Miedo** para moverte hasta el alcance Lejano y hacer un ataque estándar con ventaja."
+        "texto": "**Gasta un Miedo** para que la Reina se mueva hasta el alcance Lejano y haga un ataque estándar con ventaja."
       },
       {
         "nombre": "Envenenamiento de colmillo oscuro",
@@ -870,7 +870,7 @@
       {
         "nombre": "Doble zarpazo",
         "clase": "accion",
-        "texto": "**Gasta un Miedo** para moverte hasta el alcance Cercano y hacer dos ataques estándar contra un objetivo dentro del alcance Cuerpo a cuerpo. Si ambos ataques tienen éxito, suma el daño y el objetivo pierde una Esperanza."
+        "texto": "**Gasta un Miedo** para que el Trol se mueva hasta el alcance Cercano y haga dos ataques estándar contra un objetivo dentro del alcance Cuerpo a cuerpo. Si ambos ataques tienen éxito, suma el daño y el objetivo pierde una Esperanza."
       }
     ],
     "fuente": "SRD 2.0 p. 105",
@@ -1071,7 +1071,7 @@
       {
         "nombre": "Espectro",
         "clase": "pasiva",
-        "texto": "El Poltergeist tiene resistencia al daño físico. **Marca un Estrés** para moverte hasta el alcance Cercano a través de objetos sólidos."
+        "texto": "El Poltergeist tiene resistencia al daño físico. **Marca un Estrés** para que el Poltergeist se mueva hasta el alcance Cercano a través de objetos sólidos."
       },
       {
         "nombre": "Poseedor",
@@ -4393,7 +4393,7 @@
         "texto": "El Lepus puede recibir el foco hasta tres veces por turno del DJ. Gasta Miedo como de costumbre para darle el foco."
       },
       {
-        "nombre": "\"Aaaay...\"",
+        "nombre": "«Aaaay...»",
         "clase": "pasiva",
         "texto": "Cuando el Lepus aparece por primera vez, está Demasiado tierno. Para atacar a una criatura Demasiado tierna, un PJ debe tener éxito en una tirada de reacción de Instinto (20). Quita la condición Demasiado tierno si un PJ le hace daño al Lepus o si el Lepus ataca a un PJ."
       },
@@ -4413,7 +4413,7 @@
         "texto": "Cuando el Lepus fuera a recibir daño, tira un d6. Con un 4 o más, reduce el daño a la mitad. Si el daño ya se había reducido a la mitad, el Lepus no recibe daño."
       },
       {
-        "nombre": "\"¡Huye!\"",
+        "nombre": "«¡Huye!»",
         "clase": "reaccion",
         "texto": "Cuando un PJ sin Esperanza toma el foco dentro del alcance Muy lejano del Lepus, el PJ debe tener éxito en una tirada de reacción de Presencia o usar su acción para huir del campo de batalla hasta que gaste una Esperanza para volver."
       }
@@ -4524,7 +4524,7 @@
         "texto": "El Sirénido tiene +2 de bonificación a las tiradas de ataque contra objetivos dentro del alcance Cuerpo a cuerpo de uno o más aliados."
       },
       {
-        "nombre": "\"¡Ven acá!\"",
+        "nombre": "«¡Ven acá!»",
         "clase": "reaccion",
         "texto": "Cuando el Sirénido hace un ataque estándar exitoso contra un objetivo más allá del alcance Cuerpo a cuerpo, puedes **marcar un Estrés** para jalarlo al alcance Cuerpo a cuerpo. Si lo haces, puedes **gastar un Miedo** para hacer un ataque estándar con ventaja contra el objetivo."
       }
@@ -5869,7 +5869,7 @@
       {
         "nombre": "Ala Infernal",
         "clase": "evolucion",
-        "texto": "Cuando el Señor vampiro marca la mitad de sus PG, se transforma en el Ala Infernal: una criatura demoníaca, imponente, mitad murciélago. Obtiene los rasgos \"En alas carmesí\" y \"Baño de sangre\" y sustituye su ataque estándar por el siguiente ataque estándar: Garras: Cercano | 3d12+6 fís"
+        "texto": "Cuando el Señor vampiro marca la mitad de sus PG, se transforma en el Ala Infernal: un murciélago demoníaco e imponente. Obtiene los rasgos \"En alas carmesí\" y \"Baño de sangre\" y sustituye su ataque estándar por el siguiente ataque estándar: Garras: Cercano | 3d12+6 fís"
       },
       {
         "nombre": "En alas carmesí",
@@ -7224,7 +7224,7 @@
       {
         "nombre": "Ariete",
         "clase": "reaccion",
-        "texto": "Cuando un PJ falla una tirada de acción dentro del alcance Cercano, puedes **gastar un Miedo** para moverte al alcance Cuerpo a cuerpo del PJ y hacer un ataque estándar con ventaja contra él. Si tiene éxito, el PJ recibe daño estándar y queda _Vulnerable_ hasta que reciba el foco."
+        "texto": "Cuando un PJ falla una tirada de acción dentro del alcance Cercano, puedes **gastar un Miedo** para que el Heraldo se mueva al alcance Cuerpo a cuerpo del PJ y haga un ataque estándar con ventaja contra él. Si tiene éxito, el PJ recibe daño estándar y queda _Vulnerable_ hasta que reciba el foco."
       }
     ],
     "fuente": "SRD 2.0 p. 152",
@@ -7750,7 +7750,7 @@
       {
         "nombre": "Derrape de poder",
         "clase": "accion",
-        "texto": "**Marca un Estrés** para moverte hasta el alcance Cercano. Cada PJ por el que Xero pase debe tener éxito en una tirada de reacción de Fuerza o elegir entre marcar 2 casillas de Armadura o recibir daño Grave."
+        "texto": "**Marca un Estrés** para que Xero se mueva hasta el alcance Cercano. Cada PJ por el que Xero pase debe tener éxito en una tirada de reacción de Fuerza o elegir entre marcar 2 casillas de Armadura o recibir daño Grave."
       },
       {
         "nombre": "Aliento radiactivo",
