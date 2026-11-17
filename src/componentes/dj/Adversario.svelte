@@ -15,11 +15,12 @@
   let dano = $state('')
   let aviso = $state('')
   let tAviso = 0
-  const CLASE = { accion: 'Acción', reaccion: 'Reacción', pasiva: 'Pasiva' }
+  const CLASE = { accion: 'Acción', reaccion: 'Reacción', pasiva: 'Pasiva', evolucion: 'Evolución' } // Evolución: SRD 2.0 p. 105
 
   // Una Horda a la mitad de sus PG o más pega con el daño de su rasgo «Horda (…)»
   const d = $derived(danoActual(adv, instancia))
-  const textoDano = $derived(d.lados ? `${d.dados || 1}d${d.lados}${d.mod ? (d.mod > 0 ? `+${d.mod}` : d.mod) : ''}` : `${d.mod ?? 0}`)
+  const textoDano = $derived((d.lados ? `${d.dados || 1}d${d.lados}${d.mod ? (d.mod > 0 ? `+${d.mod}` : d.mod) : ''}` : `${d.mod ?? 0}`)
+    + (adv?.ataque?.dano?.directo ? ' directo' : ''))  // daño directo: no se reduce con Armadura (Ejecutor temporal, SRD 2.0 p. 155)
   const caido = $derived(instancia && adv && (instancia.pg ?? 0) >= (adv.pg ?? 1))
   const oculto = $derived(!!instancia?.oculto)
 
