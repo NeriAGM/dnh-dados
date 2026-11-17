@@ -1,0 +1,158 @@
+[
+  {
+    "id": "demigod",
+    "nombre": "Semidiós",
+    "nombre_en": "Demigod",
+    "descripcion": "Los semidioses son criaturas mortales cuyas venas llevan la sangre de los dioses. Por lo general obtienen su poder de un linaje divino, de una hazaña increíble o de un regalo de un dios. Muchos semidioses lucen como un miembro típico de su ancestría mortal, pero todos poseen una luminosidad sutil y un destello en la mirada. También se sabe que tienen la piel nacarada o metálica, y pueden crecer de tamaño o adquirir rasgos físicos relacionados con su poder cuando este se revela. Como comparten la sangre de una Divinidad Tenue, un Dios Olvidado, un Dios Nuevo o cualquier otra deidad, no hay dos semidioses que se vean iguales.\n\nLos semidioses reciben un fragmento de poder divino, pero no todo lo que heredan es una bendición. Aunque suelen destacar en las tareas para las que están hechos, las expectativas que pesan sobre ellos suelen ser difíciles y costosas de cumplir.",
+    "rasgos": [
+      {
+        "nombre": "Dotado",
+        "texto": "Obtienes un bono de +1 a las tiradas de acción, de reacción y de daño."
+      },
+      {
+        "nombre": "Peso de la divinidad",
+        "texto": "Cuando falles una tirada, debes marcar un Estrés o el DJ gana un Miedo."
+      }
+    ],
+    "preguntas": [
+      "Tu divinidad ha afectado un aspecto de tu apariencia. ¿En qué te ves diferente de los demás?",
+      "¿Quién te otorgó la condición de semidiós y qué prueba superaste para merecer este don?",
+      "De niño se burlaban de ti por tu linaje divino. ¿Por qué?",
+      "¿Por qué te ocultaron durante muchos años que eres un semidiós? ¿Quién guardó este secreto?",
+      "Tienes una obligación que debes cumplir por la sangre inmortal que corre por tus venas. ¿Cuál es ese deber?",
+      "¿De qué manera se manifestó por primera vez tu divinidad? ¿Por qué te sorprendió?"
+    ],
+    "fuente": "SRD 2.0 p. 43",
+    "verificado": true
+  },
+  {
+    "id": "ghost",
+    "nombre": "Fantasma",
+    "nombre_en": "Ghost",
+    "descripcion": "Los fantasmas son los espíritus de quienes alguna vez vivieron y quedaron atados al Reino Mortal. Pueden ser invocados tras cruzar el velo de la muerte mediante ritos nigrománticos, experimentos alquímicos o la desesperación de un ser querido; o puede que nunca hayan cruzado el velo. Quienes tuvieron un final horrible, murieron a manos de un arma maldita o murieron en un lugar de poder pueden haber quedado atrapados en el Reino Mortal en lugar de seguir adelante.\n\nComo ocupan el espacio entre la vida y la muerte, un fantasma puede alternar entre lo físico y lo espectral y, a veces, atravesar objetos sólidos. Mientras algunos fantasmas son casi indistinguibles de los vivos, otros emanan auras espectrales, se ven con los colores desvaídos o muestran señales físicas de la causa de su muerte. Cuando un fantasma se vuelve incorpóreo —lo cual puede ocurrir a voluntad, por emociones intensas o aparentemente al azar—, puede verse semitranslúcido, como un aliento de niebla que el viento podría disipar.\n\nAlgunos fantasmas regresan por venganza, otros para salvar a un ser querido y otros para cumplir una meta o descubrir un conocimiento oculto. Su empeño en lograr esa meta es la fuerza que les permite existir en el Reino Mortal. Cuando la cumplen, su labor termina y cruzan de inmediato el velo de la muerte.",
+    "rasgos": [
+      {
+        "nombre": "Asuntos pendientes",
+        "texto": "Acuerda con tu DJ qué propósito o deseo te mantiene atado al Reino Mortal. Cuando lo cumplas, cruzas el velo de la muerte."
+      },
+      {
+        "nombre": "Efímero",
+        "texto": "Tu cuerpo oscila entre ser corpóreo y no serlo. Tienes resistencia al daño físico, recibes el doble de daño mágico y puedes marcar 2 Estrés para atravesar un objeto sólido por un instante."
+      }
+    ],
+    "preguntas": [
+      "¿Cómo moriste y qué miedo te dejó tu muerte?",
+      "¿Qué te trajo de vuelta desde más allá del velo de la muerte?",
+      "En vida amaste profundamente a alguien. ¿Por qué necesitas encontrarlo de nuevo?",
+      "¿Qué debes lograr ahora que has regresado al Reino Mortal? ¿Cómo cumplirás tu meta?",
+      "¿Quién te hizo daño en tu primera vida? ¿Cómo piensas lidiar con esa persona ahora que has regresado?",
+      "Tuviste que sacrificar algo muy querido para volver al Reino Mortal. ¿Qué entregaste y a quién se lo diste?"
+    ],
+    "fuente": "SRD 2.0 p. 43",
+    "verificado": true
+  },
+  {
+    "id": "reanimated",
+    "nombre": "Reanimado",
+    "nombre_en": "Reanimated",
+    "descripcion": "Los reanimados son cadáveres que han vuelto a la vida. Ya sea por un hechizo, un ritual sagrado, la experimentación arcana u otros métodos antinaturales, estos mortales han regresado de más allá del velo de la muerte como no muertos y están atados a sus cuerpos en descomposición. Los recién reanimados suelen parecerse a un miembro típico de su ancestría, pero con el tiempo deben remendar y reparar su cuerpo con huesos, carne y otros materiales obtenidos de los recién fallecidos. Mientras algunos reparan sus heridas y su descomposición con aguja, hilo y hierbas, otros usan magia para incorporar estos materiales a sí mismos.\n\nMuchas historias sobre los reanimados cuentan que poseen mayor resistencia o, en algunos casos, inmunidad al dolor. Esto puede ser cierto para algunos reanimados, pero muchos sufren una agonía prolongada, ya sea por los ecos físicos de su propia muerte, la incomodidad de mover un cuerpo en descomposición, la dificultad para controlar sus partes ensambladas o la angustia mental de ser arrastrados por la fuerza de la muerte a una segunda vida.",
+    "rasgos": [
+      {
+        "nombre": "Cadáver",
+        "texto": "Durante un descanso, puedes limpiar Puntos de Golpe solo si tienes acceso a restos de una criatura recién fallecida. Describe cómo usas estos materiales para mantener tu cadáver."
+      },
+      {
+        "nombre": "Se niega a morir",
+        "texto": "Cuando elijas el movimiento de muerte Arriesgarlo todo y falles, puedes marcar un Punto de Golpe de forma permanente para tener éxito en su lugar. Cuando lo hagas, aun así usas el valor del Dado de Esperanza para limpiar Puntos de Golpe y Estrés. Cuando marques de forma permanente tu último Punto de Golpe, cruzas el velo de la muerte."
+      }
+    ],
+    "preguntas": [
+      "¿Cómo moriste la primera vez y cómo ha afectado esa muerte tu visión de la vida?",
+      "Un fragmento de memoria de tu primera vida te persigue. ¿Cuál es ese recuerdo y por qué crees que es importante?",
+      "Tenías un sueño para tu vida que ahora crees que nunca podrás alcanzar. ¿Cuál era tu sueño y por qué crees que estar reanimado hace imposible cumplirlo?",
+      "¿Cómo te devolvieron de entre los muertos y cómo cambió el proceso tu cuerpo?",
+      "Alguien te trajo de vuelta de la muerte. ¿Quién fue y qué sientes por esa persona y por lo que te hizo?",
+      "En el breve tiempo que cruzaste el velo de la muerte, viste algo que te cambió para siempre. ¿Qué fue?"
+    ],
+    "fuente": "SRD 2.0 p. 44",
+    "verificado": true
+  },
+  {
+    "id": "shapeshifter",
+    "nombre": "Cambiaformas",
+    "nombre_en": "Shapeshifter",
+    "descripcion": "Los cambiaformas son criaturas que pueden cambiar su forma física. Ya sea que nacieran con esta habilidad, la obtuvieran por un arte mágico o una maldición, o recibieran este poder de una entidad de otro mundo, los cambiaformas tienen una relación única con su identidad. Como pueden transformarse en cualquier ancestría —un momento viviendo como una hada pequeña y ágil y al siguiente como una galapa grande y resistente—, sus experiencias con el mundo exterior pueden variar enormemente de un día a otro.\n\nAunque un cambiaformas suele ser indistinguible de otro miembro de la ancestría en la que se transforma, cada uno tiene una característica que no cambia sin importar su forma, como sus ojos, su coloración o una marca de nacimiento única. Tampoco pueden imitar la apariencia de una persona específica, ya que se convierten en una versión distinta de sí mismos en un cuerpo nuevo.\n\nAdoptar una nueva forma tampoco les permite tener o usar de inmediato todas las características de esa forma: deben concentrar sus esfuerzos en las características físicas que más desean usar. Los cambiaformas pueden necesitar tiempo para aprender a habitar una forma nueva, lo que a veces da una apariencia o un comportamiento inquietante hasta que se acostumbran a su cuerpo.",
+    "rasgos": [
+      {
+        "nombre": "Cambiar de forma",
+        "texto": "Durante un descanso, puedes usar una acción de tiempo de descanso para cambiar tu ancestría actual por otra. Cuando lo hagas, describe cómo cambia tu apariencia."
+      },
+      {
+        "nombre": "A flor de piel",
+        "texto": "Obtienes el beneficio de solo uno de los rasgos de la ancestría que elijas, el cual seleccionas al elegir la ancestría. Puedes usar una acción de tiempo de descanso para elegir un rasgo distinto de esa ancestría."
+      }
+    ],
+    "preguntas": [
+      "Crees que tienes una «forma verdadera», pero no la has visto. ¿Qué crees que es y cómo sabes que está ahí?",
+      "¿Qué truco has desarrollado para identificar a otros cambiaformas?",
+      "Alguien a quien amabas profundamente te abandonó cuando descubrió tu capacidad de cambiar de forma. ¿Quién fue y qué pasó?",
+      "¿Cuál es una forma que has jurado no adoptar nunca y por qué?",
+      "¿Con qué ancestría vives más que con las demás? ¿Por qué pasas tanto tiempo en esta forma?",
+      "Alguien que conoces puede reconocerte al instante, sin importar tu forma. ¿Cómo afirma identificarte y qué significa para ti que te conozca así?"
+    ],
+    "fuente": "SRD 2.0 p. 44",
+    "verificado": true
+  },
+  {
+    "id": "vampire",
+    "nombre": "Vampiro",
+    "nombre_en": "Vampire",
+    "descripcion": "Los vampiros son criaturas no muertas de colmillos afilados que se alimentan de la sangre de los vivos. No nacen, sino que son creados: engendrados por otro vampiro mediante una mordida y un intercambio de sangre, transformados por un ritual oculto o cambiados por otros métodos misteriosos. Como quienes se vuelven vampiros mueren y regresan como entidades sobrenaturales, deben consumir la sangre —la esencia de la vida— de otros para sobrevivir.\n\nA primera vista, muchos vampiros son indistinguibles de los miembros típicos de su ancestría. Además de sus colmillos delatores, su vampirismo puede afectarlos de innumerables maneras sutiles o evidentes, mostrando rasgos como piel cetrina, venas visibles, ojos que brillan en la oscuridad o, en algunos casos, una belleza realzada. Según la naturaleza de su origen vampírico, es posible que dejen de envejecer en el momento de su transformación y se mantengan vigorosos y poderosos mucho después de que sus contemporáneos hayan sucumbido a los estragos del tiempo. Sin importar su apariencia, todos los vampiros poseen habilidades mejoradas que pueden significar un final aterrador para sus objetivos.",
+    "rasgos": [
+      {
+        "nombre": "Colmillos",
+        "texto": "Haz un ataque con un rasgo de tu elección para morder a un objetivo dentro del alcance Cuerpo a cuerpo. Si tienes éxito, infliges d6 de daño físico usando tu Competencia."
+      },
+      {
+        "nombre": "Alimentarse",
+        "texto": "Tras un ataque exitoso con «Colmillos» contra una criatura que pueda sangrar, puedes marcar un Estrés para alimentarte. Coloca en esta carta una cantidad de fichas igual al número de Puntos de Golpe que marque el objetivo. Puedes tener hasta 6 fichas a la vez. Antes de hacer una tirada de acción, puedes gastar una ficha para que tu Dado de Miedo sea un d20. Cuando tomes un descanso largo, quita una ficha. Mientras no haya fichas en esta carta, haces las tiradas de acción y de reacción con desventaja."
+      }
+    ],
+    "preguntas": [
+      "¿A quién tuviste que dejar atrás cuando te volviste vampiro y por qué fue tan difícil soltarlo?",
+      "Una vez mataste a un inocente por su sangre. ¿Qué característica suya notas más en los demás?",
+      "¿Ante qué te hace especialmente vulnerable tu vampirismo?",
+      "¿A quién pudiste salvar usando tu poder vampírico? ¿Qué pasó y qué siente esa persona por ti ahora?",
+      "¿Cómo te cambia tu hambre de sangre?",
+      "El vampiro que te engendró aún tiene poder sobre ti. ¿Cómo se llama y qué quiere que hagas por él?"
+    ],
+    "fuente": "SRD 2.0 p. 45",
+    "verificado": true
+  },
+  {
+    "id": "werewolf",
+    "nombre": "Hombre lobo",
+    "nombre_en": "Werewolf",
+    "descripcion": "Los hombres lobo son criaturas que se transforman en grandes lobos sobrenaturales. Mientras algunos nacen hombres lobo, otros sufren esta transformación por una maldición, por el contagio de la mordida de otro hombre lobo o por otra causa antinatural. Los hombres lobo lucen como miembros típicos de su ancestría hasta que se transforman, y entonces se convierten en un lobo colosal de otro mundo. Algunos incluso pueden adoptar una forma que es una mezcla de su ancestría y su forma de lobo. Las historias cuentan que los hombres lobo se transforman con las fases de la luna, aunque la experiencia de cada individuo con este cambio varía según la causa de su transformación.\n\nLos hombres lobo suelen tener dificultades para controlar su instinto de caza y su violencia mientras están en su forma de lobo, y deben tener una inmensa autodisciplina, usar mucha energía o recurrir a huir o encerrarse para no dañar a sus seres queridos. Cuanta más experiencia tiene un hombre lobo con su condición, más probable es que haya desarrollado métodos para controlarse.",
+    "rasgos": [
+      {
+        "nombre": "Forma de lobo",
+        "texto": "Cuando marques 1 o más Puntos de Golpe, puedes marcar un Estrés para entrar en tu Forma de lobo. Mientras estés en esta forma, obtienes un bono de 1d10 a las tiradas de ataque y de daño. Cuando hagas una tirada con Esperanza estando en Forma de lobo, debes marcar un Estrés. Tu Forma de lobo dura hasta que entres en tu «Frenesí aullante» o tomes un descanso."
+      },
+      {
+        "nombre": "Frenesí aullante",
+        "texto": "Cuando marques tu último Estrés estando en Forma de lobo, entras en un frenesí. Tira una cantidad de d20 igual a tu rango e inflige esa cantidad de daño físico a todas las criaturas dentro del alcance Muy cercano; después, sales de la Forma de lobo."
+      }
+    ],
+    "preguntas": [
+      "Alguien te está cazando. ¿Quién es y por qué quiere verte muerto?",
+      "¿A qué le temías antes de volverte hombre lobo y cómo ha cambiado ese miedo tu nuevo poder?",
+      "Escuchas a tu forma de lobo en tu cabeza como si fuera otra entidad. ¿Qué mentira te dice sobre ti mismo y por qué empiezas a creerla?",
+      "¿Qué te llevó a matar a alguien a quien amas durante tu frenesí?",
+      "¿Quién te maldijo para convertirte en hombre lobo?",
+      "Una vez te pidieron con insistencia que te unieras a una manada de otros hombres lobo. ¿Cómo respondiste?"
+    ],
+    "fuente": "SRD 2.0 p. 45",
+    "verificado": true
+  }
+]
