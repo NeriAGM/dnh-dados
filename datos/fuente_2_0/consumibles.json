@@ -1,0 +1,482 @@
+[
+  {
+    "id": "warding-candle",
+    "nombre": "Warding Candle",
+    "texto": "You can light this candle to fill an area within Close range with a halo of light. A creature outside the halo can't enter it if they have ill intent toward a creature within it. The candle burns for an hour.",
+    "tirada": 1,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "iridian-dust",
+    "nombre": "Iridian Dust",
+    "texto": "This multicolored powder sticks to everything and prevents creatures covered in it from becoming Hidden.",
+    "tirada": 2,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "verglasian-seed",
+    "nombre": "Verglasian Seed",
+    "texto": "You can use this ice shard to instantly freeze an area of water up to Close range.",
+    "tirada": 3,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "cupbearers-bezoar",
+    "nombre": "Cupbearer's Bezoar",
+    "texto": "You can swallow this bezoar to become immune to poisons until your next long rest.",
+    "tirada": 4,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "mossmantle-potion",
+    "nombre": "Mossmantle Potion",
+    "texto": "You can drink this tea to perfectly blend into natural environments until your next rest.",
+    "tirada": 5,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "lyrebird-lozenge",
+    "nombre": "Lyrebird Lozenge",
+    "texto": "You can dissolve this lozenge in your mouth to perfectly mimic any voice you've heard until the end of the scene.",
+    "tirada": 6,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "vial-of-featherfall",
+    "nombre": "Vial of Featherfall",
+    "texto": "You can drink this potion to ignore damage from falling for the next 10 minutes.",
+    "tirada": 7,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "chimeric-saliva",
+    "nombre": "Chimeric Saliva",
+    "texto": "You can apply this saliva to a weapon that deals physical damage to change its damage type to magic until your next rest.",
+    "tirada": 8,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "packet-of-space-dust",
+    "nombre": "Packet of Space Dust",
+    "texto": "This dust causes anything it covers to become lighter than air. One packet contains enough dust to cover the contents of a picnic basket, and the effects last for an hour.",
+    "tirada": 9,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "pipeweed",
+    "nombre": "Pipeweed",
+    "texto": "When you choose the Clear Stress downtime move during a short rest, you can smoke this non-intoxicating leaf to clear an additional Stress. Any other PCs who chose the Clear Stress downtime move also gain this benefit.",
+    "tirada": 10,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "deathseers-powder",
+    "nombre": "Deathseer's Powder",
+    "texto": "You can sprinkle this powder over a recently deceased corpse to conjure a spectral reprise of their final minute of life.",
+    "tirada": 11,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "slayers-salt",
+    "nombre": "Slayer's Salt",
+    "texto": "You can spread this salt in a line along windowsills or thresholds to create a magical barrier that undead creatures can't cross until the line is broken.",
+    "tirada": 12,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "yakamel-milk",
+    "nombre": "Yakamel Milk",
+    "texto": "After consuming this milk, the next time you clear 1 or more Hit Points, you clear an additional Hit Point.",
+    "tirada": 13,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "glowmoss-mushroom",
+    "nombre": "Glowmoss Mushroom",
+    "texto": "You can break this mushroom into pieces, causing it to glow bright blue until your next long rest.",
+    "tirada": 14,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "red-ooze-oil",
+    "nombre": "Red Ooze Oil",
+    "texto": "You can coat your weapon in this oil. The next successful attack you make with this weapon deals an extra 1d8 magic damage and temporarily Ignites the target. While Ignited, the target takes 1d4 magic damage when they take the spotlight.",
+    "tirada": 15,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "instant-camp",
+    "nombre": "Instant Camp",
+    "texto": "You can unfold this small mechanical box into a camping tent large enough to safely house six people. The tent collapses at the end of your next long rest.",
+    "tirada": 16,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "bundle-of-spiderlegs",
+    "nombre": "Bundle of Spiderlegs",
+    "texto": "You can eat these spiderlegs to walk on walls until your next rest.",
+    "tirada": 17,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "ciscan-fog-bottle",
+    "nombre": "Ciscan Fog Bottle",
+    "texto": "You can break this jar to fill the area within Close range with magical mist. A creature who enters the mist clears a Stress and becomes Hidden.",
+    "tirada": 18,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "snapthorn-seed",
+    "nombre": "Snapthorn Seed",
+    "texto": "You can throw this seed at a point you can see. It explodes into a tangle of binding vines that temporarily Restrains all creatures within Close range of that point.",
+    "tirada": 19,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "sprite-bottle",
+    "nombre": "Sprite Bottle",
+    "texto": "When you mark your last Hit Point, this bottle shatters to release the Sprite inside. The Sprite clears all your Hit Points before fading from the Mortal Realm.",
+    "tirada": 20,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "gravity-bomb",
+    "nombre": "Gravity Bomb",
+    "texto": "You can throw this peach-sized mechanical orb at a point within Far range. It implodes and pulls all creatures and objects within Close range of that point into Melee range with it.",
+    "tirada": 21,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "gossip-flower",
+    "nombre": "Gossip Flower",
+    "texto": "You can plant this seed in soil. It instantly grows into a small flower that records everything it hears for up to one week. When plucked, the flower recites what it recorded in real time, then withers.",
+    "tirada": 22,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "displacement-token",
+    "nombre": "Displacement Token",
+    "texto": "You can swallow this token to conjure two illusions of yourself that you can control. Each illusion lasts until it takes damage or until your next rest.",
+    "tirada": 23,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "night-hags-dust",
+    "nombre": "Night Hag's Dust",
+    "texto": "You can blow this dust in an adversary's face to prevent them from clearing Stress until your next long rest.",
+    "tirada": 24,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "self-sewing-thread",
+    "nombre": "Self-Sewing Thread",
+    "texto": "You can use this thread to clear either a Hit Point or 2 Armor Slots.",
+    "tirada": 25,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "stonemasons-fortune",
+    "nombre": "Stonemason's Fortune",
+    "texto": "When you throw this gray brick on the ground, it immediately grows into a 6-foot-tall, 10-foot-wide, and 2-foot-deep wall of solid stone.",
+    "tirada": 26,
+    "fuente": "SRD 2.0 p. 82",
+    "verificado": true
+  },
+  {
+    "id": "mnemonic-potion",
+    "nombre": "Mnemonic Potion",
+    "texto": "You can drink this potion to Utilize an Experience without spending a Hope.",
+    "tirada": 27,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "salamander-salve",
+    "nombre": "Salamander Salve",
+    "texto": "You can apply this salve to your skin to make yourself immune to heat until your next rest.",
+    "tirada": 28,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "green-ooze-oil",
+    "nombre": "Green Ooze Oil",
+    "texto": "You can coat your weapon in this oil. The next successful attack you make with this weapon deals an extra 1d8 magic damage and temporarily Corrodes the target. While Corroded, the target gains a -2 penalty to their damage thresholds.",
+    "tirada": 29,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "sunlight-orb",
+    "nombre": "Sunlight Orb",
+    "texto": "You can shatter this orb to make the area within Very Far range appear as though it's sunlit daytime for the next 24 hours.",
+    "tirada": 30,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "moonlight-orb",
+    "nombre": "Moonlight Orb",
+    "texto": "You can shatter this orb to make the area within Very Far range appear as though it's moonlit nighttime for the next 24 hours.",
+    "tirada": 31,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "midas-flask",
+    "nombre": "Midas Flask",
+    "texto": "You can pour this small flask of alchemical liquid over a mundane item to instantly transmute it into a handful of gold.",
+    "tirada": 32,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "staff-of-reversal",
+    "nombre": "Staff of Reversal",
+    "texto": "You can break this staff against the ground to reverse one magical transformation or effect within Far range.",
+    "tirada": 33,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "berserkers-brew",
+    "nombre": "Berserker's Brew",
+    "texto": "When you drink this dram of liquid, you gain a bonus to your Strength and a penalty to your Finesse and Knowledge equal to your Instinct (minimum 1). This effect lasts until you make a death move or until your next rest.",
+    "tirada": 34,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "emberite-shard",
+    "nombre": "Emberite Shard",
+    "texto": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and become temporarily Ablaze. While Ablaze, a creature must roll a d4 whenever they make an action roll. On a result of 1, they mark a Hit Point. On a result of 4, they clear the Ablaze condition.",
+    "tirada": 35,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "arcticite-shard",
+    "nombre": "Arcticite Shard",
+    "texto": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and become temporarily Restrained by ice.",
+    "tirada": 36,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "fulgurite-shard",
+    "nombre": "Fulgurite Shard",
+    "texto": "Choose a point within Far range. All targets within Close range of that point must succeed on a Reaction Roll (16) or take 3d6 magic damage and mark 1d4 Stress as lightning crackles through the area.",
+    "tirada": 37,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "demiurges-draught",
+    "nombre": "Demiurge's Draught",
+    "texto": "You can drink this draught to gain a +1 bonus to your Proficiency for your next successful attack roll.",
+    "tirada": 38,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "cockerel-claw-tea",
+    "nombre": "Cockerel Claw Tea",
+    "texto": "You can drink this tea to refresh your features as if you had taken a long rest.",
+    "tirada": 39,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "potion-of-vigilance",
+    "nombre": "Potion of Vigilance",
+    "texto": "You can drink this potion to gain a +1 bonus to your Evasion until you mark a Hit Point.",
+    "tirada": 40,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "cacophonous-concoction",
+    "nombre": "Cacophonous Concoction",
+    "texto": "When you drink this potion, anything you say or do in the next hour becomes impossible for a witness to recount. Any attempts they make to communicate what they saw, heard, or otherwise sensed comes out garbled or nonsensical.",
+    "tirada": 41,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "nightmare-mead",
+    "nombre": "Nightmare Mead",
+    "texto": "You can drink this potion to discover the deepest fear of the next person you make eye contact with. When you do, the GM gains a Fear.",
+    "tirada": 42,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "stake-of-abjuration",
+    "nombre": "Stake of Abjuration",
+    "texto": "You can hammer this stake into the ground and make a proclamation. Until your next rest, a creature within Far range of the stake who transgresses that proclamation must mark a Stress. The stake lasts until your next rest, then it shatters.",
+    "tirada": 43,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "psychopomps-shroud",
+    "nombre": "Psychopomp's Shroud",
+    "texto": "You can place this shroud over the corpse of a recently deceased creature. The creature's spirit enters the shroud and becomes your spectral assistant until the next sunrise, when they pass through the veil of death and take the shroud with them.",
+    "tirada": 44,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "phial-of-deep-ink",
+    "nombre": "Phial of Deep Ink",
+    "texto": "You can drink this bottle of ink to transform into a cephalopod of roughly your size for the next hour. You gain rubbery skin, soft bones, the ability to breathe underwater, and new limbs until you have eight total.",
+    "tirada": 45,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "mesmers-tonic",
+    "nombre": "Mesmer's Tonic",
+    "texto": "When you drink this tonic, the only thing you can hear until your next rest are the surface thoughts of creatures within Very Close range.",
+    "tirada": 46,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "invisibility-potion",
+    "nombre": "Invisibility Potion",
+    "texto": "You are Hidden until you deal damage to another creature or until your next rest.",
+    "tirada": 47,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "formoid-serum",
+    "nombre": "Formoid Serum",
+    "texto": "You can drink this potion to become a swarm of 16 million ants until the end of the scene. You keep and have access to all equipment, loot, and features.",
+    "tirada": 48,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "steelskin-salve",
+    "nombre": "Steelskin Salve",
+    "texto": "You can apply this salve to your skin to gain a bonus to your damage thresholds equal to your tier until the end of the scene.",
+    "tirada": 49,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "godlings-pomelo",
+    "nombre": "Godling's Pomelo",
+    "texto": "You can eat this citrus fruit to clear all Hit Points and Stress.",
+    "tirada": 50,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "snakeskin-spirit",
+    "nombre": "Snakeskin Spirit",
+    "texto": "You can drink this potion to slough off your outer layer of skin and heal a scar.",
+    "tirada": 51,
+    "fuente": "SRD 2.0 p. 83",
+    "verificado": true
+  },
+  {
+    "id": "magic-users-malison",
+    "nombre": "Magic-User's Malison",
+    "texto": "When you release this spellcaster's trapped soul, you can cast one spell from a card in your vault as if it were in your loadout. This doesn't work for permanently vaulted cards.",
+    "tirada": 52,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "quintessential-severant",
+    "nombre": "Quintessential Severant",
+    "texto": "You can use this magic blade to cut one magical or metaphysical bond, such as an enchantment, contract, magical tether, or divine oath. When you do, the blade shatters.",
+    "tirada": 53,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "mask-of-the-echoed-self",
+    "nombre": "Mask of the Echoed Self",
+    "texto": "You can wear this mask during your next level up to swap the values of any of your traits. When you do, the mask becomes your permanent face.",
+    "tirada": 54,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "necroprancers-bell",
+    "nombre": "Necroprancer's Bell",
+    "texto": "You can break this rusted, clapperless bell against the ground to summon a skeletal steed that climbs out of the earth and serves you until the next sunrise.",
+    "tirada": 55,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "drakemantle",
+    "nombre": "Drakemantle",
+    "texto": "You can use this enchanted ancient dragon hide to gain draconic characteristics until the end of the scene, when the hide falls aways in tatters. Until then, you can fly and gain a +5 bonus to your damage thresholds and a +1 bonus to your Proficiency.",
+    "tirada": 56,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "gamblers-fallacy",
+    "nombre": "Gambler's Fallacy",
+    "texto": "You can spend any number of handfuls of gold by placing them into this slotted ceramic jar shaped like a pig. When you throw the jar at a point within Far range, it explodes and deals 1d20 magic damage for each handful of gold spent to all creatures within Close range of that point. All gold within the jar is destroyed.",
+    "tirada": 57,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "lionheart-tonic",
+    "nombre": "Lionheart Tonic",
+    "texto": "You can drink this tonic to gain a +1 bonus to your Proficiency until you roll with Fear.",
+    "tirada": 58,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "tears-of-the-undying-hero",
+    "nombre": "Tears of the Undying Hero",
+    "texto": "When you drink this potion, death can't touch you until your next long rest. When you would mark your last Hit Point, instead of making a death move, you make one final action roll before falling into a dreamless slumber until an ally chooses the Tend to Wounds downtime move to clear your Hit Points.",
+    "tirada": 59,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  },
+  {
+    "id": "featherstep-potion",
+    "nombre": "Featherstep Potion",
+    "texto": "You can drink this potion to sprout small wings from your ankles that give you a bonus to your Evasion equal to your tier until your next rest.",
+    "tirada": 60,
+    "fuente": "SRD 2.0 p. 84",
+    "verificado": true
+  }
+]
