@@ -516,11 +516,9 @@ export async function salir() {
   guardar(CAMPANIA_GUARDADA, null)
   guardar(PERSONAJE_GUARDADO, null)
   limpiarCampania()
-  let fallo = null
-  try { ({ error: fallo } = await supabase.auth.signOut()) } catch (e) { fallo = e }
-  // Sin internet el cierre "global" falla y la sesión seguía abierta aquí:
-  // por lo menos se cierra en este dispositivo
-  if (fallo) await supabase.auth.signOut({ scope: 'local' }).catch(() => {})
+  // Solo este dispositivo: los demás siguen dentro (decisión de Neri, 16/11).
+  // Sin internet también borra la sesión de aquí (auth-js la quita aunque falle).
+  await supabase.auth.signOut({ scope: 'local' }).catch(() => {})
 }
 
 export function cambiarCampania() {

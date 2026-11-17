@@ -56,11 +56,37 @@
   const cola = crearCola()
   let pendiente = $state({}) // `${id}:${campo}` → valor que se está guardando
   let miedoObjetivo = $state(null)
-  const miedo = $derived(app.demo ? demoMiedo : miedoObjetivo ?? app.campania?.miedo ?? 0)
+  // Esperanza, Estrés y Miedo se quedan como estaban hasta que se detienen los
+  // dados (decisión de Neri, 16/11). El servidor los cambia antes de guardar
+  // la tirada, así que a los demás les llegan antes que ella: `estable` va
+  // 300 ms detrás de lo que llega y eso es lo que se congela.
+  // shortcut: si la tirada llega más de 300 ms después que los cambios, se ven
+  // antes de tiempo (como antes); para cerrarlo, que tirar() inserte primero.
+  let congelado = $state(null)
+  let turnoCongelado = 0
+  let estable = null
+  function foto() {
+    const lista = app.demo ? [demoPJ] : app.personajes
+    return {
+      miedo: app.demo ? demoMiedo : app.campania?.miedo ?? 0,
+      pjs: Object.fromEntries(lista.map((p) => [p.id, { esperanza: p.esperanza, estres: p.estres }])),
+    }
+  }
+  $effect(() => {
+    const f = foto()
+    const t = setTimeout(() => (estable = f), 300)
+    return () => clearTimeout(t)
+  })
+  async function conValoresCongelados(antes, animar) {
+    const turno = ++turnoCongelado
+    congelado = antes
+    try { return await animar() } finally { if (turno === turnoCongelado) congelado = null }
+  }
+  const miedo = $derived(miedoObjetivo ?? congelado?.miedo ?? (app.demo ? demoMiedo : app.campania?.miedo ?? 0))
   const tiradas = $derived(app.demo ? demoTiradas : app.lanzamientos)
   const puedoEditarPJ = $derived(app.demo || (pj && (esDJ || pj.usuario_id === uid)))
-  const esperanzaVista = $derived(pj ? pendiente[`${pj.id}:esperanza`] ?? pj.esperanza : 0)
-  const estresVista = $derived(pj ? pendiente[`${pj.id}:estres`] ?? pj.estres : 0)
+  const esperanzaVista = $derived(pj ? pendiente[`${pj.id}:esperanza`] ?? congelado?.pjs[pj.id]?.esperanza ?? pj.esperanza : 0)
+  const estresVista = $derived(pj ? pendiente[`${pj.id}:estres`] ?? congelado?.pjs[pj.id]?.estres ?? pj.estres : 0)
   // Encuentro activo tal como lo ve la mesa: en prueba se arma aquí mismo
   const escena = $derived(app.demo ? escenaDe(app.encuentros.find((e) => e.activo), ajustesMesa()) : app.escena)
 
@@ -86,10 +112,14 @@
       const personaje = params.tipo === 'dj' ? null : app.demo ? null : deHoja ? params.personajeId : pj?.id ?? null
       const nombrePJ = deHoja ? (app.demo ? demoPJ : app.personajes.find((p) => p.id === params.personajeId))?.nombre : pj?.nombre
       delete params.personajeId
-      const t = await tirar({ ...params, campania: app.demo ? null : app.campania.id, personaje })
-      if (app.demo) aplicarDemo(t)
-      else registrarPropia(t)
-      await mesa3d?.lanzar(dadosPara3D(t), { instantaneo: matchMedia('(prefers-reduced-motion: reduce)').matches })
+      // Se congela antes de pedir la tirada: el tiempo real puede llegar antes que la respuesta
+      const t = await conValoresCongelados(foto(), async () => {
+        const t = await tirar({ ...params, campania: app.demo ? null : app.campania.id, personaje })
+        if (app.demo) aplicarDemo(t)
+        else registrarPropia(t)
+        await mesa3d?.lanzar(dadosPara3D(t), { instantaneo: matchMedia('(prefers-reduced-motion: reduce)').matches })
+        return t
+      })
       mostrar(t, app.perfil?.nombre ?? 'Tú', params.tipo === 'dj' ? 'DJ' : nombrePJ)
       return t
     } catch (e) {
@@ -194,7 +224,7 @@
       const autor = nombreDe(t.usuario_id)
       // Si tú estás tirando, no se interrumpe tu animación; si no, la última tirada manda
       if (!ocupado) {
-        try { await mesa3d?.lanzar(dadosPara3D(t), { desdeArriba: true }) } catch (e) { console.error('[dados]', e) }
+        try { await conValoresCongelados(estable ?? foto(), () => mesa3d?.lanzar(dadosPara3D(t), { desdeArriba: true })) } catch (e) { console.error('[dados]', e) }
       }
       mostrar(t, autor, t.tipo === 'dj' ? 'DJ' : p?.nombre ?? autor)
     })

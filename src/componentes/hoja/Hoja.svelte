@@ -166,7 +166,8 @@
 
   function tirarCompanero(critico = false) {
     const c = hoja.companero
-    onTirar({ tipo: 'dano', grupos: [{ lados: c?.dano_lados || 6, cantidad: 1 }], modificador: 0, etiqueta: `Daño · ${c?.nombre || 'Compañero'}`, danoCritico: critico })
+    // Tu Competencia y el dado del compañero (SRD 2.0 p. 22)
+    onTirar({ tipo: 'dano', grupos: [{ lados: c?.dano_lados || 6, cantidad: competencia }], modificador: 0, etiqueta: `Daño · ${c?.nombre || 'Compañero'}`, danoCritico: critico })
   }
 
   // ---------- Listas editables ----------
@@ -529,7 +530,7 @@
           </div>
           <Casillas nombre="Estrés" marcadas={c.estres ?? 0} maximo={c.estres_max ?? 3} color="var(--texto)" {editable} onCambiar={(n) => cambiar(['companero', 'estres'], n)} />
           <div class="acciones">
-            <button class="boton" onclick={() => tirarCompanero()}>Daño d{c.dano_lados ?? 6}</button>
+            <button class="boton" onclick={() => tirarCompanero()}>Daño {competencia}d{c.dano_lados ?? 6}</button>
             <button class="boton critico" onclick={() => tirarCompanero(true)}>Crítico</button>
           </div>
           <p class="nota">Para atacar con tu compañero haces una tirada de Lanzamiento; si aciertas, tira su daño.</p>
